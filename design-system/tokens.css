@@ -1,0 +1,79 @@
+/* NHT Design System — CSS Tokens */
+
+:root {
+  /* Color */
+  --nht-black: #090909;
+  --nht-black-elevated: #0f0f0f;
+  --nht-black-surface: #141414;
+  --nht-white: #ffffff;
+  --nht-gold: #c8a45d;
+  --nht-gold-warm: #d4af6a;
+  --nht-gold-deep: #a8864a;
+  --nht-gold-muted: rgba(200, 164, 93, 0.12);
+  --nht-gold-subtle: rgba(200, 164, 93, 0.06);
+
+  --nht-text-primary: #ffffff;
+  --nht-text-secondary: rgba(255, 255, 255, 0.55);
+  --nht-text-tertiary: rgba(255, 255, 255, 0.35);
+  --nht-text-muted: rgba(255, 255, 255, 0.2);
+
+  --nht-border: rgba(255, 255, 255, 0.08);
+  --nht-border-hover: rgba(200, 164, 93, 0.25);
+  --nht-glass: rgba(255, 255, 255, 0.03);
+  --nht-glass-strong: rgba(255, 255, 255, 0.06);
+
+  /* Typography */
+  --nht-text-display: clamp(3.25rem, 7vw, 5.75rem);
+  --nht-text-h1: clamp(2.5rem, 5vw, 4rem);
+  --nht-text-h2: clamp(2rem, 3.5vw, 3rem);
+  --nht-text-h3: 1.5rem;
+  --nht-text-body-lg: 1.125rem;
+  --nht-text-body: 1rem;
+  --nht-text-body-sm: 0.875rem;
+  --nht-text-caption: 0.75rem;
+  --nht-text-overline: 0.6875rem;
+
+  --nht-tracking-tight: -0.03em;
+  --nht-tracking-normal: -0.01em;
+  --nht-tracking-wide: 0.12em;
+  --nht-tracking-wider: 0.22em;
+
+  --nht-leading-display: 1.02;
+  --nht-leading-heading: 1.08;
+  --nht-leading-body: 1.65;
+
+  /* Spacing */
+  --nht-section-y: clamp(7rem, 14vw, 11rem);
+  --nht-section-y-sm: clamp(5rem, 10vw, 8rem);
+  --nht-container-max: 1280px;
+  --nht-container-padding: clamp(1.5rem, 4vw, 3rem);
+  --nht-grid-gap: 1.5rem;
+  --nht-grid-gap-lg: 2rem;
+
+  /* Border Radius */
+  --nht-radius-sm: 8px;
+  --nht-radius-md: 12px;
+  --nht-radius-lg: 16px;
+  --nht-radius-xl: 20px;
+  --nht-radius-2xl: 24px;
+  --nht-radius-3xl: 32px;
+  --nht-radius-full: 9999px;
+
+  /* Shadows & Glow */
+  --nht-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --nht-shadow-md: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --nht-shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.5);
+  --nht-shadow-glow: 0 0 60px rgba(200, 164, 93, 0.15);
+  --nht-shadow-glow-strong: 0 0 80px rgba(200, 164, 93, 0.25);
+  --nht-shadow-inner: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  /* Blur */
+  --nht-blur-glass: 24px;
+  --nht-blur-glass-strong: 32px;
+
+  /* Animation */
+  --nht-duration-fast: 150ms;
+  --nht-duration-base: 300ms;
+  --nht-duration-slow: 500ms;
+  --nht-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
