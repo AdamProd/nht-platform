@@ -263,7 +263,7 @@
       "applications": {
         "label": "CRM",
         "title": "Applications",
-        "description": "Application pipeline will appear here in the next commit."
+        "description": "Review and manage incoming creator applications."
       },
       "creators": {
         "label": "Roster",
@@ -284,6 +284,64 @@
         "label": "System",
         "title": "Settings",
         "description": "Site settings are coming soon."
+      }
+    },
+    "applications": {
+      "label": "CRM",
+      "title": "Applications",
+      "description": "Review and manage incoming creator applications.",
+      "detailLabel": "Application",
+      "empty": "No applications match your filters.",
+      "unassigned": "Unassigned",
+      "backToList": "Back to applications",
+      "backToDashboard": "Back to dashboard",
+      "filters": {
+        "search": "Search",
+        "searchPlaceholder": "Name, email, or platform",
+        "status": "Status",
+        "priority": "Priority",
+        "all": "All",
+        "apply": "Apply",
+        "clear": "Clear"
+      },
+      "table": {
+        "name": "Name",
+        "email": "Email",
+        "platform": "Platform",
+        "status": "Status",
+        "priority": "Priority",
+        "manager": "Manager",
+        "created": "Created",
+        "actions": "Actions",
+        "view": "View"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "pageOf": "Page {page} of {totalPages} · {total} total"
+      },
+      "fields": {
+        "fullName": "Full name",
+        "email": "Email",
+        "platform": "Platform",
+        "locale": "Locale",
+        "message": "Message",
+        "status": "Status",
+        "priority": "Priority",
+        "manager": "Assigned manager",
+        "notes": "Internal notes",
+        "created": "Created",
+        "updated": "Updated",
+        "lastContact": "Last contact"
+      },
+      "actions": {
+        "save": "Save",
+        "saving": "Saving…",
+        "saved": "Changes saved."
+      },
+      "errors": {
+        "load": "Unable to load applications.",
+        "loadDetail": "Unable to load this application."
       }
     }
   }

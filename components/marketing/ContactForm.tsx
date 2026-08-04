@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import Container from "@/components/ui/Container";
 import { fadeUp } from "@/components/motion/variants";
-import { submitApplication } from "@/features/applications";
+import { submitApplication } from "@/features/applications/actions/submit-application";
 
 const platformKeys = [
   "onlyfans",
