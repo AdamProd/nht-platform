@@ -393,6 +393,128 @@
         "invalidNotes": "Invalid notes."
       }
     },
+    "creators": {
+      "label": "Roster",
+      "title": "Creators",
+      "description": "Manage creator profiles, assignment, and status.",
+      "detailLabel": "Creator",
+      "create": "Create Creator",
+      "unassigned": "Unassigned",
+      "backToList": "Back to creators",
+      "noApplication": "No linked application",
+      "viewApplication": "View application",
+      "empty": {
+        "title": "No creators yet.",
+        "description": "Create your first creator."
+      },
+      "filters": {
+        "search": "Search",
+        "searchPlaceholder": "Name, email, telegram, country, platform",
+        "status": "Status",
+        "manager": "Manager",
+        "country": "Country",
+        "platform": "Platform",
+        "sort": "Sort",
+        "all": "All",
+        "apply": "Apply",
+        "clear": "Clear"
+      },
+      "sort": {
+        "newest": "Newest",
+        "oldest": "Oldest",
+        "name": "Name A–Z"
+      },
+      "table": {
+        "avatar": "Avatar",
+        "name": "Name",
+        "email": "Email",
+        "country": "Country",
+        "platforms": "Platforms",
+        "manager": "Manager",
+        "status": "Status",
+        "created": "Created",
+        "actions": "Actions"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "pageOf": "Page {page} of {totalPages} · {total} total"
+      },
+      "status": {
+        "new": "New",
+        "active": "Active",
+        "paused": "Paused",
+        "vacation": "Vacation",
+        "inactive": "Inactive",
+        "banned": "Banned"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Multiple",
+        "emerging": "Emerging",
+        "other": "Other"
+      },
+      "fields": {
+        "fullName": "Full name",
+        "email": "Email",
+        "telegram": "Telegram",
+        "country": "Country",
+        "languages": "Languages",
+        "languagesPlaceholder": "en, ru, de",
+        "platforms": "Platforms",
+        "manager": "Manager",
+        "status": "Status",
+        "notes": "Notes",
+        "application": "Application",
+        "created": "Created",
+        "updated": "Updated",
+        "avatarUrl": "Avatar URL"
+      },
+      "form": {
+        "title": "Create creator",
+        "cancel": "Cancel",
+        "submit": "Create",
+        "submitting": "Creating…"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete",
+        "save": "Save",
+        "saving": "Saving…",
+        "saved": "Changes saved.",
+        "saveError": "Unable to save changes.",
+        "uploadAvatar": "Save avatar"
+      },
+      "toast": {
+        "created": "Creator created.",
+        "saved": "Changes saved.",
+        "deleted": "Creator deleted."
+      },
+      "errors": {
+        "load": "Unable to load creators.",
+        "loadDetail": "Unable to load this creator.",
+        "boundary": "Something went wrong loading creators.",
+        "retry": "Try again"
+      },
+      "notFound": {
+        "title": "Creator not found",
+        "description": "This creator may have been removed or you do not have access."
+      },
+      "actionErrors": {
+        "unauthorized": "You are not authorized to make this change.",
+        "forbidden": "You can only manage creators assigned to you.",
+        "invalid": "Invalid creator data.",
+        "create": "Unable to create creator.",
+        "save": "Unable to save changes.",
+        "invalidStatus": "Invalid status.",
+        "invalidManager": "Invalid manager.",
+        "invalidNotes": "Invalid notes.",
+        "avatarNotReady": "Avatar upload is not available yet. Paste a URL instead."
+      }
+    },
     "dashboard": {
       "label": "Overview",
       "title": "Dashboard",
@@ -553,120 +675,6 @@
       "manager": "Manager",
       "creator": "Creator",
       "guest": "Guest"
-    },
-    "creators": {
-      "label": "Roster",
-      "title": "Creators",
-      "description": "Manage creator profiles, assignment, and status.",
-      "detailLabel": "Creator",
-      "create": "Create Creator",
-      "empty": "No creators yet.",
-      "emptyHint": "Create your first creator.",
-      "unassigned": "Unassigned",
-      "backToList": "Back to creators",
-      "noApplication": "No linked application",
-      "viewApplication": "View application",
-      "filters": {
-        "search": "Search",
-        "searchPlaceholder": "Name, email, telegram, country, platform",
-        "status": "Status",
-        "manager": "Manager",
-        "country": "Country",
-        "platform": "Platform",
-        "sort": "Sort",
-        "all": "All",
-        "apply": "Apply",
-        "clear": "Clear",
-        "sortNewest": "Newest",
-        "sortOldest": "Oldest",
-        "sortName": "Name A–Z"
-      },
-      "table": {
-        "avatar": "Avatar",
-        "name": "Name",
-        "email": "Email",
-        "country": "Country",
-        "platforms": "Platforms",
-        "manager": "Manager",
-        "status": "Status",
-        "created": "Created",
-        "actions": "Actions",
-        "view": "View"
-      },
-      "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {page} of {totalPages} · {total} total"
-      },
-      "fields": {
-        "fullName": "Full name",
-        "email": "Email",
-        "telegram": "Telegram",
-        "country": "Country",
-        "languages": "Languages",
-        "languagesPlaceholder": "en, ru, de",
-        "platforms": "Platforms",
-        "manager": "Manager",
-        "status": "Status",
-        "notes": "Notes",
-        "application": "Application",
-        "created": "Created",
-        "updated": "Updated",
-        "avatarUrl": "Avatar URL"
-      },
-      "form": {
-        "title": "Create creator",
-        "cancel": "Cancel",
-        "submit": "Create",
-        "submitting": "Creating…"
-      },
-      "actions": {
-        "save": "Save",
-        "saving": "Saving…",
-        "saved": "Changes saved.",
-        "saveError": "Unable to save changes.",
-        "uploadAvatar": "Save avatar"
-      },
-      "toast": {
-        "created": "Creator created."
-      },
-      "statusValues": {
-        "new": "New",
-        "active": "Active",
-        "paused": "Paused",
-        "vacation": "Vacation",
-        "inactive": "Inactive",
-        "banned": "Banned"
-      },
-      "platformValues": {
-        "onlyfans": "OnlyFans",
-        "fansly": "Fansly",
-        "manyvids": "ManyVids",
-        "multiple": "Multiple",
-        "emerging": "Emerging",
-        "other": "Other"
-      },
-      "errors": {
-        "load": "Unable to load creators.",
-        "loadDetail": "Unable to load this creator.",
-        "boundary": "Something went wrong loading creators.",
-        "retry": "Try again"
-      },
-      "notFound": {
-        "title": "Creator not found",
-        "description": "This creator may have been removed or you do not have access."
-      },
-      "actionErrors": {
-        "unauthorized": "You are not authorized to make this change.",
-        "forbidden": "You can only manage creators assigned to you.",
-        "invalid": "Invalid creator data.",
-        "create": "Unable to create creator.",
-        "save": "Unable to save changes.",
-        "invalidStatus": "Invalid status.",
-        "invalidManager": "Invalid manager.",
-        "invalidNotes": "Invalid notes.",
-        "avatarNotReady": "Avatar upload is not available yet. Paste a URL instead."
-      }
     }
   },
   "common": {

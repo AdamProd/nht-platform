@@ -395,6 +395,128 @@
         "invalidNotes": "Notas inválidas."
       }
     },
+    "creators": {
+      "label": "Roster",
+      "title": "Criadores",
+      "description": "Gira perfis, atribuição e estado dos criadores.",
+      "detailLabel": "Criador",
+      "create": "Criar criador",
+      "unassigned": "Não atribuído",
+      "backToList": "Voltar aos criadores",
+      "noApplication": "Sem candidatura associada",
+      "viewApplication": "Ver candidatura",
+      "empty": {
+        "title": "Ainda não há criadores.",
+        "description": "Crie o seu primeiro criador."
+      },
+      "filters": {
+        "search": "Pesquisar",
+        "searchPlaceholder": "Nome, email, telegram, país, plataforma",
+        "status": "Estado",
+        "manager": "Gestor",
+        "country": "País",
+        "platform": "Plataforma",
+        "sort": "Ordenar",
+        "all": "Todos",
+        "apply": "Aplicar",
+        "clear": "Limpar"
+      },
+      "sort": {
+        "newest": "Mais recentes",
+        "oldest": "Mais antigos",
+        "name": "Nome A–Z"
+      },
+      "table": {
+        "avatar": "Avatar",
+        "name": "Nome",
+        "email": "Email",
+        "country": "País",
+        "platforms": "Plataformas",
+        "manager": "Gestor",
+        "status": "Estado",
+        "created": "Criado",
+        "actions": "Ações"
+      },
+      "pagination": {
+        "previous": "Anterior",
+        "next": "Seguinte",
+        "pageOf": "Página {page} de {totalPages} · {total} no total"
+      },
+      "status": {
+        "new": "Novo",
+        "active": "Ativo",
+        "paused": "Em pausa",
+        "vacation": "Férias",
+        "inactive": "Inativo",
+        "banned": "Banido"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Várias",
+        "emerging": "Emergente",
+        "other": "Outro"
+      },
+      "fields": {
+        "fullName": "Nome completo",
+        "email": "Email",
+        "telegram": "Telegram",
+        "country": "País",
+        "languages": "Idiomas",
+        "languagesPlaceholder": "en, pt, de",
+        "platforms": "Plataformas",
+        "manager": "Gestor",
+        "status": "Estado",
+        "notes": "Notas",
+        "application": "Candidatura",
+        "created": "Criado",
+        "updated": "Atualizado",
+        "avatarUrl": "URL do avatar"
+      },
+      "form": {
+        "title": "Novo criador",
+        "cancel": "Cancelar",
+        "submit": "Criar",
+        "submitting": "A criar…"
+      },
+      "actions": {
+        "view": "Ver",
+        "edit": "Edit",
+        "delete": "Delete",
+        "save": "Guardar",
+        "saving": "A guardar…",
+        "saved": "Alterações guardadas.",
+        "saveError": "Não foi possível guardar as alterações.",
+        "uploadAvatar": "Guardar avatar"
+      },
+      "toast": {
+        "created": "Criador criado.",
+        "saved": "Changes saved.",
+        "deleted": "Creator deleted."
+      },
+      "errors": {
+        "load": "Não foi possível carregar os criadores.",
+        "loadDetail": "Não foi possível carregar este criador.",
+        "boundary": "Erro ao carregar criadores.",
+        "retry": "Tentar novamente"
+      },
+      "notFound": {
+        "title": "Criador não encontrado",
+        "description": "Este criador foi removido ou não tem acesso."
+      },
+      "actionErrors": {
+        "unauthorized": "Não tem autorização para esta alteração.",
+        "forbidden": "Só pode gerir criadores atribuídos a si.",
+        "invalid": "Dados de criador inválidos.",
+        "create": "Não foi possível criar o criador.",
+        "save": "Não foi possível guardar as alterações.",
+        "invalidStatus": "Estado inválido.",
+        "invalidManager": "Gestor inválido.",
+        "invalidNotes": "Notas inválidas.",
+        "avatarNotReady": "Upload de avatar ainda não disponível. Cole um URL."
+      }
+    },
     "dashboard": {
       "label": "Visão geral",
       "title": "Painel",
@@ -555,120 +677,6 @@
       "manager": "Gestor",
       "creator": "Criador",
       "guest": "Convidado"
-    },
-    "creators": {
-      "label": "Roster",
-      "title": "Criadores",
-      "description": "Gira perfis, atribuição e estado dos criadores.",
-      "detailLabel": "Criador",
-      "create": "Criar criador",
-      "empty": "Ainda não há criadores.",
-      "emptyHint": "Crie o seu primeiro criador.",
-      "unassigned": "Não atribuído",
-      "backToList": "Voltar aos criadores",
-      "noApplication": "Sem candidatura associada",
-      "viewApplication": "Ver candidatura",
-      "filters": {
-        "search": "Pesquisar",
-        "searchPlaceholder": "Nome, email, telegram, país, plataforma",
-        "status": "Estado",
-        "manager": "Gestor",
-        "country": "País",
-        "platform": "Plataforma",
-        "sort": "Ordenar",
-        "all": "Todos",
-        "apply": "Aplicar",
-        "clear": "Limpar",
-        "sortNewest": "Mais recentes",
-        "sortOldest": "Mais antigos",
-        "sortName": "Nome A–Z"
-      },
-      "table": {
-        "avatar": "Avatar",
-        "name": "Nome",
-        "email": "Email",
-        "country": "País",
-        "platforms": "Plataformas",
-        "manager": "Gestor",
-        "status": "Estado",
-        "created": "Criado",
-        "actions": "Ações",
-        "view": "Ver"
-      },
-      "pagination": {
-        "previous": "Anterior",
-        "next": "Seguinte",
-        "pageOf": "Página {page} de {totalPages} · {total} no total"
-      },
-      "fields": {
-        "fullName": "Nome completo",
-        "email": "Email",
-        "telegram": "Telegram",
-        "country": "País",
-        "languages": "Idiomas",
-        "languagesPlaceholder": "en, pt, de",
-        "platforms": "Plataformas",
-        "manager": "Gestor",
-        "status": "Estado",
-        "notes": "Notas",
-        "application": "Candidatura",
-        "created": "Criado",
-        "updated": "Atualizado",
-        "avatarUrl": "URL do avatar"
-      },
-      "form": {
-        "title": "Novo criador",
-        "cancel": "Cancelar",
-        "submit": "Criar",
-        "submitting": "A criar…"
-      },
-      "actions": {
-        "save": "Guardar",
-        "saving": "A guardar…",
-        "saved": "Alterações guardadas.",
-        "saveError": "Não foi possível guardar as alterações.",
-        "uploadAvatar": "Guardar avatar"
-      },
-      "toast": {
-        "created": "Criador criado."
-      },
-      "statusValues": {
-        "new": "Novo",
-        "active": "Ativo",
-        "paused": "Em pausa",
-        "vacation": "Férias",
-        "inactive": "Inativo",
-        "banned": "Banido"
-      },
-      "platformValues": {
-        "onlyfans": "OnlyFans",
-        "fansly": "Fansly",
-        "manyvids": "ManyVids",
-        "multiple": "Várias",
-        "emerging": "Emergente",
-        "other": "Outro"
-      },
-      "errors": {
-        "load": "Não foi possível carregar os criadores.",
-        "loadDetail": "Não foi possível carregar este criador.",
-        "boundary": "Erro ao carregar criadores.",
-        "retry": "Tentar novamente"
-      },
-      "notFound": {
-        "title": "Criador não encontrado",
-        "description": "Este criador foi removido ou não tem acesso."
-      },
-      "actionErrors": {
-        "unauthorized": "Não tem autorização para esta alteração.",
-        "forbidden": "Só pode gerir criadores atribuídos a si.",
-        "invalid": "Dados de criador inválidos.",
-        "create": "Não foi possível criar o criador.",
-        "save": "Não foi possível guardar as alterações.",
-        "invalidStatus": "Estado inválido.",
-        "invalidManager": "Gestor inválido.",
-        "invalidNotes": "Notas inválidas.",
-        "avatarNotReady": "Upload de avatar ainda não disponível. Cole um URL."
-      }
     }
   },
   "common": {

@@ -63,21 +63,21 @@ export default async function AdminCreatorsPage({
   }
 
   const statusLabels = {
-    new: t("statusValues.new"),
-    active: t("statusValues.active"),
-    paused: t("statusValues.paused"),
-    vacation: t("statusValues.vacation"),
-    inactive: t("statusValues.inactive"),
-    banned: t("statusValues.banned"),
+    new: t("status.new"),
+    active: t("status.active"),
+    paused: t("status.paused"),
+    vacation: t("status.vacation"),
+    inactive: t("status.inactive"),
+    banned: t("status.banned"),
   };
 
   const platformLabels = {
-    onlyfans: t("platformValues.onlyfans"),
-    fansly: t("platformValues.fansly"),
-    manyvids: t("platformValues.manyvids"),
-    multiple: t("platformValues.multiple"),
-    emerging: t("platformValues.emerging"),
-    other: t("platformValues.other"),
+    onlyfans: t("platforms.onlyfans"),
+    fansly: t("platforms.fansly"),
+    manyvids: t("platforms.manyvids"),
+    multiple: t("platforms.multiple"),
+    emerging: t("platforms.emerging"),
+    other: t("platforms.other"),
   };
 
   return (
@@ -139,9 +139,9 @@ export default async function AdminCreatorsPage({
           all: t("filters.all"),
           apply: t("filters.apply"),
           clear: t("filters.clear"),
-          sortNewest: t("filters.sortNewest"),
-          sortOldest: t("filters.sortOldest"),
-          sortName: t("filters.sortName"),
+          sortNewest: t("sort.newest"),
+          sortOldest: t("sort.oldest"),
+          sortName: t("sort.name"),
           unassigned: t("unassigned"),
         }}
         statusLabels={statusLabels}
@@ -167,9 +167,9 @@ export default async function AdminCreatorsPage({
               status: t("table.status"),
               created: t("table.created"),
               actions: t("table.actions"),
-              view: t("table.view"),
-              empty: t("empty"),
-              emptyHint: t("emptyHint"),
+              view: t("actions.view"),
+              empty: t("empty.title"),
+              emptyHint: t("empty.description"),
               unassigned: t("unassigned"),
             }}
             statusLabels={statusLabels}

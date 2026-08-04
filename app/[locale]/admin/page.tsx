@@ -122,12 +122,12 @@ export default async function AdminDashboardPage({ params }: Props) {
           unassigned: tCreators("unassigned"),
         }}
         statusLabels={{
-          new: tCreators("statusValues.new"),
-          active: tCreators("statusValues.active"),
-          paused: tCreators("statusValues.paused"),
-          vacation: tCreators("statusValues.vacation"),
-          inactive: tCreators("statusValues.inactive"),
-          banned: tCreators("statusValues.banned"),
+          new: tCreators("status.new"),
+          active: tCreators("status.active"),
+          paused: tCreators("status.paused"),
+          vacation: tCreators("status.vacation"),
+          inactive: tCreators("status.inactive"),
+          banned: tCreators("status.banned"),
         }}
       />
 

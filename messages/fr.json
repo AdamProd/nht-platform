@@ -395,6 +395,128 @@
         "invalidNotes": "Notes invalides."
       }
     },
+    "creators": {
+      "label": "Roster",
+      "title": "Créateurs",
+      "description": "Gérez les profils, l’assignation et le statut des créateurs.",
+      "detailLabel": "Créateur",
+      "create": "Créer un créateur",
+      "unassigned": "Non assigné",
+      "backToList": "Retour aux créateurs",
+      "noApplication": "Aucune candidature liée",
+      "viewApplication": "Voir la candidature",
+      "empty": {
+        "title": "Aucun créateur pour le moment.",
+        "description": "Créez votre premier créateur."
+      },
+      "filters": {
+        "search": "Recherche",
+        "searchPlaceholder": "Nom, e-mail, telegram, pays, plateforme",
+        "status": "Statut",
+        "manager": "Manager",
+        "country": "Pays",
+        "platform": "Plateforme",
+        "sort": "Tri",
+        "all": "Tous",
+        "apply": "Appliquer",
+        "clear": "Effacer"
+      },
+      "sort": {
+        "newest": "Plus récents",
+        "oldest": "Plus anciens",
+        "name": "Nom A–Z"
+      },
+      "table": {
+        "avatar": "Avatar",
+        "name": "Nom",
+        "email": "E-mail",
+        "country": "Pays",
+        "platforms": "Plateformes",
+        "manager": "Manager",
+        "status": "Statut",
+        "created": "Créé",
+        "actions": "Actions"
+      },
+      "pagination": {
+        "previous": "Précédent",
+        "next": "Suivant",
+        "pageOf": "Page {page} sur {totalPages} · {total} au total"
+      },
+      "status": {
+        "new": "Nouveau",
+        "active": "Actif",
+        "paused": "En pause",
+        "vacation": "Vacances",
+        "inactive": "Inactif",
+        "banned": "Banni"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Plusieurs",
+        "emerging": "Émergente",
+        "other": "Autre"
+      },
+      "fields": {
+        "fullName": "Nom complet",
+        "email": "E-mail",
+        "telegram": "Telegram",
+        "country": "Pays",
+        "languages": "Langues",
+        "languagesPlaceholder": "en, fr, de",
+        "platforms": "Plateformes",
+        "manager": "Manager",
+        "status": "Statut",
+        "notes": "Notes",
+        "application": "Candidature",
+        "created": "Créé",
+        "updated": "Mis à jour",
+        "avatarUrl": "URL de l’avatar"
+      },
+      "form": {
+        "title": "Nouveau créateur",
+        "cancel": "Annuler",
+        "submit": "Créer",
+        "submitting": "Création…"
+      },
+      "actions": {
+        "view": "Voir",
+        "edit": "Edit",
+        "delete": "Delete",
+        "save": "Enregistrer",
+        "saving": "Enregistrement…",
+        "saved": "Modifications enregistrées.",
+        "saveError": "Impossible d’enregistrer les modifications.",
+        "uploadAvatar": "Enregistrer l’avatar"
+      },
+      "toast": {
+        "created": "Créateur créé.",
+        "saved": "Changes saved.",
+        "deleted": "Creator deleted."
+      },
+      "errors": {
+        "load": "Impossible de charger les créateurs.",
+        "loadDetail": "Impossible de charger ce créateur.",
+        "boundary": "Erreur lors du chargement des créateurs.",
+        "retry": "Réessayer"
+      },
+      "notFound": {
+        "title": "Créateur introuvable",
+        "description": "Ce créateur a été supprimé ou vous n’y avez pas accès."
+      },
+      "actionErrors": {
+        "unauthorized": "Vous n’êtes pas autorisé à effectuer cette modification.",
+        "forbidden": "Vous ne pouvez gérer que les créateurs qui vous sont assignés.",
+        "invalid": "Données de créateur invalides.",
+        "create": "Impossible de créer le créateur.",
+        "save": "Impossible d’enregistrer les modifications.",
+        "invalidStatus": "Statut invalide.",
+        "invalidManager": "Manager invalide.",
+        "invalidNotes": "Notes invalides.",
+        "avatarNotReady": "L’upload d’avatar n’est pas encore disponible. Collez une URL."
+      }
+    },
     "dashboard": {
       "label": "Vue d’ensemble",
       "title": "Tableau de bord",
@@ -555,120 +677,6 @@
       "manager": "Manager",
       "creator": "Créateur",
       "guest": "Invité"
-    },
-    "creators": {
-      "label": "Roster",
-      "title": "Créateurs",
-      "description": "Gérez les profils, l’assignation et le statut des créateurs.",
-      "detailLabel": "Créateur",
-      "create": "Créer un créateur",
-      "empty": "Aucun créateur pour le moment.",
-      "emptyHint": "Créez votre premier créateur.",
-      "unassigned": "Non assigné",
-      "backToList": "Retour aux créateurs",
-      "noApplication": "Aucune candidature liée",
-      "viewApplication": "Voir la candidature",
-      "filters": {
-        "search": "Recherche",
-        "searchPlaceholder": "Nom, e-mail, telegram, pays, plateforme",
-        "status": "Statut",
-        "manager": "Manager",
-        "country": "Pays",
-        "platform": "Plateforme",
-        "sort": "Tri",
-        "all": "Tous",
-        "apply": "Appliquer",
-        "clear": "Effacer",
-        "sortNewest": "Plus récents",
-        "sortOldest": "Plus anciens",
-        "sortName": "Nom A–Z"
-      },
-      "table": {
-        "avatar": "Avatar",
-        "name": "Nom",
-        "email": "E-mail",
-        "country": "Pays",
-        "platforms": "Plateformes",
-        "manager": "Manager",
-        "status": "Statut",
-        "created": "Créé",
-        "actions": "Actions",
-        "view": "Voir"
-      },
-      "pagination": {
-        "previous": "Précédent",
-        "next": "Suivant",
-        "pageOf": "Page {page} sur {totalPages} · {total} au total"
-      },
-      "fields": {
-        "fullName": "Nom complet",
-        "email": "E-mail",
-        "telegram": "Telegram",
-        "country": "Pays",
-        "languages": "Langues",
-        "languagesPlaceholder": "en, fr, de",
-        "platforms": "Plateformes",
-        "manager": "Manager",
-        "status": "Statut",
-        "notes": "Notes",
-        "application": "Candidature",
-        "created": "Créé",
-        "updated": "Mis à jour",
-        "avatarUrl": "URL de l’avatar"
-      },
-      "form": {
-        "title": "Nouveau créateur",
-        "cancel": "Annuler",
-        "submit": "Créer",
-        "submitting": "Création…"
-      },
-      "actions": {
-        "save": "Enregistrer",
-        "saving": "Enregistrement…",
-        "saved": "Modifications enregistrées.",
-        "saveError": "Impossible d’enregistrer les modifications.",
-        "uploadAvatar": "Enregistrer l’avatar"
-      },
-      "toast": {
-        "created": "Créateur créé."
-      },
-      "statusValues": {
-        "new": "Nouveau",
-        "active": "Actif",
-        "paused": "En pause",
-        "vacation": "Vacances",
-        "inactive": "Inactif",
-        "banned": "Banni"
-      },
-      "platformValues": {
-        "onlyfans": "OnlyFans",
-        "fansly": "Fansly",
-        "manyvids": "ManyVids",
-        "multiple": "Plusieurs",
-        "emerging": "Émergente",
-        "other": "Autre"
-      },
-      "errors": {
-        "load": "Impossible de charger les créateurs.",
-        "loadDetail": "Impossible de charger ce créateur.",
-        "boundary": "Erreur lors du chargement des créateurs.",
-        "retry": "Réessayer"
-      },
-      "notFound": {
-        "title": "Créateur introuvable",
-        "description": "Ce créateur a été supprimé ou vous n’y avez pas accès."
-      },
-      "actionErrors": {
-        "unauthorized": "Vous n’êtes pas autorisé à effectuer cette modification.",
-        "forbidden": "Vous ne pouvez gérer que les créateurs qui vous sont assignés.",
-        "invalid": "Données de créateur invalides.",
-        "create": "Impossible de créer le créateur.",
-        "save": "Impossible d’enregistrer les modifications.",
-        "invalidStatus": "Statut invalide.",
-        "invalidManager": "Manager invalide.",
-        "invalidNotes": "Notes invalides.",
-        "avatarNotReady": "L’upload d’avatar n’est pas encore disponible. Collez une URL."
-      }
     }
   },
   "common": {

@@ -395,6 +395,128 @@
         "invalidNotes": "Neplatné poznámky."
       }
     },
+    "creators": {
+      "label": "Roster",
+      "title": "Tvůrci",
+      "description": "Spravujte profily, přiřazení a stav tvůrců.",
+      "detailLabel": "Tvůrce",
+      "create": "Vytvořit tvůrce",
+      "unassigned": "Nepřiřazeno",
+      "backToList": "Zpět k tvůrcům",
+      "noApplication": "Žádná propojená žádost",
+      "viewApplication": "Zobrazit žádost",
+      "empty": {
+        "title": "Zatím žádní tvůrci.",
+        "description": "Vytvořte prvního tvůrce."
+      },
+      "filters": {
+        "search": "Hledat",
+        "searchPlaceholder": "Jméno, e-mail, telegram, země, platforma",
+        "status": "Stav",
+        "manager": "Manažer",
+        "country": "Země",
+        "platform": "Platforma",
+        "sort": "Řazení",
+        "all": "Vše",
+        "apply": "Použít",
+        "clear": "Vymazat"
+      },
+      "sort": {
+        "newest": "Nejnovější",
+        "oldest": "Nejstarší",
+        "name": "Jméno A–Z"
+      },
+      "table": {
+        "avatar": "Avatar",
+        "name": "Jméno",
+        "email": "E-mail",
+        "country": "Země",
+        "platforms": "Platformy",
+        "manager": "Manažer",
+        "status": "Stav",
+        "created": "Vytvořeno",
+        "actions": "Akce"
+      },
+      "pagination": {
+        "previous": "Předchozí",
+        "next": "Další",
+        "pageOf": "Stránka {page} z {totalPages} · celkem {total}"
+      },
+      "status": {
+        "new": "Nový",
+        "active": "Aktivní",
+        "paused": "Pozastaveno",
+        "vacation": "Dovolená",
+        "inactive": "Neaktivní",
+        "banned": "Zakázán"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Více",
+        "emerging": "Nově vznikající",
+        "other": "Jiné"
+      },
+      "fields": {
+        "fullName": "Celé jméno",
+        "email": "E-mail",
+        "telegram": "Telegram",
+        "country": "Země",
+        "languages": "Jazyky",
+        "languagesPlaceholder": "en, cs, de",
+        "platforms": "Platformy",
+        "manager": "Manažer",
+        "status": "Stav",
+        "notes": "Poznámky",
+        "application": "Žádost",
+        "created": "Vytvořeno",
+        "updated": "Aktualizováno",
+        "avatarUrl": "URL avataru"
+      },
+      "form": {
+        "title": "Nový tvůrce",
+        "cancel": "Zrušit",
+        "submit": "Vytvořit",
+        "submitting": "Vytváření…"
+      },
+      "actions": {
+        "view": "Zobrazit",
+        "edit": "Edit",
+        "delete": "Delete",
+        "save": "Uložit",
+        "saving": "Ukládání…",
+        "saved": "Změny uloženy.",
+        "saveError": "Nepodařilo se uložit změny.",
+        "uploadAvatar": "Uložit avatar"
+      },
+      "toast": {
+        "created": "Tvůrce vytvořen.",
+        "saved": "Changes saved.",
+        "deleted": "Creator deleted."
+      },
+      "errors": {
+        "load": "Nepodařilo se načíst tvůrce.",
+        "loadDetail": "Nepodařilo se načíst tohoto tvůrce.",
+        "boundary": "Chyba při načítání tvůrců.",
+        "retry": "Zkusit znovu"
+      },
+      "notFound": {
+        "title": "Tvůrce nenalezen",
+        "description": "Tento tvůrce byl odstraněn nebo k němu nemáte přístup."
+      },
+      "actionErrors": {
+        "unauthorized": "Nemáte oprávnění k této změně.",
+        "forbidden": "Můžete spravovat jen tvůrce přiřazené vám.",
+        "invalid": "Neplatná data tvůrce.",
+        "create": "Nepodařilo se vytvořit tvůrce.",
+        "save": "Nepodařilo se uložit změny.",
+        "invalidStatus": "Neplatný stav.",
+        "invalidManager": "Neplatný manažer.",
+        "invalidNotes": "Neplatné poznámky.",
+        "avatarNotReady": "Nahrávání avataru ještě není dostupné. Vložte URL."
+      }
+    },
     "dashboard": {
       "label": "Přehled",
       "title": "Dashboard",
@@ -555,120 +677,6 @@
       "manager": "Manažer",
       "creator": "Tvůrce",
       "guest": "Host"
-    },
-    "creators": {
-      "label": "Roster",
-      "title": "Tvůrci",
-      "description": "Spravujte profily, přiřazení a stav tvůrců.",
-      "detailLabel": "Tvůrce",
-      "create": "Vytvořit tvůrce",
-      "empty": "Zatím žádní tvůrci.",
-      "emptyHint": "Vytvořte prvního tvůrce.",
-      "unassigned": "Nepřiřazeno",
-      "backToList": "Zpět k tvůrcům",
-      "noApplication": "Žádná propojená žádost",
-      "viewApplication": "Zobrazit žádost",
-      "filters": {
-        "search": "Hledat",
-        "searchPlaceholder": "Jméno, e-mail, telegram, země, platforma",
-        "status": "Stav",
-        "manager": "Manažer",
-        "country": "Země",
-        "platform": "Platforma",
-        "sort": "Řazení",
-        "all": "Vše",
-        "apply": "Použít",
-        "clear": "Vymazat",
-        "sortNewest": "Nejnovější",
-        "sortOldest": "Nejstarší",
-        "sortName": "Jméno A–Z"
-      },
-      "table": {
-        "avatar": "Avatar",
-        "name": "Jméno",
-        "email": "E-mail",
-        "country": "Země",
-        "platforms": "Platformy",
-        "manager": "Manažer",
-        "status": "Stav",
-        "created": "Vytvořeno",
-        "actions": "Akce",
-        "view": "Zobrazit"
-      },
-      "pagination": {
-        "previous": "Předchozí",
-        "next": "Další",
-        "pageOf": "Stránka {page} z {totalPages} · celkem {total}"
-      },
-      "fields": {
-        "fullName": "Celé jméno",
-        "email": "E-mail",
-        "telegram": "Telegram",
-        "country": "Země",
-        "languages": "Jazyky",
-        "languagesPlaceholder": "en, cs, de",
-        "platforms": "Platformy",
-        "manager": "Manažer",
-        "status": "Stav",
-        "notes": "Poznámky",
-        "application": "Žádost",
-        "created": "Vytvořeno",
-        "updated": "Aktualizováno",
-        "avatarUrl": "URL avataru"
-      },
-      "form": {
-        "title": "Nový tvůrce",
-        "cancel": "Zrušit",
-        "submit": "Vytvořit",
-        "submitting": "Vytváření…"
-      },
-      "actions": {
-        "save": "Uložit",
-        "saving": "Ukládání…",
-        "saved": "Změny uloženy.",
-        "saveError": "Nepodařilo se uložit změny.",
-        "uploadAvatar": "Uložit avatar"
-      },
-      "toast": {
-        "created": "Tvůrce vytvořen."
-      },
-      "statusValues": {
-        "new": "Nový",
-        "active": "Aktivní",
-        "paused": "Pozastaveno",
-        "vacation": "Dovolená",
-        "inactive": "Neaktivní",
-        "banned": "Zakázán"
-      },
-      "platformValues": {
-        "onlyfans": "OnlyFans",
-        "fansly": "Fansly",
-        "manyvids": "ManyVids",
-        "multiple": "Více",
-        "emerging": "Nově vznikající",
-        "other": "Jiné"
-      },
-      "errors": {
-        "load": "Nepodařilo se načíst tvůrce.",
-        "loadDetail": "Nepodařilo se načíst tohoto tvůrce.",
-        "boundary": "Chyba při načítání tvůrců.",
-        "retry": "Zkusit znovu"
-      },
-      "notFound": {
-        "title": "Tvůrce nenalezen",
-        "description": "Tento tvůrce byl odstraněn nebo k němu nemáte přístup."
-      },
-      "actionErrors": {
-        "unauthorized": "Nemáte oprávnění k této změně.",
-        "forbidden": "Můžete spravovat jen tvůrce přiřazené vám.",
-        "invalid": "Neplatná data tvůrce.",
-        "create": "Nepodařilo se vytvořit tvůrce.",
-        "save": "Nepodařilo se uložit změny.",
-        "invalidStatus": "Neplatný stav.",
-        "invalidManager": "Neplatný manažer.",
-        "invalidNotes": "Neplatné poznámky.",
-        "avatarNotReady": "Nahrávání avataru ještě není dostupné. Vložte URL."
-      }
     }
   },
   "common": {

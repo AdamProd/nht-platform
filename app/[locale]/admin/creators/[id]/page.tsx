@@ -43,12 +43,12 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
   }
 
   const statusLabels = {
-    new: t("statusValues.new"),
-    active: t("statusValues.active"),
-    paused: t("statusValues.paused"),
-    vacation: t("statusValues.vacation"),
-    inactive: t("statusValues.inactive"),
-    banned: t("statusValues.banned"),
+    new: t("status.new"),
+    active: t("status.active"),
+    paused: t("status.paused"),
+    vacation: t("status.vacation"),
+    inactive: t("status.inactive"),
+    banned: t("status.banned"),
   };
 
   return (
@@ -105,7 +105,7 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
           unassigned: t("unassigned"),
           save: t("actions.save"),
           saving: t("actions.saving"),
-          saved: t("actions.saved"),
+          saved: t("toast.saved"),
           saveError: t("actions.saveError"),
           uploadAvatar: t("actions.uploadAvatar"),
         }}

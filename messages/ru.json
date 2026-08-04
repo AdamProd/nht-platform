@@ -395,6 +395,128 @@
         "invalidNotes": "Некорректные заметки."
       }
     },
+    "creators": {
+      "label": "Ростер",
+      "title": "Креаторы",
+      "description": "Управление профилями креаторов, назначением и статусом.",
+      "detailLabel": "Креатор",
+      "create": "Создать креатора",
+      "unassigned": "Не назначен",
+      "backToList": "К списку креаторов",
+      "noApplication": "Нет связанной заявки",
+      "viewApplication": "Открыть заявку",
+      "empty": {
+        "title": "Креаторов пока нет.",
+        "description": "Создайте первого креатора."
+      },
+      "filters": {
+        "search": "Поиск",
+        "searchPlaceholder": "Имя, email, telegram, страна, платформа",
+        "status": "Статус",
+        "manager": "Менеджер",
+        "country": "Страна",
+        "platform": "Платформа",
+        "sort": "Сортировка",
+        "all": "Все",
+        "apply": "Применить",
+        "clear": "Сбросить"
+      },
+      "sort": {
+        "newest": "Сначала новые",
+        "oldest": "Сначала старые",
+        "name": "Имя А–Я"
+      },
+      "table": {
+        "avatar": "Аватар",
+        "name": "Имя",
+        "email": "Email",
+        "country": "Страна",
+        "platforms": "Платформы",
+        "manager": "Менеджер",
+        "status": "Статус",
+        "created": "Создан",
+        "actions": "Действия"
+      },
+      "pagination": {
+        "previous": "Назад",
+        "next": "Далее",
+        "pageOf": "Страница {page} из {totalPages} · всего {total}"
+      },
+      "status": {
+        "new": "Новый",
+        "active": "Активный",
+        "paused": "Пауза",
+        "vacation": "Отпуск",
+        "inactive": "Неактивный",
+        "banned": "Заблокирован"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Несколько",
+        "emerging": "Новая площадка",
+        "other": "Другое"
+      },
+      "fields": {
+        "fullName": "Полное имя",
+        "email": "Email",
+        "telegram": "Telegram",
+        "country": "Страна",
+        "languages": "Языки",
+        "languagesPlaceholder": "en, ru, de",
+        "platforms": "Платформы",
+        "manager": "Менеджер",
+        "status": "Статус",
+        "notes": "Заметки",
+        "application": "Заявка",
+        "created": "Создан",
+        "updated": "Обновлён",
+        "avatarUrl": "URL аватара"
+      },
+      "form": {
+        "title": "Новый креатор",
+        "cancel": "Отмена",
+        "submit": "Создать",
+        "submitting": "Создание…"
+      },
+      "actions": {
+        "view": "Открыть",
+        "edit": "Изменить",
+        "delete": "Удалить",
+        "save": "Сохранить",
+        "saving": "Сохранение…",
+        "saved": "Изменения сохранены.",
+        "saveError": "Не удалось сохранить изменения.",
+        "uploadAvatar": "Сохранить аватар"
+      },
+      "toast": {
+        "created": "Креатор создан.",
+        "saved": "Изменения сохранены.",
+        "deleted": "Креатор удалён."
+      },
+      "errors": {
+        "load": "Не удалось загрузить креаторов.",
+        "loadDetail": "Не удалось загрузить креатора.",
+        "boundary": "Ошибка при загрузке креаторов.",
+        "retry": "Повторить"
+      },
+      "notFound": {
+        "title": "Креатор не найден",
+        "description": "Креатор удалён или у вас нет доступа."
+      },
+      "actionErrors": {
+        "unauthorized": "У вас нет прав для этого изменения.",
+        "forbidden": "Вы можете управлять только назначенными вам креаторами.",
+        "invalid": "Некорректные данные креатора.",
+        "create": "Не удалось создать креатора.",
+        "save": "Не удалось сохранить изменения.",
+        "invalidStatus": "Некорректный статус.",
+        "invalidManager": "Некорректный менеджер.",
+        "invalidNotes": "Некорректные заметки.",
+        "avatarNotReady": "Загрузка аватара пока недоступна. Вставьте URL."
+      }
+    },
     "dashboard": {
       "label": "Обзор",
       "title": "Дашборд",
@@ -555,120 +677,6 @@
       "manager": "Менеджер",
       "creator": "Креатор",
       "guest": "Гость"
-    },
-    "creators": {
-      "label": "Ростер",
-      "title": "Креаторы",
-      "description": "Управление профилями креаторов, назначением и статусом.",
-      "detailLabel": "Креатор",
-      "create": "Создать креатора",
-      "empty": "Креаторов пока нет.",
-      "emptyHint": "Создайте первого креатора.",
-      "unassigned": "Не назначен",
-      "backToList": "К списку креаторов",
-      "noApplication": "Нет связанной заявки",
-      "viewApplication": "Открыть заявку",
-      "filters": {
-        "search": "Поиск",
-        "searchPlaceholder": "Имя, email, telegram, страна, платформа",
-        "status": "Статус",
-        "manager": "Менеджер",
-        "country": "Страна",
-        "platform": "Платформа",
-        "sort": "Сортировка",
-        "all": "Все",
-        "apply": "Применить",
-        "clear": "Сбросить",
-        "sortNewest": "Сначала новые",
-        "sortOldest": "Сначала старые",
-        "sortName": "Имя А–Я"
-      },
-      "table": {
-        "avatar": "Аватар",
-        "name": "Имя",
-        "email": "Email",
-        "country": "Страна",
-        "platforms": "Платформы",
-        "manager": "Менеджер",
-        "status": "Статус",
-        "created": "Создан",
-        "actions": "Действия",
-        "view": "Открыть"
-      },
-      "pagination": {
-        "previous": "Назад",
-        "next": "Далее",
-        "pageOf": "Страница {page} из {totalPages} · всего {total}"
-      },
-      "fields": {
-        "fullName": "Полное имя",
-        "email": "Email",
-        "telegram": "Telegram",
-        "country": "Страна",
-        "languages": "Языки",
-        "languagesPlaceholder": "en, ru, de",
-        "platforms": "Платформы",
-        "manager": "Менеджер",
-        "status": "Статус",
-        "notes": "Заметки",
-        "application": "Заявка",
-        "created": "Создан",
-        "updated": "Обновлён",
-        "avatarUrl": "URL аватара"
-      },
-      "form": {
-        "title": "Новый креатор",
-        "cancel": "Отмена",
-        "submit": "Создать",
-        "submitting": "Создание…"
-      },
-      "actions": {
-        "save": "Сохранить",
-        "saving": "Сохранение…",
-        "saved": "Изменения сохранены.",
-        "saveError": "Не удалось сохранить изменения.",
-        "uploadAvatar": "Сохранить аватар"
-      },
-      "toast": {
-        "created": "Креатор создан."
-      },
-      "statusValues": {
-        "new": "Новый",
-        "active": "Активный",
-        "paused": "Пауза",
-        "vacation": "Отпуск",
-        "inactive": "Неактивный",
-        "banned": "Заблокирован"
-      },
-      "platformValues": {
-        "onlyfans": "OnlyFans",
-        "fansly": "Fansly",
-        "manyvids": "ManyVids",
-        "multiple": "Несколько",
-        "emerging": "Новая площадка",
-        "other": "Другое"
-      },
-      "errors": {
-        "load": "Не удалось загрузить креаторов.",
-        "loadDetail": "Не удалось загрузить креатора.",
-        "boundary": "Ошибка при загрузке креаторов.",
-        "retry": "Повторить"
-      },
-      "notFound": {
-        "title": "Креатор не найден",
-        "description": "Креатор удалён или у вас нет доступа."
-      },
-      "actionErrors": {
-        "unauthorized": "У вас нет прав для этого изменения.",
-        "forbidden": "Вы можете управлять только назначенными вам креаторами.",
-        "invalid": "Некорректные данные креатора.",
-        "create": "Не удалось создать креатора.",
-        "save": "Не удалось сохранить изменения.",
-        "invalidStatus": "Некорректный статус.",
-        "invalidManager": "Некорректный менеджер.",
-        "invalidNotes": "Некорректные заметки.",
-        "avatarNotReady": "Загрузка аватара пока недоступна. Вставьте URL."
-      }
     }
   },
   "common": {

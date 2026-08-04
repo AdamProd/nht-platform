@@ -395,6 +395,128 @@
         "invalidNotes": "Ungültige Notizen."
       }
     },
+    "creators": {
+      "label": "Roster",
+      "title": "Creators",
+      "description": "Creator-Profile, Zuweisung und Status verwalten.",
+      "detailLabel": "Creator",
+      "create": "Creator erstellen",
+      "unassigned": "Nicht zugewiesen",
+      "backToList": "Zurück zu Creators",
+      "noApplication": "Keine verknüpfte Bewerbung",
+      "viewApplication": "Bewerbung anzeigen",
+      "empty": {
+        "title": "Noch keine Creators.",
+        "description": "Erstellen Sie Ihren ersten Creator."
+      },
+      "filters": {
+        "search": "Suche",
+        "searchPlaceholder": "Name, E-Mail, Telegram, Land, Plattform",
+        "status": "Status",
+        "manager": "Manager",
+        "country": "Land",
+        "platform": "Plattform",
+        "sort": "Sortierung",
+        "all": "Alle",
+        "apply": "Anwenden",
+        "clear": "Zurücksetzen"
+      },
+      "sort": {
+        "newest": "Neueste",
+        "oldest": "Älteste",
+        "name": "Name A–Z"
+      },
+      "table": {
+        "avatar": "Avatar",
+        "name": "Name",
+        "email": "E-Mail",
+        "country": "Land",
+        "platforms": "Plattformen",
+        "manager": "Manager",
+        "status": "Status",
+        "created": "Erstellt",
+        "actions": "Aktionen"
+      },
+      "pagination": {
+        "previous": "Zurück",
+        "next": "Weiter",
+        "pageOf": "Seite {page} von {totalPages} · {total} gesamt"
+      },
+      "status": {
+        "new": "Neu",
+        "active": "Aktiv",
+        "paused": "Pausiert",
+        "vacation": "Urlaub",
+        "inactive": "Inaktiv",
+        "banned": "Gesperrt"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Mehrere",
+        "emerging": "Emerging",
+        "other": "Sonstiges"
+      },
+      "fields": {
+        "fullName": "Vollständiger Name",
+        "email": "E-Mail",
+        "telegram": "Telegram",
+        "country": "Land",
+        "languages": "Sprachen",
+        "languagesPlaceholder": "en, de, fr",
+        "platforms": "Plattformen",
+        "manager": "Manager",
+        "status": "Status",
+        "notes": "Notizen",
+        "application": "Bewerbung",
+        "created": "Erstellt",
+        "updated": "Aktualisiert",
+        "avatarUrl": "Avatar-URL"
+      },
+      "form": {
+        "title": "Creator erstellen",
+        "cancel": "Abbrechen",
+        "submit": "Erstellen",
+        "submitting": "Wird erstellt…"
+      },
+      "actions": {
+        "view": "Ansehen",
+        "edit": "Edit",
+        "delete": "Delete",
+        "save": "Speichern",
+        "saving": "Speichern…",
+        "saved": "Änderungen gespeichert.",
+        "saveError": "Änderungen konnten nicht gespeichert werden.",
+        "uploadAvatar": "Avatar speichern"
+      },
+      "toast": {
+        "created": "Creator erstellt.",
+        "saved": "Changes saved.",
+        "deleted": "Creator deleted."
+      },
+      "errors": {
+        "load": "Creators konnten nicht geladen werden.",
+        "loadDetail": "Creator konnte nicht geladen werden.",
+        "boundary": "Fehler beim Laden der Creators.",
+        "retry": "Erneut versuchen"
+      },
+      "notFound": {
+        "title": "Creator nicht gefunden",
+        "description": "Dieser Creator wurde entfernt oder Sie haben keinen Zugriff."
+      },
+      "actionErrors": {
+        "unauthorized": "Sie sind nicht berechtigt, diese Änderung vorzunehmen.",
+        "forbidden": "Sie können nur Ihnen zugewiesene Creators verwalten.",
+        "invalid": "Ungültige Creator-Daten.",
+        "create": "Creator konnte nicht erstellt werden.",
+        "save": "Änderungen konnten nicht gespeichert werden.",
+        "invalidStatus": "Ungültiger Status.",
+        "invalidManager": "Ungültiger Manager.",
+        "invalidNotes": "Ungültige Notizen.",
+        "avatarNotReady": "Avatar-Upload ist noch nicht verfügbar. URL einfügen."
+      }
+    },
     "dashboard": {
       "label": "Übersicht",
       "title": "Dashboard",
@@ -555,120 +677,6 @@
       "manager": "Manager",
       "creator": "Creator",
       "guest": "Gast"
-    },
-    "creators": {
-      "label": "Roster",
-      "title": "Creators",
-      "description": "Creator-Profile, Zuweisung und Status verwalten.",
-      "detailLabel": "Creator",
-      "create": "Creator erstellen",
-      "empty": "Noch keine Creators.",
-      "emptyHint": "Erstellen Sie Ihren ersten Creator.",
-      "unassigned": "Nicht zugewiesen",
-      "backToList": "Zurück zu Creators",
-      "noApplication": "Keine verknüpfte Bewerbung",
-      "viewApplication": "Bewerbung anzeigen",
-      "filters": {
-        "search": "Suche",
-        "searchPlaceholder": "Name, E-Mail, Telegram, Land, Plattform",
-        "status": "Status",
-        "manager": "Manager",
-        "country": "Land",
-        "platform": "Plattform",
-        "sort": "Sortierung",
-        "all": "Alle",
-        "apply": "Anwenden",
-        "clear": "Zurücksetzen",
-        "sortNewest": "Neueste",
-        "sortOldest": "Älteste",
-        "sortName": "Name A–Z"
-      },
-      "table": {
-        "avatar": "Avatar",
-        "name": "Name",
-        "email": "E-Mail",
-        "country": "Land",
-        "platforms": "Plattformen",
-        "manager": "Manager",
-        "status": "Status",
-        "created": "Erstellt",
-        "actions": "Aktionen",
-        "view": "Ansehen"
-      },
-      "pagination": {
-        "previous": "Zurück",
-        "next": "Weiter",
-        "pageOf": "Seite {page} von {totalPages} · {total} gesamt"
-      },
-      "fields": {
-        "fullName": "Vollständiger Name",
-        "email": "E-Mail",
-        "telegram": "Telegram",
-        "country": "Land",
-        "languages": "Sprachen",
-        "languagesPlaceholder": "en, de, fr",
-        "platforms": "Plattformen",
-        "manager": "Manager",
-        "status": "Status",
-        "notes": "Notizen",
-        "application": "Bewerbung",
-        "created": "Erstellt",
-        "updated": "Aktualisiert",
-        "avatarUrl": "Avatar-URL"
-      },
-      "form": {
-        "title": "Creator erstellen",
-        "cancel": "Abbrechen",
-        "submit": "Erstellen",
-        "submitting": "Wird erstellt…"
-      },
-      "actions": {
-        "save": "Speichern",
-        "saving": "Speichern…",
-        "saved": "Änderungen gespeichert.",
-        "saveError": "Änderungen konnten nicht gespeichert werden.",
-        "uploadAvatar": "Avatar speichern"
-      },
-      "toast": {
-        "created": "Creator erstellt."
-      },
-      "statusValues": {
-        "new": "Neu",
-        "active": "Aktiv",
-        "paused": "Pausiert",
-        "vacation": "Urlaub",
-        "inactive": "Inaktiv",
-        "banned": "Gesperrt"
-      },
-      "platformValues": {
-        "onlyfans": "OnlyFans",
-        "fansly": "Fansly",
-        "manyvids": "ManyVids",
-        "multiple": "Mehrere",
-        "emerging": "Emerging",
-        "other": "Sonstiges"
-      },
-      "errors": {
-        "load": "Creators konnten nicht geladen werden.",
-        "loadDetail": "Creator konnte nicht geladen werden.",
-        "boundary": "Fehler beim Laden der Creators.",
-        "retry": "Erneut versuchen"
-      },
-      "notFound": {
-        "title": "Creator nicht gefunden",
-        "description": "Dieser Creator wurde entfernt oder Sie haben keinen Zugriff."
-      },
-      "actionErrors": {
-        "unauthorized": "Sie sind nicht berechtigt, diese Änderung vorzunehmen.",
-        "forbidden": "Sie können nur Ihnen zugewiesene Creators verwalten.",
-        "invalid": "Ungültige Creator-Daten.",
-        "create": "Creator konnte nicht erstellt werden.",
-        "save": "Änderungen konnten nicht gespeichert werden.",
-        "invalidStatus": "Ungültiger Status.",
-        "invalidManager": "Ungültiger Manager.",
-        "invalidNotes": "Ungültige Notizen.",
-        "avatarNotReady": "Avatar-Upload ist noch nicht verfügbar. URL einfügen."
-      }
     }
   },
   "common": {

@@ -395,6 +395,128 @@
         "invalidNotes": "Nieprawidłowe notatki."
       }
     },
+    "creators": {
+      "label": "Roster",
+      "title": "Twórcy",
+      "description": "Zarządzaj profilami, przypisaniem i statusem twórców.",
+      "detailLabel": "Twórca",
+      "create": "Utwórz twórcę",
+      "unassigned": "Nieprzypisany",
+      "backToList": "Wróć do twórców",
+      "noApplication": "Brak powiązanej aplikacji",
+      "viewApplication": "Zobacz aplikację",
+      "empty": {
+        "title": "Brak twórców.",
+        "description": "Utwórz pierwszego twórcę."
+      },
+      "filters": {
+        "search": "Szukaj",
+        "searchPlaceholder": "Imię, e-mail, telegram, kraj, platforma",
+        "status": "Status",
+        "manager": "Manager",
+        "country": "Kraj",
+        "platform": "Platforma",
+        "sort": "Sortuj",
+        "all": "Wszystkie",
+        "apply": "Zastosuj",
+        "clear": "Wyczyść"
+      },
+      "sort": {
+        "newest": "Najnowsze",
+        "oldest": "Najstarsze",
+        "name": "Nazwa A–Z"
+      },
+      "table": {
+        "avatar": "Avatar",
+        "name": "Nazwa",
+        "email": "E-mail",
+        "country": "Kraj",
+        "platforms": "Platformy",
+        "manager": "Manager",
+        "status": "Status",
+        "created": "Utworzono",
+        "actions": "Akcje"
+      },
+      "pagination": {
+        "previous": "Poprzednia",
+        "next": "Następna",
+        "pageOf": "Strona {page} z {totalPages} · łącznie {total}"
+      },
+      "status": {
+        "new": "Nowy",
+        "active": "Aktywny",
+        "paused": "Wstrzymany",
+        "vacation": "Urlop",
+        "inactive": "Nieaktywny",
+        "banned": "Zablokowany"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Wiele",
+        "emerging": "Wschodząca",
+        "other": "Inne"
+      },
+      "fields": {
+        "fullName": "Imię i nazwisko",
+        "email": "E-mail",
+        "telegram": "Telegram",
+        "country": "Kraj",
+        "languages": "Języki",
+        "languagesPlaceholder": "en, pl, de",
+        "platforms": "Platformy",
+        "manager": "Manager",
+        "status": "Status",
+        "notes": "Notatki",
+        "application": "Aplikacja",
+        "created": "Utworzono",
+        "updated": "Zaktualizowano",
+        "avatarUrl": "URL awatara"
+      },
+      "form": {
+        "title": "Nowy twórca",
+        "cancel": "Anuluj",
+        "submit": "Utwórz",
+        "submitting": "Tworzenie…"
+      },
+      "actions": {
+        "view": "Zobacz",
+        "edit": "Edit",
+        "delete": "Delete",
+        "save": "Zapisz",
+        "saving": "Zapisywanie…",
+        "saved": "Zmiany zapisane.",
+        "saveError": "Nie udało się zapisać zmian.",
+        "uploadAvatar": "Zapisz awatar"
+      },
+      "toast": {
+        "created": "Twórca utworzony.",
+        "saved": "Changes saved.",
+        "deleted": "Creator deleted."
+      },
+      "errors": {
+        "load": "Nie udało się wczytać twórców.",
+        "loadDetail": "Nie udało się wczytać tego twórcy.",
+        "boundary": "Błąd podczas wczytywania twórców.",
+        "retry": "Spróbuj ponownie"
+      },
+      "notFound": {
+        "title": "Nie znaleziono twórcy",
+        "description": "Ten twórca został usunięty lub nie masz dostępu."
+      },
+      "actionErrors": {
+        "unauthorized": "Nie masz uprawnień do tej zmiany.",
+        "forbidden": "Możesz zarządzać tylko przypisanymi Ci twórcami.",
+        "invalid": "Nieprawidłowe dane twórcy.",
+        "create": "Nie udało się utworzyć twórcy.",
+        "save": "Nie udało się zapisać zmian.",
+        "invalidStatus": "Nieprawidłowy status.",
+        "invalidManager": "Nieprawidłowy manager.",
+        "invalidNotes": "Nieprawidłowe notatki.",
+        "avatarNotReady": "Upload awatara jeszcze niedostępny. Wklej URL."
+      }
+    },
     "dashboard": {
       "label": "Przegląd",
       "title": "Panel",
@@ -555,120 +677,6 @@
       "manager": "Manager",
       "creator": "Twórca",
       "guest": "Gość"
-    },
-    "creators": {
-      "label": "Roster",
-      "title": "Twórcy",
-      "description": "Zarządzaj profilami, przypisaniem i statusem twórców.",
-      "detailLabel": "Twórca",
-      "create": "Utwórz twórcę",
-      "empty": "Brak twórców.",
-      "emptyHint": "Utwórz pierwszego twórcę.",
-      "unassigned": "Nieprzypisany",
-      "backToList": "Wróć do twórców",
-      "noApplication": "Brak powiązanej aplikacji",
-      "viewApplication": "Zobacz aplikację",
-      "filters": {
-        "search": "Szukaj",
-        "searchPlaceholder": "Imię, e-mail, telegram, kraj, platforma",
-        "status": "Status",
-        "manager": "Manager",
-        "country": "Kraj",
-        "platform": "Platforma",
-        "sort": "Sortuj",
-        "all": "Wszystkie",
-        "apply": "Zastosuj",
-        "clear": "Wyczyść",
-        "sortNewest": "Najnowsze",
-        "sortOldest": "Najstarsze",
-        "sortName": "Nazwa A–Z"
-      },
-      "table": {
-        "avatar": "Avatar",
-        "name": "Nazwa",
-        "email": "E-mail",
-        "country": "Kraj",
-        "platforms": "Platformy",
-        "manager": "Manager",
-        "status": "Status",
-        "created": "Utworzono",
-        "actions": "Akcje",
-        "view": "Zobacz"
-      },
-      "pagination": {
-        "previous": "Poprzednia",
-        "next": "Następna",
-        "pageOf": "Strona {page} z {totalPages} · łącznie {total}"
-      },
-      "fields": {
-        "fullName": "Imię i nazwisko",
-        "email": "E-mail",
-        "telegram": "Telegram",
-        "country": "Kraj",
-        "languages": "Języki",
-        "languagesPlaceholder": "en, pl, de",
-        "platforms": "Platformy",
-        "manager": "Manager",
-        "status": "Status",
-        "notes": "Notatki",
-        "application": "Aplikacja",
-        "created": "Utworzono",
-        "updated": "Zaktualizowano",
-        "avatarUrl": "URL awatara"
-      },
-      "form": {
-        "title": "Nowy twórca",
-        "cancel": "Anuluj",
-        "submit": "Utwórz",
-        "submitting": "Tworzenie…"
-      },
-      "actions": {
-        "save": "Zapisz",
-        "saving": "Zapisywanie…",
-        "saved": "Zmiany zapisane.",
-        "saveError": "Nie udało się zapisać zmian.",
-        "uploadAvatar": "Zapisz awatar"
-      },
-      "toast": {
-        "created": "Twórca utworzony."
-      },
-      "statusValues": {
-        "new": "Nowy",
-        "active": "Aktywny",
-        "paused": "Wstrzymany",
-        "vacation": "Urlop",
-        "inactive": "Nieaktywny",
-        "banned": "Zablokowany"
-      },
-      "platformValues": {
-        "onlyfans": "OnlyFans",
-        "fansly": "Fansly",
-        "manyvids": "ManyVids",
-        "multiple": "Wiele",
-        "emerging": "Wschodząca",
-        "other": "Inne"
-      },
-      "errors": {
-        "load": "Nie udało się wczytać twórców.",
-        "loadDetail": "Nie udało się wczytać tego twórcy.",
-        "boundary": "Błąd podczas wczytywania twórców.",
-        "retry": "Spróbuj ponownie"
-      },
-      "notFound": {
-        "title": "Nie znaleziono twórcy",
-        "description": "Ten twórca został usunięty lub nie masz dostępu."
-      },
-      "actionErrors": {
-        "unauthorized": "Nie masz uprawnień do tej zmiany.",
-        "forbidden": "Możesz zarządzać tylko przypisanymi Ci twórcami.",
-        "invalid": "Nieprawidłowe dane twórcy.",
-        "create": "Nie udało się utworzyć twórcy.",
-        "save": "Nie udało się zapisać zmian.",
-        "invalidStatus": "Nieprawidłowy status.",
-        "invalidManager": "Nieprawidłowy manager.",
-        "invalidNotes": "Nieprawidłowe notatki.",
-        "avatarNotReady": "Upload awatara jeszcze niedostępny. Wklej URL."
-      }
     }
   },
   "common": {
