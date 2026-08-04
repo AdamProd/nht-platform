@@ -1,2 +1,6 @@
-/** Dashboard domain — admin queries and components (Phase 5+) */
-export {};
+export type {
+  DashboardData,
+  DashboardKpis,
+  DashboardRecentApplication,
+  PlatformBreakdownItem,
+} from "./types";

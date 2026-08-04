@@ -258,7 +258,7 @@
       "dashboard": {
         "label": "Overview",
         "title": "Dashboard",
-        "description": "Workspace overview will appear here in the next commit."
+        "description": "Live pipeline metrics from applications in Supabase."
       },
       "applications": {
         "label": "CRM",
@@ -342,6 +342,43 @@
       "errors": {
         "load": "Unable to load applications.",
         "loadDetail": "Unable to load this application."
+      }
+    },
+    "dashboard": {
+      "label": "Overview",
+      "title": "Dashboard",
+      "description": "Live pipeline metrics from applications in Supabase.",
+      "kpis": {
+        "total": "Total",
+        "new": "New",
+        "reviewing": "Reviewing",
+        "active": "Active",
+        "rejected": "Rejected"
+      },
+      "recent": {
+        "title": "Recent applications",
+        "empty": "No applications yet.",
+        "name": "Name",
+        "platform": "Platform",
+        "status": "Status",
+        "priority": "Priority",
+        "created": "Created",
+        "viewAll": "View all"
+      },
+      "platforms": {
+        "title": "Platform breakdown",
+        "empty": "No platform data yet."
+      },
+      "quickActions": {
+        "title": "Quick actions",
+        "applications": "Applications",
+        "creators": "Creators",
+        "blog": "Blog",
+        "analytics": "Analytics",
+        "settings": "Settings"
+      },
+      "errors": {
+        "load": "Unable to load dashboard data."
       }
     }
   }
