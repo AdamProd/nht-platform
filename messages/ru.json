@@ -220,6 +220,13 @@
   "footer": {
     "tagline": "Мы строим бизнес креаторов.",
     "copyright": "NHT — New Horizons Team. Все права защищены.",
+    "navigation": "Навигация",
+    "legalTitle": "Документы",
+    "contactTitle": "Контакты",
+    "email": "hello@nht.team",
+    "emailHref": "mailto:hello@nht.team",
+    "telegram": "Telegram",
+    "telegramHref": "https://t.me/nht",
     "legal": {
       "privacy": "Конфиденциальность",
       "terms": "Условия",
@@ -240,17 +247,23 @@
     "submit": "Войти",
     "submitting": "Вход…",
     "errors": {
-      "forbidden": "У вас нет доступа к админ-панели."
+      "forbidden": "У вас нет доступа к админ-зоне.",
+      "invalidCredentials": "Неверный email или пароль.",
+      "session": "Не удалось создать сессию. Попробуйте снова.",
+      "permissions": "Не удалось загрузить права доступа.",
+      "noAccess": "У вашего аккаунта нет доступа к админ-зоне.",
+      "generic": "Что-то пошло не так. Попробуйте снова."
     },
     "unauthorized": {
-      "title": "Access denied",
-      "description": "Your account is signed in but does not have permission to use the admin workspace.",
-      "home": "Back to site",
-      "signOut": "Sign out"
+      "title": "Доступ запрещён",
+      "description": "Вы вошли в аккаунт, но у него нет прав на админ-панель.",
+      "home": "На главную",
+      "signOut": "Выйти"
     }
   },
   "admin": {
     "logout": "Выйти",
+    "sidebarTitle": "NHT Админ",
     "openMenu": "Открыть меню",
     "nav": {
       "dashboard": "Дашборд",
@@ -262,138 +275,403 @@
     },
     "pages": {
       "dashboard": {
-        "label": "Overview",
-        "title": "Dashboard",
-        "description": "Live pipeline metrics from applications in Supabase."
+        "label": "Обзор",
+        "title": "Дашборд",
+        "description": "Живые метрики заявок из Supabase."
       },
       "applications": {
         "label": "CRM",
-        "title": "Applications",
-        "description": "Review and manage incoming creator applications."
+        "title": "Заявки",
+        "description": "Просмотр и управление входящими заявками креаторов."
       },
       "creators": {
-        "label": "Roster",
-        "title": "Creators",
-        "description": "Creator management is coming soon."
+        "label": "Ростер",
+        "title": "Креаторы",
+        "description": "Управление профилями креаторов, назначением и статусом."
       },
       "blog": {
-        "label": "Content",
-        "title": "Blog",
-        "description": "Blog CMS is coming soon."
+        "label": "Контент",
+        "title": "Блог",
+        "description": "Создавайте, редактируйте и публикуйте локализованные статьи."
       },
       "analytics": {
-        "label": "Insights",
-        "title": "Analytics",
-        "description": "Analytics is coming soon."
+        "label": "Аналитика",
+        "title": "Аналитика",
+        "description": "Аналитика скоро появится."
       },
       "settings": {
-        "label": "System",
-        "title": "Settings",
-        "description": "Site settings are coming soon."
+        "label": "Система",
+        "title": "Настройки",
+        "description": "Настройки сайта скоро появятся."
       }
     },
     "applications": {
       "label": "CRM",
-      "title": "Applications",
-      "description": "Review and manage incoming creator applications.",
-      "detailLabel": "Application",
-      "empty": "No applications match your filters.",
-      "unassigned": "Unassigned",
-      "backToList": "Back to applications",
-      "backToDashboard": "Back to dashboard",
+      "title": "Заявки",
+      "description": "Просмотр и управление входящими заявками креаторов.",
+      "detailLabel": "Заявка",
+      "empty": "Нет заявок по выбранным фильтрам.",
+      "unassigned": "Не назначен",
+      "backToList": "Назад к заявкам",
+      "backToDashboard": "Назад к дашборду",
       "filters": {
-        "search": "Search",
-        "searchPlaceholder": "Name, email, or platform",
-        "status": "Status",
-        "priority": "Priority",
-        "all": "All",
-        "apply": "Apply",
-        "clear": "Clear"
+        "search": "Поиск",
+        "searchPlaceholder": "Имя, email или платформа",
+        "status": "Статус",
+        "priority": "Приоритет",
+        "all": "Все",
+        "apply": "Применить",
+        "clear": "Сбросить"
       },
       "table": {
-        "name": "Name",
+        "name": "Имя",
         "email": "Email",
-        "platform": "Platform",
-        "status": "Status",
-        "priority": "Priority",
-        "manager": "Manager",
-        "created": "Created",
-        "actions": "Actions",
-        "view": "View"
+        "platform": "Платформа",
+        "status": "Статус",
+        "priority": "Приоритет",
+        "manager": "Менеджер",
+        "created": "Создано",
+        "actions": "Действия",
+        "view": "Открыть"
       },
       "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {page} of {totalPages} · {total} total"
+        "previous": "Назад",
+        "next": "Далее",
+        "pageOf": "Страница {page} из {totalPages} · {total} всего"
       },
       "fields": {
-        "fullName": "Full name",
+        "fullName": "Имя",
         "email": "Email",
-        "platform": "Platform",
-        "locale": "Locale",
-        "message": "Message",
-        "status": "Status",
-        "priority": "Priority",
-        "manager": "Assigned manager",
-        "notes": "Internal notes",
-        "created": "Created",
-        "updated": "Updated",
-        "lastContact": "Last contact"
+        "platform": "Платформа",
+        "locale": "Язык",
+        "message": "Сообщение",
+        "status": "Статус",
+        "priority": "Приоритет",
+        "manager": "Менеджер",
+        "notes": "Заметки",
+        "created": "Создано",
+        "updated": "Обновлено",
+        "lastContact": "Последний контакт"
       },
       "actions": {
-        "save": "Save",
-        "saving": "Saving…",
-        "saved": "Changes saved."
+        "save": "Сохранить",
+        "saving": "Сохранение…",
+        "saved": "Сохранено",
+        "saveError": "Не удалось сохранить изменения."
       },
       "errors": {
-        "load": "Unable to load applications.",
-        "loadDetail": "Unable to load this application.",
-        "boundary": "Something went wrong loading applications.",
-        "retry": "Try again"
+        "load": "Не удалось загрузить заявки.",
+        "loadDetail": "Не удалось загрузить заявку.",
+        "boundary": "Что-то пошло не так.",
+        "retry": "Повторить",
+        "notFound": "Заявка не найдена.",
+        "save": "Не удалось сохранить изменения."
       },
       "notFound": {
-        "title": "Application not found",
-        "description": "This application may have been removed or the link is invalid."
+        "title": "Заявка не найдена",
+        "description": "Этой заявки нет или она была удалена."
+      },
+      "statusValues": {
+        "new": "Новая",
+        "reviewing": "На проверке",
+        "contacted": "Связались",
+        "meeting": "Встреча",
+        "active": "Активна",
+        "rejected": "Отклонена",
+        "archived": "В архиве"
+      },
+      "priorityValues": {
+        "low": "Низкий",
+        "normal": "Обычный",
+        "high": "Высокий",
+        "urgent": "Срочный"
+      },
+      "actionErrors": {
+        "unauthorized": "У вас нет прав для этого изменения.",
+        "save": "Не удалось сохранить изменения.",
+        "invalidStatus": "Некорректный статус.",
+        "invalidPriority": "Некорректный приоритет.",
+        "invalidManager": "Некорректный менеджер.",
+        "invalidNotes": "Некорректные заметки."
       }
     },
     "dashboard": {
-      "label": "Overview",
-      "title": "Dashboard",
-      "description": "Live pipeline metrics from applications in Supabase.",
+      "label": "Обзор",
+      "title": "Дашборд",
+      "description": "Живые метрики заявок из Supabase.",
       "kpis": {
-        "total": "Total",
-        "new": "New",
-        "reviewing": "Reviewing",
-        "active": "Active",
-        "rejected": "Rejected"
+        "total": "Всего",
+        "new": "Новые",
+        "reviewing": "На проверке",
+        "active": "Активные",
+        "rejected": "Отклонённые"
       },
       "recent": {
-        "title": "Recent applications",
-        "empty": "No applications yet.",
-        "name": "Name",
-        "platform": "Platform",
-        "status": "Status",
-        "priority": "Priority",
-        "created": "Created",
-        "viewAll": "View all"
+        "title": "Недавние заявки",
+        "empty": "Заявок пока нет.",
+        "name": "Имя",
+        "platform": "Платформа",
+        "status": "Статус",
+        "priority": "Приоритет",
+        "created": "Создано",
+        "viewAll": "Смотреть все"
       },
       "platforms": {
-        "title": "Platform breakdown",
-        "empty": "No platform data yet."
+        "title": "По платформам",
+        "empty": "Данных по платформам пока нет.",
+        "values": {
+          "onlyfans": "OnlyFans",
+          "fansly": "Fansly",
+          "manyvids": "ManyVids",
+          "multiple": "Несколько",
+          "emerging": "Новая площадка",
+          "other": "Другое"
+        }
       },
       "quickActions": {
-        "title": "Quick actions",
-        "applications": "Applications",
-        "creators": "Creators",
-        "blog": "Blog",
-        "analytics": "Analytics",
-        "settings": "Settings"
+        "title": "Быстрые действия",
+        "applications": "Заявки",
+        "creators": "Креаторы",
+        "blog": "Блог",
+        "analytics": "Аналитика",
+        "settings": "Настройки"
       },
       "errors": {
-        "load": "Unable to load dashboard data."
+        "load": "Не удалось загрузить данные дашборда."
+      },
+      "recentCreators": {
+        "title": "Недавние креаторы",
+        "empty": "Креаторов пока нет.",
+        "viewAll": "Все"
       }
     },
-    "navLabel": "Admin navigation",
-    "closeMenu": "Close menu"
+    "navLabel": "Навигация админки",
+    "closeMenu": "Закрыть меню",
+    "blog": {
+      "label": "Контент",
+      "title": "Блог",
+      "description": "Создавайте, редактируйте и публикуйте локализованные статьи.",
+      "detailLabel": "Статья",
+      "newTitle": "Новая статья",
+      "newDescription": "Заполните хотя бы один перевод, затем сохраните черновик или опубликуйте.",
+      "editDescription": "Обновите статус, обложку и контент/SEO по локалям.",
+      "newPost": "Новая статья",
+      "backToList": "Назад к блогу",
+      "empty": "Нет статей по выбранным фильтрам.",
+      "untitled": "Без названия",
+      "filters": {
+        "search": "Поиск",
+        "searchPlaceholder": "Заголовок, slug или описание",
+        "status": "Статус",
+        "locale": "Локаль",
+        "all": "Все",
+        "apply": "Применить",
+        "clear": "Сбросить"
+      },
+      "table": {
+        "title": "Заголовок",
+        "status": "Статус",
+        "locales": "Локали",
+        "author": "Автор",
+        "updated": "Обновлено",
+        "published": "Опубликовано",
+        "actions": "Действия",
+        "edit": "Изменить"
+      },
+      "pagination": {
+        "previous": "Назад",
+        "next": "Далее",
+        "pageOf": "Страница {page} из {totalPages} · {total} статей"
+      },
+      "statuses": {
+        "draft": "Черновик",
+        "published": "Опубликовано",
+        "archived": "Архив"
+      },
+      "form": {
+        "status": "Статус",
+        "coverImage": "URL обложки",
+        "coverPlaceholder": "https://…",
+        "locales": "Переводы",
+        "title": "Заголовок",
+        "slug": "Slug",
+        "excerpt": "Краткое описание",
+        "content": "Контент",
+        "seoTitle": "SEO заголовок",
+        "seoDescription": "SEO описание",
+        "save": "Сохранить",
+        "saving": "Сохранение…",
+        "create": "Создать",
+        "creating": "Создание…",
+        "delete": "Удалить",
+        "deleting": "Удаление…",
+        "confirmDelete": "Удалить статью и все переводы? Это действие необратимо."
+      },
+      "editor": {
+        "bold": "Жирный",
+        "italic": "Курсив",
+        "h2": "Заголовок 2",
+        "h3": "Заголовок 3",
+        "bulletList": "Маркированный список",
+        "orderedList": "Нумерованный список",
+        "code": "Код",
+        "link": "Ссылка",
+        "undo": "Отменить",
+        "redo": "Повторить",
+        "linkUrl": "URL"
+      },
+      "toast": {
+        "saved": "Статья сохранена.",
+        "created": "Статья создана.",
+        "deleted": "Статья удалена."
+      },
+      "errors": {
+        "load": "Не удалось загрузить статьи.",
+        "needTranslation": "Добавьте хотя бы один перевод с заголовком и slug."
+      },
+      "notFound": {
+        "title": "Статья не найдена",
+        "description": "Этой статьи нет или она была удалена."
+      },
+      "actionErrors": {
+        "unauthorized": "У вас нет прав для этого действия.",
+        "invalid": "Некорректные данные поста.",
+        "create": "Не удалось создать пост.",
+        "update": "Не удалось обновить пост.",
+        "delete": "Не удалось удалить пост.",
+        "notFound": "Пост не найден.",
+        "slugConflict": "Пост с таким slug уже существует для одной из локалей.",
+        "translations": "Не удалось сохранить переводы.",
+        "updateTranslations": "Не удалось обновить переводы.",
+        "adminOnly": "Удалять посты могут только админы.",
+        "invalidId": "Некорректный id поста."
+      }
+    },
+    "staffFallback": "Сотрудник",
+    "closeOverlay": "Закрыть меню",
+    "roles": {
+      "owner": "Владелец",
+      "admin": "Админ",
+      "manager": "Менеджер",
+      "creator": "Креатор",
+      "guest": "Гость"
+    },
+    "creators": {
+      "label": "Ростер",
+      "title": "Креаторы",
+      "description": "Управление профилями креаторов, назначением и статусом.",
+      "detailLabel": "Креатор",
+      "create": "Создать креатора",
+      "empty": "Креаторов пока нет.",
+      "emptyHint": "Создайте первого креатора.",
+      "unassigned": "Не назначен",
+      "backToList": "К списку креаторов",
+      "noApplication": "Нет связанной заявки",
+      "viewApplication": "Открыть заявку",
+      "filters": {
+        "search": "Поиск",
+        "searchPlaceholder": "Имя, email, telegram, страна, платформа",
+        "status": "Статус",
+        "manager": "Менеджер",
+        "country": "Страна",
+        "platform": "Платформа",
+        "sort": "Сортировка",
+        "all": "Все",
+        "apply": "Применить",
+        "clear": "Сбросить",
+        "sortNewest": "Сначала новые",
+        "sortOldest": "Сначала старые",
+        "sortName": "Имя А–Я"
+      },
+      "table": {
+        "avatar": "Аватар",
+        "name": "Имя",
+        "email": "Email",
+        "country": "Страна",
+        "platforms": "Платформы",
+        "manager": "Менеджер",
+        "status": "Статус",
+        "created": "Создан",
+        "actions": "Действия",
+        "view": "Открыть"
+      },
+      "pagination": {
+        "previous": "Назад",
+        "next": "Далее",
+        "pageOf": "Страница {page} из {totalPages} · всего {total}"
+      },
+      "fields": {
+        "fullName": "Полное имя",
+        "email": "Email",
+        "telegram": "Telegram",
+        "country": "Страна",
+        "languages": "Языки",
+        "languagesPlaceholder": "en, ru, de",
+        "platforms": "Платформы",
+        "manager": "Менеджер",
+        "status": "Статус",
+        "notes": "Заметки",
+        "application": "Заявка",
+        "created": "Создан",
+        "updated": "Обновлён",
+        "avatarUrl": "URL аватара"
+      },
+      "form": {
+        "title": "Новый креатор",
+        "cancel": "Отмена",
+        "submit": "Создать",
+        "submitting": "Создание…"
+      },
+      "actions": {
+        "save": "Сохранить",
+        "saving": "Сохранение…",
+        "saved": "Изменения сохранены.",
+        "saveError": "Не удалось сохранить изменения.",
+        "uploadAvatar": "Сохранить аватар"
+      },
+      "toast": {
+        "created": "Креатор создан."
+      },
+      "statusValues": {
+        "new": "Новый",
+        "active": "Активный",
+        "paused": "Пауза",
+        "vacation": "Отпуск",
+        "inactive": "Неактивный",
+        "banned": "Заблокирован"
+      },
+      "platformValues": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Несколько",
+        "emerging": "Новая площадка",
+        "other": "Другое"
+      },
+      "errors": {
+        "load": "Не удалось загрузить креаторов.",
+        "loadDetail": "Не удалось загрузить креатора.",
+        "boundary": "Ошибка при загрузке креаторов.",
+        "retry": "Повторить"
+      },
+      "notFound": {
+        "title": "Креатор не найден",
+        "description": "Креатор удалён или у вас нет доступа."
+      },
+      "actionErrors": {
+        "unauthorized": "У вас нет прав для этого изменения.",
+        "forbidden": "Вы можете управлять только назначенными вам креаторами.",
+        "invalid": "Некорректные данные креатора.",
+        "create": "Не удалось создать креатора.",
+        "save": "Не удалось сохранить изменения.",
+        "invalidStatus": "Некорректный статус.",
+        "invalidManager": "Некорректный менеджер.",
+        "invalidNotes": "Некорректные заметки.",
+        "avatarNotReady": "Загрузка аватара пока недоступна. Вставьте URL."
+      }
+    }
+  },
+  "common": {
+    "language": "Язык"
   }
 }

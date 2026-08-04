@@ -220,6 +220,13 @@
   "footer": {
     "tagline": "Budujeme byznys tvůrců.",
     "copyright": "NHT — New Horizons Team. Všechna práva vyhrazena.",
+    "navigation": "Navigace",
+    "legalTitle": "Právní",
+    "contactTitle": "Kontakt",
+    "email": "hello@nht.team",
+    "emailHref": "mailto:hello@nht.team",
+    "telegram": "Telegram",
+    "telegramHref": "https://t.me/nht",
     "legal": {
       "privacy": "Soukromí",
       "terms": "Podmínky",
@@ -233,24 +240,30 @@
   "auth": {
     "title": "Přihlášení týmu",
     "description": "Přístup do admin oblasti NHT.",
-    "emailLabel": "Email",
+    "emailLabel": "E-mail",
     "emailPlaceholder": "you@nht.team",
     "passwordLabel": "Heslo",
     "passwordPlaceholder": "••••••••",
     "submit": "Přihlásit se",
     "submitting": "Přihlašování…",
     "errors": {
-      "forbidden": "Nemáte oprávnění k admin oblasti."
+      "forbidden": "Nemáte oprávnění k admin oblasti.",
+      "invalidCredentials": "Neplatný e-mail nebo heslo.",
+      "session": "Nepodařilo se vytvořit relaci. Zkuste to znovu.",
+      "permissions": "Nepodařilo se načíst oprávnění.",
+      "noAccess": "Váš účet nemá přístup do administrace.",
+      "generic": "Něco se pokazilo. Zkuste to znovu."
     },
     "unauthorized": {
-      "title": "Access denied",
-      "description": "Your account is signed in but does not have permission to use the admin workspace.",
-      "home": "Back to site",
-      "signOut": "Sign out"
+      "title": "Přístup odepřen",
+      "description": "Jste přihlášeni, ale účet nemá admin práva.",
+      "home": "Zpět na web",
+      "signOut": "Odhlásit se"
     }
   },
   "admin": {
     "logout": "Odhlásit se",
+    "sidebarTitle": "NHT Admin",
     "openMenu": "Otevřít menu",
     "nav": {
       "dashboard": "Přehled",
@@ -262,138 +275,403 @@
     },
     "pages": {
       "dashboard": {
-        "label": "Overview",
+        "label": "Přehled",
         "title": "Dashboard",
-        "description": "Live pipeline metrics from applications in Supabase."
+        "description": "Živé metriky přihlášek ze Supabase."
       },
       "applications": {
         "label": "CRM",
-        "title": "Applications",
-        "description": "Review and manage incoming creator applications."
+        "title": "Přihlášky",
+        "description": "Procházejte a spravujte příchozí přihlášky tvůrců."
       },
       "creators": {
         "label": "Roster",
-        "title": "Creators",
-        "description": "Creator management is coming soon."
+        "title": "Tvůrci",
+        "description": "Spravujte profily, přiřazení a stav tvůrců."
       },
       "blog": {
-        "label": "Content",
+        "label": "Obsah",
         "title": "Blog",
-        "description": "Blog CMS is coming soon."
+        "description": "Vytvářejte, upravujte a publikujte lokalizované články."
       },
       "analytics": {
         "label": "Insights",
-        "title": "Analytics",
-        "description": "Analytics is coming soon."
+        "title": "Analytika",
+        "description": "Analytika brzy přijde."
       },
       "settings": {
-        "label": "System",
-        "title": "Settings",
-        "description": "Site settings are coming soon."
+        "label": "Systém",
+        "title": "Nastavení",
+        "description": "Nastavení webu brzy přijde."
       }
     },
     "applications": {
       "label": "CRM",
-      "title": "Applications",
-      "description": "Review and manage incoming creator applications.",
-      "detailLabel": "Application",
-      "empty": "No applications match your filters.",
-      "unassigned": "Unassigned",
-      "backToList": "Back to applications",
-      "backToDashboard": "Back to dashboard",
+      "title": "Přihlášky",
+      "description": "Procházejte a spravujte příchozí přihlášky tvůrců.",
+      "detailLabel": "Přihláška",
+      "empty": "Žádné přihlášky neodpovídají filtrům.",
+      "unassigned": "Nepřiřazeno",
+      "backToList": "Zpět k přihláškám",
+      "backToDashboard": "Zpět na dashboard",
       "filters": {
-        "search": "Search",
-        "searchPlaceholder": "Name, email, or platform",
-        "status": "Status",
-        "priority": "Priority",
-        "all": "All",
-        "apply": "Apply",
-        "clear": "Clear"
+        "search": "Hledat",
+        "searchPlaceholder": "Jméno, e-mail nebo platforma",
+        "status": "Stav",
+        "priority": "Priorita",
+        "all": "Vše",
+        "apply": "Použít",
+        "clear": "Vymazat"
       },
       "table": {
-        "name": "Name",
-        "email": "Email",
-        "platform": "Platform",
-        "status": "Status",
-        "priority": "Priority",
-        "manager": "Manager",
-        "created": "Created",
-        "actions": "Actions",
-        "view": "View"
+        "name": "Jméno",
+        "email": "E-mail",
+        "platform": "Platforma",
+        "status": "Stav",
+        "priority": "Priorita",
+        "manager": "Manažer",
+        "created": "Vytvořeno",
+        "actions": "Akce",
+        "view": "Otevřít"
       },
       "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {page} of {totalPages} · {total} total"
+        "previous": "Předchozí",
+        "next": "Další",
+        "pageOf": "Stránka {page} z {totalPages} · {total} celkem"
       },
       "fields": {
-        "fullName": "Full name",
-        "email": "Email",
-        "platform": "Platform",
-        "locale": "Locale",
-        "message": "Message",
-        "status": "Status",
-        "priority": "Priority",
-        "manager": "Assigned manager",
-        "notes": "Internal notes",
-        "created": "Created",
-        "updated": "Updated",
-        "lastContact": "Last contact"
+        "fullName": "Celé jméno",
+        "email": "E-mail",
+        "platform": "Platforma",
+        "locale": "Jazyk",
+        "message": "Zpráva",
+        "status": "Stav",
+        "priority": "Priorita",
+        "manager": "Manažer",
+        "notes": "Poznámky",
+        "created": "Vytvořeno",
+        "updated": "Aktualizováno",
+        "lastContact": "Poslední kontakt"
       },
       "actions": {
-        "save": "Save",
-        "saving": "Saving…",
-        "saved": "Changes saved."
+        "save": "Uložit",
+        "saving": "Ukládání…",
+        "saved": "Uloženo",
+        "saveError": "Nepodařilo se uložit změny."
       },
       "errors": {
-        "load": "Unable to load applications.",
-        "loadDetail": "Unable to load this application.",
-        "boundary": "Something went wrong loading applications.",
-        "retry": "Try again"
+        "load": "Nepodařilo se načíst přihlášky.",
+        "loadDetail": "Nepodařilo se načíst přihlášku.",
+        "boundary": "Něco se pokazilo.",
+        "retry": "Zkusit znovu",
+        "notFound": "Přihláška nenalezena.",
+        "save": "Nepodařilo se uložit změny."
       },
       "notFound": {
-        "title": "Application not found",
-        "description": "This application may have been removed or the link is invalid."
+        "title": "Přihláška nenalezena",
+        "description": "Tato přihláška neexistuje nebo byla odstraněna."
+      },
+      "statusValues": {
+        "new": "Nová",
+        "reviewing": "V kontrole",
+        "contacted": "Kontaktováno",
+        "meeting": "Schůzka",
+        "active": "Aktivní",
+        "rejected": "Odmítnuta",
+        "archived": "Archivována"
+      },
+      "priorityValues": {
+        "low": "Nízká",
+        "normal": "Normální",
+        "high": "Vysoká",
+        "urgent": "Urgentní"
+      },
+      "actionErrors": {
+        "unauthorized": "Nemáte oprávnění k této změně.",
+        "save": "Nepodařilo se uložit změny.",
+        "invalidStatus": "Neplatný stav.",
+        "invalidPriority": "Neplatná priorita.",
+        "invalidManager": "Neplatný manažer.",
+        "invalidNotes": "Neplatné poznámky."
       }
     },
     "dashboard": {
-      "label": "Overview",
+      "label": "Přehled",
       "title": "Dashboard",
-      "description": "Live pipeline metrics from applications in Supabase.",
+      "description": "Živé metriky přihlášek ze Supabase.",
       "kpis": {
-        "total": "Total",
-        "new": "New",
-        "reviewing": "Reviewing",
-        "active": "Active",
-        "rejected": "Rejected"
+        "total": "Celkem",
+        "new": "Nové",
+        "reviewing": "Ke kontrole",
+        "active": "Aktivní",
+        "rejected": "Zamítnuté"
       },
       "recent": {
-        "title": "Recent applications",
-        "empty": "No applications yet.",
-        "name": "Name",
-        "platform": "Platform",
-        "status": "Status",
-        "priority": "Priority",
-        "created": "Created",
-        "viewAll": "View all"
+        "title": "Nedávné přihlášky",
+        "empty": "Zatím žádné přihlášky.",
+        "name": "Jméno",
+        "platform": "Platforma",
+        "status": "Stav",
+        "priority": "Priorita",
+        "created": "Vytvořeno",
+        "viewAll": "Zobrazit vše"
       },
       "platforms": {
-        "title": "Platform breakdown",
-        "empty": "No platform data yet."
+        "title": "Podle platformy",
+        "empty": "Zatím žádná data podle platforem.",
+        "values": {
+          "onlyfans": "OnlyFans",
+          "fansly": "Fansly",
+          "manyvids": "ManyVids",
+          "multiple": "Více",
+          "emerging": "Nově vznikající",
+          "other": "Jiné"
+        }
       },
       "quickActions": {
-        "title": "Quick actions",
-        "applications": "Applications",
-        "creators": "Creators",
+        "title": "Rychlé akce",
+        "applications": "Přihlášky",
+        "creators": "Tvůrci",
         "blog": "Blog",
-        "analytics": "Analytics",
-        "settings": "Settings"
+        "analytics": "Analytika",
+        "settings": "Nastavení"
       },
       "errors": {
-        "load": "Unable to load dashboard data."
+        "load": "Nepodařilo se načíst data dashboardu."
+      },
+      "recentCreators": {
+        "title": "Nedávní tvůrci",
+        "empty": "Zatím žádní tvůrci.",
+        "viewAll": "Zobrazit vše"
       }
     },
-    "navLabel": "Admin navigation",
-    "closeMenu": "Close menu"
+    "navLabel": "Admin navigace",
+    "closeMenu": "Zavřít menu",
+    "blog": {
+      "label": "Obsah",
+      "title": "Blog",
+      "description": "Vytvářejte, upravujte a publikujte lokalizované články.",
+      "detailLabel": "Článek",
+      "newTitle": "Nový článek",
+      "newDescription": "Vyplňte alespoň jeden překlad a uložte jako koncept nebo publikujte.",
+      "editDescription": "Aktualizujte stav, cover a obsah/SEO podle lokalit.",
+      "newPost": "Nový článek",
+      "backToList": "Zpět na blog",
+      "empty": "Žádné články neodpovídají filtrům.",
+      "untitled": "Bez názvu",
+      "filters": {
+        "search": "Hledat",
+        "searchPlaceholder": "Název, slug nebo perex",
+        "status": "Stav",
+        "locale": "Jazyk",
+        "all": "Vše",
+        "apply": "Použít",
+        "clear": "Vymazat"
+      },
+      "table": {
+        "title": "Název",
+        "status": "Stav",
+        "locales": "Jazyky",
+        "author": "Autor",
+        "updated": "Aktualizováno",
+        "published": "Publikováno",
+        "actions": "Akce",
+        "edit": "Upravit"
+      },
+      "pagination": {
+        "previous": "Předchozí",
+        "next": "Další",
+        "pageOf": "Stránka {page} z {totalPages} · {total} článků"
+      },
+      "statuses": {
+        "draft": "Koncept",
+        "published": "Publikováno",
+        "archived": "Archivováno"
+      },
+      "form": {
+        "status": "Stav",
+        "coverImage": "URL coveru",
+        "coverPlaceholder": "https://…",
+        "locales": "Překlady",
+        "title": "Název",
+        "slug": "Slug",
+        "excerpt": "Perex",
+        "content": "Obsah",
+        "seoTitle": "SEO název",
+        "seoDescription": "SEO popis",
+        "save": "Uložit",
+        "saving": "Ukládání…",
+        "create": "Vytvořit",
+        "creating": "Vytváření…",
+        "delete": "Smazat",
+        "deleting": "Mazání…",
+        "confirmDelete": "Smazat tento článek a všechny překlady? Tuto akci nelze vrátit."
+      },
+      "editor": {
+        "bold": "Tučné",
+        "italic": "Kurzíva",
+        "h2": "Nadpis 2",
+        "h3": "Nadpis 3",
+        "bulletList": "Odrážky",
+        "orderedList": "Číslovaný seznam",
+        "code": "Kód",
+        "link": "Odkaz",
+        "undo": "Zpět",
+        "redo": "Znovu",
+        "linkUrl": "URL"
+      },
+      "toast": {
+        "saved": "Článek uložen.",
+        "created": "Článek vytvořen.",
+        "deleted": "Článek smazán."
+      },
+      "errors": {
+        "load": "Nepodařilo se načíst články.",
+        "needTranslation": "Přidejte alespoň jeden překlad s názvem a slugem."
+      },
+      "notFound": {
+        "title": "Článek nenalezen",
+        "description": "Tento článek neexistuje nebo byl odstraněn."
+      },
+      "actionErrors": {
+        "unauthorized": "Nemáte oprávnění k této akci.",
+        "invalid": "Neplatná data příspěvku.",
+        "create": "Nepodařilo se vytvořit příspěvek.",
+        "update": "Nepodařilo se aktualizovat příspěvek.",
+        "delete": "Nepodařilo se smazat příspěvek.",
+        "notFound": "Příspěvek nenalezen.",
+        "slugConflict": "Příspěvek s tímto slugem už existuje pro jednu z lokalizací.",
+        "translations": "Nepodařilo se uložit překlady.",
+        "updateTranslations": "Nepodařilo se aktualizovat překlady.",
+        "adminOnly": "Mazat příspěvky mohou jen admini.",
+        "invalidId": "Neplatné id příspěvku."
+      }
+    },
+    "staffFallback": "Zaměstnanec",
+    "closeOverlay": "Zavřít menu",
+    "roles": {
+      "owner": "Vlastník",
+      "admin": "Admin",
+      "manager": "Manažer",
+      "creator": "Tvůrce",
+      "guest": "Host"
+    },
+    "creators": {
+      "label": "Roster",
+      "title": "Tvůrci",
+      "description": "Spravujte profily, přiřazení a stav tvůrců.",
+      "detailLabel": "Tvůrce",
+      "create": "Vytvořit tvůrce",
+      "empty": "Zatím žádní tvůrci.",
+      "emptyHint": "Vytvořte prvního tvůrce.",
+      "unassigned": "Nepřiřazeno",
+      "backToList": "Zpět k tvůrcům",
+      "noApplication": "Žádná propojená žádost",
+      "viewApplication": "Zobrazit žádost",
+      "filters": {
+        "search": "Hledat",
+        "searchPlaceholder": "Jméno, e-mail, telegram, země, platforma",
+        "status": "Stav",
+        "manager": "Manažer",
+        "country": "Země",
+        "platform": "Platforma",
+        "sort": "Řazení",
+        "all": "Vše",
+        "apply": "Použít",
+        "clear": "Vymazat",
+        "sortNewest": "Nejnovější",
+        "sortOldest": "Nejstarší",
+        "sortName": "Jméno A–Z"
+      },
+      "table": {
+        "avatar": "Avatar",
+        "name": "Jméno",
+        "email": "E-mail",
+        "country": "Země",
+        "platforms": "Platformy",
+        "manager": "Manažer",
+        "status": "Stav",
+        "created": "Vytvořeno",
+        "actions": "Akce",
+        "view": "Zobrazit"
+      },
+      "pagination": {
+        "previous": "Předchozí",
+        "next": "Další",
+        "pageOf": "Stránka {page} z {totalPages} · celkem {total}"
+      },
+      "fields": {
+        "fullName": "Celé jméno",
+        "email": "E-mail",
+        "telegram": "Telegram",
+        "country": "Země",
+        "languages": "Jazyky",
+        "languagesPlaceholder": "en, cs, de",
+        "platforms": "Platformy",
+        "manager": "Manažer",
+        "status": "Stav",
+        "notes": "Poznámky",
+        "application": "Žádost",
+        "created": "Vytvořeno",
+        "updated": "Aktualizováno",
+        "avatarUrl": "URL avataru"
+      },
+      "form": {
+        "title": "Nový tvůrce",
+        "cancel": "Zrušit",
+        "submit": "Vytvořit",
+        "submitting": "Vytváření…"
+      },
+      "actions": {
+        "save": "Uložit",
+        "saving": "Ukládání…",
+        "saved": "Změny uloženy.",
+        "saveError": "Nepodařilo se uložit změny.",
+        "uploadAvatar": "Uložit avatar"
+      },
+      "toast": {
+        "created": "Tvůrce vytvořen."
+      },
+      "statusValues": {
+        "new": "Nový",
+        "active": "Aktivní",
+        "paused": "Pozastaveno",
+        "vacation": "Dovolená",
+        "inactive": "Neaktivní",
+        "banned": "Zakázán"
+      },
+      "platformValues": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Více",
+        "emerging": "Nově vznikající",
+        "other": "Jiné"
+      },
+      "errors": {
+        "load": "Nepodařilo se načíst tvůrce.",
+        "loadDetail": "Nepodařilo se načíst tohoto tvůrce.",
+        "boundary": "Chyba při načítání tvůrců.",
+        "retry": "Zkusit znovu"
+      },
+      "notFound": {
+        "title": "Tvůrce nenalezen",
+        "description": "Tento tvůrce byl odstraněn nebo k němu nemáte přístup."
+      },
+      "actionErrors": {
+        "unauthorized": "Nemáte oprávnění k této změně.",
+        "forbidden": "Můžete spravovat jen tvůrce přiřazené vám.",
+        "invalid": "Neplatná data tvůrce.",
+        "create": "Nepodařilo se vytvořit tvůrce.",
+        "save": "Nepodařilo se uložit změny.",
+        "invalidStatus": "Neplatný stav.",
+        "invalidManager": "Neplatný manažer.",
+        "invalidNotes": "Neplatné poznámky.",
+        "avatarNotReady": "Nahrávání avataru ještě není dostupné. Vložte URL."
+      }
+    }
+  },
+  "common": {
+    "language": "Jazyk"
   }
 }

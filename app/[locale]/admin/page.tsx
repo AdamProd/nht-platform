@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getDashboardData } from "@/features/dashboard/queries/get-dashboard-data";
 import DashboardKpiCards from "@/features/dashboard/components/DashboardKpiCards";
 import DashboardRecentApplications from "@/features/dashboard/components/DashboardRecentApplications";
+import DashboardRecentCreators from "@/features/dashboard/components/DashboardRecentCreators";
 import DashboardPlatformBreakdown from "@/features/dashboard/components/DashboardPlatformBreakdown";
 import DashboardQuickActions from "@/features/dashboard/components/DashboardQuickActions";
 
@@ -13,6 +14,8 @@ export default async function AdminDashboardPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("admin.dashboard");
+  const tApp = await getTranslations("admin.applications");
+  const tCreators = await getTranslations("admin.creators");
 
   let data;
   let loadError: string | null = null;
@@ -25,6 +28,7 @@ export default async function AdminDashboardPage({ params }: Props) {
     data = {
       kpis: { total: 0, new: 0, reviewing: 0, active: 0, rejected: 0 },
       recent: [],
+      recentCreators: [],
       platforms: [],
     };
   }
@@ -73,6 +77,21 @@ export default async function AdminDashboardPage({ params }: Props) {
               created: t("recent.created"),
               viewAll: t("recent.viewAll"),
             }}
+            statusLabels={{
+              new: tApp("statusValues.new"),
+              reviewing: tApp("statusValues.reviewing"),
+              contacted: tApp("statusValues.contacted"),
+              meeting: tApp("statusValues.meeting"),
+              active: tApp("statusValues.active"),
+              rejected: tApp("statusValues.rejected"),
+              archived: tApp("statusValues.archived"),
+            }}
+            priorityLabels={{
+              low: tApp("priorityValues.low"),
+              normal: tApp("priorityValues.normal"),
+              high: tApp("priorityValues.high"),
+              urgent: tApp("priorityValues.urgent"),
+            }}
           />
         </div>
         <div className="xl:col-span-2">
@@ -82,9 +101,35 @@ export default async function AdminDashboardPage({ params }: Props) {
               title: t("platforms.title"),
               empty: t("platforms.empty"),
             }}
+            platformLabels={{
+              onlyfans: t("platforms.values.onlyfans"),
+              fansly: t("platforms.values.fansly"),
+              manyvids: t("platforms.values.manyvids"),
+              multiple: t("platforms.values.multiple"),
+              emerging: t("platforms.values.emerging"),
+              other: t("platforms.values.other"),
+            }}
           />
         </div>
       </div>
+
+      <DashboardRecentCreators
+        items={data.recentCreators}
+        labels={{
+          title: t("recentCreators.title"),
+          empty: t("recentCreators.empty"),
+          viewAll: t("recentCreators.viewAll"),
+          unassigned: tCreators("unassigned"),
+        }}
+        statusLabels={{
+          new: tCreators("statusValues.new"),
+          active: tCreators("statusValues.active"),
+          paused: tCreators("statusValues.paused"),
+          vacation: tCreators("statusValues.vacation"),
+          inactive: tCreators("statusValues.inactive"),
+          banned: tCreators("statusValues.banned"),
+        }}
+      />
 
       <DashboardQuickActions
         labels={{

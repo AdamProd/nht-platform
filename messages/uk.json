@@ -220,6 +220,13 @@
   "footer": {
     "tagline": "Ми будуємо бізнес креаторів.",
     "copyright": "NHT — New Horizons Team. Усі права захищені.",
+    "navigation": "Навігація",
+    "legalTitle": "Документи",
+    "contactTitle": "Контакти",
+    "email": "hello@nht.team",
+    "emailHref": "mailto:hello@nht.team",
+    "telegram": "Telegram",
+    "telegramHref": "https://t.me/nht",
     "legal": {
       "privacy": "Конфіденційність",
       "terms": "Умови",
@@ -231,7 +238,7 @@
     "fullName": "New Horizons Team"
   },
   "auth": {
-    "title": "Вхід для команди",
+    "title": "Вхід для співробітників",
     "description": "Доступ до адмін-панелі NHT.",
     "emailLabel": "Email",
     "emailPlaceholder": "you@nht.team",
@@ -240,17 +247,23 @@
     "submit": "Увійти",
     "submitting": "Вхід…",
     "errors": {
-      "forbidden": "У вас немає доступу до адмін-панелі."
+      "forbidden": "У вас немає доступу до адмін-зони.",
+      "invalidCredentials": "Невірний email або пароль.",
+      "session": "Не вдалося створити сесію. Спробуйте ще раз.",
+      "permissions": "Не вдалося завантажити права доступу.",
+      "noAccess": "Ваш обліковий запис не має доступу до адмін-зони.",
+      "generic": "Щось пішло не так. Спробуйте ще раз."
     },
     "unauthorized": {
-      "title": "Access denied",
-      "description": "Your account is signed in but does not have permission to use the admin workspace.",
-      "home": "Back to site",
-      "signOut": "Sign out"
+      "title": "Доступ заборонено",
+      "description": "Ви увійшли, але акаунт не має прав на адмін-панель.",
+      "home": "На головну",
+      "signOut": "Вийти"
     }
   },
   "admin": {
     "logout": "Вийти",
+    "sidebarTitle": "NHT Адмін",
     "openMenu": "Відкрити меню",
     "nav": {
       "dashboard": "Дашборд",
@@ -262,138 +275,403 @@
     },
     "pages": {
       "dashboard": {
-        "label": "Overview",
-        "title": "Dashboard",
-        "description": "Live pipeline metrics from applications in Supabase."
+        "label": "Огляд",
+        "title": "Дашборд",
+        "description": "Живі метрики заявок із Supabase."
       },
       "applications": {
         "label": "CRM",
-        "title": "Applications",
-        "description": "Review and manage incoming creator applications."
+        "title": "Заявки",
+        "description": "Перегляд і керування вхідними заявками креаторів."
       },
       "creators": {
-        "label": "Roster",
-        "title": "Creators",
-        "description": "Creator management is coming soon."
+        "label": "Ростер",
+        "title": "Креатори",
+        "description": "Керування профілями креаторів, призначенням і статусом."
       },
       "blog": {
-        "label": "Content",
-        "title": "Blog",
-        "description": "Blog CMS is coming soon."
+        "label": "Контент",
+        "title": "Блог",
+        "description": "Створюйте, редагуйте та публікуйте локалізовані статті."
       },
       "analytics": {
-        "label": "Insights",
-        "title": "Analytics",
-        "description": "Analytics is coming soon."
+        "label": "Аналітика",
+        "title": "Аналітика",
+        "description": "Аналітика з’явиться незабаром."
       },
       "settings": {
-        "label": "System",
-        "title": "Settings",
-        "description": "Site settings are coming soon."
+        "label": "Система",
+        "title": "Налаштування",
+        "description": "Налаштування сайту з’являться незабаром."
       }
     },
     "applications": {
       "label": "CRM",
-      "title": "Applications",
-      "description": "Review and manage incoming creator applications.",
-      "detailLabel": "Application",
-      "empty": "No applications match your filters.",
-      "unassigned": "Unassigned",
-      "backToList": "Back to applications",
-      "backToDashboard": "Back to dashboard",
+      "title": "Заявки",
+      "description": "Перегляд і керування вхідними заявками креаторів.",
+      "detailLabel": "Заявка",
+      "empty": "Немає заявок за обраними фільтрами.",
+      "unassigned": "Не призначено",
+      "backToList": "Назад до заявок",
+      "backToDashboard": "Назад до дашборду",
       "filters": {
-        "search": "Search",
-        "searchPlaceholder": "Name, email, or platform",
-        "status": "Status",
-        "priority": "Priority",
-        "all": "All",
-        "apply": "Apply",
-        "clear": "Clear"
+        "search": "Пошук",
+        "searchPlaceholder": "Ім’я, email або платформа",
+        "status": "Статус",
+        "priority": "Пріоритет",
+        "all": "Усі",
+        "apply": "Застосувати",
+        "clear": "Скинути"
       },
       "table": {
-        "name": "Name",
+        "name": "Ім’я",
         "email": "Email",
-        "platform": "Platform",
-        "status": "Status",
-        "priority": "Priority",
-        "manager": "Manager",
-        "created": "Created",
-        "actions": "Actions",
-        "view": "View"
+        "platform": "Платформа",
+        "status": "Статус",
+        "priority": "Пріоритет",
+        "manager": "Менеджер",
+        "created": "Створено",
+        "actions": "Дії",
+        "view": "Відкрити"
       },
       "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {page} of {totalPages} · {total} total"
+        "previous": "Назад",
+        "next": "Далі",
+        "pageOf": "Сторінка {page} з {totalPages} · {total} всього"
       },
       "fields": {
-        "fullName": "Full name",
+        "fullName": "Ім’я",
         "email": "Email",
-        "platform": "Platform",
-        "locale": "Locale",
-        "message": "Message",
-        "status": "Status",
-        "priority": "Priority",
-        "manager": "Assigned manager",
-        "notes": "Internal notes",
-        "created": "Created",
-        "updated": "Updated",
-        "lastContact": "Last contact"
+        "platform": "Платформа",
+        "locale": "Мова",
+        "message": "Повідомлення",
+        "status": "Статус",
+        "priority": "Пріоритет",
+        "manager": "Менеджер",
+        "notes": "Нотатки",
+        "created": "Створено",
+        "updated": "Оновлено",
+        "lastContact": "Останній контакт"
       },
       "actions": {
-        "save": "Save",
-        "saving": "Saving…",
-        "saved": "Changes saved."
+        "save": "Зберегти",
+        "saving": "Збереження…",
+        "saved": "Збережено",
+        "saveError": "Не вдалося зберегти зміни."
       },
       "errors": {
-        "load": "Unable to load applications.",
-        "loadDetail": "Unable to load this application.",
-        "boundary": "Something went wrong loading applications.",
-        "retry": "Try again"
+        "load": "Не вдалося завантажити заявки.",
+        "loadDetail": "Не вдалося завантажити заявку.",
+        "boundary": "Щось пішло не так.",
+        "retry": "Повторити",
+        "notFound": "Заявку не знайдено.",
+        "save": "Не вдалося зберегти зміни."
       },
       "notFound": {
-        "title": "Application not found",
-        "description": "This application may have been removed or the link is invalid."
+        "title": "Заявку не знайдено",
+        "description": "Цієї заявки немає або її видалено."
+      },
+      "statusValues": {
+        "new": "Нова",
+        "reviewing": "На перевірці",
+        "contacted": "Зв’язались",
+        "meeting": "Зустріч",
+        "active": "Активна",
+        "rejected": "Відхилена",
+        "archived": "В архіві"
+      },
+      "priorityValues": {
+        "low": "Низький",
+        "normal": "Звичайний",
+        "high": "Високий",
+        "urgent": "Терміновий"
+      },
+      "actionErrors": {
+        "unauthorized": "У вас немає прав для цієї зміни.",
+        "save": "Не вдалося зберегти зміни.",
+        "invalidStatus": "Некоректний статус.",
+        "invalidPriority": "Некоректний пріоритет.",
+        "invalidManager": "Некоректний менеджер.",
+        "invalidNotes": "Некоректні нотатки."
       }
     },
     "dashboard": {
-      "label": "Overview",
-      "title": "Dashboard",
-      "description": "Live pipeline metrics from applications in Supabase.",
+      "label": "Огляд",
+      "title": "Дашборд",
+      "description": "Живі метрики заявок із Supabase.",
       "kpis": {
-        "total": "Total",
-        "new": "New",
-        "reviewing": "Reviewing",
-        "active": "Active",
-        "rejected": "Rejected"
+        "total": "Усього",
+        "new": "Нові",
+        "reviewing": "На перевірці",
+        "active": "Активні",
+        "rejected": "Відхилені"
       },
       "recent": {
-        "title": "Recent applications",
-        "empty": "No applications yet.",
-        "name": "Name",
-        "platform": "Platform",
-        "status": "Status",
-        "priority": "Priority",
-        "created": "Created",
-        "viewAll": "View all"
+        "title": "Нещодавні заявки",
+        "empty": "Заявок поки немає.",
+        "name": "Ім’я",
+        "platform": "Платформа",
+        "status": "Статус",
+        "priority": "Пріоритет",
+        "created": "Створено",
+        "viewAll": "Дивитися всі"
       },
       "platforms": {
-        "title": "Platform breakdown",
-        "empty": "No platform data yet."
+        "title": "За платформами",
+        "empty": "Даних за платформами поки немає.",
+        "values": {
+          "onlyfans": "OnlyFans",
+          "fansly": "Fansly",
+          "manyvids": "ManyVids",
+          "multiple": "Кілька",
+          "emerging": "Нова платформа",
+          "other": "Інше"
+        }
       },
       "quickActions": {
-        "title": "Quick actions",
-        "applications": "Applications",
-        "creators": "Creators",
-        "blog": "Blog",
-        "analytics": "Analytics",
-        "settings": "Settings"
+        "title": "Швидкі дії",
+        "applications": "Заявки",
+        "creators": "Креатори",
+        "blog": "Блог",
+        "analytics": "Аналітика",
+        "settings": "Налаштування"
       },
       "errors": {
-        "load": "Unable to load dashboard data."
+        "load": "Не вдалося завантажити дані дашборду."
+      },
+      "recentCreators": {
+        "title": "Нещодавні креатори",
+        "empty": "Креаторів поки немає.",
+        "viewAll": "Усі"
       }
     },
-    "navLabel": "Admin navigation",
-    "closeMenu": "Close menu"
+    "navLabel": "Навігація адмінки",
+    "closeMenu": "Закрити меню",
+    "blog": {
+      "label": "Контент",
+      "title": "Блог",
+      "description": "Створюйте, редагуйте та публікуйте локалізовані статті.",
+      "detailLabel": "Стаття",
+      "newTitle": "Нова стаття",
+      "newDescription": "Заповніть хоча б один переклад, потім збережіть чернетку або опублікуйте.",
+      "editDescription": "Оновіть статус, обкладинку та контент/SEO за локалями.",
+      "newPost": "Нова стаття",
+      "backToList": "Назад до блогу",
+      "empty": "Немає статей за обраними фільтрами.",
+      "untitled": "Без назви",
+      "filters": {
+        "search": "Пошук",
+        "searchPlaceholder": "Заголовок, slug або опис",
+        "status": "Статус",
+        "locale": "Локаль",
+        "all": "Усі",
+        "apply": "Застосувати",
+        "clear": "Скинути"
+      },
+      "table": {
+        "title": "Заголовок",
+        "status": "Статус",
+        "locales": "Локалі",
+        "author": "Автор",
+        "updated": "Оновлено",
+        "published": "Опубліковано",
+        "actions": "Дії",
+        "edit": "Редагувати"
+      },
+      "pagination": {
+        "previous": "Назад",
+        "next": "Далі",
+        "pageOf": "Сторінка {page} з {totalPages} · {total} статей"
+      },
+      "statuses": {
+        "draft": "Чернетка",
+        "published": "Опубліковано",
+        "archived": "Архів"
+      },
+      "form": {
+        "status": "Статус",
+        "coverImage": "URL обкладинки",
+        "coverPlaceholder": "https://…",
+        "locales": "Переклади",
+        "title": "Заголовок",
+        "slug": "Slug",
+        "excerpt": "Короткий опис",
+        "content": "Контент",
+        "seoTitle": "SEO заголовок",
+        "seoDescription": "SEO опис",
+        "save": "Зберегти",
+        "saving": "Збереження…",
+        "create": "Створити",
+        "creating": "Створення…",
+        "delete": "Видалити",
+        "deleting": "Видалення…",
+        "confirmDelete": "Видалити статтю та всі переклади? Цю дію не можна скасувати."
+      },
+      "editor": {
+        "bold": "Жирний",
+        "italic": "Курсив",
+        "h2": "Заголовок 2",
+        "h3": "Заголовок 3",
+        "bulletList": "Маркований список",
+        "orderedList": "Нумерований список",
+        "code": "Код",
+        "link": "Посилання",
+        "undo": "Скасувати",
+        "redo": "Повторити",
+        "linkUrl": "URL"
+      },
+      "toast": {
+        "saved": "Статтю збережено.",
+        "created": "Статтю створено.",
+        "deleted": "Статтю видалено."
+      },
+      "errors": {
+        "load": "Не вдалося завантажити статті.",
+        "needTranslation": "Додайте хоча б один переклад із заголовком і slug."
+      },
+      "notFound": {
+        "title": "Статтю не знайдено",
+        "description": "Цієї статті немає або її видалено."
+      },
+      "actionErrors": {
+        "unauthorized": "У вас немає прав для цієї дії.",
+        "invalid": "Некоректні дані поста.",
+        "create": "Не вдалося створити пост.",
+        "update": "Не вдалося оновити пост.",
+        "delete": "Не вдалося видалити пост.",
+        "notFound": "Пост не знайдено.",
+        "slugConflict": "Пост із таким slug уже існує для однієї з локалей.",
+        "translations": "Не вдалося зберегти переклади.",
+        "updateTranslations": "Не вдалося оновити переклади.",
+        "adminOnly": "Видаляти пости можуть лише адміни.",
+        "invalidId": "Некоректний id поста."
+      }
+    },
+    "staffFallback": "Співробітник",
+    "closeOverlay": "Закрити меню",
+    "roles": {
+      "owner": "Власник",
+      "admin": "Адмін",
+      "manager": "Менеджер",
+      "creator": "Креатор",
+      "guest": "Гість"
+    },
+    "creators": {
+      "label": "Ростер",
+      "title": "Креатори",
+      "description": "Керування профілями креаторів, призначенням і статусом.",
+      "detailLabel": "Креатор",
+      "create": "Створити креатора",
+      "empty": "Креаторів поки немає.",
+      "emptyHint": "Створіть першого креатора.",
+      "unassigned": "Не призначено",
+      "backToList": "До списку креаторів",
+      "noApplication": "Немає пов’язаної заявки",
+      "viewApplication": "Відкрити заявку",
+      "filters": {
+        "search": "Пошук",
+        "searchPlaceholder": "Ім’я, email, telegram, країна, платформа",
+        "status": "Статус",
+        "manager": "Менеджер",
+        "country": "Країна",
+        "platform": "Платформа",
+        "sort": "Сортування",
+        "all": "Усі",
+        "apply": "Застосувати",
+        "clear": "Скинути",
+        "sortNewest": "Спочатку нові",
+        "sortOldest": "Спочатку старі",
+        "sortName": "Ім’я А–Я"
+      },
+      "table": {
+        "avatar": "Аватар",
+        "name": "Ім’я",
+        "email": "Email",
+        "country": "Країна",
+        "platforms": "Платформи",
+        "manager": "Менеджер",
+        "status": "Статус",
+        "created": "Створено",
+        "actions": "Дії",
+        "view": "Відкрити"
+      },
+      "pagination": {
+        "previous": "Назад",
+        "next": "Далі",
+        "pageOf": "Сторінка {page} з {totalPages} · всього {total}"
+      },
+      "fields": {
+        "fullName": "Повне ім’я",
+        "email": "Email",
+        "telegram": "Telegram",
+        "country": "Країна",
+        "languages": "Мови",
+        "languagesPlaceholder": "en, uk, de",
+        "platforms": "Платформи",
+        "manager": "Менеджер",
+        "status": "Статус",
+        "notes": "Нотатки",
+        "application": "Заявка",
+        "created": "Створено",
+        "updated": "Оновлено",
+        "avatarUrl": "URL аватара"
+      },
+      "form": {
+        "title": "Новий креатор",
+        "cancel": "Скасувати",
+        "submit": "Створити",
+        "submitting": "Створення…"
+      },
+      "actions": {
+        "save": "Зберегти",
+        "saving": "Збереження…",
+        "saved": "Зміни збережено.",
+        "saveError": "Не вдалося зберегти зміни.",
+        "uploadAvatar": "Зберегти аватар"
+      },
+      "toast": {
+        "created": "Креатора створено."
+      },
+      "statusValues": {
+        "new": "Новий",
+        "active": "Активний",
+        "paused": "Пауза",
+        "vacation": "Відпустка",
+        "inactive": "Неактивний",
+        "banned": "Заблоковано"
+      },
+      "platformValues": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Кілька",
+        "emerging": "Нова платформа",
+        "other": "Інше"
+      },
+      "errors": {
+        "load": "Не вдалося завантажити креаторів.",
+        "loadDetail": "Не вдалося завантажити креатора.",
+        "boundary": "Помилка завантаження креаторів.",
+        "retry": "Повторити"
+      },
+      "notFound": {
+        "title": "Креатора не знайдено",
+        "description": "Креатора видалено або у вас немає доступу."
+      },
+      "actionErrors": {
+        "unauthorized": "У вас немає прав для цієї зміни.",
+        "forbidden": "Ви можете керувати лише призначеними вам креаторами.",
+        "invalid": "Некоректні дані креатора.",
+        "create": "Не вдалося створити креатора.",
+        "save": "Не вдалося зберегти зміни.",
+        "invalidStatus": "Некоректний статус.",
+        "invalidManager": "Некоректний менеджер.",
+        "invalidNotes": "Некоректні нотатки.",
+        "avatarNotReady": "Завантаження аватара поки недоступне. Вставте URL."
+      }
+    }
+  },
+  "common": {
+    "language": "Мова"
   }
 }

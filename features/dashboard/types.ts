@@ -1,4 +1,5 @@
 import type { ApplicationStatus } from "@/types/database.types";
+import type { CreatorListItem } from "@/features/creators/types";
 
 export type DashboardKpis = {
   total: number;
@@ -26,5 +27,6 @@ export type PlatformBreakdownItem = {
 export type DashboardData = {
   kpis: DashboardKpis;
   recent: DashboardRecentApplication[];
+  recentCreators: CreatorListItem[];
   platforms: PlatformBreakdownItem[];
 };

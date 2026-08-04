@@ -220,6 +220,13 @@
   "footer": {
     "tagline": "Construímos negócios de criadores.",
     "copyright": "NHT — New Horizons Team. Todos os direitos reservados.",
+    "navigation": "Navegação",
+    "legalTitle": "Legal",
+    "contactTitle": "Contacto",
+    "email": "hello@nht.team",
+    "emailHref": "mailto:hello@nht.team",
+    "telegram": "Telegram",
+    "telegramHref": "https://t.me/nht",
     "legal": {
       "privacy": "Privacidade",
       "terms": "Termos",
@@ -232,7 +239,7 @@
   },
   "auth": {
     "title": "Login da equipa",
-    "description": "Acede à área de admin da NHT.",
+    "description": "Acesso à área de admin da NHT.",
     "emailLabel": "Email",
     "emailPlaceholder": "you@nht.team",
     "passwordLabel": "Palavra-passe",
@@ -240,160 +247,431 @@
     "submit": "Entrar",
     "submitting": "A entrar…",
     "errors": {
-      "forbidden": "Não tem permissão para aceder à área de admin."
+      "forbidden": "Não tem permissão para aceder à área de admin.",
+      "invalidCredentials": "E-mail ou palavra-passe inválidos.",
+      "session": "Não foi possível criar a sessão. Tente novamente.",
+      "permissions": "Não foi possível carregar as permissões.",
+      "noAccess": "A sua conta não tem acesso à área de administração.",
+      "generic": "Algo correu mal. Tente novamente."
     },
     "unauthorized": {
-      "title": "Access denied",
-      "description": "Your account is signed in but does not have permission to use the admin workspace.",
-      "home": "Back to site",
-      "signOut": "Sign out"
+      "title": "Acesso negado",
+      "description": "Tem sessão iniciada, mas a conta não tem permissões de admin.",
+      "home": "Voltar ao site",
+      "signOut": "Terminar sessão"
     }
   },
   "admin": {
     "logout": "Terminar sessão",
+    "sidebarTitle": "NHT Admin",
     "openMenu": "Abrir menu",
     "nav": {
       "dashboard": "Painel",
       "applications": "Candidaturas",
-      "creators": "Creators",
+      "creators": "Criadores",
       "blog": "Blog",
-      "analytics": "Analítica",
+      "analytics": "Analytics",
       "settings": "Definições"
     },
     "pages": {
       "dashboard": {
-        "label": "Overview",
-        "title": "Dashboard",
-        "description": "Live pipeline metrics from applications in Supabase."
+        "label": "Visão geral",
+        "title": "Painel",
+        "description": "Métricas em tempo real de candidaturas no Supabase."
       },
       "applications": {
         "label": "CRM",
-        "title": "Applications",
-        "description": "Review and manage incoming creator applications."
+        "title": "Candidaturas",
+        "description": "Reveja e gira candidaturas de criadores."
       },
       "creators": {
         "label": "Roster",
-        "title": "Creators",
-        "description": "Creator management is coming soon."
+        "title": "Criadores",
+        "description": "Gira perfis, atribuição e estado dos criadores."
       },
       "blog": {
-        "label": "Content",
+        "label": "Conteúdo",
         "title": "Blog",
-        "description": "Blog CMS is coming soon."
+        "description": "Crie, edite e publique artigos localizados."
       },
       "analytics": {
         "label": "Insights",
         "title": "Analytics",
-        "description": "Analytics is coming soon."
+        "description": "A analytics chega em breve."
       },
       "settings": {
-        "label": "System",
-        "title": "Settings",
-        "description": "Site settings are coming soon."
+        "label": "Sistema",
+        "title": "Definições",
+        "description": "As definições do site chegam em breve."
       }
     },
     "applications": {
       "label": "CRM",
-      "title": "Applications",
-      "description": "Review and manage incoming creator applications.",
-      "detailLabel": "Application",
-      "empty": "No applications match your filters.",
-      "unassigned": "Unassigned",
-      "backToList": "Back to applications",
-      "backToDashboard": "Back to dashboard",
+      "title": "Candidaturas",
+      "description": "Reveja e gira candidaturas de criadores.",
+      "detailLabel": "Candidatura",
+      "empty": "Nenhuma candidatura corresponde aos filtros.",
+      "unassigned": "Não atribuído",
+      "backToList": "Voltar às candidaturas",
+      "backToDashboard": "Voltar ao painel",
       "filters": {
-        "search": "Search",
-        "searchPlaceholder": "Name, email, or platform",
-        "status": "Status",
-        "priority": "Priority",
-        "all": "All",
-        "apply": "Apply",
-        "clear": "Clear"
+        "search": "Pesquisar",
+        "searchPlaceholder": "Nome, email ou plataforma",
+        "status": "Estado",
+        "priority": "Prioridade",
+        "all": "Todos",
+        "apply": "Aplicar",
+        "clear": "Limpar"
       },
       "table": {
-        "name": "Name",
+        "name": "Nome",
         "email": "Email",
-        "platform": "Platform",
-        "status": "Status",
-        "priority": "Priority",
-        "manager": "Manager",
-        "created": "Created",
-        "actions": "Actions",
-        "view": "View"
+        "platform": "Plataforma",
+        "status": "Estado",
+        "priority": "Prioridade",
+        "manager": "Gestor",
+        "created": "Criado",
+        "actions": "Ações",
+        "view": "Ver"
       },
       "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {page} of {totalPages} · {total} total"
+        "previous": "Anterior",
+        "next": "Seguinte",
+        "pageOf": "Página {page} de {totalPages} · {total} no total"
       },
       "fields": {
-        "fullName": "Full name",
+        "fullName": "Nome completo",
         "email": "Email",
-        "platform": "Platform",
-        "locale": "Locale",
-        "message": "Message",
-        "status": "Status",
-        "priority": "Priority",
-        "manager": "Assigned manager",
-        "notes": "Internal notes",
-        "created": "Created",
-        "updated": "Updated",
-        "lastContact": "Last contact"
+        "platform": "Plataforma",
+        "locale": "Idioma",
+        "message": "Mensagem",
+        "status": "Estado",
+        "priority": "Prioridade",
+        "manager": "Gestor",
+        "notes": "Notas",
+        "created": "Criado",
+        "updated": "Atualizado",
+        "lastContact": "Último contacto"
       },
       "actions": {
-        "save": "Save",
-        "saving": "Saving…",
-        "saved": "Changes saved."
+        "save": "Guardar",
+        "saving": "A guardar…",
+        "saved": "Guardado",
+        "saveError": "Não foi possível guardar as alterações."
       },
       "errors": {
-        "load": "Unable to load applications.",
-        "loadDetail": "Unable to load this application.",
-        "boundary": "Something went wrong loading applications.",
-        "retry": "Try again"
+        "load": "Não foi possível carregar as candidaturas.",
+        "loadDetail": "Não foi possível carregar a candidatura.",
+        "boundary": "Algo correu mal.",
+        "retry": "Tentar novamente",
+        "notFound": "Candidatura não encontrada.",
+        "save": "Não foi possível guardar as alterações."
       },
       "notFound": {
-        "title": "Application not found",
-        "description": "This application may have been removed or the link is invalid."
+        "title": "Candidatura não encontrada",
+        "description": "Esta candidatura não existe ou foi removida."
+      },
+      "statusValues": {
+        "new": "Nova",
+        "reviewing": "Em análise",
+        "contacted": "Contactado",
+        "meeting": "Reunião",
+        "active": "Ativa",
+        "rejected": "Rejeitada",
+        "archived": "Arquivada"
+      },
+      "priorityValues": {
+        "low": "Baixa",
+        "normal": "Normal",
+        "high": "Alta",
+        "urgent": "Urgente"
+      },
+      "actionErrors": {
+        "unauthorized": "Não tem autorização para fazer esta alteração.",
+        "save": "Não foi possível guardar as alterações.",
+        "invalidStatus": "Estado inválido.",
+        "invalidPriority": "Prioridade inválida.",
+        "invalidManager": "Gestor inválido.",
+        "invalidNotes": "Notas inválidas."
       }
     },
     "dashboard": {
-      "label": "Overview",
-      "title": "Dashboard",
-      "description": "Live pipeline metrics from applications in Supabase.",
+      "label": "Visão geral",
+      "title": "Painel",
+      "description": "Métricas em tempo real de candidaturas no Supabase.",
       "kpis": {
         "total": "Total",
-        "new": "New",
-        "reviewing": "Reviewing",
-        "active": "Active",
-        "rejected": "Rejected"
+        "new": "Novas",
+        "reviewing": "Em revisão",
+        "active": "Ativas",
+        "rejected": "Rejeitadas"
       },
       "recent": {
-        "title": "Recent applications",
-        "empty": "No applications yet.",
-        "name": "Name",
-        "platform": "Platform",
-        "status": "Status",
-        "priority": "Priority",
-        "created": "Created",
-        "viewAll": "View all"
+        "title": "Candidaturas recentes",
+        "empty": "Ainda sem candidaturas.",
+        "name": "Nome",
+        "platform": "Plataforma",
+        "status": "Estado",
+        "priority": "Prioridade",
+        "created": "Criado",
+        "viewAll": "Ver todas"
       },
       "platforms": {
-        "title": "Platform breakdown",
-        "empty": "No platform data yet."
+        "title": "Por plataforma",
+        "empty": "Ainda sem dados por plataforma.",
+        "values": {
+          "onlyfans": "OnlyFans",
+          "fansly": "Fansly",
+          "manyvids": "ManyVids",
+          "multiple": "Várias",
+          "emerging": "Emergente",
+          "other": "Outro"
+        }
       },
       "quickActions": {
-        "title": "Quick actions",
-        "applications": "Applications",
-        "creators": "Creators",
+        "title": "Ações rápidas",
+        "applications": "Candidaturas",
+        "creators": "Criadores",
         "blog": "Blog",
         "analytics": "Analytics",
-        "settings": "Settings"
+        "settings": "Definições"
       },
       "errors": {
-        "load": "Unable to load dashboard data."
+        "load": "Não foi possível carregar os dados do painel."
+      },
+      "recentCreators": {
+        "title": "Criadores recentes",
+        "empty": "Ainda não há criadores.",
+        "viewAll": "Ver todos"
       }
     },
-    "navLabel": "Admin navigation",
-    "closeMenu": "Close menu"
+    "navLabel": "Navegação admin",
+    "closeMenu": "Fechar menu",
+    "blog": {
+      "label": "Conteúdo",
+      "title": "Blog",
+      "description": "Crie, edite e publique artigos localizados.",
+      "detailLabel": "Artigo",
+      "newTitle": "Novo artigo",
+      "newDescription": "Preencha pelo menos uma tradução e guarde como rascunho ou publique.",
+      "editDescription": "Atualize o estado, a capa e o conteúdo/SEO por idioma.",
+      "newPost": "Novo artigo",
+      "backToList": "Voltar ao blog",
+      "empty": "Nenhum artigo corresponde aos filtros.",
+      "untitled": "Sem título",
+      "filters": {
+        "search": "Pesquisar",
+        "searchPlaceholder": "Título, slug ou excerto",
+        "status": "Estado",
+        "locale": "Idioma",
+        "all": "Todos",
+        "apply": "Aplicar",
+        "clear": "Limpar"
+      },
+      "table": {
+        "title": "Título",
+        "status": "Estado",
+        "locales": "Idiomas",
+        "author": "Autor",
+        "updated": "Atualizado",
+        "published": "Publicado",
+        "actions": "Ações",
+        "edit": "Editar"
+      },
+      "pagination": {
+        "previous": "Anterior",
+        "next": "Seguinte",
+        "pageOf": "Página {page} de {totalPages} · {total} artigos"
+      },
+      "statuses": {
+        "draft": "Rascunho",
+        "published": "Publicado",
+        "archived": "Arquivado"
+      },
+      "form": {
+        "status": "Estado",
+        "coverImage": "URL da capa",
+        "coverPlaceholder": "https://…",
+        "locales": "Traduções",
+        "title": "Título",
+        "slug": "Slug",
+        "excerpt": "Excerto",
+        "content": "Conteúdo",
+        "seoTitle": "Título SEO",
+        "seoDescription": "Descrição SEO",
+        "save": "Guardar",
+        "saving": "A guardar…",
+        "create": "Criar",
+        "creating": "A criar…",
+        "delete": "Eliminar",
+        "deleting": "A eliminar…",
+        "confirmDelete": "Eliminar este artigo e todas as traduções? Esta ação não pode ser anulada."
+      },
+      "editor": {
+        "bold": "Negrito",
+        "italic": "Itálico",
+        "h2": "Título 2",
+        "h3": "Título 3",
+        "bulletList": "Lista com marcadores",
+        "orderedList": "Lista numerada",
+        "code": "Código",
+        "link": "Link",
+        "undo": "Desfazer",
+        "redo": "Refazer",
+        "linkUrl": "URL"
+      },
+      "toast": {
+        "saved": "Artigo guardado.",
+        "created": "Artigo criado.",
+        "deleted": "Artigo eliminado."
+      },
+      "errors": {
+        "load": "Não foi possível carregar os artigos.",
+        "needTranslation": "Adicione pelo menos uma tradução com título e slug."
+      },
+      "notFound": {
+        "title": "Artigo não encontrado",
+        "description": "Este artigo não existe ou foi removido."
+      },
+      "actionErrors": {
+        "unauthorized": "Não tem autorização para esta ação.",
+        "invalid": "Dados do post inválidos.",
+        "create": "Não foi possível criar o post.",
+        "update": "Não foi possível atualizar o post.",
+        "delete": "Não foi possível eliminar o post.",
+        "notFound": "Post não encontrado.",
+        "slugConflict": "Já existe um post com este slug para um dos idiomas.",
+        "translations": "Não foi possível guardar as traduções.",
+        "updateTranslations": "Não foi possível atualizar as traduções.",
+        "adminOnly": "Apenas admins podem eliminar posts.",
+        "invalidId": "ID do post inválido."
+      }
+    },
+    "staffFallback": "Equipa",
+    "closeOverlay": "Fechar o menu",
+    "roles": {
+      "owner": "Proprietário",
+      "admin": "Admin",
+      "manager": "Gestor",
+      "creator": "Criador",
+      "guest": "Convidado"
+    },
+    "creators": {
+      "label": "Roster",
+      "title": "Criadores",
+      "description": "Gira perfis, atribuição e estado dos criadores.",
+      "detailLabel": "Criador",
+      "create": "Criar criador",
+      "empty": "Ainda não há criadores.",
+      "emptyHint": "Crie o seu primeiro criador.",
+      "unassigned": "Não atribuído",
+      "backToList": "Voltar aos criadores",
+      "noApplication": "Sem candidatura associada",
+      "viewApplication": "Ver candidatura",
+      "filters": {
+        "search": "Pesquisar",
+        "searchPlaceholder": "Nome, email, telegram, país, plataforma",
+        "status": "Estado",
+        "manager": "Gestor",
+        "country": "País",
+        "platform": "Plataforma",
+        "sort": "Ordenar",
+        "all": "Todos",
+        "apply": "Aplicar",
+        "clear": "Limpar",
+        "sortNewest": "Mais recentes",
+        "sortOldest": "Mais antigos",
+        "sortName": "Nome A–Z"
+      },
+      "table": {
+        "avatar": "Avatar",
+        "name": "Nome",
+        "email": "Email",
+        "country": "País",
+        "platforms": "Plataformas",
+        "manager": "Gestor",
+        "status": "Estado",
+        "created": "Criado",
+        "actions": "Ações",
+        "view": "Ver"
+      },
+      "pagination": {
+        "previous": "Anterior",
+        "next": "Seguinte",
+        "pageOf": "Página {page} de {totalPages} · {total} no total"
+      },
+      "fields": {
+        "fullName": "Nome completo",
+        "email": "Email",
+        "telegram": "Telegram",
+        "country": "País",
+        "languages": "Idiomas",
+        "languagesPlaceholder": "en, pt, de",
+        "platforms": "Plataformas",
+        "manager": "Gestor",
+        "status": "Estado",
+        "notes": "Notas",
+        "application": "Candidatura",
+        "created": "Criado",
+        "updated": "Atualizado",
+        "avatarUrl": "URL do avatar"
+      },
+      "form": {
+        "title": "Novo criador",
+        "cancel": "Cancelar",
+        "submit": "Criar",
+        "submitting": "A criar…"
+      },
+      "actions": {
+        "save": "Guardar",
+        "saving": "A guardar…",
+        "saved": "Alterações guardadas.",
+        "saveError": "Não foi possível guardar as alterações.",
+        "uploadAvatar": "Guardar avatar"
+      },
+      "toast": {
+        "created": "Criador criado."
+      },
+      "statusValues": {
+        "new": "Novo",
+        "active": "Ativo",
+        "paused": "Em pausa",
+        "vacation": "Férias",
+        "inactive": "Inativo",
+        "banned": "Banido"
+      },
+      "platformValues": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Várias",
+        "emerging": "Emergente",
+        "other": "Outro"
+      },
+      "errors": {
+        "load": "Não foi possível carregar os criadores.",
+        "loadDetail": "Não foi possível carregar este criador.",
+        "boundary": "Erro ao carregar criadores.",
+        "retry": "Tentar novamente"
+      },
+      "notFound": {
+        "title": "Criador não encontrado",
+        "description": "Este criador foi removido ou não tem acesso."
+      },
+      "actionErrors": {
+        "unauthorized": "Não tem autorização para esta alteração.",
+        "forbidden": "Só pode gerir criadores atribuídos a si.",
+        "invalid": "Dados de criador inválidos.",
+        "create": "Não foi possível criar o criador.",
+        "save": "Não foi possível guardar as alterações.",
+        "invalidStatus": "Estado inválido.",
+        "invalidManager": "Gestor inválido.",
+        "invalidNotes": "Notas inválidas.",
+        "avatarNotReady": "Upload de avatar ainda não disponível. Cole um URL."
+      }
+    }
+  },
+  "common": {
+    "language": "Idioma"
   }
 }

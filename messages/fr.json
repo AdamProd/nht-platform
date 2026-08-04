@@ -220,6 +220,13 @@
   "footer": {
     "tagline": "Nous construisons des business de créateurs.",
     "copyright": "NHT — New Horizons Team. Tous droits réservés.",
+    "navigation": "Navigation",
+    "legalTitle": "Mentions légales",
+    "contactTitle": "Contact",
+    "email": "hello@nht.team",
+    "emailHref": "mailto:hello@nht.team",
+    "telegram": "Telegram",
+    "telegramHref": "https://t.me/nht",
     "legal": {
       "privacy": "Confidentialité",
       "terms": "Conditions",
@@ -231,7 +238,7 @@
     "fullName": "New Horizons Team"
   },
   "auth": {
-    "title": "Connexion équipe",
+    "title": "Connexion staff",
     "description": "Accès à l’espace admin NHT.",
     "emailLabel": "E-mail",
     "emailPlaceholder": "you@nht.team",
@@ -240,17 +247,23 @@
     "submit": "Se connecter",
     "submitting": "Connexion…",
     "errors": {
-      "forbidden": "Vous n’avez pas accès à l’espace admin."
+      "forbidden": "Vous n’avez pas l’autorisation d’accéder à l’admin.",
+      "invalidCredentials": "E-mail ou mot de passe incorrect.",
+      "session": "Impossible de créer une session. Réessayez.",
+      "permissions": "Impossible de charger vos permissions.",
+      "noAccess": "Votre compte n'a pas accès à la zone d'administration.",
+      "generic": "Une erreur s'est produite. Réessayez."
     },
     "unauthorized": {
-      "title": "Access denied",
-      "description": "Your account is signed in but does not have permission to use the admin workspace.",
-      "home": "Back to site",
-      "signOut": "Sign out"
+      "title": "Accès refusé",
+      "description": "Vous êtes connecté, mais votre compte n’a pas accès à l’admin.",
+      "home": "Retour au site",
+      "signOut": "Se déconnecter"
     }
   },
   "admin": {
     "logout": "Se déconnecter",
+    "sidebarTitle": "NHT Admin",
     "openMenu": "Ouvrir le menu",
     "nav": {
       "dashboard": "Tableau de bord",
@@ -262,138 +275,403 @@
     },
     "pages": {
       "dashboard": {
-        "label": "Overview",
-        "title": "Dashboard",
-        "description": "Live pipeline metrics from applications in Supabase."
+        "label": "Vue d’ensemble",
+        "title": "Tableau de bord",
+        "description": "Métriques live des candidatures depuis Supabase."
       },
       "applications": {
         "label": "CRM",
-        "title": "Applications",
-        "description": "Review and manage incoming creator applications."
+        "title": "Candidatures",
+        "description": "Consulter et gérer les candidatures créateurs entrantes."
       },
       "creators": {
         "label": "Roster",
-        "title": "Creators",
-        "description": "Creator management is coming soon."
+        "title": "Créateurs",
+        "description": "Gérez les profils, l’assignation et le statut des créateurs."
       },
       "blog": {
-        "label": "Content",
+        "label": "Contenu",
         "title": "Blog",
-        "description": "Blog CMS is coming soon."
+        "description": "Créez, modifiez et publiez des articles localisés."
       },
       "analytics": {
         "label": "Insights",
-        "title": "Analytics",
-        "description": "Analytics is coming soon."
+        "title": "Analytique",
+        "description": "L’analytique arrive bientôt."
       },
       "settings": {
-        "label": "System",
-        "title": "Settings",
-        "description": "Site settings are coming soon."
+        "label": "Système",
+        "title": "Paramètres",
+        "description": "Les paramètres du site arrivent bientôt."
       }
     },
     "applications": {
       "label": "CRM",
-      "title": "Applications",
-      "description": "Review and manage incoming creator applications.",
-      "detailLabel": "Application",
-      "empty": "No applications match your filters.",
-      "unassigned": "Unassigned",
-      "backToList": "Back to applications",
-      "backToDashboard": "Back to dashboard",
+      "title": "Candidatures",
+      "description": "Consulter et gérer les candidatures créateurs entrantes.",
+      "detailLabel": "Candidature",
+      "empty": "Aucune candidature ne correspond à vos filtres.",
+      "unassigned": "Non assigné",
+      "backToList": "Retour aux candidatures",
+      "backToDashboard": "Retour au tableau de bord",
       "filters": {
-        "search": "Search",
-        "searchPlaceholder": "Name, email, or platform",
-        "status": "Status",
-        "priority": "Priority",
-        "all": "All",
-        "apply": "Apply",
-        "clear": "Clear"
+        "search": "Recherche",
+        "searchPlaceholder": "Nom, e-mail ou plateforme",
+        "status": "Statut",
+        "priority": "Priorité",
+        "all": "Tous",
+        "apply": "Appliquer",
+        "clear": "Réinitialiser"
       },
       "table": {
-        "name": "Name",
-        "email": "Email",
-        "platform": "Platform",
-        "status": "Status",
-        "priority": "Priority",
+        "name": "Nom",
+        "email": "E-mail",
+        "platform": "Plateforme",
+        "status": "Statut",
+        "priority": "Priorité",
         "manager": "Manager",
-        "created": "Created",
+        "created": "Créé",
         "actions": "Actions",
-        "view": "View"
+        "view": "Voir"
       },
       "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {page} of {totalPages} · {total} total"
+        "previous": "Précédent",
+        "next": "Suivant",
+        "pageOf": "Page {page} sur {totalPages} · {total} au total"
       },
       "fields": {
-        "fullName": "Full name",
-        "email": "Email",
-        "platform": "Platform",
-        "locale": "Locale",
+        "fullName": "Nom complet",
+        "email": "E-mail",
+        "platform": "Plateforme",
+        "locale": "Langue",
         "message": "Message",
-        "status": "Status",
-        "priority": "Priority",
-        "manager": "Assigned manager",
-        "notes": "Internal notes",
-        "created": "Created",
-        "updated": "Updated",
-        "lastContact": "Last contact"
+        "status": "Statut",
+        "priority": "Priorité",
+        "manager": "Manager",
+        "notes": "Notes",
+        "created": "Créé",
+        "updated": "Mis à jour",
+        "lastContact": "Dernier contact"
       },
       "actions": {
-        "save": "Save",
-        "saving": "Saving…",
-        "saved": "Changes saved."
+        "save": "Enregistrer",
+        "saving": "Enregistrement…",
+        "saved": "Enregistré",
+        "saveError": "Impossible d'enregistrer les modifications."
       },
       "errors": {
-        "load": "Unable to load applications.",
-        "loadDetail": "Unable to load this application.",
-        "boundary": "Something went wrong loading applications.",
-        "retry": "Try again"
+        "load": "Impossible de charger les candidatures.",
+        "loadDetail": "Impossible de charger la candidature.",
+        "boundary": "Une erreur est survenue.",
+        "retry": "Réessayer",
+        "notFound": "Candidature introuvable.",
+        "save": "Impossible d’enregistrer les modifications."
       },
       "notFound": {
-        "title": "Application not found",
-        "description": "This application may have been removed or the link is invalid."
+        "title": "Candidature introuvable",
+        "description": "Cette candidature n’existe pas ou a été supprimée."
+      },
+      "statusValues": {
+        "new": "Nouvelle",
+        "reviewing": "En revue",
+        "contacted": "Contacté",
+        "meeting": "Réunion",
+        "active": "Active",
+        "rejected": "Refusée",
+        "archived": "Archivée"
+      },
+      "priorityValues": {
+        "low": "Basse",
+        "normal": "Normale",
+        "high": "Haute",
+        "urgent": "Urgent"
+      },
+      "actionErrors": {
+        "unauthorized": "Vous n'êtes pas autorisé à effectuer cette modification.",
+        "save": "Impossible d'enregistrer les modifications.",
+        "invalidStatus": "Statut invalide.",
+        "invalidPriority": "Priorité invalide.",
+        "invalidManager": "Manager invalide.",
+        "invalidNotes": "Notes invalides."
       }
     },
     "dashboard": {
-      "label": "Overview",
-      "title": "Dashboard",
-      "description": "Live pipeline metrics from applications in Supabase.",
+      "label": "Vue d’ensemble",
+      "title": "Tableau de bord",
+      "description": "Métriques live des candidatures depuis Supabase.",
       "kpis": {
         "total": "Total",
-        "new": "New",
-        "reviewing": "Reviewing",
-        "active": "Active",
-        "rejected": "Rejected"
+        "new": "Nouvelles",
+        "reviewing": "En revue",
+        "active": "Actives",
+        "rejected": "Rejetées"
       },
       "recent": {
-        "title": "Recent applications",
-        "empty": "No applications yet.",
-        "name": "Name",
-        "platform": "Platform",
-        "status": "Status",
-        "priority": "Priority",
-        "created": "Created",
-        "viewAll": "View all"
+        "title": "Candidatures récentes",
+        "empty": "Aucune candidature pour le moment.",
+        "name": "Nom",
+        "platform": "Plateforme",
+        "status": "Statut",
+        "priority": "Priorité",
+        "created": "Créé",
+        "viewAll": "Voir tout"
       },
       "platforms": {
-        "title": "Platform breakdown",
-        "empty": "No platform data yet."
+        "title": "Par plateforme",
+        "empty": "Pas encore de données par plateforme.",
+        "values": {
+          "onlyfans": "OnlyFans",
+          "fansly": "Fansly",
+          "manyvids": "ManyVids",
+          "multiple": "Plusieurs",
+          "emerging": "Émergente",
+          "other": "Autre"
+        }
       },
       "quickActions": {
-        "title": "Quick actions",
-        "applications": "Applications",
-        "creators": "Creators",
+        "title": "Actions rapides",
+        "applications": "Candidatures",
+        "creators": "Créateurs",
         "blog": "Blog",
-        "analytics": "Analytics",
-        "settings": "Settings"
+        "analytics": "Analytique",
+        "settings": "Paramètres"
       },
       "errors": {
-        "load": "Unable to load dashboard data."
+        "load": "Impossible de charger les données du tableau de bord."
+      },
+      "recentCreators": {
+        "title": "Créateurs récents",
+        "empty": "Aucun créateur pour le moment.",
+        "viewAll": "Tout voir"
       }
     },
-    "navLabel": "Admin navigation",
-    "closeMenu": "Close menu"
+    "navLabel": "Navigation admin",
+    "closeMenu": "Fermer le menu",
+    "blog": {
+      "label": "Contenu",
+      "title": "Blog",
+      "description": "Créez, modifiez et publiez des articles localisés.",
+      "detailLabel": "Article",
+      "newTitle": "Nouvel article",
+      "newDescription": "Remplissez au moins une traduction, puis enregistrez un brouillon ou publiez.",
+      "editDescription": "Mettez à jour le statut, la couverture et le contenu/SEO par locale.",
+      "newPost": "Nouvel article",
+      "backToList": "Retour au blog",
+      "empty": "Aucun article ne correspond à vos filtres.",
+      "untitled": "Sans titre",
+      "filters": {
+        "search": "Recherche",
+        "searchPlaceholder": "Titre, slug ou extrait",
+        "status": "Statut",
+        "locale": "Locale",
+        "all": "Tous",
+        "apply": "Appliquer",
+        "clear": "Réinitialiser"
+      },
+      "table": {
+        "title": "Titre",
+        "status": "Statut",
+        "locales": "Locales",
+        "author": "Auteur",
+        "updated": "Mis à jour",
+        "published": "Publié",
+        "actions": "Actions",
+        "edit": "Modifier"
+      },
+      "pagination": {
+        "previous": "Précédent",
+        "next": "Suivant",
+        "pageOf": "Page {page} sur {totalPages} · {total} articles"
+      },
+      "statuses": {
+        "draft": "Brouillon",
+        "published": "Publié",
+        "archived": "Archivé"
+      },
+      "form": {
+        "status": "Statut",
+        "coverImage": "URL de couverture",
+        "coverPlaceholder": "https://…",
+        "locales": "Traductions",
+        "title": "Titre",
+        "slug": "Slug",
+        "excerpt": "Extrait",
+        "content": "Contenu",
+        "seoTitle": "Titre SEO",
+        "seoDescription": "Description SEO",
+        "save": "Enregistrer",
+        "saving": "Enregistrement…",
+        "create": "Créer",
+        "creating": "Création…",
+        "delete": "Supprimer",
+        "deleting": "Suppression…",
+        "confirmDelete": "Supprimer cet article et toutes ses traductions ? Cette action est irréversible."
+      },
+      "editor": {
+        "bold": "Gras",
+        "italic": "Italique",
+        "h2": "Titre 2",
+        "h3": "Titre 3",
+        "bulletList": "Liste à puces",
+        "orderedList": "Liste numérotée",
+        "code": "Code",
+        "link": "Lien",
+        "undo": "Annuler",
+        "redo": "Rétablir",
+        "linkUrl": "URL"
+      },
+      "toast": {
+        "saved": "Article enregistré.",
+        "created": "Article créé.",
+        "deleted": "Article supprimé."
+      },
+      "errors": {
+        "load": "Impossible de charger les articles.",
+        "needTranslation": "Ajoutez au moins une traduction avec un titre et un slug."
+      },
+      "notFound": {
+        "title": "Article introuvable",
+        "description": "Cet article n’existe pas ou a été supprimé."
+      },
+      "actionErrors": {
+        "unauthorized": "Vous n'êtes pas autorisé à effectuer cette action.",
+        "invalid": "Données d'article invalides.",
+        "create": "Impossible de créer l'article.",
+        "update": "Impossible de mettre à jour l'article.",
+        "delete": "Impossible de supprimer l'article.",
+        "notFound": "Article introuvable.",
+        "slugConflict": "Un article avec ce slug existe déjà pour l'une des langues.",
+        "translations": "Impossible d'enregistrer les traductions.",
+        "updateTranslations": "Impossible de mettre à jour les traductions.",
+        "adminOnly": "Seuls les admins peuvent supprimer des articles.",
+        "invalidId": "Identifiant d'article invalide."
+      }
+    },
+    "staffFallback": "Personnel",
+    "closeOverlay": "Fermer le menu",
+    "roles": {
+      "owner": "Propriétaire",
+      "admin": "Admin",
+      "manager": "Manager",
+      "creator": "Créateur",
+      "guest": "Invité"
+    },
+    "creators": {
+      "label": "Roster",
+      "title": "Créateurs",
+      "description": "Gérez les profils, l’assignation et le statut des créateurs.",
+      "detailLabel": "Créateur",
+      "create": "Créer un créateur",
+      "empty": "Aucun créateur pour le moment.",
+      "emptyHint": "Créez votre premier créateur.",
+      "unassigned": "Non assigné",
+      "backToList": "Retour aux créateurs",
+      "noApplication": "Aucune candidature liée",
+      "viewApplication": "Voir la candidature",
+      "filters": {
+        "search": "Recherche",
+        "searchPlaceholder": "Nom, e-mail, telegram, pays, plateforme",
+        "status": "Statut",
+        "manager": "Manager",
+        "country": "Pays",
+        "platform": "Plateforme",
+        "sort": "Tri",
+        "all": "Tous",
+        "apply": "Appliquer",
+        "clear": "Effacer",
+        "sortNewest": "Plus récents",
+        "sortOldest": "Plus anciens",
+        "sortName": "Nom A–Z"
+      },
+      "table": {
+        "avatar": "Avatar",
+        "name": "Nom",
+        "email": "E-mail",
+        "country": "Pays",
+        "platforms": "Plateformes",
+        "manager": "Manager",
+        "status": "Statut",
+        "created": "Créé",
+        "actions": "Actions",
+        "view": "Voir"
+      },
+      "pagination": {
+        "previous": "Précédent",
+        "next": "Suivant",
+        "pageOf": "Page {page} sur {totalPages} · {total} au total"
+      },
+      "fields": {
+        "fullName": "Nom complet",
+        "email": "E-mail",
+        "telegram": "Telegram",
+        "country": "Pays",
+        "languages": "Langues",
+        "languagesPlaceholder": "en, fr, de",
+        "platforms": "Plateformes",
+        "manager": "Manager",
+        "status": "Statut",
+        "notes": "Notes",
+        "application": "Candidature",
+        "created": "Créé",
+        "updated": "Mis à jour",
+        "avatarUrl": "URL de l’avatar"
+      },
+      "form": {
+        "title": "Nouveau créateur",
+        "cancel": "Annuler",
+        "submit": "Créer",
+        "submitting": "Création…"
+      },
+      "actions": {
+        "save": "Enregistrer",
+        "saving": "Enregistrement…",
+        "saved": "Modifications enregistrées.",
+        "saveError": "Impossible d’enregistrer les modifications.",
+        "uploadAvatar": "Enregistrer l’avatar"
+      },
+      "toast": {
+        "created": "Créateur créé."
+      },
+      "statusValues": {
+        "new": "Nouveau",
+        "active": "Actif",
+        "paused": "En pause",
+        "vacation": "Vacances",
+        "inactive": "Inactif",
+        "banned": "Banni"
+      },
+      "platformValues": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Plusieurs",
+        "emerging": "Émergente",
+        "other": "Autre"
+      },
+      "errors": {
+        "load": "Impossible de charger les créateurs.",
+        "loadDetail": "Impossible de charger ce créateur.",
+        "boundary": "Erreur lors du chargement des créateurs.",
+        "retry": "Réessayer"
+      },
+      "notFound": {
+        "title": "Créateur introuvable",
+        "description": "Ce créateur a été supprimé ou vous n’y avez pas accès."
+      },
+      "actionErrors": {
+        "unauthorized": "Vous n’êtes pas autorisé à effectuer cette modification.",
+        "forbidden": "Vous ne pouvez gérer que les créateurs qui vous sont assignés.",
+        "invalid": "Données de créateur invalides.",
+        "create": "Impossible de créer le créateur.",
+        "save": "Impossible d’enregistrer les modifications.",
+        "invalidStatus": "Statut invalide.",
+        "invalidManager": "Manager invalide.",
+        "invalidNotes": "Notes invalides.",
+        "avatarNotReady": "L’upload d’avatar n’est pas encore disponible. Collez une URL."
+      }
+    }
+  },
+  "common": {
+    "language": "Langue"
   }
 }

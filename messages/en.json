@@ -220,6 +220,13 @@
   "footer": {
     "tagline": "We build creator businesses.",
     "copyright": "NHT — New Horizons Team. All rights reserved.",
+    "navigation": "Navigation",
+    "legalTitle": "Legal",
+    "contactTitle": "Contact",
+    "email": "hello@nht.team",
+    "emailHref": "mailto:hello@nht.team",
+    "telegram": "Telegram",
+    "telegramHref": "https://t.me/nht",
     "legal": {
       "privacy": "Privacy",
       "terms": "Terms",
@@ -240,7 +247,12 @@
     "submit": "Sign in",
     "submitting": "Signing in…",
     "errors": {
-      "forbidden": "You do not have permission to access the admin area."
+      "forbidden": "You do not have permission to access the admin area.",
+      "invalidCredentials": "Invalid email or password.",
+      "session": "Unable to establish a session. Please try again.",
+      "permissions": "Unable to load your permissions.",
+      "noAccess": "Your account does not have access to the admin area.",
+      "generic": "Something went wrong. Please try again."
     },
     "unauthorized": {
       "title": "Access denied",
@@ -251,6 +263,7 @@
   },
   "admin": {
     "logout": "Sign out",
+    "sidebarTitle": "NHT Admin",
     "openMenu": "Open menu",
     "nav": {
       "dashboard": "Dashboard",
@@ -274,12 +287,12 @@
       "creators": {
         "label": "Roster",
         "title": "Creators",
-        "description": "Creator management is coming soon."
+        "description": "Manage creator profiles, assignment, and status."
       },
       "blog": {
         "label": "Content",
         "title": "Blog",
-        "description": "Blog CMS is coming soon."
+        "description": "Create, edit, and publish localized blog posts."
       },
       "analytics": {
         "label": "Insights",
@@ -343,7 +356,8 @@
       "actions": {
         "save": "Save",
         "saving": "Saving…",
-        "saved": "Changes saved."
+        "saved": "Changes saved.",
+        "saveError": "Unable to save changes."
       },
       "errors": {
         "load": "Unable to load applications.",
@@ -354,6 +368,29 @@
       "notFound": {
         "title": "Application not found",
         "description": "This application may have been removed or the link is invalid."
+      },
+      "statusValues": {
+        "new": "New",
+        "reviewing": "Reviewing",
+        "contacted": "Contacted",
+        "meeting": "Meeting",
+        "active": "Active",
+        "rejected": "Rejected",
+        "archived": "Archived"
+      },
+      "priorityValues": {
+        "low": "Low",
+        "normal": "Normal",
+        "high": "High",
+        "urgent": "Urgent"
+      },
+      "actionErrors": {
+        "unauthorized": "You are not authorized to make this change.",
+        "save": "Unable to save changes.",
+        "invalidStatus": "Invalid status.",
+        "invalidPriority": "Invalid priority.",
+        "invalidManager": "Invalid manager.",
+        "invalidNotes": "Invalid notes."
       }
     },
     "dashboard": {
@@ -379,7 +416,15 @@
       },
       "platforms": {
         "title": "Platform breakdown",
-        "empty": "No platform data yet."
+        "empty": "No platform data yet.",
+        "values": {
+          "onlyfans": "OnlyFans",
+          "fansly": "Fansly",
+          "manyvids": "ManyVids",
+          "multiple": "Multiple",
+          "emerging": "Emerging",
+          "other": "Other"
+        }
       },
       "quickActions": {
         "title": "Quick actions",
@@ -391,9 +436,240 @@
       },
       "errors": {
         "load": "Unable to load dashboard data."
+      },
+      "recentCreators": {
+        "title": "Recent creators",
+        "empty": "No creators yet.",
+        "viewAll": "View all"
       }
     },
     "navLabel": "Admin navigation",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "blog": {
+      "label": "Content",
+      "title": "Blog",
+      "description": "Create, edit, and publish localized blog posts.",
+      "detailLabel": "Post",
+      "newTitle": "New post",
+      "newDescription": "Write at least one locale translation, then save as draft or publish.",
+      "editDescription": "Update status, cover image, and per-locale content and SEO fields.",
+      "newPost": "New post",
+      "backToList": "Back to blog",
+      "empty": "No posts match your filters.",
+      "untitled": "Untitled post",
+      "filters": {
+        "search": "Search",
+        "searchPlaceholder": "Title, slug, or excerpt",
+        "status": "Status",
+        "locale": "Locale",
+        "all": "All",
+        "apply": "Apply",
+        "clear": "Clear"
+      },
+      "table": {
+        "title": "Title",
+        "status": "Status",
+        "locales": "Locales",
+        "author": "Author",
+        "updated": "Updated",
+        "published": "Published",
+        "actions": "Actions",
+        "edit": "Edit"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "pageOf": "Page {page} of {totalPages} · {total} posts"
+      },
+      "statuses": {
+        "draft": "Draft",
+        "published": "Published",
+        "archived": "Archived"
+      },
+      "form": {
+        "status": "Status",
+        "coverImage": "Cover image URL",
+        "coverPlaceholder": "https://…",
+        "locales": "Translations",
+        "title": "Title",
+        "slug": "Slug",
+        "excerpt": "Excerpt",
+        "content": "Content",
+        "seoTitle": "SEO title",
+        "seoDescription": "SEO description",
+        "save": "Save changes",
+        "saving": "Saving…",
+        "create": "Create post",
+        "creating": "Creating…",
+        "delete": "Delete",
+        "deleting": "Deleting…",
+        "confirmDelete": "Delete this post and all translations? This cannot be undone."
+      },
+      "editor": {
+        "bold": "Bold",
+        "italic": "Italic",
+        "h2": "Heading 2",
+        "h3": "Heading 3",
+        "bulletList": "Bullet list",
+        "orderedList": "Ordered list",
+        "code": "Inline code",
+        "link": "Link",
+        "undo": "Undo",
+        "redo": "Redo",
+        "linkUrl": "URL"
+      },
+      "toast": {
+        "saved": "Post saved.",
+        "created": "Post created.",
+        "deleted": "Post deleted."
+      },
+      "errors": {
+        "load": "Unable to load posts.",
+        "needTranslation": "Add at least one translation with a title and slug."
+      },
+      "notFound": {
+        "title": "Post not found",
+        "description": "This post does not exist or was removed."
+      },
+      "actionErrors": {
+        "unauthorized": "You are not authorized to perform this action.",
+        "invalid": "Invalid post data.",
+        "create": "Unable to create post.",
+        "update": "Unable to update post.",
+        "delete": "Unable to delete post.",
+        "notFound": "Post not found.",
+        "slugConflict": "A post with this slug already exists for one of the locales.",
+        "translations": "Unable to save translations.",
+        "updateTranslations": "Unable to update translations.",
+        "adminOnly": "Only admins can delete posts.",
+        "invalidId": "Invalid post id."
+      }
+    },
+    "staffFallback": "Staff",
+    "closeOverlay": "Close menu overlay",
+    "roles": {
+      "owner": "Owner",
+      "admin": "Admin",
+      "manager": "Manager",
+      "creator": "Creator",
+      "guest": "Guest"
+    },
+    "creators": {
+      "label": "Roster",
+      "title": "Creators",
+      "description": "Manage creator profiles, assignment, and status.",
+      "detailLabel": "Creator",
+      "create": "Create Creator",
+      "empty": "No creators yet.",
+      "emptyHint": "Create your first creator.",
+      "unassigned": "Unassigned",
+      "backToList": "Back to creators",
+      "noApplication": "No linked application",
+      "viewApplication": "View application",
+      "filters": {
+        "search": "Search",
+        "searchPlaceholder": "Name, email, telegram, country, platform",
+        "status": "Status",
+        "manager": "Manager",
+        "country": "Country",
+        "platform": "Platform",
+        "sort": "Sort",
+        "all": "All",
+        "apply": "Apply",
+        "clear": "Clear",
+        "sortNewest": "Newest",
+        "sortOldest": "Oldest",
+        "sortName": "Name A–Z"
+      },
+      "table": {
+        "avatar": "Avatar",
+        "name": "Name",
+        "email": "Email",
+        "country": "Country",
+        "platforms": "Platforms",
+        "manager": "Manager",
+        "status": "Status",
+        "created": "Created",
+        "actions": "Actions",
+        "view": "View"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "pageOf": "Page {page} of {totalPages} · {total} total"
+      },
+      "fields": {
+        "fullName": "Full name",
+        "email": "Email",
+        "telegram": "Telegram",
+        "country": "Country",
+        "languages": "Languages",
+        "languagesPlaceholder": "en, ru, de",
+        "platforms": "Platforms",
+        "manager": "Manager",
+        "status": "Status",
+        "notes": "Notes",
+        "application": "Application",
+        "created": "Created",
+        "updated": "Updated",
+        "avatarUrl": "Avatar URL"
+      },
+      "form": {
+        "title": "Create creator",
+        "cancel": "Cancel",
+        "submit": "Create",
+        "submitting": "Creating…"
+      },
+      "actions": {
+        "save": "Save",
+        "saving": "Saving…",
+        "saved": "Changes saved.",
+        "saveError": "Unable to save changes.",
+        "uploadAvatar": "Save avatar"
+      },
+      "toast": {
+        "created": "Creator created."
+      },
+      "statusValues": {
+        "new": "New",
+        "active": "Active",
+        "paused": "Paused",
+        "vacation": "Vacation",
+        "inactive": "Inactive",
+        "banned": "Banned"
+      },
+      "platformValues": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Multiple",
+        "emerging": "Emerging",
+        "other": "Other"
+      },
+      "errors": {
+        "load": "Unable to load creators.",
+        "loadDetail": "Unable to load this creator.",
+        "boundary": "Something went wrong loading creators.",
+        "retry": "Try again"
+      },
+      "notFound": {
+        "title": "Creator not found",
+        "description": "This creator may have been removed or you do not have access."
+      },
+      "actionErrors": {
+        "unauthorized": "You are not authorized to make this change.",
+        "forbidden": "You can only manage creators assigned to you.",
+        "invalid": "Invalid creator data.",
+        "create": "Unable to create creator.",
+        "save": "Unable to save changes.",
+        "invalidStatus": "Invalid status.",
+        "invalidManager": "Invalid manager.",
+        "invalidNotes": "Invalid notes.",
+        "avatarNotReady": "Avatar upload is not available yet. Paste a URL instead."
+      }
+    }
+  },
+  "common": {
+    "language": "Language"
   }
 }

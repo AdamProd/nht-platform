@@ -220,6 +220,13 @@
   "footer": {
     "tagline": "Wir bauen Creator-Businesses.",
     "copyright": "NHT — New Horizons Team. Alle Rechte vorbehalten.",
+    "navigation": "Navigation",
+    "legalTitle": "Rechtliches",
+    "contactTitle": "Kontakt",
+    "email": "hello@nht.team",
+    "emailHref": "mailto:hello@nht.team",
+    "telegram": "Telegram",
+    "telegramHref": "https://t.me/nht",
     "legal": {
       "privacy": "Datenschutz",
       "terms": "AGB",
@@ -232,7 +239,7 @@
   },
   "auth": {
     "title": "Mitarbeiter-Login",
-    "description": "Zugang zum NHT-Adminbereich.",
+    "description": "Zugriff auf den NHT-Adminbereich.",
     "emailLabel": "E-Mail",
     "emailPlaceholder": "you@nht.team",
     "passwordLabel": "Passwort",
@@ -240,160 +247,431 @@
     "submit": "Anmelden",
     "submitting": "Anmeldung…",
     "errors": {
-      "forbidden": "Keine Berechtigung für den Adminbereich."
+      "forbidden": "Sie haben keine Berechtigung für den Adminbereich.",
+      "invalidCredentials": "Ungültige E-Mail oder Passwort.",
+      "session": "Sitzung konnte nicht erstellt werden. Bitte erneut versuchen.",
+      "permissions": "Berechtigungen konnten nicht geladen werden.",
+      "noAccess": "Ihr Konto hat keinen Zugriff auf den Admin-Bereich.",
+      "generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
     },
     "unauthorized": {
-      "title": "Access denied",
-      "description": "Your account is signed in but does not have permission to use the admin workspace.",
-      "home": "Back to site",
-      "signOut": "Sign out"
+      "title": "Zugriff verweigert",
+      "description": "Sie sind angemeldet, haben aber keine Admin-Rechte.",
+      "home": "Zur Startseite",
+      "signOut": "Abmelden"
     }
   },
   "admin": {
     "logout": "Abmelden",
+    "sidebarTitle": "NHT Admin",
     "openMenu": "Menü öffnen",
     "nav": {
       "dashboard": "Dashboard",
       "applications": "Bewerbungen",
-      "creators": "Creators",
+      "creators": "Creator",
       "blog": "Blog",
       "analytics": "Analysen",
       "settings": "Einstellungen"
     },
     "pages": {
       "dashboard": {
-        "label": "Overview",
+        "label": "Übersicht",
         "title": "Dashboard",
-        "description": "Live pipeline metrics from applications in Supabase."
+        "description": "Live-Kennzahlen zu Bewerbungen aus Supabase."
       },
       "applications": {
         "label": "CRM",
-        "title": "Applications",
-        "description": "Review and manage incoming creator applications."
+        "title": "Bewerbungen",
+        "description": "Eingehende Creator-Bewerbungen prüfen und verwalten."
       },
       "creators": {
         "label": "Roster",
-        "title": "Creators",
-        "description": "Creator management is coming soon."
+        "title": "Creator",
+        "description": "Creator-Profile, Zuweisung und Status verwalten."
       },
       "blog": {
         "label": "Content",
         "title": "Blog",
-        "description": "Blog CMS is coming soon."
+        "description": "Lokalisierte Blogbeiträge erstellen, bearbeiten und veröffentlichen."
       },
       "analytics": {
         "label": "Insights",
-        "title": "Analytics",
-        "description": "Analytics is coming soon."
+        "title": "Analysen",
+        "description": "Analysen kommen bald."
       },
       "settings": {
         "label": "System",
-        "title": "Settings",
-        "description": "Site settings are coming soon."
+        "title": "Einstellungen",
+        "description": "Website-Einstellungen kommen bald."
       }
     },
     "applications": {
       "label": "CRM",
-      "title": "Applications",
-      "description": "Review and manage incoming creator applications.",
-      "detailLabel": "Application",
-      "empty": "No applications match your filters.",
-      "unassigned": "Unassigned",
-      "backToList": "Back to applications",
-      "backToDashboard": "Back to dashboard",
+      "title": "Bewerbungen",
+      "description": "Eingehende Creator-Bewerbungen prüfen und verwalten.",
+      "detailLabel": "Bewerbung",
+      "empty": "Keine Bewerbungen für diese Filter.",
+      "unassigned": "Nicht zugewiesen",
+      "backToList": "Zurück zu Bewerbungen",
+      "backToDashboard": "Zurück zum Dashboard",
       "filters": {
-        "search": "Search",
-        "searchPlaceholder": "Name, email, or platform",
+        "search": "Suche",
+        "searchPlaceholder": "Name, E-Mail oder Plattform",
         "status": "Status",
-        "priority": "Priority",
-        "all": "All",
-        "apply": "Apply",
-        "clear": "Clear"
+        "priority": "Priorität",
+        "all": "Alle",
+        "apply": "Anwenden",
+        "clear": "Zurücksetzen"
       },
       "table": {
         "name": "Name",
-        "email": "Email",
-        "platform": "Platform",
+        "email": "E-Mail",
+        "platform": "Plattform",
         "status": "Status",
-        "priority": "Priority",
+        "priority": "Priorität",
         "manager": "Manager",
-        "created": "Created",
-        "actions": "Actions",
-        "view": "View"
+        "created": "Erstellt",
+        "actions": "Aktionen",
+        "view": "Öffnen"
       },
       "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {page} of {totalPages} · {total} total"
+        "previous": "Zurück",
+        "next": "Weiter",
+        "pageOf": "Seite {page} von {totalPages} · {total} gesamt"
       },
       "fields": {
-        "fullName": "Full name",
-        "email": "Email",
-        "platform": "Platform",
-        "locale": "Locale",
-        "message": "Message",
+        "fullName": "Vollständiger Name",
+        "email": "E-Mail",
+        "platform": "Plattform",
+        "locale": "Sprache",
+        "message": "Nachricht",
         "status": "Status",
-        "priority": "Priority",
-        "manager": "Assigned manager",
-        "notes": "Internal notes",
-        "created": "Created",
-        "updated": "Updated",
-        "lastContact": "Last contact"
+        "priority": "Priorität",
+        "manager": "Manager",
+        "notes": "Notizen",
+        "created": "Erstellt",
+        "updated": "Aktualisiert",
+        "lastContact": "Letzter Kontakt"
       },
       "actions": {
-        "save": "Save",
-        "saving": "Saving…",
-        "saved": "Changes saved."
+        "save": "Speichern",
+        "saving": "Speichern…",
+        "saved": "Gespeichert",
+        "saveError": "Änderungen konnten nicht gespeichert werden."
       },
       "errors": {
-        "load": "Unable to load applications.",
-        "loadDetail": "Unable to load this application.",
-        "boundary": "Something went wrong loading applications.",
-        "retry": "Try again"
+        "load": "Bewerbungen konnten nicht geladen werden.",
+        "loadDetail": "Bewerbung konnte nicht geladen werden.",
+        "boundary": "Etwas ist schiefgelaufen.",
+        "retry": "Erneut versuchen",
+        "notFound": "Bewerbung nicht gefunden.",
+        "save": "Änderungen konnten nicht gespeichert werden."
       },
       "notFound": {
-        "title": "Application not found",
-        "description": "This application may have been removed or the link is invalid."
+        "title": "Bewerbung nicht gefunden",
+        "description": "Diese Bewerbung existiert nicht oder wurde entfernt."
+      },
+      "statusValues": {
+        "new": "Neu",
+        "reviewing": "In Prüfung",
+        "contacted": "Kontaktiert",
+        "meeting": "Meeting",
+        "active": "Aktiv",
+        "rejected": "Abgelehnt",
+        "archived": "Archiviert"
+      },
+      "priorityValues": {
+        "low": "Niedrig",
+        "normal": "Normal",
+        "high": "Hoch",
+        "urgent": "Dringend"
+      },
+      "actionErrors": {
+        "unauthorized": "Sie sind nicht berechtigt, diese Änderung vorzunehmen.",
+        "save": "Änderungen konnten nicht gespeichert werden.",
+        "invalidStatus": "Ungültiger Status.",
+        "invalidPriority": "Ungültige Priorität.",
+        "invalidManager": "Ungültiger Manager.",
+        "invalidNotes": "Ungültige Notizen."
       }
     },
     "dashboard": {
-      "label": "Overview",
+      "label": "Übersicht",
       "title": "Dashboard",
-      "description": "Live pipeline metrics from applications in Supabase.",
+      "description": "Live-Kennzahlen zu Bewerbungen aus Supabase.",
       "kpis": {
-        "total": "Total",
-        "new": "New",
-        "reviewing": "Reviewing",
-        "active": "Active",
-        "rejected": "Rejected"
+        "total": "Gesamt",
+        "new": "Neu",
+        "reviewing": "In Prüfung",
+        "active": "Aktiv",
+        "rejected": "Abgelehnt"
       },
       "recent": {
-        "title": "Recent applications",
-        "empty": "No applications yet.",
+        "title": "Aktuelle Bewerbungen",
+        "empty": "Noch keine Bewerbungen.",
         "name": "Name",
-        "platform": "Platform",
+        "platform": "Plattform",
         "status": "Status",
-        "priority": "Priority",
-        "created": "Created",
-        "viewAll": "View all"
+        "priority": "Priorität",
+        "created": "Erstellt",
+        "viewAll": "Alle anzeigen"
       },
       "platforms": {
-        "title": "Platform breakdown",
-        "empty": "No platform data yet."
+        "title": "Nach Plattform",
+        "empty": "Noch keine Plattformdaten.",
+        "values": {
+          "onlyfans": "OnlyFans",
+          "fansly": "Fansly",
+          "manyvids": "ManyVids",
+          "multiple": "Mehrere",
+          "emerging": "Emerging",
+          "other": "Sonstiges"
+        }
       },
       "quickActions": {
-        "title": "Quick actions",
-        "applications": "Applications",
-        "creators": "Creators",
+        "title": "Schnellaktionen",
+        "applications": "Bewerbungen",
+        "creators": "Creator",
         "blog": "Blog",
-        "analytics": "Analytics",
-        "settings": "Settings"
+        "analytics": "Analysen",
+        "settings": "Einstellungen"
       },
       "errors": {
-        "load": "Unable to load dashboard data."
+        "load": "Dashboard-Daten konnten nicht geladen werden."
+      },
+      "recentCreators": {
+        "title": "Aktuelle Creators",
+        "empty": "Noch keine Creators.",
+        "viewAll": "Alle anzeigen"
       }
     },
-    "navLabel": "Admin navigation",
-    "closeMenu": "Close menu"
+    "navLabel": "Admin-Navigation",
+    "closeMenu": "Menü schließen",
+    "blog": {
+      "label": "Content",
+      "title": "Blog",
+      "description": "Lokalisierte Blogbeiträge erstellen, bearbeiten und veröffentlichen.",
+      "detailLabel": "Beitrag",
+      "newTitle": "Neuer Beitrag",
+      "newDescription": "Fülle mindestens eine Übersetzung aus und speichere als Entwurf oder veröffentliche.",
+      "editDescription": "Status, Cover und Content/SEO je Locale aktualisieren.",
+      "newPost": "Neuer Beitrag",
+      "backToList": "Zurück zum Blog",
+      "empty": "Keine Beiträge für diese Filter.",
+      "untitled": "Ohne Titel",
+      "filters": {
+        "search": "Suche",
+        "searchPlaceholder": "Titel, Slug oder Auszug",
+        "status": "Status",
+        "locale": "Locale",
+        "all": "Alle",
+        "apply": "Anwenden",
+        "clear": "Zurücksetzen"
+      },
+      "table": {
+        "title": "Titel",
+        "status": "Status",
+        "locales": "Locales",
+        "author": "Autor",
+        "updated": "Aktualisiert",
+        "published": "Veröffentlicht",
+        "actions": "Aktionen",
+        "edit": "Bearbeiten"
+      },
+      "pagination": {
+        "previous": "Zurück",
+        "next": "Weiter",
+        "pageOf": "Seite {page} von {totalPages} · {total} Beiträge"
+      },
+      "statuses": {
+        "draft": "Entwurf",
+        "published": "Veröffentlicht",
+        "archived": "Archiviert"
+      },
+      "form": {
+        "status": "Status",
+        "coverImage": "Cover-Bild-URL",
+        "coverPlaceholder": "https://…",
+        "locales": "Übersetzungen",
+        "title": "Titel",
+        "slug": "Slug",
+        "excerpt": "Kurztext",
+        "content": "Inhalt",
+        "seoTitle": "SEO-Titel",
+        "seoDescription": "SEO-Beschreibung",
+        "save": "Speichern",
+        "saving": "Speichern…",
+        "create": "Erstellen",
+        "creating": "Erstellen…",
+        "delete": "Löschen",
+        "deleting": "Löschen…",
+        "confirmDelete": "Diesen Beitrag und alle Übersetzungen löschen? Das kann nicht rückgängig gemacht werden."
+      },
+      "editor": {
+        "bold": "Fett",
+        "italic": "Kursiv",
+        "h2": "Überschrift 2",
+        "h3": "Überschrift 3",
+        "bulletList": "Aufzählung",
+        "orderedList": "Nummerierte Liste",
+        "code": "Code",
+        "link": "Link",
+        "undo": "Rückgängig",
+        "redo": "Wiederholen",
+        "linkUrl": "URL"
+      },
+      "toast": {
+        "saved": "Beitrag gespeichert.",
+        "created": "Beitrag erstellt.",
+        "deleted": "Beitrag gelöscht."
+      },
+      "errors": {
+        "load": "Beiträge konnten nicht geladen werden.",
+        "needTranslation": "Füge mindestens eine Übersetzung mit Titel und Slug hinzu."
+      },
+      "notFound": {
+        "title": "Beitrag nicht gefunden",
+        "description": "Dieser Beitrag existiert nicht oder wurde entfernt."
+      },
+      "actionErrors": {
+        "unauthorized": "Sie sind nicht berechtigt, diese Aktion auszuführen.",
+        "invalid": "Ungültige Beitragsdaten.",
+        "create": "Beitrag konnte nicht erstellt werden.",
+        "update": "Beitrag konnte nicht aktualisiert werden.",
+        "delete": "Beitrag konnte nicht gelöscht werden.",
+        "notFound": "Beitrag nicht gefunden.",
+        "slugConflict": "Ein Beitrag mit diesem Slug existiert bereits für eine der Sprachen.",
+        "translations": "Übersetzungen konnten nicht gespeichert werden.",
+        "updateTranslations": "Übersetzungen konnten nicht aktualisiert werden.",
+        "adminOnly": "Nur Admins können Beiträge löschen.",
+        "invalidId": "Ungültige Beitrags-ID."
+      }
+    },
+    "staffFallback": "Mitarbeiter",
+    "closeOverlay": "Menü-Overlay schließen",
+    "roles": {
+      "owner": "Inhaber",
+      "admin": "Admin",
+      "manager": "Manager",
+      "creator": "Creator",
+      "guest": "Gast"
+    },
+    "creators": {
+      "label": "Roster",
+      "title": "Creators",
+      "description": "Creator-Profile, Zuweisung und Status verwalten.",
+      "detailLabel": "Creator",
+      "create": "Creator erstellen",
+      "empty": "Noch keine Creators.",
+      "emptyHint": "Erstellen Sie Ihren ersten Creator.",
+      "unassigned": "Nicht zugewiesen",
+      "backToList": "Zurück zu Creators",
+      "noApplication": "Keine verknüpfte Bewerbung",
+      "viewApplication": "Bewerbung anzeigen",
+      "filters": {
+        "search": "Suche",
+        "searchPlaceholder": "Name, E-Mail, Telegram, Land, Plattform",
+        "status": "Status",
+        "manager": "Manager",
+        "country": "Land",
+        "platform": "Plattform",
+        "sort": "Sortierung",
+        "all": "Alle",
+        "apply": "Anwenden",
+        "clear": "Zurücksetzen",
+        "sortNewest": "Neueste",
+        "sortOldest": "Älteste",
+        "sortName": "Name A–Z"
+      },
+      "table": {
+        "avatar": "Avatar",
+        "name": "Name",
+        "email": "E-Mail",
+        "country": "Land",
+        "platforms": "Plattformen",
+        "manager": "Manager",
+        "status": "Status",
+        "created": "Erstellt",
+        "actions": "Aktionen",
+        "view": "Ansehen"
+      },
+      "pagination": {
+        "previous": "Zurück",
+        "next": "Weiter",
+        "pageOf": "Seite {page} von {totalPages} · {total} gesamt"
+      },
+      "fields": {
+        "fullName": "Vollständiger Name",
+        "email": "E-Mail",
+        "telegram": "Telegram",
+        "country": "Land",
+        "languages": "Sprachen",
+        "languagesPlaceholder": "en, de, fr",
+        "platforms": "Plattformen",
+        "manager": "Manager",
+        "status": "Status",
+        "notes": "Notizen",
+        "application": "Bewerbung",
+        "created": "Erstellt",
+        "updated": "Aktualisiert",
+        "avatarUrl": "Avatar-URL"
+      },
+      "form": {
+        "title": "Creator erstellen",
+        "cancel": "Abbrechen",
+        "submit": "Erstellen",
+        "submitting": "Wird erstellt…"
+      },
+      "actions": {
+        "save": "Speichern",
+        "saving": "Speichern…",
+        "saved": "Änderungen gespeichert.",
+        "saveError": "Änderungen konnten nicht gespeichert werden.",
+        "uploadAvatar": "Avatar speichern"
+      },
+      "toast": {
+        "created": "Creator erstellt."
+      },
+      "statusValues": {
+        "new": "Neu",
+        "active": "Aktiv",
+        "paused": "Pausiert",
+        "vacation": "Urlaub",
+        "inactive": "Inaktiv",
+        "banned": "Gesperrt"
+      },
+      "platformValues": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Mehrere",
+        "emerging": "Emerging",
+        "other": "Sonstiges"
+      },
+      "errors": {
+        "load": "Creators konnten nicht geladen werden.",
+        "loadDetail": "Creator konnte nicht geladen werden.",
+        "boundary": "Fehler beim Laden der Creators.",
+        "retry": "Erneut versuchen"
+      },
+      "notFound": {
+        "title": "Creator nicht gefunden",
+        "description": "Dieser Creator wurde entfernt oder Sie haben keinen Zugriff."
+      },
+      "actionErrors": {
+        "unauthorized": "Sie sind nicht berechtigt, diese Änderung vorzunehmen.",
+        "forbidden": "Sie können nur Ihnen zugewiesene Creators verwalten.",
+        "invalid": "Ungültige Creator-Daten.",
+        "create": "Creator konnte nicht erstellt werden.",
+        "save": "Änderungen konnten nicht gespeichert werden.",
+        "invalidStatus": "Ungültiger Status.",
+        "invalidManager": "Ungültiger Manager.",
+        "invalidNotes": "Ungültige Notizen.",
+        "avatarNotReady": "Avatar-Upload ist noch nicht verfügbar. URL einfügen."
+      }
+    }
+  },
+  "common": {
+    "language": "Sprache"
   }
 }

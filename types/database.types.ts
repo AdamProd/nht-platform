@@ -218,6 +218,75 @@ export type Database = {
           },
         ];
       };
+      creators: {
+        Row: {
+          application_id: string | null;
+          avatar_url: string | null;
+          country: string | null;
+          created_at: string;
+          email: string;
+          full_name: string;
+          id: string;
+          is_active: boolean;
+          languages: string[];
+          manager_id: string | null;
+          notes: string | null;
+          platforms: string[];
+          status: Database["public"]["Enums"]["creator_status"];
+          telegram: string | null;
+          updated_at: string;
+        };
+        Insert: {
+          application_id?: string | null;
+          avatar_url?: string | null;
+          country?: string | null;
+          created_at?: string;
+          email: string;
+          full_name: string;
+          id?: string;
+          is_active?: boolean;
+          languages?: string[];
+          manager_id?: string | null;
+          notes?: string | null;
+          platforms?: string[];
+          status?: Database["public"]["Enums"]["creator_status"];
+          telegram?: string | null;
+          updated_at?: string;
+        };
+        Update: {
+          application_id?: string | null;
+          avatar_url?: string | null;
+          country?: string | null;
+          created_at?: string;
+          email?: string;
+          full_name?: string;
+          id?: string;
+          is_active?: boolean;
+          languages?: string[];
+          manager_id?: string | null;
+          notes?: string | null;
+          platforms?: string[];
+          status?: Database["public"]["Enums"]["creator_status"];
+          telegram?: string | null;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "creators_application_id_fkey";
+            columns: ["application_id"];
+            isOneToOne: false;
+            referencedRelation: "applications";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "creators_manager_id_fkey";
+            columns: ["manager_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
       profiles: {
         Row: {
           avatar_url: string | null;
@@ -311,6 +380,13 @@ export type Database = {
         | "rejected"
         | "archived";
       application_type: "creator" | "agency" | "partnership" | "general";
+      creator_status:
+        | "new"
+        | "active"
+        | "paused"
+        | "vacation"
+        | "inactive"
+        | "banned";
       user_role: "owner" | "admin" | "manager" | "creator" | "guest";
     };
     CompositeTypes: {
@@ -335,6 +411,7 @@ export type UserRole = Enums<"user_role">;
 export type ApplicationType = Enums<"application_type">;
 export type ApplicationStatus = Enums<"application_status">;
 export type ApplicationPriority = Enums<"application_priority">;
+export type CreatorStatus = Enums<"creator_status">;
 
 export const Constants = {
   public: {
@@ -350,6 +427,14 @@ export const Constants = {
         "archived",
       ] as const,
       application_type: ["creator", "agency", "partnership", "general"] as const,
+      creator_status: [
+        "new",
+        "active",
+        "paused",
+        "vacation",
+        "inactive",
+        "banned",
+      ] as const,
       user_role: ["owner", "admin", "manager", "creator", "guest"] as const,
     },
   },
