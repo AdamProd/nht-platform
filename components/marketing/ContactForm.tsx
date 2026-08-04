@@ -2,9 +2,10 @@
 
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Container from "@/components/ui/Container";
 import { fadeUp } from "@/components/motion/variants";
+import { submitApplication } from "@/features/applications";
 
 const platformKeys = [
   "onlyfans",
@@ -23,11 +24,35 @@ const benefitKeys = [
 
 export default function ContactForm() {
   const t = useTranslations("application");
+  const locale = useLocale();
   const [submitted, setSubmitted] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    if (pending) return;
+
+    setError(null);
+    setPending(true);
+
+    const formData = new FormData(e.currentTarget);
+    formData.set("locale", locale);
+
+    try {
+      const result = await submitApplication(formData);
+
+      if (result.success) {
+        setSubmitted(true);
+        return;
+      }
+
+      setError(result.message ?? t("error.description"));
+    } catch {
+      setError(t("error.description"));
+    } finally {
+      setPending(false);
+    }
   }
 
   return (
@@ -206,13 +231,23 @@ export default function ContactForm() {
                   />
                 </div>
 
+                {error ? (
+                  <p
+                    role="alert"
+                    className="text-sm leading-[var(--nht-leading-body)] text-[var(--nht-text-secondary)]"
+                  >
+                    {error}
+                  </p>
+                ) : null}
+
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.99 }}
-                  className="gold-gradient-bg mt-2 w-full rounded-full py-4 text-sm font-semibold text-[#090909] transition-shadow hover:shadow-[var(--nht-shadow-glow-strong)]"
+                  disabled={pending}
+                  whileHover={pending ? undefined : { scale: 1.01 }}
+                  whileTap={pending ? undefined : { scale: 0.99 }}
+                  className="gold-gradient-bg mt-2 w-full rounded-full py-4 text-sm font-semibold text-[#090909] transition-shadow hover:shadow-[var(--nht-shadow-glow-strong)] disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                  {t("form.submit")}
+                  {pending ? t("form.submitting") : t("form.submit")}
                 </motion.button>
               </form>
             )}

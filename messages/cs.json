@@ -1,1 +1,233 @@
-{}
+{
+  "meta": {
+    "title": "NHT — New Horizons Team | Správa tvůrců",
+    "description": "Budujeme byznys tvůrců. NHT je elitní management agentura pro tvůrce na OnlyFans, Fansly a ManyVids po celém světě."
+  },
+  "nav": {
+    "services": "Služby",
+    "results": "Výsledky",
+    "creators": "Tvůrci",
+    "faq": "FAQ",
+    "apply": "Přihlásit se"
+  },
+  "hero": {
+    "overline": "New Horizons Team",
+    "title": "Budujeme byznys tvůrců.",
+    "description": "NHT řídí strategii, operace a růst tvůrců na OnlyFans, Fansly a ManyVids. Vy tvoříte. My budujeme byznys kolem toho.",
+    "ctaPrimary": "Přihlásit se do NHT",
+    "ctaSecondary": "Naše služby"
+  },
+  "dashboard": {
+    "label": "NHT Dashboard",
+    "title": "Přehled účtu",
+    "monthlyRevenue": "Měsíční tržby",
+    "revenueValue": "$48,290",
+    "revenueChange": "+32.1%",
+    "subscribers": "Odběratelé",
+    "subscribersValue": "12,847",
+    "subscribersChange": "+18.4%",
+    "revenue": "Tržby",
+    "revenueStatValue": "$48,290",
+    "revenueStatChange": "+32.1%",
+    "messages": "Zprávy",
+    "messagesValue": "1,284",
+    "messagesChange": "+9.7%",
+    "analytics": "Analytics",
+    "activity": "Aktivita",
+    "activityItems": {
+      "subscriber": "Nový odběratel",
+      "ppv": "Nákup PPV",
+      "tip": "Přijatý tip"
+    }
+  },
+  "floatingStats": {
+    "revenueGrowth": "Růst tržeb",
+    "revenueValue": "+$48,000",
+    "revenueSuffix": "/měs.",
+    "activeFans": "Aktivní fanoušci",
+    "activeFansValue": "12,847",
+    "retention": "Retence",
+    "retentionValue": "94.2%"
+  },
+  "logoMarquee": {
+    "overline": "Platformy, na kterých působíme"
+  },
+  "services": {
+    "label": "Služby",
+    "title": "Management navržený jako systém.",
+    "description": "Šest disciplín. Jeden integrovaný tým. Vše potřebné k vedení byznysu tvůrce na nejvyšší úrovni.",
+    "items": {
+      "accountManagement": {
+        "title": "Správa účtů",
+        "description": "Vaše platformy běží bez vás v inboxu. Ceny, plánování, optimalizace profilu — denně pod dohledem dedikovaného team leada."
+      },
+      "contentStrategy": {
+        "title": "Obsahová strategie",
+        "description": "Každý post má cíl. Kalendáře stavěné na datech o výkonu, trendových signálech a chování audience — ne na odhadech."
+      },
+      "fanEngagement": {
+        "title": "Engagement fanoušků",
+        "description": "Zprávy, které konvertují. Retenční sekvence, personalizovaný outreach a správa konverzací, která udržuje odběratele platící."
+      },
+      "revenueArchitecture": {
+        "title": "Architektura tržeb",
+        "description": "PPV funnel, struktury tipů, logika bundlů. Navrhujeme, jak peníze proudí účtem — a neustále optimalizujeme."
+      },
+      "brandPositioning": {
+        "title": "Pozicování značky",
+        "description": "Jak vás vnímají, určuje, co vyděláváte. Vizuální směr, sociální přítomnost a cross-platform identita — s precizností."
+      },
+      "globalOperations": {
+        "title": "Globální operace",
+        "description": "Týmy napříč časovými pásmy. Vaše účty nikdy nespí, nepropásnou prodej a nenechají cenného fanouška čekat."
+      }
+    }
+  },
+  "results": {
+    "label": "Výsledky",
+    "title": "Důkazy, ne sliby.",
+    "description": "Čísla za NHT. Měřená, reportovaná a dostupná každému partnerovi.",
+    "cards": {
+      "creators": {
+        "title": "Tvůrců pod správou",
+        "metric": "Aktivní v 15 zemích"
+      },
+      "revenue": {
+        "title": "Kumulativní generované tržby",
+        "metric": "Sledované a ověřené"
+      },
+      "retention": {
+        "title": "Retence partnerství",
+        "metric": "Tvůrci, kteří zůstávají"
+      },
+      "uplift": {
+        "title": "Průměrný nárůst tržeb",
+        "metric": "V prvních šesti měsících"
+      }
+    }
+  },
+  "creators": {
+    "label": "Tvůrci",
+    "title": "Výsledky, které mluví.",
+    "description": "Anonymizované výsledky tvůrců pod správou NHT. Jména záměrně neuvedena.",
+    "before": "Před",
+    "after": "Po",
+    "perMonth": "/ měs.",
+    "footnote": "Pod správou NHT 6+ měsíců. Kompletní optimalizace účtu a architektura tržeb.",
+    "items": {
+      "sophia": {
+        "name": "Sophia R.",
+        "country": "Spojené státy",
+        "platform": "OnlyFans",
+        "before": "$8,200",
+        "after": "$48,600",
+        "growth": "+492%"
+      },
+      "mia": {
+        "name": "Mia K.",
+        "country": "Spojené království",
+        "platform": "Fansly",
+        "before": "$12,400",
+        "after": "$67,800",
+        "growth": "+447%"
+      },
+      "alexandra": {
+        "name": "Alexandra T.",
+        "country": "Kanada",
+        "platform": "ManyVids",
+        "before": "$5,800",
+        "after": "$31,200",
+        "growth": "+438%"
+      }
+    }
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "Přímé odpovědi.",
+    "description": "Co se tvůrci ptají před partnerstvím s NHT.",
+    "items": {
+      "platforms": {
+        "question": "Jaké platformy NHT spravuje?",
+        "answer": "OnlyFans, Fansly a ManyVids jsou naše hlavní platformy. Koordinujeme také traffic z Twitter/X, Instagram, Reddit a TikTok. Jak se objevují nové monetizační platformy, rozšiřujeme se s nimi."
+      },
+      "fees": {
+        "question": "Jak NHT strukturuje poplatky?",
+        "answer": "Na bázi výkonu. Vyděláváme, když vyděláváte vy. Po soukromé konzultaci obdržíte transparentní návrh sladěný s vašimi aktuálními tržbami a trajektorií. Žádné retainery. Žádné skryté poplatky."
+      },
+      "control": {
+        "question": "Zachovávám si kreativní kontrolu?",
+        "answer": "Zcela. Váš obsah, vaše značka, vaše rozhodnutí. NHT řídí operace, strategii a komunikaci s fanoušky. Nic se nepublikuje bez vašeho souhlasu."
+      },
+      "timeline": {
+        "question": "Jak rychle se objeví výsledky?",
+        "answer": "Operační úleva je okamžitá — přebíráme do několika dní po onboardingu. Dopad na tržby se obvykle projeví za 30–60 dní. Kumulativní růst následuje od druhého do šestého měsíce."
+      },
+      "confidentiality": {
+        "question": "Jak je zajištěna důvěrnost?",
+        "answer": "Každé partnerství začíná podepsaným NDA. Nezveřejňujeme identity klientů, výdělky ani data účtů. Diskrétnost tu není politika — je to základ naší práce."
+      },
+      "criteria": {
+        "question": "Koho NHT hledá?",
+        "answer": "Tvůrce, kteří k tomu přistupují jako k byznysu, ne vedlejšímu projektu. Spolupracujeme s novými talenty i etablovanými tvůrci. Každá přihláška se posuzuje individuálně — přijímáme méně, než odmítáme."
+      }
+    }
+  },
+  "application": {
+    "label": "Přihláška",
+    "title": "Začněte rozhovor.",
+    "description": "NHT přijímá každé čtvrtletí omezený počet nových tvůrců. Pokud je shoda, víme to do 24 hodin.",
+    "benefits": {
+      "consultation": "Soukromá konzultace do 48 hodin od přihlášky",
+      "architecture": "Vlastní architektura růstu pro vaši niku a platformu",
+      "fees": "Poplatky na bázi výkonu — sladěné incentivy, nulové počáteční náklady",
+      "nda": "Partnerství chráněné NDA od prvního dne"
+    },
+    "contact": {
+      "emailLabel": "Email",
+      "emailValue": "hello@nht.team",
+      "responseLabel": "Odpověď",
+      "responseValue": "Do 24 hodin",
+      "coverageLabel": "Pokrytí",
+      "coverageValue": "Globálně — 15+ zemí"
+    },
+    "form": {
+      "nameLabel": "Jméno",
+      "namePlaceholder": "Celé jméno",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "platformLabel": "Platforma",
+      "platformPlaceholder": "Vyberte platformu",
+      "messageLabel": "O vás",
+      "messagePlaceholder": "Platformy, aktuální měsíční tržby a co hledáte...",
+      "submit": "Odeslat přihlášku",
+      "submitting": "Odesílání…",
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Více platforem",
+        "emerging": "Nová platforma"
+      }
+    },
+    "success": {
+      "title": "Přihláška přijata.",
+      "description": "Náš tým posoudí vaši žádost a odpoví do jednoho pracovního dne."
+    },
+    "error": {
+      "description": "Přihlášku se nepodařilo uložit. Zkuste to znovu."
+    }
+  },
+  "footer": {
+    "tagline": "Budujeme byznys tvůrců.",
+    "copyright": "NHT — New Horizons Team. Všechna práva vyhrazena.",
+    "legal": {
+      "privacy": "Soukromí",
+      "terms": "Podmínky",
+      "nda": "NDA"
+    }
+  },
+  "brand": {
+    "name": "NHT",
+    "fullName": "New Horizons Team"
+  }
+}

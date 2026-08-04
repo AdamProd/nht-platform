@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import Logo from "@/components/brand/Logo";
+import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
 
 export default function Navbar() {
   const t = useTranslations("nav");
@@ -54,7 +55,8 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <div className="hidden lg:block">
+          <div className="hidden items-center gap-4 lg:flex">
+            <LanguageSwitcher variant="desktop" />
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               <Link
                 href="#contact"
@@ -107,6 +109,10 @@ export default function Navbar() {
                   </Link>
                 </li>
               ))}
+              <LanguageSwitcher
+                variant="mobile"
+                onSelect={() => setMenuOpen(false)}
+              />
               <li className="p-3 pt-1">
                 <Link
                   href="#contact"

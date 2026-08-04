@@ -1,1 +1,233 @@
-{}
+{
+  "meta": {
+    "title": "NHT — New Horizons Team | Creator Management",
+    "description": "Wir bauen Creator-Businesses. NHT ist die führende Management-Agentur für OnlyFans-, Fansly- und ManyVids-Creators weltweit."
+  },
+  "nav": {
+    "services": "Leistungen",
+    "results": "Ergebnisse",
+    "creators": "Creators",
+    "faq": "FAQ",
+    "apply": "Bewerben"
+  },
+  "hero": {
+    "overline": "New Horizons Team",
+    "title": "Wir bauen Creator-Businesses.",
+    "description": "NHT steuert Strategie, Operations und Wachstum für Creators auf OnlyFans, Fansly und ManyVids. Sie kreieren. Wir bauen das Business drumherum.",
+    "ctaPrimary": "Bei NHT bewerben",
+    "ctaSecondary": "Unsere Leistungen"
+  },
+  "dashboard": {
+    "label": "NHT Dashboard",
+    "title": "Account-Übersicht",
+    "monthlyRevenue": "Monatlicher Umsatz",
+    "revenueValue": "$48,290",
+    "revenueChange": "+32.1%",
+    "subscribers": "Abonnenten",
+    "subscribersValue": "12,847",
+    "subscribersChange": "+18.4%",
+    "revenue": "Umsatz",
+    "revenueStatValue": "$48,290",
+    "revenueStatChange": "+32.1%",
+    "messages": "Nachrichten",
+    "messagesValue": "1,284",
+    "messagesChange": "+9.7%",
+    "analytics": "Analytics",
+    "activity": "Aktivität",
+    "activityItems": {
+      "subscriber": "Neuer Abonnent",
+      "ppv": "PPV-Kauf",
+      "tip": "Trinkgeld erhalten"
+    }
+  },
+  "floatingStats": {
+    "revenueGrowth": "Umsatzwachstum",
+    "revenueValue": "+$48,000",
+    "revenueSuffix": "/Mo.",
+    "activeFans": "Aktive Fans",
+    "activeFansValue": "12,847",
+    "retention": "Retention",
+    "retentionValue": "94.2%"
+  },
+  "logoMarquee": {
+    "overline": "Plattformen, auf denen wir operieren"
+  },
+  "services": {
+    "label": "Leistungen",
+    "title": "Management, durchdacht.",
+    "description": "Sechs Disziplinen. Ein integriertes Team. Alles, was ein Creator-Business auf höchstem Niveau braucht.",
+    "items": {
+      "accountManagement": {
+        "title": "Account Management",
+        "description": "Ihre Plattformen laufen, ohne dass Sie im Posteingang sitzen. Pricing, Scheduling, Profiloptimierung — täglich betreut von einem dedizierten Team Lead."
+      },
+      "contentStrategy": {
+        "title": "Content-Strategie",
+        "description": "Jeder Post hat ein Ziel. Kalender basieren auf Performance-Daten, Trend-Signalen und Audience-Verhalten — nicht auf Bauchgefühl."
+      },
+      "fanEngagement": {
+        "title": "Fan Engagement",
+        "description": "Nachrichten, die konvertieren. Retention-Sequenzen, personalisierte Ansprache und Conversation Management, das Abonnenten zahlend hält."
+      },
+      "revenueArchitecture": {
+        "title": "Revenue Architecture",
+        "description": "PPV-Funnels, Trinkgeld-Strukturen, Bundle-Logik. Wir konstruieren, wie Geld durch Ihren Account fließt — und optimieren kontinuierlich."
+      },
+      "brandPositioning": {
+        "title": "Brand Positioning",
+        "description": "Wie Sie wahrgenommen werden, bestimmt, was Sie verdienen. Visuelle Richtung, Social Presence und Cross-Platform-Identität — präzise umgesetzt."
+      },
+      "globalOperations": {
+        "title": "Global Operations",
+        "description": "Teams über Zeitzonen hinweg. Ihre Accounts schlafen nie, verpassen keinen Sale und lassen keinen wertvollen Fan warten."
+      }
+    }
+  },
+  "results": {
+    "label": "Ergebnisse",
+    "title": "Beweise, keine Versprechen.",
+    "description": "Die Zahlen hinter NHT. Gemessen, berichtet und für jeden Partner einsehbar.",
+    "cards": {
+      "creators": {
+        "title": "Creators unter Management",
+        "metric": "Aktiv in 15 Ländern"
+      },
+      "revenue": {
+        "title": "Kumulierter generierter Umsatz",
+        "metric": "Erfasst und verifiziert"
+      },
+      "retention": {
+        "title": "Partnerschafts-Retention",
+        "metric": "Creators, die bleiben"
+      },
+      "uplift": {
+        "title": "Durchschnittlicher Umsatzanstieg",
+        "metric": "In den ersten sechs Monaten"
+      }
+    }
+  },
+  "creators": {
+    "label": "Creators",
+    "title": "Ergebnisse, die sprechen.",
+    "description": "Anonymisierte Resultate von Creators unter NHT-Management. Namen werden aus Richtliniengründen nicht genannt.",
+    "before": "Vorher",
+    "after": "Nachher",
+    "perMonth": "/ Monat",
+    "footnote": "Unter NHT-Management seit 6+ Monaten. Full-Stack-Account-Optimierung und Revenue Architecture.",
+    "items": {
+      "sophia": {
+        "name": "Sophia R.",
+        "country": "Vereinigte Staaten",
+        "platform": "OnlyFans",
+        "before": "$8,200",
+        "after": "$48,600",
+        "growth": "+492%"
+      },
+      "mia": {
+        "name": "Mia K.",
+        "country": "Vereinigtes Königreich",
+        "platform": "Fansly",
+        "before": "$12,400",
+        "after": "$67,800",
+        "growth": "+447%"
+      },
+      "alexandra": {
+        "name": "Alexandra T.",
+        "country": "Kanada",
+        "platform": "ManyVids",
+        "before": "$5,800",
+        "after": "$31,200",
+        "growth": "+438%"
+      }
+    }
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "Klare Antworten.",
+    "description": "Was Creators vor einer Partnerschaft mit NHT fragen.",
+    "items": {
+      "platforms": {
+        "question": "Welche Plattformen managed NHT?",
+        "answer": "OnlyFans, Fansly und ManyVids sind unsere Kernplattformen. Wir koordinieren auch Traffic von Twitter/X, Instagram, Reddit und TikTok. Wenn neue Monetarisierungsplattformen entstehen, expandieren wir mit."
+      },
+      "fees": {
+        "question": "Wie strukturiert NHT die Gebühren?",
+        "answer": "Performance-basiert. Wir verdienen, wenn Sie verdienen. Nach einer privaten Beratung erhalten Sie ein transparentes Angebot, abgestimmt auf Ihren aktuellen Umsatz und Ihre Trajektorie. Keine Retainer. Keine versteckten Kosten."
+      },
+      "control": {
+        "question": "Behalte ich die kreative Kontrolle?",
+        "answer": "Vollständig. Ihr Content, Ihre Marke, Ihre Entscheidungen. NHT übernimmt Operations, Strategie und Fan-Kommunikation. Nichts wird ohne Ihre Freigabe veröffentlicht."
+      },
+      "timeline": {
+        "question": "Wie schnell zeigen sich Ergebnisse?",
+        "answer": "Operative Entlastung ist sofort — wir übernehmen innerhalb weniger Tage nach dem Onboarding. Umsatzwirkung zeigt sich typischerweise in 30–60 Tagen. Kumulatives Wachstum folgt in Monat zwei bis sechs."
+      },
+      "confidentiality": {
+        "question": "Wie wird Vertraulichkeit gehandhabt?",
+        "answer": "Jede Partnerschaft beginnt mit einer unterzeichneten NDA. Wir geben keine Client-Identitäten, Einnahmen oder Account-Daten preis. Diskretion ist hier keine Policy — sie ist die Grundlage unserer Arbeit."
+      },
+      "criteria": {
+        "question": "Wen sucht NHT?",
+        "answer": "Creators, die das als Business behandeln, nicht als Nebenprojekt. Wir arbeiten mit aufstrebendem Talent und etablierten Earners. Jede Bewerbung wird individuell geprüft — wir nehmen weniger an, als wir ablehnen."
+      }
+    }
+  },
+  "application": {
+    "label": "Bewerbung",
+    "title": "Starten Sie das Gespräch.",
+    "description": "NHT nimmt pro Quartal nur eine begrenzte Anzahl neuer Creators auf. Wenn es passt, wissen wir das innerhalb von 24 Stunden.",
+    "benefits": {
+      "consultation": "Private Beratung innerhalb von 48 Stunden nach der Bewerbung",
+      "architecture": "Individuelle Growth Architecture für Ihre Nische und Plattform",
+      "fees": "Performance-basierte Gebühren — gemeinsame Interessen, null Vorabkosten",
+      "nda": "NDA-geschützte Partnerschaft ab Tag eins"
+    },
+    "contact": {
+      "emailLabel": "E-Mail",
+      "emailValue": "hello@nht.team",
+      "responseLabel": "Antwort",
+      "responseValue": "Innerhalb von 24 Stunden",
+      "coverageLabel": "Abdeckung",
+      "coverageValue": "Global — 15+ Länder"
+    },
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Vollständiger Name",
+      "emailLabel": "E-Mail",
+      "emailPlaceholder": "you@example.com",
+      "platformLabel": "Plattform",
+      "platformPlaceholder": "Plattform wählen",
+      "messageLabel": "Über Sie",
+      "messagePlaceholder": "Plattformen, aktueller Monatsumsatz und was Sie suchen...",
+      "submit": "Bewerbung absenden",
+      "submitting": "Wird gesendet…",
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Mehrere Plattformen",
+        "emerging": "Neue Plattform"
+      }
+    },
+    "success": {
+      "title": "Bewerbung eingegangen.",
+      "description": "Unser Team prüft Ihre Einreichung und antwortet innerhalb eines Werktags."
+    },
+    "error": {
+      "description": "Ihre Bewerbung konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
+    }
+  },
+  "footer": {
+    "tagline": "Wir bauen Creator-Businesses.",
+    "copyright": "NHT — New Horizons Team. Alle Rechte vorbehalten.",
+    "legal": {
+      "privacy": "Datenschutz",
+      "terms": "AGB",
+      "nda": "NDA"
+    }
+  },
+  "brand": {
+    "name": "NHT",
+    "fullName": "New Horizons Team"
+  }
+}

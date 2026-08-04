@@ -200,6 +200,7 @@
       "messageLabel": "About you",
       "messagePlaceholder": "Platforms, current monthly revenue, and what you're looking for...",
       "submit": "Submit Application",
+      "submitting": "Submitting…",
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
@@ -211,6 +212,9 @@
     "success": {
       "title": "Application received.",
       "description": "Our team will review your submission and respond within one business day."
+    },
+    "error": {
+      "description": "Unable to save your application. Please try again."
     }
   },
   "footer": {
