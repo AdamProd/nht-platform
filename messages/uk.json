@@ -398,7 +398,7 @@
     "creators": {
       "label": "Ростер",
       "title": "Креатори",
-      "description": "Керування профілями креаторів, призначенням і статусом.",
+      "description": "Керування профілями, платформами, доходом і призначенням креаторів.",
       "detailLabel": "Креатор",
       "create": "Створити креатора",
       "unassigned": "Не призначено",
@@ -411,7 +411,7 @@
       },
       "filters": {
         "search": "Пошук",
-        "searchPlaceholder": "Ім’я, email, telegram, країна, платформа",
+        "searchPlaceholder": "Ім'я, email, telegram",
         "status": "Статус",
         "manager": "Менеджер",
         "country": "Країна",
@@ -424,18 +424,20 @@
       "sort": {
         "newest": "Спочатку нові",
         "oldest": "Спочатку старі",
-        "name": "Ім’я А–Я"
+        "name": "Ім'я А–Я",
+        "revenue": "Дохід"
       },
       "table": {
         "avatar": "Аватар",
-        "name": "Ім’я",
+        "name": "Відображуване ім'я",
         "email": "Email",
         "country": "Країна",
         "platforms": "Платформи",
         "manager": "Менеджер",
         "status": "Статус",
-        "created": "Створено",
-        "actions": "Дії"
+        "actions": "Дії",
+        "revenue": "Дохід",
+        "lastActivity": "Остання активність"
       },
       "pagination": {
         "previous": "Назад",
@@ -453,18 +455,17 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
-        "manyvids": "ManyVids",
-        "multiple": "Кілька",
-        "emerging": "Нова платформа",
-        "other": "Інше"
+        "chaturbate": "Chaturbate",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X"
       },
       "fields": {
-        "fullName": "Повне ім’я",
         "email": "Email",
         "telegram": "Telegram",
         "country": "Країна",
         "languages": "Мови",
-        "languagesPlaceholder": "en, uk, de",
+        "languagesPlaceholder": "en, ru, de",
         "platforms": "Платформи",
         "manager": "Менеджер",
         "status": "Статус",
@@ -472,7 +473,18 @@
         "application": "Заявка",
         "created": "Створено",
         "updated": "Оновлено",
-        "avatarUrl": "URL аватара"
+        "avatarUrl": "URL аватара",
+        "displayName": "Відображуване ім'я",
+        "legalName": "Юридичне ім'я",
+        "birthday": "День народження",
+        "phone": "Телефон",
+        "timezone": "Часовий пояс",
+        "lastLogin": "Останній вхід",
+        "lastActivity": "Остання активність",
+        "revenueCurrent": "Поточний місяць",
+        "revenuePrevious": "Минулий місяць",
+        "revenueLifetime": "За весь час",
+        "payouts": "Виплати"
       },
       "form": {
         "title": "Новий креатор",
@@ -515,6 +527,23 @@
         "invalidManager": "Некоректний менеджер.",
         "invalidNotes": "Некоректні нотатки.",
         "avatarNotReady": "Завантаження аватара поки недоступне. Вставте URL."
+      },
+      "stats": {
+        "total": "Усього креаторів",
+        "active": "Активні",
+        "vacation": "У відпустці",
+        "inactive": "Неактивні",
+        "revenueCurrent": "Поточний дохід",
+        "revenueAverage": "Середній дохід"
+      },
+      "sections": {
+        "profile": "Профіль",
+        "contacts": "Контакти",
+        "platforms": "Платформи",
+        "revenue": "Дохід",
+        "manager": "Менеджер",
+        "notes": "Внутрішні нотатки",
+        "timeline": "Таймлайн"
       }
     },
     "dashboard": {
@@ -563,8 +592,27 @@
       },
       "recentCreators": {
         "title": "Нещодавні креатори",
-        "empty": "Креаторів поки немає.",
-        "viewAll": "Усі"
+        "empty": "Поки немає креаторів.",
+        "viewAll": "Дивитися всі"
+      },
+      "newestCreators": {
+        "title": "Нові креатори",
+        "empty": "Поки немає креаторів.",
+        "viewAll": "Дивитися всі"
+      },
+      "topRevenueCreators": {
+        "title": "Топ за доходом",
+        "empty": "Поки немає даних про дохід.",
+        "viewAll": "Дивитися всі"
+      },
+      "latestRegistrations": {
+        "title": "Останні реєстрації",
+        "empty": "Поки немає реєстрацій.",
+        "viewAll": "Дивитися всі",
+        "name": "Ім'я",
+        "email": "Email",
+        "registered": "Зареєстровано",
+        "status": "Статус"
       }
     },
     "navLabel": "Навігація адмінки",

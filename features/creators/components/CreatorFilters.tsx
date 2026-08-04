@@ -29,6 +29,7 @@ type CreatorFiltersProps = {
     sortNewest: string;
     sortOldest: string;
     sortName: string;
+    sortRevenue: string;
     unassigned: string;
   };
   statusLabels: Record<string, string>;
@@ -99,11 +100,7 @@ export default function CreatorFilters({
         <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
           {labels.country}
         </span>
-        <input
-          name="country"
-          defaultValue={country}
-          className="nht-input"
-        />
+        <input name="country" defaultValue={country} className="nht-input" />
       </label>
 
       <label className="block">
@@ -131,7 +128,9 @@ export default function CreatorFilters({
                 ? labels.sortNewest
                 : value === "oldest"
                   ? labels.sortOldest
-                  : labels.sortName}
+                  : value === "revenue"
+                    ? labels.sortRevenue
+                    : labels.sortName}
             </option>
           ))}
         </select>

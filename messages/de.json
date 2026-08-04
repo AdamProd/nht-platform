@@ -398,7 +398,7 @@
     "creators": {
       "label": "Roster",
       "title": "Creators",
-      "description": "Creator-Profile, Zuweisung und Status verwalten.",
+      "description": "Creator-Profile, Plattformen, Umsatz und Zuweisung verwalten.",
       "detailLabel": "Creator",
       "create": "Creator erstellen",
       "unassigned": "Nicht zugewiesen",
@@ -411,7 +411,7 @@
       },
       "filters": {
         "search": "Suche",
-        "searchPlaceholder": "Name, E-Mail, Telegram, Land, Plattform",
+        "searchPlaceholder": "Name, E-Mail, Telegram",
         "status": "Status",
         "manager": "Manager",
         "country": "Land",
@@ -424,18 +424,20 @@
       "sort": {
         "newest": "Neueste",
         "oldest": "Älteste",
-        "name": "Name A–Z"
+        "name": "Name A–Z",
+        "revenue": "Umsatz"
       },
       "table": {
         "avatar": "Avatar",
-        "name": "Name",
+        "name": "Anzeigename",
         "email": "E-Mail",
         "country": "Land",
         "platforms": "Plattformen",
         "manager": "Manager",
         "status": "Status",
-        "created": "Erstellt",
-        "actions": "Aktionen"
+        "actions": "Aktionen",
+        "revenue": "Umsatz",
+        "lastActivity": "Letzte Aktivität"
       },
       "pagination": {
         "previous": "Zurück",
@@ -453,18 +455,17 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
-        "manyvids": "ManyVids",
-        "multiple": "Mehrere",
-        "emerging": "Emerging",
-        "other": "Sonstiges"
+        "chaturbate": "Chaturbate",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X"
       },
       "fields": {
-        "fullName": "Vollständiger Name",
         "email": "E-Mail",
         "telegram": "Telegram",
         "country": "Land",
         "languages": "Sprachen",
-        "languagesPlaceholder": "en, de, fr",
+        "languagesPlaceholder": "en, ru, de",
         "platforms": "Plattformen",
         "manager": "Manager",
         "status": "Status",
@@ -472,7 +473,18 @@
         "application": "Bewerbung",
         "created": "Erstellt",
         "updated": "Aktualisiert",
-        "avatarUrl": "Avatar-URL"
+        "avatarUrl": "Avatar-URL",
+        "displayName": "Anzeigename",
+        "legalName": "Rechtsname",
+        "birthday": "Geburtstag",
+        "phone": "Telefon",
+        "timezone": "Zeitzone",
+        "lastLogin": "Letzter Login",
+        "lastActivity": "Letzte Aktivität",
+        "revenueCurrent": "Aktueller Monat",
+        "revenuePrevious": "Vormonat",
+        "revenueLifetime": "Gesamt",
+        "payouts": "Auszahlungen"
       },
       "form": {
         "title": "Creator erstellen",
@@ -515,6 +527,23 @@
         "invalidManager": "Ungültiger Manager.",
         "invalidNotes": "Ungültige Notizen.",
         "avatarNotReady": "Avatar-Upload ist noch nicht verfügbar. URL einfügen."
+      },
+      "stats": {
+        "total": "Creator gesamt",
+        "active": "Aktiv",
+        "vacation": "Urlaub",
+        "inactive": "Inaktiv",
+        "revenueCurrent": "Aktueller Umsatz",
+        "revenueAverage": "Durchschnittsumsatz"
+      },
+      "sections": {
+        "profile": "Profil",
+        "contacts": "Kontakte",
+        "platforms": "Plattformen",
+        "revenue": "Umsatz",
+        "manager": "Manager",
+        "notes": "Interne Notizen",
+        "timeline": "Zeitachse"
       }
     },
     "dashboard": {
@@ -562,9 +591,28 @@
         "load": "Dashboard-Daten konnten nicht geladen werden."
       },
       "recentCreators": {
-        "title": "Aktuelle Creators",
-        "empty": "Noch keine Creators.",
+        "title": "Aktuelle Creator",
+        "empty": "Noch keine Creator.",
         "viewAll": "Alle anzeigen"
+      },
+      "newestCreators": {
+        "title": "Neueste Creator",
+        "empty": "Noch keine Creator.",
+        "viewAll": "Alle anzeigen"
+      },
+      "topRevenueCreators": {
+        "title": "Top-Umsatz Creator",
+        "empty": "Noch keine Umsatzdaten.",
+        "viewAll": "Alle anzeigen"
+      },
+      "latestRegistrations": {
+        "title": "Neueste Registrierungen",
+        "empty": "Noch keine Registrierungen.",
+        "viewAll": "Alle anzeigen",
+        "name": "Name",
+        "email": "E-Mail",
+        "registered": "Registriert",
+        "status": "Status"
       }
     },
     "navLabel": "Admin-Navigation",

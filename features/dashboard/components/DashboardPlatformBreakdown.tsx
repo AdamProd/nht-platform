@@ -6,11 +6,13 @@ type DashboardPlatformBreakdownProps = {
     title: string;
     empty: string;
   };
+  platformLabels: Record<string, string>;
 };
 
 export default function DashboardPlatformBreakdown({
   items,
   labels,
+  platformLabels,
 }: DashboardPlatformBreakdownProps) {
   const max = items.reduce((acc, item) => Math.max(acc, item.count), 0);
 
@@ -29,7 +31,9 @@ export default function DashboardPlatformBreakdown({
             return (
               <li key={item.platform}>
                 <div className="mb-1.5 flex items-baseline justify-between gap-3">
-                  <span className="text-sm text-white">{item.label}</span>
+                  <span className="text-sm text-white">
+                    {platformLabels[item.platform] ?? item.label}
+                  </span>
                   <span className="text-xs text-[var(--nht-text-tertiary)]">
                     {item.count}
                   </span>

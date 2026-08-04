@@ -1,18 +1,18 @@
 import { createClient } from "@/lib/supabase/server";
 import type { PlatformBreakdownItem } from "@/features/dashboard/types";
 
-const PLATFORM_LABELS: Record<string, string> = {
-  onlyfans: "OnlyFans",
-  fansly: "Fansly",
-  manyvids: "ManyVids",
-  multiple: "Multiple",
-  emerging: "Emerging",
-};
+const KNOWN_PLATFORMS = new Set([
+  "onlyfans",
+  "fansly",
+  "manyvids",
+  "multiple",
+  "emerging",
+]);
 
 function normalizePlatform(platform: string | null): string {
   if (!platform) return "other";
   const key = platform.trim().toLowerCase();
-  return PLATFORM_LABELS[key] ? key : "other";
+  return KNOWN_PLATFORMS.has(key) ? key : "other";
 }
 
 export async function getPlatformBreakdown(): Promise<PlatformBreakdownItem[]> {
@@ -37,14 +37,11 @@ export async function getPlatformBreakdown(): Promise<PlatformBreakdownItem[]> {
   const items: PlatformBreakdownItem[] = [...counts.entries()].map(
     ([platform, count]) => ({
       platform,
-      label:
-        platform === "other"
-          ? "Other"
-          : (PLATFORM_LABELS[platform] ?? platform),
+      label: platform,
       count,
     }),
   );
 
-  items.sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+  items.sort((a, b) => b.count - a.count || a.platform.localeCompare(b.platform));
   return items;
 }

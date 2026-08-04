@@ -2,7 +2,7 @@ import CreatorCard from "@/features/creators/components/CreatorCard";
 import type { CreatorListItem } from "@/features/creators/types";
 import { Link } from "@/i18n/navigation";
 
-type DashboardRecentCreatorsProps = {
+type DashboardCreatorsSectionProps = {
   items: CreatorListItem[];
   locale?: string;
   showRevenue?: boolean;
@@ -15,14 +15,13 @@ type DashboardRecentCreatorsProps = {
   statusLabels: Record<string, string>;
 };
 
-/** @deprecated Prefer DashboardCreatorsSection */
-export default function DashboardRecentCreators({
+export default function DashboardCreatorsSection({
   items,
   locale = "en",
   showRevenue = false,
   labels,
   statusLabels,
-}: DashboardRecentCreatorsProps) {
+}: DashboardCreatorsSectionProps) {
   return (
     <section className="rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02]">
       <div className="flex items-center justify-between gap-3 border-b border-white/[0.06] px-5 py-4">

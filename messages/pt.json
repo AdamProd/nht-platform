@@ -398,7 +398,7 @@
     "creators": {
       "label": "Roster",
       "title": "Criadores",
-      "description": "Gira perfis, atribuição e estado dos criadores.",
+      "description": "Gerencie perfis, plataformas, receita e atribuição de criadores.",
       "detailLabel": "Criador",
       "create": "Criar criador",
       "unassigned": "Não atribuído",
@@ -411,7 +411,7 @@
       },
       "filters": {
         "search": "Pesquisar",
-        "searchPlaceholder": "Nome, email, telegram, país, plataforma",
+        "searchPlaceholder": "Nome, email, telegram",
         "status": "Estado",
         "manager": "Gestor",
         "country": "País",
@@ -424,18 +424,20 @@
       "sort": {
         "newest": "Mais recentes",
         "oldest": "Mais antigos",
-        "name": "Nome A–Z"
+        "name": "Nome A–Z",
+        "revenue": "Receita"
       },
       "table": {
         "avatar": "Avatar",
-        "name": "Nome",
+        "name": "Nome de exibição",
         "email": "Email",
         "country": "País",
         "platforms": "Plataformas",
-        "manager": "Gestor",
-        "status": "Estado",
-        "created": "Criado",
-        "actions": "Ações"
+        "manager": "Manager",
+        "status": "Status",
+        "actions": "Ações",
+        "revenue": "Receita",
+        "lastActivity": "Última atividade"
       },
       "pagination": {
         "previous": "Anterior",
@@ -453,26 +455,36 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
-        "manyvids": "ManyVids",
-        "multiple": "Várias",
-        "emerging": "Emergente",
-        "other": "Outro"
+        "chaturbate": "Chaturbate",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X"
       },
       "fields": {
-        "fullName": "Nome completo",
         "email": "Email",
         "telegram": "Telegram",
         "country": "País",
         "languages": "Idiomas",
-        "languagesPlaceholder": "en, pt, de",
+        "languagesPlaceholder": "en, ru, de",
         "platforms": "Plataformas",
-        "manager": "Gestor",
-        "status": "Estado",
+        "manager": "Manager",
+        "status": "Status",
         "notes": "Notas",
         "application": "Candidatura",
         "created": "Criado",
         "updated": "Atualizado",
-        "avatarUrl": "URL do avatar"
+        "avatarUrl": "URL do avatar",
+        "displayName": "Nome de exibição",
+        "legalName": "Nome legal",
+        "birthday": "Aniversário",
+        "phone": "Telefone",
+        "timezone": "Fuso horário",
+        "lastLogin": "Último login",
+        "lastActivity": "Última atividade",
+        "revenueCurrent": "Mês atual",
+        "revenuePrevious": "Mês anterior",
+        "revenueLifetime": "Total",
+        "payouts": "Pagamentos"
       },
       "form": {
         "title": "Novo criador",
@@ -515,6 +527,23 @@
         "invalidManager": "Gestor inválido.",
         "invalidNotes": "Notas inválidas.",
         "avatarNotReady": "Upload de avatar ainda não disponível. Cole um URL."
+      },
+      "stats": {
+        "total": "Total de criadores",
+        "active": "Ativos",
+        "vacation": "Férias",
+        "inactive": "Inativos",
+        "revenueCurrent": "Receita atual",
+        "revenueAverage": "Receita média"
+      },
+      "sections": {
+        "profile": "Perfil",
+        "contacts": "Contactos",
+        "platforms": "Plataformas",
+        "revenue": "Receita",
+        "manager": "Manager",
+        "notes": "Notas internas",
+        "timeline": "Linha do tempo"
       }
     },
     "dashboard": {
@@ -563,8 +592,27 @@
       },
       "recentCreators": {
         "title": "Criadores recentes",
-        "empty": "Ainda não há criadores.",
+        "empty": "Ainda sem criadores.",
         "viewAll": "Ver todos"
+      },
+      "newestCreators": {
+        "title": "Criadores mais recentes",
+        "empty": "Ainda sem criadores.",
+        "viewAll": "Ver todos"
+      },
+      "topRevenueCreators": {
+        "title": "Top por receita",
+        "empty": "Ainda sem dados de receita.",
+        "viewAll": "Ver todos"
+      },
+      "latestRegistrations": {
+        "title": "Últimos registos",
+        "empty": "Ainda sem registos.",
+        "viewAll": "Ver todos",
+        "name": "Nome",
+        "email": "Email",
+        "registered": "Registado",
+        "status": "Status"
       }
     },
     "navLabel": "Navegação admin",

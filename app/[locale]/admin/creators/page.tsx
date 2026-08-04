@@ -3,11 +3,16 @@ import { requireStaff } from "@/lib/auth";
 import { listStaffManagers } from "@/features/applications/queries/list-managers";
 import type { StaffManagerOption } from "@/features/applications/types";
 import { listCreators } from "@/features/creators/queries/list-creators";
-import type { CreatorsListResult } from "@/features/creators/types";
+import { getCreatorStats } from "@/features/creators/queries/get-creator-stats";
+import type {
+  CreatorStats,
+  CreatorsListResult,
+} from "@/features/creators/types";
 import CreatorFilters from "@/features/creators/components/CreatorFilters";
 import CreatorTable from "@/features/creators/components/CreatorTable";
 import CreatorPagination from "@/features/creators/components/CreatorPagination";
 import CreatorForm from "@/features/creators/components/CreatorForm";
+import CreatorStatsCards from "@/features/creators/components/CreatorStatsCards";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -41,12 +46,14 @@ export default async function AdminCreatorsPage({
     session.profile.role === "owner" || session.profile.role === "admin";
 
   let result: CreatorsListResult;
+  let stats: CreatorStats;
   let managers: StaffManagerOption[] = [];
   let loadError: string | null = null;
 
   try {
-    [result, managers] = await Promise.all([
+    [result, stats, managers] = await Promise.all([
       listCreators({ q, status, manager, country, platform, sort, page }),
+      getCreatorStats(),
       listStaffManagers(),
     ]);
   } catch (error) {
@@ -58,6 +65,14 @@ export default async function AdminCreatorsPage({
       page: 1,
       pageSize: 20,
       totalPages: 1,
+    };
+    stats = {
+      total: 0,
+      active: 0,
+      vacation: 0,
+      inactive: 0,
+      revenueCurrent: 0,
+      revenueAverage: 0,
     };
     managers = [];
   }
@@ -74,10 +89,10 @@ export default async function AdminCreatorsPage({
   const platformLabels = {
     onlyfans: t("platforms.onlyfans"),
     fansly: t("platforms.fansly"),
-    manyvids: t("platforms.manyvids"),
-    multiple: t("platforms.multiple"),
-    emerging: t("platforms.emerging"),
-    other: t("platforms.other"),
+    chaturbate: t("platforms.chaturbate"),
+    instagram: t("platforms.instagram"),
+    tiktok: t("platforms.tiktok"),
+    twitter: t("platforms.twitter"),
   };
 
   return (
@@ -98,9 +113,10 @@ export default async function AdminCreatorsPage({
           labels={{
             create: t("create"),
             title: t("form.title"),
-            fullName: t("fields.fullName"),
+            displayName: t("fields.displayName"),
             email: t("fields.email"),
             telegram: t("fields.telegram"),
+            phone: t("fields.phone"),
             country: t("fields.country"),
             languages: t("fields.languages"),
             languagesPlaceholder: t("fields.languagesPlaceholder"),
@@ -118,6 +134,21 @@ export default async function AdminCreatorsPage({
           platformLabels={platformLabels}
         />
       </div>
+
+      {!loadError ? (
+        <CreatorStatsCards
+          stats={stats}
+          locale={locale}
+          labels={{
+            total: t("stats.total"),
+            active: t("stats.active"),
+            vacation: t("stats.vacation"),
+            inactive: t("stats.inactive"),
+            revenueCurrent: t("stats.revenueCurrent"),
+            revenueAverage: t("stats.revenueAverage"),
+          }}
+        />
+      ) : null}
 
       <CreatorFilters
         q={q}
@@ -142,6 +173,7 @@ export default async function AdminCreatorsPage({
           sortNewest: t("sort.newest"),
           sortOldest: t("sort.oldest"),
           sortName: t("sort.name"),
+          sortRevenue: t("sort.revenue"),
           unassigned: t("unassigned"),
         }}
         statusLabels={statusLabels}
@@ -165,7 +197,8 @@ export default async function AdminCreatorsPage({
               platforms: t("table.platforms"),
               manager: t("table.manager"),
               status: t("table.status"),
-              created: t("table.created"),
+              revenue: t("table.revenue"),
+              lastActivity: t("table.lastActivity"),
               actions: t("table.actions"),
               view: t("actions.view"),
               empty: t("empty.title"),

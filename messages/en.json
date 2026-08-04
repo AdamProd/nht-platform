@@ -396,7 +396,7 @@
     "creators": {
       "label": "Roster",
       "title": "Creators",
-      "description": "Manage creator profiles, assignment, and status.",
+      "description": "Manage creator profiles, platforms, revenue, and assignment.",
       "detailLabel": "Creator",
       "create": "Create Creator",
       "unassigned": "Unassigned",
@@ -409,7 +409,7 @@
       },
       "filters": {
         "search": "Search",
-        "searchPlaceholder": "Name, email, telegram, country, platform",
+        "searchPlaceholder": "Name, email, telegram",
         "status": "Status",
         "manager": "Manager",
         "country": "Country",
@@ -422,18 +422,20 @@
       "sort": {
         "newest": "Newest",
         "oldest": "Oldest",
-        "name": "Name A–Z"
+        "name": "Name A–Z",
+        "revenue": "Revenue"
       },
       "table": {
         "avatar": "Avatar",
-        "name": "Name",
+        "name": "Display name",
         "email": "Email",
         "country": "Country",
         "platforms": "Platforms",
         "manager": "Manager",
         "status": "Status",
-        "created": "Created",
-        "actions": "Actions"
+        "actions": "Actions",
+        "revenue": "Revenue",
+        "lastActivity": "Last activity"
       },
       "pagination": {
         "previous": "Previous",
@@ -451,13 +453,12 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
-        "manyvids": "ManyVids",
-        "multiple": "Multiple",
-        "emerging": "Emerging",
-        "other": "Other"
+        "chaturbate": "Chaturbate",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X"
       },
       "fields": {
-        "fullName": "Full name",
         "email": "Email",
         "telegram": "Telegram",
         "country": "Country",
@@ -470,7 +471,18 @@
         "application": "Application",
         "created": "Created",
         "updated": "Updated",
-        "avatarUrl": "Avatar URL"
+        "avatarUrl": "Avatar URL",
+        "displayName": "Display name",
+        "legalName": "Legal name",
+        "birthday": "Birthday",
+        "phone": "Phone",
+        "timezone": "Timezone",
+        "lastLogin": "Last login",
+        "lastActivity": "Last activity",
+        "revenueCurrent": "Current month",
+        "revenuePrevious": "Previous month",
+        "revenueLifetime": "Lifetime",
+        "payouts": "Payouts"
       },
       "form": {
         "title": "Create creator",
@@ -513,6 +525,23 @@
         "invalidManager": "Invalid manager.",
         "invalidNotes": "Invalid notes.",
         "avatarNotReady": "Avatar upload is not available yet. Paste a URL instead."
+      },
+      "stats": {
+        "total": "Total creators",
+        "active": "Active",
+        "vacation": "Vacation",
+        "inactive": "Inactive",
+        "revenueCurrent": "Current revenue",
+        "revenueAverage": "Average revenue"
+      },
+      "sections": {
+        "profile": "Profile",
+        "contacts": "Contacts",
+        "platforms": "Platforms",
+        "revenue": "Revenue",
+        "manager": "Manager",
+        "notes": "Internal notes",
+        "timeline": "Timeline"
       }
     },
     "dashboard": {
@@ -563,6 +592,25 @@
         "title": "Recent creators",
         "empty": "No creators yet.",
         "viewAll": "View all"
+      },
+      "newestCreators": {
+        "title": "Newest creators",
+        "empty": "No creators yet.",
+        "viewAll": "View all"
+      },
+      "topRevenueCreators": {
+        "title": "Top revenue creators",
+        "empty": "No revenue data yet.",
+        "viewAll": "View all"
+      },
+      "latestRegistrations": {
+        "title": "Latest registrations",
+        "empty": "No registrations yet.",
+        "viewAll": "View all",
+        "name": "Name",
+        "email": "Email",
+        "registered": "Registered",
+        "status": "Status"
       }
     },
     "navLabel": "Admin navigation",

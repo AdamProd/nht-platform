@@ -398,7 +398,7 @@
     "creators": {
       "label": "Roster",
       "title": "Creator",
-      "description": "Gestisci profili, assegnazione e stato dei creator.",
+      "description": "Gestisci profili, piattaforme, ricavi e assegnazione dei creator.",
       "detailLabel": "Creator",
       "create": "Crea creator",
       "unassigned": "Non assegnato",
@@ -411,7 +411,7 @@
       },
       "filters": {
         "search": "Cerca",
-        "searchPlaceholder": "Nome, email, telegram, paese, piattaforma",
+        "searchPlaceholder": "Nome, email, telegram",
         "status": "Stato",
         "manager": "Manager",
         "country": "Paese",
@@ -424,18 +424,20 @@
       "sort": {
         "newest": "Più recenti",
         "oldest": "Più vecchi",
-        "name": "Nome A–Z"
+        "name": "Nome A–Z",
+        "revenue": "Ricavi"
       },
       "table": {
         "avatar": "Avatar",
-        "name": "Nome",
+        "name": "Nome visualizzato",
         "email": "Email",
         "country": "Paese",
         "platforms": "Piattaforme",
         "manager": "Manager",
         "status": "Stato",
-        "created": "Creato",
-        "actions": "Azioni"
+        "actions": "Azioni",
+        "revenue": "Ricavi",
+        "lastActivity": "Ultima attività"
       },
       "pagination": {
         "previous": "Precedente",
@@ -453,18 +455,17 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
-        "manyvids": "ManyVids",
-        "multiple": "Multiple",
-        "emerging": "Emergente",
-        "other": "Altro"
+        "chaturbate": "Chaturbate",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X"
       },
       "fields": {
-        "fullName": "Nome completo",
         "email": "Email",
         "telegram": "Telegram",
         "country": "Paese",
         "languages": "Lingue",
-        "languagesPlaceholder": "en, it, de",
+        "languagesPlaceholder": "en, ru, de",
         "platforms": "Piattaforme",
         "manager": "Manager",
         "status": "Stato",
@@ -472,7 +473,18 @@
         "application": "Candidatura",
         "created": "Creato",
         "updated": "Aggiornato",
-        "avatarUrl": "URL avatar"
+        "avatarUrl": "URL avatar",
+        "displayName": "Nome visualizzato",
+        "legalName": "Nome legale",
+        "birthday": "Compleanno",
+        "phone": "Telefono",
+        "timezone": "Fuso orario",
+        "lastLogin": "Ultimo accesso",
+        "lastActivity": "Ultima attività",
+        "revenueCurrent": "Mese corrente",
+        "revenuePrevious": "Mese precedente",
+        "revenueLifetime": "Totale",
+        "payouts": "Pagamenti"
       },
       "form": {
         "title": "Nuovo creator",
@@ -515,6 +527,23 @@
         "invalidManager": "Manager non valido.",
         "invalidNotes": "Note non valide.",
         "avatarNotReady": "Upload avatar non ancora disponibile. Incolla un URL."
+      },
+      "stats": {
+        "total": "Totale creator",
+        "active": "Attivi",
+        "vacation": "Vacanza",
+        "inactive": "Inattivi",
+        "revenueCurrent": "Ricavi attuali",
+        "revenueAverage": "Ricavi medi"
+      },
+      "sections": {
+        "profile": "Profilo",
+        "contacts": "Contatti",
+        "platforms": "Piattaforme",
+        "revenue": "Ricavi",
+        "manager": "Manager",
+        "notes": "Note interne",
+        "timeline": "Timeline"
       }
     },
     "dashboard": {
@@ -565,6 +594,25 @@
         "title": "Creator recenti",
         "empty": "Nessun creator ancora.",
         "viewAll": "Vedi tutti"
+      },
+      "newestCreators": {
+        "title": "Creator più nuovi",
+        "empty": "Nessun creator ancora.",
+        "viewAll": "Vedi tutti"
+      },
+      "topRevenueCreators": {
+        "title": "Top per ricavi",
+        "empty": "Nessun dato sui ricavi.",
+        "viewAll": "Vedi tutti"
+      },
+      "latestRegistrations": {
+        "title": "Ultime registrazioni",
+        "empty": "Nessuna registrazione ancora.",
+        "viewAll": "Vedi tutti",
+        "name": "Nome",
+        "email": "Email",
+        "registered": "Registrato",
+        "status": "Stato"
       }
     },
     "navLabel": "Navigazione admin",

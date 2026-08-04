@@ -27,6 +27,10 @@ export type PlatformBreakdownItem = {
 export type DashboardData = {
   kpis: DashboardKpis;
   recent: DashboardRecentApplication[];
+  newestCreators: CreatorListItem[];
+  topRevenueCreators: CreatorListItem[];
+  latestRegistrations: CreatorListItem[];
+  /** @deprecated Prefer newestCreators */
   recentCreators: CreatorListItem[];
   platforms: PlatformBreakdownItem[];
 };

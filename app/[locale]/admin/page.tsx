@@ -2,7 +2,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getDashboardData } from "@/features/dashboard/queries/get-dashboard-data";
 import DashboardKpiCards from "@/features/dashboard/components/DashboardKpiCards";
 import DashboardRecentApplications from "@/features/dashboard/components/DashboardRecentApplications";
-import DashboardRecentCreators from "@/features/dashboard/components/DashboardRecentCreators";
+import DashboardCreatorsSection from "@/features/dashboard/components/DashboardCreatorsSection";
+import DashboardLatestRegistrations from "@/features/dashboard/components/DashboardLatestRegistrations";
 import DashboardPlatformBreakdown from "@/features/dashboard/components/DashboardPlatformBreakdown";
 import DashboardQuickActions from "@/features/dashboard/components/DashboardQuickActions";
 
@@ -28,10 +29,22 @@ export default async function AdminDashboardPage({ params }: Props) {
     data = {
       kpis: { total: 0, new: 0, reviewing: 0, active: 0, rejected: 0 },
       recent: [],
+      newestCreators: [],
+      topRevenueCreators: [],
+      latestRegistrations: [],
       recentCreators: [],
       platforms: [],
     };
   }
+
+  const creatorStatusLabels = {
+    new: tCreators("status.new"),
+    active: tCreators("status.active"),
+    paused: tCreators("status.paused"),
+    vacation: tCreators("status.vacation"),
+    inactive: tCreators("status.inactive"),
+    banned: tCreators("status.banned"),
+  };
 
   return (
     <div className="space-y-8">
@@ -113,22 +126,44 @@ export default async function AdminDashboardPage({ params }: Props) {
         </div>
       </div>
 
-      <DashboardRecentCreators
-        items={data.recentCreators}
+      <DashboardCreatorsSection
+        items={data.newestCreators}
+        locale={locale}
         labels={{
-          title: t("recentCreators.title"),
-          empty: t("recentCreators.empty"),
-          viewAll: t("recentCreators.viewAll"),
+          title: t("newestCreators.title"),
+          empty: t("newestCreators.empty"),
+          viewAll: t("newestCreators.viewAll"),
           unassigned: tCreators("unassigned"),
         }}
-        statusLabels={{
-          new: tCreators("status.new"),
-          active: tCreators("status.active"),
-          paused: tCreators("status.paused"),
-          vacation: tCreators("status.vacation"),
-          inactive: tCreators("status.inactive"),
-          banned: tCreators("status.banned"),
+        statusLabels={creatorStatusLabels}
+      />
+
+      <DashboardCreatorsSection
+        items={data.topRevenueCreators}
+        locale={locale}
+        showRevenue
+        labels={{
+          title: t("topRevenueCreators.title"),
+          empty: t("topRevenueCreators.empty"),
+          viewAll: t("topRevenueCreators.viewAll"),
+          unassigned: tCreators("unassigned"),
         }}
+        statusLabels={creatorStatusLabels}
+      />
+
+      <DashboardLatestRegistrations
+        items={data.latestRegistrations}
+        locale={locale}
+        labels={{
+          title: t("latestRegistrations.title"),
+          empty: t("latestRegistrations.empty"),
+          viewAll: t("latestRegistrations.viewAll"),
+          name: t("latestRegistrations.name"),
+          email: t("latestRegistrations.email"),
+          registered: t("latestRegistrations.registered"),
+          status: t("latestRegistrations.status"),
+        }}
+        statusLabels={creatorStatusLabels}
       />
 
       <DashboardQuickActions

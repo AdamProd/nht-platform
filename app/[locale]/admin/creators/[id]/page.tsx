@@ -5,7 +5,6 @@ import { requireStaff } from "@/lib/auth";
 import { getCreator } from "@/features/creators/queries/get-creator";
 import { listStaffManagers } from "@/features/applications/queries/list-managers";
 import CreatorHeader from "@/features/creators/components/CreatorHeader";
-import CreatorInfo from "@/features/creators/components/CreatorInfo";
 import CreatorDetailPanel from "@/features/creators/components/CreatorDetailPanel";
 
 type Props = {
@@ -51,6 +50,15 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
     banned: t("status.banned"),
   };
 
+  const platformLabels = {
+    onlyfans: t("platforms.onlyfans"),
+    fansly: t("platforms.fansly"),
+    chaturbate: t("platforms.chaturbate"),
+    instagram: t("platforms.instagram"),
+    tiktok: t("platforms.tiktok"),
+    twitter: t("platforms.twitter"),
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -71,45 +79,53 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
         </Link>
       </div>
 
-      <CreatorInfo
-        creator={creator}
-        locale={locale}
-        labels={{
-          email: t("fields.email"),
-          telegram: t("fields.telegram"),
-          country: t("fields.country"),
-          languages: t("fields.languages"),
-          platforms: t("fields.platforms"),
-          manager: t("fields.manager"),
-          status: t("fields.status"),
-          notes: t("fields.notes"),
-          application: t("fields.application"),
-          created: t("fields.created"),
-          updated: t("fields.updated"),
-          unassigned: t("unassigned"),
-          noApplication: t("noApplication"),
-          viewApplication: t("viewApplication"),
-        }}
-        statusLabel={statusLabels[creator.status]}
-      />
-
       <CreatorDetailPanel
         creator={creator}
         managers={managers}
         canAssignManager={canAssignManager}
+        locale={locale}
         labels={{
-          status: t("fields.status"),
-          manager: t("fields.manager"),
-          notes: t("fields.notes"),
-          avatarUrl: t("fields.avatarUrl"),
+          sections: {
+            profile: t("sections.profile"),
+            contacts: t("sections.contacts"),
+            platforms: t("sections.platforms"),
+            revenue: t("sections.revenue"),
+            manager: t("sections.manager"),
+            notes: t("sections.notes"),
+            timeline: t("sections.timeline"),
+          },
+          fields: {
+            displayName: t("fields.displayName"),
+            legalName: t("fields.legalName"),
+            birthday: t("fields.birthday"),
+            country: t("fields.country"),
+            languages: t("fields.languages"),
+            languagesPlaceholder: t("fields.languagesPlaceholder"),
+            timezone: t("fields.timezone"),
+            email: t("fields.email"),
+            telegram: t("fields.telegram"),
+            phone: t("fields.phone"),
+            avatarUrl: t("fields.avatarUrl"),
+            status: t("fields.status"),
+            manager: t("fields.manager"),
+            notes: t("fields.notes"),
+            revenueCurrent: t("fields.revenueCurrent"),
+            revenuePrevious: t("fields.revenuePrevious"),
+            revenueLifetime: t("fields.revenueLifetime"),
+            payouts: t("fields.payouts"),
+            created: t("fields.created"),
+            updated: t("fields.updated"),
+            lastLogin: t("fields.lastLogin"),
+            lastActivity: t("fields.lastActivity"),
+          },
           unassigned: t("unassigned"),
           save: t("actions.save"),
           saving: t("actions.saving"),
           saved: t("toast.saved"),
           saveError: t("actions.saveError"),
-          uploadAvatar: t("actions.uploadAvatar"),
         }}
         statusLabels={statusLabels}
+        platformLabels={platformLabels}
       />
     </div>
   );

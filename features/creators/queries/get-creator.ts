@@ -18,10 +18,7 @@ export async function getCreator(id: string): Promise<CreatorDetail | null> {
 
   const supabase = await createClient();
 
-  let query = supabase
-    .from("creators")
-    .select(DETAIL_SELECT)
-    .eq("id", id);
+  let query = supabase.from("creators").select(DETAIL_SELECT).eq("id", id);
 
   if (session.profile.role === "manager") {
     query = query.eq("manager_id", session.profile.id);

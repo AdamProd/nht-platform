@@ -57,11 +57,10 @@ export async function listCreators(
     const escaped = term.replaceAll("%", "").replaceAll("_", "");
     query = query.or(
       [
+        `display_name.ilike.%${escaped}%`,
         `full_name.ilike.%${escaped}%`,
         `email.ilike.%${escaped}%`,
         `telegram.ilike.%${escaped}%`,
-        `country.ilike.%${escaped}%`,
-        `platforms.cs.{${escaped}}`,
       ].join(","),
     );
   }
@@ -85,7 +84,9 @@ export async function listCreators(
   if (filters.sort === "oldest") {
     query = query.order("created_at", { ascending: true });
   } else if (filters.sort === "name") {
-    query = query.order("full_name", { ascending: true });
+    query = query.order("display_name", { ascending: true });
+  } else if (filters.sort === "revenue") {
+    query = query.order("revenue_current_month", { ascending: false });
   } else {
     query = query.order("created_at", { ascending: false });
   }

@@ -2,28 +2,41 @@ export type {
   CreatorDetail,
   CreatorListItem,
   CreatorStatus,
+  CreatorStats,
   CreatorsListResult,
   CreatorActionResult,
   CreatorSort,
   CreatorPlatform,
 } from "@/features/creators/types";
 
-export { CREATOR_PLATFORMS } from "@/features/creators/types";
+export {
+  CREATOR_PLATFORMS,
+  parsePlatformAccounts,
+  platformsFromAccounts,
+} from "@/features/creators/types";
 export { CREATORS_PAGE_SIZE } from "@/features/creators/queries/list-creators";
 export { listCreators } from "@/features/creators/queries/list-creators";
 export { getCreator } from "@/features/creators/queries/get-creator";
-export { getRecentCreators } from "@/features/creators/queries/get-recent-creators";
+export { getCreatorStats } from "@/features/creators/queries/get-creator-stats";
+export {
+  getRecentCreators,
+  getTopRevenueCreators,
+} from "@/features/creators/queries/get-recent-creators";
 export {
   createCreator,
-  updateCreator,
+  updateProfile,
+  updateManager,
   updateStatus,
-  assignManager,
+  updatePlatforms,
   updateNotes,
+  updateCreator,
+  assignManager,
   uploadAvatar,
 } from "@/features/creators/actions/update-creator";
 export {
   creatorStatuses,
   createCreatorSchema,
-  updateCreatorSchema,
+  updateProfileSchema,
+  updatePlatformsSchema,
   creatorsListFiltersSchema,
 } from "@/features/creators/schemas/creator.schema";

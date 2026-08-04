@@ -1,19 +1,30 @@
 import { Link } from "@/i18n/navigation";
 import type { CreatorListItem } from "@/features/creators/types";
 import CreatorStatusBadge from "@/features/creators/components/CreatorStatusBadge";
-import { formatList, initials } from "@/features/creators/lib/format";
+import {
+  displayNameOf,
+  formatList,
+  formatMoney,
+  initials,
+} from "@/features/creators/lib/format";
 
 type CreatorCardProps = {
   creator: CreatorListItem;
+  locale?: string;
   statusLabel: string;
   unassigned: string;
+  showRevenue?: boolean;
 };
 
 export default function CreatorCard({
   creator,
+  locale = "en",
   statusLabel,
   unassigned,
+  showRevenue = false,
 }: CreatorCardProps) {
+  const name = displayNameOf(creator);
+
   return (
     <Link
       href={`/admin/creators/${creator.id}`}
@@ -28,22 +39,22 @@ export default function CreatorCard({
             className="h-full w-full object-cover"
           />
         ) : (
-          initials(creator.full_name)
+          initials(name)
         )}
       </div>
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-2">
-          <p className="truncate text-sm font-medium text-white">
-            {creator.full_name}
-          </p>
+          <p className="truncate text-sm font-medium text-white">{name}</p>
           <CreatorStatusBadge status={creator.status} label={statusLabel} />
         </div>
         <p className="mt-1 truncate text-xs text-[var(--nht-text-secondary)]">
           {creator.email}
         </p>
         <p className="mt-1 truncate text-xs text-[var(--nht-text-tertiary)]">
-          {formatList(creator.platforms)} ·{" "}
-          {creator.manager?.full_name ?? unassigned}
+          {showRevenue
+            ? formatMoney(creator.revenue_current_month, locale)
+            : formatList(creator.platforms)}{" "}
+          · {creator.manager?.full_name ?? unassigned}
         </p>
       </div>
     </Link>

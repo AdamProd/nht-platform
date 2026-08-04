@@ -6,15 +6,24 @@ import { createClient } from "@/lib/supabase/server";
 import { requireStaffSession } from "@/lib/auth";
 import { isOwner } from "@/lib/auth/roles";
 import {
-  assignCreatorManagerSchema,
   createCreatorSchema,
-  updateCreatorNotesSchema,
-  updateCreatorSchema,
-  updateCreatorStatusSchema,
-  uploadAvatarSchema,
+  updateManagerSchema,
+  updateNotesSchema,
+  updatePlatformsSchema,
+  updateProfileSchema,
+  updateStatusSchema,
 } from "@/features/creators/schemas/creator.schema";
-import type { CreatorActionResult } from "@/features/creators/types";
-import type { TablesInsert, TablesUpdate, UserRole } from "@/types/database.types";
+import {
+  platformsFromAccounts,
+  type CreatorActionResult,
+  type CreatorPlatformAccounts,
+} from "@/features/creators/types";
+import type {
+  Json,
+  TablesInsert,
+  TablesUpdate,
+  UserRole,
+} from "@/types/database.types";
 
 async function revalidateCreator(id?: string) {
   const locale = await getLocale();
@@ -55,6 +64,38 @@ async function assertCreatorAccess(
   return null;
 }
 
+async function updateCreatorField(
+  id: string,
+  patch: TablesUpdate<"creators">,
+): Promise<CreatorActionResult> {
+  const t = await getTranslations("admin.creators.actionErrors");
+
+  try {
+    const denied = await assertCreatorAccess(id);
+    if (denied) return denied;
+
+    const supabase = await createClient();
+    const { error } = await supabase
+      .from("creators")
+      .update({
+        ...patch,
+        last_activity_at: new Date().toISOString(),
+      })
+      .eq("id", id);
+
+    if (error) {
+      console.error("[updateCreatorField]", error.message);
+      return { success: false, error: t("save") };
+    }
+
+    await revalidateCreator(id);
+    return { success: true, id };
+  } catch (error) {
+    console.error("[updateCreatorField] unexpected:", error);
+    return { success: false, error: t("save") };
+  }
+}
+
 export async function createCreator(
   raw: unknown,
 ): Promise<CreatorActionResult> {
@@ -77,15 +118,21 @@ export async function createCreator(
     }
 
     const row: TablesInsert<"creators"> = {
-      full_name: parsed.data.full_name,
+      display_name: parsed.data.display_name,
+      full_name: parsed.data.display_name,
+      legal_name: parsed.data.legal_name,
       email: parsed.data.email,
       telegram: parsed.data.telegram,
+      phone: parsed.data.phone,
       country: parsed.data.country,
+      timezone: parsed.data.timezone,
+      birthday: parsed.data.birthday,
       languages: parsed.data.languages,
       platforms: parsed.data.platforms,
       manager_id: managerId,
       status: parsed.data.status,
       notes: parsed.data.notes,
+      last_activity_at: new Date().toISOString(),
     };
 
     const supabase = await createClient();
@@ -108,111 +155,37 @@ export async function createCreator(
   }
 }
 
-export async function updateCreator(
+export async function updateProfile(
   raw: unknown,
 ): Promise<CreatorActionResult> {
   const t = await getTranslations("admin.creators.actionErrors");
 
   try {
-    const parsed = updateCreatorSchema.safeParse(raw);
+    const parsed = updateProfileSchema.safeParse(raw);
     if (!parsed.success) {
       return { success: false, error: t("invalid") };
     }
 
-    const denied = await assertCreatorAccess(parsed.data.id);
-    if (denied) return denied;
-
-    const session = await requireStaffSession();
-    if (!session) {
-      return { success: false, error: t("unauthorized") };
-    }
-
-    let managerId = parsed.data.manager_id;
-    if (session.profile.role === "manager") {
-      managerId = session.profile.id;
-    }
-
-    const patch: TablesUpdate<"creators"> = {
-      full_name: parsed.data.full_name,
+    return updateCreatorField(parsed.data.id, {
+      display_name: parsed.data.display_name,
+      full_name: parsed.data.display_name,
+      legal_name: parsed.data.legal_name,
       email: parsed.data.email,
       telegram: parsed.data.telegram,
+      phone: parsed.data.phone,
       country: parsed.data.country,
+      timezone: parsed.data.timezone,
+      birthday: parsed.data.birthday,
       languages: parsed.data.languages,
-      platforms: parsed.data.platforms,
-      manager_id: managerId,
-      status: parsed.data.status,
-      notes: parsed.data.notes,
       avatar_url: parsed.data.avatar_url,
-    };
-
-    const supabase = await createClient();
-    const { error } = await supabase
-      .from("creators")
-      .update(patch)
-      .eq("id", parsed.data.id);
-
-    if (error) {
-      console.error("[updateCreator]", error.message);
-      return { success: false, error: t("save") };
-    }
-
-    await revalidateCreator(parsed.data.id);
-    return { success: true, id: parsed.data.id };
-  } catch (error) {
-    console.error("[updateCreator] unexpected:", error);
-    return { success: false, error: t("save") };
-  }
-}
-
-async function updateCreatorField(
-  id: string,
-  patch: TablesUpdate<"creators">,
-): Promise<CreatorActionResult> {
-  const t = await getTranslations("admin.creators.actionErrors");
-
-  try {
-    const denied = await assertCreatorAccess(id);
-    if (denied) return denied;
-
-    const supabase = await createClient();
-    const { error } = await supabase.from("creators").update(patch).eq("id", id);
-
-    if (error) {
-      console.error("[updateCreatorField]", error.message);
-      return { success: false, error: t("save") };
-    }
-
-    await revalidateCreator(id);
-    return { success: true, id };
-  } catch (error) {
-    console.error("[updateCreatorField] unexpected:", error);
-    return { success: false, error: t("save") };
-  }
-}
-
-export async function updateStatus(
-  formData: FormData,
-): Promise<CreatorActionResult> {
-  const t = await getTranslations("admin.creators.actionErrors");
-
-  try {
-    const parsed = updateCreatorStatusSchema.safeParse({
-      id: formData.get("id"),
-      status: formData.get("status"),
     });
-
-    if (!parsed.success) {
-      return { success: false, error: t("invalidStatus") };
-    }
-
-    return updateCreatorField(parsed.data.id, { status: parsed.data.status });
   } catch (error) {
-    console.error("[updateStatus]", error);
+    console.error("[updateProfile]", error);
     return { success: false, error: t("save") };
   }
 }
 
-export async function assignManager(
+export async function updateManager(
   formData: FormData,
 ): Promise<CreatorActionResult> {
   const t = await getTranslations("admin.creators.actionErrors");
@@ -228,7 +201,7 @@ export async function assignManager(
     }
 
     const rawManager = formData.get("manager_id");
-    const parsed = assignCreatorManagerSchema.safeParse({
+    const parsed = updateManagerSchema.safeParse({
       id: formData.get("id"),
       manager_id: rawManager === "" ? null : rawManager,
     });
@@ -241,7 +214,56 @@ export async function assignManager(
       manager_id: parsed.data.manager_id,
     });
   } catch (error) {
-    console.error("[assignManager]", error);
+    console.error("[updateManager]", error);
+    return { success: false, error: t("save") };
+  }
+}
+
+export async function updateStatus(
+  formData: FormData,
+): Promise<CreatorActionResult> {
+  const t = await getTranslations("admin.creators.actionErrors");
+
+  try {
+    const parsed = updateStatusSchema.safeParse({
+      id: formData.get("id"),
+      status: formData.get("status"),
+    });
+
+    if (!parsed.success) {
+      return { success: false, error: t("invalidStatus") };
+    }
+
+    return updateCreatorField(parsed.data.id, {
+      status: parsed.data.status,
+      is_active: parsed.data.status === "active",
+    });
+  } catch (error) {
+    console.error("[updateStatus]", error);
+    return { success: false, error: t("save") };
+  }
+}
+
+export async function updatePlatforms(
+  raw: unknown,
+): Promise<CreatorActionResult> {
+  const t = await getTranslations("admin.creators.actionErrors");
+
+  try {
+    const parsed = updatePlatformsSchema.safeParse(raw);
+    if (!parsed.success) {
+      return { success: false, error: t("invalid") };
+    }
+
+    const accounts = parsed.data.platform_accounts as CreatorPlatformAccounts;
+    const platforms = platformsFromAccounts(accounts);
+
+    return updateCreatorField(parsed.data.id, {
+      platform_accounts: accounts as Json,
+      platforms,
+    });
+  } catch (error) {
+    console.error("[updatePlatforms]", error);
     return { success: false, error: t("save") };
   }
 }
@@ -252,7 +274,7 @@ export async function updateNotes(
   const t = await getTranslations("admin.creators.actionErrors");
 
   try {
-    const parsed = updateCreatorNotesSchema.safeParse({
+    const parsed = updateNotesSchema.safeParse({
       id: formData.get("id"),
       notes: formData.get("notes") ?? "",
     });
@@ -268,34 +290,27 @@ export async function updateNotes(
   }
 }
 
-/** Placeholder until storage upload is wired in a later commit. */
+/** @deprecated Prefer updateManager */
+export async function assignManager(formData: FormData) {
+  return updateManager(formData);
+}
+
+/** @deprecated Prefer updateProfile */
+export async function updateCreator(raw: unknown) {
+  return updateProfile(raw);
+}
+
+/** Placeholder avatar URL save via profile update. */
 export async function uploadAvatar(
   formData: FormData,
 ): Promise<CreatorActionResult> {
   const t = await getTranslations("admin.creators.actionErrors");
+  const id = String(formData.get("id") ?? "");
+  const avatar_url = String(formData.get("avatar_url") ?? "").trim() || null;
 
-  try {
-    const parsed = uploadAvatarSchema.safeParse({
-      id: formData.get("id"),
-      avatar_url: formData.get("avatar_url") || null,
-    });
-
-    if (!parsed.success) {
-      return { success: false, error: t("invalid") };
-    }
-
-    const denied = await assertCreatorAccess(parsed.data.id);
-    if (denied) return denied;
-
-    if (!parsed.data.avatar_url) {
-      return { success: false, error: t("avatarNotReady") };
-    }
-
-    return updateCreatorField(parsed.data.id, {
-      avatar_url: parsed.data.avatar_url,
-    });
-  } catch (error) {
-    console.error("[uploadAvatar]", error);
-    return { success: false, error: t("avatarNotReady") };
+  if (!id) {
+    return { success: false, error: t("invalid") };
   }
+
+  return updateCreatorField(id, { avatar_url });
 }

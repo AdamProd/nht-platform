@@ -398,7 +398,7 @@
     "creators": {
       "label": "Ростер",
       "title": "Креаторы",
-      "description": "Управление профилями креаторов, назначением и статусом.",
+      "description": "Управление профилями, платформами, доходом и назначением креаторов.",
       "detailLabel": "Креатор",
       "create": "Создать креатора",
       "unassigned": "Не назначен",
@@ -411,7 +411,7 @@
       },
       "filters": {
         "search": "Поиск",
-        "searchPlaceholder": "Имя, email, telegram, страна, платформа",
+        "searchPlaceholder": "Имя, email, telegram",
         "status": "Статус",
         "manager": "Менеджер",
         "country": "Страна",
@@ -424,18 +424,20 @@
       "sort": {
         "newest": "Сначала новые",
         "oldest": "Сначала старые",
-        "name": "Имя А–Я"
+        "name": "Имя А–Я",
+        "revenue": "Доход"
       },
       "table": {
         "avatar": "Аватар",
-        "name": "Имя",
+        "name": "Отображаемое имя",
         "email": "Email",
         "country": "Страна",
         "platforms": "Платформы",
         "manager": "Менеджер",
         "status": "Статус",
-        "created": "Создан",
-        "actions": "Действия"
+        "actions": "Действия",
+        "revenue": "Доход",
+        "lastActivity": "Последняя активность"
       },
       "pagination": {
         "previous": "Назад",
@@ -453,13 +455,12 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
-        "manyvids": "ManyVids",
-        "multiple": "Несколько",
-        "emerging": "Новая площадка",
-        "other": "Другое"
+        "chaturbate": "Chaturbate",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X"
       },
       "fields": {
-        "fullName": "Полное имя",
         "email": "Email",
         "telegram": "Telegram",
         "country": "Страна",
@@ -472,7 +473,18 @@
         "application": "Заявка",
         "created": "Создан",
         "updated": "Обновлён",
-        "avatarUrl": "URL аватара"
+        "avatarUrl": "URL аватара",
+        "displayName": "Отображаемое имя",
+        "legalName": "Юридическое имя",
+        "birthday": "День рождения",
+        "phone": "Телефон",
+        "timezone": "Часовой пояс",
+        "lastLogin": "Последний вход",
+        "lastActivity": "Последняя активность",
+        "revenueCurrent": "Текущий месяц",
+        "revenuePrevious": "Прошлый месяц",
+        "revenueLifetime": "За всё время",
+        "payouts": "Выплаты"
       },
       "form": {
         "title": "Новый креатор",
@@ -515,6 +527,23 @@
         "invalidManager": "Некорректный менеджер.",
         "invalidNotes": "Некорректные заметки.",
         "avatarNotReady": "Загрузка аватара пока недоступна. Вставьте URL."
+      },
+      "stats": {
+        "total": "Всего креаторов",
+        "active": "Активные",
+        "vacation": "В отпуске",
+        "inactive": "Неактивные",
+        "revenueCurrent": "Текущий доход",
+        "revenueAverage": "Средний доход"
+      },
+      "sections": {
+        "profile": "Профиль",
+        "contacts": "Контакты",
+        "platforms": "Платформы",
+        "revenue": "Доход",
+        "manager": "Менеджер",
+        "notes": "Внутренние заметки",
+        "timeline": "Таймлайн"
       }
     },
     "dashboard": {
@@ -563,8 +592,27 @@
       },
       "recentCreators": {
         "title": "Недавние креаторы",
-        "empty": "Креаторов пока нет.",
-        "viewAll": "Все"
+        "empty": "Пока нет креаторов.",
+        "viewAll": "Смотреть все"
+      },
+      "newestCreators": {
+        "title": "Новые креаторы",
+        "empty": "Пока нет креаторов.",
+        "viewAll": "Смотреть все"
+      },
+      "topRevenueCreators": {
+        "title": "Топ по доходу",
+        "empty": "Пока нет данных о доходе.",
+        "viewAll": "Смотреть все"
+      },
+      "latestRegistrations": {
+        "title": "Последние регистрации",
+        "empty": "Пока нет регистраций.",
+        "viewAll": "Смотреть все",
+        "name": "Имя",
+        "email": "Email",
+        "registered": "Зарегистрирован",
+        "status": "Статус"
       }
     },
     "navLabel": "Навигация админки",

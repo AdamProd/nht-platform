@@ -398,7 +398,7 @@
     "creators": {
       "label": "Roster",
       "title": "Tvůrci",
-      "description": "Spravujte profily, přiřazení a stav tvůrců.",
+      "description": "Spravujte profily, platformy, příjmy a přiřazení tvůrců.",
       "detailLabel": "Tvůrce",
       "create": "Vytvořit tvůrce",
       "unassigned": "Nepřiřazeno",
@@ -411,7 +411,7 @@
       },
       "filters": {
         "search": "Hledat",
-        "searchPlaceholder": "Jméno, e-mail, telegram, země, platforma",
+        "searchPlaceholder": "Jméno, email, telegram",
         "status": "Stav",
         "manager": "Manažer",
         "country": "Země",
@@ -424,18 +424,20 @@
       "sort": {
         "newest": "Nejnovější",
         "oldest": "Nejstarší",
-        "name": "Jméno A–Z"
+        "name": "Jméno A–Z",
+        "revenue": "Příjem"
       },
       "table": {
         "avatar": "Avatar",
-        "name": "Jméno",
-        "email": "E-mail",
+        "name": "Zobrazované jméno",
+        "email": "Email",
         "country": "Země",
         "platforms": "Platformy",
         "manager": "Manažer",
         "status": "Stav",
-        "created": "Vytvořeno",
-        "actions": "Akce"
+        "actions": "Akce",
+        "revenue": "Příjem",
+        "lastActivity": "Poslední aktivita"
       },
       "pagination": {
         "previous": "Předchozí",
@@ -453,18 +455,17 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
-        "manyvids": "ManyVids",
-        "multiple": "Více",
-        "emerging": "Nově vznikající",
-        "other": "Jiné"
+        "chaturbate": "Chaturbate",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X"
       },
       "fields": {
-        "fullName": "Celé jméno",
-        "email": "E-mail",
+        "email": "Email",
         "telegram": "Telegram",
         "country": "Země",
         "languages": "Jazyky",
-        "languagesPlaceholder": "en, cs, de",
+        "languagesPlaceholder": "en, ru, de",
         "platforms": "Platformy",
         "manager": "Manažer",
         "status": "Stav",
@@ -472,7 +473,18 @@
         "application": "Žádost",
         "created": "Vytvořeno",
         "updated": "Aktualizováno",
-        "avatarUrl": "URL avataru"
+        "avatarUrl": "URL avataru",
+        "displayName": "Zobrazované jméno",
+        "legalName": "Právní jméno",
+        "birthday": "Narozeniny",
+        "phone": "Telefon",
+        "timezone": "Časové pásmo",
+        "lastLogin": "Poslední přihlášení",
+        "lastActivity": "Poslední aktivita",
+        "revenueCurrent": "Aktuální měsíc",
+        "revenuePrevious": "Předchozí měsíc",
+        "revenueLifetime": "Celkem",
+        "payouts": "Výplaty"
       },
       "form": {
         "title": "Nový tvůrce",
@@ -515,6 +527,23 @@
         "invalidManager": "Neplatný manažer.",
         "invalidNotes": "Neplatné poznámky.",
         "avatarNotReady": "Nahrávání avataru ještě není dostupné. Vložte URL."
+      },
+      "stats": {
+        "total": "Celkem tvůrců",
+        "active": "Aktivní",
+        "vacation": "Dovolená",
+        "inactive": "Neaktivní",
+        "revenueCurrent": "Aktuální příjem",
+        "revenueAverage": "Průměrný příjem"
+      },
+      "sections": {
+        "profile": "Profil",
+        "contacts": "Kontakty",
+        "platforms": "Platformy",
+        "revenue": "Příjem",
+        "manager": "Manažer",
+        "notes": "Interní poznámky",
+        "timeline": "Časová osa"
       }
     },
     "dashboard": {
@@ -565,6 +594,25 @@
         "title": "Nedávní tvůrci",
         "empty": "Zatím žádní tvůrci.",
         "viewAll": "Zobrazit vše"
+      },
+      "newestCreators": {
+        "title": "Nejnovější tvůrci",
+        "empty": "Zatím žádní tvůrci.",
+        "viewAll": "Zobrazit vše"
+      },
+      "topRevenueCreators": {
+        "title": "Top podle příjmu",
+        "empty": "Zatím žádná data o příjmu.",
+        "viewAll": "Zobrazit vše"
+      },
+      "latestRegistrations": {
+        "title": "Nejnovější registrace",
+        "empty": "Zatím žádné registrace.",
+        "viewAll": "Zobrazit vše",
+        "name": "Jméno",
+        "email": "Email",
+        "registered": "Registrováno",
+        "status": "Stav"
       }
     },
     "navLabel": "Admin navigace",

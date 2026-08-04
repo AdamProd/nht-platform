@@ -3,9 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { createCreator } from "@/features/creators/actions/update-creator";
-import {
-  creatorStatuses,
-} from "@/features/creators/schemas/creator.schema";
+import { creatorStatuses } from "@/features/creators/schemas/creator.schema";
 import { CREATOR_PLATFORMS } from "@/features/creators/types";
 import type { StaffManagerOption } from "@/features/applications/types";
 import FlashToast from "@/features/creators/components/FlashToast";
@@ -16,9 +14,10 @@ type CreatorFormProps = {
   labels: {
     create: string;
     title: string;
-    fullName: string;
+    displayName: string;
     email: string;
     telegram: string;
+    phone: string;
     country: string;
     languages: string;
     languagesPlaceholder: string;
@@ -54,9 +53,10 @@ export default function CreatorForm({
     setError(null);
     const platforms = formData.getAll("platforms").map(String);
     const payload = {
-      full_name: formData.get("full_name"),
+      display_name: formData.get("display_name"),
       email: formData.get("email"),
       telegram: formData.get("telegram"),
+      phone: formData.get("phone"),
       country: formData.get("country"),
       languages: String(formData.get("languages") ?? ""),
       platforms,
@@ -128,9 +128,9 @@ export default function CreatorForm({
             <form action={handleSubmit} className="mt-5 space-y-4">
               <label className="block">
                 <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
-                  {labels.fullName}
+                  {labels.displayName}
                 </span>
-                <input name="full_name" required className="nht-input" />
+                <input name="display_name" required className="nht-input" />
               </label>
 
               <label className="block">
@@ -150,6 +150,13 @@ export default function CreatorForm({
                   {labels.telegram}
                 </span>
                 <input name="telegram" className="nht-input" />
+              </label>
+
+              <label className="block">
+                <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
+                  {labels.phone}
+                </span>
+                <input name="phone" className="nht-input" />
               </label>
 
               <label className="block">
