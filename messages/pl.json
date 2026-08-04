@@ -242,5 +242,49 @@
     "errors": {
       "forbidden": "Nie masz dostępu do panelu admina."
     }
+  },
+  "admin": {
+    "logout": "Wyloguj",
+    "openMenu": "Otwórz menu",
+    "nav": {
+      "dashboard": "Panel",
+      "applications": "Aplikacje",
+      "creators": "Twórcy",
+      "blog": "Blog",
+      "analytics": "Analityka",
+      "settings": "Ustawienia"
+    },
+    "pages": {
+      "dashboard": {
+        "label": "Overview",
+        "title": "Dashboard",
+        "description": "Workspace overview will appear here in the next commit."
+      },
+      "applications": {
+        "label": "CRM",
+        "title": "Applications",
+        "description": "Application pipeline will appear here in the next commit."
+      },
+      "creators": {
+        "label": "Roster",
+        "title": "Creators",
+        "description": "Creator management is coming soon."
+      },
+      "blog": {
+        "label": "Content",
+        "title": "Blog",
+        "description": "Blog CMS is coming soon."
+      },
+      "analytics": {
+        "label": "Insights",
+        "title": "Analytics",
+        "description": "Analytics is coming soon."
+      },
+      "settings": {
+        "label": "System",
+        "title": "Settings",
+        "description": "Site settings are coming soon."
+      }
+    }
   }
 }

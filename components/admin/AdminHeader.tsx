@@ -1,0 +1,53 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+import { logoutAction } from "@/features/auth";
+
+type AdminHeaderProps = {
+  userName: string;
+  userRole: string;
+  userEmail?: string | null;
+  onMenuOpen: () => void;
+};
+
+export default function AdminHeader({
+  userName,
+  userRole,
+  userEmail,
+  onMenuOpen,
+}: AdminHeaderProps) {
+  const t = useTranslations("admin");
+
+  return (
+    <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-4 border-b border-white/[0.06] bg-[var(--nht-black)]/90 px-4 backdrop-blur-md sm:px-6">
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={onMenuOpen}
+          aria-label={t("openMenu")}
+          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-white/[0.08] lg:hidden"
+        >
+          <span className="block h-0.5 w-4 bg-white" />
+          <span className="block h-0.5 w-4 bg-white" />
+          <span className="block h-0.5 w-4 bg-white" />
+        </button>
+        <div className="min-w-0">
+          <p className="truncate text-sm font-medium text-white">{userName}</p>
+          <p className="truncate text-xs text-[var(--nht-text-tertiary)]">
+            <span className="text-[var(--nht-gold)]">{userRole}</span>
+            {userEmail ? ` · ${userEmail}` : null}
+          </p>
+        </div>
+      </div>
+
+      <form action={logoutAction}>
+        <button
+          type="submit"
+          className="rounded-full border border-white/10 px-4 py-2 text-xs font-medium text-white transition-colors hover:border-[var(--nht-border-hover)] hover:bg-white/[0.05] sm:text-sm"
+        >
+          {t("logout")}
+        </button>
+      </form>
+    </header>
+  );
+}

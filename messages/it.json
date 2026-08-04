@@ -242,5 +242,49 @@
     "errors": {
       "forbidden": "Non hai i permessi per l’area admin."
     }
+  },
+  "admin": {
+    "logout": "Esci",
+    "openMenu": "Apri menu",
+    "nav": {
+      "dashboard": "Dashboard",
+      "applications": "Candidature",
+      "creators": "Creator",
+      "blog": "Blog",
+      "analytics": "Analitiche",
+      "settings": "Impostazioni"
+    },
+    "pages": {
+      "dashboard": {
+        "label": "Overview",
+        "title": "Dashboard",
+        "description": "Workspace overview will appear here in the next commit."
+      },
+      "applications": {
+        "label": "CRM",
+        "title": "Applications",
+        "description": "Application pipeline will appear here in the next commit."
+      },
+      "creators": {
+        "label": "Roster",
+        "title": "Creators",
+        "description": "Creator management is coming soon."
+      },
+      "blog": {
+        "label": "Content",
+        "title": "Blog",
+        "description": "Blog CMS is coming soon."
+      },
+      "analytics": {
+        "label": "Insights",
+        "title": "Analytics",
+        "description": "Analytics is coming soon."
+      },
+      "settings": {
+        "label": "System",
+        "title": "Settings",
+        "description": "Site settings are coming soon."
+      }
+    }
   }
 }

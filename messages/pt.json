@@ -242,5 +242,49 @@
     "errors": {
       "forbidden": "Não tem permissão para aceder à área de admin."
     }
+  },
+  "admin": {
+    "logout": "Terminar sessão",
+    "openMenu": "Abrir menu",
+    "nav": {
+      "dashboard": "Painel",
+      "applications": "Candidaturas",
+      "creators": "Creators",
+      "blog": "Blog",
+      "analytics": "Analítica",
+      "settings": "Definições"
+    },
+    "pages": {
+      "dashboard": {
+        "label": "Overview",
+        "title": "Dashboard",
+        "description": "Workspace overview will appear here in the next commit."
+      },
+      "applications": {
+        "label": "CRM",
+        "title": "Applications",
+        "description": "Application pipeline will appear here in the next commit."
+      },
+      "creators": {
+        "label": "Roster",
+        "title": "Creators",
+        "description": "Creator management is coming soon."
+      },
+      "blog": {
+        "label": "Content",
+        "title": "Blog",
+        "description": "Blog CMS is coming soon."
+      },
+      "analytics": {
+        "label": "Insights",
+        "title": "Analytics",
+        "description": "Analytics is coming soon."
+      },
+      "settings": {
+        "label": "System",
+        "title": "Settings",
+        "description": "Site settings are coming soon."
+      }
+    }
   }
 }

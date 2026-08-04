@@ -4,7 +4,7 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-export default async function AdminDashboardPage({ params }: Props) {
+export default async function AdminCreatorsPage({ params }: Props) {
   const { locale } = await params;
-  return <AdminPlaceholderPage locale={locale} pageKey="dashboard" />;
+  return <AdminPlaceholderPage locale={locale} pageKey="creators" />;
 }
