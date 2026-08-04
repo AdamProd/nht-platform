@@ -46,24 +46,30 @@ export default function ApplicationsPagination({
         {page > 1 ? (
           <Link
             href={buildHref(page - 1, query)}
-            className="rounded-full border border-white/10 px-4 py-2 text-xs text-white hover:bg-white/[0.05]"
+            className="rounded-full border border-white/10 px-4 py-2 text-xs text-white hover:bg-white/[0.05] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--nht-gold)]"
           >
             {labels.previous}
           </Link>
         ) : (
-          <span className="rounded-full border border-white/[0.04] px-4 py-2 text-xs text-[var(--nht-text-muted)]">
+          <span
+            aria-disabled="true"
+            className="rounded-full border border-white/[0.04] px-4 py-2 text-xs text-[var(--nht-text-muted)]"
+          >
             {labels.previous}
           </span>
         )}
         {page < totalPages ? (
           <Link
             href={buildHref(page + 1, query)}
-            className="rounded-full border border-white/10 px-4 py-2 text-xs text-white hover:bg-white/[0.05]"
+            className="rounded-full border border-white/10 px-4 py-2 text-xs text-white hover:bg-white/[0.05] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--nht-gold)]"
           >
             {labels.next}
           </Link>
         ) : (
-          <span className="rounded-full border border-white/[0.04] px-4 py-2 text-xs text-[var(--nht-text-muted)]">
+          <span
+            aria-disabled="true"
+            className="rounded-full border border-white/[0.04] px-4 py-2 text-xs text-[var(--nht-text-muted)]"
+          >
             {labels.next}
           </span>
         )}

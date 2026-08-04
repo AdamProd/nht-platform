@@ -32,35 +32,70 @@ function isLoginPath(pathname: string): boolean {
   );
 }
 
+function isUnauthorizedPath(pathname: string): boolean {
+  return routing.locales.some(
+    (locale) =>
+      pathname === `/${locale}/unauthorized` ||
+      pathname.startsWith(`/${locale}/unauthorized/`),
+  );
+}
+
 function copyCookies(from: NextResponse, to: NextResponse) {
   from.cookies.getAll().forEach((cookie) => {
     to.cookies.set(cookie.name, cookie.value);
   });
 }
 
+function redirectWithCookies(
+  request: NextRequest,
+  source: NextResponse,
+  pathname: string,
+  search = "",
+) {
+  const url = request.nextUrl.clone();
+  url.pathname = pathname;
+  url.search = search;
+  const redirectResponse = NextResponse.redirect(url);
+  copyCookies(source, redirectResponse);
+  return redirectResponse;
+}
+
 export default async function proxy(request: NextRequest) {
   const intlResponse = handleI18nRouting(request);
-  const { response, user } = await updateSession(request, intlResponse);
+  const { response, user, isStaff: staff } = await updateSession(
+    request,
+    intlResponse,
+  );
 
   const { pathname } = request.nextUrl;
   const locale = getLocaleFromPathname(pathname);
 
-  if (isAdminPath(pathname) && !user) {
-    const loginUrl = request.nextUrl.clone();
-    loginUrl.pathname = `/${locale}/login`;
-    loginUrl.searchParams.set("next", pathname);
-    const redirectResponse = NextResponse.redirect(loginUrl);
-    copyCookies(response, redirectResponse);
-    return redirectResponse;
+  if (isAdminPath(pathname)) {
+    if (!user) {
+      return redirectWithCookies(
+        request,
+        response,
+        `/${locale}/login`,
+        `?next=${encodeURIComponent(pathname)}`,
+      );
+    }
+    if (!staff) {
+      return redirectWithCookies(
+        request,
+        response,
+        `/${locale}/unauthorized`,
+      );
+    }
   }
 
-  if (isLoginPath(pathname) && user) {
-    const adminUrl = request.nextUrl.clone();
-    adminUrl.pathname = `/${locale}/admin`;
-    adminUrl.search = "";
-    const redirectResponse = NextResponse.redirect(adminUrl);
-    copyCookies(response, redirectResponse);
-    return redirectResponse;
+  // Only staff skip the login screen; creator/guest stay put (no admin loop).
+  if (isLoginPath(pathname) && user && staff) {
+    return redirectWithCookies(request, response, `/${locale}/admin`);
+  }
+
+  // Authenticated non-staff on unauthorized can remain; unauthenticated go login.
+  if (isUnauthorizedPath(pathname) && !user) {
+    return redirectWithCookies(request, response, `/${locale}/login`);
   }
 
   return response;

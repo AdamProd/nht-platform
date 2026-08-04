@@ -1,2 +1,2 @@
-/** Settings domain — site configuration (Phase 5+) */
+/** Settings domain — site configuration (future). */
 export {};

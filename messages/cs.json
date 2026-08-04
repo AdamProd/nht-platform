@@ -241,6 +241,12 @@
     "submitting": "Přihlašování…",
     "errors": {
       "forbidden": "Nemáte oprávnění k admin oblasti."
+    },
+    "unauthorized": {
+      "title": "Access denied",
+      "description": "Your account is signed in but does not have permission to use the admin workspace.",
+      "home": "Back to site",
+      "signOut": "Sign out"
     }
   },
   "admin": {
@@ -341,7 +347,13 @@
       },
       "errors": {
         "load": "Unable to load applications.",
-        "loadDetail": "Unable to load this application."
+        "loadDetail": "Unable to load this application.",
+        "boundary": "Something went wrong loading applications.",
+        "retry": "Try again"
+      },
+      "notFound": {
+        "title": "Application not found",
+        "description": "This application may have been removed or the link is invalid."
       }
     },
     "dashboard": {
@@ -380,6 +392,8 @@
       "errors": {
         "load": "Unable to load dashboard data."
       }
-    }
+    },
+    "navLabel": "Admin navigation",
+    "closeMenu": "Close menu"
   }
 }

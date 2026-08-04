@@ -2,13 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 type AdminPlaceholderProps = {
   locale: string;
-  pageKey:
-    | "dashboard"
-    | "applications"
-    | "creators"
-    | "blog"
-    | "analytics"
-    | "settings";
+  pageKey: "creators" | "blog" | "analytics" | "settings";
 };
 
 export default async function AdminPlaceholderPage({

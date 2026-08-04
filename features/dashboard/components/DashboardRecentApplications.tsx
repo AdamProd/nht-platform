@@ -40,14 +40,14 @@ export default function DashboardRecentApplications({
         </p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="min-w-full text-left text-sm">
+          <table className="min-w-full text-left text-sm" aria-label={labels.title}>
             <thead>
               <tr className="text-overline text-[var(--nht-text-tertiary)]">
-                <th className="px-5 py-3 font-medium">{labels.name}</th>
-                <th className="px-5 py-3 font-medium">{labels.platform}</th>
-                <th className="px-5 py-3 font-medium">{labels.status}</th>
-                <th className="px-5 py-3 font-medium">{labels.priority}</th>
-                <th className="px-5 py-3 font-medium">{labels.created}</th>
+                <th scope="col" className="px-5 py-3 font-medium">{labels.name}</th>
+                <th scope="col" className="px-5 py-3 font-medium">{labels.platform}</th>
+                <th scope="col" className="px-5 py-3 font-medium">{labels.status}</th>
+                <th scope="col" className="px-5 py-3 font-medium">{labels.priority}</th>
+                <th scope="col" className="px-5 py-3 font-medium">{labels.created}</th>
               </tr>
             </thead>
             <tbody>

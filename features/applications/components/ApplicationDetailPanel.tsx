@@ -13,6 +13,8 @@ import {
 } from "@/features/applications/schemas/crm.schema";
 import type {
   ApplicationDetail,
+  ApplicationPriority,
+  ApplicationStatus,
   StaffManagerOption,
 } from "@/features/applications/types";
 import FlashToast from "@/features/applications/components/FlashToast";
@@ -52,31 +54,55 @@ export default function ApplicationDetailPanel({
   labels,
 }: ApplicationDetailPanelProps) {
   const [toast, setToast] = useState<string | null>(null);
+  const [toastTone, setToastTone] = useState<"success" | "error">("success");
   const [error, setError] = useState<string | null>(null);
   const [pendingField, setPendingField] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
+
+  const [status, setStatus] = useState<ApplicationStatus>(application.status);
+  const [priority, setPriority] = useState<ApplicationPriority>(
+    application.priority,
+  );
+  const [managerId, setManagerId] = useState(application.assigned_manager ?? "");
+  const [notes, setNotes] = useState(application.notes ?? "");
 
   function runAction(
     field: string,
     action: (formData: FormData) => Promise<{ success: boolean; error?: string }>,
     formData: FormData,
+    rollback?: () => void,
   ) {
     setError(null);
     setPendingField(field);
     startTransition(async () => {
-      const result = await action(formData);
-      setPendingField(null);
-      if (!result.success) {
-        setError(result.error ?? "Unable to save changes.");
-        return;
+      try {
+        const result = await action(formData);
+        setPendingField(null);
+        if (!result.success) {
+          rollback?.();
+          const message = result.error ?? "Unable to save changes.";
+          setError(message);
+          setToastTone("error");
+          setToast(message);
+          return;
+        }
+        setToastTone("success");
+        setToast(labels.saved);
+      } catch (err) {
+        console.error("[ApplicationDetailPanel]", err);
+        rollback?.();
+        setPendingField(null);
+        const message = "Unable to save changes.";
+        setError(message);
+        setToastTone("error");
+        setToast(message);
       }
-      setToast(labels.saved);
     });
   }
 
   return (
     <div className="space-y-6">
-      <FlashToast message={toast} />
+      <FlashToast message={toast} tone={toastTone} />
 
       {error ? (
         <p
@@ -112,7 +138,12 @@ export default function ApplicationDetailPanel({
       <div className="grid gap-4 lg:grid-cols-3">
         <form
           className="rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02] p-5"
-          action={(formData) => runAction("status", updateStatus, formData)}
+          action={(formData) => {
+            const previous = status;
+            const next = formData.get("status") as ApplicationStatus;
+            setStatus(next);
+            runAction("status", updateStatus, formData, () => setStatus(previous));
+          }}
         >
           <input type="hidden" name="id" value={application.id} />
           <label className="block">
@@ -121,8 +152,10 @@ export default function ApplicationDetailPanel({
             </span>
             <select
               name="status"
-              defaultValue={application.status}
-              className="nht-input"
+              value={status}
+              disabled={isPending && pendingField === "status"}
+              onChange={(e) => setStatus(e.target.value as ApplicationStatus)}
+              className="nht-input disabled:opacity-60"
             >
               {applicationStatuses.map((value) => (
                 <option key={value} value={value}>
@@ -139,7 +172,14 @@ export default function ApplicationDetailPanel({
 
         <form
           className="rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02] p-5"
-          action={(formData) => runAction("priority", updatePriority, formData)}
+          action={(formData) => {
+            const previous = priority;
+            const next = formData.get("priority") as ApplicationPriority;
+            setPriority(next);
+            runAction("priority", updatePriority, formData, () =>
+              setPriority(previous),
+            );
+          }}
         >
           <input type="hidden" name="id" value={application.id} />
           <label className="block">
@@ -148,8 +188,12 @@ export default function ApplicationDetailPanel({
             </span>
             <select
               name="priority"
-              defaultValue={application.priority}
-              className="nht-input"
+              value={priority}
+              disabled={isPending && pendingField === "priority"}
+              onChange={(e) =>
+                setPriority(e.target.value as ApplicationPriority)
+              }
+              className="nht-input disabled:opacity-60"
             >
               {applicationPriorities.map((value) => (
                 <option key={value} value={value}>
@@ -166,7 +210,14 @@ export default function ApplicationDetailPanel({
 
         <form
           className="rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02] p-5"
-          action={(formData) => runAction("manager", assignManager, formData)}
+          action={(formData) => {
+            const previous = managerId;
+            const next = String(formData.get("assigned_manager") ?? "");
+            setManagerId(next);
+            runAction("manager", assignManager, formData, () =>
+              setManagerId(previous),
+            );
+          }}
         >
           <input type="hidden" name="id" value={application.id} />
           <label className="block">
@@ -175,8 +226,10 @@ export default function ApplicationDetailPanel({
             </span>
             <select
               name="assigned_manager"
-              defaultValue={application.assigned_manager ?? ""}
-              className="nht-input"
+              value={managerId}
+              disabled={isPending && pendingField === "manager"}
+              onChange={(e) => setManagerId(e.target.value)}
+              className="nht-input disabled:opacity-60"
             >
               <option value="">{labels.unassigned}</option>
               {managers.map((manager) => (
@@ -195,7 +248,12 @@ export default function ApplicationDetailPanel({
 
       <form
         className="rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02] p-5"
-        action={(formData) => runAction("notes", updateNotes, formData)}
+        action={(formData) => {
+          const previous = notes;
+          const next = String(formData.get("notes") ?? "");
+          setNotes(next);
+          runAction("notes", updateNotes, formData, () => setNotes(previous));
+        }}
       >
         <input type="hidden" name="id" value={application.id} />
         <label className="block">
@@ -205,8 +263,10 @@ export default function ApplicationDetailPanel({
           <textarea
             name="notes"
             rows={6}
-            defaultValue={application.notes ?? ""}
-            className="nht-input resize-y"
+            value={notes}
+            disabled={isPending && pendingField === "notes"}
+            onChange={(e) => setNotes(e.target.value)}
+            className="nht-input resize-y disabled:opacity-60"
           />
         </label>
         <SaveButton
@@ -222,7 +282,9 @@ function Field({ label, value }: { label: string; value: string }) {
   return (
     <div>
       <p className="text-overline text-[var(--nht-text-tertiary)]">{label}</p>
-      <p className="mt-2 whitespace-pre-wrap text-sm text-white">{value}</p>
+      <p className="mt-2 whitespace-pre-wrap text-sm break-words text-white">
+        {value}
+      </p>
     </div>
   );
 }
@@ -238,7 +300,8 @@ function SaveButton({
     <button
       type="submit"
       disabled={pending}
-      className="mt-4 rounded-full border border-white/10 px-4 py-2 text-xs font-medium text-white transition-colors hover:border-[var(--nht-border-hover)] hover:bg-white/[0.05] disabled:cursor-not-allowed disabled:opacity-60"
+      aria-busy={pending}
+      className="mt-4 rounded-full border border-white/10 px-4 py-2 text-xs font-medium text-white transition-colors hover:border-[var(--nht-border-hover)] hover:bg-white/[0.05] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--nht-gold)] disabled:cursor-not-allowed disabled:opacity-60"
     >
       {pending ? labels.saving : labels.save}
     </button>

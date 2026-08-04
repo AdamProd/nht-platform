@@ -57,7 +57,7 @@ export async function requireRole(
 
   if (!hasAllowedRole(session.profile.role, allowed)) {
     const locale = await getLocale();
-    redirect({ href: "/login?error=forbidden", locale });
+    redirect({ href: "/unauthorized", locale });
     throw new Error("Forbidden");
   }
 

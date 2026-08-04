@@ -35,17 +35,17 @@ export default function ApplicationsTable({
 
   return (
     <div className="overflow-x-auto rounded-[var(--nht-radius-xl)] border border-white/[0.06]">
-      <table className="min-w-full text-left text-sm">
+      <table className="min-w-full text-left text-sm" aria-label={labels.name}>
         <thead className="border-b border-white/[0.06] bg-white/[0.02]">
           <tr className="text-overline text-[var(--nht-text-tertiary)]">
-            <th className="px-4 py-3 font-medium">{labels.name}</th>
-            <th className="px-4 py-3 font-medium">{labels.email}</th>
-            <th className="px-4 py-3 font-medium">{labels.platform}</th>
-            <th className="px-4 py-3 font-medium">{labels.status}</th>
-            <th className="px-4 py-3 font-medium">{labels.priority}</th>
-            <th className="px-4 py-3 font-medium">{labels.manager}</th>
-            <th className="px-4 py-3 font-medium">{labels.created}</th>
-            <th className="px-4 py-3 font-medium">{labels.actions}</th>
+            <th scope="col" className="px-4 py-3 font-medium">{labels.name}</th>
+            <th scope="col" className="px-4 py-3 font-medium">{labels.email}</th>
+            <th scope="col" className="px-4 py-3 font-medium">{labels.platform}</th>
+            <th scope="col" className="px-4 py-3 font-medium">{labels.status}</th>
+            <th scope="col" className="px-4 py-3 font-medium">{labels.priority}</th>
+            <th scope="col" className="px-4 py-3 font-medium">{labels.manager}</th>
+            <th scope="col" className="px-4 py-3 font-medium">{labels.created}</th>
+            <th scope="col" className="px-4 py-3 font-medium">{labels.actions}</th>
           </tr>
         </thead>
         <tbody>

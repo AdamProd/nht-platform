@@ -1,18 +1,26 @@
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 import type { User } from "@supabase/supabase-js";
-import type { Database } from "@/types/database.types";
+import type { Database, UserRole } from "@/types/database.types";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
+import { isStaff } from "@/lib/auth/roles";
+
+export type SessionSnapshot = {
+  response: NextResponse;
+  user: User | null;
+  role: UserRole | null;
+  isStaff: boolean;
+};
 
 /**
- * Refreshes the Supabase auth session on each request.
+ * Refreshes the Supabase auth session and resolves staff role for route guards.
  */
 export async function updateSession(
   request: NextRequest,
   response: NextResponse,
-): Promise<{ response: NextResponse; user: User | null }> {
+): Promise<SessionSnapshot> {
   if (!hasSupabaseEnv()) {
-    return { response, user: null };
+    return { response, user: null, role: null, isStaff: false };
   }
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -38,5 +46,22 @@ export async function updateSession(
     data: { user },
   } = await supabase.auth.getUser();
 
-  return { response, user };
+  if (!user) {
+    return { response, user: null, role: null, isStaff: false };
+  }
+
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  const role = profile?.role ?? null;
+
+  return {
+    response,
+    user,
+    role,
+    isStaff: isStaff(role),
+  };
 }
