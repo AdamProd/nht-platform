@@ -1,2 +1,3 @@
-/** Auth domain — guards, actions (Phase 4+) */
-export {};
+export { loginAction, type LoginState } from "./actions/login";
+export { logoutAction } from "./actions/logout";
+export { default as LoginForm } from "./components/LoginForm";

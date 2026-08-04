@@ -1,18 +1,18 @@
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
+import type { User } from "@supabase/supabase-js";
 import type { Database } from "@/types/database.types";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
 
 /**
  * Refreshes the Supabase auth session on each request.
- * Wire into proxy.ts when auth is enabled (Phase 4+).
  */
 export async function updateSession(
   request: NextRequest,
   response: NextResponse,
-): Promise<NextResponse> {
+): Promise<{ response: NextResponse; user: User | null }> {
   if (!hasSupabaseEnv()) {
-    return response;
+    return { response, user: null };
   }
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -34,6 +34,9 @@ export async function updateSession(
     },
   });
 
-  await supabase.auth.getUser();
-  return response;
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  return { response, user };
 }

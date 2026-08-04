@@ -229,5 +229,18 @@
   "brand": {
     "name": "NHT",
     "fullName": "New Horizons Team"
+  },
+  "auth": {
+    "title": "Mitarbeiter-Login",
+    "description": "Zugang zum NHT-Adminbereich.",
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "you@nht.team",
+    "passwordLabel": "Passwort",
+    "passwordPlaceholder": "••••••••",
+    "submit": "Anmelden",
+    "submitting": "Anmeldung…",
+    "errors": {
+      "forbidden": "Keine Berechtigung für den Adminbereich."
+    }
   }
 }

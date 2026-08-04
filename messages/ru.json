@@ -229,5 +229,18 @@
   "brand": {
     "name": "NHT",
     "fullName": "New Horizons Team"
+  },
+  "auth": {
+    "title": "Вход для сотрудников",
+    "description": "Доступ к админ-панели NHT.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@nht.team",
+    "passwordLabel": "Пароль",
+    "passwordPlaceholder": "••••••••",
+    "submit": "Войти",
+    "submitting": "Вход…",
+    "errors": {
+      "forbidden": "У вас нет доступа к админ-панели."
+    }
   }
 }

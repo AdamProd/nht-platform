@@ -229,5 +229,18 @@
   "brand": {
     "name": "NHT",
     "fullName": "New Horizons Team"
+  },
+  "auth": {
+    "title": "Staff sign in",
+    "description": "Access the NHT admin workspace.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@nht.team",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "submit": "Sign in",
+    "submitting": "Signing in…",
+    "errors": {
+      "forbidden": "You do not have permission to access the admin area."
+    }
   }
 }
