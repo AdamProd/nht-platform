@@ -31,7 +31,13 @@ export type PlatformEventType =
   | "staff.login"
   | "staff.logout"
   | "staff.created"
-  | "staff.role_changed";
+  | "staff.updated"
+  | "staff.deleted"
+  | "staff.role_changed"
+  | "staff.department_changed"
+  | "staff.status_changed"
+  | "staff.assigned_creator"
+  | "staff.unassigned_creator";
 
 export type PublishEventInput = {
   type: PlatformEventType;

@@ -287,7 +287,8 @@
       "settings": "Настройки",
       "finance": "Финансы",
       "notifications": "Уведомления",
-      "activity": "Активность"
+      "activity": "Активность",
+      "staff": "Сотрудники"
     },
     "pages": {
       "dashboard": {
@@ -334,6 +335,11 @@
         "label": "Аудит",
         "title": "Журнал активности",
         "description": "Лента событий по заявкам, креаторам и сотрудникам."
+      },
+      "staff": {
+        "label": "Команда",
+        "title": "Сотрудники",
+        "description": "Управление сотрудниками, ролями и правами."
       }
     },
     "applications": {
@@ -812,7 +818,12 @@
       "admin": "Админ",
       "manager": "Менеджер",
       "creator": "Креатор",
-      "guest": "Гость"
+      "guest": "Гость",
+      "support": "Поддержка",
+      "moderator": "Модератор",
+      "content_manager": "Контент-менеджер",
+      "finance": "Финансы",
+      "viewer": "Наблюдатель"
     },
     "finance": {
       "label": "Финансы",
@@ -1050,6 +1061,165 @@
       },
       "errors": {
         "load": "Не удалось загрузить активность."
+      }
+    },
+    "staff": {
+      "label": "Команда",
+      "title": "Сотрудники",
+      "description": "Управление сотрудниками, ролями, отделами и правами.",
+      "create": "Добавить сотрудника",
+      "permissionsLink": "Матрица прав",
+      "empty": "Нет сотрудников по фильтрам.",
+      "emptyHint": "Сбросьте фильтры или пригласите сотрудника.",
+      "stats": {
+        "employees": "Сотрудники",
+        "managers": "Менеджеры",
+        "creators": "Креаторы",
+        "departments": "Отделы",
+        "activeToday": "Активны сегодня"
+      },
+      "filters": {
+        "search": "Search",
+        "searchPlaceholder": "Name or email",
+        "role": "Role",
+        "department": "Department",
+        "status": "Status",
+        "sort": "Sort",
+        "all": "All",
+        "newest": "Newest",
+        "oldest": "Oldest",
+        "name": "Name",
+        "apply": "Apply",
+        "clear": "Clear"
+      },
+      "table": {
+        "avatar": "Avatar",
+        "name": "Name",
+        "email": "Email",
+        "role": "Role",
+        "department": "Department",
+        "status": "Status",
+        "managedCreators": "Managed creators",
+        "created": "Created",
+        "lastLogin": "Last login",
+        "actions": "Actions",
+        "view": "View"
+      },
+      "fields": {
+        "fullName": "Full name",
+        "email": "Email",
+        "phone": "Phone",
+        "role": "Role",
+        "department": "Department",
+        "departmentCustom": "Custom department",
+        "language": "Language",
+        "timezone": "Timezone",
+        "temporaryPassword": "Temporary password",
+        "created": "Created",
+        "updated": "Updated",
+        "lastLogin": "Last login",
+        "biography": "Biography",
+        "notes": "Internal notes",
+        "status": "Status",
+        "managedCreators": "Managed creators",
+        "assignedApplications": "Assigned applications",
+        "assignedTasks": "Assigned tasks"
+      },
+      "form": {
+        "title": "Создать сотрудника",
+        "cancel": "Отмена",
+        "submit": "Создать",
+        "submitting": "Создание…",
+        "created": "Сотрудник создан."
+      },
+      "departments": {
+        "management": "Management",
+        "sales": "Sales",
+        "support": "Support",
+        "marketing": "Marketing",
+        "content": "Content",
+        "finance": "Finance",
+        "hr": "HR",
+        "operations": "Operations",
+        "custom": "Custom"
+      },
+      "status": {
+        "invited": "Invited",
+        "active": "Active",
+        "vacation": "Vacation",
+        "suspended": "Suspended",
+        "disabled": "Disabled",
+        "archived": "Archived"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "pageOf": "Page {page} of {totalPages} · {total} total"
+      },
+      "errors": {
+        "load": "Не удалось загрузить сотрудников."
+      },
+      "actionErrors": {
+        "unauthorized": "You are not authorized.",
+        "forbidden": "You cannot perform this action.",
+        "forbiddenRole": "You cannot assign this role.",
+        "forbiddenOwner": "Only the owner can manage owner accounts.",
+        "cannotDeleteSelf": "You cannot delete your own account.",
+        "invalid": "Invalid staff data.",
+        "notFound": "Staff member not found.",
+        "create": "Unable to create employee.",
+        "save": "Unable to save changes.",
+        "delete": "Unable to delete employee.",
+        "tasksUnavailable": "Tasks are unavailable in this environment."
+      },
+      "detail": {
+        "back": "К списку сотрудников",
+        "save": "Сохранить",
+        "saving": "Сохранение…",
+        "saved": "Сохранено.",
+        "confirmDelete": "Archive and disable this employee?",
+        "confirmTransfer": "Transfer ownership to this employee? You will become an admin.",
+        "delete": "Архивировать",
+        "transferOwnership": "Передать владение",
+        "emptyAssignments": "Nothing assigned yet.",
+        "emptyActivity": "No recent activity.",
+        "unassign": "Unassign",
+        "assignCreator": "Assign creator",
+        "assignApplication": "Assign application",
+        "expandPayload": "Show payload",
+        "collapsePayload": "Hide payload",
+        "sections": {
+          "profile": "Profile",
+          "assignments": "Assignments",
+          "activity": "Recent activity",
+          "danger": "Danger zone"
+        }
+      },
+      "permissions": {
+        "title": "Матрица прав",
+        "description": "Центральная карта прав через hasPermission().",
+        "module": "Module",
+        "role": "Role",
+        "modules": {
+          "applications": "Applications",
+          "creators": "Creator CRM",
+          "finance": "Finance",
+          "tasks": "Tasks",
+          "calendar": "Calendar",
+          "blog": "Blog",
+          "analytics": "Analytics",
+          "settings": "Settings",
+          "staff": "Staff",
+          "notifications": "Notifications",
+          "activity": "Activity"
+        },
+        "actions": {
+          "create": "Create",
+          "read": "Read",
+          "update": "Update",
+          "delete": "Delete",
+          "manage": "Manage"
+        }
       }
     }
   },
@@ -1409,7 +1579,25 @@
       "staffCreatedDescription": "Сотрудник создан: {name}",
       "staffRoleTitle": "Роль изменена",
       "staffRoleMessage": "Ваша роль изменена на {role}",
-      "staffRoleDescription": "Роль сотрудника изменена для {name} на {role}"
+      "staffRoleDescription": "Роль сотрудника изменена для {name} на {role}",
+      "staffUpdatedTitle": "Сотрудник обновлён",
+      "staffUpdatedMessage": "Профиль {name} обновлён",
+      "staffUpdatedDescription": "Сотрудник обновлён: {name}",
+      "staffDeletedTitle": "Сотрудник удалён",
+      "staffDeletedMessage": "{name} архивирован",
+      "staffDeletedDescription": "Сотрудник удалён: {name}",
+      "staffDepartmentTitle": "Отдел изменён",
+      "staffDepartmentMessage": "Отдел {name} изменён",
+      "staffDepartmentDescription": "Отдел изменён для {name}",
+      "staffStatusTitle": "Статус изменён",
+      "staffStatusMessage": "{name} теперь {status}",
+      "staffStatusDescription": "Статус изменён для {name} на {status}",
+      "staffAssignedCreatorTitle": "Креатор назначен",
+      "staffAssignedCreatorMessage": "Вам назначен креатор {creatorName}",
+      "staffAssignedCreatorDescription": "Креатор назначен {name}",
+      "staffUnassignedCreatorTitle": "Креатор снят",
+      "staffUnassignedCreatorMessage": "Креатор снят с {name}",
+      "staffUnassignedCreatorDescription": "Креатор снят с {name}"
     }
   }
 }

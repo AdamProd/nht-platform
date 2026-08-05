@@ -3,6 +3,7 @@ export {
   hasAllowedRole,
   isOwner,
   isStaff,
+  isAdminOrAbove,
 } from "./roles";
 
 export {

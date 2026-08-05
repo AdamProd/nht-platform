@@ -31,6 +31,11 @@ export default function AdminHeader({
     | "roles.owner"
     | "roles.admin"
     | "roles.manager"
+    | "roles.support"
+    | "roles.moderator"
+    | "roles.content_manager"
+    | "roles.finance"
+    | "roles.viewer"
     | "roles.creator"
     | "roles.guest";
 

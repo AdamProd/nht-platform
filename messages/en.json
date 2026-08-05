@@ -287,7 +287,8 @@
       "settings": "Settings",
       "finance": "Finance",
       "notifications": "Notifications",
-      "activity": "Activity"
+      "activity": "Activity",
+      "staff": "Staff"
     },
     "pages": {
       "dashboard": {
@@ -334,6 +335,11 @@
         "label": "Audit",
         "title": "Activity Log",
         "description": "Timeline of platform events across applications, creators, and staff."
+      },
+      "staff": {
+        "label": "Team",
+        "title": "Staff",
+        "description": "Manage employees, roles, departments, and permissions."
       }
     },
     "applications": {
@@ -810,7 +816,12 @@
       "admin": "Admin",
       "manager": "Manager",
       "creator": "Creator",
-      "guest": "Guest"
+      "guest": "Guest",
+      "support": "Support",
+      "moderator": "Moderator",
+      "content_manager": "Content Manager",
+      "finance": "Finance",
+      "viewer": "Viewer"
     },
     "finance": {
       "label": "Finance",
@@ -1048,6 +1059,165 @@
       },
       "errors": {
         "load": "Unable to load activity."
+      }
+    },
+    "staff": {
+      "label": "Team",
+      "title": "Staff",
+      "description": "Manage employees, roles, departments, and permissions.",
+      "create": "Add employee",
+      "permissionsLink": "Permissions matrix",
+      "empty": "No staff match your filters.",
+      "emptyHint": "Try clearing filters or invite a new employee.",
+      "stats": {
+        "employees": "Employees",
+        "managers": "Managers",
+        "creators": "Creators",
+        "departments": "Departments",
+        "activeToday": "Active today"
+      },
+      "filters": {
+        "search": "Search",
+        "searchPlaceholder": "Name or email",
+        "role": "Role",
+        "department": "Department",
+        "status": "Status",
+        "sort": "Sort",
+        "all": "All",
+        "newest": "Newest",
+        "oldest": "Oldest",
+        "name": "Name",
+        "apply": "Apply",
+        "clear": "Clear"
+      },
+      "table": {
+        "avatar": "Avatar",
+        "name": "Name",
+        "email": "Email",
+        "role": "Role",
+        "department": "Department",
+        "status": "Status",
+        "managedCreators": "Managed creators",
+        "created": "Created",
+        "lastLogin": "Last login",
+        "actions": "Actions",
+        "view": "View"
+      },
+      "fields": {
+        "fullName": "Full name",
+        "email": "Email",
+        "phone": "Phone",
+        "role": "Role",
+        "department": "Department",
+        "departmentCustom": "Custom department",
+        "language": "Language",
+        "timezone": "Timezone",
+        "temporaryPassword": "Temporary password",
+        "created": "Created",
+        "updated": "Updated",
+        "lastLogin": "Last login",
+        "biography": "Biography",
+        "notes": "Internal notes",
+        "status": "Status",
+        "managedCreators": "Managed creators",
+        "assignedApplications": "Assigned applications",
+        "assignedTasks": "Assigned tasks"
+      },
+      "form": {
+        "title": "Create employee",
+        "cancel": "Cancel",
+        "submit": "Create",
+        "submitting": "Creating…",
+        "created": "Employee created."
+      },
+      "departments": {
+        "management": "Management",
+        "sales": "Sales",
+        "support": "Support",
+        "marketing": "Marketing",
+        "content": "Content",
+        "finance": "Finance",
+        "hr": "HR",
+        "operations": "Operations",
+        "custom": "Custom"
+      },
+      "status": {
+        "invited": "Invited",
+        "active": "Active",
+        "vacation": "Vacation",
+        "suspended": "Suspended",
+        "disabled": "Disabled",
+        "archived": "Archived"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "pageOf": "Page {page} of {totalPages} · {total} total"
+      },
+      "errors": {
+        "load": "Unable to load staff."
+      },
+      "actionErrors": {
+        "unauthorized": "You are not authorized.",
+        "forbidden": "You cannot perform this action.",
+        "forbiddenRole": "You cannot assign this role.",
+        "forbiddenOwner": "Only the owner can manage owner accounts.",
+        "cannotDeleteSelf": "You cannot delete your own account.",
+        "invalid": "Invalid staff data.",
+        "notFound": "Staff member not found.",
+        "create": "Unable to create employee.",
+        "save": "Unable to save changes.",
+        "delete": "Unable to delete employee.",
+        "tasksUnavailable": "Tasks are unavailable in this environment."
+      },
+      "detail": {
+        "back": "Back to staff",
+        "save": "Save changes",
+        "saving": "Saving…",
+        "saved": "Saved.",
+        "confirmDelete": "Archive and disable this employee?",
+        "confirmTransfer": "Transfer ownership to this employee? You will become an admin.",
+        "delete": "Archive employee",
+        "transferOwnership": "Transfer ownership",
+        "emptyAssignments": "Nothing assigned yet.",
+        "emptyActivity": "No recent activity.",
+        "unassign": "Unassign",
+        "assignCreator": "Assign creator",
+        "assignApplication": "Assign application",
+        "expandPayload": "Show payload",
+        "collapsePayload": "Hide payload",
+        "sections": {
+          "profile": "Profile",
+          "assignments": "Assignments",
+          "activity": "Recent activity",
+          "danger": "Danger zone"
+        }
+      },
+      "permissions": {
+        "title": "Permissions matrix",
+        "description": "Central capability map used by hasPermission() across the platform.",
+        "module": "Module",
+        "role": "Role",
+        "modules": {
+          "applications": "Applications",
+          "creators": "Creator CRM",
+          "finance": "Finance",
+          "tasks": "Tasks",
+          "calendar": "Calendar",
+          "blog": "Blog",
+          "analytics": "Analytics",
+          "settings": "Settings",
+          "staff": "Staff",
+          "notifications": "Notifications",
+          "activity": "Activity"
+        },
+        "actions": {
+          "create": "Create",
+          "read": "Read",
+          "update": "Update",
+          "delete": "Delete",
+          "manage": "Manage"
+        }
       }
     }
   },
@@ -1407,7 +1577,25 @@
       "staffCreatedDescription": "Staff created: {name}",
       "staffRoleTitle": "Role changed",
       "staffRoleMessage": "Your role was changed to {role}",
-      "staffRoleDescription": "Staff role changed for {name} to {role}"
+      "staffRoleDescription": "Staff role changed for {name} to {role}",
+      "staffUpdatedTitle": "Staff updated",
+      "staffUpdatedMessage": "{name}'s profile was updated",
+      "staffUpdatedDescription": "Staff updated: {name}",
+      "staffDeletedTitle": "Staff deleted",
+      "staffDeletedMessage": "{name} was archived",
+      "staffDeletedDescription": "Staff deleted: {name}",
+      "staffDepartmentTitle": "Department changed",
+      "staffDepartmentMessage": "{name}'s department was changed",
+      "staffDepartmentDescription": "Department changed for {name}",
+      "staffStatusTitle": "Status changed",
+      "staffStatusMessage": "{name} is now {status}",
+      "staffStatusDescription": "Status changed for {name} to {status}",
+      "staffAssignedCreatorTitle": "Creator assigned",
+      "staffAssignedCreatorMessage": "You were assigned creator {creatorName}",
+      "staffAssignedCreatorDescription": "Creator assigned to {name}",
+      "staffUnassignedCreatorTitle": "Creator unassigned",
+      "staffUnassignedCreatorMessage": "A creator was unassigned from {name}",
+      "staffUnassignedCreatorDescription": "Creator unassigned from {name}"
     }
   }
 }

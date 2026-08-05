@@ -5,6 +5,11 @@ export const STAFF_ROLES: readonly UserRole[] = [
   "owner",
   "admin",
   "manager",
+  "support",
+  "moderator",
+  "content_manager",
+  "finance",
+  "viewer",
 ] as const;
 
 export function isOwner(role: UserRole | null | undefined): boolean {
@@ -13,7 +18,11 @@ export function isOwner(role: UserRole | null | undefined): boolean {
 
 export function isStaff(role: UserRole | null | undefined): boolean {
   if (!role) return false;
-  return role === "owner" || role === "admin" || role === "manager";
+  return (STAFF_ROLES as readonly string[]).includes(role);
+}
+
+export function isAdminOrAbove(role: UserRole | null | undefined): boolean {
+  return role === "owner" || role === "admin";
 }
 
 /**

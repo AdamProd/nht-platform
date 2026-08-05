@@ -127,6 +127,12 @@ export async function loginAction(
     }
 
     if (isStaff(role)) {
+      const admin = createAdminClient();
+      await admin
+        .from("profiles")
+        .update({ last_login_at: new Date().toISOString() })
+        .eq("id", user.id);
+
       await publishEvent({
         type: "staff.login",
         module: "auth",

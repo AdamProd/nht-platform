@@ -54,7 +54,9 @@ export async function resolveNotificationRecipients(
       break;
     }
     case "staff.role_changed":
-    case "staff.created": {
+    case "staff.created":
+    case "staff.status_changed":
+    case "staff.assigned_creator": {
       const targetUserId =
         (payload.userId as string | undefined) || input.targetId || undefined;
       if (targetUserId) recipients.add(targetUserId);

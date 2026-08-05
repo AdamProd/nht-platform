@@ -771,26 +771,56 @@ export type Database = {
       profiles: {
         Row: {
           avatar_url: string | null;
+          biography: string | null;
           created_at: string;
+          department: Database["public"]["Enums"]["staff_department"] | null;
+          department_custom: string | null;
+          email: string | null;
           full_name: string | null;
           id: string;
+          last_login_at: string | null;
+          locale: string | null;
+          notes: string | null;
+          phone: string | null;
           role: Database["public"]["Enums"]["user_role"];
+          status: Database["public"]["Enums"]["staff_status"] | null;
+          timezone: string | null;
           updated_at: string;
         };
         Insert: {
           avatar_url?: string | null;
+          biography?: string | null;
           created_at?: string;
+          department?: Database["public"]["Enums"]["staff_department"] | null;
+          department_custom?: string | null;
+          email?: string | null;
           full_name?: string | null;
           id: string;
+          last_login_at?: string | null;
+          locale?: string | null;
+          notes?: string | null;
+          phone?: string | null;
           role?: Database["public"]["Enums"]["user_role"];
+          status?: Database["public"]["Enums"]["staff_status"] | null;
+          timezone?: string | null;
           updated_at?: string;
         };
         Update: {
           avatar_url?: string | null;
+          biography?: string | null;
           created_at?: string;
+          department?: Database["public"]["Enums"]["staff_department"] | null;
+          department_custom?: string | null;
+          email?: string | null;
           full_name?: string | null;
           id?: string;
+          last_login_at?: string | null;
+          locale?: string | null;
+          notes?: string | null;
+          phone?: string | null;
           role?: Database["public"]["Enums"]["user_role"];
+          status?: Database["public"]["Enums"]["staff_status"] | null;
+          timezone?: string | null;
           updated_at?: string;
         };
         Relationships: [];
@@ -1179,8 +1209,35 @@ export type Database = {
       payout_method: "bank" | "paypal" | "crypto" | "other";
       payout_status: "pending" | "processing" | "completed" | "failed";
       platform_link_status: "linked" | "pending" | "disconnected" | "issue";
+      staff_department:
+        | "management"
+        | "sales"
+        | "support"
+        | "marketing"
+        | "content"
+        | "finance"
+        | "hr"
+        | "operations"
+        | "custom";
+      staff_status:
+        | "invited"
+        | "active"
+        | "vacation"
+        | "suspended"
+        | "disabled"
+        | "archived";
       support_ticket_status: "open" | "waiting" | "answered" | "closed";
-      user_role: "owner" | "admin" | "manager" | "creator" | "guest";
+      user_role:
+        | "owner"
+        | "admin"
+        | "manager"
+        | "support"
+        | "moderator"
+        | "content_manager"
+        | "finance"
+        | "viewer"
+        | "creator"
+        | "guest";
     };
     CompositeTypes: {
       [_ in never]: never;
@@ -1201,6 +1258,8 @@ export type Enums<T extends keyof Database["public"]["Enums"]> =
   Database["public"]["Enums"][T];
 
 export type UserRole = Enums<"user_role">;
+export type StaffStatus = Enums<"staff_status">;
+export type StaffDepartment = Enums<"staff_department">;
 export type ApplicationType = Enums<"application_type">;
 export type ApplicationStatus = Enums<"application_status">;
 export type ApplicationPriority = Enums<"application_priority">;
@@ -1279,13 +1338,43 @@ export const Constants = {
         "disconnected",
         "issue",
       ] as const,
+      staff_department: [
+        "management",
+        "sales",
+        "support",
+        "marketing",
+        "content",
+        "finance",
+        "hr",
+        "operations",
+        "custom",
+      ] as const,
+      staff_status: [
+        "invited",
+        "active",
+        "vacation",
+        "suspended",
+        "disabled",
+        "archived",
+      ] as const,
       support_ticket_status: [
         "open",
         "waiting",
         "answered",
         "closed",
       ] as const,
-      user_role: ["owner", "admin", "manager", "creator", "guest"] as const,
+      user_role: [
+        "owner",
+        "admin",
+        "manager",
+        "support",
+        "moderator",
+        "content_manager",
+        "finance",
+        "viewer",
+        "creator",
+        "guest",
+      ] as const,
     },
   },
 } as const;
