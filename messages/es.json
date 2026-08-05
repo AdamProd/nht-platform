@@ -547,7 +547,8 @@
         "notes": "Notas internas",
         "timeline": "Cronología",
         "status": "Estado"
-      }
+      },
+      "impersonate": "Abrir panel del creador"
     },
     "dashboard": {
       "label": "Resumen",
@@ -728,6 +729,288 @@
       "manager": "Manager",
       "creator": "Creador",
       "guest": "Invitado"
+    }
+  },
+  "creator": {
+    "logout": "Cerrar sesión",
+    "sidebarTitle": "Panel del creador",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "closeOverlay": "Cerrar superposición del menú",
+    "navLabel": "Navegación del creador",
+    "creatorFallback": "Creador",
+    "impersonationBanner": "Estás viendo este panel como personal.",
+    "stopImpersonation": "Salir de la suplantación",
+    "nav": {
+      "dashboard": "Panel",
+      "profile": "Perfil",
+      "platforms": "Plataformas",
+      "statistics": "Estadísticas",
+      "tasks": "Tareas",
+      "payouts": "Pagos",
+      "documents": "Documentos",
+      "support": "Soporte",
+      "settings": "Ajustes"
+    },
+    "dashboard": {
+      "label": "Resumen",
+      "title": "Panel",
+      "description": "Resumen de tu rendimiento y actividad reciente.",
+      "cards": {
+        "currentRevenue": "Ingresos del mes actual",
+        "lifetimeRevenue": "Ingresos totales",
+        "pendingPayout": "Pago pendiente",
+        "completedTasks": "Tareas completadas",
+        "unreadMessages": "Mensajes sin leer",
+        "upcomingDeadlines": "Próximos plazos"
+      },
+      "recentActivity": {
+        "title": "Actividad reciente",
+        "empty": "No hay actividad reciente."
+      },
+      "empty": "Aún no hay nada que mostrar."
+    },
+    "profile": {
+      "label": "Perfil",
+      "title": "Perfil",
+      "description": "Actualiza tu perfil público y tus datos de contacto.",
+      "fields": {
+        "avatarUrl": "URL del avatar",
+        "displayName": "Nombre visible",
+        "biography": "Biografía",
+        "languages": "Idiomas",
+        "languagesPlaceholder": "en, ru, es",
+        "country": "País",
+        "timezone": "Zona horaria",
+        "telegram": "Telegram",
+        "phone": "Teléfono",
+        "birthday": "Cumpleaños",
+        "email": "Correo electrónico"
+      },
+      "actions": {
+        "save": "Guardar",
+        "saving": "Guardando…",
+        "saved": "Perfil guardado.",
+        "saveError": "No se pudo guardar el perfil."
+      },
+      "readonlyHint": "Algunos campos los gestiona tu manager y no se pueden editar."
+    },
+    "platforms": {
+      "label": "Plataformas",
+      "title": "Plataformas",
+      "description": "Gestiona tus cuentas de plataformas vinculadas.",
+      "fields": {
+        "username": "Nombre de usuario",
+        "profileUrl": "URL del perfil",
+        "status": "Estado",
+        "managerNotes": "Notas del manager"
+      },
+      "status": {
+        "linked": "Vinculada",
+        "pending": "Pendiente",
+        "disconnected": "Desconectada",
+        "issue": "Problema"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X",
+        "chaturbate": "Chaturbate"
+      },
+      "actions": {
+        "save": "Guardar",
+        "saving": "Guardando…",
+        "saved": "Plataformas guardadas.",
+        "saveError": "No se pudieron guardar las plataformas."
+      },
+      "empty": "Aún no hay plataformas configuradas."
+    },
+    "statistics": {
+      "label": "Estadísticas",
+      "title": "Estadísticas",
+      "description": "Sigue ingresos, crecimiento y engagement a lo largo del tiempo.",
+      "ranges": {
+        "d7": "7 días",
+        "d30": "30 días",
+        "d90": "90 días",
+        "m12": "12 meses"
+      },
+      "charts": {
+        "revenue": "Ingresos",
+        "growth": "Crecimiento",
+        "subscribers": "Suscriptores",
+        "messages": "Mensajes",
+        "content": "Contenido"
+      },
+      "empty": "No hay estadísticas disponibles para este período."
+    },
+    "tasks": {
+      "label": "Tareas",
+      "title": "Tareas",
+      "description": "Consulta y completa las tareas asignadas por tu manager.",
+      "table": {
+        "title": "Título",
+        "priority": "Prioridad",
+        "status": "Estado",
+        "deadline": "Plazo",
+        "manager": "Manager",
+        "details": "Detalles",
+        "actions": "Acciones"
+      },
+      "priority": {
+        "low": "Baja",
+        "normal": "Normal",
+        "high": "Alta",
+        "urgent": "Urgente"
+      },
+      "status": {
+        "open": "Abierta",
+        "in_progress": "En progreso",
+        "completed": "Completada",
+        "cancelled": "Cancelada"
+      },
+      "actions": {
+        "complete": "Marcar como completada",
+        "completing": "Completando…",
+        "completed": "Tarea completada."
+      },
+      "empty": "No hay tareas asignadas.",
+      "unassigned": "Sin asignar"
+    },
+    "payouts": {
+      "label": "Pagos",
+      "title": "Pagos",
+      "description": "Revisa el historial de pagos y los pagos pendientes.",
+      "table": {
+        "period": "Período",
+        "amount": "Importe",
+        "status": "Estado",
+        "method": "Método",
+        "paidDate": "Fecha de pago",
+        "actions": "Acciones"
+      },
+      "status": {
+        "pending": "Pendiente",
+        "processing": "Procesando",
+        "completed": "Completado",
+        "failed": "Fallido"
+      },
+      "method": {
+        "bank": "Banco",
+        "paypal": "PayPal",
+        "crypto": "Cripto",
+        "other": "Otro"
+      },
+      "actions": {
+        "exportPdf": "Exportar PDF"
+      },
+      "empty": "Aún no hay pagos.",
+      "summary": {
+        "pending": "Pendiente",
+        "completed": "Completado"
+      }
+    },
+    "documents": {
+      "label": "Documentos",
+      "title": "Documentos",
+      "description": "Sube y gestiona tus documentos de verificación.",
+      "types": {
+        "passport": "Pasaporte",
+        "agreement": "Acuerdo",
+        "tax": "Fiscal",
+        "bank": "Banco"
+      },
+      "actions": {
+        "upload": "Subir",
+        "uploading": "Subiendo…",
+        "uploaded": "Documento subido.",
+        "uploadError": "No se pudo subir el documento.",
+        "delete": "Eliminar"
+      },
+      "empty": "Aún no se han subido documentos.",
+      "dropHint": "Suelta un archivo aquí o haz clic para subir"
+    },
+    "support": {
+      "label": "Soporte",
+      "title": "Soporte",
+      "description": "Contacta a tu manager y sigue los tickets de soporte.",
+      "create": {
+        "title": "Nuevo ticket",
+        "subject": "Asunto",
+        "message": "Mensaje",
+        "submit": "Crear ticket",
+        "submitting": "Creando…"
+      },
+      "table": {
+        "subject": "Asunto",
+        "status": "Estado",
+        "updated": "Actualizado",
+        "actions": "Acciones"
+      },
+      "status": {
+        "open": "Abierto",
+        "waiting": "En espera",
+        "answered": "Respondido",
+        "closed": "Cerrado"
+      },
+      "thread": {
+        "reply": "Responder",
+        "send": "Enviar",
+        "sending": "Enviando…",
+        "empty": "Aún no hay mensajes.",
+        "you": "Tú",
+        "staff": "Personal"
+      },
+      "empty": "Aún no hay tickets de soporte."
+    },
+    "settings": {
+      "label": "Ajustes",
+      "title": "Ajustes",
+      "description": "Personaliza las preferencias de tu panel.",
+      "fields": {
+        "theme": "Tema",
+        "language": "Idioma",
+        "notifyTelegram": "Notificaciones de Telegram",
+        "notifyEmail": "Notificaciones por correo"
+      },
+      "themes": {
+        "dark": "Oscuro",
+        "light": "Claro",
+        "system": "Sistema"
+      },
+      "actions": {
+        "save": "Guardar",
+        "saving": "Guardando…",
+        "saved": "Ajustes guardados.",
+        "saveError": "No se pudieron guardar los ajustes."
+      }
+    },
+    "errors": {
+      "load": "No se pudo cargar esta página.",
+      "boundary": "Algo salió mal.",
+      "retry": "Reintentar"
+    },
+    "actionErrors": {
+      "unauthorized": "No estás autorizado.",
+      "forbidden": "No tienes acceso a esta acción.",
+      "invalid": "Datos no válidos.",
+      "save": "No se pudieron guardar los cambios."
+    },
+    "toast": {
+      "saved": "Guardado.",
+      "uploaded": "Subido.",
+      "taskCompleted": "Tarea completada.",
+      "ticketCreated": "Ticket creado."
+    },
+    "impersonate": {
+      "start": "Abrir panel del creador",
+      "starting": "Abriendo…",
+      "started": "Suplantación iniciada.",
+      "stop": "Salir de la suplantación",
+      "stopping": "Saliendo…",
+      "error": "No se pudo cambiar la suplantación."
     }
   },
   "common": {

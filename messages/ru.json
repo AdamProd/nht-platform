@@ -550,7 +550,8 @@
         "status": "Статус",
         "notes": "Внутренние заметки",
         "timeline": "Таймлайн"
-      }
+      },
+      "impersonate": "Открыть кабинет креатора"
     },
     "dashboard": {
       "label": "Обзор",
@@ -728,6 +729,288 @@
       "manager": "Менеджер",
       "creator": "Креатор",
       "guest": "Гость"
+    }
+  },
+  "creator": {
+    "logout": "Выйти",
+    "sidebarTitle": "Кабинет креатора",
+    "openMenu": "Открыть меню",
+    "closeMenu": "Закрыть меню",
+    "closeOverlay": "Закрыть оверлей меню",
+    "navLabel": "Навигация креатора",
+    "creatorFallback": "Креатор",
+    "impersonationBanner": "Вы просматриваете этот кабинет как сотрудник.",
+    "stopImpersonation": "Выйти из режима просмотра",
+    "nav": {
+      "dashboard": "Дашборд",
+      "profile": "Профиль",
+      "platforms": "Платформы",
+      "statistics": "Статистика",
+      "tasks": "Задачи",
+      "payouts": "Выплаты",
+      "documents": "Документы",
+      "support": "Поддержка",
+      "settings": "Настройки"
+    },
+    "dashboard": {
+      "label": "Обзор",
+      "title": "Дашборд",
+      "description": "Сводка показателей и недавняя активность.",
+      "cards": {
+        "currentRevenue": "Доход за текущий месяц",
+        "lifetimeRevenue": "Доход за всё время",
+        "pendingPayout": "Ожидающая выплата",
+        "completedTasks": "Выполненные задачи",
+        "unreadMessages": "Непрочитанные сообщения",
+        "upcomingDeadlines": "Ближайшие дедлайны"
+      },
+      "recentActivity": {
+        "title": "Недавняя активность",
+        "empty": "Нет недавней активности."
+      },
+      "empty": "Пока нечего показать."
+    },
+    "profile": {
+      "label": "Профиль",
+      "title": "Профиль",
+      "description": "Обновите публичный профиль и контактные данные.",
+      "fields": {
+        "avatarUrl": "URL аватара",
+        "displayName": "Отображаемое имя",
+        "biography": "Биография",
+        "languages": "Языки",
+        "languagesPlaceholder": "en, ru, de",
+        "country": "Страна",
+        "timezone": "Часовой пояс",
+        "telegram": "Telegram",
+        "phone": "Телефон",
+        "birthday": "День рождения",
+        "email": "Email"
+      },
+      "actions": {
+        "save": "Сохранить",
+        "saving": "Сохранение…",
+        "saved": "Профиль сохранён.",
+        "saveError": "Не удалось сохранить профиль."
+      },
+      "readonlyHint": "Некоторые поля управляются менеджером и недоступны для редактирования."
+    },
+    "platforms": {
+      "label": "Платформы",
+      "title": "Платформы",
+      "description": "Управляйте привязанными аккаунтами платформ.",
+      "fields": {
+        "username": "Имя пользователя",
+        "profileUrl": "URL профиля",
+        "status": "Статус",
+        "managerNotes": "Заметки менеджера"
+      },
+      "status": {
+        "linked": "Привязан",
+        "pending": "Ожидание",
+        "disconnected": "Отключён",
+        "issue": "Проблема"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X",
+        "chaturbate": "Chaturbate"
+      },
+      "actions": {
+        "save": "Сохранить",
+        "saving": "Сохранение…",
+        "saved": "Платформы сохранены.",
+        "saveError": "Не удалось сохранить платформы."
+      },
+      "empty": "Платформы ещё не настроены."
+    },
+    "statistics": {
+      "label": "Статистика",
+      "title": "Статистика",
+      "description": "Отслеживайте доход, рост и вовлечённость.",
+      "ranges": {
+        "d7": "7 дней",
+        "d30": "30 дней",
+        "d90": "90 дней",
+        "m12": "12 месяцев"
+      },
+      "charts": {
+        "revenue": "Доход",
+        "growth": "Рост",
+        "subscribers": "Подписчики",
+        "messages": "Сообщения",
+        "content": "Контент"
+      },
+      "empty": "Нет статистики за этот период."
+    },
+    "tasks": {
+      "label": "Задачи",
+      "title": "Задачи",
+      "description": "Просматривайте и выполняйте задачи от менеджера.",
+      "table": {
+        "title": "Название",
+        "priority": "Приоритет",
+        "status": "Статус",
+        "deadline": "Дедлайн",
+        "manager": "Менеджер",
+        "details": "Детали",
+        "actions": "Действия"
+      },
+      "priority": {
+        "low": "Низкий",
+        "normal": "Обычный",
+        "high": "Высокий",
+        "urgent": "Срочный"
+      },
+      "status": {
+        "open": "Открыта",
+        "in_progress": "В работе",
+        "completed": "Выполнена",
+        "cancelled": "Отменена"
+      },
+      "actions": {
+        "complete": "Отметить выполненной",
+        "completing": "Завершение…",
+        "completed": "Задача выполнена."
+      },
+      "empty": "Нет назначенных задач.",
+      "unassigned": "Не назначен"
+    },
+    "payouts": {
+      "label": "Выплаты",
+      "title": "Выплаты",
+      "description": "История выплат и ожидающие платежи.",
+      "table": {
+        "period": "Период",
+        "amount": "Сумма",
+        "status": "Статус",
+        "method": "Способ",
+        "paidDate": "Дата оплаты",
+        "actions": "Действия"
+      },
+      "status": {
+        "pending": "Ожидание",
+        "processing": "В обработке",
+        "completed": "Выплачено",
+        "failed": "Ошибка"
+      },
+      "method": {
+        "bank": "Банк",
+        "paypal": "PayPal",
+        "crypto": "Крипто",
+        "other": "Другое"
+      },
+      "actions": {
+        "exportPdf": "Экспорт PDF"
+      },
+      "empty": "Выплат пока нет.",
+      "summary": {
+        "pending": "Ожидание",
+        "completed": "Выплачено"
+      }
+    },
+    "documents": {
+      "label": "Документы",
+      "title": "Документы",
+      "description": "Загружайте и управляйте документами для верификации.",
+      "types": {
+        "passport": "Паспорт",
+        "agreement": "Договор",
+        "tax": "Налоги",
+        "bank": "Банк"
+      },
+      "actions": {
+        "upload": "Загрузить",
+        "uploading": "Загрузка…",
+        "uploaded": "Документ загружен.",
+        "uploadError": "Не удалось загрузить документ.",
+        "delete": "Удалить"
+      },
+      "empty": "Документы ещё не загружены.",
+      "dropHint": "Перетащите файл сюда или нажмите для загрузки"
+    },
+    "support": {
+      "label": "Поддержка",
+      "title": "Поддержка",
+      "description": "Свяжитесь с менеджером и отслеживайте тикеты.",
+      "create": {
+        "title": "Новый тикет",
+        "subject": "Тема",
+        "message": "Сообщение",
+        "submit": "Создать тикет",
+        "submitting": "Создание…"
+      },
+      "table": {
+        "subject": "Тема",
+        "status": "Статус",
+        "updated": "Обновлён",
+        "actions": "Действия"
+      },
+      "status": {
+        "open": "Открыт",
+        "waiting": "Ожидание",
+        "answered": "Отвечен",
+        "closed": "Закрыт"
+      },
+      "thread": {
+        "reply": "Ответить",
+        "send": "Отправить",
+        "sending": "Отправка…",
+        "empty": "Сообщений пока нет.",
+        "you": "Вы",
+        "staff": "Сотрудник"
+      },
+      "empty": "Тикетов поддержки пока нет."
+    },
+    "settings": {
+      "label": "Настройки",
+      "title": "Настройки",
+      "description": "Настройте параметры кабинета.",
+      "fields": {
+        "theme": "Тема",
+        "language": "Язык",
+        "notifyTelegram": "Уведомления в Telegram",
+        "notifyEmail": "Уведомления по email"
+      },
+      "themes": {
+        "dark": "Тёмная",
+        "light": "Светлая",
+        "system": "Системная"
+      },
+      "actions": {
+        "save": "Сохранить",
+        "saving": "Сохранение…",
+        "saved": "Настройки сохранены.",
+        "saveError": "Не удалось сохранить настройки."
+      }
+    },
+    "errors": {
+      "load": "Не удалось загрузить страницу.",
+      "boundary": "Что-то пошло не так.",
+      "retry": "Повторить"
+    },
+    "actionErrors": {
+      "unauthorized": "Вы не авторизованы.",
+      "forbidden": "У вас нет доступа к этому действию.",
+      "invalid": "Некорректные данные.",
+      "save": "Не удалось сохранить изменения."
+    },
+    "toast": {
+      "saved": "Сохранено.",
+      "uploaded": "Загружено.",
+      "taskCompleted": "Задача выполнена.",
+      "ticketCreated": "Тикет создан."
+    },
+    "impersonate": {
+      "start": "Открыть кабинет креатора",
+      "starting": "Открытие…",
+      "started": "Режим просмотра включён.",
+      "stop": "Выйти из режима просмотра",
+      "stopping": "Выход…",
+      "error": "Не удалось изменить режим просмотра."
     }
   },
   "common": {

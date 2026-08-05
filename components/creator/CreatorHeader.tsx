@@ -1,0 +1,84 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+import { logoutAction } from "@/features/auth";
+import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
+
+type CreatorHeaderProps = {
+  userName: string;
+  userRole: string;
+  userEmail?: string | null;
+  menuOpen: boolean;
+  onMenuOpen: () => void;
+  impersonating?: boolean;
+  stopImpersonationAction?: () => Promise<void>;
+};
+
+export default function CreatorHeader({
+  userName,
+  userRole,
+  userEmail,
+  menuOpen,
+  onMenuOpen,
+  impersonating,
+  stopImpersonationAction,
+}: CreatorHeaderProps) {
+  const t = useTranslations("creator");
+  const tAdmin = useTranslations("admin");
+  const roleKey = `roles.${userRole}` as
+    | "roles.owner"
+    | "roles.admin"
+    | "roles.manager"
+    | "roles.creator"
+    | "roles.guest";
+
+  return (
+    <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-4 border-b border-white/[0.06] bg-[var(--nht-black)]/90 px-4 backdrop-blur-md sm:px-6">
+      <div className="flex min-w-0 items-center gap-3">
+        <button
+          type="button"
+          onClick={onMenuOpen}
+          aria-label={t("openMenu")}
+          aria-expanded={menuOpen}
+          aria-controls="creator-mobile-nav"
+          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-white/[0.08] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--nht-gold)] lg:hidden"
+        >
+          <span className="block h-0.5 w-4 bg-white" />
+          <span className="block h-0.5 w-4 bg-white" />
+          <span className="block h-0.5 w-4 bg-white" />
+        </button>
+        <div className="min-w-0">
+          <p className="truncate text-sm font-medium text-white">{userName}</p>
+          <p className="truncate text-xs text-[var(--nht-text-tertiary)]">
+            <span className="text-[var(--nht-gold)]">
+              {tAdmin.has(roleKey) ? tAdmin(roleKey) : userRole}
+            </span>
+            {userEmail ? ` · ${userEmail}` : null}
+          </p>
+        </div>
+      </div>
+
+      <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+        {impersonating && stopImpersonationAction ? (
+          <form action={stopImpersonationAction}>
+            <button
+              type="submit"
+              className="rounded-full border border-[var(--nht-gold)]/40 px-3 py-2 text-xs font-medium text-[var(--nht-gold)] hover:bg-[var(--nht-gold-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--nht-gold)]"
+            >
+              {t("stopImpersonation")}
+            </button>
+          </form>
+        ) : null}
+        <LanguageSwitcher variant="desktop" />
+        <form action={logoutAction}>
+          <button
+            type="submit"
+            className="rounded-full border border-white/10 px-4 py-2 text-xs font-medium text-white transition-colors hover:border-[var(--nht-border-hover)] hover:bg-white/[0.05] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--nht-gold)] sm:text-sm"
+          >
+            {t("logout")}
+          </button>
+        </form>
+      </div>
+    </header>
+  );
+}

@@ -547,7 +547,8 @@
         "notes": "Внутрішні нотатки",
         "timeline": "Таймлайн",
         "status": "Статус"
-      }
+      },
+      "impersonate": "Відкрити кабінет креатора"
     },
     "dashboard": {
       "label": "Огляд",
@@ -728,6 +729,288 @@
       "manager": "Менеджер",
       "creator": "Креатор",
       "guest": "Гість"
+    }
+  },
+  "creator": {
+    "logout": "Вийти",
+    "sidebarTitle": "Кабінет креатора",
+    "openMenu": "Відкрити меню",
+    "closeMenu": "Закрити меню",
+    "closeOverlay": "Закрити оверлей меню",
+    "navLabel": "Навігація креатора",
+    "creatorFallback": "Креатор",
+    "impersonationBanner": "Ви переглядаєте цей кабінет як співробітник.",
+    "stopImpersonation": "Вийти з режиму перегляду",
+    "nav": {
+      "dashboard": "Дашборд",
+      "profile": "Профіль",
+      "platforms": "Платформи",
+      "statistics": "Статистика",
+      "tasks": "Завдання",
+      "payouts": "Виплати",
+      "documents": "Документи",
+      "support": "Підтримка",
+      "settings": "Налаштування"
+    },
+    "dashboard": {
+      "label": "Огляд",
+      "title": "Дашборд",
+      "description": "Зведення показників і нещодавня активність.",
+      "cards": {
+        "currentRevenue": "Дохід за поточний місяць",
+        "lifetimeRevenue": "Дохід за весь час",
+        "pendingPayout": "Очікувана виплата",
+        "completedTasks": "Виконані завдання",
+        "unreadMessages": "Непрочитані повідомлення",
+        "upcomingDeadlines": "Найближчі дедлайни"
+      },
+      "recentActivity": {
+        "title": "Нещодавня активність",
+        "empty": "Немає нещодавньої активності."
+      },
+      "empty": "Поки нічого показати."
+    },
+    "profile": {
+      "label": "Профіль",
+      "title": "Профіль",
+      "description": "Оновіть публічний профіль і контактні дані.",
+      "fields": {
+        "avatarUrl": "URL аватара",
+        "displayName": "Відображуване імʼя",
+        "biography": "Біографія",
+        "languages": "Мови",
+        "languagesPlaceholder": "en, ru, uk",
+        "country": "Країна",
+        "timezone": "Часовий пояс",
+        "telegram": "Telegram",
+        "phone": "Телефон",
+        "birthday": "День народження",
+        "email": "Email"
+      },
+      "actions": {
+        "save": "Зберегти",
+        "saving": "Збереження…",
+        "saved": "Профіль збережено.",
+        "saveError": "Не вдалося зберегти профіль."
+      },
+      "readonlyHint": "Деякі поля керуються менеджером і недоступні для редагування."
+    },
+    "platforms": {
+      "label": "Платформи",
+      "title": "Платформи",
+      "description": "Керуйте привʼязаними акаунтами платформ.",
+      "fields": {
+        "username": "Імʼя користувача",
+        "profileUrl": "URL профілю",
+        "status": "Статус",
+        "managerNotes": "Нотатки менеджера"
+      },
+      "status": {
+        "linked": "Привʼязано",
+        "pending": "Очікування",
+        "disconnected": "Відключено",
+        "issue": "Проблема"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X",
+        "chaturbate": "Chaturbate"
+      },
+      "actions": {
+        "save": "Зберегти",
+        "saving": "Збереження…",
+        "saved": "Платформи збережено.",
+        "saveError": "Не вдалося зберегти платформи."
+      },
+      "empty": "Платформи ще не налаштовано."
+    },
+    "statistics": {
+      "label": "Статистика",
+      "title": "Статистика",
+      "description": "Відстежуйте дохід, зростання та залученість.",
+      "ranges": {
+        "d7": "7 днів",
+        "d30": "30 днів",
+        "d90": "90 днів",
+        "m12": "12 місяців"
+      },
+      "charts": {
+        "revenue": "Дохід",
+        "growth": "Зростання",
+        "subscribers": "Підписники",
+        "messages": "Повідомлення",
+        "content": "Контент"
+      },
+      "empty": "Немає статистики за цей період."
+    },
+    "tasks": {
+      "label": "Завдання",
+      "title": "Завдання",
+      "description": "Переглядайте та виконуйте завдання від менеджера.",
+      "table": {
+        "title": "Назва",
+        "priority": "Пріоритет",
+        "status": "Статус",
+        "deadline": "Дедлайн",
+        "manager": "Менеджер",
+        "details": "Деталі",
+        "actions": "Дії"
+      },
+      "priority": {
+        "low": "Низький",
+        "normal": "Звичайний",
+        "high": "Високий",
+        "urgent": "Терміновий"
+      },
+      "status": {
+        "open": "Відкрито",
+        "in_progress": "В роботі",
+        "completed": "Виконано",
+        "cancelled": "Скасовано"
+      },
+      "actions": {
+        "complete": "Позначити виконаним",
+        "completing": "Завершення…",
+        "completed": "Завдання виконано."
+      },
+      "empty": "Немає призначених завдань.",
+      "unassigned": "Не призначено"
+    },
+    "payouts": {
+      "label": "Виплати",
+      "title": "Виплати",
+      "description": "Історія виплат і очікувані платежі.",
+      "table": {
+        "period": "Період",
+        "amount": "Сума",
+        "status": "Статус",
+        "method": "Спосіб",
+        "paidDate": "Дата оплати",
+        "actions": "Дії"
+      },
+      "status": {
+        "pending": "Очікування",
+        "processing": "В обробці",
+        "completed": "Виплачено",
+        "failed": "Помилка"
+      },
+      "method": {
+        "bank": "Банк",
+        "paypal": "PayPal",
+        "crypto": "Крипто",
+        "other": "Інше"
+      },
+      "actions": {
+        "exportPdf": "Експорт PDF"
+      },
+      "empty": "Виплат ще немає.",
+      "summary": {
+        "pending": "Очікування",
+        "completed": "Виплачено"
+      }
+    },
+    "documents": {
+      "label": "Документи",
+      "title": "Документи",
+      "description": "Завантажуйте та керуйте документами для верифікації.",
+      "types": {
+        "passport": "Паспорт",
+        "agreement": "Договір",
+        "tax": "Податки",
+        "bank": "Банк"
+      },
+      "actions": {
+        "upload": "Завантажити",
+        "uploading": "Завантаження…",
+        "uploaded": "Документ завантажено.",
+        "uploadError": "Не вдалося завантажити документ.",
+        "delete": "Видалити"
+      },
+      "empty": "Документи ще не завантажено.",
+      "dropHint": "Перетягніть файл сюди або натисніть для завантаження"
+    },
+    "support": {
+      "label": "Підтримка",
+      "title": "Підтримка",
+      "description": "Звʼяжіться з менеджером і відстежуйте тікети.",
+      "create": {
+        "title": "Новий тікет",
+        "subject": "Тема",
+        "message": "Повідомлення",
+        "submit": "Створити тікет",
+        "submitting": "Створення…"
+      },
+      "table": {
+        "subject": "Тема",
+        "status": "Статус",
+        "updated": "Оновлено",
+        "actions": "Дії"
+      },
+      "status": {
+        "open": "Відкритий",
+        "waiting": "Очікування",
+        "answered": "Відповіли",
+        "closed": "Закритий"
+      },
+      "thread": {
+        "reply": "Відповісти",
+        "send": "Надіслати",
+        "sending": "Надсилання…",
+        "empty": "Повідомлень ще немає.",
+        "you": "Ви",
+        "staff": "Співробітник"
+      },
+      "empty": "Тікетів підтримки ще немає."
+    },
+    "settings": {
+      "label": "Налаштування",
+      "title": "Налаштування",
+      "description": "Налаштуйте параметри кабінету.",
+      "fields": {
+        "theme": "Тема",
+        "language": "Мова",
+        "notifyTelegram": "Сповіщення в Telegram",
+        "notifyEmail": "Сповіщення email"
+      },
+      "themes": {
+        "dark": "Темна",
+        "light": "Світла",
+        "system": "Системна"
+      },
+      "actions": {
+        "save": "Зберегти",
+        "saving": "Збереження…",
+        "saved": "Налаштування збережено.",
+        "saveError": "Не вдалося зберегти налаштування."
+      }
+    },
+    "errors": {
+      "load": "Не вдалося завантажити сторінку.",
+      "boundary": "Щось пішло не так.",
+      "retry": "Спробувати знову"
+    },
+    "actionErrors": {
+      "unauthorized": "Ви не авторизовані.",
+      "forbidden": "У вас немає доступу до цієї дії.",
+      "invalid": "Некоректні дані.",
+      "save": "Не вдалося зберегти зміни."
+    },
+    "toast": {
+      "saved": "Збережено.",
+      "uploaded": "Завантажено.",
+      "taskCompleted": "Завдання виконано.",
+      "ticketCreated": "Тікет створено."
+    },
+    "impersonate": {
+      "start": "Відкрити кабінет креатора",
+      "starting": "Відкриття…",
+      "started": "Режим перегляду увімкнено.",
+      "stop": "Вийти з режиму перегляду",
+      "stopping": "Вихід…",
+      "error": "Не вдалося змінити режим перегляду."
     }
   },
   "common": {

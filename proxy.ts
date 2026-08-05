@@ -2,6 +2,7 @@ import createMiddleware from "next-intl/middleware";
 import { type NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
 import { updateSession } from "@/lib/supabase/middleware";
+import { canAccessCreatorCabinet, isCreatorRole } from "@/lib/auth/creator";
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -21,6 +22,14 @@ function isAdminPath(pathname: string): boolean {
     (locale) =>
       pathname === `/${locale}/admin` ||
       pathname.startsWith(`/${locale}/admin/`),
+  );
+}
+
+function isCreatorPath(pathname: string): boolean {
+  return routing.locales.some(
+    (locale) =>
+      pathname === `/${locale}/creator` ||
+      pathname.startsWith(`/${locale}/creator/`),
   );
 }
 
@@ -62,10 +71,13 @@ function redirectWithCookies(
 
 export default async function proxy(request: NextRequest) {
   const intlResponse = handleI18nRouting(request);
-  const { response, user, isStaff: staff } = await updateSession(
-    request,
-    intlResponse,
-  );
+  const {
+    response,
+    user,
+    role,
+    isStaff: staff,
+    impersonatingCreatorId,
+  } = await updateSession(request, intlResponse);
 
   const { pathname } = request.nextUrl;
   const locale = getLocaleFromPathname(pathname);
@@ -88,12 +100,33 @@ export default async function proxy(request: NextRequest) {
     }
   }
 
-  // Only staff skip the login screen; creator/guest stay put (no admin loop).
-  if (isLoginPath(pathname) && user && staff) {
-    return redirectWithCookies(request, response, `/${locale}/admin`);
+  if (isCreatorPath(pathname)) {
+    if (!user) {
+      return redirectWithCookies(
+        request,
+        response,
+        `/${locale}/login`,
+        `?next=${encodeURIComponent(pathname)}`,
+      );
+    }
+    if (!canAccessCreatorCabinet(role, impersonatingCreatorId)) {
+      return redirectWithCookies(
+        request,
+        response,
+        `/${locale}/unauthorized`,
+      );
+    }
   }
 
-  // Authenticated non-staff on unauthorized can remain; unauthenticated go login.
+  if (isLoginPath(pathname) && user) {
+    if (staff) {
+      return redirectWithCookies(request, response, `/${locale}/admin`);
+    }
+    if (isCreatorRole(role)) {
+      return redirectWithCookies(request, response, `/${locale}/creator`);
+    }
+  }
+
   if (isUnauthorizedPath(pathname) && !user) {
     return redirectWithCookies(request, response, `/${locale}/login`);
   }

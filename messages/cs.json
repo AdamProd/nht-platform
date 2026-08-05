@@ -547,7 +547,8 @@
         "notes": "Interní poznámky",
         "timeline": "Časová osa",
         "status": "Stav"
-      }
+      },
+      "impersonate": "Otevřít kabinet tvůrce"
     },
     "dashboard": {
       "label": "Přehled",
@@ -728,6 +729,288 @@
       "manager": "Manažer",
       "creator": "Tvůrce",
       "guest": "Host"
+    }
+  },
+  "creator": {
+    "logout": "Odhlásit se",
+    "sidebarTitle": "Kabinet tvůrce",
+    "openMenu": "Otevřít menu",
+    "closeMenu": "Zavřít menu",
+    "closeOverlay": "Zavřít překrytí menu",
+    "navLabel": "Navigace tvůrce",
+    "creatorFallback": "Tvůrce",
+    "impersonationBanner": "Tento kabinet prohlížíte jako člen týmu.",
+    "stopImpersonation": "Ukončit zosobnění",
+    "nav": {
+      "dashboard": "Přehled",
+      "profile": "Profil",
+      "platforms": "Platformy",
+      "statistics": "Statistiky",
+      "tasks": "Úkoly",
+      "payouts": "Výplaty",
+      "documents": "Dokumenty",
+      "support": "Podpora",
+      "settings": "Nastavení"
+    },
+    "dashboard": {
+      "label": "Přehled",
+      "title": "Přehled",
+      "description": "Souhrn vašich výsledků a nedávné aktivity.",
+      "cards": {
+        "currentRevenue": "Příjem za aktuální měsíc",
+        "lifetimeRevenue": "Celkový příjem",
+        "pendingPayout": "Čekající výplata",
+        "completedTasks": "Dokončené úkoly",
+        "unreadMessages": "Nepřečtené zprávy",
+        "upcomingDeadlines": "Nadcházející termíny"
+      },
+      "recentActivity": {
+        "title": "Nedávná aktivita",
+        "empty": "Žádná nedávná aktivita."
+      },
+      "empty": "Zatím není co zobrazit."
+    },
+    "profile": {
+      "label": "Profil",
+      "title": "Profil",
+      "description": "Aktualizujte svůj veřejný profil a kontaktní údaje.",
+      "fields": {
+        "avatarUrl": "URL avataru",
+        "displayName": "Zobrazované jméno",
+        "biography": "Biografie",
+        "languages": "Jazyky",
+        "languagesPlaceholder": "en, ru, cs",
+        "country": "Země",
+        "timezone": "Časové pásmo",
+        "telegram": "Telegram",
+        "phone": "Telefon",
+        "birthday": "Narozeniny",
+        "email": "E-mail"
+      },
+      "actions": {
+        "save": "Uložit",
+        "saving": "Ukládání…",
+        "saved": "Profil uložen.",
+        "saveError": "Profil se nepodařilo uložit."
+      },
+      "readonlyHint": "Některá pole spravuje váš manažer a nelze je upravit."
+    },
+    "platforms": {
+      "label": "Platformy",
+      "title": "Platformy",
+      "description": "Spravujte propojené účty platforem.",
+      "fields": {
+        "username": "Uživatelské jméno",
+        "profileUrl": "URL profilu",
+        "status": "Stav",
+        "managerNotes": "Poznámky manažera"
+      },
+      "status": {
+        "linked": "Propojeno",
+        "pending": "Čeká",
+        "disconnected": "Odpojeno",
+        "issue": "Problém"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X",
+        "chaturbate": "Chaturbate"
+      },
+      "actions": {
+        "save": "Uložit",
+        "saving": "Ukládání…",
+        "saved": "Platformy uloženy.",
+        "saveError": "Platformy se nepodařilo uložit."
+      },
+      "empty": "Zatím nejsou nakonfigurovány žádné platformy."
+    },
+    "statistics": {
+      "label": "Statistiky",
+      "title": "Statistiky",
+      "description": "Sledujte příjmy, růst a zapojení v čase.",
+      "ranges": {
+        "d7": "7 dní",
+        "d30": "30 dní",
+        "d90": "90 dní",
+        "m12": "12 měsíců"
+      },
+      "charts": {
+        "revenue": "Příjem",
+        "growth": "Růst",
+        "subscribers": "Odběratelé",
+        "messages": "Zprávy",
+        "content": "Obsah"
+      },
+      "empty": "Pro toto období nejsou k dispozici žádné statistiky."
+    },
+    "tasks": {
+      "label": "Úkoly",
+      "title": "Úkoly",
+      "description": "Prohlížejte a dokončujte úkoly od manažera.",
+      "table": {
+        "title": "Název",
+        "priority": "Priorita",
+        "status": "Stav",
+        "deadline": "Termín",
+        "manager": "Manažer",
+        "details": "Podrobnosti",
+        "actions": "Akce"
+      },
+      "priority": {
+        "low": "Nízká",
+        "normal": "Normální",
+        "high": "Vysoká",
+        "urgent": "Urgentní"
+      },
+      "status": {
+        "open": "Otevřený",
+        "in_progress": "Probíhá",
+        "completed": "Dokončený",
+        "cancelled": "Zrušený"
+      },
+      "actions": {
+        "complete": "Označit jako dokončené",
+        "completing": "Dokončování…",
+        "completed": "Úkol dokončen."
+      },
+      "empty": "Žádné přiřazené úkoly.",
+      "unassigned": "Nepřiřazeno"
+    },
+    "payouts": {
+      "label": "Výplaty",
+      "title": "Výplaty",
+      "description": "Zkontrolujte historii výplat a čekající platby.",
+      "table": {
+        "period": "Období",
+        "amount": "Částka",
+        "status": "Stav",
+        "method": "Metoda",
+        "paidDate": "Datum výplaty",
+        "actions": "Akce"
+      },
+      "status": {
+        "pending": "Čeká",
+        "processing": "Zpracovává se",
+        "completed": "Dokončeno",
+        "failed": "Selhalo"
+      },
+      "method": {
+        "bank": "Banka",
+        "paypal": "PayPal",
+        "crypto": "Krypto",
+        "other": "Jiné"
+      },
+      "actions": {
+        "exportPdf": "Exportovat PDF"
+      },
+      "empty": "Zatím žádné výplaty.",
+      "summary": {
+        "pending": "Čeká",
+        "completed": "Dokončeno"
+      }
+    },
+    "documents": {
+      "label": "Dokumenty",
+      "title": "Dokumenty",
+      "description": "Nahrajte a spravujte ověřovací dokumenty.",
+      "types": {
+        "passport": "Pas",
+        "agreement": "Smlouva",
+        "tax": "Daně",
+        "bank": "Banka"
+      },
+      "actions": {
+        "upload": "Nahrát",
+        "uploading": "Nahrávání…",
+        "uploaded": "Dokument nahrán.",
+        "uploadError": "Dokument se nepodařilo nahrát.",
+        "delete": "Smazat"
+      },
+      "empty": "Zatím nebyly nahrány žádné dokumenty.",
+      "dropHint": "Přetáhněte soubor sem nebo klikněte pro nahrání"
+    },
+    "support": {
+      "label": "Podpora",
+      "title": "Podpora",
+      "description": "Kontaktujte manažera a sledujte tikety podpory.",
+      "create": {
+        "title": "Nový tiket",
+        "subject": "Předmět",
+        "message": "Zpráva",
+        "submit": "Vytvořit tiket",
+        "submitting": "Vytváření…"
+      },
+      "table": {
+        "subject": "Předmět",
+        "status": "Stav",
+        "updated": "Aktualizováno",
+        "actions": "Akce"
+      },
+      "status": {
+        "open": "Otevřený",
+        "waiting": "Čeká",
+        "answered": "Zodpovězeno",
+        "closed": "Uzavřený"
+      },
+      "thread": {
+        "reply": "Odpovědět",
+        "send": "Odeslat",
+        "sending": "Odesílání…",
+        "empty": "Zatím žádné zprávy.",
+        "you": "Vy",
+        "staff": "Tým"
+      },
+      "empty": "Zatím žádné tikety podpory."
+    },
+    "settings": {
+      "label": "Nastavení",
+      "title": "Nastavení",
+      "description": "Přizpůsobte preference kabinetu.",
+      "fields": {
+        "theme": "Motiv",
+        "language": "Jazyk",
+        "notifyTelegram": "Telegram oznámení",
+        "notifyEmail": "E-mailová oznámení"
+      },
+      "themes": {
+        "dark": "Tmavý",
+        "light": "Světlý",
+        "system": "Systémový"
+      },
+      "actions": {
+        "save": "Uložit",
+        "saving": "Ukládání…",
+        "saved": "Nastavení uloženo.",
+        "saveError": "Nastavení se nepodařilo uložit."
+      }
+    },
+    "errors": {
+      "load": "Tuto stránku se nepodařilo načíst.",
+      "boundary": "Něco se pokazilo.",
+      "retry": "Zkusit znovu"
+    },
+    "actionErrors": {
+      "unauthorized": "Nejste autorizováni.",
+      "forbidden": "K této akci nemáte přístup.",
+      "invalid": "Neplatná data.",
+      "save": "Změny se nepodařilo uložit."
+    },
+    "toast": {
+      "saved": "Uloženo.",
+      "uploaded": "Nahráno.",
+      "taskCompleted": "Úkol dokončen.",
+      "ticketCreated": "Tiket vytvořen."
+    },
+    "impersonate": {
+      "start": "Otevřít kabinet tvůrce",
+      "starting": "Otevírání…",
+      "started": "Zosobnění spuštěno.",
+      "stop": "Ukončit zosobnění",
+      "stopping": "Ukončování…",
+      "error": "Zosobnění se nepodařilo změnit."
     }
   },
   "common": {

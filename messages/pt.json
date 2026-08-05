@@ -547,7 +547,8 @@
         "notes": "Notas internas",
         "timeline": "Linha do tempo",
         "status": "Estado"
-      }
+      },
+      "impersonate": "Abrir painel do criador"
     },
     "dashboard": {
       "label": "Visão geral",
@@ -728,6 +729,288 @@
       "manager": "Gestor",
       "creator": "Criador",
       "guest": "Convidado"
+    }
+  },
+  "creator": {
+    "logout": "Terminar sessão",
+    "sidebarTitle": "Painel do criador",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "closeOverlay": "Fechar sobreposição do menu",
+    "navLabel": "Navegação do criador",
+    "creatorFallback": "Criador",
+    "impersonationBanner": "Está a ver este painel como membro da equipa.",
+    "stopImpersonation": "Sair da personificação",
+    "nav": {
+      "dashboard": "Painel",
+      "profile": "Perfil",
+      "platforms": "Plataformas",
+      "statistics": "Estatísticas",
+      "tasks": "Tarefas",
+      "payouts": "Pagamentos",
+      "documents": "Documentos",
+      "support": "Suporte",
+      "settings": "Definições"
+    },
+    "dashboard": {
+      "label": "Resumo",
+      "title": "Painel",
+      "description": "O resumo do seu desempenho e atividade recente.",
+      "cards": {
+        "currentRevenue": "Receita do mês atual",
+        "lifetimeRevenue": "Receita total",
+        "pendingPayout": "Pagamento pendente",
+        "completedTasks": "Tarefas concluídas",
+        "unreadMessages": "Mensagens não lidas",
+        "upcomingDeadlines": "Prazos próximos"
+      },
+      "recentActivity": {
+        "title": "Atividade recente",
+        "empty": "Sem atividade recente."
+      },
+      "empty": "Nada para mostrar ainda."
+    },
+    "profile": {
+      "label": "Perfil",
+      "title": "Perfil",
+      "description": "Atualize o seu perfil público e os contactos.",
+      "fields": {
+        "avatarUrl": "URL do avatar",
+        "displayName": "Nome de exibição",
+        "biography": "Biografia",
+        "languages": "Idiomas",
+        "languagesPlaceholder": "en, ru, pt",
+        "country": "País",
+        "timezone": "Fuso horário",
+        "telegram": "Telegram",
+        "phone": "Telefone",
+        "birthday": "Aniversário",
+        "email": "Email"
+      },
+      "actions": {
+        "save": "Guardar",
+        "saving": "A guardar…",
+        "saved": "Perfil guardado.",
+        "saveError": "Não foi possível guardar o perfil."
+      },
+      "readonlyHint": "Alguns campos são geridos pelo seu manager e não podem ser editados."
+    },
+    "platforms": {
+      "label": "Plataformas",
+      "title": "Plataformas",
+      "description": "Gerir as suas contas de plataformas ligadas.",
+      "fields": {
+        "username": "Nome de utilizador",
+        "profileUrl": "URL do perfil",
+        "status": "Estado",
+        "managerNotes": "Notas do manager"
+      },
+      "status": {
+        "linked": "Ligado",
+        "pending": "Pendente",
+        "disconnected": "Desligado",
+        "issue": "Problema"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X",
+        "chaturbate": "Chaturbate"
+      },
+      "actions": {
+        "save": "Guardar",
+        "saving": "A guardar…",
+        "saved": "Plataformas guardadas.",
+        "saveError": "Não foi possível guardar as plataformas."
+      },
+      "empty": "Ainda não há plataformas configuradas."
+    },
+    "statistics": {
+      "label": "Estatísticas",
+      "title": "Estatísticas",
+      "description": "Acompanhe receita, crescimento e engagement ao longo do tempo.",
+      "ranges": {
+        "d7": "7 dias",
+        "d30": "30 dias",
+        "d90": "90 dias",
+        "m12": "12 meses"
+      },
+      "charts": {
+        "revenue": "Receita",
+        "growth": "Crescimento",
+        "subscribers": "Subscritores",
+        "messages": "Mensagens",
+        "content": "Conteúdo"
+      },
+      "empty": "Não há estatísticas disponíveis para este período."
+    },
+    "tasks": {
+      "label": "Tarefas",
+      "title": "Tarefas",
+      "description": "Veja e conclua as tarefas atribuídas pelo seu manager.",
+      "table": {
+        "title": "Título",
+        "priority": "Prioridade",
+        "status": "Estado",
+        "deadline": "Prazo",
+        "manager": "Manager",
+        "details": "Detalhes",
+        "actions": "Ações"
+      },
+      "priority": {
+        "low": "Baixa",
+        "normal": "Normal",
+        "high": "Alta",
+        "urgent": "Urgente"
+      },
+      "status": {
+        "open": "Aberta",
+        "in_progress": "Em progresso",
+        "completed": "Concluída",
+        "cancelled": "Cancelada"
+      },
+      "actions": {
+        "complete": "Marcar como concluída",
+        "completing": "A concluir…",
+        "completed": "Tarefa concluída."
+      },
+      "empty": "Nenhuma tarefa atribuída.",
+      "unassigned": "Não atribuído"
+    },
+    "payouts": {
+      "label": "Pagamentos",
+      "title": "Pagamentos",
+      "description": "Reveja o histórico de pagamentos e os pagamentos pendentes.",
+      "table": {
+        "period": "Período",
+        "amount": "Montante",
+        "status": "Estado",
+        "method": "Método",
+        "paidDate": "Data de pagamento",
+        "actions": "Ações"
+      },
+      "status": {
+        "pending": "Pendente",
+        "processing": "A processar",
+        "completed": "Concluído",
+        "failed": "Falhado"
+      },
+      "method": {
+        "bank": "Banco",
+        "paypal": "PayPal",
+        "crypto": "Cripto",
+        "other": "Outro"
+      },
+      "actions": {
+        "exportPdf": "Exportar PDF"
+      },
+      "empty": "Ainda não há pagamentos.",
+      "summary": {
+        "pending": "Pendente",
+        "completed": "Concluído"
+      }
+    },
+    "documents": {
+      "label": "Documentos",
+      "title": "Documentos",
+      "description": "Carregue e gerencie os seus documentos de verificação.",
+      "types": {
+        "passport": "Passaporte",
+        "agreement": "Acordo",
+        "tax": "Fiscal",
+        "bank": "Banco"
+      },
+      "actions": {
+        "upload": "Carregar",
+        "uploading": "A carregar…",
+        "uploaded": "Documento carregado.",
+        "uploadError": "Não foi possível carregar o documento.",
+        "delete": "Eliminar"
+      },
+      "empty": "Ainda não foram carregados documentos.",
+      "dropHint": "Largue um ficheiro aqui ou clique para carregar"
+    },
+    "support": {
+      "label": "Suporte",
+      "title": "Suporte",
+      "description": "Contacte o seu manager e acompanhe os tickets de suporte.",
+      "create": {
+        "title": "Novo ticket",
+        "subject": "Assunto",
+        "message": "Mensagem",
+        "submit": "Criar ticket",
+        "submitting": "A criar…"
+      },
+      "table": {
+        "subject": "Assunto",
+        "status": "Estado",
+        "updated": "Atualizado",
+        "actions": "Ações"
+      },
+      "status": {
+        "open": "Aberto",
+        "waiting": "A aguardar",
+        "answered": "Respondido",
+        "closed": "Fechado"
+      },
+      "thread": {
+        "reply": "Responder",
+        "send": "Enviar",
+        "sending": "A enviar…",
+        "empty": "Ainda não há mensagens.",
+        "you": "Você",
+        "staff": "Equipa"
+      },
+      "empty": "Ainda não há tickets de suporte."
+    },
+    "settings": {
+      "label": "Definições",
+      "title": "Definições",
+      "description": "Personalize as preferências do seu painel.",
+      "fields": {
+        "theme": "Tema",
+        "language": "Idioma",
+        "notifyTelegram": "Notificações Telegram",
+        "notifyEmail": "Notificações por email"
+      },
+      "themes": {
+        "dark": "Escuro",
+        "light": "Claro",
+        "system": "Sistema"
+      },
+      "actions": {
+        "save": "Guardar",
+        "saving": "A guardar…",
+        "saved": "Definições guardadas.",
+        "saveError": "Não foi possível guardar as definições."
+      }
+    },
+    "errors": {
+      "load": "Não foi possível carregar esta página.",
+      "boundary": "Algo correu mal.",
+      "retry": "Tentar novamente"
+    },
+    "actionErrors": {
+      "unauthorized": "Não está autorizado.",
+      "forbidden": "Não tem acesso a esta ação.",
+      "invalid": "Dados inválidos.",
+      "save": "Não foi possível guardar as alterações."
+    },
+    "toast": {
+      "saved": "Guardado.",
+      "uploaded": "Carregado.",
+      "taskCompleted": "Tarefa concluída.",
+      "ticketCreated": "Ticket criado."
+    },
+    "impersonate": {
+      "start": "Abrir painel do criador",
+      "starting": "A abrir…",
+      "started": "Personificação iniciada.",
+      "stop": "Sair da personificação",
+      "stopping": "A sair…",
+      "error": "Não foi possível alterar a personificação."
     }
   },
   "common": {

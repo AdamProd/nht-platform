@@ -10,6 +10,7 @@ export type SessionSnapshot = {
   user: User | null;
   role: UserRole | null;
   isStaff: boolean;
+  impersonatingCreatorId: string | null;
 };
 
 /**
@@ -20,7 +21,13 @@ export async function updateSession(
   response: NextResponse,
 ): Promise<SessionSnapshot> {
   if (!hasSupabaseEnv()) {
-    return { response, user: null, role: null, isStaff: false };
+    return {
+      response,
+      user: null,
+      role: null,
+      isStaff: false,
+      impersonatingCreatorId: null,
+    };
   }
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -47,12 +54,18 @@ export async function updateSession(
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return { response, user: null, role: null, isStaff: false };
+    return {
+      response,
+      user: null,
+      role: null,
+      isStaff: false,
+      impersonatingCreatorId: null,
+    };
   }
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("role")
+    .select("role, impersonating_creator_id")
     .eq("id", user.id)
     .maybeSingle();
 
@@ -63,5 +76,6 @@ export async function updateSession(
     user,
     role,
     isStaff: isStaff(role),
+    impersonatingCreatorId: profile?.impersonating_creator_id ?? null,
   };
 }

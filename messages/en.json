@@ -548,7 +548,8 @@
         "status": "Status",
         "notes": "Internal notes",
         "timeline": "Timeline"
-      }
+      },
+      "impersonate": "Open creator cabinet"
     },
     "dashboard": {
       "label": "Overview",
@@ -726,6 +727,288 @@
       "manager": "Manager",
       "creator": "Creator",
       "guest": "Guest"
+    }
+  },
+  "creator": {
+    "logout": "Sign out",
+    "sidebarTitle": "Creator Cabinet",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "closeOverlay": "Close menu overlay",
+    "navLabel": "Creator navigation",
+    "creatorFallback": "Creator",
+    "impersonationBanner": "You are viewing this cabinet as staff.",
+    "stopImpersonation": "Exit impersonation",
+    "nav": {
+      "dashboard": "Dashboard",
+      "profile": "Profile",
+      "platforms": "Platforms",
+      "statistics": "Statistics",
+      "tasks": "Tasks",
+      "payouts": "Payouts",
+      "documents": "Documents",
+      "support": "Support",
+      "settings": "Settings"
+    },
+    "dashboard": {
+      "label": "Overview",
+      "title": "Dashboard",
+      "description": "Your performance snapshot and recent activity.",
+      "cards": {
+        "currentRevenue": "Current month revenue",
+        "lifetimeRevenue": "Lifetime revenue",
+        "pendingPayout": "Pending payout",
+        "completedTasks": "Completed tasks",
+        "unreadMessages": "Unread messages",
+        "upcomingDeadlines": "Upcoming deadlines"
+      },
+      "recentActivity": {
+        "title": "Recent activity",
+        "empty": "No recent activity."
+      },
+      "empty": "Nothing to show yet."
+    },
+    "profile": {
+      "label": "Profile",
+      "title": "Profile",
+      "description": "Update your public profile and contact details.",
+      "fields": {
+        "avatarUrl": "Avatar URL",
+        "displayName": "Display name",
+        "biography": "Biography",
+        "languages": "Languages",
+        "languagesPlaceholder": "en, ru, de",
+        "country": "Country",
+        "timezone": "Timezone",
+        "telegram": "Telegram",
+        "phone": "Phone",
+        "birthday": "Birthday",
+        "email": "Email"
+      },
+      "actions": {
+        "save": "Save",
+        "saving": "Saving…",
+        "saved": "Profile saved.",
+        "saveError": "Unable to save profile."
+      },
+      "readonlyHint": "Some fields are managed by your manager and cannot be edited."
+    },
+    "platforms": {
+      "label": "Platforms",
+      "title": "Platforms",
+      "description": "Manage your linked platform accounts.",
+      "fields": {
+        "username": "Username",
+        "profileUrl": "Profile URL",
+        "status": "Status",
+        "managerNotes": "Manager notes"
+      },
+      "status": {
+        "linked": "Linked",
+        "pending": "Pending",
+        "disconnected": "Disconnected",
+        "issue": "Issue"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X",
+        "chaturbate": "Chaturbate"
+      },
+      "actions": {
+        "save": "Save",
+        "saving": "Saving…",
+        "saved": "Platforms saved.",
+        "saveError": "Unable to save platforms."
+      },
+      "empty": "No platforms configured yet."
+    },
+    "statistics": {
+      "label": "Statistics",
+      "title": "Statistics",
+      "description": "Track revenue, growth, and engagement over time.",
+      "ranges": {
+        "d7": "7 days",
+        "d30": "30 days",
+        "d90": "90 days",
+        "m12": "12 months"
+      },
+      "charts": {
+        "revenue": "Revenue",
+        "growth": "Growth",
+        "subscribers": "Subscribers",
+        "messages": "Messages",
+        "content": "Content"
+      },
+      "empty": "No statistics available for this period."
+    },
+    "tasks": {
+      "label": "Tasks",
+      "title": "Tasks",
+      "description": "View and complete tasks assigned by your manager.",
+      "table": {
+        "title": "Title",
+        "priority": "Priority",
+        "status": "Status",
+        "deadline": "Deadline",
+        "manager": "Manager",
+        "details": "Details",
+        "actions": "Actions"
+      },
+      "priority": {
+        "low": "Low",
+        "normal": "Normal",
+        "high": "High",
+        "urgent": "Urgent"
+      },
+      "status": {
+        "open": "Open",
+        "in_progress": "In progress",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      },
+      "actions": {
+        "complete": "Mark complete",
+        "completing": "Completing…",
+        "completed": "Task completed."
+      },
+      "empty": "No tasks assigned.",
+      "unassigned": "Unassigned"
+    },
+    "payouts": {
+      "label": "Payouts",
+      "title": "Payouts",
+      "description": "Review payout history and pending payments.",
+      "table": {
+        "period": "Period",
+        "amount": "Amount",
+        "status": "Status",
+        "method": "Method",
+        "paidDate": "Paid date",
+        "actions": "Actions"
+      },
+      "status": {
+        "pending": "Pending",
+        "processing": "Processing",
+        "completed": "Completed",
+        "failed": "Failed"
+      },
+      "method": {
+        "bank": "Bank",
+        "paypal": "PayPal",
+        "crypto": "Crypto",
+        "other": "Other"
+      },
+      "actions": {
+        "exportPdf": "Export PDF"
+      },
+      "empty": "No payouts yet.",
+      "summary": {
+        "pending": "Pending",
+        "completed": "Completed"
+      }
+    },
+    "documents": {
+      "label": "Documents",
+      "title": "Documents",
+      "description": "Upload and manage your verification documents.",
+      "types": {
+        "passport": "Passport",
+        "agreement": "Agreement",
+        "tax": "Tax",
+        "bank": "Bank"
+      },
+      "actions": {
+        "upload": "Upload",
+        "uploading": "Uploading…",
+        "uploaded": "Document uploaded.",
+        "uploadError": "Unable to upload document.",
+        "delete": "Delete"
+      },
+      "empty": "No documents uploaded yet.",
+      "dropHint": "Drop a file here or click to upload"
+    },
+    "support": {
+      "label": "Support",
+      "title": "Support",
+      "description": "Contact your manager and track support tickets.",
+      "create": {
+        "title": "New ticket",
+        "subject": "Subject",
+        "message": "Message",
+        "submit": "Create ticket",
+        "submitting": "Creating…"
+      },
+      "table": {
+        "subject": "Subject",
+        "status": "Status",
+        "updated": "Updated",
+        "actions": "Actions"
+      },
+      "status": {
+        "open": "Open",
+        "waiting": "Waiting",
+        "answered": "Answered",
+        "closed": "Closed"
+      },
+      "thread": {
+        "reply": "Reply",
+        "send": "Send",
+        "sending": "Sending…",
+        "empty": "No messages yet.",
+        "you": "You",
+        "staff": "Staff"
+      },
+      "empty": "No support tickets yet."
+    },
+    "settings": {
+      "label": "Settings",
+      "title": "Settings",
+      "description": "Customize your cabinet preferences.",
+      "fields": {
+        "theme": "Theme",
+        "language": "Language",
+        "notifyTelegram": "Telegram notifications",
+        "notifyEmail": "Email notifications"
+      },
+      "themes": {
+        "dark": "Dark",
+        "light": "Light",
+        "system": "System"
+      },
+      "actions": {
+        "save": "Save",
+        "saving": "Saving…",
+        "saved": "Settings saved.",
+        "saveError": "Unable to save settings."
+      }
+    },
+    "errors": {
+      "load": "Unable to load this page.",
+      "boundary": "Something went wrong.",
+      "retry": "Try again"
+    },
+    "actionErrors": {
+      "unauthorized": "You are not authorized.",
+      "forbidden": "You do not have access to this action.",
+      "invalid": "Invalid data.",
+      "save": "Unable to save changes."
+    },
+    "toast": {
+      "saved": "Saved.",
+      "uploaded": "Uploaded.",
+      "taskCompleted": "Task completed.",
+      "ticketCreated": "Ticket created."
+    },
+    "impersonate": {
+      "start": "Open creator cabinet",
+      "starting": "Opening…",
+      "started": "Impersonation started.",
+      "stop": "Exit impersonation",
+      "stopping": "Exiting…",
+      "error": "Unable to change impersonation."
     }
   },
   "common": {

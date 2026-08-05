@@ -547,7 +547,8 @@
         "notes": "Note interne",
         "timeline": "Timeline",
         "status": "Stato"
-      }
+      },
+      "impersonate": "Apri area creator"
     },
     "dashboard": {
       "label": "Panoramica",
@@ -728,6 +729,288 @@
       "manager": "Manager",
       "creator": "Creator",
       "guest": "Ospite"
+    }
+  },
+  "creator": {
+    "logout": "Esci",
+    "sidebarTitle": "Area creator",
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu",
+    "closeOverlay": "Chiudi overlay del menu",
+    "navLabel": "Navigazione creator",
+    "creatorFallback": "Creator",
+    "impersonationBanner": "Stai visualizzando questa area come staff.",
+    "stopImpersonation": "Esci dall’impersonificazione",
+    "nav": {
+      "dashboard": "Dashboard",
+      "profile": "Profilo",
+      "platforms": "Piattaforme",
+      "statistics": "Statistiche",
+      "tasks": "Attività",
+      "payouts": "Pagamenti",
+      "documents": "Documenti",
+      "support": "Supporto",
+      "settings": "Impostazioni"
+    },
+    "dashboard": {
+      "label": "Panoramica",
+      "title": "Dashboard",
+      "description": "Il riepilogo delle tue performance e dell’attività recente.",
+      "cards": {
+        "currentRevenue": "Entrate del mese corrente",
+        "lifetimeRevenue": "Entrate totali",
+        "pendingPayout": "Pagamento in sospeso",
+        "completedTasks": "Attività completate",
+        "unreadMessages": "Messaggi non letti",
+        "upcomingDeadlines": "Scadenze imminenti"
+      },
+      "recentActivity": {
+        "title": "Attività recente",
+        "empty": "Nessuna attività recente."
+      },
+      "empty": "Niente da mostrare al momento."
+    },
+    "profile": {
+      "label": "Profilo",
+      "title": "Profilo",
+      "description": "Aggiorna il tuo profilo pubblico e i dati di contatto.",
+      "fields": {
+        "avatarUrl": "URL avatar",
+        "displayName": "Nome visualizzato",
+        "biography": "Biografia",
+        "languages": "Lingue",
+        "languagesPlaceholder": "en, ru, it",
+        "country": "Paese",
+        "timezone": "Fuso orario",
+        "telegram": "Telegram",
+        "phone": "Telefono",
+        "birthday": "Compleanno",
+        "email": "Email"
+      },
+      "actions": {
+        "save": "Salva",
+        "saving": "Salvataggio…",
+        "saved": "Profilo salvato.",
+        "saveError": "Impossibile salvare il profilo."
+      },
+      "readonlyHint": "Alcuni campi sono gestiti dal tuo manager e non possono essere modificati."
+    },
+    "platforms": {
+      "label": "Piattaforme",
+      "title": "Piattaforme",
+      "description": "Gestisci i tuoi account delle piattaforme collegati.",
+      "fields": {
+        "username": "Nome utente",
+        "profileUrl": "URL del profilo",
+        "status": "Stato",
+        "managerNotes": "Note del manager"
+      },
+      "status": {
+        "linked": "Collegato",
+        "pending": "In attesa",
+        "disconnected": "Disconnesso",
+        "issue": "Problema"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X",
+        "chaturbate": "Chaturbate"
+      },
+      "actions": {
+        "save": "Salva",
+        "saving": "Salvataggio…",
+        "saved": "Piattaforme salvate.",
+        "saveError": "Impossibile salvare le piattaforme."
+      },
+      "empty": "Nessuna piattaforma configurata."
+    },
+    "statistics": {
+      "label": "Statistiche",
+      "title": "Statistiche",
+      "description": "Monitora entrate, crescita e engagement nel tempo.",
+      "ranges": {
+        "d7": "7 giorni",
+        "d30": "30 giorni",
+        "d90": "90 giorni",
+        "m12": "12 mesi"
+      },
+      "charts": {
+        "revenue": "Entrate",
+        "growth": "Crescita",
+        "subscribers": "Abbonati",
+        "messages": "Messaggi",
+        "content": "Contenuti"
+      },
+      "empty": "Nessuna statistica disponibile per questo periodo."
+    },
+    "tasks": {
+      "label": "Attività",
+      "title": "Attività",
+      "description": "Visualizza e completa le attività assegnate dal tuo manager.",
+      "table": {
+        "title": "Titolo",
+        "priority": "Priorità",
+        "status": "Stato",
+        "deadline": "Scadenza",
+        "manager": "Manager",
+        "details": "Dettagli",
+        "actions": "Azioni"
+      },
+      "priority": {
+        "low": "Bassa",
+        "normal": "Normale",
+        "high": "Alta",
+        "urgent": "Urgente"
+      },
+      "status": {
+        "open": "Aperta",
+        "in_progress": "In corso",
+        "completed": "Completata",
+        "cancelled": "Annullata"
+      },
+      "actions": {
+        "complete": "Segna come completata",
+        "completing": "Completamento…",
+        "completed": "Attività completata."
+      },
+      "empty": "Nessuna attività assegnata.",
+      "unassigned": "Non assegnato"
+    },
+    "payouts": {
+      "label": "Pagamenti",
+      "title": "Pagamenti",
+      "description": "Controlla la cronologia dei pagamenti e quelli in sospeso.",
+      "table": {
+        "period": "Periodo",
+        "amount": "Importo",
+        "status": "Stato",
+        "method": "Metodo",
+        "paidDate": "Data di pagamento",
+        "actions": "Azioni"
+      },
+      "status": {
+        "pending": "In attesa",
+        "processing": "In elaborazione",
+        "completed": "Completato",
+        "failed": "Non riuscito"
+      },
+      "method": {
+        "bank": "Banca",
+        "paypal": "PayPal",
+        "crypto": "Crypto",
+        "other": "Altro"
+      },
+      "actions": {
+        "exportPdf": "Esporta PDF"
+      },
+      "empty": "Nessun pagamento ancora.",
+      "summary": {
+        "pending": "In attesa",
+        "completed": "Completato"
+      }
+    },
+    "documents": {
+      "label": "Documenti",
+      "title": "Documenti",
+      "description": "Carica e gestisci i documenti di verifica.",
+      "types": {
+        "passport": "Passaporto",
+        "agreement": "Accordo",
+        "tax": "Fiscale",
+        "bank": "Banca"
+      },
+      "actions": {
+        "upload": "Carica",
+        "uploading": "Caricamento…",
+        "uploaded": "Documento caricato.",
+        "uploadError": "Impossibile caricare il documento.",
+        "delete": "Elimina"
+      },
+      "empty": "Nessun documento caricato.",
+      "dropHint": "Trascina un file qui o clicca per caricare"
+    },
+    "support": {
+      "label": "Supporto",
+      "title": "Supporto",
+      "description": "Contatta il tuo manager e segui i ticket di supporto.",
+      "create": {
+        "title": "Nuovo ticket",
+        "subject": "Oggetto",
+        "message": "Messaggio",
+        "submit": "Crea ticket",
+        "submitting": "Creazione…"
+      },
+      "table": {
+        "subject": "Oggetto",
+        "status": "Stato",
+        "updated": "Aggiornato",
+        "actions": "Azioni"
+      },
+      "status": {
+        "open": "Aperto",
+        "waiting": "In attesa",
+        "answered": "Risposto",
+        "closed": "Chiuso"
+      },
+      "thread": {
+        "reply": "Rispondi",
+        "send": "Invia",
+        "sending": "Invio…",
+        "empty": "Nessun messaggio ancora.",
+        "you": "Tu",
+        "staff": "Staff"
+      },
+      "empty": "Nessun ticket di supporto."
+    },
+    "settings": {
+      "label": "Impostazioni",
+      "title": "Impostazioni",
+      "description": "Personalizza le preferenze della tua area.",
+      "fields": {
+        "theme": "Tema",
+        "language": "Lingua",
+        "notifyTelegram": "Notifiche Telegram",
+        "notifyEmail": "Notifiche email"
+      },
+      "themes": {
+        "dark": "Scuro",
+        "light": "Chiaro",
+        "system": "Sistema"
+      },
+      "actions": {
+        "save": "Salva",
+        "saving": "Salvataggio…",
+        "saved": "Impostazioni salvate.",
+        "saveError": "Impossibile salvare le impostazioni."
+      }
+    },
+    "errors": {
+      "load": "Impossibile caricare questa pagina.",
+      "boundary": "Qualcosa è andato storto.",
+      "retry": "Riprova"
+    },
+    "actionErrors": {
+      "unauthorized": "Non sei autorizzato.",
+      "forbidden": "Non hai accesso a questa azione.",
+      "invalid": "Dati non validi.",
+      "save": "Impossibile salvare le modifiche."
+    },
+    "toast": {
+      "saved": "Salvato.",
+      "uploaded": "Caricato.",
+      "taskCompleted": "Attività completata.",
+      "ticketCreated": "Ticket creato."
+    },
+    "impersonate": {
+      "start": "Apri area creator",
+      "starting": "Apertura…",
+      "started": "Impersonificazione avviata.",
+      "stop": "Esci dall’impersonificazione",
+      "stopping": "Uscita…",
+      "error": "Impossibile modificare l’impersonificazione."
     }
   },
   "common": {

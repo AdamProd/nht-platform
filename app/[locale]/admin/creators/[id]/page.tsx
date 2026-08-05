@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { requireStaff } from "@/lib/auth";
+import { canImpersonateCreator, requireStaff } from "@/lib/auth";
 import { getCreator } from "@/features/creators/queries/get-creator";
 import { listStaffManagers } from "@/features/applications/queries/list-managers";
 import CreatorProfilePanel from "@/features/creators/components/CreatorProfilePanel";
+import ImpersonateCreatorButton from "@/features/cabinet/components/ImpersonateCreatorButton";
 
 type Props = {
   params: Promise<{ locale: string; id: string }>;
@@ -18,6 +19,7 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
 
   const canAssignManager =
     session.profile.role === "owner" || session.profile.role === "admin";
+  const canImpersonate = canImpersonateCreator(session.profile.role);
 
   let creator;
   let managers;
@@ -51,14 +53,22 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-overline text-[var(--nht-gold)]">{t("detailLabel")}</p>
-        <Link
-          href="/admin/creators"
-          className="text-xs text-[var(--nht-text-tertiary)] hover:text-[var(--nht-gold)]"
-        >
-          ← {t("backToList")}
-        </Link>
+        <div className="flex flex-wrap items-center gap-3">
+          {canImpersonate ? (
+            <ImpersonateCreatorButton
+              creatorId={creator.id}
+              label={t("impersonate")}
+            />
+          ) : null}
+          <Link
+            href="/admin/creators"
+            className="text-xs text-[var(--nht-text-tertiary)] hover:text-[var(--nht-gold)]"
+          >
+            ← {t("backToList")}
+          </Link>
+        </div>
       </div>
 
       <CreatorProfilePanel

@@ -218,10 +218,413 @@ export type Database = {
           },
         ];
       };
+      creator_activity: {
+        Row: {
+          body: string | null;
+          created_at: string;
+          creator_id: string;
+          id: string;
+          kind: string;
+          title: string;
+        };
+        Insert: {
+          body?: string | null;
+          created_at?: string;
+          creator_id: string;
+          id?: string;
+          kind?: string;
+          title: string;
+        };
+        Update: {
+          body?: string | null;
+          created_at?: string;
+          creator_id?: string;
+          id?: string;
+          kind?: string;
+          title?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "creator_activity_creator_id_fkey";
+            columns: ["creator_id"];
+            isOneToOne: false;
+            referencedRelation: "creators";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      creator_documents: {
+        Row: {
+          bucket: string;
+          created_at: string;
+          creator_id: string;
+          doc_type: Database["public"]["Enums"]["creator_document_type"];
+          file_name: string;
+          id: string;
+          mime_type: string | null;
+          path: string;
+          size_bytes: number | null;
+          uploaded_by: string | null;
+        };
+        Insert: {
+          bucket?: string;
+          created_at?: string;
+          creator_id: string;
+          doc_type: Database["public"]["Enums"]["creator_document_type"];
+          file_name: string;
+          id?: string;
+          mime_type?: string | null;
+          path: string;
+          size_bytes?: number | null;
+          uploaded_by?: string | null;
+        };
+        Update: {
+          bucket?: string;
+          created_at?: string;
+          creator_id?: string;
+          doc_type?: Database["public"]["Enums"]["creator_document_type"];
+          file_name?: string;
+          id?: string;
+          mime_type?: string | null;
+          path?: string;
+          size_bytes?: number | null;
+          uploaded_by?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "creator_documents_creator_id_fkey";
+            columns: ["creator_id"];
+            isOneToOne: false;
+            referencedRelation: "creators";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "creator_documents_uploaded_by_fkey";
+            columns: ["uploaded_by"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      creator_payouts: {
+        Row: {
+          amount: number;
+          created_at: string;
+          creator_id: string;
+          currency: string;
+          id: string;
+          method: Database["public"]["Enums"]["payout_method"];
+          paid_at: string | null;
+          period_end: string;
+          period_start: string;
+          receipt_number: string | null;
+          status: Database["public"]["Enums"]["payout_status"];
+          updated_at: string;
+        };
+        Insert: {
+          amount?: number;
+          created_at?: string;
+          creator_id: string;
+          currency?: string;
+          id?: string;
+          method?: Database["public"]["Enums"]["payout_method"];
+          paid_at?: string | null;
+          period_end: string;
+          period_start: string;
+          receipt_number?: string | null;
+          status?: Database["public"]["Enums"]["payout_status"];
+          updated_at?: string;
+        };
+        Update: {
+          amount?: number;
+          created_at?: string;
+          creator_id?: string;
+          currency?: string;
+          id?: string;
+          method?: Database["public"]["Enums"]["payout_method"];
+          paid_at?: string | null;
+          period_end?: string;
+          period_start?: string;
+          receipt_number?: string | null;
+          status?: Database["public"]["Enums"]["payout_status"];
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "creator_payouts_creator_id_fkey";
+            columns: ["creator_id"];
+            isOneToOne: false;
+            referencedRelation: "creators";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      creator_platform_accounts: {
+        Row: {
+          created_at: string;
+          creator_id: string;
+          id: string;
+          manager_notes: string | null;
+          platform: string;
+          profile_url: string | null;
+          status: Database["public"]["Enums"]["platform_link_status"];
+          updated_at: string;
+          username: string | null;
+        };
+        Insert: {
+          created_at?: string;
+          creator_id: string;
+          id?: string;
+          manager_notes?: string | null;
+          platform: string;
+          profile_url?: string | null;
+          status?: Database["public"]["Enums"]["platform_link_status"];
+          updated_at?: string;
+          username?: string | null;
+        };
+        Update: {
+          created_at?: string;
+          creator_id?: string;
+          id?: string;
+          manager_notes?: string | null;
+          platform?: string;
+          profile_url?: string | null;
+          status?: Database["public"]["Enums"]["platform_link_status"];
+          updated_at?: string;
+          username?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "creator_platform_accounts_creator_id_fkey";
+            columns: ["creator_id"];
+            isOneToOne: false;
+            referencedRelation: "creators";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      creator_settings: {
+        Row: {
+          creator_id: string;
+          locale: string | null;
+          notify_email: boolean;
+          notify_telegram: boolean;
+          theme: string;
+          updated_at: string;
+        };
+        Insert: {
+          creator_id: string;
+          locale?: string | null;
+          notify_email?: boolean;
+          notify_telegram?: boolean;
+          theme?: string;
+          updated_at?: string;
+        };
+        Update: {
+          creator_id?: string;
+          locale?: string | null;
+          notify_email?: boolean;
+          notify_telegram?: boolean;
+          theme?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "creator_settings_creator_id_fkey";
+            columns: ["creator_id"];
+            isOneToOne: true;
+            referencedRelation: "creators";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      creator_stats_daily: {
+        Row: {
+          content: number;
+          creator_id: string;
+          day: string;
+          growth: number;
+          id: string;
+          messages: number;
+          revenue: number;
+          subscribers: number;
+        };
+        Insert: {
+          content?: number;
+          creator_id: string;
+          day: string;
+          growth?: number;
+          id?: string;
+          messages?: number;
+          revenue?: number;
+          subscribers?: number;
+        };
+        Update: {
+          content?: number;
+          creator_id?: string;
+          day?: string;
+          growth?: number;
+          id?: string;
+          messages?: number;
+          revenue?: number;
+          subscribers?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "creator_stats_daily_creator_id_fkey";
+            columns: ["creator_id"];
+            isOneToOne: false;
+            referencedRelation: "creators";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      creator_support_messages: {
+        Row: {
+          author_id: string | null;
+          body: string;
+          created_at: string;
+          id: string;
+          is_staff: boolean;
+          ticket_id: string;
+        };
+        Insert: {
+          author_id?: string | null;
+          body: string;
+          created_at?: string;
+          id?: string;
+          is_staff?: boolean;
+          ticket_id: string;
+        };
+        Update: {
+          author_id?: string | null;
+          body?: string;
+          created_at?: string;
+          id?: string;
+          is_staff?: boolean;
+          ticket_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "creator_support_messages_author_id_fkey";
+            columns: ["author_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "creator_support_messages_ticket_id_fkey";
+            columns: ["ticket_id"];
+            isOneToOne: false;
+            referencedRelation: "creator_support_tickets";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      creator_support_tickets: {
+        Row: {
+          created_at: string;
+          creator_id: string;
+          id: string;
+          last_message_at: string;
+          status: Database["public"]["Enums"]["support_ticket_status"];
+          subject: string;
+          unread_for_creator: number;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          creator_id: string;
+          id?: string;
+          last_message_at?: string;
+          status?: Database["public"]["Enums"]["support_ticket_status"];
+          subject: string;
+          unread_for_creator?: number;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          creator_id?: string;
+          id?: string;
+          last_message_at?: string;
+          status?: Database["public"]["Enums"]["support_ticket_status"];
+          subject?: string;
+          unread_for_creator?: number;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "creator_support_tickets_creator_id_fkey";
+            columns: ["creator_id"];
+            isOneToOne: false;
+            referencedRelation: "creators";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      creator_tasks: {
+        Row: {
+          completed_at: string | null;
+          created_at: string;
+          creator_id: string;
+          deadline: string | null;
+          details: string | null;
+          id: string;
+          manager_id: string | null;
+          priority: Database["public"]["Enums"]["cabinet_task_priority"];
+          status: Database["public"]["Enums"]["cabinet_task_status"];
+          title: string;
+          updated_at: string;
+        };
+        Insert: {
+          completed_at?: string | null;
+          created_at?: string;
+          creator_id: string;
+          deadline?: string | null;
+          details?: string | null;
+          id?: string;
+          manager_id?: string | null;
+          priority?: Database["public"]["Enums"]["cabinet_task_priority"];
+          status?: Database["public"]["Enums"]["cabinet_task_status"];
+          title: string;
+          updated_at?: string;
+        };
+        Update: {
+          completed_at?: string | null;
+          created_at?: string;
+          creator_id?: string;
+          deadline?: string | null;
+          details?: string | null;
+          id?: string;
+          manager_id?: string | null;
+          priority?: Database["public"]["Enums"]["cabinet_task_priority"];
+          status?: Database["public"]["Enums"]["cabinet_task_status"];
+          title?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "creator_tasks_creator_id_fkey";
+            columns: ["creator_id"];
+            isOneToOne: false;
+            referencedRelation: "creators";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "creator_tasks_manager_id_fkey";
+            columns: ["manager_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
       creators: {
         Row: {
           application_id: string | null;
           avatar_url: string | null;
+          biography: string | null;
           birthday: string | null;
           chaturbate_url: string | null;
           country: string | null;
@@ -251,10 +654,12 @@ export type Database = {
           tiktok_url: string | null;
           twitter_url: string | null;
           updated_at: string;
+          user_id: string | null;
         };
         Insert: {
           application_id?: string | null;
           avatar_url?: string | null;
+          biography?: string | null;
           birthday?: string | null;
           chaturbate_url?: string | null;
           country?: string | null;
@@ -284,10 +689,12 @@ export type Database = {
           tiktok_url?: string | null;
           twitter_url?: string | null;
           updated_at?: string;
+          user_id?: string | null;
         };
         Update: {
           application_id?: string | null;
           avatar_url?: string | null;
+          biography?: string | null;
           birthday?: string | null;
           chaturbate_url?: string | null;
           country?: string | null;
@@ -317,6 +724,7 @@ export type Database = {
           tiktok_url?: string | null;
           twitter_url?: string | null;
           updated_at?: string;
+          user_id?: string | null;
         };
         Relationships: [
           {
@@ -333,6 +741,13 @@ export type Database = {
             referencedRelation: "profiles";
             referencedColumns: ["id"];
           },
+          {
+            foreignKeyName: "creators_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: true;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
         ];
       };
       profiles: {
@@ -341,6 +756,7 @@ export type Database = {
           created_at: string;
           full_name: string | null;
           id: string;
+          impersonating_creator_id: string | null;
           role: Database["public"]["Enums"]["user_role"];
           updated_at: string;
         };
@@ -349,6 +765,7 @@ export type Database = {
           created_at?: string;
           full_name?: string | null;
           id: string;
+          impersonating_creator_id?: string | null;
           role?: Database["public"]["Enums"]["user_role"];
           updated_at?: string;
         };
@@ -357,10 +774,19 @@ export type Database = {
           created_at?: string;
           full_name?: string | null;
           id?: string;
+          impersonating_creator_id?: string | null;
           role?: Database["public"]["Enums"]["user_role"];
           updated_at?: string;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: "profiles_impersonating_creator_id_fkey";
+            columns: ["impersonating_creator_id"];
+            isOneToOne: false;
+            referencedRelation: "creators";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       settings: {
         Row: {
@@ -396,6 +822,14 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
+      acting_creator_id: {
+        Args: Record<PropertyKey, never>;
+        Returns: string;
+      };
+      can_access_creator: {
+        Args: { target_creator_id: string };
+        Returns: boolean;
+      };
       get_user_role: {
         Args: Record<PropertyKey, never>;
         Returns: Database["public"]["Enums"]["user_role"];
@@ -405,6 +839,10 @@ export type Database = {
         Returns: boolean;
       };
       is_authenticated_user: {
+        Args: Record<PropertyKey, never>;
+        Returns: boolean;
+      };
+      is_creator_role: {
         Args: Record<PropertyKey, never>;
         Returns: boolean;
       };
@@ -428,6 +866,9 @@ export type Database = {
         | "rejected"
         | "archived";
       application_type: "creator" | "agency" | "partnership" | "general";
+      cabinet_task_priority: "low" | "normal" | "high" | "urgent";
+      cabinet_task_status: "open" | "in_progress" | "completed" | "cancelled";
+      creator_document_type: "passport" | "agreement" | "tax" | "bank";
       creator_status:
         | "new"
         | "active"
@@ -435,6 +876,10 @@ export type Database = {
         | "vacation"
         | "inactive"
         | "banned";
+      payout_method: "bank" | "paypal" | "crypto" | "other";
+      payout_status: "pending" | "processing" | "completed" | "failed";
+      platform_link_status: "linked" | "pending" | "disconnected" | "issue";
+      support_ticket_status: "open" | "waiting" | "answered" | "closed";
       user_role: "owner" | "admin" | "manager" | "creator" | "guest";
     };
     CompositeTypes: {
@@ -460,6 +905,13 @@ export type ApplicationType = Enums<"application_type">;
 export type ApplicationStatus = Enums<"application_status">;
 export type ApplicationPriority = Enums<"application_priority">;
 export type CreatorStatus = Enums<"creator_status">;
+export type PlatformLinkStatus = Enums<"platform_link_status">;
+export type CabinetTaskStatus = Enums<"cabinet_task_status">;
+export type CabinetTaskPriority = Enums<"cabinet_task_priority">;
+export type PayoutStatus = Enums<"payout_status">;
+export type PayoutMethod = Enums<"payout_method">;
+export type CreatorDocumentType = Enums<"creator_document_type">;
+export type SupportTicketStatus = Enums<"support_ticket_status">;
 
 export const Constants = {
   public: {
@@ -475,6 +927,19 @@ export const Constants = {
         "archived",
       ] as const,
       application_type: ["creator", "agency", "partnership", "general"] as const,
+      cabinet_task_priority: ["low", "normal", "high", "urgent"] as const,
+      cabinet_task_status: [
+        "open",
+        "in_progress",
+        "completed",
+        "cancelled",
+      ] as const,
+      creator_document_type: [
+        "passport",
+        "agreement",
+        "tax",
+        "bank",
+      ] as const,
       creator_status: [
         "new",
         "active",
@@ -482,6 +947,25 @@ export const Constants = {
         "vacation",
         "inactive",
         "banned",
+      ] as const,
+      payout_method: ["bank", "paypal", "crypto", "other"] as const,
+      payout_status: [
+        "pending",
+        "processing",
+        "completed",
+        "failed",
+      ] as const,
+      platform_link_status: [
+        "linked",
+        "pending",
+        "disconnected",
+        "issue",
+      ] as const,
+      support_ticket_status: [
+        "open",
+        "waiting",
+        "answered",
+        "closed",
       ] as const,
       user_role: ["owner", "admin", "manager", "creator", "guest"] as const,
     },

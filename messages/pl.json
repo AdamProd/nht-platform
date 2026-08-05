@@ -547,7 +547,8 @@
         "notes": "Notatki wewnętrzne",
         "timeline": "Oś czasu",
         "status": "Status"
-      }
+      },
+      "impersonate": "Otwórz panel twórcy"
     },
     "dashboard": {
       "label": "Przegląd",
@@ -728,6 +729,288 @@
       "manager": "Manager",
       "creator": "Twórca",
       "guest": "Gość"
+    }
+  },
+  "creator": {
+    "logout": "Wyloguj się",
+    "sidebarTitle": "Panel twórcy",
+    "openMenu": "Otwórz menu",
+    "closeMenu": "Zamknij menu",
+    "closeOverlay": "Zamknij nakładkę menu",
+    "navLabel": "Nawigacja twórcy",
+    "creatorFallback": "Twórca",
+    "impersonationBanner": "Przeglądasz ten panel jako pracownik.",
+    "stopImpersonation": "Zakończ podszywanie",
+    "nav": {
+      "dashboard": "Panel",
+      "profile": "Profil",
+      "platforms": "Platformy",
+      "statistics": "Statystyki",
+      "tasks": "Zadania",
+      "payouts": "Wypłaty",
+      "documents": "Dokumenty",
+      "support": "Wsparcie",
+      "settings": "Ustawienia"
+    },
+    "dashboard": {
+      "label": "Przegląd",
+      "title": "Panel",
+      "description": "Podsumowanie wyników i ostatniej aktywności.",
+      "cards": {
+        "currentRevenue": "Przychód bieżącego miesiąca",
+        "lifetimeRevenue": "Przychód całkowity",
+        "pendingPayout": "Oczekująca wypłata",
+        "completedTasks": "Ukończone zadania",
+        "unreadMessages": "Nieprzeczytane wiadomości",
+        "upcomingDeadlines": "Nadchodzące terminy"
+      },
+      "recentActivity": {
+        "title": "Ostatnia aktywność",
+        "empty": "Brak ostatniej aktywności."
+      },
+      "empty": "Na razie nic do wyświetlenia."
+    },
+    "profile": {
+      "label": "Profil",
+      "title": "Profil",
+      "description": "Zaktualizuj swój profil publiczny i dane kontaktowe.",
+      "fields": {
+        "avatarUrl": "URL avatara",
+        "displayName": "Nazwa wyświetlana",
+        "biography": "Biografia",
+        "languages": "Języki",
+        "languagesPlaceholder": "en, ru, pl",
+        "country": "Kraj",
+        "timezone": "Strefa czasowa",
+        "telegram": "Telegram",
+        "phone": "Telefon",
+        "birthday": "Urodziny",
+        "email": "E-mail"
+      },
+      "actions": {
+        "save": "Zapisz",
+        "saving": "Zapisywanie…",
+        "saved": "Profil zapisany.",
+        "saveError": "Nie udało się zapisać profilu."
+      },
+      "readonlyHint": "Niektóre pola są zarządzane przez menedżera i nie można ich edytować."
+    },
+    "platforms": {
+      "label": "Platformy",
+      "title": "Platformy",
+      "description": "Zarządzaj powiązanymi kontami platform.",
+      "fields": {
+        "username": "Nazwa użytkownika",
+        "profileUrl": "URL profilu",
+        "status": "Status",
+        "managerNotes": "Notatki menedżera"
+      },
+      "status": {
+        "linked": "Połączone",
+        "pending": "Oczekujące",
+        "disconnected": "Rozłączone",
+        "issue": "Problem"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X",
+        "chaturbate": "Chaturbate"
+      },
+      "actions": {
+        "save": "Zapisz",
+        "saving": "Zapisywanie…",
+        "saved": "Platformy zapisane.",
+        "saveError": "Nie udało się zapisać platform."
+      },
+      "empty": "Brak skonfigurowanych platform."
+    },
+    "statistics": {
+      "label": "Statystyki",
+      "title": "Statystyki",
+      "description": "Śledź przychody, wzrost i zaangażowanie w czasie.",
+      "ranges": {
+        "d7": "7 dni",
+        "d30": "30 dni",
+        "d90": "90 dni",
+        "m12": "12 miesięcy"
+      },
+      "charts": {
+        "revenue": "Przychód",
+        "growth": "Wzrost",
+        "subscribers": "Subskrybenci",
+        "messages": "Wiadomości",
+        "content": "Treści"
+      },
+      "empty": "Brak statystyk dla tego okresu."
+    },
+    "tasks": {
+      "label": "Zadania",
+      "title": "Zadania",
+      "description": "Przeglądaj i wykonuj zadania przypisane przez menedżera.",
+      "table": {
+        "title": "Tytuł",
+        "priority": "Priorytet",
+        "status": "Status",
+        "deadline": "Termin",
+        "manager": "Menedżer",
+        "details": "Szczegóły",
+        "actions": "Akcje"
+      },
+      "priority": {
+        "low": "Niski",
+        "normal": "Normalny",
+        "high": "Wysoki",
+        "urgent": "Pilny"
+      },
+      "status": {
+        "open": "Otwarte",
+        "in_progress": "W trakcie",
+        "completed": "Ukończone",
+        "cancelled": "Anulowane"
+      },
+      "actions": {
+        "complete": "Oznacz jako ukończone",
+        "completing": "Kończenie…",
+        "completed": "Zadanie ukończone."
+      },
+      "empty": "Brak przypisanych zadań.",
+      "unassigned": "Nieprzypisany"
+    },
+    "payouts": {
+      "label": "Wypłaty",
+      "title": "Wypłaty",
+      "description": "Przeglądaj historię wypłat i oczekujące płatności.",
+      "table": {
+        "period": "Okres",
+        "amount": "Kwota",
+        "status": "Status",
+        "method": "Metoda",
+        "paidDate": "Data wypłaty",
+        "actions": "Akcje"
+      },
+      "status": {
+        "pending": "Oczekujące",
+        "processing": "Przetwarzanie",
+        "completed": "Zakończone",
+        "failed": "Nieudane"
+      },
+      "method": {
+        "bank": "Bank",
+        "paypal": "PayPal",
+        "crypto": "Krypto",
+        "other": "Inne"
+      },
+      "actions": {
+        "exportPdf": "Eksportuj PDF"
+      },
+      "empty": "Brak wypłat.",
+      "summary": {
+        "pending": "Oczekujące",
+        "completed": "Zakończone"
+      }
+    },
+    "documents": {
+      "label": "Dokumenty",
+      "title": "Dokumenty",
+      "description": "Przesyłaj i zarządzaj dokumentami weryfikacyjnymi.",
+      "types": {
+        "passport": "Paszport",
+        "agreement": "Umowa",
+        "tax": "Podatki",
+        "bank": "Bank"
+      },
+      "actions": {
+        "upload": "Prześlij",
+        "uploading": "Przesyłanie…",
+        "uploaded": "Dokument przesłany.",
+        "uploadError": "Nie udało się przesłać dokumentu.",
+        "delete": "Usuń"
+      },
+      "empty": "Nie przesłano jeszcze dokumentów.",
+      "dropHint": "Upuść plik tutaj lub kliknij, aby przesłać"
+    },
+    "support": {
+      "label": "Wsparcie",
+      "title": "Wsparcie",
+      "description": "Skontaktuj się z menedżerem i śledź zgłoszenia.",
+      "create": {
+        "title": "Nowe zgłoszenie",
+        "subject": "Temat",
+        "message": "Wiadomość",
+        "submit": "Utwórz zgłoszenie",
+        "submitting": "Tworzenie…"
+      },
+      "table": {
+        "subject": "Temat",
+        "status": "Status",
+        "updated": "Zaktualizowano",
+        "actions": "Akcje"
+      },
+      "status": {
+        "open": "Otwarte",
+        "waiting": "Oczekujące",
+        "answered": "Odpowiedziano",
+        "closed": "Zamknięte"
+      },
+      "thread": {
+        "reply": "Odpowiedz",
+        "send": "Wyślij",
+        "sending": "Wysyłanie…",
+        "empty": "Brak wiadomości.",
+        "you": "Ty",
+        "staff": "Personel"
+      },
+      "empty": "Brak zgłoszeń wsparcia."
+    },
+    "settings": {
+      "label": "Ustawienia",
+      "title": "Ustawienia",
+      "description": "Dostosuj preferencje panelu.",
+      "fields": {
+        "theme": "Motyw",
+        "language": "Język",
+        "notifyTelegram": "Powiadomienia Telegram",
+        "notifyEmail": "Powiadomienia e-mail"
+      },
+      "themes": {
+        "dark": "Ciemny",
+        "light": "Jasny",
+        "system": "Systemowy"
+      },
+      "actions": {
+        "save": "Zapisz",
+        "saving": "Zapisywanie…",
+        "saved": "Ustawienia zapisane.",
+        "saveError": "Nie udało się zapisać ustawień."
+      }
+    },
+    "errors": {
+      "load": "Nie udało się załadować tej strony.",
+      "boundary": "Coś poszło nie tak.",
+      "retry": "Spróbuj ponownie"
+    },
+    "actionErrors": {
+      "unauthorized": "Nie masz uprawnień.",
+      "forbidden": "Nie masz dostępu do tej akcji.",
+      "invalid": "Nieprawidłowe dane.",
+      "save": "Nie udało się zapisać zmian."
+    },
+    "toast": {
+      "saved": "Zapisano.",
+      "uploaded": "Przesłano.",
+      "taskCompleted": "Zadanie ukończone.",
+      "ticketCreated": "Zgłoszenie utworzone."
+    },
+    "impersonate": {
+      "start": "Otwórz panel twórcy",
+      "starting": "Otwieranie…",
+      "started": "Podszywanie rozpoczęte.",
+      "stop": "Zakończ podszywanie",
+      "stopping": "Zamykanie…",
+      "error": "Nie udało się zmienić podszywania."
     }
   },
   "common": {

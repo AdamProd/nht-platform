@@ -547,7 +547,8 @@
         "notes": "Notes internes",
         "timeline": "Chronologie",
         "status": "Statut"
-      }
+      },
+      "impersonate": "Ouvrir l’espace créateur"
     },
     "dashboard": {
       "label": "Vue d’ensemble",
@@ -728,6 +729,288 @@
       "manager": "Manager",
       "creator": "Créateur",
       "guest": "Invité"
+    }
+  },
+  "creator": {
+    "logout": "Se déconnecter",
+    "sidebarTitle": "Espace créateur",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "closeOverlay": "Fermer le calque du menu",
+    "navLabel": "Navigation créateur",
+    "creatorFallback": "Créateur",
+    "impersonationBanner": "Vous consultez cet espace en tant que membre du personnel.",
+    "stopImpersonation": "Quitter l’emprunt d’identité",
+    "nav": {
+      "dashboard": "Tableau de bord",
+      "profile": "Profil",
+      "platforms": "Plateformes",
+      "statistics": "Statistiques",
+      "tasks": "Tâches",
+      "payouts": "Paiements",
+      "documents": "Documents",
+      "support": "Assistance",
+      "settings": "Paramètres"
+    },
+    "dashboard": {
+      "label": "Aperçu",
+      "title": "Tableau de bord",
+      "description": "Votre aperçu de performance et activité récente.",
+      "cards": {
+        "currentRevenue": "Revenus du mois en cours",
+        "lifetimeRevenue": "Revenus totaux",
+        "pendingPayout": "Paiement en attente",
+        "completedTasks": "Tâches terminées",
+        "unreadMessages": "Messages non lus",
+        "upcomingDeadlines": "Échéances à venir"
+      },
+      "recentActivity": {
+        "title": "Activité récente",
+        "empty": "Aucune activité récente."
+      },
+      "empty": "Rien à afficher pour le moment."
+    },
+    "profile": {
+      "label": "Profil",
+      "title": "Profil",
+      "description": "Mettez à jour votre profil public et vos coordonnées.",
+      "fields": {
+        "avatarUrl": "URL de l’avatar",
+        "displayName": "Nom affiché",
+        "biography": "Biographie",
+        "languages": "Langues",
+        "languagesPlaceholder": "en, ru, fr",
+        "country": "Pays",
+        "timezone": "Fuseau horaire",
+        "telegram": "Telegram",
+        "phone": "Téléphone",
+        "birthday": "Date de naissance",
+        "email": "E-mail"
+      },
+      "actions": {
+        "save": "Enregistrer",
+        "saving": "Enregistrement…",
+        "saved": "Profil enregistré.",
+        "saveError": "Impossible d’enregistrer le profil."
+      },
+      "readonlyHint": "Certains champs sont gérés par votre manager et ne peuvent pas être modifiés."
+    },
+    "platforms": {
+      "label": "Plateformes",
+      "title": "Plateformes",
+      "description": "Gérez vos comptes de plateformes liés.",
+      "fields": {
+        "username": "Nom d’utilisateur",
+        "profileUrl": "URL du profil",
+        "status": "Statut",
+        "managerNotes": "Notes du manager"
+      },
+      "status": {
+        "linked": "Lié",
+        "pending": "En attente",
+        "disconnected": "Déconnecté",
+        "issue": "Problème"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X",
+        "chaturbate": "Chaturbate"
+      },
+      "actions": {
+        "save": "Enregistrer",
+        "saving": "Enregistrement…",
+        "saved": "Plateformes enregistrées.",
+        "saveError": "Impossible d’enregistrer les plateformes."
+      },
+      "empty": "Aucune plateforme configurée pour le moment."
+    },
+    "statistics": {
+      "label": "Statistiques",
+      "title": "Statistiques",
+      "description": "Suivez les revenus, la croissance et l’engagement dans le temps.",
+      "ranges": {
+        "d7": "7 jours",
+        "d30": "30 jours",
+        "d90": "90 jours",
+        "m12": "12 mois"
+      },
+      "charts": {
+        "revenue": "Revenus",
+        "growth": "Croissance",
+        "subscribers": "Abonnés",
+        "messages": "Messages",
+        "content": "Contenu"
+      },
+      "empty": "Aucune statistique disponible pour cette période."
+    },
+    "tasks": {
+      "label": "Tâches",
+      "title": "Tâches",
+      "description": "Consultez et terminez les tâches assignées par votre manager.",
+      "table": {
+        "title": "Titre",
+        "priority": "Priorité",
+        "status": "Statut",
+        "deadline": "Échéance",
+        "manager": "Manager",
+        "details": "Détails",
+        "actions": "Actions"
+      },
+      "priority": {
+        "low": "Basse",
+        "normal": "Normale",
+        "high": "Haute",
+        "urgent": "Urgente"
+      },
+      "status": {
+        "open": "Ouverte",
+        "in_progress": "En cours",
+        "completed": "Terminée",
+        "cancelled": "Annulée"
+      },
+      "actions": {
+        "complete": "Marquer comme terminée",
+        "completing": "Finalisation…",
+        "completed": "Tâche terminée."
+      },
+      "empty": "Aucune tâche assignée.",
+      "unassigned": "Non assigné"
+    },
+    "payouts": {
+      "label": "Paiements",
+      "title": "Paiements",
+      "description": "Consultez l’historique des paiements et les paiements en attente.",
+      "table": {
+        "period": "Période",
+        "amount": "Montant",
+        "status": "Statut",
+        "method": "Méthode",
+        "paidDate": "Date de paiement",
+        "actions": "Actions"
+      },
+      "status": {
+        "pending": "En attente",
+        "processing": "En traitement",
+        "completed": "Terminé",
+        "failed": "Échoué"
+      },
+      "method": {
+        "bank": "Banque",
+        "paypal": "PayPal",
+        "crypto": "Crypto",
+        "other": "Autre"
+      },
+      "actions": {
+        "exportPdf": "Exporter en PDF"
+      },
+      "empty": "Aucun paiement pour le moment.",
+      "summary": {
+        "pending": "En attente",
+        "completed": "Terminé"
+      }
+    },
+    "documents": {
+      "label": "Documents",
+      "title": "Documents",
+      "description": "Téléversez et gérez vos documents de vérification.",
+      "types": {
+        "passport": "Passeport",
+        "agreement": "Contrat",
+        "tax": "Fiscal",
+        "bank": "Banque"
+      },
+      "actions": {
+        "upload": "Téléverser",
+        "uploading": "Téléversement…",
+        "uploaded": "Document téléversé.",
+        "uploadError": "Impossible de téléverser le document.",
+        "delete": "Supprimer"
+      },
+      "empty": "Aucun document téléversé pour le moment.",
+      "dropHint": "Déposez un fichier ici ou cliquez pour téléverser"
+    },
+    "support": {
+      "label": "Assistance",
+      "title": "Assistance",
+      "description": "Contactez votre manager et suivez vos tickets d’assistance.",
+      "create": {
+        "title": "Nouveau ticket",
+        "subject": "Sujet",
+        "message": "Message",
+        "submit": "Créer le ticket",
+        "submitting": "Création…"
+      },
+      "table": {
+        "subject": "Sujet",
+        "status": "Statut",
+        "updated": "Mis à jour",
+        "actions": "Actions"
+      },
+      "status": {
+        "open": "Ouvert",
+        "waiting": "En attente",
+        "answered": "Répondu",
+        "closed": "Fermé"
+      },
+      "thread": {
+        "reply": "Répondre",
+        "send": "Envoyer",
+        "sending": "Envoi…",
+        "empty": "Aucun message pour le moment.",
+        "you": "Vous",
+        "staff": "Personnel"
+      },
+      "empty": "Aucun ticket d’assistance pour le moment."
+    },
+    "settings": {
+      "label": "Paramètres",
+      "title": "Paramètres",
+      "description": "Personnalisez les préférences de votre espace.",
+      "fields": {
+        "theme": "Thème",
+        "language": "Langue",
+        "notifyTelegram": "Notifications Telegram",
+        "notifyEmail": "Notifications e-mail"
+      },
+      "themes": {
+        "dark": "Sombre",
+        "light": "Clair",
+        "system": "Système"
+      },
+      "actions": {
+        "save": "Enregistrer",
+        "saving": "Enregistrement…",
+        "saved": "Paramètres enregistrés.",
+        "saveError": "Impossible d’enregistrer les paramètres."
+      }
+    },
+    "errors": {
+      "load": "Impossible de charger cette page.",
+      "boundary": "Une erreur s’est produite.",
+      "retry": "Réessayer"
+    },
+    "actionErrors": {
+      "unauthorized": "Vous n’êtes pas autorisé.",
+      "forbidden": "Vous n’avez pas accès à cette action.",
+      "invalid": "Données invalides.",
+      "save": "Impossible d’enregistrer les modifications."
+    },
+    "toast": {
+      "saved": "Enregistré.",
+      "uploaded": "Téléversé.",
+      "taskCompleted": "Tâche terminée.",
+      "ticketCreated": "Ticket créé."
+    },
+    "impersonate": {
+      "start": "Ouvrir l’espace créateur",
+      "starting": "Ouverture…",
+      "started": "Emprunt d’identité démarré.",
+      "stop": "Quitter l’emprunt d’identité",
+      "stopping": "Fermeture…",
+      "error": "Impossible de modifier l’emprunt d’identité."
     }
   },
   "common": {

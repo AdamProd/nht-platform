@@ -550,7 +550,8 @@
         "status": "Status",
         "notes": "Interne Notizen",
         "timeline": "Zeitlinie"
-      }
+      },
+      "impersonate": "Creator-Kabinett öffnen"
     },
     "dashboard": {
       "label": "Übersicht",
@@ -728,6 +729,288 @@
       "manager": "Manager",
       "creator": "Creator",
       "guest": "Gast"
+    }
+  },
+  "creator": {
+    "logout": "Abmelden",
+    "sidebarTitle": "Creator-Kabinett",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "closeOverlay": "Menü-Overlay schließen",
+    "navLabel": "Creator-Navigation",
+    "creatorFallback": "Creator",
+    "impersonationBanner": "Sie sehen dieses Kabinett als Mitarbeiter.",
+    "stopImpersonation": "Impersonation beenden",
+    "nav": {
+      "dashboard": "Dashboard",
+      "profile": "Profil",
+      "platforms": "Plattformen",
+      "statistics": "Statistik",
+      "tasks": "Aufgaben",
+      "payouts": "Auszahlungen",
+      "documents": "Dokumente",
+      "support": "Support",
+      "settings": "Einstellungen"
+    },
+    "dashboard": {
+      "label": "Übersicht",
+      "title": "Dashboard",
+      "description": "Ihre Leistungsübersicht und aktuelle Aktivität.",
+      "cards": {
+        "currentRevenue": "Umsatz aktueller Monat",
+        "lifetimeRevenue": "Gesamtumsatz",
+        "pendingPayout": "Ausstehende Auszahlung",
+        "completedTasks": "Erledigte Aufgaben",
+        "unreadMessages": "Ungelesene Nachrichten",
+        "upcomingDeadlines": "Kommende Fristen"
+      },
+      "recentActivity": {
+        "title": "Aktuelle Aktivität",
+        "empty": "Keine aktuelle Aktivität."
+      },
+      "empty": "Noch nichts anzuzeigen."
+    },
+    "profile": {
+      "label": "Profil",
+      "title": "Profil",
+      "description": "Aktualisieren Sie Ihr öffentliches Profil und Ihre Kontaktdaten.",
+      "fields": {
+        "avatarUrl": "Avatar-URL",
+        "displayName": "Anzeigename",
+        "biography": "Biografie",
+        "languages": "Sprachen",
+        "languagesPlaceholder": "en, ru, de",
+        "country": "Land",
+        "timezone": "Zeitzone",
+        "telegram": "Telegram",
+        "phone": "Telefon",
+        "birthday": "Geburtstag",
+        "email": "E-Mail"
+      },
+      "actions": {
+        "save": "Speichern",
+        "saving": "Speichern…",
+        "saved": "Profil gespeichert.",
+        "saveError": "Profil konnte nicht gespeichert werden."
+      },
+      "readonlyHint": "Einige Felder werden von Ihrem Manager verwaltet und können nicht bearbeitet werden."
+    },
+    "platforms": {
+      "label": "Plattformen",
+      "title": "Plattformen",
+      "description": "Verwalten Sie Ihre verknüpften Plattformkonten.",
+      "fields": {
+        "username": "Benutzername",
+        "profileUrl": "Profil-URL",
+        "status": "Status",
+        "managerNotes": "Manager-Notizen"
+      },
+      "status": {
+        "linked": "Verknüpft",
+        "pending": "Ausstehend",
+        "disconnected": "Getrennt",
+        "issue": "Problem"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X",
+        "chaturbate": "Chaturbate"
+      },
+      "actions": {
+        "save": "Speichern",
+        "saving": "Speichern…",
+        "saved": "Plattformen gespeichert.",
+        "saveError": "Plattformen konnten nicht gespeichert werden."
+      },
+      "empty": "Noch keine Plattformen konfiguriert."
+    },
+    "statistics": {
+      "label": "Statistik",
+      "title": "Statistik",
+      "description": "Verfolgen Sie Umsatz, Wachstum und Engagement im Zeitverlauf.",
+      "ranges": {
+        "d7": "7 Tage",
+        "d30": "30 Tage",
+        "d90": "90 Tage",
+        "m12": "12 Monate"
+      },
+      "charts": {
+        "revenue": "Umsatz",
+        "growth": "Wachstum",
+        "subscribers": "Abonnenten",
+        "messages": "Nachrichten",
+        "content": "Inhalte"
+      },
+      "empty": "Keine Statistik für diesen Zeitraum verfügbar."
+    },
+    "tasks": {
+      "label": "Aufgaben",
+      "title": "Aufgaben",
+      "description": "Sehen und erledigen Sie Aufgaben Ihres Managers.",
+      "table": {
+        "title": "Titel",
+        "priority": "Priorität",
+        "status": "Status",
+        "deadline": "Frist",
+        "manager": "Manager",
+        "details": "Details",
+        "actions": "Aktionen"
+      },
+      "priority": {
+        "low": "Niedrig",
+        "normal": "Normal",
+        "high": "Hoch",
+        "urgent": "Dringend"
+      },
+      "status": {
+        "open": "Offen",
+        "in_progress": "In Bearbeitung",
+        "completed": "Erledigt",
+        "cancelled": "Abgebrochen"
+      },
+      "actions": {
+        "complete": "Als erledigt markieren",
+        "completing": "Wird erledigt…",
+        "completed": "Aufgabe erledigt."
+      },
+      "empty": "Keine Aufgaben zugewiesen.",
+      "unassigned": "Nicht zugewiesen"
+    },
+    "payouts": {
+      "label": "Auszahlungen",
+      "title": "Auszahlungen",
+      "description": "Auszahlungshistorie und ausstehende Zahlungen prüfen.",
+      "table": {
+        "period": "Zeitraum",
+        "amount": "Betrag",
+        "status": "Status",
+        "method": "Methode",
+        "paidDate": "Auszahlungsdatum",
+        "actions": "Aktionen"
+      },
+      "status": {
+        "pending": "Ausstehend",
+        "processing": "In Bearbeitung",
+        "completed": "Abgeschlossen",
+        "failed": "Fehlgeschlagen"
+      },
+      "method": {
+        "bank": "Bank",
+        "paypal": "PayPal",
+        "crypto": "Krypto",
+        "other": "Sonstiges"
+      },
+      "actions": {
+        "exportPdf": "PDF exportieren"
+      },
+      "empty": "Noch keine Auszahlungen.",
+      "summary": {
+        "pending": "Ausstehend",
+        "completed": "Abgeschlossen"
+      }
+    },
+    "documents": {
+      "label": "Dokumente",
+      "title": "Dokumente",
+      "description": "Laden Sie Ihre Verifizierungsdokumente hoch und verwalten Sie sie.",
+      "types": {
+        "passport": "Reisepass",
+        "agreement": "Vereinbarung",
+        "tax": "Steuer",
+        "bank": "Bank"
+      },
+      "actions": {
+        "upload": "Hochladen",
+        "uploading": "Wird hochgeladen…",
+        "uploaded": "Dokument hochgeladen.",
+        "uploadError": "Dokument konnte nicht hochgeladen werden.",
+        "delete": "Löschen"
+      },
+      "empty": "Noch keine Dokumente hochgeladen.",
+      "dropHint": "Datei hier ablegen oder zum Hochladen klicken"
+    },
+    "support": {
+      "label": "Support",
+      "title": "Support",
+      "description": "Kontaktieren Sie Ihren Manager und verfolgen Sie Support-Tickets.",
+      "create": {
+        "title": "Neues Ticket",
+        "subject": "Betreff",
+        "message": "Nachricht",
+        "submit": "Ticket erstellen",
+        "submitting": "Wird erstellt…"
+      },
+      "table": {
+        "subject": "Betreff",
+        "status": "Status",
+        "updated": "Aktualisiert",
+        "actions": "Aktionen"
+      },
+      "status": {
+        "open": "Offen",
+        "waiting": "Wartend",
+        "answered": "Beantwortet",
+        "closed": "Geschlossen"
+      },
+      "thread": {
+        "reply": "Antworten",
+        "send": "Senden",
+        "sending": "Wird gesendet…",
+        "empty": "Noch keine Nachrichten.",
+        "you": "Sie",
+        "staff": "Mitarbeiter"
+      },
+      "empty": "Noch keine Support-Tickets."
+    },
+    "settings": {
+      "label": "Einstellungen",
+      "title": "Einstellungen",
+      "description": "Passen Sie Ihre Kabinett-Einstellungen an.",
+      "fields": {
+        "theme": "Design",
+        "language": "Sprache",
+        "notifyTelegram": "Telegram-Benachrichtigungen",
+        "notifyEmail": "E-Mail-Benachrichtigungen"
+      },
+      "themes": {
+        "dark": "Dunkel",
+        "light": "Hell",
+        "system": "System"
+      },
+      "actions": {
+        "save": "Speichern",
+        "saving": "Speichern…",
+        "saved": "Einstellungen gespeichert.",
+        "saveError": "Einstellungen konnten nicht gespeichert werden."
+      }
+    },
+    "errors": {
+      "load": "Seite konnte nicht geladen werden.",
+      "boundary": "Etwas ist schiefgelaufen.",
+      "retry": "Erneut versuchen"
+    },
+    "actionErrors": {
+      "unauthorized": "Sie sind nicht autorisiert.",
+      "forbidden": "Sie haben keinen Zugriff auf diese Aktion.",
+      "invalid": "Ungültige Daten.",
+      "save": "Änderungen konnten nicht gespeichert werden."
+    },
+    "toast": {
+      "saved": "Gespeichert.",
+      "uploaded": "Hochgeladen.",
+      "taskCompleted": "Aufgabe erledigt.",
+      "ticketCreated": "Ticket erstellt."
+    },
+    "impersonate": {
+      "start": "Creator-Kabinett öffnen",
+      "starting": "Wird geöffnet…",
+      "started": "Impersonation gestartet.",
+      "stop": "Impersonation beenden",
+      "stopping": "Wird beendet…",
+      "error": "Impersonation konnte nicht geändert werden."
     }
   },
   "common": {
