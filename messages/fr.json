@@ -259,6 +259,19 @@
       "description": "Vous êtes connecté, mais votre compte n’a pas accès à l’admin.",
       "home": "Retour au site",
       "signOut": "Se déconnecter"
+    },
+    "setPassword": {
+      "label": "Bienvenue chez NHT",
+      "title": "Créer un mot de passe",
+      "description": "Définissez un mot de passe pour accéder à votre espace créateur.",
+      "password": "Mot de passe",
+      "confirm": "Confirmer le mot de passe",
+      "submit": "Créer le mot de passe",
+      "submitting": "Enregistrement…",
+      "errors": {
+        "invalid": "Les mots de passe doivent correspondre et contenir au moins 8 caractères.",
+        "save": "Impossible d’enregistrer le mot de passe."
+      }
     }
   },
   "admin": {
@@ -450,7 +463,8 @@
         "paused": "En pause",
         "vacation": "Vacances",
         "inactive": "Inactif",
-        "banned": "Banni"
+        "banned": "Banni",
+        "invited": "Invité"
       },
       "platforms": {
         "onlyfans": "OnlyFans",
@@ -490,7 +504,9 @@
         "title": "Nouveau créateur",
         "cancel": "Annuler",
         "submit": "Créer",
-        "submitting": "Création…"
+        "submitting": "Création…",
+        "submitInvite": "Créer et envoyer l’invitation",
+        "submittingInvite": "Envoi…"
       },
       "actions": {
         "view": "Voir",
@@ -505,7 +521,8 @@
       "toast": {
         "created": "Créateur créé.",
         "saved": "Changes saved.",
-        "deleted": "Creator deleted."
+        "deleted": "Creator deleted.",
+        "invited": "Invitation envoyée."
       },
       "errors": {
         "load": "Impossible de charger les créateurs.",
@@ -526,7 +543,8 @@
         "invalidStatus": "Statut invalide.",
         "invalidManager": "Manager invalide.",
         "invalidNotes": "Notes invalides.",
-        "avatarNotReady": "L’upload d’avatar n’est pas encore disponible. Collez une URL."
+        "avatarNotReady": "L’upload d’avatar n’est pas encore disponible. Collez une URL.",
+        "invite": "Impossible de créer l’utilisateur ou d’envoyer l’invitation."
       },
       "stats": {
         "total": "Total créateurs",
@@ -1011,6 +1029,28 @@
       "stop": "Quitter l’emprunt d’identité",
       "stopping": "Fermeture…",
       "error": "Impossible de modifier l’emprunt d’identité."
+    },
+    "onboarding": {
+      "label": "Bienvenue",
+      "title": "Complétez votre profil",
+      "description": "Renseignez ces informations avant d’entrer dans le cabinet.",
+      "fields": {
+        "avatarUrl": "URL de l’avatar",
+        "biography": "Biographie",
+        "timezone": "Fuseau horaire",
+        "languages": "Langues",
+        "languagesPlaceholder": "en, fr, de",
+        "phone": "Téléphone"
+      },
+      "actions": {
+        "submit": "Continuer",
+        "submitting": "Enregistrement…"
+      },
+      "errors": {
+        "unauthorized": "Non autorisé.",
+        "invalid": "Veuillez remplir les champs obligatoires.",
+        "save": "Impossible d’enregistrer le profil."
+      }
     }
   },
   "common": {

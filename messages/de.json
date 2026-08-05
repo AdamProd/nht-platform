@@ -259,6 +259,19 @@
       "description": "Sie sind angemeldet, haben aber keine Admin-Rechte.",
       "home": "Zur Startseite",
       "signOut": "Abmelden"
+    },
+    "setPassword": {
+      "label": "Willkommen bei NHT",
+      "title": "Passwort erstellen",
+      "description": "Legen Sie ein Passwort für Ihr Creator-Cabinet fest.",
+      "password": "Passwort",
+      "confirm": "Passwort bestätigen",
+      "submit": "Passwort erstellen",
+      "submitting": "Speichern…",
+      "errors": {
+        "invalid": "Passwörter müssen übereinstimmen und mind. 8 Zeichen haben.",
+        "save": "Passwort konnte nicht gespeichert werden."
+      }
     }
   },
   "admin": {
@@ -451,7 +464,8 @@
         "paused": "Pausiert",
         "vacation": "Urlaub",
         "inactive": "Inaktiv",
-        "banned": "Gesperrt"
+        "banned": "Gesperrt",
+        "invited": "Eingeladen"
       },
       "platforms": {
         "onlyfans": "OnlyFans",
@@ -495,7 +509,9 @@
         "title": "Creator erstellen",
         "cancel": "Abbrechen",
         "submit": "Erstellen",
-        "submitting": "Wird erstellt…"
+        "submitting": "Wird erstellt…",
+        "submitInvite": "Erstellen & Einladung senden",
+        "submittingInvite": "Sende Einladung…"
       },
       "actions": {
         "view": "Ansehen",
@@ -510,7 +526,8 @@
       "toast": {
         "created": "Creator erstellt.",
         "saved": "Changes saved.",
-        "deleted": "Creator deleted."
+        "deleted": "Creator deleted.",
+        "invited": "Einladung gesendet."
       },
       "errors": {
         "load": "Creators konnten nicht geladen werden.",
@@ -531,7 +548,8 @@
         "invalidStatus": "Ungültiger Status.",
         "invalidManager": "Ungültiger Manager.",
         "invalidNotes": "Ungültige Notizen.",
-        "avatarNotReady": "Avatar-Upload ist noch nicht verfügbar. URL einfügen."
+        "avatarNotReady": "Avatar-Upload ist noch nicht verfügbar. URL einfügen.",
+        "invite": "Benutzer oder Einladung konnte nicht erstellt werden."
       },
       "stats": {
         "total": "Creator gesamt",
@@ -1011,6 +1029,28 @@
       "stop": "Impersonation beenden",
       "stopping": "Wird beendet…",
       "error": "Impersonation konnte nicht geändert werden."
+    },
+    "onboarding": {
+      "label": "Willkommen",
+      "title": "Profil vervollständigen",
+      "description": "Vervollständigen Sie diese Angaben vor dem Eintritt.",
+      "fields": {
+        "avatarUrl": "Avatar-URL",
+        "biography": "Biografie",
+        "timezone": "Zeitzone",
+        "languages": "Sprachen",
+        "languagesPlaceholder": "en, de, fr",
+        "phone": "Telefon"
+      },
+      "actions": {
+        "submit": "Weiter",
+        "submitting": "Speichern…"
+      },
+      "errors": {
+        "unauthorized": "Nicht autorisiert.",
+        "invalid": "Bitte Pflichtfelder ausfüllen.",
+        "save": "Profil konnte nicht gespeichert werden."
+      }
     }
   },
   "common": {

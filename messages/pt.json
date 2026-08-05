@@ -259,6 +259,19 @@
       "description": "Tem sessão iniciada, mas a conta não tem permissões de admin.",
       "home": "Voltar ao site",
       "signOut": "Terminar sessão"
+    },
+    "setPassword": {
+      "label": "Bem-vindo à NHT",
+      "title": "Criar palavra-passe",
+      "description": "Defina uma palavra-passe para aceder ao gabinete de criador.",
+      "password": "Palavra-passe",
+      "confirm": "Confirmar palavra-passe",
+      "submit": "Criar palavra-passe",
+      "submitting": "A guardar…",
+      "errors": {
+        "invalid": "As palavras-passe devem coincidir e ter pelo menos 8 caracteres.",
+        "save": "Não foi possível guardar a palavra-passe."
+      }
     }
   },
   "admin": {
@@ -450,7 +463,8 @@
         "paused": "Em pausa",
         "vacation": "Férias",
         "inactive": "Inativo",
-        "banned": "Banido"
+        "banned": "Banido",
+        "invited": "Convidado"
       },
       "platforms": {
         "onlyfans": "OnlyFans",
@@ -490,7 +504,9 @@
         "title": "Novo criador",
         "cancel": "Cancelar",
         "submit": "Criar",
-        "submitting": "A criar…"
+        "submitting": "A criar…",
+        "submitInvite": "Criar e enviar convite",
+        "submittingInvite": "A enviar…"
       },
       "actions": {
         "view": "Ver",
@@ -505,7 +521,8 @@
       "toast": {
         "created": "Criador criado.",
         "saved": "Changes saved.",
-        "deleted": "Creator deleted."
+        "deleted": "Creator deleted.",
+        "invited": "Convite enviado."
       },
       "errors": {
         "load": "Não foi possível carregar os criadores.",
@@ -526,7 +543,8 @@
         "invalidStatus": "Estado inválido.",
         "invalidManager": "Gestor inválido.",
         "invalidNotes": "Notas inválidas.",
-        "avatarNotReady": "Upload de avatar ainda não disponível. Cole um URL."
+        "avatarNotReady": "Upload de avatar ainda não disponível. Cole um URL.",
+        "invite": "Não foi possível criar o utilizador ou enviar o convite."
       },
       "stats": {
         "total": "Total de criadores",
@@ -1011,6 +1029,28 @@
       "stop": "Sair da personificação",
       "stopping": "A sair…",
       "error": "Não foi possível alterar a personificação."
+    },
+    "onboarding": {
+      "label": "Bem-vindo",
+      "title": "Conclua o perfil",
+      "description": "Preencha estes dados antes de entrar no gabinete.",
+      "fields": {
+        "avatarUrl": "URL do avatar",
+        "biography": "Biografia",
+        "timezone": "Fuso horário",
+        "languages": "Idiomas",
+        "languagesPlaceholder": "en, pt, es",
+        "phone": "Telefone"
+      },
+      "actions": {
+        "submit": "Continuar",
+        "submitting": "A guardar…"
+      },
+      "errors": {
+        "unauthorized": "Não autorizado.",
+        "invalid": "Preencha os campos obrigatórios.",
+        "save": "Não foi possível guardar o perfil."
+      }
     }
   },
   "common": {

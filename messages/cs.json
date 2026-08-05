@@ -259,6 +259,19 @@
       "description": "Jste přihlášeni, ale účet nemá admin práva.",
       "home": "Zpět na web",
       "signOut": "Odhlásit se"
+    },
+    "setPassword": {
+      "label": "Vítejte v NHT",
+      "title": "Vytvořit heslo",
+      "description": "Nastavte heslo pro přístup do creator kabinetu.",
+      "password": "Heslo",
+      "confirm": "Potvrdit heslo",
+      "submit": "Vytvořit heslo",
+      "submitting": "Ukládání…",
+      "errors": {
+        "invalid": "Hesla se musí shodovat a mít alespoň 8 znaků.",
+        "save": "Heslo se nepodařilo uložit."
+      }
     }
   },
   "admin": {
@@ -450,7 +463,8 @@
         "paused": "Pozastaveno",
         "vacation": "Dovolená",
         "inactive": "Neaktivní",
-        "banned": "Zakázán"
+        "banned": "Zakázán",
+        "invited": "Pozván"
       },
       "platforms": {
         "onlyfans": "OnlyFans",
@@ -490,7 +504,9 @@
         "title": "Nový tvůrce",
         "cancel": "Zrušit",
         "submit": "Vytvořit",
-        "submitting": "Vytváření…"
+        "submitting": "Vytváření…",
+        "submitInvite": "Vytvořit a odeslat pozvánku",
+        "submittingInvite": "Odesílání…"
       },
       "actions": {
         "view": "Zobrazit",
@@ -505,7 +521,8 @@
       "toast": {
         "created": "Tvůrce vytvořen.",
         "saved": "Changes saved.",
-        "deleted": "Creator deleted."
+        "deleted": "Creator deleted.",
+        "invited": "Pozvánka odeslána."
       },
       "errors": {
         "load": "Nepodařilo se načíst tvůrce.",
@@ -526,7 +543,8 @@
         "invalidStatus": "Neplatný stav.",
         "invalidManager": "Neplatný manažer.",
         "invalidNotes": "Neplatné poznámky.",
-        "avatarNotReady": "Nahrávání avataru ještě není dostupné. Vložte URL."
+        "avatarNotReady": "Nahrávání avataru ještě není dostupné. Vložte URL.",
+        "invite": "Nepodařilo se vytvořit uživatele nebo odeslat pozvánku."
       },
       "stats": {
         "total": "Celkem creatorů",
@@ -1011,6 +1029,28 @@
       "stop": "Ukončit zosobnění",
       "stopping": "Ukončování…",
       "error": "Zosobnění se nepodařilo změnit."
+    },
+    "onboarding": {
+      "label": "Vítejte",
+      "title": "Dokončete profil",
+      "description": "Vyplňte tyto údaje před vstupem do kabinetu.",
+      "fields": {
+        "avatarUrl": "URL avataru",
+        "biography": "Biografie",
+        "timezone": "Časové pásmo",
+        "languages": "Jazyky",
+        "languagesPlaceholder": "en, cs, de",
+        "phone": "Telefon"
+      },
+      "actions": {
+        "submit": "Pokračovat",
+        "submitting": "Ukládání…"
+      },
+      "errors": {
+        "unauthorized": "Neautorizováno.",
+        "invalid": "Vyplňte povinná pole.",
+        "save": "Profil se nepodařilo uložit."
+      }
     }
   },
   "common": {

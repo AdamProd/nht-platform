@@ -17,6 +17,10 @@ export type LoginState =
   | { ok: false; error: string };
 
 function safeNextPath(next: string | undefined, role: string): string {
+  if (role === "guest") {
+    return "/";
+  }
+
   const fallback = isCreatorRole(role as never) ? "/creator" : "/admin";
 
   if (!next || !next.startsWith("/") || next.startsWith("//")) {
@@ -25,6 +29,7 @@ function safeNextPath(next: string | undefined, role: string): string {
 
   if (isCreatorRole(role as never)) {
     if (next === "/creator" || next.startsWith("/creator/")) return next;
+    if (next.includes("/auth/set-password")) return next;
     const localeCreator = next.match(
       /^\/(en|ru|de|fr|es|it|pt|pl|cs|uk)(\/creator(?:\/.*)?)$/,
     );
@@ -89,10 +94,25 @@ export async function loginAction(
       return { ok: false, error: t("permissions") };
     }
 
-    const role = profile?.role;
-    if (!role || (!isStaff(role) && !isCreatorRole(role))) {
+    const role = profile?.role ?? "guest";
+
+    if (role === "guest") {
+      const locale = await getLocale();
+      redirect({ href: "/", locale });
+      return { ok: true };
+    }
+
+    if (!isStaff(role) && !isCreatorRole(role)) {
       await supabase.auth.signOut();
       return { ok: false, error: t("noAccess") };
+    }
+
+    // Touch last login for creators
+    if (isCreatorRole(role)) {
+      await supabase
+        .from("creators")
+        .update({ last_login_at: new Date().toISOString() })
+        .eq("user_id", user.id);
     }
 
     const locale = await getLocale();

@@ -259,6 +259,19 @@
       "description": "Your account is signed in but does not have permission to use the admin workspace.",
       "home": "Back to site",
       "signOut": "Sign out"
+    },
+    "setPassword": {
+      "label": "Welcome to NHT",
+      "title": "Create password",
+      "description": "Set a password to access your creator cabinet.",
+      "password": "Password",
+      "confirm": "Confirm password",
+      "submit": "Create Password",
+      "submitting": "Saving…",
+      "errors": {
+        "invalid": "Passwords must match and be at least 8 characters.",
+        "save": "Unable to save password."
+      }
     }
   },
   "admin": {
@@ -449,7 +462,8 @@
         "paused": "Paused",
         "vacation": "Vacation",
         "inactive": "Inactive",
-        "banned": "Banned"
+        "banned": "Banned",
+        "invited": "Invited"
       },
       "platforms": {
         "onlyfans": "OnlyFans",
@@ -493,7 +507,9 @@
         "title": "Create creator",
         "cancel": "Cancel",
         "submit": "Create",
-        "submitting": "Creating…"
+        "submitting": "Creating…",
+        "submitInvite": "Create & Send Invite",
+        "submittingInvite": "Sending invite…"
       },
       "actions": {
         "view": "View",
@@ -508,7 +524,8 @@
       "toast": {
         "created": "Creator created.",
         "saved": "Changes saved.",
-        "deleted": "Creator deleted."
+        "deleted": "Creator deleted.",
+        "invited": "Invitation sent."
       },
       "errors": {
         "load": "Unable to load creators.",
@@ -529,7 +546,8 @@
         "invalidStatus": "Invalid status.",
         "invalidManager": "Invalid manager.",
         "invalidNotes": "Invalid notes.",
-        "avatarNotReady": "Avatar upload is not available yet. Paste a URL instead."
+        "avatarNotReady": "Avatar upload is not available yet. Paste a URL instead.",
+        "invite": "Unable to create auth user or send invitation."
       },
       "stats": {
         "total": "Total creators",
@@ -1009,6 +1027,28 @@
       "stop": "Exit impersonation",
       "stopping": "Exiting…",
       "error": "Unable to change impersonation."
+    },
+    "onboarding": {
+      "label": "Welcome",
+      "title": "Complete your profile",
+      "description": "Finish these details before entering the cabinet.",
+      "fields": {
+        "avatarUrl": "Avatar URL",
+        "biography": "Biography",
+        "timezone": "Timezone",
+        "languages": "Languages",
+        "languagesPlaceholder": "en, ru, de",
+        "phone": "Phone"
+      },
+      "actions": {
+        "submit": "Continue",
+        "submitting": "Saving…"
+      },
+      "errors": {
+        "unauthorized": "You are not authorized.",
+        "invalid": "Please fill in the required fields.",
+        "save": "Unable to save profile."
+      }
     }
   },
   "common": {

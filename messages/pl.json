@@ -259,6 +259,19 @@
       "description": "Jesteś zalogowany, ale konto nie ma uprawnień admina.",
       "home": "Wróć na stronę",
       "signOut": "Wyloguj"
+    },
+    "setPassword": {
+      "label": "Witamy w NHT",
+      "title": "Utwórz hasło",
+      "description": "Ustaw hasło, aby uzyskać dostęp do panelu twórcy.",
+      "password": "Hasło",
+      "confirm": "Potwierdź hasło",
+      "submit": "Utwórz hasło",
+      "submitting": "Zapisywanie…",
+      "errors": {
+        "invalid": "Hasła muszą być zgodne i mieć co najmniej 8 znaków.",
+        "save": "Nie udało się zapisać hasła."
+      }
     }
   },
   "admin": {
@@ -450,7 +463,8 @@
         "paused": "Wstrzymany",
         "vacation": "Urlop",
         "inactive": "Nieaktywny",
-        "banned": "Zablokowany"
+        "banned": "Zablokowany",
+        "invited": "Zaproszony"
       },
       "platforms": {
         "onlyfans": "OnlyFans",
@@ -490,7 +504,9 @@
         "title": "Nowy twórca",
         "cancel": "Anuluj",
         "submit": "Utwórz",
-        "submitting": "Tworzenie…"
+        "submitting": "Tworzenie…",
+        "submitInvite": "Utwórz i wyślij zaproszenie",
+        "submittingInvite": "Wysyłanie…"
       },
       "actions": {
         "view": "Zobacz",
@@ -505,7 +521,8 @@
       "toast": {
         "created": "Twórca utworzony.",
         "saved": "Changes saved.",
-        "deleted": "Creator deleted."
+        "deleted": "Creator deleted.",
+        "invited": "Zaproszenie wysłane."
       },
       "errors": {
         "load": "Nie udało się wczytać twórców.",
@@ -526,7 +543,8 @@
         "invalidStatus": "Nieprawidłowy status.",
         "invalidManager": "Nieprawidłowy manager.",
         "invalidNotes": "Nieprawidłowe notatki.",
-        "avatarNotReady": "Upload awatara jeszcze niedostępny. Wklej URL."
+        "avatarNotReady": "Upload awatara jeszcze niedostępny. Wklej URL.",
+        "invite": "Nie udało się utworzyć użytkownika lub wysłać zaproszenia."
       },
       "stats": {
         "total": "Łącznie twórców",
@@ -1011,6 +1029,28 @@
       "stop": "Zakończ podszywanie",
       "stopping": "Zamykanie…",
       "error": "Nie udało się zmienić podszywania."
+    },
+    "onboarding": {
+      "label": "Witamy",
+      "title": "Uzupełnij profil",
+      "description": "Uzupełnij te dane przed wejściem do panelu.",
+      "fields": {
+        "avatarUrl": "URL awatara",
+        "biography": "Biografia",
+        "timezone": "Strefa czasowa",
+        "languages": "Języki",
+        "languagesPlaceholder": "en, pl, de",
+        "phone": "Telefon"
+      },
+      "actions": {
+        "submit": "Kontynuuj",
+        "submitting": "Zapisywanie…"
+      },
+      "errors": {
+        "unauthorized": "Brak uprawnień.",
+        "invalid": "Wypełnij wymagane pola.",
+        "save": "Nie udało się zapisać profilu."
+      }
     }
   },
   "common": {

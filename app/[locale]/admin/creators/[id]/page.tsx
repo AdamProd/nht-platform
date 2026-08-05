@@ -44,6 +44,7 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
 
   const statusLabels = {
     new: t("status.new"),
+    invited: t("status.invited"),
     active: t("status.active"),
     paused: t("status.paused"),
     vacation: t("status.vacation"),

@@ -74,10 +74,17 @@ export function platformsFromUrls(urls: {
 
 export const createCreatorSchema = z.object({
   display_name: z.string().trim().min(1).max(120),
+  legal_name: optionalText(120),
   email: z.string().trim().email().max(255),
   telegram: optionalText(120),
+  phone: optionalText(40),
   country: optionalText(120),
   languages: stringArraySchema.default([]),
+  timezone: optionalText(80),
+  platforms: z.preprocess(
+    parseStringArray,
+    z.array(z.enum(CREATOR_PLATFORMS)).max(10),
+  ).default([]),
   manager_id: z
     .string()
     .uuid()
@@ -85,7 +92,6 @@ export const createCreatorSchema = z.object({
     .or(z.literal("").transform(() => null))
     .optional()
     .default(null),
-  status: z.enum(creatorStatuses).default("new"),
   notes: optionalText(10000),
 });
 

@@ -635,6 +635,8 @@ export type Database = {
           full_name: string;
           id: string;
           instagram_url: string | null;
+          invited_at: string | null;
+          invited_by: string | null;
           is_active: boolean;
           languages: string[];
           last_activity_at: string | null;
@@ -645,6 +647,7 @@ export type Database = {
           onlyfans_url: string | null;
           phone: string | null;
           platforms: string[];
+          profile_completed_at: string | null;
           revenue_current_month: number;
           revenue_lifetime: number;
           revenue_previous_month: number;
@@ -670,6 +673,8 @@ export type Database = {
           full_name: string;
           id?: string;
           instagram_url?: string | null;
+          invited_at?: string | null;
+          invited_by?: string | null;
           is_active?: boolean;
           languages?: string[];
           last_activity_at?: string | null;
@@ -680,6 +685,7 @@ export type Database = {
           onlyfans_url?: string | null;
           phone?: string | null;
           platforms?: string[];
+          profile_completed_at?: string | null;
           revenue_current_month?: number;
           revenue_lifetime?: number;
           revenue_previous_month?: number;
@@ -705,6 +711,8 @@ export type Database = {
           full_name?: string;
           id?: string;
           instagram_url?: string | null;
+          invited_at?: string | null;
+          invited_by?: string | null;
           is_active?: boolean;
           languages?: string[];
           last_activity_at?: string | null;
@@ -715,6 +723,7 @@ export type Database = {
           onlyfans_url?: string | null;
           phone?: string | null;
           platforms?: string[];
+          profile_completed_at?: string | null;
           revenue_current_month?: number;
           revenue_lifetime?: number;
           revenue_previous_month?: number;
@@ -746,6 +755,55 @@ export type Database = {
             columns: ["user_id"];
             isOneToOne: true;
             referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "creators_invited_by_fkey";
+            columns: ["invited_by"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      creator_audit_logs: {
+        Row: {
+          action: string;
+          actor_id: string | null;
+          created_at: string;
+          creator_id: string | null;
+          id: string;
+          meta: Json;
+        };
+        Insert: {
+          action: string;
+          actor_id?: string | null;
+          created_at?: string;
+          creator_id?: string | null;
+          id?: string;
+          meta?: Json;
+        };
+        Update: {
+          action?: string;
+          actor_id?: string | null;
+          created_at?: string;
+          creator_id?: string | null;
+          id?: string;
+          meta?: Json;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "creator_audit_logs_actor_id_fkey";
+            columns: ["actor_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "creator_audit_logs_creator_id_fkey";
+            columns: ["creator_id"];
+            isOneToOne: false;
+            referencedRelation: "creators";
             referencedColumns: ["id"];
           },
         ];
@@ -871,6 +929,7 @@ export type Database = {
       creator_document_type: "passport" | "agreement" | "tax" | "bank";
       creator_status:
         | "new"
+        | "invited"
         | "active"
         | "paused"
         | "vacation"
@@ -942,6 +1001,7 @@ export const Constants = {
       ] as const,
       creator_status: [
         "new",
+        "invited",
         "active",
         "paused",
         "vacation",

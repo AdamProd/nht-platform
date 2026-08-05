@@ -8,7 +8,7 @@ type Props = {
 
 function safeNextPath(next: string | null, locale: string): string {
   if (!next || !next.startsWith("/") || next.startsWith("//")) {
-    return `/${locale}/admin`;
+    return `/${locale}/creator`;
   }
   return next;
 }

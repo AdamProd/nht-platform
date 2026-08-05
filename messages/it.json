@@ -259,6 +259,19 @@
       "description": "Hai effettuato l’accesso, ma l’account non ha diritti admin.",
       "home": "Torna al sito",
       "signOut": "Esci"
+    },
+    "setPassword": {
+      "label": "Benvenuto in NHT",
+      "title": "Crea password",
+      "description": "Imposta una password per accedere al cabinet creator.",
+      "password": "Password",
+      "confirm": "Conferma password",
+      "submit": "Crea password",
+      "submitting": "Salvataggio…",
+      "errors": {
+        "invalid": "Le password devono coincidere e avere almeno 8 caratteri.",
+        "save": "Impossibile salvare la password."
+      }
     }
   },
   "admin": {
@@ -450,7 +463,8 @@
         "paused": "In pausa",
         "vacation": "Vacanza",
         "inactive": "Inattivo",
-        "banned": "Bannato"
+        "banned": "Bannato",
+        "invited": "Invitato"
       },
       "platforms": {
         "onlyfans": "OnlyFans",
@@ -490,7 +504,9 @@
         "title": "Nuovo creator",
         "cancel": "Annulla",
         "submit": "Crea",
-        "submitting": "Creazione…"
+        "submitting": "Creazione…",
+        "submitInvite": "Crea e invia invito",
+        "submittingInvite": "Invio…"
       },
       "actions": {
         "view": "Apri",
@@ -505,7 +521,8 @@
       "toast": {
         "created": "Creator creato.",
         "saved": "Changes saved.",
-        "deleted": "Creator deleted."
+        "deleted": "Creator deleted.",
+        "invited": "Invito inviato."
       },
       "errors": {
         "load": "Impossibile caricare i creator.",
@@ -526,7 +543,8 @@
         "invalidStatus": "Stato non valido.",
         "invalidManager": "Manager non valido.",
         "invalidNotes": "Note non valide.",
-        "avatarNotReady": "Upload avatar non ancora disponibile. Incolla un URL."
+        "avatarNotReady": "Upload avatar non ancora disponibile. Incolla un URL.",
+        "invite": "Impossibile creare l’utente o inviare l’invito."
       },
       "stats": {
         "total": "Creator totali",
@@ -1011,6 +1029,28 @@
       "stop": "Esci dall’impersonificazione",
       "stopping": "Uscita…",
       "error": "Impossibile modificare l’impersonificazione."
+    },
+    "onboarding": {
+      "label": "Benvenuto",
+      "title": "Completa il profilo",
+      "description": "Completa questi dati prima di entrare nel cabinet.",
+      "fields": {
+        "avatarUrl": "URL avatar",
+        "biography": "Biografia",
+        "timezone": "Fuso orario",
+        "languages": "Lingue",
+        "languagesPlaceholder": "en, it, de",
+        "phone": "Telefono"
+      },
+      "actions": {
+        "submit": "Continua",
+        "submitting": "Salvataggio…"
+      },
+      "errors": {
+        "unauthorized": "Non autorizzato.",
+        "invalid": "Compila i campi obbligatori.",
+        "save": "Impossibile salvare il profilo."
+      }
     }
   },
   "common": {

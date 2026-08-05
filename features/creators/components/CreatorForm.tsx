@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { createCreator } from "@/features/creators/actions/update-creator";
-import { creatorStatuses } from "@/features/creators/schemas/creator.schema";
+import { CREATOR_PLATFORMS } from "@/features/creators/types";
 import type { StaffManagerOption } from "@/features/applications/types";
 import FlashToast from "@/features/creators/components/FlashToast";
 
@@ -14,28 +14,31 @@ type CreatorFormProps = {
     create: string;
     title: string;
     displayName: string;
+    legalName: string;
     email: string;
     telegram: string;
+    phone: string;
     country: string;
     languages: string;
     languagesPlaceholder: string;
+    timezone: string;
+    platforms: string;
     manager: string;
-    status: string;
     notes: string;
     unassigned: string;
     cancel: string;
     submit: string;
     submitting: string;
-    created: string;
+    invited: string;
   };
-  statusLabels: Record<string, string>;
+  platformLabels: Record<string, string>;
 };
 
 export default function CreatorForm({
   managers,
   canAssignManager,
   labels,
-  statusLabels,
+  platformLabels,
 }: CreatorFormProps) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -48,12 +51,15 @@ export default function CreatorForm({
     setError(null);
     const payload = {
       display_name: formData.get("display_name"),
+      legal_name: formData.get("legal_name"),
       email: formData.get("email"),
       telegram: formData.get("telegram"),
+      phone: formData.get("phone"),
       country: formData.get("country"),
       languages: String(formData.get("languages") ?? ""),
+      timezone: formData.get("timezone"),
+      platforms: formData.getAll("platforms").map(String),
       manager_id: formData.get("manager_id") || null,
-      status: formData.get("status") || "new",
       notes: formData.get("notes"),
     };
 
@@ -66,7 +72,7 @@ export default function CreatorForm({
         return;
       }
       setToastTone("success");
-      setToast(labels.created);
+      setToast(labels.invited);
       setOpen(false);
       if (result.id) {
         router.push(`/admin/creators/${result.id}`);
@@ -105,16 +111,29 @@ export default function CreatorForm({
             </h2>
 
             <form action={handleSubmit} className="mt-5 space-y-4">
-              <label className="block">
-                <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
-                  {labels.displayName}
-                </span>
-                <input
-                  name="display_name"
-                  required
-                  className="w-full rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none focus:border-[var(--nht-gold)]/40"
-                />
-              </label>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label className="block">
+                  <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
+                    {labels.displayName}
+                  </span>
+                  <input
+                    name="display_name"
+                    required
+                    disabled={isPending}
+                    className="nht-input"
+                  />
+                </label>
+                <label className="block">
+                  <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
+                    {labels.legalName}
+                  </span>
+                  <input
+                    name="legal_name"
+                    disabled={isPending}
+                    className="nht-input"
+                  />
+                </label>
+              </div>
 
               <label className="block">
                 <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
@@ -124,7 +143,8 @@ export default function CreatorForm({
                   name="email"
                   type="email"
                   required
-                  className="w-full rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none focus:border-[var(--nht-gold)]/40"
+                  disabled={isPending}
+                  className="nht-input"
                 />
               </label>
 
@@ -133,19 +153,28 @@ export default function CreatorForm({
                   <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
                     {labels.telegram}
                   </span>
-                  <input
-                    name="telegram"
-                    className="w-full rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none focus:border-[var(--nht-gold)]/40"
-                  />
+                  <input name="telegram" disabled={isPending} className="nht-input" />
                 </label>
+                <label className="block">
+                  <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
+                    {labels.phone}
+                  </span>
+                  <input name="phone" disabled={isPending} className="nht-input" />
+                </label>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
                 <label className="block">
                   <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
                     {labels.country}
                   </span>
-                  <input
-                    name="country"
-                    className="w-full rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none focus:border-[var(--nht-gold)]/40"
-                  />
+                  <input name="country" disabled={isPending} className="nht-input" />
+                </label>
+                <label className="block">
+                  <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
+                    {labels.timezone}
+                  </span>
+                  <input name="timezone" disabled={isPending} className="nht-input" />
                 </label>
               </div>
 
@@ -156,47 +185,48 @@ export default function CreatorForm({
                 <input
                   name="languages"
                   placeholder={labels.languagesPlaceholder}
-                  className="w-full rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none placeholder:text-[var(--nht-text-muted)] focus:border-[var(--nht-gold)]/40"
+                  disabled={isPending}
+                  className="nht-input"
                 />
               </label>
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                {canAssignManager ? (
-                  <label className="block">
-                    <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
-                      {labels.manager}
-                    </span>
-                    <select
-                      name="manager_id"
-                      defaultValue=""
-                      className="w-full rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none focus:border-[var(--nht-gold)]/40"
+              <fieldset disabled={isPending}>
+                <legend className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
+                  {labels.platforms}
+                </legend>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                  {CREATOR_PLATFORMS.map((platform) => (
+                    <label
+                      key={platform}
+                      className="flex items-center gap-2 text-sm text-white"
                     >
-                      <option value="">{labels.unassigned}</option>
-                      {managers.map((m) => (
-                        <option key={m.id} value={m.id}>
-                          {m.full_name}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                ) : null}
+                      <input type="checkbox" name="platforms" value={platform} />
+                      {platformLabels[platform] ?? platform}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+
+              {canAssignManager ? (
                 <label className="block">
                   <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
-                    {labels.status}
+                    {labels.manager}
                   </span>
                   <select
-                    name="status"
-                    defaultValue="new"
-                    className="w-full rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none focus:border-[var(--nht-gold)]/40"
+                    name="manager_id"
+                    defaultValue=""
+                    disabled={isPending}
+                    className="nht-input"
                   >
-                    {creatorStatuses.map((status) => (
-                      <option key={status} value={status}>
-                        {statusLabels[status] ?? status}
+                    <option value="">{labels.unassigned}</option>
+                    {managers.map((m) => (
+                      <option key={m.id} value={m.id}>
+                        {m.full_name}
                       </option>
                     ))}
                   </select>
                 </label>
-              </div>
+              ) : null}
 
               <label className="block">
                 <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
@@ -205,7 +235,8 @@ export default function CreatorForm({
                 <textarea
                   name="notes"
                   rows={3}
-                  className="w-full resize-y rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none focus:border-[var(--nht-gold)]/40"
+                  disabled={isPending}
+                  className="nht-input resize-y"
                 />
               </label>
 
@@ -227,6 +258,7 @@ export default function CreatorForm({
                 <button
                   type="submit"
                   disabled={isPending}
+                  aria-busy={isPending}
                   className="rounded-full bg-[var(--nht-gold)] px-4 py-2 text-sm font-medium text-black disabled:opacity-50"
                 >
                   {isPending ? labels.submitting : labels.submit}
@@ -237,9 +269,7 @@ export default function CreatorForm({
         </div>
       ) : null}
 
-      {toast ? (
-        <FlashToast message={toast} tone={toastTone} />
-      ) : null}
+      <FlashToast message={toast} tone={toastTone} />
     </>
   );
 }

@@ -79,6 +79,7 @@ export default async function AdminCreatorsPage({
 
   const statusLabels = {
     new: t("status.new"),
+    invited: t("status.invited"),
     active: t("status.active"),
     paused: t("status.paused"),
     vacation: t("status.vacation"),
@@ -114,21 +115,24 @@ export default async function AdminCreatorsPage({
             create: t("create"),
             title: t("form.title"),
             displayName: t("fields.displayName"),
+            legalName: t("fields.legalName"),
             email: t("fields.email"),
             telegram: t("fields.telegram"),
+            phone: t("fields.phone"),
             country: t("fields.country"),
             languages: t("fields.languages"),
             languagesPlaceholder: t("fields.languagesPlaceholder"),
+            timezone: t("fields.timezone"),
+            platforms: t("fields.platforms"),
             manager: t("fields.manager"),
-            status: t("fields.status"),
             notes: t("fields.notes"),
             unassigned: t("unassigned"),
             cancel: t("form.cancel"),
-            submit: t("form.submit"),
-            submitting: t("form.submitting"),
-            created: t("toast.created"),
+            submit: t("form.submitInvite"),
+            submitting: t("form.submittingInvite"),
+            invited: t("toast.invited"),
           }}
-          statusLabels={statusLabels}
+          platformLabels={platformLabels}
         />
       </div>
 

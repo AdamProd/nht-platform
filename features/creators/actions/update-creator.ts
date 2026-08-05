@@ -3,8 +3,9 @@
 import { revalidatePath } from "next/cache";
 import { getLocale, getTranslations } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { requireStaffSession } from "@/lib/auth";
-import { isOwner } from "@/lib/auth/roles";
+import { isOwner, isStaff } from "@/lib/auth/roles";
 import {
   createCreatorSchema,
   platformsFromUrls,
@@ -15,7 +16,13 @@ import {
   updateStatusSchema,
 } from "@/features/creators/schemas/creator.schema";
 import type { CreatorActionResult } from "@/features/creators/types";
-import type { TablesInsert, TablesUpdate, UserRole } from "@/types/database.types";
+import type { CreatorPlatform } from "@/features/creators/types";
+import type {
+  TablesInsert,
+  TablesUpdate,
+  UserRole,
+} from "@/types/database.types";
+import { getClientEnv } from "@/lib/env/client-env";
 
 async function revalidateCreator(id?: string) {
   const locale = await getLocale();
@@ -82,6 +89,23 @@ async function updateCreatorField(
   }
 }
 
+function platformUrlPatch(platforms: CreatorPlatform[]) {
+  const set = new Set(platforms);
+  return {
+    onlyfans_url: set.has("onlyfans") ? "https://onlyfans.com/" : null,
+    fansly_url: set.has("fansly") ? "https://fansly.com/" : null,
+    chaturbate_url: set.has("chaturbate") ? "https://chaturbate.com/" : null,
+    instagram_url: set.has("instagram") ? "https://instagram.com/" : null,
+    tiktok_url: set.has("tiktok") ? "https://tiktok.com/" : null,
+    twitter_url: set.has("twitter") ? "https://x.com/" : null,
+    platforms,
+  };
+}
+
+/**
+ * Create a creator in CRM, provision Auth + profile (role=creator),
+ * and send the Supabase invitation email so they can set a password.
+ */
 export async function createCreator(
   raw: unknown,
 ): Promise<CreatorActionResult> {
@@ -89,7 +113,7 @@ export async function createCreator(
 
   try {
     const session = await requireStaffSession();
-    if (!session) {
+    if (!session || !isStaff(session.profile.role)) {
       return { success: false, error: t("unauthorized") };
     }
 
@@ -103,33 +127,101 @@ export async function createCreator(
       managerId = session.profile.id;
     }
 
+    const locale = await getLocale();
+    const siteUrl = getClientEnv().NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
+    const redirectTo = `${siteUrl}/${locale}/callback?next=${encodeURIComponent(`/${locale}/auth/set-password`)}`;
+
+    const admin = createAdminClient();
+
+    const invite = await admin.auth.admin.inviteUserByEmail(parsed.data.email, {
+      redirectTo,
+      data: {
+        full_name: parsed.data.display_name,
+        role: "creator",
+      },
+    });
+
+    if (invite.error || !invite.data.user) {
+      console.error("[createCreator.invite]", invite.error?.message);
+      return { success: false, error: t("invite") };
+    }
+
+    const userId = invite.data.user.id;
+
+    // Confirm email so the invitee can set a password and sign in immediately after.
+    const confirm = await admin.auth.admin.updateUserById(userId, {
+      email_confirm: true,
+      user_metadata: {
+        full_name: parsed.data.display_name,
+        role: "creator",
+      },
+    });
+    if (confirm.error) {
+      console.error("[createCreator.confirm]", confirm.error.message);
+    }
+
+    // Ensure profile role/name (trigger may have created guest before metadata applied)
+    const { error: profileError } = await admin
+      .from("profiles")
+      .update({
+        role: "creator",
+        full_name: parsed.data.display_name,
+      })
+      .eq("id", userId);
+
+    if (profileError) {
+      console.error("[createCreator.profile]", profileError.message);
+      return { success: false, error: t("invite") };
+    }
+
+    const urls = platformUrlPatch(parsed.data.platforms);
+    const now = new Date().toISOString();
+
     const row: TablesInsert<"creators"> = {
       display_name: parsed.data.display_name,
       full_name: parsed.data.display_name,
+      legal_name: parsed.data.legal_name,
       email: parsed.data.email,
       telegram: parsed.data.telegram,
+      phone: parsed.data.phone,
       country: parsed.data.country,
       languages: parsed.data.languages,
+      timezone: parsed.data.timezone,
       manager_id: managerId,
-      status: parsed.data.status,
       notes: parsed.data.notes,
-      last_activity_at: new Date().toISOString(),
+      status: "invited",
+      user_id: userId,
+      invited_at: now,
+      invited_by: session.profile.id,
+      last_activity_at: now,
+      ...urls,
+      platforms: platformsFromUrls(urls),
     };
 
-    const supabase = await createClient();
-    const { data, error } = await supabase
+    const { data: creator, error: creatorError } = await admin
       .from("creators")
       .insert(row)
       .select("id")
       .single();
 
-    if (error || !data) {
-      console.error("[createCreator]", error?.message);
+    if (creatorError || !creator) {
+      console.error("[createCreator.insert]", creatorError?.message);
       return { success: false, error: t("create") };
     }
 
-    await revalidateCreator(data.id);
-    return { success: true, id: data.id };
+    await admin.from("creator_audit_logs").insert({
+      actor_id: session.profile.id,
+      creator_id: creator.id,
+      action: "creator.invited",
+      meta: {
+        email: parsed.data.email,
+        manager_id: managerId,
+        platforms: parsed.data.platforms,
+      },
+    });
+
+    await revalidateCreator(creator.id);
+    return { success: true, id: creator.id };
   } catch (error) {
     console.error("[createCreator] unexpected:", error);
     return { success: false, error: t("create") };
