@@ -14,9 +14,7 @@ export async function getRecentCreators(
   limit = 5,
 ): Promise<CreatorListItem[]> {
   const session = await requireStaffSession();
-  if (!session) {
-    return [];
-  }
+  if (!session) return [];
 
   const supabase = await createClient();
 
@@ -31,7 +29,6 @@ export async function getRecentCreators(
   }
 
   const { data, error } = await query;
-
   if (error) {
     console.error("[getRecentCreators]", error.message);
     throw new Error("Failed to load recent creators.");
@@ -44,9 +41,7 @@ export async function getTopRevenueCreators(
   limit = 5,
 ): Promise<CreatorListItem[]> {
   const session = await requireStaffSession();
-  if (!session) {
-    return [];
-  }
+  if (!session) return [];
 
   const supabase = await createClient();
 
@@ -61,7 +56,6 @@ export async function getTopRevenueCreators(
   }
 
   const { data, error } = await query;
-
   if (error) {
     console.error("[getTopRevenueCreators]", error.message);
     throw new Error("Failed to load top revenue creators.");

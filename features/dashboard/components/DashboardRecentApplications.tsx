@@ -15,12 +15,16 @@ type DashboardRecentApplicationsProps = {
     created: string;
     viewAll: string;
   };
+  statusLabels: Record<string, string>;
+  priorityLabels: Record<string, string>;
 };
 
 export default function DashboardRecentApplications({
   items,
   locale,
   labels,
+  statusLabels,
+  priorityLabels,
 }: DashboardRecentApplicationsProps) {
   return (
     <section className="rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02]">
@@ -69,11 +73,11 @@ export default function DashboardRecentApplications({
                   </td>
                   <td className="px-5 py-3">
                     <span className="rounded-full bg-[var(--nht-gold-muted)] px-2.5 py-1 text-xs text-[var(--nht-gold)]">
-                      {item.status}
+                      {statusLabels[item.status] ?? item.status}
                     </span>
                   </td>
                   <td className="px-5 py-3 text-[var(--nht-text-secondary)]">
-                    {item.priority}
+                    {priorityLabels[item.priority] ?? item.priority}
                   </td>
                   <td className="px-5 py-3 whitespace-nowrap text-[var(--nht-text-tertiary)]">
                     {formatDateTime(item.created_at, locale)}

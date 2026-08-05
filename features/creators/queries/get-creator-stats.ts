@@ -10,15 +10,13 @@ export async function getCreatorStats(): Promise<CreatorStats> {
 
   const supabase = await createClient();
 
-  let query = supabase
-    .from("creators")
-    .select("status, revenue_current_month");
+  let base = supabase.from("creators").select("status, revenue_current_month");
 
   if (session.profile.role === "manager") {
-    query = query.eq("manager_id", session.profile.id);
+    base = base.eq("manager_id", session.profile.id);
   }
 
-  const { data, error } = await query;
+  const { data, error } = await base;
 
   if (error) {
     console.error("[getCreatorStats]", error.message);
@@ -30,18 +28,18 @@ export async function getCreatorStats(): Promise<CreatorStats> {
   const active = rows.filter((row) => row.status === "active").length;
   const vacation = rows.filter((row) => row.status === "vacation").length;
   const inactive = rows.filter((row) => row.status === "inactive").length;
-  const revenueCurrent = rows.reduce(
+  const currentRevenue = rows.reduce(
     (sum, row) => sum + Number(row.revenue_current_month ?? 0),
     0,
   );
-  const revenueAverage = total > 0 ? revenueCurrent / total : 0;
+  const averageRevenue = total > 0 ? currentRevenue / total : 0;
 
   return {
     total,
     active,
     vacation,
     inactive,
-    revenueCurrent,
-    revenueAverage,
+    currentRevenue,
+    averageRevenue,
   };
 }

@@ -529,12 +529,14 @@
         "avatarNotReady": "Upload avatar non ancora disponibile. Incolla un URL."
       },
       "stats": {
-        "total": "Totale creator",
-        "active": "Attivi",
+        "total": "Creator totali",
+        "active": "Creator attivi",
         "vacation": "Vacanza",
         "inactive": "Inattivi",
         "revenueCurrent": "Ricavi attuali",
-        "revenueAverage": "Ricavi medi"
+        "revenueAverage": "Ricavi medi",
+        "currentRevenue": "Ricavi del mese",
+        "averageRevenue": "Ricavo medio"
       },
       "sections": {
         "profile": "Profilo",
@@ -543,7 +545,8 @@
         "revenue": "Ricavi",
         "manager": "Manager",
         "notes": "Note interne",
-        "timeline": "Timeline"
+        "timeline": "Timeline",
+        "status": "Stato"
       }
     },
     "dashboard": {
@@ -596,7 +599,7 @@
         "viewAll": "Vedi tutti"
       },
       "newestCreators": {
-        "title": "Creator più nuovi",
+        "title": "Creator più recenti",
         "empty": "Nessun creator ancora.",
         "viewAll": "Vedi tutti"
       },

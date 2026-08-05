@@ -1,6 +1,9 @@
 import { z } from "zod";
 import { Constants } from "@/types/database.types";
-import { CREATOR_PLATFORMS } from "@/features/creators/types";
+import {
+  CREATOR_PLATFORMS,
+  type CreatorPlatform,
+} from "@/features/creators/types";
 
 export const creatorStatuses = Constants.public.Enums.creator_status;
 
@@ -29,50 +32,52 @@ export const stringArraySchema = z.preprocess(
   z.array(z.string().trim().min(1).max(80)).max(20),
 );
 
-const optionalText = z
+const optionalText = (max: number) =>
+  z
+    .string()
+    .trim()
+    .max(max)
+    .optional()
+    .nullable()
+    .transform((value) => value || null);
+
+const optionalUrl = z
   .string()
   .trim()
-  .max(200)
+  .max(2000)
   .optional()
   .nullable()
-  .transform((value) => value || null);
+  .transform((value) => value || null)
+  .refine(
+    (value) => !value || /^https?:\/\//i.test(value) || value.startsWith("@"),
+    { message: "Invalid URL" },
+  );
 
-const optionalUrlOrHandle = z
-  .string()
-  .trim()
-  .max(500)
-  .optional()
-  .nullable()
-  .transform((value) => value || null);
-
-export const platformAccountsSchema = z.object({
-  onlyfans: optionalUrlOrHandle,
-  fansly: optionalUrlOrHandle,
-  chaturbate: optionalUrlOrHandle,
-  instagram: optionalUrlOrHandle,
-  tiktok: optionalUrlOrHandle,
-  twitter: optionalUrlOrHandle,
-});
+export function platformsFromUrls(urls: {
+  onlyfans_url?: string | null;
+  fansly_url?: string | null;
+  chaturbate_url?: string | null;
+  instagram_url?: string | null;
+  tiktok_url?: string | null;
+  twitter_url?: string | null;
+}): CreatorPlatform[] {
+  const map: Array<[CreatorPlatform, string | null | undefined]> = [
+    ["onlyfans", urls.onlyfans_url],
+    ["fansly", urls.fansly_url],
+    ["chaturbate", urls.chaturbate_url],
+    ["instagram", urls.instagram_url],
+    ["tiktok", urls.tiktok_url],
+    ["twitter", urls.twitter_url],
+  ];
+  return map.filter(([, url]) => Boolean(url)).map(([key]) => key);
+}
 
 export const createCreatorSchema = z.object({
   display_name: z.string().trim().min(1).max(120),
-  legal_name: optionalText,
   email: z.string().trim().email().max(255),
-  telegram: optionalText,
-  phone: optionalText,
-  country: optionalText,
-  timezone: optionalText,
-  birthday: z
-    .string()
-    .trim()
-    .optional()
-    .nullable()
-    .transform((value) => value || null)
-    .refine((value) => !value || /^\d{4}-\d{2}-\d{2}$/.test(value), {
-      message: "Invalid birthday",
-    }),
+  telegram: optionalText(120),
+  country: optionalText(120),
   languages: stringArraySchema.default([]),
-  platforms: z.array(z.enum(CREATOR_PLATFORMS)).default([]),
   manager_id: z
     .string()
     .uuid()
@@ -81,23 +86,13 @@ export const createCreatorSchema = z.object({
     .optional()
     .default(null),
   status: z.enum(creatorStatuses).default("new"),
-  notes: z
-    .string()
-    .max(10000)
-    .optional()
-    .nullable()
-    .transform((value) => (value ? value.trim() || null : null)),
+  notes: optionalText(10000),
 });
 
 export const updateProfileSchema = z.object({
   id: z.string().uuid(),
   display_name: z.string().trim().min(1).max(120),
-  legal_name: optionalText,
-  email: z.string().trim().email().max(255),
-  telegram: optionalText,
-  phone: optionalText,
-  country: optionalText,
-  timezone: optionalText,
+  legal_name: optionalText(120),
   birthday: z
     .string()
     .trim()
@@ -105,16 +100,30 @@ export const updateProfileSchema = z.object({
     .nullable()
     .transform((value) => value || null)
     .refine((value) => !value || /^\d{4}-\d{2}-\d{2}$/.test(value), {
-      message: "Invalid birthday",
+      message: "Invalid date",
     }),
+  country: optionalText(120),
   languages: stringArraySchema.default([]),
-  avatar_url: z
-    .string()
-    .trim()
-    .max(2000)
-    .optional()
-    .nullable()
-    .transform((value) => value || null),
+  timezone: optionalText(80),
+  email: z.string().trim().email().max(255),
+  telegram: optionalText(120),
+  phone: optionalText(40),
+  avatar_url: optionalUrl,
+});
+
+export const updatePlatformsSchema = z.object({
+  id: z.string().uuid(),
+  onlyfans_url: optionalUrl,
+  fansly_url: optionalUrl,
+  chaturbate_url: optionalUrl,
+  instagram_url: optionalUrl,
+  tiktok_url: optionalUrl,
+  twitter_url: optionalUrl,
+});
+
+export const updateStatusSchema = z.object({
+  id: z.string().uuid(),
+  status: z.enum(creatorStatuses),
 });
 
 export const updateManagerSchema = z.object({
@@ -124,16 +133,6 @@ export const updateManagerSchema = z.object({
     .uuid()
     .nullable()
     .or(z.literal("").transform(() => null)),
-});
-
-export const updateStatusSchema = z.object({
-  id: z.string().uuid(),
-  status: z.enum(creatorStatuses),
-});
-
-export const updatePlatformsSchema = z.object({
-  id: z.string().uuid(),
-  platform_accounts: platformAccountsSchema,
 });
 
 export const updateNotesSchema = z.object({

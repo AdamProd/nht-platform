@@ -398,7 +398,7 @@
     "creators": {
       "label": "Roster",
       "title": "Creators",
-      "description": "Creator-Profile, Plattformen, Umsatz und Zuweisung verwalten.",
+      "description": "Creator-Profile, Zuweisung und Status verwalten.",
       "detailLabel": "Creator",
       "create": "Creator erstellen",
       "unassigned": "Nicht zugewiesen",
@@ -429,12 +429,13 @@
       },
       "table": {
         "avatar": "Avatar",
-        "name": "Anzeigename",
+        "name": "Name",
         "email": "E-Mail",
         "country": "Land",
         "platforms": "Plattformen",
         "manager": "Manager",
         "status": "Status",
+        "created": "Erstellt",
         "actions": "Aktionen",
         "revenue": "Umsatz",
         "lastActivity": "Letzte Aktivität"
@@ -455,17 +456,22 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Mehrere",
+        "emerging": "Emerging",
+        "other": "Sonstiges",
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
         "twitter": "Twitter/X"
       },
       "fields": {
+        "fullName": "Vollständiger Name",
         "email": "E-Mail",
         "telegram": "Telegram",
         "country": "Land",
         "languages": "Sprachen",
-        "languagesPlaceholder": "en, ru, de",
+        "languagesPlaceholder": "en, de, fr",
         "platforms": "Plattformen",
         "manager": "Manager",
         "status": "Status",
@@ -477,14 +483,13 @@
         "displayName": "Anzeigename",
         "legalName": "Rechtsname",
         "birthday": "Geburtstag",
-        "phone": "Telefon",
         "timezone": "Zeitzone",
-        "lastLogin": "Letzter Login",
-        "lastActivity": "Letzte Aktivität",
+        "phone": "Telefon",
         "revenueCurrent": "Aktueller Monat",
         "revenuePrevious": "Vormonat",
         "revenueLifetime": "Gesamt",
-        "payouts": "Auszahlungen"
+        "lastLogin": "Letzter Login",
+        "lastActivity": "Letzte Aktivität"
       },
       "form": {
         "title": "Creator erstellen",
@@ -530,11 +535,11 @@
       },
       "stats": {
         "total": "Creator gesamt",
-        "active": "Aktiv",
+        "active": "Aktive Creator",
         "vacation": "Urlaub",
         "inactive": "Inaktiv",
-        "revenueCurrent": "Aktueller Umsatz",
-        "revenueAverage": "Durchschnittsumsatz"
+        "currentRevenue": "Aktueller Umsatz",
+        "averageRevenue": "Durchschnittsumsatz"
       },
       "sections": {
         "profile": "Profil",
@@ -542,8 +547,9 @@
         "platforms": "Plattformen",
         "revenue": "Umsatz",
         "manager": "Manager",
+        "status": "Status",
         "notes": "Interne Notizen",
-        "timeline": "Zeitachse"
+        "timeline": "Zeitlinie"
       }
     },
     "dashboard": {
@@ -591,8 +597,8 @@
         "load": "Dashboard-Daten konnten nicht geladen werden."
       },
       "recentCreators": {
-        "title": "Aktuelle Creator",
-        "empty": "Noch keine Creator.",
+        "title": "Aktuelle Creators",
+        "empty": "Noch keine Creators.",
         "viewAll": "Alle anzeigen"
       },
       "newestCreators": {
@@ -609,10 +615,7 @@
         "title": "Neueste Registrierungen",
         "empty": "Noch keine Registrierungen.",
         "viewAll": "Alle anzeigen",
-        "name": "Name",
-        "email": "E-Mail",
-        "registered": "Registriert",
-        "status": "Status"
+        "registered": "Registriert"
       }
     },
     "navLabel": "Admin-Navigation",

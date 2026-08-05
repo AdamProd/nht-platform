@@ -223,12 +223,15 @@ export type Database = {
           application_id: string | null;
           avatar_url: string | null;
           birthday: string | null;
+          chaturbate_url: string | null;
           country: string | null;
           created_at: string;
           display_name: string;
           email: string;
+          fansly_url: string | null;
           full_name: string;
           id: string;
+          instagram_url: string | null;
           is_active: boolean;
           languages: string[];
           last_activity_at: string | null;
@@ -236,9 +239,8 @@ export type Database = {
           legal_name: string | null;
           manager_id: string | null;
           notes: string | null;
-          payouts_total: number;
+          onlyfans_url: string | null;
           phone: string | null;
-          platform_accounts: Json;
           platforms: string[];
           revenue_current_month: number;
           revenue_lifetime: number;
@@ -246,18 +248,23 @@ export type Database = {
           status: Database["public"]["Enums"]["creator_status"];
           telegram: string | null;
           timezone: string | null;
+          tiktok_url: string | null;
+          twitter_url: string | null;
           updated_at: string;
         };
         Insert: {
           application_id?: string | null;
           avatar_url?: string | null;
           birthday?: string | null;
+          chaturbate_url?: string | null;
           country?: string | null;
           created_at?: string;
           display_name: string;
           email: string;
+          fansly_url?: string | null;
           full_name: string;
           id?: string;
+          instagram_url?: string | null;
           is_active?: boolean;
           languages?: string[];
           last_activity_at?: string | null;
@@ -265,9 +272,8 @@ export type Database = {
           legal_name?: string | null;
           manager_id?: string | null;
           notes?: string | null;
-          payouts_total?: number;
+          onlyfans_url?: string | null;
           phone?: string | null;
-          platform_accounts?: Json;
           platforms?: string[];
           revenue_current_month?: number;
           revenue_lifetime?: number;
@@ -275,18 +281,23 @@ export type Database = {
           status?: Database["public"]["Enums"]["creator_status"];
           telegram?: string | null;
           timezone?: string | null;
+          tiktok_url?: string | null;
+          twitter_url?: string | null;
           updated_at?: string;
         };
         Update: {
           application_id?: string | null;
           avatar_url?: string | null;
           birthday?: string | null;
+          chaturbate_url?: string | null;
           country?: string | null;
           created_at?: string;
           display_name?: string;
           email?: string;
+          fansly_url?: string | null;
           full_name?: string;
           id?: string;
+          instagram_url?: string | null;
           is_active?: boolean;
           languages?: string[];
           last_activity_at?: string | null;
@@ -294,9 +305,8 @@ export type Database = {
           legal_name?: string | null;
           manager_id?: string | null;
           notes?: string | null;
-          payouts_total?: number;
+          onlyfans_url?: string | null;
           phone?: string | null;
-          platform_accounts?: Json;
           platforms?: string[];
           revenue_current_month?: number;
           revenue_lifetime?: number;
@@ -304,6 +314,8 @@ export type Database = {
           status?: Database["public"]["Enums"]["creator_status"];
           telegram?: string | null;
           timezone?: string | null;
+          tiktok_url?: string | null;
+          twitter_url?: string | null;
           updated_at?: string;
         };
         Relationships: [

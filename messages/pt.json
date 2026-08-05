@@ -411,7 +411,7 @@
       },
       "filters": {
         "search": "Pesquisar",
-        "searchPlaceholder": "Nome, email, telegram",
+        "searchPlaceholder": "Nome, e-mail, telegram",
         "status": "Estado",
         "manager": "Gestor",
         "country": "País",
@@ -530,11 +530,13 @@
       },
       "stats": {
         "total": "Total de criadores",
-        "active": "Ativos",
+        "active": "Criadores ativos",
         "vacation": "Férias",
         "inactive": "Inativos",
         "revenueCurrent": "Receita atual",
-        "revenueAverage": "Receita média"
+        "revenueAverage": "Receita média",
+        "currentRevenue": "Receita do mês",
+        "averageRevenue": "Receita média"
       },
       "sections": {
         "profile": "Perfil",
@@ -543,7 +545,8 @@
         "revenue": "Receita",
         "manager": "Manager",
         "notes": "Notas internas",
-        "timeline": "Linha do tempo"
+        "timeline": "Linha do tempo",
+        "status": "Estado"
       }
     },
     "dashboard": {

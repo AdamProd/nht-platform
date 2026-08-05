@@ -3,7 +3,6 @@ import { getDashboardData } from "@/features/dashboard/queries/get-dashboard-dat
 import DashboardKpiCards from "@/features/dashboard/components/DashboardKpiCards";
 import DashboardRecentApplications from "@/features/dashboard/components/DashboardRecentApplications";
 import DashboardCreatorsSection from "@/features/dashboard/components/DashboardCreatorsSection";
-import DashboardLatestRegistrations from "@/features/dashboard/components/DashboardLatestRegistrations";
 import DashboardPlatformBreakdown from "@/features/dashboard/components/DashboardPlatformBreakdown";
 import DashboardQuickActions from "@/features/dashboard/components/DashboardQuickActions";
 
@@ -141,27 +140,26 @@ export default async function AdminDashboardPage({ params }: Props) {
       <DashboardCreatorsSection
         items={data.topRevenueCreators}
         locale={locale}
-        showRevenue
         labels={{
           title: t("topRevenueCreators.title"),
           empty: t("topRevenueCreators.empty"),
           viewAll: t("topRevenueCreators.viewAll"),
           unassigned: tCreators("unassigned"),
+          revenue: tCreators("table.revenue"),
         }}
         statusLabels={creatorStatusLabels}
       />
 
-      <DashboardLatestRegistrations
+      <DashboardCreatorsSection
         items={data.latestRegistrations}
         locale={locale}
+        variant="registrations"
         labels={{
           title: t("latestRegistrations.title"),
           empty: t("latestRegistrations.empty"),
           viewAll: t("latestRegistrations.viewAll"),
-          name: t("latestRegistrations.name"),
-          email: t("latestRegistrations.email"),
+          unassigned: tCreators("unassigned"),
           registered: t("latestRegistrations.registered"),
-          status: t("latestRegistrations.status"),
         }}
         statusLabels={creatorStatusLabels}
       />

@@ -4,7 +4,6 @@ import { useState, useTransition } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { createCreator } from "@/features/creators/actions/update-creator";
 import { creatorStatuses } from "@/features/creators/schemas/creator.schema";
-import { CREATOR_PLATFORMS } from "@/features/creators/types";
 import type { StaffManagerOption } from "@/features/applications/types";
 import FlashToast from "@/features/creators/components/FlashToast";
 
@@ -17,11 +16,9 @@ type CreatorFormProps = {
     displayName: string;
     email: string;
     telegram: string;
-    phone: string;
     country: string;
     languages: string;
     languagesPlaceholder: string;
-    platforms: string;
     manager: string;
     status: string;
     notes: string;
@@ -32,7 +29,6 @@ type CreatorFormProps = {
     created: string;
   };
   statusLabels: Record<string, string>;
-  platformLabels: Record<string, string>;
 };
 
 export default function CreatorForm({
@@ -40,7 +36,6 @@ export default function CreatorForm({
   canAssignManager,
   labels,
   statusLabels,
-  platformLabels,
 }: CreatorFormProps) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -51,15 +46,12 @@ export default function CreatorForm({
 
   function handleSubmit(formData: FormData) {
     setError(null);
-    const platforms = formData.getAll("platforms").map(String);
     const payload = {
       display_name: formData.get("display_name"),
       email: formData.get("email"),
       telegram: formData.get("telegram"),
-      phone: formData.get("phone"),
       country: formData.get("country"),
       languages: String(formData.get("languages") ?? ""),
-      platforms,
       manager_id: formData.get("manager_id") || null,
       status: formData.get("status") || "new",
       notes: formData.get("notes"),
@@ -86,51 +78,42 @@ export default function CreatorForm({
 
   return (
     <>
-      <FlashToast message={toast} tone={toastTone} />
       <button
         type="button"
-        onClick={() => setOpen(true)}
-        className="accent-gradient-bg inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-white shadow-[var(--nht-shadow-glow)]"
+        onClick={() => {
+          setError(null);
+          setOpen(true);
+        }}
+        className="inline-flex items-center justify-center rounded-full bg-[var(--nht-gold)] px-4 py-2 text-sm font-medium text-black transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--nht-gold)]"
       >
         {labels.create}
       </button>
 
       {open ? (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 p-4 sm:items-center">
-          <button
-            type="button"
-            aria-label={labels.cancel}
-            className="absolute inset-0"
-            onClick={() => !isPending && setOpen(false)}
-          />
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="create-creator-title"
-            className="relative z-10 max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-[var(--nht-radius-3xl)] border border-white/[0.08] bg-[var(--nht-black-elevated)] p-6 shadow-[var(--nht-shadow-md)]"
-          >
+        <div
+          className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 p-4 sm:items-center"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="create-creator-title"
+        >
+          <div className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-[var(--nht-radius-xl)] border border-white/[0.08] bg-[var(--nht-bg-elevated)] p-5 shadow-2xl">
             <h2
               id="create-creator-title"
-              className="text-lg font-semibold text-white"
+              className="text-lg font-medium text-white"
             >
               {labels.title}
             </h2>
-
-            {error ? (
-              <p
-                role="alert"
-                className="mt-3 rounded-[var(--nht-radius-lg)] border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-sm text-[var(--nht-text-secondary)]"
-              >
-                {error}
-              </p>
-            ) : null}
 
             <form action={handleSubmit} className="mt-5 space-y-4">
               <label className="block">
                 <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
                   {labels.displayName}
                 </span>
-                <input name="display_name" required className="nht-input" />
+                <input
+                  name="display_name"
+                  required
+                  className="w-full rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none focus:border-[var(--nht-gold)]/40"
+                />
               </label>
 
               <label className="block">
@@ -141,30 +124,30 @@ export default function CreatorForm({
                   name="email"
                   type="email"
                   required
-                  className="nht-input"
+                  className="w-full rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none focus:border-[var(--nht-gold)]/40"
                 />
               </label>
 
-              <label className="block">
-                <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
-                  {labels.telegram}
-                </span>
-                <input name="telegram" className="nht-input" />
-              </label>
-
-              <label className="block">
-                <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
-                  {labels.phone}
-                </span>
-                <input name="phone" className="nht-input" />
-              </label>
-
-              <label className="block">
-                <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
-                  {labels.country}
-                </span>
-                <input name="country" className="nht-input" />
-              </label>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label className="block">
+                  <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
+                    {labels.telegram}
+                  </span>
+                  <input
+                    name="telegram"
+                    className="w-full rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none focus:border-[var(--nht-gold)]/40"
+                  />
+                </label>
+                <label className="block">
+                  <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
+                    {labels.country}
+                  </span>
+                  <input
+                    name="country"
+                    className="w-full rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none focus:border-[var(--nht-gold)]/40"
+                  />
+                </label>
+              </div>
 
               <label className="block">
                 <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
@@ -173,76 +156,78 @@ export default function CreatorForm({
                 <input
                   name="languages"
                   placeholder={labels.languagesPlaceholder}
-                  className="nht-input"
+                  className="w-full rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none placeholder:text-[var(--nht-text-muted)] focus:border-[var(--nht-gold)]/40"
                 />
               </label>
 
-              <fieldset>
-                <legend className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
-                  {labels.platforms}
-                </legend>
-                <div className="flex flex-wrap gap-2">
-                  {CREATOR_PLATFORMS.map((value) => (
-                    <label
-                      key={value}
-                      className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] px-3 py-1.5 text-xs text-[var(--nht-text-secondary)]"
+              <div className="grid gap-4 sm:grid-cols-2">
+                {canAssignManager ? (
+                  <label className="block">
+                    <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
+                      {labels.manager}
+                    </span>
+                    <select
+                      name="manager_id"
+                      defaultValue=""
+                      className="w-full rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none focus:border-[var(--nht-gold)]/40"
                     >
-                      <input type="checkbox" name="platforms" value={value} />
-                      {platformLabels[value] ?? value}
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
-
-              {canAssignManager ? (
+                      <option value="">{labels.unassigned}</option>
+                      {managers.map((m) => (
+                        <option key={m.id} value={m.id}>
+                          {m.full_name}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                ) : null}
                 <label className="block">
                   <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
-                    {labels.manager}
+                    {labels.status}
                   </span>
-                  <select name="manager_id" className="nht-input" defaultValue="">
-                    <option value="">{labels.unassigned}</option>
-                    {managers.map((manager) => (
-                      <option key={manager.id} value={manager.id}>
-                        {manager.full_name ?? manager.id.slice(0, 8)}
+                  <select
+                    name="status"
+                    defaultValue="new"
+                    className="w-full rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none focus:border-[var(--nht-gold)]/40"
+                  >
+                    {creatorStatuses.map((status) => (
+                      <option key={status} value={status}>
+                        {statusLabels[status] ?? status}
                       </option>
                     ))}
                   </select>
                 </label>
-              ) : null}
-
-              <label className="block">
-                <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
-                  {labels.status}
-                </span>
-                <select name="status" defaultValue="new" className="nht-input">
-                  {creatorStatuses.map((value) => (
-                    <option key={value} value={value}>
-                      {statusLabels[value] ?? value}
-                    </option>
-                  ))}
-                </select>
-              </label>
+              </div>
 
               <label className="block">
                 <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
                   {labels.notes}
                 </span>
-                <textarea name="notes" rows={3} className="nht-input resize-y" />
+                <textarea
+                  name="notes"
+                  rows={3}
+                  className="w-full resize-y rounded-[var(--nht-radius-md)] border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-white outline-none focus:border-[var(--nht-gold)]/40"
+                />
               </label>
 
-              <div className="flex flex-col gap-2 pt-2 sm:flex-row sm:justify-end">
+              {error ? (
+                <p className="text-sm text-red-400" role="alert">
+                  {error}
+                </p>
+              ) : null}
+
+              <div className="flex justify-end gap-2 pt-2">
                 <button
                   type="button"
-                  disabled={isPending}
                   onClick={() => setOpen(false)}
-                  className="rounded-full border border-white/10 px-5 py-3 text-sm text-white hover:bg-white/[0.05] disabled:opacity-60"
+                  disabled={isPending}
+                  className="rounded-full border border-white/10 px-4 py-2 text-sm text-white hover:bg-white/[0.05] disabled:opacity-50"
                 >
                   {labels.cancel}
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="accent-gradient-bg rounded-full px-6 py-3 text-sm font-semibold text-white disabled:opacity-60"
+                  className="rounded-full bg-[var(--nht-gold)] px-4 py-2 text-sm font-medium text-black disabled:opacity-50"
                 >
                   {isPending ? labels.submitting : labels.submit}
                 </button>
@@ -250,6 +235,10 @@ export default function CreatorForm({
             </form>
           </div>
         </div>
+      ) : null}
+
+      {toast ? (
+        <FlashToast message={toast} tone={toastTone} />
       ) : null}
     </>
   );

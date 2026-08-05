@@ -13,14 +13,12 @@ export async function getDashboardData(): Promise<DashboardData> {
     recent,
     newestCreators,
     topRevenueCreators,
-    latestRegistrations,
     platforms,
   ] = await Promise.all([
     getDashboardKpis(),
     getRecentApplications(10),
     getRecentCreators(5),
     getTopRevenueCreators(5),
-    getRecentCreators(8),
     getPlatformBreakdown(),
   ]);
 
@@ -29,8 +27,7 @@ export async function getDashboardData(): Promise<DashboardData> {
     recent,
     newestCreators,
     topRevenueCreators,
-    latestRegistrations,
-    /** @deprecated use newestCreators */
+    latestRegistrations: newestCreators,
     recentCreators: newestCreators,
     platforms,
   };

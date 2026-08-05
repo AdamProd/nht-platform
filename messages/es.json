@@ -529,12 +529,14 @@
         "avatarNotReady": "La subida de avatar aún no está disponible. Pega una URL."
       },
       "stats": {
-        "total": "Total creadores",
-        "active": "Activos",
+        "total": "Total de creadores",
+        "active": "Creadores activos",
         "vacation": "Vacaciones",
         "inactive": "Inactivos",
         "revenueCurrent": "Ingresos actuales",
-        "revenueAverage": "Ingresos medios"
+        "revenueAverage": "Ingresos medios",
+        "currentRevenue": "Ingresos del mes",
+        "averageRevenue": "Ingreso medio"
       },
       "sections": {
         "profile": "Perfil",
@@ -543,7 +545,8 @@
         "revenue": "Ingresos",
         "manager": "Manager",
         "notes": "Notas internas",
-        "timeline": "Cronología"
+        "timeline": "Cronología",
+        "status": "Estado"
       }
     },
     "dashboard": {
@@ -596,7 +599,7 @@
         "viewAll": "Ver todos"
       },
       "newestCreators": {
-        "title": "Creadores más nuevos",
+        "title": "Creadores nuevos",
         "empty": "Aún no hay creadores.",
         "viewAll": "Ver todos"
       },

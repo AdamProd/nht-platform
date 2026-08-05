@@ -34,12 +34,28 @@ export function formatList(values: string[] | null | undefined): string {
   return values.join(", ");
 }
 
+export function initials(name: string): string {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "?";
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return `${parts[0][0] ?? ""}${parts[1][0] ?? ""}`.toUpperCase();
+}
+
+export function displayName(creator: {
+  display_name?: string | null;
+  full_name?: string | null;
+}): string {
+  return creator.display_name?.trim() || creator.full_name?.trim() || "—";
+}
+
 export function formatMoney(
-  value: number | null | undefined,
+  value: number | string | null | undefined,
   locale = "en",
   currency = "USD",
 ): string {
-  const amount = Number(value ?? 0);
+  const amount = typeof value === "string" ? Number(value) : (value ?? 0);
+  if (!Number.isFinite(amount)) return "—";
+
   try {
     return new Intl.NumberFormat(locale, {
       style: "currency",
@@ -49,18 +65,4 @@ export function formatMoney(
   } catch {
     return `$${amount.toFixed(0)}`;
   }
-}
-
-export function initials(name: string): string {
-  const parts = name.trim().split(/\s+/).filter(Boolean);
-  if (parts.length === 0) return "?";
-  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
-  return `${parts[0][0] ?? ""}${parts[1][0] ?? ""}`.toUpperCase();
-}
-
-export function displayNameOf(creator: {
-  display_name?: string | null;
-  full_name: string;
-}): string {
-  return creator.display_name?.trim() || creator.full_name;
 }

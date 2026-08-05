@@ -411,7 +411,7 @@
       },
       "filters": {
         "search": "Hledat",
-        "searchPlaceholder": "Jméno, email, telegram",
+        "searchPlaceholder": "Jméno, e-mail, telegram",
         "status": "Stav",
         "manager": "Manažer",
         "country": "Země",
@@ -425,7 +425,7 @@
         "newest": "Nejnovější",
         "oldest": "Nejstarší",
         "name": "Jméno A–Z",
-        "revenue": "Příjem"
+        "revenue": "Tržby"
       },
       "table": {
         "avatar": "Avatar",
@@ -436,7 +436,7 @@
         "manager": "Manažer",
         "status": "Stav",
         "actions": "Akce",
-        "revenue": "Příjem",
+        "revenue": "Tržby",
         "lastActivity": "Poslední aktivita"
       },
       "pagination": {
@@ -529,21 +529,24 @@
         "avatarNotReady": "Nahrávání avataru ještě není dostupné. Vložte URL."
       },
       "stats": {
-        "total": "Celkem tvůrců",
-        "active": "Aktivní",
+        "total": "Celkem creatorů",
+        "active": "Aktivní creatoři",
         "vacation": "Dovolená",
         "inactive": "Neaktivní",
         "revenueCurrent": "Aktuální příjem",
-        "revenueAverage": "Průměrný příjem"
+        "revenueAverage": "Průměrný příjem",
+        "currentRevenue": "Tržby měsíce",
+        "averageRevenue": "Průměrné tržby"
       },
       "sections": {
         "profile": "Profil",
         "contacts": "Kontakty",
         "platforms": "Platformy",
-        "revenue": "Příjem",
+        "revenue": "Tržby",
         "manager": "Manažer",
         "notes": "Interní poznámky",
-        "timeline": "Časová osa"
+        "timeline": "Časová osa",
+        "status": "Stav"
       }
     },
     "dashboard": {
@@ -596,22 +599,22 @@
         "viewAll": "Zobrazit vše"
       },
       "newestCreators": {
-        "title": "Nejnovější tvůrci",
-        "empty": "Zatím žádní tvůrci.",
+        "title": "Nejnovější creatoři",
+        "empty": "Zatím žádní creatoři.",
         "viewAll": "Zobrazit vše"
       },
       "topRevenueCreators": {
-        "title": "Top podle příjmu",
-        "empty": "Zatím žádná data o příjmu.",
+        "title": "Top podle tržeb",
+        "empty": "Zatím žádná data o tržbách.",
         "viewAll": "Zobrazit vše"
       },
       "latestRegistrations": {
-        "title": "Nejnovější registrace",
+        "title": "Poslední registrace",
         "empty": "Zatím žádné registrace.",
         "viewAll": "Zobrazit vše",
         "name": "Jméno",
         "email": "Email",
-        "registered": "Registrováno",
+        "registered": "Registrován",
         "status": "Stav"
       }
     },

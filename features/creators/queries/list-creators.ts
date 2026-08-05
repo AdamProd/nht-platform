@@ -53,14 +53,14 @@ export async function listCreators(
   }
 
   if (filters.q) {
-    const term = filters.q.replaceAll(",", " ").trim();
-    const escaped = term.replaceAll("%", "").replaceAll("_", "");
+    const term = filters.q.replaceAll(",", " ").trim().replaceAll("%", "").replaceAll("_", "");
     query = query.or(
       [
-        `display_name.ilike.%${escaped}%`,
-        `full_name.ilike.%${escaped}%`,
-        `email.ilike.%${escaped}%`,
-        `telegram.ilike.%${escaped}%`,
+        `display_name.ilike.%${term}%`,
+        `full_name.ilike.%${term}%`,
+        `legal_name.ilike.%${term}%`,
+        `email.ilike.%${term}%`,
+        `telegram.ilike.%${term}%`,
       ].join(","),
     );
   }

@@ -4,8 +4,7 @@ import { Link } from "@/i18n/navigation";
 
 type DashboardRecentCreatorsProps = {
   items: CreatorListItem[];
-  locale?: string;
-  showRevenue?: boolean;
+  locale: string;
   labels: {
     title: string;
     empty: string;
@@ -15,11 +14,9 @@ type DashboardRecentCreatorsProps = {
   statusLabels: Record<string, string>;
 };
 
-/** @deprecated Prefer DashboardCreatorsSection */
 export default function DashboardRecentCreators({
   items,
-  locale = "en",
-  showRevenue = false,
+  locale,
   labels,
   statusLabels,
 }: DashboardRecentCreatorsProps) {
@@ -45,10 +42,9 @@ export default function DashboardRecentCreators({
             <CreatorCard
               key={creator.id}
               creator={creator}
-              locale={locale}
-              showRevenue={showRevenue}
               statusLabel={statusLabels[creator.status] ?? creator.status}
               unassigned={labels.unassigned}
+              locale={locale}
             />
           ))}
         </div>

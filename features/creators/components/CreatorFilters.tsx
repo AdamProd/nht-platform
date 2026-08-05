@@ -30,7 +30,6 @@ type CreatorFiltersProps = {
     sortOldest: string;
     sortName: string;
     sortRevenue: string;
-    unassigned: string;
   };
   statusLabels: Record<string, string>;
   platformLabels: Record<string, string>;

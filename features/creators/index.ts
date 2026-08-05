@@ -9,11 +9,7 @@ export type {
   CreatorPlatform,
 } from "@/features/creators/types";
 
-export {
-  CREATOR_PLATFORMS,
-  parsePlatformAccounts,
-  platformsFromAccounts,
-} from "@/features/creators/types";
+export { CREATOR_PLATFORMS } from "@/features/creators/types";
 export { CREATORS_PAGE_SIZE } from "@/features/creators/queries/list-creators";
 export { listCreators } from "@/features/creators/queries/list-creators";
 export { getCreator } from "@/features/creators/queries/get-creator";
@@ -25,11 +21,10 @@ export {
 export {
   createCreator,
   updateProfile,
-  updateManager,
-  updateStatus,
   updatePlatforms,
+  updateStatus,
+  updateManager,
   updateNotes,
-  updateCreator,
   assignManager,
   uploadAvatar,
 } from "@/features/creators/actions/update-creator";

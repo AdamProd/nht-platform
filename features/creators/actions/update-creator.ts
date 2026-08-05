@@ -7,23 +7,15 @@ import { requireStaffSession } from "@/lib/auth";
 import { isOwner } from "@/lib/auth/roles";
 import {
   createCreatorSchema,
+  platformsFromUrls,
   updateManagerSchema,
   updateNotesSchema,
   updatePlatformsSchema,
   updateProfileSchema,
   updateStatusSchema,
 } from "@/features/creators/schemas/creator.schema";
-import {
-  platformsFromAccounts,
-  type CreatorActionResult,
-  type CreatorPlatformAccounts,
-} from "@/features/creators/types";
-import type {
-  Json,
-  TablesInsert,
-  TablesUpdate,
-  UserRole,
-} from "@/types/database.types";
+import type { CreatorActionResult } from "@/features/creators/types";
+import type { TablesInsert, TablesUpdate, UserRole } from "@/types/database.types";
 
 async function revalidateCreator(id?: string) {
   const locale = await getLocale();
@@ -75,13 +67,7 @@ async function updateCreatorField(
     if (denied) return denied;
 
     const supabase = await createClient();
-    const { error } = await supabase
-      .from("creators")
-      .update({
-        ...patch,
-        last_activity_at: new Date().toISOString(),
-      })
-      .eq("id", id);
+    const { error } = await supabase.from("creators").update(patch).eq("id", id);
 
     if (error) {
       console.error("[updateCreatorField]", error.message);
@@ -120,15 +106,10 @@ export async function createCreator(
     const row: TablesInsert<"creators"> = {
       display_name: parsed.data.display_name,
       full_name: parsed.data.display_name,
-      legal_name: parsed.data.legal_name,
       email: parsed.data.email,
       telegram: parsed.data.telegram,
-      phone: parsed.data.phone,
       country: parsed.data.country,
-      timezone: parsed.data.timezone,
-      birthday: parsed.data.birthday,
       languages: parsed.data.languages,
-      platforms: parsed.data.platforms,
       manager_id: managerId,
       status: parsed.data.status,
       notes: parsed.data.notes,
@@ -166,21 +147,63 @@ export async function updateProfile(
       return { success: false, error: t("invalid") };
     }
 
-    return updateCreatorField(parsed.data.id, {
-      display_name: parsed.data.display_name,
-      full_name: parsed.data.display_name,
-      legal_name: parsed.data.legal_name,
-      email: parsed.data.email,
-      telegram: parsed.data.telegram,
-      phone: parsed.data.phone,
-      country: parsed.data.country,
-      timezone: parsed.data.timezone,
-      birthday: parsed.data.birthday,
-      languages: parsed.data.languages,
-      avatar_url: parsed.data.avatar_url,
+    const { id, ...fields } = parsed.data;
+    return updateCreatorField(id, {
+      ...fields,
+      full_name: fields.display_name,
+      last_activity_at: new Date().toISOString(),
     });
   } catch (error) {
     console.error("[updateProfile]", error);
+    return { success: false, error: t("save") };
+  }
+}
+
+export async function updatePlatforms(
+  raw: unknown,
+): Promise<CreatorActionResult> {
+  const t = await getTranslations("admin.creators.actionErrors");
+
+  try {
+    const parsed = updatePlatformsSchema.safeParse(raw);
+    if (!parsed.success) {
+      return { success: false, error: t("invalid") };
+    }
+
+    const { id, ...urls } = parsed.data;
+    return updateCreatorField(id, {
+      ...urls,
+      platforms: platformsFromUrls(urls),
+      last_activity_at: new Date().toISOString(),
+    });
+  } catch (error) {
+    console.error("[updatePlatforms]", error);
+    return { success: false, error: t("save") };
+  }
+}
+
+export async function updateStatus(
+  formData: FormData,
+): Promise<CreatorActionResult> {
+  const t = await getTranslations("admin.creators.actionErrors");
+
+  try {
+    const parsed = updateStatusSchema.safeParse({
+      id: formData.get("id"),
+      status: formData.get("status"),
+    });
+
+    if (!parsed.success) {
+      return { success: false, error: t("invalidStatus") };
+    }
+
+    return updateCreatorField(parsed.data.id, {
+      status: parsed.data.status,
+      is_active: parsed.data.status === "active",
+      last_activity_at: new Date().toISOString(),
+    });
+  } catch (error) {
+    console.error("[updateStatus]", error);
     return { success: false, error: t("save") };
   }
 }
@@ -212,58 +235,10 @@ export async function updateManager(
 
     return updateCreatorField(parsed.data.id, {
       manager_id: parsed.data.manager_id,
+      last_activity_at: new Date().toISOString(),
     });
   } catch (error) {
     console.error("[updateManager]", error);
-    return { success: false, error: t("save") };
-  }
-}
-
-export async function updateStatus(
-  formData: FormData,
-): Promise<CreatorActionResult> {
-  const t = await getTranslations("admin.creators.actionErrors");
-
-  try {
-    const parsed = updateStatusSchema.safeParse({
-      id: formData.get("id"),
-      status: formData.get("status"),
-    });
-
-    if (!parsed.success) {
-      return { success: false, error: t("invalidStatus") };
-    }
-
-    return updateCreatorField(parsed.data.id, {
-      status: parsed.data.status,
-      is_active: parsed.data.status === "active",
-    });
-  } catch (error) {
-    console.error("[updateStatus]", error);
-    return { success: false, error: t("save") };
-  }
-}
-
-export async function updatePlatforms(
-  raw: unknown,
-): Promise<CreatorActionResult> {
-  const t = await getTranslations("admin.creators.actionErrors");
-
-  try {
-    const parsed = updatePlatformsSchema.safeParse(raw);
-    if (!parsed.success) {
-      return { success: false, error: t("invalid") };
-    }
-
-    const accounts = parsed.data.platform_accounts as CreatorPlatformAccounts;
-    const platforms = platformsFromAccounts(accounts);
-
-    return updateCreatorField(parsed.data.id, {
-      platform_accounts: accounts as Json,
-      platforms,
-    });
-  } catch (error) {
-    console.error("[updatePlatforms]", error);
     return { success: false, error: t("save") };
   }
 }
@@ -283,7 +258,10 @@ export async function updateNotes(
       return { success: false, error: t("invalidNotes") };
     }
 
-    return updateCreatorField(parsed.data.id, { notes: parsed.data.notes });
+    return updateCreatorField(parsed.data.id, {
+      notes: parsed.data.notes,
+      last_activity_at: new Date().toISOString(),
+    });
   } catch (error) {
     console.error("[updateNotes]", error);
     return { success: false, error: t("save") };
@@ -291,26 +269,36 @@ export async function updateNotes(
 }
 
 /** @deprecated Prefer updateManager */
-export async function assignManager(formData: FormData) {
+export async function assignManager(
+  formData: FormData,
+): Promise<CreatorActionResult> {
   return updateManager(formData);
 }
 
-/** @deprecated Prefer updateProfile */
-export async function updateCreator(raw: unknown) {
-  return updateProfile(raw);
-}
-
-/** Placeholder avatar URL save via profile update. */
+/** Optional avatar URL update (storage upload arrives later). */
 export async function uploadAvatar(
   formData: FormData,
 ): Promise<CreatorActionResult> {
   const t = await getTranslations("admin.creators.actionErrors");
-  const id = String(formData.get("id") ?? "");
-  const avatar_url = String(formData.get("avatar_url") ?? "").trim() || null;
 
-  if (!id) {
-    return { success: false, error: t("invalid") };
+  try {
+    const id = String(formData.get("id") ?? "");
+    const avatar_url = String(formData.get("avatar_url") ?? "").trim() || null;
+
+    if (!id) {
+      return { success: false, error: t("invalid") };
+    }
+
+    if (!avatar_url) {
+      return { success: false, error: t("avatarNotReady") };
+    }
+
+    return updateCreatorField(id, {
+      avatar_url,
+      last_activity_at: new Date().toISOString(),
+    });
+  } catch (error) {
+    console.error("[uploadAvatar]", error);
+    return { success: false, error: t("avatarNotReady") };
   }
-
-  return updateCreatorField(id, { avatar_url });
 }

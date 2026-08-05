@@ -530,11 +530,13 @@
       },
       "stats": {
         "total": "Łącznie twórców",
-        "active": "Aktywni",
+        "active": "Aktywni twórcy",
         "vacation": "Urlop",
         "inactive": "Nieaktywni",
         "revenueCurrent": "Bieżący przychód",
-        "revenueAverage": "Średni przychód"
+        "revenueAverage": "Średni przychód",
+        "currentRevenue": "Przychód bieżący",
+        "averageRevenue": "Średni przychód"
       },
       "sections": {
         "profile": "Profil",
@@ -543,7 +545,8 @@
         "revenue": "Przychód",
         "manager": "Manager",
         "notes": "Notatki wewnętrzne",
-        "timeline": "Oś czasu"
+        "timeline": "Oś czasu",
+        "status": "Status"
       }
     },
     "dashboard": {

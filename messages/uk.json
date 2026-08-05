@@ -411,7 +411,7 @@
       },
       "filters": {
         "search": "Пошук",
-        "searchPlaceholder": "Ім'я, email, telegram",
+        "searchPlaceholder": "Імʼя, email, telegram",
         "status": "Статус",
         "manager": "Менеджер",
         "country": "Країна",
@@ -425,7 +425,7 @@
         "newest": "Спочатку нові",
         "oldest": "Спочатку старі",
         "name": "Ім'я А–Я",
-        "revenue": "Дохід"
+        "revenue": "Виручка"
       },
       "table": {
         "avatar": "Аватар",
@@ -436,8 +436,8 @@
         "manager": "Менеджер",
         "status": "Статус",
         "actions": "Дії",
-        "revenue": "Дохід",
-        "lastActivity": "Остання активність"
+        "revenue": "Виручка",
+        "lastActivity": "Активність"
       },
       "pagination": {
         "previous": "Назад",
@@ -474,8 +474,8 @@
         "created": "Створено",
         "updated": "Оновлено",
         "avatarUrl": "URL аватара",
-        "displayName": "Відображуване ім'я",
-        "legalName": "Юридичне ім'я",
+        "displayName": "Відображуване імʼя",
+        "legalName": "Юридичне імʼя",
         "birthday": "День народження",
         "phone": "Телефон",
         "timezone": "Часовий пояс",
@@ -531,19 +531,22 @@
       "stats": {
         "total": "Усього креаторів",
         "active": "Активні",
-        "vacation": "У відпустці",
+        "vacation": "Відпустка",
         "inactive": "Неактивні",
         "revenueCurrent": "Поточний дохід",
-        "revenueAverage": "Середній дохід"
+        "revenueAverage": "Середній дохід",
+        "currentRevenue": "Виручка за місяць",
+        "averageRevenue": "Середня виручка"
       },
       "sections": {
         "profile": "Профіль",
         "contacts": "Контакти",
         "platforms": "Платформи",
-        "revenue": "Дохід",
+        "revenue": "Виручка",
         "manager": "Менеджер",
         "notes": "Внутрішні нотатки",
-        "timeline": "Таймлайн"
+        "timeline": "Таймлайн",
+        "status": "Статус"
       }
     },
     "dashboard": {
@@ -597,18 +600,18 @@
       },
       "newestCreators": {
         "title": "Нові креатори",
-        "empty": "Поки немає креаторів.",
-        "viewAll": "Дивитися всі"
+        "empty": "Креаторів ще немає.",
+        "viewAll": "Усі"
       },
       "topRevenueCreators": {
-        "title": "Топ за доходом",
-        "empty": "Поки немає даних про дохід.",
-        "viewAll": "Дивитися всі"
+        "title": "Топ за виручкою",
+        "empty": "Даних про виручку ще немає.",
+        "viewAll": "Усі"
       },
       "latestRegistrations": {
         "title": "Останні реєстрації",
-        "empty": "Поки немає реєстрацій.",
-        "viewAll": "Дивитися всі",
+        "empty": "Реєстрацій ще немає.",
+        "viewAll": "Усі",
         "name": "Ім'я",
         "email": "Email",
         "registered": "Зареєстровано",

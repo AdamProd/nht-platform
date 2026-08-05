@@ -71,8 +71,8 @@ export default async function AdminCreatorsPage({
       active: 0,
       vacation: 0,
       inactive: 0,
-      revenueCurrent: 0,
-      revenueAverage: 0,
+      currentRevenue: 0,
+      averageRevenue: 0,
     };
     managers = [];
   }
@@ -116,11 +116,9 @@ export default async function AdminCreatorsPage({
             displayName: t("fields.displayName"),
             email: t("fields.email"),
             telegram: t("fields.telegram"),
-            phone: t("fields.phone"),
             country: t("fields.country"),
             languages: t("fields.languages"),
             languagesPlaceholder: t("fields.languagesPlaceholder"),
-            platforms: t("fields.platforms"),
             manager: t("fields.manager"),
             status: t("fields.status"),
             notes: t("fields.notes"),
@@ -131,7 +129,6 @@ export default async function AdminCreatorsPage({
             created: t("toast.created"),
           }}
           statusLabels={statusLabels}
-          platformLabels={platformLabels}
         />
       </div>
 
@@ -144,8 +141,8 @@ export default async function AdminCreatorsPage({
             active: t("stats.active"),
             vacation: t("stats.vacation"),
             inactive: t("stats.inactive"),
-            revenueCurrent: t("stats.revenueCurrent"),
-            revenueAverage: t("stats.revenueAverage"),
+            currentRevenue: t("stats.currentRevenue"),
+            averageRevenue: t("stats.averageRevenue"),
           }}
         />
       ) : null}
@@ -174,7 +171,6 @@ export default async function AdminCreatorsPage({
           sortOldest: t("sort.oldest"),
           sortName: t("sort.name"),
           sortRevenue: t("sort.revenue"),
-          unassigned: t("unassigned"),
         }}
         statusLabels={statusLabels}
         platformLabels={platformLabels}

@@ -425,7 +425,7 @@
         "newest": "Plus récents",
         "oldest": "Plus anciens",
         "name": "Nom A–Z",
-        "revenue": "Revenu"
+        "revenue": "Revenus"
       },
       "table": {
         "avatar": "Avatar",
@@ -436,7 +436,7 @@
         "manager": "Manager",
         "status": "Statut",
         "actions": "Actions",
-        "revenue": "Revenu",
+        "revenue": "Revenus",
         "lastActivity": "Dernière activité"
       },
       "pagination": {
@@ -530,20 +530,23 @@
       },
       "stats": {
         "total": "Total créateurs",
-        "active": "Actifs",
+        "active": "Créateurs actifs",
         "vacation": "Vacances",
         "inactive": "Inactifs",
         "revenueCurrent": "Revenu actuel",
-        "revenueAverage": "Revenu moyen"
+        "revenueAverage": "Revenu moyen",
+        "currentRevenue": "Revenus du mois",
+        "averageRevenue": "Revenu moyen"
       },
       "sections": {
         "profile": "Profil",
         "contacts": "Contacts",
         "platforms": "Plateformes",
-        "revenue": "Revenu",
+        "revenue": "Revenus",
         "manager": "Manager",
         "notes": "Notes internes",
-        "timeline": "Chronologie"
+        "timeline": "Chronologie",
+        "status": "Statut"
       }
     },
     "dashboard": {
@@ -611,7 +614,7 @@
         "viewAll": "Tout voir",
         "name": "Nom",
         "email": "E-mail",
-        "registered": "Inscrit",
+        "registered": "Inscrit le",
         "status": "Statut"
       }
     },

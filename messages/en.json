@@ -396,7 +396,7 @@
     "creators": {
       "label": "Roster",
       "title": "Creators",
-      "description": "Manage creator profiles, platforms, revenue, and assignment.",
+      "description": "Manage creator profiles, assignment, and status.",
       "detailLabel": "Creator",
       "create": "Create Creator",
       "unassigned": "Unassigned",
@@ -427,12 +427,13 @@
       },
       "table": {
         "avatar": "Avatar",
-        "name": "Display name",
+        "name": "Name",
         "email": "Email",
         "country": "Country",
         "platforms": "Platforms",
         "manager": "Manager",
         "status": "Status",
+        "created": "Created",
         "actions": "Actions",
         "revenue": "Revenue",
         "lastActivity": "Last activity"
@@ -453,12 +454,17 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Multiple",
+        "emerging": "Emerging",
+        "other": "Other",
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
         "twitter": "Twitter/X"
       },
       "fields": {
+        "fullName": "Full name",
         "email": "Email",
         "telegram": "Telegram",
         "country": "Country",
@@ -475,14 +481,13 @@
         "displayName": "Display name",
         "legalName": "Legal name",
         "birthday": "Birthday",
-        "phone": "Phone",
         "timezone": "Timezone",
-        "lastLogin": "Last login",
-        "lastActivity": "Last activity",
+        "phone": "Phone",
         "revenueCurrent": "Current month",
         "revenuePrevious": "Previous month",
         "revenueLifetime": "Lifetime",
-        "payouts": "Payouts"
+        "lastLogin": "Last login",
+        "lastActivity": "Last activity"
       },
       "form": {
         "title": "Create creator",
@@ -528,11 +533,11 @@
       },
       "stats": {
         "total": "Total creators",
-        "active": "Active",
+        "active": "Active creators",
         "vacation": "Vacation",
         "inactive": "Inactive",
-        "revenueCurrent": "Current revenue",
-        "revenueAverage": "Average revenue"
+        "currentRevenue": "Current revenue",
+        "averageRevenue": "Average revenue"
       },
       "sections": {
         "profile": "Profile",
@@ -540,6 +545,7 @@
         "platforms": "Platforms",
         "revenue": "Revenue",
         "manager": "Manager",
+        "status": "Status",
         "notes": "Internal notes",
         "timeline": "Timeline"
       }
@@ -607,10 +613,7 @@
         "title": "Latest registrations",
         "empty": "No registrations yet.",
         "viewAll": "View all",
-        "name": "Name",
-        "email": "Email",
-        "registered": "Registered",
-        "status": "Status"
+        "registered": "Registered"
       }
     },
     "navLabel": "Admin navigation",

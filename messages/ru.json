@@ -398,7 +398,7 @@
     "creators": {
       "label": "Ростер",
       "title": "Креаторы",
-      "description": "Управление профилями, платформами, доходом и назначением креаторов.",
+      "description": "Управление профилями креаторов, назначением и статусом.",
       "detailLabel": "Креатор",
       "create": "Создать креатора",
       "unassigned": "Не назначен",
@@ -425,19 +425,20 @@
         "newest": "Сначала новые",
         "oldest": "Сначала старые",
         "name": "Имя А–Я",
-        "revenue": "Доход"
+        "revenue": "Выручка"
       },
       "table": {
         "avatar": "Аватар",
-        "name": "Отображаемое имя",
+        "name": "Имя",
         "email": "Email",
         "country": "Страна",
         "platforms": "Платформы",
         "manager": "Менеджер",
         "status": "Статус",
+        "created": "Создан",
         "actions": "Действия",
-        "revenue": "Доход",
-        "lastActivity": "Последняя активность"
+        "revenue": "Выручка",
+        "lastActivity": "Активность"
       },
       "pagination": {
         "previous": "Назад",
@@ -455,12 +456,17 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "multiple": "Несколько",
+        "emerging": "Новая площадка",
+        "other": "Другое",
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
         "twitter": "Twitter/X"
       },
       "fields": {
+        "fullName": "Полное имя",
         "email": "Email",
         "telegram": "Telegram",
         "country": "Страна",
@@ -477,14 +483,13 @@
         "displayName": "Отображаемое имя",
         "legalName": "Юридическое имя",
         "birthday": "День рождения",
-        "phone": "Телефон",
         "timezone": "Часовой пояс",
-        "lastLogin": "Последний вход",
-        "lastActivity": "Последняя активность",
+        "phone": "Телефон",
         "revenueCurrent": "Текущий месяц",
         "revenuePrevious": "Прошлый месяц",
         "revenueLifetime": "За всё время",
-        "payouts": "Выплаты"
+        "lastLogin": "Последний вход",
+        "lastActivity": "Последняя активность"
       },
       "form": {
         "title": "Новый креатор",
@@ -531,17 +536,18 @@
       "stats": {
         "total": "Всего креаторов",
         "active": "Активные",
-        "vacation": "В отпуске",
+        "vacation": "Отпуск",
         "inactive": "Неактивные",
-        "revenueCurrent": "Текущий доход",
-        "revenueAverage": "Средний доход"
+        "currentRevenue": "Выручка за месяц",
+        "averageRevenue": "Средняя выручка"
       },
       "sections": {
         "profile": "Профиль",
         "contacts": "Контакты",
         "platforms": "Платформы",
-        "revenue": "Доход",
+        "revenue": "Выручка",
         "manager": "Менеджер",
+        "status": "Статус",
         "notes": "Внутренние заметки",
         "timeline": "Таймлайн"
       }
@@ -592,27 +598,24 @@
       },
       "recentCreators": {
         "title": "Недавние креаторы",
-        "empty": "Пока нет креаторов.",
-        "viewAll": "Смотреть все"
+        "empty": "Креаторов пока нет.",
+        "viewAll": "Все"
       },
       "newestCreators": {
         "title": "Новые креаторы",
-        "empty": "Пока нет креаторов.",
-        "viewAll": "Смотреть все"
+        "empty": "Креаторов пока нет.",
+        "viewAll": "Все"
       },
       "topRevenueCreators": {
-        "title": "Топ по доходу",
-        "empty": "Пока нет данных о доходе.",
-        "viewAll": "Смотреть все"
+        "title": "Топ по выручке",
+        "empty": "Данных по выручке пока нет.",
+        "viewAll": "Все"
       },
       "latestRegistrations": {
         "title": "Последние регистрации",
-        "empty": "Пока нет регистраций.",
-        "viewAll": "Смотреть все",
-        "name": "Имя",
-        "email": "Email",
-        "registered": "Зарегистрирован",
-        "status": "Статус"
+        "empty": "Регистраций пока нет.",
+        "viewAll": "Все",
+        "registered": "Зарегистрирован"
       }
     },
     "navLabel": "Навигация админки",

@@ -2,7 +2,7 @@ import { Link } from "@/i18n/navigation";
 import type { CreatorListItem } from "@/features/creators/types";
 import CreatorStatusBadge from "@/features/creators/components/CreatorStatusBadge";
 import {
-  displayNameOf,
+  displayName,
   formatList,
   formatMoney,
   initials,
@@ -10,20 +10,18 @@ import {
 
 type CreatorCardProps = {
   creator: CreatorListItem;
-  locale?: string;
   statusLabel: string;
   unassigned: string;
-  showRevenue?: boolean;
+  locale: string;
 };
 
 export default function CreatorCard({
   creator,
-  locale = "en",
   statusLabel,
   unassigned,
-  showRevenue = false,
+  locale,
 }: CreatorCardProps) {
-  const name = displayNameOf(creator);
+  const name = displayName(creator);
 
   return (
     <Link
@@ -51,10 +49,9 @@ export default function CreatorCard({
           {creator.email}
         </p>
         <p className="mt-1 truncate text-xs text-[var(--nht-text-tertiary)]">
-          {showRevenue
-            ? formatMoney(creator.revenue_current_month, locale)
-            : formatList(creator.platforms)}{" "}
-          · {creator.manager?.full_name ?? unassigned}
+          {formatMoney(creator.revenue_current_month, locale)} ·{" "}
+          {formatList(creator.platforms)} ·{" "}
+          {creator.manager?.full_name ?? unassigned}
         </p>
       </div>
     </Link>

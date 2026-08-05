@@ -2,7 +2,7 @@ import { Link } from "@/i18n/navigation";
 import type { CreatorListItem } from "@/features/creators/types";
 import CreatorStatusBadge from "@/features/creators/components/CreatorStatusBadge";
 import {
-  displayNameOf,
+  displayName,
   formatDateTime,
   formatList,
   formatMoney,
@@ -87,7 +87,7 @@ export default function CreatorTable({
         </thead>
         <tbody>
           {items.map((item) => {
-            const name = displayNameOf(item);
+            const name = displayName(item);
             return (
               <tr
                 key={item.id}
