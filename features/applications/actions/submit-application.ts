@@ -6,6 +6,7 @@ import {
   type ApplicationFormInput,
 } from "@/features/applications/schemas/application.schema";
 import { notifyNewApplication } from "@/services";
+import { publishEvent } from "@/features/events";
 
 export type SubmitApplicationResult =
   | { success: true; id: string }
@@ -95,6 +96,20 @@ export async function submitApplication(
         telegramError,
       );
     }
+
+    await publishEvent({
+      type: "application.created",
+      module: "applications",
+      targetId: data.id,
+      entityType: "application",
+      link: `/admin/applications/${data.id}`,
+      payload: {
+        name,
+        email,
+        platform,
+        locale,
+      },
+    });
 
     return { success: true, id: data.id };
   } catch (err) {

@@ -32,6 +32,8 @@ import {
   visiblePlatformAccounts,
   withCreatorBiography,
 } from "@/features/creators/lib/avatar";
+import { publishEvent } from "@/features/events";
+import type { PlatformEventType } from "@/features/events/types";
 
 async function revalidateCreator(id?: string) {
   const locale = await getLocale();
@@ -75,6 +77,10 @@ async function assertCreatorAccess(
 async function updateCreatorField(
   id: string,
   patch: TablesUpdate<"creators">,
+  options?: {
+    event: PlatformEventType;
+    payload?: Record<string, unknown>;
+  },
 ): Promise<CreatorActionResult> {
   const t = await getTranslations("admin.creators.actionErrors");
 
@@ -82,12 +88,49 @@ async function updateCreatorField(
     const denied = await assertCreatorAccess(id);
     if (denied) return denied;
 
+    const session = await requireStaffSession();
+    if (!session) {
+      return { success: false, error: t("unauthorized") };
+    }
+
     const supabase = await createClient();
+    const { data: current } = await supabase
+      .from("creators")
+      .select("id, display_name, status, manager_id")
+      .eq("id", id)
+      .maybeSingle();
+
     const { error } = await supabase.from("creators").update(patch).eq("id", id);
 
     if (error) {
       console.error("[updateCreatorField]", error.message);
       return { success: false, error: t("save") };
+    }
+
+    if (options?.event) {
+      const managerId =
+        patch.manager_id !== undefined
+          ? patch.manager_id
+          : current?.manager_id;
+
+      await publishEvent({
+        type: options.event,
+        module: "creators",
+        actorId: session.profile.id,
+        actorRole: session.profile.role,
+        targetId: id,
+        entityType: "creator",
+        relatedCreatorId: id,
+        link: `/admin/creators/${id}`,
+        payload: {
+          name: patch.display_name ?? current?.display_name,
+          status: patch.status ?? current?.status,
+          previousStatus: current?.status,
+          managerId,
+          manager_id: managerId,
+          ...options.payload,
+        },
+      });
     }
 
     await revalidateCreator(id);
@@ -230,6 +273,42 @@ export async function createCreator(
       if (error) console.warn("[createCreator.audit]", error.message);
     });
 
+    await publishEvent({
+      type: "creator.created",
+      module: "creators",
+      actorId: session.profile.id,
+      actorRole: session.profile.role,
+      targetId: creator.id,
+      entityType: "creator",
+      relatedCreatorId: creator.id,
+      link: `/admin/creators/${creator.id}`,
+      payload: {
+        name: parsed.data.display_name,
+        email: parsed.data.email,
+        managerId,
+        manager_id: managerId,
+        platforms: parsed.data.platforms,
+      },
+    });
+
+    if (managerId) {
+      await publishEvent({
+        type: "creator.assigned",
+        module: "creators",
+        actorId: session.profile.id,
+        actorRole: session.profile.role,
+        targetId: creator.id,
+        entityType: "creator",
+        relatedCreatorId: creator.id,
+        link: `/admin/creators/${creator.id}`,
+        payload: {
+          name: parsed.data.display_name,
+          managerId,
+          manager_id: managerId,
+        },
+      });
+    }
+
     await revalidateCreator(creator.id);
     return { success: true, id: creator.id };
   } catch (error) {
@@ -267,12 +346,16 @@ export async function updateProfile(
       biography,
     );
 
-    return updateCreatorField(id, {
-      ...fields,
-      full_name: fields.display_name,
-      platform_accounts,
-      last_activity_at: new Date().toISOString(),
-    });
+    return updateCreatorField(
+      id,
+      {
+        ...fields,
+        full_name: fields.display_name,
+        platform_accounts,
+        last_activity_at: new Date().toISOString(),
+      },
+      { event: "creator.updated" },
+    );
   } catch (error) {
     console.error("[updateProfile]", error);
     return { success: false, error: t("save") };
@@ -320,11 +403,24 @@ export async function updatePlatforms(
 
     const platform_accounts = withCreatorBiography(accounts, biography);
 
-    return updateCreatorField(id, {
-      platform_accounts,
-      platforms: Object.keys(visiblePlatformAccounts(platform_accounts)),
-      last_activity_at: new Date().toISOString(),
-    });
+    const previousKeys = Object.keys(
+      visiblePlatformAccounts(current?.platform_accounts),
+    );
+    const nextKeys = Object.keys(visiblePlatformAccounts(platform_accounts));
+    const added = nextKeys.filter((key) => !previousKeys.includes(key));
+
+    return updateCreatorField(
+      id,
+      {
+        platform_accounts,
+        platforms: nextKeys,
+        last_activity_at: new Date().toISOString(),
+      },
+      {
+        event: added.length > 0 ? "creator.platform_added" : "creator.updated",
+        payload: { platforms: nextKeys, added },
+      },
+    );
   } catch (error) {
     console.error("[updatePlatforms]", error);
     return { success: false, error: t("save") };
@@ -346,11 +442,18 @@ export async function updateStatus(
       return { success: false, error: t("invalidStatus") };
     }
 
-    return updateCreatorField(parsed.data.id, {
-      status: parsed.data.status,
-      is_active: parsed.data.status === "active",
-      last_activity_at: new Date().toISOString(),
-    });
+    return updateCreatorField(
+      parsed.data.id,
+      {
+        status: parsed.data.status,
+        is_active: parsed.data.status === "active",
+        last_activity_at: new Date().toISOString(),
+      },
+      {
+        event: "creator.status_changed",
+        payload: { status: parsed.data.status },
+      },
+    );
   } catch (error) {
     console.error("[updateStatus]", error);
     return { success: false, error: t("save") };
@@ -382,10 +485,20 @@ export async function updateManager(
       return { success: false, error: t("invalidManager") };
     }
 
-    return updateCreatorField(parsed.data.id, {
-      manager_id: parsed.data.manager_id,
-      last_activity_at: new Date().toISOString(),
-    });
+    return updateCreatorField(
+      parsed.data.id,
+      {
+        manager_id: parsed.data.manager_id,
+        last_activity_at: new Date().toISOString(),
+      },
+      {
+        event: "creator.assigned",
+        payload: {
+          managerId: parsed.data.manager_id,
+          manager_id: parsed.data.manager_id,
+        },
+      },
+    );
   } catch (error) {
     console.error("[updateManager]", error);
     return { success: false, error: t("save") };
@@ -407,10 +520,14 @@ export async function updateNotes(
       return { success: false, error: t("invalidNotes") };
     }
 
-    return updateCreatorField(parsed.data.id, {
-      notes: parsed.data.notes,
-      last_activity_at: new Date().toISOString(),
-    });
+    return updateCreatorField(
+      parsed.data.id,
+      {
+        notes: parsed.data.notes,
+        last_activity_at: new Date().toISOString(),
+      },
+      { event: "creator.updated" },
+    );
   } catch (error) {
     console.error("[updateNotes]", error);
     return { success: false, error: t("save") };
@@ -476,10 +593,14 @@ export async function uploadAvatar(
       await admin.storage.from(CREATOR_AVATAR_BUCKET).remove([previous]);
     }
 
-    return updateCreatorField(id, {
-      avatar_url: path,
-      last_activity_at: new Date().toISOString(),
-    });
+    return updateCreatorField(
+      id,
+      {
+        avatar_url: path,
+        last_activity_at: new Date().toISOString(),
+      },
+      { event: "creator.avatar_changed", payload: { action: "upload" } },
+    );
   } catch (error) {
     console.error("[uploadAvatar]", error);
     return { success: false, error: t("avatarUpload") };
@@ -513,10 +634,14 @@ export async function deleteAvatar(
       await admin.storage.from(CREATOR_AVATAR_BUCKET).remove([previous]);
     }
 
-    return updateCreatorField(id, {
-      avatar_url: null,
-      last_activity_at: new Date().toISOString(),
-    });
+    return updateCreatorField(
+      id,
+      {
+        avatar_url: null,
+        last_activity_at: new Date().toISOString(),
+      },
+      { event: "creator.avatar_changed", payload: { action: "delete" } },
+    );
   } catch (error) {
     console.error("[deleteAvatar]", error);
     return { success: false, error: t("save") };

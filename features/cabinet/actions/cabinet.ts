@@ -18,7 +18,7 @@ import {
   creatorDocumentPath,
 } from "@/features/cabinet/lib/storage";
 import type { CabinetActionResult } from "@/features/cabinet/types";
-import { platformsFromUrls } from "@/features/creators/schemas/creator.schema";
+import { publishEvent } from "@/features/events";
 
 async function revalidateCreatorPages() {
   const locale = await getLocale();
@@ -43,12 +43,16 @@ export async function updateCreatorProfile(
   const parsed = updateCreatorProfileSchema.safeParse(raw);
   if (!parsed.success) return { success: false, error: t("invalid") };
 
-  const supabase = await createClient();
-  const { error } = await supabase
+  const { biography: _biography, ...fields } = parsed.data;
+  void _biography;
+
+  const { createAdminClient } = await import("@/lib/supabase/admin");
+  const admin = createAdminClient();
+  const { error } = await admin
     .from("creators")
     .update({
-      ...parsed.data,
-      full_name: parsed.data.display_name,
+      ...fields,
+      full_name: fields.display_name,
       last_activity_at: new Date().toISOString(),
     })
     .eq("id", session.creator.id);
@@ -57,6 +61,22 @@ export async function updateCreatorProfile(
     console.error("[updateCreatorProfile]", error.message);
     return { success: false, error: t("save") };
   }
+
+  await publishEvent({
+    type: "creator.profile_updated",
+    module: "cabinet",
+    actorId: session.profile.id,
+    actorRole: session.profile.role,
+    targetId: session.creator.id,
+    entityType: "creator",
+    relatedCreatorId: session.creator.id,
+    link: `/admin/creators/${session.creator.id}`,
+    payload: {
+      name: fields.display_name ?? session.creator.display_name,
+      managerId: session.creator.manager_id,
+      manager_id: session.creator.manager_id,
+    },
+  });
 
   await revalidateCreatorPages();
   return { success: true };
@@ -72,61 +92,48 @@ export async function updatePlatformAccount(
   const parsed = updatePlatformAccountSchema.safeParse(raw);
   if (!parsed.success) return { success: false, error: t("invalid") };
 
-  const supabase = await createClient();
-  const { error } = await supabase.from("creator_platform_accounts").upsert(
-    {
-      creator_id: session.creator.id,
-      platform: parsed.data.platform,
-      username: parsed.data.username,
-      profile_url: parsed.data.profile_url,
-      status: parsed.data.status,
-      updated_at: new Date().toISOString(),
-    },
-    { onConflict: "creator_id,platform" },
-  );
+  const { createAdminClient } = await import("@/lib/supabase/admin");
+  const admin = createAdminClient();
+
+  const existing =
+    (session.creator.platform_accounts as Record<string, string> | null) ?? {};
+  const nextAccounts = { ...existing };
+  const value = parsed.data.profile_url || parsed.data.username;
+  const hadPlatform = Boolean(existing[parsed.data.platform]);
+  if (value) nextAccounts[parsed.data.platform] = value;
+  else delete nextAccounts[parsed.data.platform];
+
+  const { error } = await admin
+    .from("creators")
+    .update({
+      platform_accounts: nextAccounts,
+      platforms: Object.keys(nextAccounts),
+      last_activity_at: new Date().toISOString(),
+    })
+    .eq("id", session.creator.id);
 
   if (error) {
     console.error("[updatePlatformAccount]", error.message);
     return { success: false, error: t("save") };
   }
 
-  // Keep legacy URL columns in sync when URL present
-  const urlFieldMap = {
-    onlyfans: "onlyfans_url",
-    fansly: "fansly_url",
-    instagram: "instagram_url",
-    tiktok: "tiktok_url",
-    twitter: "twitter_url",
-    chaturbate: "chaturbate_url",
-  } as const;
-  const urlField = urlFieldMap[parsed.data.platform];
-
-  const { data: creator } = await supabase
-    .from("creators")
-    .select(
-      "onlyfans_url, fansly_url, chaturbate_url, instagram_url, tiktok_url, twitter_url",
-    )
-    .eq("id", session.creator.id)
-    .maybeSingle();
-
-  const urls = {
-    onlyfans_url: creator?.onlyfans_url ?? null,
-    fansly_url: creator?.fansly_url ?? null,
-    chaturbate_url: creator?.chaturbate_url ?? null,
-    instagram_url: creator?.instagram_url ?? null,
-    tiktok_url: creator?.tiktok_url ?? null,
-    twitter_url: creator?.twitter_url ?? null,
-    [urlField]: parsed.data.profile_url,
-  };
-
-  await supabase
-    .from("creators")
-    .update({
-      ...urls,
-      platforms: platformsFromUrls(urls),
-      last_activity_at: new Date().toISOString(),
-    })
-    .eq("id", session.creator.id);
+  const added = Boolean(value) && !hadPlatform;
+  await publishEvent({
+    type: added ? "creator.platform_added" : "creator.profile_updated",
+    module: "cabinet",
+    actorId: session.profile.id,
+    actorRole: session.profile.role,
+    targetId: session.creator.id,
+    entityType: "creator",
+    relatedCreatorId: session.creator.id,
+    link: `/admin/creators/${session.creator.id}`,
+    payload: {
+      name: session.creator.display_name,
+      platform: parsed.data.platform,
+      managerId: session.creator.manager_id,
+      manager_id: session.creator.manager_id,
+    },
+  });
 
   await revalidateCreatorPages();
   return { success: true };
@@ -142,29 +149,10 @@ export async function completeTask(
   const parsed = completeTaskSchema.safeParse({ id: formData.get("id") });
   if (!parsed.success) return { success: false, error: t("invalid") };
 
-  const supabase = await createClient();
-  const { error } = await supabase
-    .from("creator_tasks")
-    .update({
-      status: "completed",
-      completed_at: new Date().toISOString(),
-    })
-    .eq("id", parsed.data.id)
-    .eq("creator_id", session.creator.id);
-
-  if (error) {
-    console.error("[completeTask]", error.message);
-    return { success: false, error: t("save") };
-  }
-
-  await supabase.from("creator_activity").insert({
-    creator_id: session.creator.id,
-    kind: "task",
-    title: "Task completed",
-  });
-
-  await revalidateCreatorPages();
-  return { success: true };
+  // creator_tasks is not on the live schema
+  void parsed;
+  void session;
+  return { success: false, error: t("save") };
 }
 
 export async function uploadDocument(
@@ -219,6 +207,24 @@ export async function uploadDocument(
     console.error("[uploadDocument.meta]", error.message);
     return { success: false, error: t("save") };
   }
+
+  await publishEvent({
+    type: "creator.document_uploaded",
+    module: "cabinet",
+    actorId: session.profile.id,
+    actorRole: session.profile.role,
+    targetId: session.creator.id,
+    entityType: "creator",
+    relatedCreatorId: session.creator.id,
+    link: `/admin/creators/${session.creator.id}`,
+    payload: {
+      name: session.creator.display_name,
+      docType: parsed.data.doc_type,
+      fileName: file.name,
+      managerId: session.creator.manager_id,
+      manager_id: session.creator.manager_id,
+    },
+  });
 
   await revalidateCreatorPages();
   return { success: true };

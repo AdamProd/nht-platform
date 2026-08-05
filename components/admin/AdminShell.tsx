@@ -1,13 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import AdminHeader from "@/components/admin/AdminHeader";
+import type { NotificationRow } from "@/features/events/types";
 
 type AdminShellProps = {
   userName: string;
   userRole: string;
   userEmail?: string | null;
+  unreadCount: number;
+  recentNotifications: NotificationRow[];
   children: React.ReactNode;
 };
 
@@ -15,8 +19,11 @@ export default function AdminShell({
   userName,
   userRole,
   userEmail,
+  unreadCount,
+  recentNotifications,
   children,
 }: AdminShellProps) {
+  const t = useTranslations("admin");
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -29,7 +36,7 @@ export default function AdminShell({
       {mobileOpen ? (
         <button
           type="button"
-          aria-label="Close menu overlay"
+          aria-label={t("closeOverlay")}
           className="fixed inset-0 z-40 bg-black/60 lg:hidden"
           onClick={() => setMobileOpen(false)}
         />
@@ -42,6 +49,8 @@ export default function AdminShell({
           userEmail={userEmail}
           menuOpen={mobileOpen}
           onMenuOpen={() => setMobileOpen(true)}
+          unreadCount={unreadCount}
+          recentNotifications={recentNotifications}
         />
         <main
           id="admin-main"

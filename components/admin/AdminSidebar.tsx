@@ -16,6 +16,7 @@ export default function AdminSidebar({
   const t = useTranslations("admin.nav");
   const tAdmin = useTranslations("admin");
   const pathname = usePathname();
+  const sidebarTitle = tAdmin("sidebarTitle");
 
   const renderNav = (interactive: boolean) => (
     <nav aria-label={tAdmin("navLabel")} className="flex flex-1 flex-col gap-1 px-3 py-4">
@@ -46,7 +47,7 @@ export default function AdminSidebar({
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-white/[0.06] bg-[var(--nht-black-elevated)] lg:flex">
         <div className="flex h-16 items-center border-b border-white/[0.06] px-5">
           <Link href="/admin" className="text-overline text-[var(--nht-gold)]">
-            NHT Admin
+            {sidebarTitle}
           </Link>
         </div>
         {renderNav(true)}
@@ -69,7 +70,7 @@ export default function AdminSidebar({
             tabIndex={mobileOpen ? 0 : -1}
             className="text-overline text-[var(--nht-gold)]"
           >
-            NHT Admin
+            {sidebarTitle}
           </Link>
           <button
             type="button"

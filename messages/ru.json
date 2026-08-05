@@ -285,7 +285,9 @@
       "blog": "Блог",
       "analytics": "Аналитика",
       "settings": "Настройки",
-      "finance": "Финансы"
+      "finance": "Финансы",
+      "notifications": "Уведомления",
+      "activity": "Активность"
     },
     "pages": {
       "dashboard": {
@@ -322,6 +324,16 @@
         "label": "Финансы",
         "title": "Финансы",
         "description": "Учёт доходов и выплат."
+      },
+      "notifications": {
+        "label": "Входящие",
+        "title": "Уведомления",
+        "description": "Обновления из событий платформы."
+      },
+      "activity": {
+        "label": "Аудит",
+        "title": "Журнал активности",
+        "description": "Лента событий по заявкам, креаторам и сотрудникам."
       }
     },
     "applications": {
@@ -962,6 +974,83 @@
         "delete": "Unable to delete transaction.",
         "ownerOnly": "Only the owner can delete transactions."
       }
+    },
+    "notifications": {
+      "label": "Входящие",
+      "title": "Уведомления",
+      "description": "Обновления из событий платформы.",
+      "bellTitle": "Уведомления",
+      "empty": "Пока нет уведомлений.",
+      "viewAll": "Смотреть все",
+      "unreadBadge": "Непрочитано",
+      "filters": {
+        "search": "Поиск",
+        "searchPlaceholder": "Поиск по заголовку или тексту",
+        "status": "Статус",
+        "all": "Все",
+        "unread": "Непрочитанные",
+        "read": "Прочитанные",
+        "archived": "Архив",
+        "apply": "Применить",
+        "clear": "Сбросить"
+      },
+      "actions": {
+        "markRead": "Прочитано",
+        "markAll": "Прочитать все",
+        "archive": "В архив",
+        "delete": "Удалить"
+      },
+      "pagination": {
+        "previous": "Назад",
+        "next": "Далее",
+        "pageOf": "Страница {page} из {totalPages} · всего {total}"
+      },
+      "errors": {
+        "load": "Не удалось загрузить уведомления."
+      },
+      "actionErrors": {
+        "unauthorized": "Нет доступа.",
+        "invalid": "Некорректное уведомление.",
+        "save": "Не удалось обновить уведомление."
+      }
+    },
+    "activity": {
+      "label": "Аудит",
+      "title": "Журнал активности",
+      "description": "Лента событий по заявкам, креаторам и сотрудникам.",
+      "empty": "Пока нет активности.",
+      "expandPayload": "Показать данные",
+      "collapsePayload": "Скрыть данные",
+      "unknownActor": "Система",
+      "filters": {
+        "search": "Поиск",
+        "searchPlaceholder": "Поиск по описанию или событию",
+        "module": "Модуль",
+        "all": "Все модули",
+        "apply": "Применить",
+        "clear": "Сбросить"
+      },
+      "modules": {
+        "applications": "Заявки",
+        "creators": "Креаторы",
+        "cabinet": "Кабинет",
+        "finance": "Финансы",
+        "admin": "Админ",
+        "auth": "Авторизация",
+        "blog": "Блог",
+        "analytics": "Аналитика",
+        "settings": "Настройки",
+        "tasks": "Задачи",
+        "calendar": "Календарь"
+      },
+      "pagination": {
+        "previous": "Назад",
+        "next": "Далее",
+        "pageOf": "Страница {page} из {totalPages} · всего {total}"
+      },
+      "errors": {
+        "load": "Не удалось загрузить активность."
+      }
     }
   },
   "creator": {
@@ -1270,5 +1359,57 @@
   },
   "common": {
     "language": "Язык"
+  },
+  "events": {
+    "catalog": {
+      "applicationCreatedTitle": "Новая заявка",
+      "applicationCreatedMessage": "{name} подал(а) заявку через {platform}",
+      "applicationCreatedDescription": "Создана заявка для {name}",
+      "applicationUpdatedTitle": "Заявка обновлена",
+      "applicationUpdatedMessage": "Заявка {name} обновлена",
+      "applicationUpdatedDescription": "Заявка обновлена для {name}",
+      "applicationStatusTitle": "Статус заявки изменён",
+      "applicationStatusMessage": "{name} теперь {status}",
+      "applicationStatusDescription": "Статус изменён на {status} для {name}",
+      "applicationAssignedTitle": "Заявка назначена",
+      "applicationAssignedMessage": "Вам назначена заявка от {name}",
+      "applicationAssignedDescription": "Заявка назначена для {name}",
+      "creatorCreatedTitle": "Креатор добавлен",
+      "creatorCreatedMessage": "{name} добавлен в ростер",
+      "creatorCreatedDescription": "Создан креатор: {name}",
+      "creatorUpdatedTitle": "Креатор обновлён",
+      "creatorUpdatedMessage": "Профиль {name} обновлён",
+      "creatorUpdatedDescription": "Креатор обновлён: {name}",
+      "creatorAssignedTitle": "Креатор назначен",
+      "creatorAssignedMessage": "Вам назначен креатор {name}",
+      "creatorAssignedDescription": "Креатор назначен: {name}",
+      "creatorStatusTitle": "Статус креатора изменён",
+      "creatorStatusMessage": "{name} теперь {status}",
+      "creatorStatusDescription": "Статус креатора изменён на {status}: {name}",
+      "creatorAvatarTitle": "Аватар изменён",
+      "creatorAvatarMessage": "Аватар {name} обновлён",
+      "creatorAvatarDescription": "Аватар изменён для {name}",
+      "creatorProfileTitle": "Профиль обновлён",
+      "creatorProfileMessage": "{name} обновил(а) профиль",
+      "creatorProfileDescription": "Профиль кабинета обновлён: {name}",
+      "creatorDocumentTitle": "Документ загружен",
+      "creatorDocumentMessage": "{name} загрузил(а) документ",
+      "creatorDocumentDescription": "Документ загружен: {name}",
+      "creatorPlatformTitle": "Платформа добавлена",
+      "creatorPlatformMessage": "{name} добавил(а) платформу",
+      "creatorPlatformDescription": "Платформа добавлена для {name}",
+      "staffLoginTitle": "Вход сотрудника",
+      "staffLoginMessage": "{name} вошёл в систему",
+      "staffLoginDescription": "Вход сотрудника: {name}",
+      "staffLogoutTitle": "Выход сотрудника",
+      "staffLogoutMessage": "{name} вышел из системы",
+      "staffLogoutDescription": "Выход сотрудника: {name}",
+      "staffCreatedTitle": "Сотрудник создан",
+      "staffCreatedMessage": "Создан аккаунт сотрудника для {name}",
+      "staffCreatedDescription": "Сотрудник создан: {name}",
+      "staffRoleTitle": "Роль изменена",
+      "staffRoleMessage": "Ваша роль изменена на {role}",
+      "staffRoleDescription": "Роль сотрудника изменена для {name} на {role}"
+    }
   }
 }

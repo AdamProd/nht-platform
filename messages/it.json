@@ -285,7 +285,9 @@
       "blog": "Blog",
       "analytics": "Analytics",
       "settings": "Impostazioni",
-      "finance": "Finanze"
+      "finance": "Finanze",
+      "notifications": "Notifiche",
+      "activity": "Attività"
     },
     "pages": {
       "dashboard": {
@@ -322,6 +324,16 @@
         "label": "Finanze",
         "title": "Finanze",
         "description": "Monitoraggio entrate e pagamenti."
+      },
+      "notifications": {
+        "label": "Posta in arrivo",
+        "title": "Notifiche",
+        "description": "Aggiornamenti generati dagli eventi."
+      },
+      "activity": {
+        "label": "Audit",
+        "title": "Registro attività",
+        "description": "Cronologia degli eventi della piattaforma."
       }
     },
     "applications": {
@@ -962,6 +974,83 @@
         "delete": "Unable to delete transaction.",
         "ownerOnly": "Only the owner can delete transactions."
       }
+    },
+    "notifications": {
+      "label": "Posta in arrivo",
+      "title": "Notifiche",
+      "description": "Aggiornamenti generati dagli eventi.",
+      "bellTitle": "Notifiche",
+      "empty": "No notifications yet.",
+      "viewAll": "View all",
+      "unreadBadge": "Unread",
+      "filters": {
+        "search": "Search",
+        "searchPlaceholder": "Search title or message",
+        "status": "Status",
+        "all": "All",
+        "unread": "Unread",
+        "read": "Read",
+        "archived": "Archived",
+        "apply": "Apply",
+        "clear": "Clear"
+      },
+      "actions": {
+        "markRead": "Mark as read",
+        "markAll": "Mark all as read",
+        "archive": "Archive",
+        "delete": "Delete"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "pageOf": "Page {page} of {totalPages} · {total} total"
+      },
+      "errors": {
+        "load": "Unable to load notifications."
+      },
+      "actionErrors": {
+        "unauthorized": "You are not authorized to perform this action.",
+        "invalid": "Invalid notification.",
+        "save": "Unable to update notification."
+      }
+    },
+    "activity": {
+      "label": "Audit",
+      "title": "Registro attività",
+      "description": "Cronologia degli eventi della piattaforma.",
+      "empty": "No activity yet.",
+      "expandPayload": "Show payload",
+      "collapsePayload": "Hide payload",
+      "unknownActor": "System",
+      "filters": {
+        "search": "Search",
+        "searchPlaceholder": "Search description or event",
+        "module": "Module",
+        "all": "All modules",
+        "apply": "Apply",
+        "clear": "Clear"
+      },
+      "modules": {
+        "applications": "Applications",
+        "creators": "Creators",
+        "cabinet": "Cabinet",
+        "finance": "Finance",
+        "admin": "Admin",
+        "auth": "Auth",
+        "blog": "Blog",
+        "analytics": "Analytics",
+        "settings": "Settings",
+        "tasks": "Tasks",
+        "calendar": "Calendar"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "pageOf": "Page {page} of {totalPages} · {total} total"
+      },
+      "errors": {
+        "load": "Unable to load activity."
+      }
     }
   },
   "creator": {
@@ -1270,5 +1359,57 @@
   },
   "common": {
     "language": "Lingua"
+  },
+  "events": {
+    "catalog": {
+      "applicationCreatedTitle": "New application",
+      "applicationCreatedMessage": "{name} applied via {platform}",
+      "applicationCreatedDescription": "Application created for {name}",
+      "applicationUpdatedTitle": "Application updated",
+      "applicationUpdatedMessage": "Application for {name} was updated",
+      "applicationUpdatedDescription": "Application updated for {name}",
+      "applicationStatusTitle": "Application status changed",
+      "applicationStatusMessage": "{name} is now {status}",
+      "applicationStatusDescription": "Status changed to {status} for {name}",
+      "applicationAssignedTitle": "Application assigned",
+      "applicationAssignedMessage": "You were assigned application from {name}",
+      "applicationAssignedDescription": "Application assigned for {name}",
+      "creatorCreatedTitle": "Creator added",
+      "creatorCreatedMessage": "{name} was added to the roster",
+      "creatorCreatedDescription": "Creator created: {name}",
+      "creatorUpdatedTitle": "Creator updated",
+      "creatorUpdatedMessage": "{name}'s profile was updated",
+      "creatorUpdatedDescription": "Creator updated: {name}",
+      "creatorAssignedTitle": "Creator assigned",
+      "creatorAssignedMessage": "You were assigned creator {name}",
+      "creatorAssignedDescription": "Creator assigned: {name}",
+      "creatorStatusTitle": "Creator status changed",
+      "creatorStatusMessage": "{name} is now {status}",
+      "creatorStatusDescription": "Creator status changed to {status}: {name}",
+      "creatorAvatarTitle": "Creator avatar changed",
+      "creatorAvatarMessage": "{name}'s avatar was updated",
+      "creatorAvatarDescription": "Avatar changed for {name}",
+      "creatorProfileTitle": "Creator profile updated",
+      "creatorProfileMessage": "{name} updated their profile",
+      "creatorProfileDescription": "Cabinet profile updated: {name}",
+      "creatorDocumentTitle": "Document uploaded",
+      "creatorDocumentMessage": "{name} uploaded a document",
+      "creatorDocumentDescription": "Document uploaded by {name}",
+      "creatorPlatformTitle": "Platform added",
+      "creatorPlatformMessage": "{name} added a platform",
+      "creatorPlatformDescription": "Platform added for {name}",
+      "staffLoginTitle": "Staff login",
+      "staffLoginMessage": "{name} signed in",
+      "staffLoginDescription": "Staff login: {name}",
+      "staffLogoutTitle": "Staff logout",
+      "staffLogoutMessage": "{name} signed out",
+      "staffLogoutDescription": "Staff logout: {name}",
+      "staffCreatedTitle": "Staff created",
+      "staffCreatedMessage": "Staff account created for {name}",
+      "staffCreatedDescription": "Staff created: {name}",
+      "staffRoleTitle": "Role changed",
+      "staffRoleMessage": "Your role was changed to {role}",
+      "staffRoleDescription": "Staff role changed for {name} to {role}"
+    }
   }
 }

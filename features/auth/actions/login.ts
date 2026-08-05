@@ -4,7 +4,10 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { redirect } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { isCreatorRole, isStaff } from "@/lib/auth";
+import { publishEvent } from "@/features/events";
+import type { UserRole } from "@/types/database.types";
 
 const loginSchema = z.object({
   email: z.string().trim().email(),
@@ -84,7 +87,7 @@ export async function loginAction(
 
     const { data: profile, error: profileError } = await supabase
       .from("profiles")
-      .select("role")
+      .select("role, full_name")
       .eq("id", user.id)
       .maybeSingle();
 
@@ -94,7 +97,7 @@ export async function loginAction(
       return { ok: false, error: t("permissions") };
     }
 
-    const role = profile?.role ?? "guest";
+    const role = (profile?.role ?? "guest") as UserRole;
 
     if (role === "guest") {
       const locale = await getLocale();
@@ -107,12 +110,37 @@ export async function loginAction(
       return { ok: false, error: t("noAccess") };
     }
 
-    // Touch last login for creators
-    if (isCreatorRole(role)) {
-      await supabase
+    // Touch last login for creators (linked by email — no creators.user_id)
+    if (isCreatorRole(role) && user.email) {
+      const admin = createAdminClient();
+      const creator = await admin
         .from("creators")
-        .update({ last_login_at: new Date().toISOString() })
-        .eq("user_id", user.id);
+        .select("id")
+        .eq("email", user.email)
+        .maybeSingle();
+      if (creator.data?.id) {
+        await admin
+          .from("creators")
+          .update({ last_login_at: new Date().toISOString() })
+          .eq("id", creator.data.id);
+      }
+    }
+
+    if (isStaff(role)) {
+      await publishEvent({
+        type: "staff.login",
+        module: "auth",
+        actorId: user.id,
+        actorRole: role,
+        targetId: user.id,
+        entityType: "profile",
+        visibility: "owner",
+        payload: {
+          name: profile?.full_name ?? user.email,
+          email: user.email,
+          role,
+        },
+      });
     }
 
     const locale = await getLocale();

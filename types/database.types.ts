@@ -859,7 +859,7 @@ export type Database = {
           manager_id?: string | null;
           notes?: string | null;
           payment_method?: Database["public"]["Enums"]["finance_payment_method"] | null;
-          platform: string;
+          platform?: string;
           reference_id?: string | null;
           status?: Database["public"]["Enums"]["finance_transaction_status"];
           transaction_date?: string;
@@ -905,6 +905,200 @@ export type Database = {
             columns: ["created_by"];
             isOneToOne: false;
             referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      platform_events: {
+        Row: {
+          actor_id: string | null;
+          actor_role: Database["public"]["Enums"]["user_role"] | null;
+          created_at: string;
+          entity_type: string | null;
+          id: string;
+          module: string;
+          payload: Json;
+          related_creator_id: string | null;
+          target_id: string | null;
+          type: string;
+          visibility: string;
+        };
+        Insert: {
+          actor_id?: string | null;
+          actor_role?: Database["public"]["Enums"]["user_role"] | null;
+          created_at?: string;
+          entity_type?: string | null;
+          id?: string;
+          module: string;
+          payload?: Json;
+          related_creator_id?: string | null;
+          target_id?: string | null;
+          type: string;
+          visibility?: string;
+        };
+        Update: {
+          actor_id?: string | null;
+          actor_role?: Database["public"]["Enums"]["user_role"] | null;
+          created_at?: string;
+          entity_type?: string | null;
+          id?: string;
+          module?: string;
+          payload?: Json;
+          related_creator_id?: string | null;
+          target_id?: string | null;
+          type?: string;
+          visibility?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "platform_events_actor_id_fkey";
+            columns: ["actor_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "platform_events_related_creator_id_fkey";
+            columns: ["related_creator_id"];
+            isOneToOne: false;
+            referencedRelation: "creators";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      notifications: {
+        Row: {
+          actor_id: string | null;
+          archived_at: string | null;
+          created_at: string;
+          event_id: string | null;
+          event_type: string;
+          id: string;
+          link: string | null;
+          message: string;
+          module: string;
+          read_at: string | null;
+          recipient_id: string;
+          title: string;
+        };
+        Insert: {
+          actor_id?: string | null;
+          archived_at?: string | null;
+          created_at?: string;
+          event_id?: string | null;
+          event_type: string;
+          id?: string;
+          link?: string | null;
+          message: string;
+          module: string;
+          read_at?: string | null;
+          recipient_id: string;
+          title: string;
+        };
+        Update: {
+          actor_id?: string | null;
+          archived_at?: string | null;
+          created_at?: string;
+          event_id?: string | null;
+          event_type?: string;
+          id?: string;
+          link?: string | null;
+          message?: string;
+          module?: string;
+          read_at?: string | null;
+          recipient_id?: string;
+          title?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "notifications_recipient_id_fkey";
+            columns: ["recipient_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "notifications_actor_id_fkey";
+            columns: ["actor_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "notifications_event_id_fkey";
+            columns: ["event_id"];
+            isOneToOne: false;
+            referencedRelation: "platform_events";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      activity_logs: {
+        Row: {
+          actor_id: string | null;
+          actor_role: Database["public"]["Enums"]["user_role"] | null;
+          created_at: string;
+          description: string;
+          entity_id: string | null;
+          entity_type: string | null;
+          event_id: string | null;
+          event_type: string;
+          id: string;
+          module: string;
+          payload: Json;
+          related_creator_id: string | null;
+          visibility: string;
+        };
+        Insert: {
+          actor_id?: string | null;
+          actor_role?: Database["public"]["Enums"]["user_role"] | null;
+          created_at?: string;
+          description: string;
+          entity_id?: string | null;
+          entity_type?: string | null;
+          event_id?: string | null;
+          event_type: string;
+          id?: string;
+          module: string;
+          payload?: Json;
+          related_creator_id?: string | null;
+          visibility?: string;
+        };
+        Update: {
+          actor_id?: string | null;
+          actor_role?: Database["public"]["Enums"]["user_role"] | null;
+          created_at?: string;
+          description?: string;
+          entity_id?: string | null;
+          entity_type?: string | null;
+          event_id?: string | null;
+          event_type?: string;
+          id?: string;
+          module?: string;
+          payload?: Json;
+          related_creator_id?: string | null;
+          visibility?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "activity_logs_actor_id_fkey";
+            columns: ["actor_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "activity_logs_event_id_fkey";
+            columns: ["event_id"];
+            isOneToOne: false;
+            referencedRelation: "platform_events";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "activity_logs_related_creator_id_fkey";
+            columns: ["related_creator_id"];
+            isOneToOne: false;
+            referencedRelation: "creators";
             referencedColumns: ["id"];
           },
         ];

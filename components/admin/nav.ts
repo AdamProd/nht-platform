@@ -17,6 +17,16 @@ export const adminNavItems = [
   },
   { href: "/admin/blog", labelKey: "blog", match: "prefix" as const },
   {
+    href: "/admin/notifications",
+    labelKey: "notifications",
+    match: "prefix" as const,
+  },
+  {
+    href: "/admin/activity",
+    labelKey: "activity",
+    match: "prefix" as const,
+  },
+  {
     href: "/admin/analytics",
     labelKey: "analytics",
     match: "prefix" as const,
