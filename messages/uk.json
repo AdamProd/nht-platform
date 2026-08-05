@@ -252,7 +252,8 @@
       "session": "Не вдалося створити сесію. Спробуйте ще раз.",
       "permissions": "Не вдалося завантажити права доступу.",
       "noAccess": "Ваш обліковий запис не має доступу до адмін-зони.",
-      "generic": "Щось пішло не так. Спробуйте ще раз."
+      "generic": "Щось пішло не так. Спробуйте ще раз.",
+      "suspended": "Цей обліковий запис призупинено."
     },
     "unauthorized": {
       "title": "Доступ заборонено",
@@ -339,7 +340,7 @@
       "staff": {
         "label": "Команда",
         "title": "Співробітники",
-        "description": "Manage employees, roles, departments, and permissions."
+        "description": "Керування співробітниками, ролями, відділами та правами."
       }
     },
     "applications": {
@@ -440,7 +441,61 @@
       "title": "Креатори",
       "description": "Керування профілями, платформами, доходом і призначенням креаторів.",
       "detailLabel": "Креатор",
-      "create": "Створити креатора",
+      "create": {
+        "label": "Створити креатора",
+        "sections": {
+          "basic": "Основна інформація",
+          "work": "Робочі налаштування",
+          "platforms": "Платформи",
+          "finance": "Фінанси",
+          "notes": "Нотатки"
+        },
+        "platformDescriptions": {
+          "onlyfans": "Subscription content platform",
+          "fansly": "Creator subscription alternative",
+          "manyvids": "Clip store and custom content",
+          "chaturbate": "Live streaming platform",
+          "instagram": "Social discovery and traffic",
+          "tiktok": "Short-form discovery traffic",
+          "twitter": "Public updates and traffic"
+        },
+        "unsaved": {
+          "title": "Є незбережені зміни.",
+          "description": "Вийти без збереження?",
+          "leave": "Вийти",
+          "stay": "Залишитись"
+        },
+        "validation": {
+          "emailChecking": "Перевірка…",
+          "emailAvailable": "✓ вільний",
+          "emailTaken": "Email вже використовується",
+          "emailInvalid": "Введіть коректний email"
+        },
+        "finance": {
+          "currency": "Валюта",
+          "agencyPercent": "Відсоток агентства",
+          "payoutMethod": "Спосіб виплат",
+          "methods": {
+            "bank": "Банк",
+            "crypto": "Крипто",
+            "paypal": "PayPal"
+          }
+        },
+        "avatar": {
+          "upload": "Завантажити аватар",
+          "hint": "JPG, PNG або WebP до 5 МБ"
+        },
+        "phone": {
+          "dial": "Код країни",
+          "number": "Номер телефону"
+        },
+        "search": {
+          "country": "Оберіть країну",
+          "timezone": "Оберіть часовий пояс",
+          "placeholder": "Пошук…",
+          "empty": "Нічого не знайдено"
+        }
+      },
       "unassigned": "Не призначено",
       "backToList": "До списку креаторів",
       "noApplication": "Немає пов’язаної заявки",
@@ -497,14 +552,14 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X",
-        "manyvids": "ManyVids",
+        "twitter": "X (Twitter)",
+        "other": "Other",
         "multiple": "Multiple",
-        "emerging": "Emerging",
-        "other": "Other"
+        "emerging": "Emerging"
       },
       "fields": {
         "email": "Email",
@@ -539,9 +594,15 @@
         "title": "Новий креатор",
         "cancel": "Скасувати",
         "submit": "Створити",
-        "submitting": "Створення…",
+        "submitting": "Створення...",
         "submitInvite": "Створити й надіслати запрошення",
-        "submittingInvite": "Надсилання…"
+        "submittingInvite": "Надсилання…",
+        "sections": {
+          "basic": "Основна інформація",
+          "work": "Робочі налаштування",
+          "platforms": "Платформи",
+          "notes": "Нотатки"
+        }
       },
       "actions": {
         "view": "Відкрити",
@@ -554,7 +615,7 @@
         "uploadAvatar": "Завантажити фото"
       },
       "toast": {
-        "created": "Креатора створено.",
+        "created": "Креатора успішно створено.",
         "saved": "Changes saved.",
         "deleted": "Creator deleted.",
         "invited": "Запрошення надіслано."
@@ -612,7 +673,9 @@
         "notes": "Нотатки",
         "documents": "Документи",
         "finance": "Фінанси",
-        "tasks": "Завдання"
+        "tasks": "Задачі",
+        "profile": "Профіль",
+        "activity": "Активність"
       },
       "sidebar": {
         "platformsCount": "{count} платформ",
@@ -650,7 +713,119 @@
       },
       "emptyTitle": "No creators yet.",
       "emptyDescription": "Create your first creator.",
-      "emptyAction": "Create Creator"
+      "emptyAction": "Create Creator",
+      "profileCrm": {
+        "comingSoon": "Незабаром.",
+        "empty": "Немає даних",
+        "actions": {
+          "edit": "Edit",
+          "sendMessage": "Send Message",
+          "documents": "Documents",
+          "finance": "Finance",
+          "createTask": "Create task",
+          "uploadDocument": "Upload",
+          "addNote": "Add note",
+          "archive": "Archive",
+          "delete": "Delete"
+        },
+        "stats": {
+          "revenue": "Lifetime Revenue",
+          "thisMonth": "Monthly Revenue",
+          "lastMonth": "Last Month",
+          "tasks": "Active Tasks",
+          "unreadMessages": "Unread Messages",
+          "documents": "Documents",
+          "subscribers": "Subscribers",
+          "payoutBalance": "Payout Balance",
+          "averageMonthly": "Average Monthly"
+        },
+        "finance": {
+          "balance": "Balance",
+          "thisMonth": "This Month",
+          "lastMonth": "Last Month",
+          "pending": "Pending",
+          "paid": "Payouts",
+          "income": "Income",
+          "commission": "Commission"
+        },
+        "tabs": {
+          "overview": "Overview",
+          "profile": "Profile",
+          "platforms": "Platforms",
+          "finance": "Finance",
+          "tasks": "Tasks",
+          "documents": "Documents",
+          "notes": "Notes",
+          "activity": "Activity",
+          "statistics": "Statistics"
+        },
+        "platformStatus": {
+          "linked": "Linked",
+          "pending": "Pending",
+          "disconnected": "Disconnected",
+          "issue": "Issue"
+        },
+        "tables": {
+          "payouts": {
+            "date": "Date",
+            "amount": "Amount",
+            "status": "Status",
+            "method": "Method",
+            "manager": "Manager"
+          },
+          "tasks": {
+            "title": "Title",
+            "priority": "Priority",
+            "status": "Status",
+            "dueDate": "Due Date",
+            "assignedBy": "Assigned By"
+          },
+          "documents": {
+            "document": "Document",
+            "type": "Type",
+            "status": "Status",
+            "uploaded": "Uploaded",
+            "actions": "Actions",
+            "uploadedStatus": "Uploaded"
+          },
+          "platforms": {
+            "username": "Username",
+            "link": "Link",
+            "followers": "Followers",
+            "revenue": "Revenue",
+            "lastSync": "Last Sync",
+            "connectedAt": "Connected"
+          }
+        },
+        "overview": {
+          "basic": "Основна інформація",
+          "revenue": "Виручка"
+        },
+        "notes": {
+          "current": "Нотатки",
+          "history": "Історія",
+          "historyEmpty": "Історія нотаток порожня."
+        },
+        "activity": {
+          "empty": "Активності ще немає."
+        },
+        "filters": {
+          "allStatuses": "All statuses",
+          "allAssignees": "All assignees"
+        },
+        "confirm": {
+          "archiveTitle": "Archive this creator?",
+          "archiveDescription": "The creator will be marked inactive and hidden from active roster views.",
+          "deleteTitle": "Delete this creator?",
+          "deleteDescription": "This permanently removes the creator record. This cannot be undone.",
+          "confirm": "Confirm"
+        },
+        "toast": {
+          "archived": "Creator archived.",
+          "deleted": "Creator deleted."
+        },
+        "notConnected": "Not connected"
+      }
     },
     "dashboard": {
       "label": "Огляд",
@@ -836,11 +1011,11 @@
       "manager": "Менеджер",
       "creator": "Креатор",
       "guest": "Гість",
-      "support": "Support",
-      "moderator": "Moderator",
-      "content_manager": "Content Manager",
-      "finance": "Finance",
-      "viewer": "Viewer"
+      "support": "Підтримка",
+      "moderator": "Модератор",
+      "content_manager": "Редактор",
+      "finance": "Фінанси",
+      "viewer": "Спостерігач"
     },
     "finance": {
       "label": "Фінанси",
@@ -951,10 +1126,11 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X",
+        "twitter": "X (Twitter)",
         "other": "Other"
       },
       "methods": {
@@ -1097,168 +1273,173 @@
       "emptyDescription": "Platform events will appear in this timeline."
     },
     "staff": {
-      "label": "Team",
+      "label": "Команда",
       "title": "Співробітники",
-      "description": "Manage employees, roles, departments, and permissions.",
-      "create": "Add employee",
+      "description": "Керування співробітниками, ролями, відділами та правами.",
+      "create": "Додати співробітника",
       "permissionsLink": "Матриця прав",
-      "empty": "No staff match your filters.",
-      "emptyHint": "Try clearing filters or invite a new employee.",
+      "empty": "Немає співробітників за фільтрами.",
+      "emptyHint": "Скиньте фільтри або запросіть співробітника.",
       "stats": {
-        "employees": "Employees",
-        "managers": "Managers",
-        "creators": "Creators",
-        "departments": "Departments",
-        "activeToday": "Active today"
+        "employees": "Співробітники",
+        "managers": "Менеджери",
+        "creators": "Креатори",
+        "departments": "Відділи",
+        "activeToday": "Активні сьогодні"
       },
       "filters": {
-        "search": "Search",
-        "searchPlaceholder": "Name or email",
-        "role": "Role",
-        "department": "Department",
-        "status": "Status",
-        "sort": "Sort",
-        "all": "All",
-        "newest": "Newest",
-        "oldest": "Oldest",
-        "name": "Name",
-        "apply": "Apply",
-        "clear": "Clear"
+        "search": "Пошук",
+        "searchPlaceholder": "Ім'я, email або відділ",
+        "role": "Роль",
+        "department": "Відділ",
+        "status": "Статус",
+        "sort": "Сортування",
+        "all": "Усі",
+        "newest": "Спочатку нові",
+        "oldest": "Спочатку старі",
+        "name": "За іменем",
+        "apply": "Застосувати",
+        "clear": "Скинути"
       },
       "table": {
-        "avatar": "Avatar",
-        "name": "Name",
+        "avatar": "Аватар",
+        "name": "Ім'я",
         "email": "Email",
-        "role": "Role",
-        "department": "Department",
-        "status": "Status",
-        "managedCreators": "Managed creators",
-        "created": "Created",
-        "lastLogin": "Last login",
-        "actions": "Actions",
-        "view": "View"
+        "role": "Роль",
+        "department": "Відділ",
+        "status": "Статус",
+        "managedCreators": "Креатори",
+        "created": "Створено",
+        "lastLogin": "Останній вхід",
+        "actions": "Дії",
+        "view": "Відкрити"
       },
       "fields": {
-        "fullName": "Full name",
+        "fullName": "Повне ім'я",
         "email": "Email",
-        "phone": "Phone",
-        "role": "Role",
-        "department": "Department",
-        "departmentCustom": "Custom department",
-        "language": "Language",
-        "timezone": "Timezone",
-        "temporaryPassword": "Temporary password",
-        "created": "Created",
-        "updated": "Updated",
-        "lastLogin": "Last login",
-        "biography": "Biography",
-        "notes": "Internal notes",
-        "status": "Status",
-        "managedCreators": "Managed creators",
-        "assignedApplications": "Assigned applications",
-        "assignedTasks": "Assigned tasks"
+        "phone": "Телефон",
+        "role": "Роль",
+        "department": "Відділ",
+        "departmentCustom": "Власний відділ",
+        "language": "Мова",
+        "timezone": "Часовий пояс",
+        "temporaryPassword": "Тимчасовий пароль",
+        "created": "Створено",
+        "updated": "Оновлено",
+        "lastLogin": "Останній вхід",
+        "biography": "Біографія",
+        "notes": "Внутрішні нотатки",
+        "status": "Статус",
+        "managedCreators": "Креатори",
+        "assignedApplications": "Заявки",
+        "assignedTasks": "Завдання",
+        "firstName": "Ім'я",
+        "lastName": "Прізвище",
+        "avatarUrl": "URL аватара"
       },
       "form": {
-        "title": "Create employee",
-        "cancel": "Cancel",
-        "submit": "Create",
-        "submitting": "Creating…",
-        "created": "Employee created."
+        "title": "Створити співробітника",
+        "cancel": "Скасувати",
+        "submit": "Створити",
+        "submitting": "Створення…",
+        "created": "Співробітника запрошено. Лист для встановлення пароля надіслано."
       },
       "departments": {
-        "management": "Management",
-        "sales": "Sales",
-        "support": "Support",
-        "marketing": "Marketing",
-        "content": "Content",
-        "finance": "Finance",
+        "management": "Керівництво",
+        "sales": "Продажі",
+        "support": "Підтримка",
+        "marketing": "Маркетинг",
+        "content": "Контент",
+        "finance": "Фінанси",
         "hr": "HR",
-        "operations": "Operations",
-        "custom": "Custom"
+        "operations": "Операції",
+        "custom": "Інше"
       },
       "status": {
-        "invited": "Invited",
-        "active": "Active",
-        "vacation": "Vacation",
-        "suspended": "Suspended",
-        "disabled": "Disabled",
-        "archived": "Archived"
+        "invited": "Запрошений",
+        "active": "Активний",
+        "vacation": "У відпустці",
+        "suspended": "Призупинений",
+        "disabled": "Вимкнений",
+        "archived": "В архіві"
       },
       "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {page} of {totalPages} · {total} total"
+        "previous": "Назад",
+        "next": "Далі",
+        "pageOf": "Сторінка {page} з {totalPages} · всього {total}"
       },
       "errors": {
-        "load": "Unable to load staff."
+        "load": "Не вдалося завантажити співробітників.",
+        "retry": "Повторити"
       },
       "actionErrors": {
-        "unauthorized": "You are not authorized.",
-        "forbidden": "You cannot perform this action.",
-        "forbiddenRole": "You cannot assign this role.",
-        "forbiddenOwner": "Only the owner can manage owner accounts.",
-        "cannotDeleteSelf": "You cannot delete your own account.",
-        "invalid": "Invalid staff data.",
-        "notFound": "Staff member not found.",
-        "create": "Unable to create employee.",
-        "save": "Unable to save changes.",
-        "delete": "Unable to delete employee.",
-        "tasksUnavailable": "Tasks are unavailable in this environment."
+        "unauthorized": "Ви не авторизовані.",
+        "forbidden": "Ви не можете виконати цю дію.",
+        "forbiddenRole": "Ви не можете призначити цю роль.",
+        "forbiddenOwner": "Лише власник може керувати акаунтами власника.",
+        "cannotDeleteSelf": "Не можна видалити свій акаунт.",
+        "invalid": "Некоректні дані співробітника.",
+        "notFound": "Співробітника не знайдено.",
+        "create": "Не вдалося створити співробітника.",
+        "save": "Не вдалося зберегти зміни.",
+        "delete": "Не вдалося видалити співробітника.",
+        "tasksUnavailable": "Завдання недоступні в цьому середовищі."
       },
       "detail": {
-        "back": "Back to staff",
-        "save": "Save changes",
-        "saving": "Saving…",
-        "saved": "Saved.",
-        "confirmDelete": "Archive and disable this employee?",
-        "confirmTransfer": "Transfer ownership to this employee? You will become an admin.",
-        "delete": "Archive employee",
-        "transferOwnership": "Transfer ownership",
-        "emptyAssignments": "Nothing assigned yet.",
-        "emptyActivity": "No recent activity.",
-        "unassign": "Unassign",
-        "assignCreator": "Assign creator",
-        "assignApplication": "Assign application",
-        "expandPayload": "Show payload",
-        "collapsePayload": "Hide payload",
+        "back": "До списку співробітників",
+        "save": "Зберегти",
+        "saving": "Збереження…",
+        "saved": "Збережено.",
+        "confirmDelete": "Видалити співробітника та його доступ назавжди? Цю дію неможливо скасувати.",
+        "confirmTransfer": "Передати володіння цьому співробітнику? Ви станете адміністратором.",
+        "delete": "Видалити співробітника",
+        "transferOwnership": "Передати володіння",
+        "emptyAssignments": "Поки нічого не призначено.",
+        "emptyActivity": "Немає нещодавньої активності.",
+        "unassign": "Зняти",
+        "assignCreator": "Призначити креатора",
+        "assignApplication": "Призначити заявку",
+        "expandPayload": "Показати дані",
+        "collapsePayload": "Сховати дані",
         "sections": {
-          "profile": "Profile",
-          "assignments": "Assignments",
-          "activity": "Recent activity",
-          "danger": "Danger zone"
+          "profile": "Профіль",
+          "assignments": "Призначення",
+          "activity": "Нещодавня активність",
+          "danger": "Небезпечна зона"
         }
       },
       "permissions": {
-        "title": "Permissions matrix",
-        "description": "Central capability map used by hasPermission() across the platform.",
-        "module": "Module",
-        "role": "Role",
+        "title": "Матриця прав",
+        "description": "Центральна карта можливостей платформи.",
+        "module": "Модуль",
+        "role": "Роль",
         "modules": {
-          "applications": "Applications",
-          "creators": "Creator CRM",
-          "finance": "Finance",
-          "tasks": "Tasks",
-          "calendar": "Calendar",
-          "blog": "Blog",
-          "analytics": "Analytics",
-          "settings": "Settings",
-          "staff": "Staff",
-          "notifications": "Notifications",
-          "activity": "Activity"
+          "applications": "Заявки",
+          "creators": "CRM креаторів",
+          "finance": "Фінанси",
+          "tasks": "Завдання",
+          "calendar": "Календар",
+          "blog": "Блог",
+          "analytics": "Аналітика",
+          "settings": "Налаштування",
+          "staff": "Співробітники",
+          "notifications": "Сповіщення",
+          "activity": "Активність"
         },
         "actions": {
-          "create": "Create",
-          "read": "Read",
-          "update": "Update",
-          "delete": "Delete",
-          "manage": "Manage",
-          "approve": "Approve",
-          "export": "Export"
+          "create": "Створення",
+          "read": "Читання",
+          "update": "Зміна",
+          "delete": "Видалення",
+          "manage": "Керування",
+          "approve": "Підтвердження",
+          "export": "Експорт"
         }
       },
-      "emptyTitle": "No staff found",
-      "emptyDescription": "Try clearing filters or invite a new employee.",
-      "emptyAction": "Add employee"
+      "emptyTitle": "Співробітників не знайдено",
+      "emptyDescription": "Скиньте фільтри або запросіть нового співробітника.",
+      "emptyAction": "Додати співробітника",
+      "never": "Ніколи"
     }
   },
   "creator": {
@@ -1344,10 +1525,11 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X",
-        "chaturbate": "Chaturbate"
+        "twitter": "X (Twitter)"
       },
       "actions": {
         "save": "Зберегти",
@@ -1693,7 +1875,28 @@
       "financePayoutPaidDescription": "Payout marked paid",
       "financePayoutCancelledTitle": "Payout cancelled",
       "financePayoutCancelledMessage": "A payout was cancelled",
-      "financePayoutCancelledDescription": "Payout cancelled"
+      "financePayoutCancelledDescription": "Payout cancelled",
+      "employeeCreatedTitle": "Співробітника створено",
+      "employeeCreatedMessage": "{name} запрошено до команди",
+      "employeeCreatedDescription": "Співробітника запрошено",
+      "employeeUpdatedTitle": "Співробітника оновлено",
+      "employeeUpdatedMessage": "{name} оновлено",
+      "employeeUpdatedDescription": "Співробітника оновлено",
+      "employeeDeletedTitle": "Співробітника видалено",
+      "employeeDeletedMessage": "{name} видалено",
+      "employeeDeletedDescription": "Співробітника видалено",
+      "employeeSuspendedTitle": "Співробітника призупинено",
+      "employeeSuspendedMessage": "{name} призупинено",
+      "employeeSuspendedDescription": "Співробітника призупинено",
+      "employeeActivatedTitle": "Співробітника активовано",
+      "employeeActivatedMessage": "{name} активовано",
+      "employeeActivatedDescription": "Співробітника активовано",
+      "creatorArchivedTitle": "Creator archived",
+      "creatorArchivedMessage": "{name} was archived",
+      "creatorArchivedDescription": "Creator archived: {name}",
+      "creatorDeletedTitle": "Creator deleted",
+      "creatorDeletedMessage": "{name} was deleted",
+      "creatorDeletedDescription": "Creator deleted: {name}"
     }
   }
 }

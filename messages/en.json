@@ -252,7 +252,8 @@
       "session": "Unable to establish a session. Please try again.",
       "permissions": "Unable to load your permissions.",
       "noAccess": "Your account does not have access to the admin area.",
-      "generic": "Something went wrong. Please try again."
+      "generic": "Something went wrong. Please try again.",
+      "suspended": "This account has been suspended."
     },
     "unauthorized": {
       "title": "Access denied",
@@ -438,7 +439,61 @@
       "title": "Creators",
       "description": "Manage creator profiles, assignment, and status.",
       "detailLabel": "Creator",
-      "create": "Create Creator",
+      "create": {
+        "label": "Create Creator",
+        "sections": {
+          "basic": "Basic information",
+          "work": "Work settings",
+          "platforms": "Platforms",
+          "finance": "Finance",
+          "notes": "Notes"
+        },
+        "platformDescriptions": {
+          "onlyfans": "Subscription content platform",
+          "fansly": "Creator subscription alternative",
+          "manyvids": "Clip store and custom content",
+          "chaturbate": "Live streaming platform",
+          "instagram": "Social discovery and traffic",
+          "tiktok": "Short-form discovery traffic",
+          "twitter": "Public updates and traffic"
+        },
+        "unsaved": {
+          "title": "You have unsaved changes.",
+          "description": "Leave without saving this draft?",
+          "leave": "Leave",
+          "stay": "Stay"
+        },
+        "validation": {
+          "emailChecking": "Checking…",
+          "emailAvailable": "✓ Available",
+          "emailTaken": "Email is already in use",
+          "emailInvalid": "Enter a valid email"
+        },
+        "finance": {
+          "currency": "Currency",
+          "agencyPercent": "Agency percent",
+          "payoutMethod": "Payout method",
+          "methods": {
+            "bank": "Bank",
+            "crypto": "Crypto",
+            "paypal": "PayPal"
+          }
+        },
+        "avatar": {
+          "upload": "Upload avatar",
+          "hint": "JPG, PNG or WebP up to 5 MB"
+        },
+        "phone": {
+          "dial": "Country code",
+          "number": "Phone number"
+        },
+        "search": {
+          "country": "Select country",
+          "timezone": "Select timezone",
+          "placeholder": "Search…",
+          "empty": "No results"
+        }
+      },
       "unassigned": "Unassigned",
       "backToList": "Back to creators",
       "noApplication": "No linked application",
@@ -496,13 +551,13 @@
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
         "manyvids": "ManyVids",
-        "multiple": "Multiple",
-        "emerging": "Emerging",
-        "other": "Other",
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X"
+        "twitter": "X (Twitter)",
+        "other": "Other",
+        "multiple": "Multiple",
+        "emerging": "Emerging"
       },
       "fields": {
         "fullName": "Full name",
@@ -536,9 +591,15 @@
         "title": "Create creator",
         "cancel": "Cancel",
         "submit": "Create",
-        "submitting": "Creating…",
+        "submitting": "Creating...",
         "submitInvite": "Create & Send Invite",
-        "submittingInvite": "Sending invite…"
+        "submittingInvite": "Sending invite…",
+        "sections": {
+          "basic": "Basic information",
+          "work": "Work settings",
+          "platforms": "Platforms",
+          "notes": "Notes"
+        }
       },
       "actions": {
         "view": "View",
@@ -551,7 +612,7 @@
         "uploadAvatar": "Upload photo"
       },
       "toast": {
-        "created": "Creator created.",
+        "created": "Creator created successfully.",
         "saved": "Changes saved.",
         "deleted": "Creator deleted.",
         "invited": "Invitation sent."
@@ -607,7 +668,9 @@
         "notes": "Notes",
         "documents": "Documents",
         "finance": "Finance",
-        "tasks": "Tasks"
+        "tasks": "Tasks",
+        "profile": "Profile",
+        "activity": "Activity"
       },
       "sidebar": {
         "platformsCount": "{count} platforms",
@@ -645,7 +708,119 @@
       },
       "emptyTitle": "No creators yet.",
       "emptyDescription": "Create your first creator.",
-      "emptyAction": "Create Creator"
+      "emptyAction": "Create Creator",
+      "profileCrm": {
+        "comingSoon": "Coming soon.",
+        "empty": "No data",
+        "actions": {
+          "edit": "Edit",
+          "sendMessage": "Send Message",
+          "documents": "Documents",
+          "finance": "Finance",
+          "createTask": "Create task",
+          "uploadDocument": "Upload",
+          "addNote": "Add note",
+          "archive": "Archive",
+          "delete": "Delete"
+        },
+        "stats": {
+          "revenue": "Lifetime Revenue",
+          "thisMonth": "Monthly Revenue",
+          "lastMonth": "Last Month",
+          "tasks": "Active Tasks",
+          "unreadMessages": "Unread Messages",
+          "documents": "Documents",
+          "subscribers": "Subscribers",
+          "payoutBalance": "Payout Balance",
+          "averageMonthly": "Average Monthly"
+        },
+        "finance": {
+          "balance": "Balance",
+          "thisMonth": "This Month",
+          "lastMonth": "Last Month",
+          "pending": "Pending",
+          "paid": "Payouts",
+          "income": "Income",
+          "commission": "Commission"
+        },
+        "tabs": {
+          "overview": "Overview",
+          "profile": "Profile",
+          "platforms": "Platforms",
+          "finance": "Finance",
+          "tasks": "Tasks",
+          "documents": "Documents",
+          "notes": "Notes",
+          "activity": "Activity",
+          "statistics": "Statistics"
+        },
+        "platformStatus": {
+          "linked": "Linked",
+          "pending": "Pending",
+          "disconnected": "Disconnected",
+          "issue": "Issue"
+        },
+        "tables": {
+          "payouts": {
+            "date": "Date",
+            "amount": "Amount",
+            "status": "Status",
+            "method": "Method",
+            "manager": "Manager"
+          },
+          "tasks": {
+            "title": "Title",
+            "priority": "Priority",
+            "status": "Status",
+            "dueDate": "Due Date",
+            "assignedBy": "Assigned By"
+          },
+          "documents": {
+            "document": "Document",
+            "type": "Type",
+            "status": "Status",
+            "uploaded": "Uploaded",
+            "actions": "Actions",
+            "uploadedStatus": "Uploaded"
+          },
+          "platforms": {
+            "username": "Username",
+            "link": "Link",
+            "followers": "Followers",
+            "revenue": "Revenue",
+            "lastSync": "Last Sync",
+            "connectedAt": "Connected"
+          }
+        },
+        "overview": {
+          "basic": "Basic info",
+          "revenue": "Revenue"
+        },
+        "notes": {
+          "current": "Notes",
+          "history": "Note history",
+          "historyEmpty": "No note history yet."
+        },
+        "activity": {
+          "empty": "No activity yet."
+        },
+        "filters": {
+          "allStatuses": "All statuses",
+          "allAssignees": "All assignees"
+        },
+        "confirm": {
+          "archiveTitle": "Archive this creator?",
+          "archiveDescription": "The creator will be marked inactive and hidden from active roster views.",
+          "deleteTitle": "Delete this creator?",
+          "deleteDescription": "This permanently removes the creator record. This cannot be undone.",
+          "confirm": "Confirm"
+        },
+        "toast": {
+          "archived": "Creator archived.",
+          "deleted": "Creator deleted."
+        },
+        "notConnected": "Not connected"
+      }
     },
     "dashboard": {
       "label": "Overview",
@@ -830,7 +1005,7 @@
       "guest": "Guest",
       "support": "Support",
       "moderator": "Moderator",
-      "content_manager": "Content Manager",
+      "content_manager": "Editor",
       "finance": "Finance",
       "viewer": "Viewer"
     },
@@ -943,10 +1118,11 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X",
+        "twitter": "X (Twitter)",
         "other": "Other"
       },
       "methods": {
@@ -1105,7 +1281,7 @@
       },
       "filters": {
         "search": "Search",
-        "searchPlaceholder": "Name or email",
+        "searchPlaceholder": "Name, email, or department",
         "role": "Role",
         "department": "Department",
         "status": "Status",
@@ -1148,14 +1324,17 @@
         "status": "Status",
         "managedCreators": "Managed creators",
         "assignedApplications": "Assigned applications",
-        "assignedTasks": "Assigned tasks"
+        "assignedTasks": "Assigned tasks",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "avatarUrl": "Avatar URL"
       },
       "form": {
         "title": "Create employee",
         "cancel": "Cancel",
         "submit": "Create",
         "submitting": "Creating…",
-        "created": "Employee created."
+        "created": "Employee invited. Password setup email sent."
       },
       "departments": {
         "management": "Management",
@@ -1182,7 +1361,8 @@
         "pageOf": "Page {page} of {totalPages} · {total} total"
       },
       "errors": {
-        "load": "Unable to load staff."
+        "load": "Unable to load staff.",
+        "retry": "Try again"
       },
       "actionErrors": {
         "unauthorized": "You are not authorized.",
@@ -1202,9 +1382,9 @@
         "save": "Save changes",
         "saving": "Saving…",
         "saved": "Saved.",
-        "confirmDelete": "Archive and disable this employee?",
+        "confirmDelete": "Permanently delete this employee and their login? This cannot be undone.",
         "confirmTransfer": "Transfer ownership to this employee? You will become an admin.",
-        "delete": "Archive employee",
+        "delete": "Delete employee",
         "transferOwnership": "Transfer ownership",
         "emptyAssignments": "Nothing assigned yet.",
         "emptyActivity": "No recent activity.",
@@ -1250,7 +1430,8 @@
       },
       "emptyTitle": "No staff found",
       "emptyDescription": "Try clearing filters or invite a new employee.",
-      "emptyAction": "Add employee"
+      "emptyAction": "Add employee",
+      "never": "Never"
     }
   },
   "creator": {
@@ -1336,10 +1517,11 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X",
-        "chaturbate": "Chaturbate"
+        "twitter": "X (Twitter)"
       },
       "actions": {
         "save": "Save",
@@ -1685,7 +1867,28 @@
       "financePayoutPaidDescription": "Payout marked paid",
       "financePayoutCancelledTitle": "Payout cancelled",
       "financePayoutCancelledMessage": "A payout was cancelled",
-      "financePayoutCancelledDescription": "Payout cancelled"
+      "financePayoutCancelledDescription": "Payout cancelled",
+      "employeeCreatedTitle": "Employee created",
+      "employeeCreatedMessage": "{name} was invited to the team",
+      "employeeCreatedDescription": "Employee invited",
+      "employeeUpdatedTitle": "Employee updated",
+      "employeeUpdatedMessage": "{name} was updated",
+      "employeeUpdatedDescription": "Employee updated",
+      "employeeDeletedTitle": "Employee deleted",
+      "employeeDeletedMessage": "{name} was deleted",
+      "employeeDeletedDescription": "Employee deleted",
+      "employeeSuspendedTitle": "Employee suspended",
+      "employeeSuspendedMessage": "{name} was suspended",
+      "employeeSuspendedDescription": "Employee suspended",
+      "employeeActivatedTitle": "Employee activated",
+      "employeeActivatedMessage": "{name} was activated",
+      "employeeActivatedDescription": "Employee activated",
+      "creatorArchivedTitle": "Creator archived",
+      "creatorArchivedMessage": "{name} was archived",
+      "creatorArchivedDescription": "Creator archived: {name}",
+      "creatorDeletedTitle": "Creator deleted",
+      "creatorDeletedMessage": "{name} was deleted",
+      "creatorDeletedDescription": "Creator deleted: {name}"
     }
   }
 }

@@ -252,7 +252,8 @@
       "session": "Impossibile creare la sessione. Riprova.",
       "permissions": "Impossibile caricare i permessi.",
       "noAccess": "Il tuo account non ha accesso all'area admin.",
-      "generic": "Qualcosa è andato storto. Riprova."
+      "generic": "Qualcosa è andato storto. Riprova.",
+      "suspended": "Questo account è stato sospeso."
     },
     "unauthorized": {
       "title": "Accesso negato",
@@ -288,7 +289,7 @@
       "finance": "Finanze",
       "notifications": "Notifiche",
       "activity": "Attività",
-      "staff": "Staff"
+      "staff": "Personale"
     },
     "pages": {
       "dashboard": {
@@ -338,8 +339,8 @@
       },
       "staff": {
         "label": "Team",
-        "title": "Staff",
-        "description": "Manage employees, roles, departments, and permissions."
+        "title": "Personale",
+        "description": "Gestisci dipendenti, ruoli, dipartimenti e permessi."
       }
     },
     "applications": {
@@ -440,7 +441,61 @@
       "title": "Creator",
       "description": "Gestisci profili, piattaforme, ricavi e assegnazione dei creator.",
       "detailLabel": "Creator",
-      "create": "Crea creator",
+      "create": {
+        "label": "Crea creator",
+        "sections": {
+          "basic": "Informazioni di base",
+          "work": "Impostazioni di lavoro",
+          "platforms": "Piattaforme",
+          "finance": "Finanze",
+          "notes": "Note"
+        },
+        "platformDescriptions": {
+          "onlyfans": "Subscription content platform",
+          "fansly": "Creator subscription alternative",
+          "manyvids": "Clip store and custom content",
+          "chaturbate": "Live streaming platform",
+          "instagram": "Social discovery and traffic",
+          "tiktok": "Short-form discovery traffic",
+          "twitter": "Public updates and traffic"
+        },
+        "unsaved": {
+          "title": "Hai modifiche non salvate.",
+          "description": "Uscire senza salvare?",
+          "leave": "Esci",
+          "stay": "Resta"
+        },
+        "validation": {
+          "emailChecking": "Verifica…",
+          "emailAvailable": "✓ Disponibile",
+          "emailTaken": "Email già in uso",
+          "emailInvalid": "Inserisci un’email valida"
+        },
+        "finance": {
+          "currency": "Valuta",
+          "agencyPercent": "Percentuale agenzia",
+          "payoutMethod": "Metodo di pagamento",
+          "methods": {
+            "bank": "Banca",
+            "crypto": "Crypto",
+            "paypal": "PayPal"
+          }
+        },
+        "avatar": {
+          "upload": "Carica avatar",
+          "hint": "JPG, PNG o WebP fino a 5 MB"
+        },
+        "phone": {
+          "dial": "Prefisso",
+          "number": "Numero di telefono"
+        },
+        "search": {
+          "country": "Seleziona paese",
+          "timezone": "Seleziona fuso orario",
+          "placeholder": "Cerca…",
+          "empty": "Nessun risultato"
+        }
+      },
       "unassigned": "Non assegnato",
       "backToList": "Torna ai creator",
       "noApplication": "Nessuna candidatura collegata",
@@ -497,14 +552,14 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X",
-        "manyvids": "ManyVids",
+        "twitter": "X (Twitter)",
+        "other": "Other",
         "multiple": "Multiple",
-        "emerging": "Emerging",
-        "other": "Other"
+        "emerging": "Emerging"
       },
       "fields": {
         "email": "Email",
@@ -539,9 +594,15 @@
         "title": "Nuovo creator",
         "cancel": "Annulla",
         "submit": "Crea",
-        "submitting": "Creazione…",
+        "submitting": "Creazione...",
         "submitInvite": "Crea e invia invito",
-        "submittingInvite": "Invio…"
+        "submittingInvite": "Invio…",
+        "sections": {
+          "basic": "Informazioni di base",
+          "work": "Impostazioni di lavoro",
+          "platforms": "Piattaforme",
+          "notes": "Note"
+        }
       },
       "actions": {
         "view": "Apri",
@@ -554,7 +615,7 @@
         "uploadAvatar": "Carica foto"
       },
       "toast": {
-        "created": "Creator creato.",
+        "created": "Creator creato con successo.",
         "saved": "Changes saved.",
         "deleted": "Creator deleted.",
         "invited": "Invito inviato."
@@ -612,7 +673,9 @@
         "notes": "Note",
         "documents": "Documenti",
         "finance": "Finanze",
-        "tasks": "Attività"
+        "tasks": "Attività",
+        "profile": "Profilo",
+        "activity": "Attività"
       },
       "sidebar": {
         "platformsCount": "{count} piattaforme",
@@ -650,7 +713,119 @@
       },
       "emptyTitle": "No creators yet.",
       "emptyDescription": "Create your first creator.",
-      "emptyAction": "Create Creator"
+      "emptyAction": "Create Creator",
+      "profileCrm": {
+        "comingSoon": "Prossimamente.",
+        "empty": "Nessun dato",
+        "actions": {
+          "edit": "Edit",
+          "sendMessage": "Send Message",
+          "documents": "Documents",
+          "finance": "Finance",
+          "createTask": "Create task",
+          "uploadDocument": "Upload",
+          "addNote": "Add note",
+          "archive": "Archive",
+          "delete": "Delete"
+        },
+        "stats": {
+          "revenue": "Lifetime Revenue",
+          "thisMonth": "Monthly Revenue",
+          "lastMonth": "Last Month",
+          "tasks": "Active Tasks",
+          "unreadMessages": "Unread Messages",
+          "documents": "Documents",
+          "subscribers": "Subscribers",
+          "payoutBalance": "Payout Balance",
+          "averageMonthly": "Average Monthly"
+        },
+        "finance": {
+          "balance": "Balance",
+          "thisMonth": "This Month",
+          "lastMonth": "Last Month",
+          "pending": "Pending",
+          "paid": "Payouts",
+          "income": "Income",
+          "commission": "Commission"
+        },
+        "tabs": {
+          "overview": "Overview",
+          "profile": "Profile",
+          "platforms": "Platforms",
+          "finance": "Finance",
+          "tasks": "Tasks",
+          "documents": "Documents",
+          "notes": "Notes",
+          "activity": "Activity",
+          "statistics": "Statistics"
+        },
+        "platformStatus": {
+          "linked": "Linked",
+          "pending": "Pending",
+          "disconnected": "Disconnected",
+          "issue": "Issue"
+        },
+        "tables": {
+          "payouts": {
+            "date": "Date",
+            "amount": "Amount",
+            "status": "Status",
+            "method": "Method",
+            "manager": "Manager"
+          },
+          "tasks": {
+            "title": "Title",
+            "priority": "Priority",
+            "status": "Status",
+            "dueDate": "Due Date",
+            "assignedBy": "Assigned By"
+          },
+          "documents": {
+            "document": "Document",
+            "type": "Type",
+            "status": "Status",
+            "uploaded": "Uploaded",
+            "actions": "Actions",
+            "uploadedStatus": "Uploaded"
+          },
+          "platforms": {
+            "username": "Username",
+            "link": "Link",
+            "followers": "Followers",
+            "revenue": "Revenue",
+            "lastSync": "Last Sync",
+            "connectedAt": "Connected"
+          }
+        },
+        "overview": {
+          "basic": "Info di base",
+          "revenue": "Ricavi"
+        },
+        "notes": {
+          "current": "Note",
+          "history": "Cronologia",
+          "historyEmpty": "Nessuna cronologia."
+        },
+        "activity": {
+          "empty": "Nessuna attività."
+        },
+        "filters": {
+          "allStatuses": "All statuses",
+          "allAssignees": "All assignees"
+        },
+        "confirm": {
+          "archiveTitle": "Archive this creator?",
+          "archiveDescription": "The creator will be marked inactive and hidden from active roster views.",
+          "deleteTitle": "Delete this creator?",
+          "deleteDescription": "This permanently removes the creator record. This cannot be undone.",
+          "confirm": "Confirm"
+        },
+        "toast": {
+          "archived": "Creator archived.",
+          "deleted": "Creator deleted."
+        },
+        "notConnected": "Not connected"
+      }
     },
     "dashboard": {
       "label": "Panoramica",
@@ -831,15 +1006,15 @@
     "staffFallback": "Staff",
     "closeOverlay": "Chiudi il menu",
     "roles": {
-      "owner": "Proprietario",
+      "owner": "Owner",
       "admin": "Admin",
       "manager": "Manager",
       "creator": "Creator",
       "guest": "Ospite",
-      "support": "Support",
-      "moderator": "Moderator",
-      "content_manager": "Content Manager",
-      "finance": "Finance",
+      "support": "Supporto",
+      "moderator": "Moderatore",
+      "content_manager": "Editor",
+      "finance": "Finanza",
       "viewer": "Viewer"
     },
     "finance": {
@@ -951,10 +1126,11 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X",
+        "twitter": "X (Twitter)",
         "other": "Other"
       },
       "methods": {
@@ -1098,167 +1274,172 @@
     },
     "staff": {
       "label": "Team",
-      "title": "Staff",
-      "description": "Manage employees, roles, departments, and permissions.",
-      "create": "Add employee",
-      "permissionsLink": "Matrice permessi",
-      "empty": "No staff match your filters.",
-      "emptyHint": "Try clearing filters or invite a new employee.",
+      "title": "Personale",
+      "description": "Gestisci dipendenti, ruoli, dipartimenti e permessi.",
+      "create": "Aggiungi dipendente",
+      "permissionsLink": "Matrice dei permessi",
+      "empty": "Nessun dipendente corrisponde ai filtri.",
+      "emptyHint": "Reimposta i filtri o invita un dipendente.",
       "stats": {
-        "employees": "Employees",
-        "managers": "Managers",
-        "creators": "Creators",
-        "departments": "Departments",
-        "activeToday": "Active today"
+        "employees": "Dipendenti",
+        "managers": "Manager",
+        "creators": "Creator",
+        "departments": "Dipartimenti",
+        "activeToday": "Attivi oggi"
       },
       "filters": {
-        "search": "Search",
-        "searchPlaceholder": "Name or email",
-        "role": "Role",
-        "department": "Department",
-        "status": "Status",
-        "sort": "Sort",
-        "all": "All",
-        "newest": "Newest",
-        "oldest": "Oldest",
-        "name": "Name",
-        "apply": "Apply",
-        "clear": "Clear"
+        "search": "Cerca",
+        "searchPlaceholder": "Nome, email o dipartimento",
+        "role": "Ruolo",
+        "department": "Dipartimento",
+        "status": "Stato",
+        "sort": "Ordina",
+        "all": "Tutti",
+        "newest": "Più recenti",
+        "oldest": "Più vecchi",
+        "name": "Nome",
+        "apply": "Applica",
+        "clear": "Reimposta"
       },
       "table": {
         "avatar": "Avatar",
-        "name": "Name",
+        "name": "Nome",
         "email": "Email",
-        "role": "Role",
-        "department": "Department",
-        "status": "Status",
-        "managedCreators": "Managed creators",
-        "created": "Created",
-        "lastLogin": "Last login",
-        "actions": "Actions",
-        "view": "View"
+        "role": "Ruolo",
+        "department": "Dipartimento",
+        "status": "Stato",
+        "managedCreators": "Creator gestiti",
+        "created": "Creato",
+        "lastLogin": "Ultimo accesso",
+        "actions": "Azioni",
+        "view": "Apri"
       },
       "fields": {
-        "fullName": "Full name",
+        "fullName": "Nome completo",
         "email": "Email",
-        "phone": "Phone",
-        "role": "Role",
-        "department": "Department",
-        "departmentCustom": "Custom department",
-        "language": "Language",
-        "timezone": "Timezone",
-        "temporaryPassword": "Temporary password",
-        "created": "Created",
-        "updated": "Updated",
-        "lastLogin": "Last login",
-        "biography": "Biography",
-        "notes": "Internal notes",
-        "status": "Status",
-        "managedCreators": "Managed creators",
-        "assignedApplications": "Assigned applications",
-        "assignedTasks": "Assigned tasks"
+        "phone": "Telefono",
+        "role": "Ruolo",
+        "department": "Dipartimento",
+        "departmentCustom": "Dipartimento personalizzato",
+        "language": "Lingua",
+        "timezone": "Fuso orario",
+        "temporaryPassword": "Password temporanea",
+        "created": "Creato",
+        "updated": "Aggiornato",
+        "lastLogin": "Ultimo accesso",
+        "biography": "Biografia",
+        "notes": "Note interne",
+        "status": "Stato",
+        "managedCreators": "Creator gestiti",
+        "assignedApplications": "Candidature assegnate",
+        "assignedTasks": "Attività assegnate",
+        "firstName": "Nome",
+        "lastName": "Cognome",
+        "avatarUrl": "URL avatar"
       },
       "form": {
-        "title": "Create employee",
-        "cancel": "Cancel",
-        "submit": "Create",
-        "submitting": "Creating…",
-        "created": "Employee created."
+        "title": "Crea dipendente",
+        "cancel": "Annulla",
+        "submit": "Crea",
+        "submitting": "Creazione…",
+        "created": "Dipendente invitato. Email per impostare la password inviata."
       },
       "departments": {
         "management": "Management",
-        "sales": "Sales",
-        "support": "Support",
+        "sales": "Vendite",
+        "support": "Supporto",
         "marketing": "Marketing",
-        "content": "Content",
-        "finance": "Finance",
+        "content": "Contenuti",
+        "finance": "Finanza",
         "hr": "HR",
         "operations": "Operations",
-        "custom": "Custom"
+        "custom": "Personalizzato"
       },
       "status": {
-        "invited": "Invited",
-        "active": "Active",
-        "vacation": "Vacation",
-        "suspended": "Suspended",
-        "disabled": "Disabled",
-        "archived": "Archived"
+        "invited": "Invitato",
+        "active": "Attivo",
+        "vacation": "In ferie",
+        "suspended": "Sospeso",
+        "disabled": "Disabilitato",
+        "archived": "Archiviato"
       },
       "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {page} of {totalPages} · {total} total"
+        "previous": "Precedente",
+        "next": "Successivo",
+        "pageOf": "Pagina {page} di {totalPages} · {total} totali"
       },
       "errors": {
-        "load": "Unable to load staff."
+        "load": "Impossibile caricare il personale.",
+        "retry": "Riprova"
       },
       "actionErrors": {
-        "unauthorized": "You are not authorized.",
-        "forbidden": "You cannot perform this action.",
-        "forbiddenRole": "You cannot assign this role.",
-        "forbiddenOwner": "Only the owner can manage owner accounts.",
-        "cannotDeleteSelf": "You cannot delete your own account.",
-        "invalid": "Invalid staff data.",
-        "notFound": "Staff member not found.",
-        "create": "Unable to create employee.",
-        "save": "Unable to save changes.",
-        "delete": "Unable to delete employee.",
-        "tasksUnavailable": "Tasks are unavailable in this environment."
+        "unauthorized": "Non sei autorizzato.",
+        "forbidden": "Non puoi eseguire questa azione.",
+        "forbiddenRole": "Non puoi assegnare questo ruolo.",
+        "forbiddenOwner": "Solo il proprietario può gestire gli account owner.",
+        "cannotDeleteSelf": "Non puoi eliminare il tuo account.",
+        "invalid": "Dati dipendente non validi.",
+        "notFound": "Dipendente non trovato.",
+        "create": "Impossibile creare il dipendente.",
+        "save": "Impossibile salvare le modifiche.",
+        "delete": "Impossibile eliminare il dipendente.",
+        "tasksUnavailable": "Le attività non sono disponibili in questo ambiente."
       },
       "detail": {
-        "back": "Back to staff",
-        "save": "Save changes",
-        "saving": "Saving…",
-        "saved": "Saved.",
-        "confirmDelete": "Archive and disable this employee?",
-        "confirmTransfer": "Transfer ownership to this employee? You will become an admin.",
-        "delete": "Archive employee",
-        "transferOwnership": "Transfer ownership",
-        "emptyAssignments": "Nothing assigned yet.",
-        "emptyActivity": "No recent activity.",
-        "unassign": "Unassign",
-        "assignCreator": "Assign creator",
-        "assignApplication": "Assign application",
-        "expandPayload": "Show payload",
-        "collapsePayload": "Hide payload",
+        "back": "Torna al personale",
+        "save": "Salva modifiche",
+        "saving": "Salvataggio…",
+        "saved": "Salvato.",
+        "confirmDelete": "Eliminare definitivamente questo dipendente e il suo accesso? L’azione non può essere annullata.",
+        "confirmTransfer": "Trasferire la proprietà a questo dipendente? Diventerai admin.",
+        "delete": "Elimina dipendente",
+        "transferOwnership": "Trasferisci proprietà",
+        "emptyAssignments": "Nessuna assegnazione.",
+        "emptyActivity": "Nessuna attività recente.",
+        "unassign": "Rimuovi",
+        "assignCreator": "Assegna creator",
+        "assignApplication": "Assegna candidatura",
+        "expandPayload": "Mostra dati",
+        "collapsePayload": "Nascondi dati",
         "sections": {
-          "profile": "Profile",
-          "assignments": "Assignments",
-          "activity": "Recent activity",
-          "danger": "Danger zone"
+          "profile": "Profilo",
+          "assignments": "Assegnazioni",
+          "activity": "Attività recente",
+          "danger": "Zona pericolosa"
         }
       },
       "permissions": {
-        "title": "Permissions matrix",
-        "description": "Central capability map used by hasPermission() across the platform.",
-        "module": "Module",
-        "role": "Role",
+        "title": "Matrice dei permessi",
+        "description": "Mappa centrale delle capacità della piattaforma.",
+        "module": "Modulo",
+        "role": "Ruolo",
         "modules": {
-          "applications": "Applications",
-          "creators": "Creator CRM",
-          "finance": "Finance",
-          "tasks": "Tasks",
-          "calendar": "Calendar",
+          "applications": "Candidature",
+          "creators": "CRM creator",
+          "finance": "Finanza",
+          "tasks": "Attività",
+          "calendar": "Calendario",
           "blog": "Blog",
           "analytics": "Analytics",
-          "settings": "Settings",
-          "staff": "Staff",
-          "notifications": "Notifications",
-          "activity": "Activity"
+          "settings": "Impostazioni",
+          "staff": "Personale",
+          "notifications": "Notifiche",
+          "activity": "Attività"
         },
         "actions": {
-          "create": "Create",
-          "read": "Read",
-          "update": "Update",
-          "delete": "Delete",
-          "manage": "Manage",
-          "approve": "Approve",
-          "export": "Export"
+          "create": "Crea",
+          "read": "Leggi",
+          "update": "Aggiorna",
+          "delete": "Elimina",
+          "manage": "Gestisci",
+          "approve": "Approva",
+          "export": "Esporta"
         }
       },
-      "emptyTitle": "No staff found",
-      "emptyDescription": "Try clearing filters or invite a new employee.",
-      "emptyAction": "Add employee"
+      "emptyTitle": "Nessun dipendente trovato",
+      "emptyDescription": "Reimposta i filtri o invita un nuovo dipendente.",
+      "emptyAction": "Aggiungi dipendente",
+      "never": "Mai"
     }
   },
   "creator": {
@@ -1344,10 +1525,11 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X",
-        "chaturbate": "Chaturbate"
+        "twitter": "X (Twitter)"
       },
       "actions": {
         "save": "Salva",
@@ -1693,7 +1875,28 @@
       "financePayoutPaidDescription": "Payout marked paid",
       "financePayoutCancelledTitle": "Payout cancelled",
       "financePayoutCancelledMessage": "A payout was cancelled",
-      "financePayoutCancelledDescription": "Payout cancelled"
+      "financePayoutCancelledDescription": "Payout cancelled",
+      "employeeCreatedTitle": "Dipendente creato",
+      "employeeCreatedMessage": "{name} è stato invitato",
+      "employeeCreatedDescription": "Dipendente invitato",
+      "employeeUpdatedTitle": "Dipendente aggiornato",
+      "employeeUpdatedMessage": "{name} è stato aggiornato",
+      "employeeUpdatedDescription": "Dipendente aggiornato",
+      "employeeDeletedTitle": "Dipendente eliminato",
+      "employeeDeletedMessage": "{name} è stato eliminato",
+      "employeeDeletedDescription": "Dipendente eliminato",
+      "employeeSuspendedTitle": "Dipendente sospeso",
+      "employeeSuspendedMessage": "{name} è stato sospeso",
+      "employeeSuspendedDescription": "Dipendente sospeso",
+      "employeeActivatedTitle": "Dipendente attivato",
+      "employeeActivatedMessage": "{name} è stato attivato",
+      "employeeActivatedDescription": "Dipendente attivato",
+      "creatorArchivedTitle": "Creator archived",
+      "creatorArchivedMessage": "{name} was archived",
+      "creatorArchivedDescription": "Creator archived: {name}",
+      "creatorDeletedTitle": "Creator deleted",
+      "creatorDeletedMessage": "{name} was deleted",
+      "creatorDeletedDescription": "Creator deleted: {name}"
     }
   }
 }

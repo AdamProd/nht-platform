@@ -18,7 +18,8 @@ export async function resolveNotificationRecipients(
 
   switch (input.type) {
     case "application.assigned":
-    case "creator.assigned": {
+    case "creator.assigned":
+    case "manager.changed": {
       const managerId =
         (payload.managerId as string | undefined) ||
         (payload.assigned_manager as string | undefined) ||
@@ -34,10 +35,12 @@ export async function resolveNotificationRecipients(
     }
     case "creator.updated":
     case "creator.status_changed":
+    case "status.changed":
     case "creator.avatar_changed":
     case "creator.profile_updated":
     case "creator.document_uploaded":
-    case "creator.platform_added": {
+    case "creator.platform_added":
+    case "creator.archived": {
       const managerId =
         (payload.managerId as string | undefined) ||
         (payload.manager_id as string | undefined);
@@ -53,13 +56,33 @@ export async function resolveNotificationRecipients(
       }
       break;
     }
+    case "creator.deleted": {
+      const { data: owners } = await admin
+        .from("profiles")
+        .select("id")
+        .in("role", ["owner", "admin"]);
+      for (const row of owners ?? []) recipients.add(row.id);
+      break;
+    }
     case "staff.role_changed":
     case "staff.created":
     case "staff.status_changed":
-    case "staff.assigned_creator": {
+    case "staff.assigned_creator":
+    case "employee.created":
+    case "employee.updated":
+    case "employee.suspended":
+    case "employee.activated": {
       const targetUserId =
         (payload.userId as string | undefined) || input.targetId || undefined;
       if (targetUserId) recipients.add(targetUserId);
+      break;
+    }
+    case "employee.deleted": {
+      const { data: owners } = await admin
+        .from("profiles")
+        .select("id")
+        .in("role", ["owner", "admin"]);
+      for (const row of owners ?? []) recipients.add(row.id);
       break;
     }
     case "application.created":

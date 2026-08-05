@@ -1,11 +1,10 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
-import { canImpersonateCreator, requireStaff } from "@/lib/auth";
-import { getCreator } from "@/features/creators/queries/get-creator";
-import { listStaffManagers } from "@/features/applications/queries/list-managers";
-import CreatorProfilePanel from "@/features/creators/components/CreatorProfilePanel";
-import ImpersonateCreatorButton from "@/features/cabinet/impersonation/components/ImpersonateCreatorButton";
+import { requireStaff } from "@/lib/auth";
+import {
+  CreatorProfileCrm,
+  getCreatorProfile,
+} from "@/features/creators/profile";
 
 type Props = {
   params: Promise<{ locale: string; id: string }>;
@@ -14,21 +13,15 @@ type Props = {
 export default async function AdminCreatorDetailPage({ params }: Props) {
   const { locale, id } = await params;
   setRequestLocale(locale);
-  const session = await requireStaff();
+  await requireStaff();
+
   const t = await getTranslations("admin.creators");
+  const tActivity = await getTranslations("admin.activity");
+  const tRoles = await getTranslations("admin.roles");
 
-  const canAssignManager =
-    session.profile.role === "owner" || session.profile.role === "admin";
-  const canImpersonate = canImpersonateCreator(session.profile.role);
-
-  let creator;
-  let managers;
-
+  let bundle;
   try {
-    [creator, managers] = await Promise.all([
-      getCreator(id),
-      listStaffManagers(),
-    ]);
+    bundle = await getCreatorProfile(id);
   } catch (error) {
     console.error(error);
     return (
@@ -38,142 +31,172 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
     );
   }
 
-  if (!creator) {
+  if (!bundle) {
     notFound();
   }
 
-  const statusLabels = {
-    new: t("status.new"),
-    invited: t("status.invited"),
-    active: t("status.active"),
-    paused: t("status.paused"),
-    vacation: t("status.vacation"),
-    inactive: t("status.inactive"),
-    banned: t("status.banned"),
-  };
-
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-overline text-[var(--nht-gold)]">{t("detailLabel")}</p>
-        <div className="flex flex-wrap items-center gap-3">
-          {canImpersonate ? (
-            <ImpersonateCreatorButton
-              creatorId={creator.id}
-              label={t("impersonate")}
-            />
-          ) : null}
-          <Link
-            href="/admin/creators"
-            className="text-xs text-[var(--nht-text-tertiary)] hover:text-[var(--nht-gold)]"
-          >
-            ← {t("backToList")}
-          </Link>
-        </div>
-      </div>
-
-      <CreatorProfilePanel
-        creator={creator}
-        managers={managers}
-        canAssignManager={canAssignManager}
-        locale={locale}
-        labels={{
-          tabs: {
-            overview: t("tabs.overview"),
-            platforms: t("tabs.platforms"),
-            notes: t("tabs.notes"),
-            documents: t("tabs.documents"),
-            finance: t("tabs.finance"),
-            tasks: t("tabs.tasks"),
+    <CreatorProfileCrm
+      bundle={bundle}
+      locale={locale}
+      labels={{
+        tabs: {
+          overview: t("profileCrm.tabs.overview"),
+          platforms: t("profileCrm.tabs.platforms"),
+          statistics: t("profileCrm.tabs.statistics"),
+          tasks: t("profileCrm.tabs.tasks"),
+          documents: t("profileCrm.tabs.documents"),
+          finance: t("profileCrm.tabs.finance"),
+          activity: t("profileCrm.tabs.activity"),
+        },
+        fields: {
+          displayName: t("fields.displayName"),
+          legalName: t("fields.legalName"),
+          email: t("fields.email"),
+          telegram: t("fields.telegram"),
+          phone: t("fields.phone"),
+          country: t("fields.country"),
+          timezone: t("fields.timezone"),
+          languages: t("fields.languages"),
+          languagesPlaceholder: t("fields.languagesPlaceholder"),
+          notes: t("fields.notes"),
+          manager: t("fields.manager"),
+          status: t("fields.status"),
+          platforms: t("fields.platforms"),
+          allStatuses: t("profileCrm.filters.allStatuses"),
+          allAssignees: t("profileCrm.filters.allAssignees"),
+        },
+        platforms: {
+          onlyfans: t("platforms.onlyfans"),
+          fansly: t("platforms.fansly"),
+          manyvids: t("platforms.manyvids"),
+          chaturbate: t("platforms.chaturbate"),
+          instagram: t("platforms.instagram"),
+          tiktok: t("platforms.tiktok"),
+          twitter: t("platforms.twitter"),
+        },
+        platformStatus: {
+          linked: t("profileCrm.platformStatus.linked"),
+          pending: t("profileCrm.platformStatus.pending"),
+          disconnected: t("profileCrm.platformStatus.disconnected"),
+          issue: t("profileCrm.platformStatus.issue"),
+        },
+        status: {
+          new: t("status.new"),
+          invited: t("status.invited"),
+          active: t("status.active"),
+          paused: t("status.paused"),
+          vacation: t("status.vacation"),
+          inactive: t("status.inactive"),
+          banned: t("status.banned"),
+        },
+        stats: {
+          monthlyRevenue: t("profileCrm.stats.thisMonth"),
+          lifetimeRevenue: t("profileCrm.stats.revenue"),
+          previousMonth: t("profileCrm.stats.lastMonth"),
+          subscribers: t("profileCrm.stats.subscribers"),
+          activeTasks: t("profileCrm.stats.tasks"),
+          payoutBalance: t("profileCrm.stats.payoutBalance"),
+          averageMonthly: t("profileCrm.stats.averageMonthly"),
+        },
+        finance: {
+          income: t("profileCrm.finance.income"),
+          commission: t("profileCrm.finance.commission"),
+          payouts: t("profileCrm.finance.paid"),
+          balance: t("profileCrm.finance.balance"),
+        },
+        tables: {
+          tasks: {
+            title: t("profileCrm.tables.tasks.title"),
+            priority: t("profileCrm.tables.tasks.priority"),
+            status: t("profileCrm.tables.tasks.status"),
+            dueDate: t("profileCrm.tables.tasks.dueDate"),
+            assignedBy: t("profileCrm.tables.tasks.assignedBy"),
           },
-          sidebar: {
-            platformsCount: t("sidebar.platformsCount"),
-            edit: t("sidebar.edit"),
-            back: t("sidebar.back"),
+          documents: {
+            document: t("profileCrm.tables.documents.document"),
+            type: t("profileCrm.tables.documents.type"),
+            status: t("profileCrm.tables.documents.status"),
+            uploaded: t("profileCrm.tables.documents.uploaded"),
+            actions: t("profileCrm.tables.documents.actions"),
+            uploadedStatus: t("profileCrm.tables.documents.uploadedStatus"),
           },
-          sections: {
-            profile: t("sections.profile"),
-            contacts: t("sections.contacts"),
-            platforms: t("sections.platforms"),
-            revenue: t("sections.revenue"),
-            manager: t("sections.manager"),
-            status: t("sections.status"),
-            notes: t("sections.notes"),
-            timeline: t("sections.timeline"),
-            quickStats: t("sections.quickStats"),
+          transactions: {
+            date: t("profileCrm.tables.payouts.date"),
+            amount: t("profileCrm.tables.payouts.amount"),
+            status: t("profileCrm.tables.payouts.status"),
+            method: t("profileCrm.tables.payouts.method"),
           },
-          fields: {
-            displayName: t("fields.displayName"),
-            legalName: t("fields.legalName"),
-            fullName: t("fields.fullName"),
-            birthday: t("fields.birthday"),
-            country: t("fields.country"),
-            languages: t("fields.languages"),
-            languagesPlaceholder: t("fields.languagesPlaceholder"),
-            timezone: t("fields.timezone"),
-            email: t("fields.email"),
-            telegram: t("fields.telegram"),
-            phone: t("fields.phone"),
-            biography: t("fields.biography"),
-            agency: t("fields.agency"),
-            platforms: t("fields.platforms"),
-            onlyfans: t("platforms.onlyfans"),
-            fansly: t("platforms.fansly"),
-            chaturbate: t("platforms.chaturbate"),
-            instagram: t("platforms.instagram"),
-            tiktok: t("platforms.tiktok"),
-            twitter: t("platforms.twitter"),
-            revenueCurrent: t("fields.revenueCurrent"),
-            revenuePrevious: t("fields.revenuePrevious"),
-            revenueLifetime: t("fields.revenueLifetime"),
-            manager: t("fields.manager"),
+          platforms: {
+            username: t("profileCrm.tables.platforms.username"),
+            link: t("profileCrm.tables.platforms.link"),
             status: t("fields.status"),
-            notes: t("fields.notes"),
-            created: t("fields.created"),
-            updated: t("fields.updated"),
-            lastLogin: t("fields.lastLogin"),
-            lastActivity: t("fields.lastActivity"),
-            application: t("fields.application"),
+            connectedAt: t("profileCrm.tables.platforms.connectedAt"),
+            followers: t("profileCrm.tables.platforms.followers"),
+            revenue: t("profileCrm.tables.platforms.revenue"),
+            lastSync: t("profileCrm.tables.platforms.lastSync"),
           },
-          quickStats: {
-            applications: t("quickStats.applications"),
-            revenue: t("quickStats.revenue"),
-            tasks: t("quickStats.tasks"),
-          },
-          placeholders: {
-            documents: {
-              title: t("placeholders.documents.title"),
-              description: t("placeholders.documents.description"),
-            },
-            finance: {
-              title: t("placeholders.finance.title"),
-              description: t("placeholders.finance.description"),
-            },
-            tasks: {
-              title: t("placeholders.tasks.title"),
-              description: t("placeholders.tasks.description"),
-            },
-          },
-          avatar: {
-            upload: t("avatar.upload"),
-            replace: t("avatar.replace"),
-            delete: t("avatar.delete"),
-            hint: t("avatar.hint"),
-            preview: t("avatar.preview"),
-            uploading: t("avatar.uploading"),
-            deleted: t("avatar.deleted"),
-          },
-          agencyValue: t("agencyValue"),
-          unassigned: t("unassigned"),
-          noApplication: t("noApplication"),
-          viewApplication: t("viewApplication"),
+        },
+        actions: {
+          edit: t("profileCrm.actions.edit"),
+          archive: t("profileCrm.actions.archive"),
+          delete: t("profileCrm.actions.delete"),
           save: t("actions.save"),
           saving: t("actions.saving"),
+          cancel: t("form.cancel"),
+          createTask: t("profileCrm.actions.createTask"),
+          upload: t("profileCrm.actions.uploadDocument"),
+          comingSoon: t("profileCrm.comingSoon"),
+          confirmArchiveTitle: t("profileCrm.confirm.archiveTitle"),
+          confirmArchiveDesc: t("profileCrm.confirm.archiveDescription"),
+          confirmDeleteTitle: t("profileCrm.confirm.deleteTitle"),
+          confirmDeleteDesc: t("profileCrm.confirm.deleteDescription"),
+          confirm: t("profileCrm.confirm.confirm"),
+          back: t("backToList"),
+          empty: t("profileCrm.empty"),
+          unassigned: t("unassigned"),
+          impersonate: t("impersonate"),
+          registered: t("fields.created"),
+          lastActivity: t("fields.lastActivity"),
+          connected: t("profileCrm.platformStatus.linked"),
+          notConnected: t("profileCrm.notConnected"),
           saved: t("toast.saved"),
-          saveError: t("actions.saveError"),
-        }}
-        statusLabels={statusLabels}
-      />
-    </div>
+          archived: t("profileCrm.toast.archived"),
+          deleted: t("profileCrm.toast.deleted"),
+          error: t("actions.saveError"),
+        },
+        activity: {
+          empty: t("profileCrm.activity.empty"),
+          expand: tActivity("expandPayload"),
+          collapse: tActivity("collapsePayload"),
+          unknownActor: tActivity("unknownActor"),
+        },
+        moduleLabels: {
+          creators: tActivity("modules.creators"),
+          applications: tActivity("modules.applications"),
+          finance: tActivity("modules.finance"),
+          cabinet: tActivity("modules.cabinet"),
+          admin: tActivity("modules.admin"),
+          auth: tActivity("modules.auth"),
+          blog: tActivity("modules.blog"),
+          tasks: tActivity("modules.tasks"),
+        },
+        roleLabels: {
+          owner: tRoles("owner"),
+          admin: tRoles("admin"),
+          manager: tRoles("manager"),
+          support: tRoles("support"),
+          finance: tRoles("finance"),
+          content_manager: tRoles("content_manager"),
+          creator: tRoles("creator"),
+        },
+        avatar: {
+          upload: t("avatar.upload"),
+          replace: t("avatar.replace"),
+          delete: t("avatar.delete"),
+          hint: t("avatar.hint"),
+        },
+      }}
+    />
   );
 }

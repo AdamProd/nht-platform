@@ -252,7 +252,8 @@
       "session": "Nepodařilo se vytvořit relaci. Zkuste to znovu.",
       "permissions": "Nepodařilo se načíst oprávnění.",
       "noAccess": "Váš účet nemá přístup do administrace.",
-      "generic": "Něco se pokazilo. Zkuste to znovu."
+      "generic": "Něco se pokazilo. Zkuste to znovu.",
+      "suspended": "Tento účet byl pozastaven."
     },
     "unauthorized": {
       "title": "Přístup odepřen",
@@ -337,9 +338,9 @@
         "description": "Časová osa událostí platformy."
       },
       "staff": {
-        "label": "Team",
+        "label": "Tým",
         "title": "Personál",
-        "description": "Manage employees, roles, departments, and permissions."
+        "description": "Spravujte zaměstnance, role, oddělení a oprávnění."
       }
     },
     "applications": {
@@ -440,7 +441,61 @@
       "title": "Tvůrci",
       "description": "Spravujte profily, platformy, příjmy a přiřazení tvůrců.",
       "detailLabel": "Tvůrce",
-      "create": "Vytvořit tvůrce",
+      "create": {
+        "label": "Vytvořit tvůrce",
+        "sections": {
+          "basic": "Základní informace",
+          "work": "Pracovní nastavení",
+          "platforms": "Platformy",
+          "finance": "Finance",
+          "notes": "Poznámky"
+        },
+        "platformDescriptions": {
+          "onlyfans": "Subscription content platform",
+          "fansly": "Creator subscription alternative",
+          "manyvids": "Clip store and custom content",
+          "chaturbate": "Live streaming platform",
+          "instagram": "Social discovery and traffic",
+          "tiktok": "Short-form discovery traffic",
+          "twitter": "Public updates and traffic"
+        },
+        "unsaved": {
+          "title": "Máte neuložené změny.",
+          "description": "Odejít bez uložení?",
+          "leave": "Odejít",
+          "stay": "Zůstat"
+        },
+        "validation": {
+          "emailChecking": "Kontrola…",
+          "emailAvailable": "✓ Volný",
+          "emailTaken": "E-mail se již používá",
+          "emailInvalid": "Zadejte platný e-mail"
+        },
+        "finance": {
+          "currency": "Měna",
+          "agencyPercent": "Procento agentury",
+          "payoutMethod": "Způsob výplaty",
+          "methods": {
+            "bank": "Banka",
+            "crypto": "Krypto",
+            "paypal": "PayPal"
+          }
+        },
+        "avatar": {
+          "upload": "Nahrát avatar",
+          "hint": "JPG, PNG nebo WebP do 5 MB"
+        },
+        "phone": {
+          "dial": "Předvolba",
+          "number": "Telefonní číslo"
+        },
+        "search": {
+          "country": "Vyberte zemi",
+          "timezone": "Vyberte časové pásmo",
+          "placeholder": "Hledat…",
+          "empty": "Žádné výsledky"
+        }
+      },
       "unassigned": "Nepřiřazeno",
       "backToList": "Zpět k tvůrcům",
       "noApplication": "Žádná propojená žádost",
@@ -497,14 +552,14 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X",
-        "manyvids": "ManyVids",
+        "twitter": "X (Twitter)",
+        "other": "Other",
         "multiple": "Multiple",
-        "emerging": "Emerging",
-        "other": "Other"
+        "emerging": "Emerging"
       },
       "fields": {
         "email": "Email",
@@ -539,9 +594,15 @@
         "title": "Nový tvůrce",
         "cancel": "Zrušit",
         "submit": "Vytvořit",
-        "submitting": "Vytváření…",
+        "submitting": "Vytváření...",
         "submitInvite": "Vytvořit a odeslat pozvánku",
-        "submittingInvite": "Odesílání…"
+        "submittingInvite": "Odesílání…",
+        "sections": {
+          "basic": "Základní informace",
+          "work": "Pracovní nastavení",
+          "platforms": "Platformy",
+          "notes": "Poznámky"
+        }
       },
       "actions": {
         "view": "Zobrazit",
@@ -554,7 +615,7 @@
         "uploadAvatar": "Nahrát foto"
       },
       "toast": {
-        "created": "Tvůrce vytvořen.",
+        "created": "Tvůrce byl úspěšně vytvořen.",
         "saved": "Changes saved.",
         "deleted": "Creator deleted.",
         "invited": "Pozvánka odeslána."
@@ -612,7 +673,9 @@
         "notes": "Poznámky",
         "documents": "Dokumenty",
         "finance": "Finance",
-        "tasks": "Úkoly"
+        "tasks": "Úkoly",
+        "profile": "Profil",
+        "activity": "Aktivita"
       },
       "sidebar": {
         "platformsCount": "{count} platforem",
@@ -650,7 +713,119 @@
       },
       "emptyTitle": "No creators yet.",
       "emptyDescription": "Create your first creator.",
-      "emptyAction": "Create Creator"
+      "emptyAction": "Create Creator",
+      "profileCrm": {
+        "comingSoon": "Již brzy.",
+        "empty": "Žádná data",
+        "actions": {
+          "edit": "Edit",
+          "sendMessage": "Send Message",
+          "documents": "Documents",
+          "finance": "Finance",
+          "createTask": "Create task",
+          "uploadDocument": "Upload",
+          "addNote": "Add note",
+          "archive": "Archive",
+          "delete": "Delete"
+        },
+        "stats": {
+          "revenue": "Lifetime Revenue",
+          "thisMonth": "Monthly Revenue",
+          "lastMonth": "Last Month",
+          "tasks": "Active Tasks",
+          "unreadMessages": "Unread Messages",
+          "documents": "Documents",
+          "subscribers": "Subscribers",
+          "payoutBalance": "Payout Balance",
+          "averageMonthly": "Average Monthly"
+        },
+        "finance": {
+          "balance": "Balance",
+          "thisMonth": "This Month",
+          "lastMonth": "Last Month",
+          "pending": "Pending",
+          "paid": "Payouts",
+          "income": "Income",
+          "commission": "Commission"
+        },
+        "tabs": {
+          "overview": "Overview",
+          "profile": "Profile",
+          "platforms": "Platforms",
+          "finance": "Finance",
+          "tasks": "Tasks",
+          "documents": "Documents",
+          "notes": "Notes",
+          "activity": "Activity",
+          "statistics": "Statistics"
+        },
+        "platformStatus": {
+          "linked": "Linked",
+          "pending": "Pending",
+          "disconnected": "Disconnected",
+          "issue": "Issue"
+        },
+        "tables": {
+          "payouts": {
+            "date": "Date",
+            "amount": "Amount",
+            "status": "Status",
+            "method": "Method",
+            "manager": "Manager"
+          },
+          "tasks": {
+            "title": "Title",
+            "priority": "Priority",
+            "status": "Status",
+            "dueDate": "Due Date",
+            "assignedBy": "Assigned By"
+          },
+          "documents": {
+            "document": "Document",
+            "type": "Type",
+            "status": "Status",
+            "uploaded": "Uploaded",
+            "actions": "Actions",
+            "uploadedStatus": "Uploaded"
+          },
+          "platforms": {
+            "username": "Username",
+            "link": "Link",
+            "followers": "Followers",
+            "revenue": "Revenue",
+            "lastSync": "Last Sync",
+            "connectedAt": "Connected"
+          }
+        },
+        "overview": {
+          "basic": "Základní info",
+          "revenue": "Tržby"
+        },
+        "notes": {
+          "current": "Poznámky",
+          "history": "Historie",
+          "historyEmpty": "Zatím žádná historie."
+        },
+        "activity": {
+          "empty": "Žádná aktivita."
+        },
+        "filters": {
+          "allStatuses": "All statuses",
+          "allAssignees": "All assignees"
+        },
+        "confirm": {
+          "archiveTitle": "Archive this creator?",
+          "archiveDescription": "The creator will be marked inactive and hidden from active roster views.",
+          "deleteTitle": "Delete this creator?",
+          "deleteDescription": "This permanently removes the creator record. This cannot be undone.",
+          "confirm": "Confirm"
+        },
+        "toast": {
+          "archived": "Creator archived.",
+          "deleted": "Creator deleted."
+        },
+        "notConnected": "Not connected"
+      }
     },
     "dashboard": {
       "label": "Přehled",
@@ -836,11 +1011,11 @@
       "manager": "Manažer",
       "creator": "Tvůrce",
       "guest": "Host",
-      "support": "Support",
-      "moderator": "Moderator",
-      "content_manager": "Content Manager",
+      "support": "Podpora",
+      "moderator": "Moderátor",
+      "content_manager": "Editor",
       "finance": "Finance",
-      "viewer": "Viewer"
+      "viewer": "Prohlížeč"
     },
     "finance": {
       "label": "Finance",
@@ -951,10 +1126,11 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X",
+        "twitter": "X (Twitter)",
         "other": "Other"
       },
       "methods": {
@@ -1097,168 +1273,173 @@
       "emptyDescription": "Platform events will appear in this timeline."
     },
     "staff": {
-      "label": "Team",
+      "label": "Tým",
       "title": "Personál",
-      "description": "Manage employees, roles, departments, and permissions.",
-      "create": "Add employee",
+      "description": "Spravujte zaměstnance, role, oddělení a oprávnění.",
+      "create": "Přidat zaměstnance",
       "permissionsLink": "Matice oprávnění",
-      "empty": "No staff match your filters.",
-      "emptyHint": "Try clearing filters or invite a new employee.",
+      "empty": "Žádní zaměstnanci neodpovídají filtrům.",
+      "emptyHint": "Vymažte filtry nebo pozvěte zaměstnance.",
       "stats": {
-        "employees": "Employees",
-        "managers": "Managers",
-        "creators": "Creators",
-        "departments": "Departments",
-        "activeToday": "Active today"
+        "employees": "Zaměstnanci",
+        "managers": "Manažeři",
+        "creators": "Tvůrci",
+        "departments": "Oddělení",
+        "activeToday": "Aktivní dnes"
       },
       "filters": {
-        "search": "Search",
-        "searchPlaceholder": "Name or email",
+        "search": "Hledat",
+        "searchPlaceholder": "Jméno, e-mail nebo oddělení",
         "role": "Role",
-        "department": "Department",
-        "status": "Status",
-        "sort": "Sort",
-        "all": "All",
-        "newest": "Newest",
-        "oldest": "Oldest",
-        "name": "Name",
-        "apply": "Apply",
-        "clear": "Clear"
+        "department": "Oddělení",
+        "status": "Stav",
+        "sort": "Řazení",
+        "all": "Vše",
+        "newest": "Nejnovější",
+        "oldest": "Nejstarší",
+        "name": "Jméno",
+        "apply": "Použít",
+        "clear": "Vymazat"
       },
       "table": {
         "avatar": "Avatar",
-        "name": "Name",
-        "email": "Email",
+        "name": "Jméno",
+        "email": "E-mail",
         "role": "Role",
-        "department": "Department",
-        "status": "Status",
-        "managedCreators": "Managed creators",
-        "created": "Created",
-        "lastLogin": "Last login",
-        "actions": "Actions",
-        "view": "View"
+        "department": "Oddělení",
+        "status": "Stav",
+        "managedCreators": "Spravovaní tvůrci",
+        "created": "Vytvořeno",
+        "lastLogin": "Poslední přihlášení",
+        "actions": "Akce",
+        "view": "Zobrazit"
       },
       "fields": {
-        "fullName": "Full name",
-        "email": "Email",
-        "phone": "Phone",
+        "fullName": "Celé jméno",
+        "email": "E-mail",
+        "phone": "Telefon",
         "role": "Role",
-        "department": "Department",
-        "departmentCustom": "Custom department",
-        "language": "Language",
-        "timezone": "Timezone",
-        "temporaryPassword": "Temporary password",
-        "created": "Created",
-        "updated": "Updated",
-        "lastLogin": "Last login",
-        "biography": "Biography",
-        "notes": "Internal notes",
-        "status": "Status",
-        "managedCreators": "Managed creators",
-        "assignedApplications": "Assigned applications",
-        "assignedTasks": "Assigned tasks"
+        "department": "Oddělení",
+        "departmentCustom": "Vlastní oddělení",
+        "language": "Jazyk",
+        "timezone": "Časové pásmo",
+        "temporaryPassword": "Dočasné heslo",
+        "created": "Vytvořeno",
+        "updated": "Aktualizováno",
+        "lastLogin": "Poslední přihlášení",
+        "biography": "Biografie",
+        "notes": "Interní poznámky",
+        "status": "Stav",
+        "managedCreators": "Spravovaní tvůrci",
+        "assignedApplications": "Přiřazené žádosti",
+        "assignedTasks": "Přiřazené úkoly",
+        "firstName": "Jméno",
+        "lastName": "Příjmení",
+        "avatarUrl": "URL avataru"
       },
       "form": {
-        "title": "Create employee",
-        "cancel": "Cancel",
-        "submit": "Create",
-        "submitting": "Creating…",
-        "created": "Employee created."
+        "title": "Vytvořit zaměstnance",
+        "cancel": "Zrušit",
+        "submit": "Vytvořit",
+        "submitting": "Vytváření…",
+        "created": "Zaměstnanec pozván. E-mail pro nastavení hesla odeslán."
       },
       "departments": {
-        "management": "Management",
-        "sales": "Sales",
-        "support": "Support",
+        "management": "Vedení",
+        "sales": "Prodej",
+        "support": "Podpora",
         "marketing": "Marketing",
-        "content": "Content",
+        "content": "Obsah",
         "finance": "Finance",
         "hr": "HR",
-        "operations": "Operations",
-        "custom": "Custom"
+        "operations": "Provoz",
+        "custom": "Vlastní"
       },
       "status": {
-        "invited": "Invited",
-        "active": "Active",
-        "vacation": "Vacation",
-        "suspended": "Suspended",
-        "disabled": "Disabled",
-        "archived": "Archived"
+        "invited": "Pozvaný",
+        "active": "Aktivní",
+        "vacation": "Dovolená",
+        "suspended": "Pozastavený",
+        "disabled": "Deaktivovaný",
+        "archived": "Archivovaný"
       },
       "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {page} of {totalPages} · {total} total"
+        "previous": "Předchozí",
+        "next": "Další",
+        "pageOf": "Stránka {page} z {totalPages} · {total} celkem"
       },
       "errors": {
-        "load": "Unable to load staff."
+        "load": "Nepodařilo se načíst personál.",
+        "retry": "Zkusit znovu"
       },
       "actionErrors": {
-        "unauthorized": "You are not authorized.",
-        "forbidden": "You cannot perform this action.",
-        "forbiddenRole": "You cannot assign this role.",
-        "forbiddenOwner": "Only the owner can manage owner accounts.",
-        "cannotDeleteSelf": "You cannot delete your own account.",
-        "invalid": "Invalid staff data.",
-        "notFound": "Staff member not found.",
-        "create": "Unable to create employee.",
-        "save": "Unable to save changes.",
-        "delete": "Unable to delete employee.",
-        "tasksUnavailable": "Tasks are unavailable in this environment."
+        "unauthorized": "Nejste autorizováni.",
+        "forbidden": "Tuto akci nemůžete provést.",
+        "forbiddenRole": "Tuto roli nemůžete přiřadit.",
+        "forbiddenOwner": "Pouze vlastník může spravovat účty vlastníka.",
+        "cannotDeleteSelf": "Nemůžete smazat svůj vlastní účet.",
+        "invalid": "Neplatná data zaměstnance.",
+        "notFound": "Zaměstnanec nenalezen.",
+        "create": "Nepodařilo se vytvořit zaměstnance.",
+        "save": "Nepodařilo se uložit změny.",
+        "delete": "Nepodařilo se smazat zaměstnance.",
+        "tasksUnavailable": "Úkoly nejsou v tomto prostředí dostupné."
       },
       "detail": {
-        "back": "Back to staff",
-        "save": "Save changes",
-        "saving": "Saving…",
-        "saved": "Saved.",
-        "confirmDelete": "Archive and disable this employee?",
-        "confirmTransfer": "Transfer ownership to this employee? You will become an admin.",
-        "delete": "Archive employee",
-        "transferOwnership": "Transfer ownership",
-        "emptyAssignments": "Nothing assigned yet.",
-        "emptyActivity": "No recent activity.",
-        "unassign": "Unassign",
-        "assignCreator": "Assign creator",
-        "assignApplication": "Assign application",
-        "expandPayload": "Show payload",
-        "collapsePayload": "Hide payload",
+        "back": "Zpět na personál",
+        "save": "Uložit změny",
+        "saving": "Ukládání…",
+        "saved": "Uloženo.",
+        "confirmDelete": "Trvale smazat tohoto zaměstnance a jeho přístup? Tuto akci nelze vrátit zpět.",
+        "confirmTransfer": "Převést vlastnictví na tohoto zaměstnance? Stanete se adminem.",
+        "delete": "Smazat zaměstnance",
+        "transferOwnership": "Převést vlastnictví",
+        "emptyAssignments": "Zatím nic není přiřazeno.",
+        "emptyActivity": "Žádná nedávná aktivita.",
+        "unassign": "Odebrat",
+        "assignCreator": "Přiřadit tvůrce",
+        "assignApplication": "Přiřadit žádost",
+        "expandPayload": "Zobrazit data",
+        "collapsePayload": "Skrýt data",
         "sections": {
-          "profile": "Profile",
-          "assignments": "Assignments",
-          "activity": "Recent activity",
-          "danger": "Danger zone"
+          "profile": "Profil",
+          "assignments": "Přiřazení",
+          "activity": "Nedávná aktivita",
+          "danger": "Nebezpečná zóna"
         }
       },
       "permissions": {
-        "title": "Permissions matrix",
-        "description": "Central capability map used by hasPermission() across the platform.",
-        "module": "Module",
+        "title": "Matice oprávnění",
+        "description": "Centrální mapa schopností platformy.",
+        "module": "Modul",
         "role": "Role",
         "modules": {
-          "applications": "Applications",
-          "creators": "Creator CRM",
+          "applications": "Žádosti",
+          "creators": "CRM tvůrců",
           "finance": "Finance",
-          "tasks": "Tasks",
-          "calendar": "Calendar",
+          "tasks": "Úkoly",
+          "calendar": "Kalendář",
           "blog": "Blog",
-          "analytics": "Analytics",
-          "settings": "Settings",
-          "staff": "Staff",
-          "notifications": "Notifications",
-          "activity": "Activity"
+          "analytics": "Analytika",
+          "settings": "Nastavení",
+          "staff": "Personál",
+          "notifications": "Oznámení",
+          "activity": "Aktivita"
         },
         "actions": {
-          "create": "Create",
-          "read": "Read",
-          "update": "Update",
-          "delete": "Delete",
-          "manage": "Manage",
-          "approve": "Approve",
-          "export": "Export"
+          "create": "Vytvořit",
+          "read": "Číst",
+          "update": "Upravit",
+          "delete": "Smazat",
+          "manage": "Spravovat",
+          "approve": "Schválit",
+          "export": "Exportovat"
         }
       },
-      "emptyTitle": "No staff found",
-      "emptyDescription": "Try clearing filters or invite a new employee.",
-      "emptyAction": "Add employee"
+      "emptyTitle": "Žádní zaměstnanci nenalezeni",
+      "emptyDescription": "Vymažte filtry nebo pozvěte nového zaměstnance.",
+      "emptyAction": "Přidat zaměstnance",
+      "never": "Nikdy"
     }
   },
   "creator": {
@@ -1344,10 +1525,11 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X",
-        "chaturbate": "Chaturbate"
+        "twitter": "X (Twitter)"
       },
       "actions": {
         "save": "Uložit",
@@ -1693,7 +1875,28 @@
       "financePayoutPaidDescription": "Payout marked paid",
       "financePayoutCancelledTitle": "Payout cancelled",
       "financePayoutCancelledMessage": "A payout was cancelled",
-      "financePayoutCancelledDescription": "Payout cancelled"
+      "financePayoutCancelledDescription": "Payout cancelled",
+      "employeeCreatedTitle": "Zaměstnanec vytvořen",
+      "employeeCreatedMessage": "{name} byl pozván",
+      "employeeCreatedDescription": "Zaměstnanec pozván",
+      "employeeUpdatedTitle": "Zaměstnanec aktualizován",
+      "employeeUpdatedMessage": "{name} byl aktualizován",
+      "employeeUpdatedDescription": "Zaměstnanec aktualizován",
+      "employeeDeletedTitle": "Zaměstnanec smazán",
+      "employeeDeletedMessage": "{name} byl smazán",
+      "employeeDeletedDescription": "Zaměstnanec smazán",
+      "employeeSuspendedTitle": "Zaměstnanec pozastaven",
+      "employeeSuspendedMessage": "{name} byl pozastaven",
+      "employeeSuspendedDescription": "Zaměstnanec pozastaven",
+      "employeeActivatedTitle": "Zaměstnanec aktivován",
+      "employeeActivatedMessage": "{name} byl aktivován",
+      "employeeActivatedDescription": "Zaměstnanec aktivován",
+      "creatorArchivedTitle": "Creator archived",
+      "creatorArchivedMessage": "{name} was archived",
+      "creatorArchivedDescription": "Creator archived: {name}",
+      "creatorDeletedTitle": "Creator deleted",
+      "creatorDeletedMessage": "{name} was deleted",
+      "creatorDeletedDescription": "Creator deleted: {name}"
     }
   }
 }

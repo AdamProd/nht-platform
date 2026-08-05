@@ -29,6 +29,20 @@ export {
   uploadAvatar,
   deleteAvatar,
 } from "@/features/creators/actions/update-creator";
+export { checkCreatorEmail } from "@/features/creators/actions/check-creator-email";
+export {
+  getCreatorProfile,
+  getCreatorProfileBundle,
+  listCreatorActivity,
+  updateCreatorProfile,
+  archiveCreator,
+  deleteCreator,
+  CreatorProfileCrm,
+} from "@/features/creators/profile";
+export type {
+  CreatorProfileBundle,
+  CreatorProfileTab,
+} from "@/features/creators/profile";
 export {
   creatorStatuses,
   createCreatorSchema,
@@ -36,3 +50,4 @@ export {
   updatePlatformsSchema,
   creatorsListFiltersSchema,
 } from "@/features/creators/schemas/creator.schema";
+

@@ -252,7 +252,8 @@
       "session": "Не удалось создать сессию. Попробуйте снова.",
       "permissions": "Не удалось загрузить права доступа.",
       "noAccess": "У вашего аккаунта нет доступа к админ-зоне.",
-      "generic": "Что-то пошло не так. Попробуйте снова."
+      "generic": "Что-то пошло не так. Попробуйте снова.",
+      "suspended": "Этот аккаунт приостановлен."
     },
     "unauthorized": {
       "title": "Доступ запрещён",
@@ -339,7 +340,7 @@
       "staff": {
         "label": "Команда",
         "title": "Сотрудники",
-        "description": "Управление сотрудниками, ролями и правами."
+        "description": "Управление сотрудниками, ролями, отделами и правами доступа."
       }
     },
     "applications": {
@@ -440,7 +441,61 @@
       "title": "Креаторы",
       "description": "Управление профилями креаторов, назначением и статусом.",
       "detailLabel": "Креатор",
-      "create": "Создать креатора",
+      "create": {
+        "label": "Создать креатора",
+        "sections": {
+          "basic": "Основная информация",
+          "work": "Рабочие настройки",
+          "platforms": "Платформы",
+          "finance": "Финансы",
+          "notes": "Заметки"
+        },
+        "platformDescriptions": {
+          "onlyfans": "Платформа подписочного контента",
+          "fansly": "Альтернатива подписочной модели",
+          "manyvids": "Клипы и кастомный контент",
+          "chaturbate": "Платформа прямых эфиров",
+          "instagram": "Социальный трафик и охват",
+          "tiktok": "Короткий видеоконтент и трафик",
+          "twitter": "Публикации и трафик"
+        },
+        "unsaved": {
+          "title": "Есть несохранённые изменения.",
+          "description": "Выйти без сохранения черновика?",
+          "leave": "Выйти",
+          "stay": "Остаться"
+        },
+        "validation": {
+          "emailChecking": "Проверка…",
+          "emailAvailable": "✓ свободен",
+          "emailTaken": "Email уже используется",
+          "emailInvalid": "Введите корректный email"
+        },
+        "finance": {
+          "currency": "Валюта",
+          "agencyPercent": "Процент агентства",
+          "payoutMethod": "Способ выплат",
+          "methods": {
+            "bank": "Банк",
+            "crypto": "Крипто",
+            "paypal": "PayPal"
+          }
+        },
+        "avatar": {
+          "upload": "Загрузить аватар",
+          "hint": "JPG, PNG или WebP до 5 МБ"
+        },
+        "phone": {
+          "dial": "Код страны",
+          "number": "Номер телефона"
+        },
+        "search": {
+          "country": "Выберите страну",
+          "timezone": "Выберите часовой пояс",
+          "placeholder": "Поиск…",
+          "empty": "Ничего не найдено"
+        }
+      },
       "unassigned": "Не назначен",
       "backToList": "К списку креаторов",
       "noApplication": "Нет связанной заявки",
@@ -498,13 +553,13 @@
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
         "manyvids": "ManyVids",
-        "multiple": "Несколько",
-        "emerging": "Новая площадка",
-        "other": "Другое",
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X"
+        "twitter": "X (Twitter)",
+        "other": "Другое",
+        "multiple": "Несколько",
+        "emerging": "Новая площадка"
       },
       "fields": {
         "fullName": "Полное имя",
@@ -538,9 +593,15 @@
         "title": "Новый креатор",
         "cancel": "Отмена",
         "submit": "Создать",
-        "submitting": "Создание…",
+        "submitting": "Создание...",
         "submitInvite": "Создать и отправить приглашение",
-        "submittingInvite": "Отправка…"
+        "submittingInvite": "Отправка…",
+        "sections": {
+          "basic": "Основная информация",
+          "work": "Рабочие настройки",
+          "platforms": "Платформы",
+          "notes": "Заметки"
+        }
       },
       "actions": {
         "view": "Открыть",
@@ -553,7 +614,7 @@
         "uploadAvatar": "Загрузить фото"
       },
       "toast": {
-        "created": "Креатор создан.",
+        "created": "Креатор успешно создан.",
         "saved": "Изменения сохранены.",
         "deleted": "Креатор удалён.",
         "invited": "Приглашение отправлено."
@@ -609,7 +670,9 @@
         "notes": "Заметки",
         "documents": "Документы",
         "finance": "Финансы",
-        "tasks": "Задачи"
+        "tasks": "Задачи",
+        "profile": "Профиль",
+        "activity": "Активность"
       },
       "sidebar": {
         "platformsCount": "{count} платформ",
@@ -647,7 +710,119 @@
       },
       "emptyTitle": "No creators yet.",
       "emptyDescription": "Create your first creator.",
-      "emptyAction": "Create Creator"
+      "emptyAction": "Create Creator",
+      "profileCrm": {
+        "comingSoon": "Скоро будет доступно.",
+        "empty": "Нет данных",
+        "actions": {
+          "edit": "Редактировать",
+          "sendMessage": "Написать",
+          "documents": "Документы",
+          "finance": "Финансы",
+          "createTask": "Создать задачу",
+          "uploadDocument": "Загрузить",
+          "addNote": "Добавить заметку",
+          "archive": "Архивировать",
+          "delete": "Удалить"
+        },
+        "stats": {
+          "revenue": "Выручка за всё время",
+          "thisMonth": "Выручка за месяц",
+          "lastMonth": "Прошлый месяц",
+          "tasks": "Активные задачи",
+          "unreadMessages": "Непрочитанные",
+          "documents": "Документы",
+          "subscribers": "Подписчики",
+          "payoutBalance": "Баланс выплат",
+          "averageMonthly": "Средний месяц"
+        },
+        "finance": {
+          "balance": "Баланс",
+          "thisMonth": "Этот месяц",
+          "lastMonth": "Прошлый месяц",
+          "pending": "Ожидает",
+          "paid": "Выплаты",
+          "income": "Доход",
+          "commission": "Комиссия"
+        },
+        "tabs": {
+          "overview": "Обзор",
+          "profile": "Профиль",
+          "platforms": "Платформы",
+          "finance": "Финансы",
+          "tasks": "Задачи",
+          "documents": "Документы",
+          "notes": "Заметки",
+          "activity": "Активность",
+          "statistics": "Статистика"
+        },
+        "platformStatus": {
+          "linked": "Подключено",
+          "pending": "Ожидает",
+          "disconnected": "Отключено",
+          "issue": "Проблема"
+        },
+        "tables": {
+          "payouts": {
+            "date": "Дата",
+            "amount": "Сумма",
+            "status": "Статус",
+            "method": "Метод",
+            "manager": "Менеджер"
+          },
+          "tasks": {
+            "title": "Название",
+            "priority": "Приоритет",
+            "status": "Статус",
+            "dueDate": "Срок",
+            "assignedBy": "Назначил"
+          },
+          "documents": {
+            "document": "Документ",
+            "type": "Тип",
+            "status": "Статус",
+            "uploaded": "Загружен",
+            "actions": "Действия",
+            "uploadedStatus": "Загружен"
+          },
+          "platforms": {
+            "username": "Username",
+            "link": "Ссылка",
+            "followers": "Подписчики",
+            "revenue": "Выручка",
+            "lastSync": "Синхронизация",
+            "connectedAt": "Подключена"
+          }
+        },
+        "overview": {
+          "basic": "Основная информация",
+          "revenue": "Выручка"
+        },
+        "notes": {
+          "current": "Заметки",
+          "history": "История заметок",
+          "historyEmpty": "История заметок пока пуста."
+        },
+        "activity": {
+          "empty": "Активности пока нет."
+        },
+        "filters": {
+          "allStatuses": "Все статусы",
+          "allAssignees": "Все исполнители"
+        },
+        "confirm": {
+          "archiveTitle": "Архивировать креатора?",
+          "archiveDescription": "Креатор будет помечен как неактивный.",
+          "deleteTitle": "Удалить креатора?",
+          "deleteDescription": "Запись будет удалена безвозвратно.",
+          "confirm": "Подтвердить"
+        },
+        "toast": {
+          "archived": "Креатор архивирован.",
+          "deleted": "Креатор удалён."
+        },
+        "notConnected": "Не подключена"
+      }
     },
     "dashboard": {
       "label": "Обзор",
@@ -832,7 +1007,7 @@
       "guest": "Гость",
       "support": "Поддержка",
       "moderator": "Модератор",
-      "content_manager": "Контент-менеджер",
+      "content_manager": "Редактор",
       "finance": "Финансы",
       "viewer": "Наблюдатель"
     },
@@ -945,10 +1120,11 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X",
+        "twitter": "X (Twitter)",
         "other": "Other"
       },
       "methods": {
@@ -1093,166 +1269,171 @@
     "staff": {
       "label": "Команда",
       "title": "Сотрудники",
-      "description": "Управление сотрудниками, ролями, отделами и правами.",
+      "description": "Управление сотрудниками, ролями, отделами и правами доступа.",
       "create": "Добавить сотрудника",
       "permissionsLink": "Матрица прав",
-      "empty": "Нет сотрудников по фильтрам.",
-      "emptyHint": "Сбросьте фильтры или пригласите сотрудника.",
+      "empty": "Нет сотрудников по выбранным фильтрам.",
+      "emptyHint": "Сбросьте фильтры или пригласите нового сотрудника.",
       "stats": {
         "employees": "Сотрудники",
         "managers": "Менеджеры",
         "creators": "Креаторы",
         "departments": "Отделы",
-        "activeToday": "Активны сегодня"
+        "activeToday": "Активных сегодня"
       },
       "filters": {
-        "search": "Search",
-        "searchPlaceholder": "Name or email",
-        "role": "Role",
-        "department": "Department",
-        "status": "Status",
-        "sort": "Sort",
-        "all": "All",
-        "newest": "Newest",
-        "oldest": "Oldest",
-        "name": "Name",
-        "apply": "Apply",
-        "clear": "Clear"
+        "search": "Поиск",
+        "searchPlaceholder": "Имя, email или отдел",
+        "role": "Роль",
+        "department": "Отдел",
+        "status": "Статус",
+        "sort": "Сортировка",
+        "all": "Все",
+        "newest": "Сначала новые",
+        "oldest": "Сначала старые",
+        "name": "По имени",
+        "apply": "Применить",
+        "clear": "Сбросить"
       },
       "table": {
-        "avatar": "Avatar",
-        "name": "Name",
+        "avatar": "Аватар",
+        "name": "Имя",
         "email": "Email",
-        "role": "Role",
-        "department": "Department",
-        "status": "Status",
-        "managedCreators": "Managed creators",
-        "created": "Created",
-        "lastLogin": "Last login",
-        "actions": "Actions",
-        "view": "View"
+        "role": "Роль",
+        "department": "Отдел",
+        "status": "Статус",
+        "managedCreators": "Закреплено креаторов",
+        "created": "Создан",
+        "lastLogin": "Последний вход",
+        "actions": "Действия",
+        "view": "Открыть"
       },
       "fields": {
-        "fullName": "Full name",
+        "fullName": "Полное имя",
         "email": "Email",
-        "phone": "Phone",
-        "role": "Role",
-        "department": "Department",
-        "departmentCustom": "Custom department",
-        "language": "Language",
-        "timezone": "Timezone",
-        "temporaryPassword": "Temporary password",
-        "created": "Created",
-        "updated": "Updated",
-        "lastLogin": "Last login",
-        "biography": "Biography",
-        "notes": "Internal notes",
-        "status": "Status",
-        "managedCreators": "Managed creators",
-        "assignedApplications": "Assigned applications",
-        "assignedTasks": "Assigned tasks"
+        "phone": "Телефон",
+        "role": "Роль",
+        "department": "Отдел",
+        "departmentCustom": "Свой отдел",
+        "language": "Язык",
+        "timezone": "Часовой пояс",
+        "temporaryPassword": "Временный пароль",
+        "created": "Создан",
+        "updated": "Обновлён",
+        "lastLogin": "Последний вход",
+        "biography": "Биография",
+        "notes": "Внутренние заметки",
+        "status": "Статус",
+        "managedCreators": "Закреплено креаторов",
+        "assignedApplications": "Назначенные заявки",
+        "assignedTasks": "Назначенные задачи",
+        "firstName": "Имя",
+        "lastName": "Фамилия",
+        "avatarUrl": "URL аватара"
       },
       "form": {
         "title": "Создать сотрудника",
         "cancel": "Отмена",
         "submit": "Создать",
         "submitting": "Создание…",
-        "created": "Сотрудник создан."
+        "created": "Сотрудник приглашён. Письмо для установки пароля отправлено."
       },
       "departments": {
-        "management": "Management",
-        "sales": "Sales",
-        "support": "Support",
-        "marketing": "Marketing",
-        "content": "Content",
-        "finance": "Finance",
+        "management": "Руководство",
+        "sales": "Продажи",
+        "support": "Поддержка",
+        "marketing": "Маркетинг",
+        "content": "Контент",
+        "finance": "Финансы",
         "hr": "HR",
-        "operations": "Operations",
-        "custom": "Custom"
+        "operations": "Операции",
+        "custom": "Другое"
       },
       "status": {
-        "invited": "Invited",
-        "active": "Active",
-        "vacation": "Vacation",
-        "suspended": "Suspended",
-        "disabled": "Disabled",
-        "archived": "Archived"
+        "invited": "Приглашён",
+        "active": "Активен",
+        "vacation": "В отпуске",
+        "suspended": "Заблокирован",
+        "disabled": "Отключён",
+        "archived": "В архиве"
       },
       "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {page} of {totalPages} · {total} total"
+        "previous": "Назад",
+        "next": "Вперёд",
+        "pageOf": "Страница {page} из {totalPages} · всего {total}"
       },
       "errors": {
-        "load": "Не удалось загрузить сотрудников."
+        "load": "Не удалось загрузить сотрудников.",
+        "retry": "Повторить"
       },
       "actionErrors": {
-        "unauthorized": "You are not authorized.",
-        "forbidden": "You cannot perform this action.",
-        "forbiddenRole": "You cannot assign this role.",
-        "forbiddenOwner": "Only the owner can manage owner accounts.",
-        "cannotDeleteSelf": "You cannot delete your own account.",
-        "invalid": "Invalid staff data.",
-        "notFound": "Staff member not found.",
-        "create": "Unable to create employee.",
-        "save": "Unable to save changes.",
-        "delete": "Unable to delete employee.",
-        "tasksUnavailable": "Tasks are unavailable in this environment."
+        "unauthorized": "Вы не авторизованы.",
+        "forbidden": "Вы не можете выполнить это действие.",
+        "forbiddenRole": "Вы не можете назначить эту роль.",
+        "forbiddenOwner": "Только владелец может управлять аккаунтами владельца.",
+        "cannotDeleteSelf": "Нельзя удалить свой аккаунт.",
+        "invalid": "Некорректные данные сотрудника.",
+        "notFound": "Сотрудник не найден.",
+        "create": "Не удалось создать сотрудника.",
+        "save": "Не удалось сохранить изменения.",
+        "delete": "Не удалось удалить сотрудника.",
+        "tasksUnavailable": "Задачи недоступны в этой среде."
       },
       "detail": {
         "back": "К списку сотрудников",
-        "save": "Сохранить",
+        "save": "Сохранить изменения",
         "saving": "Сохранение…",
         "saved": "Сохранено.",
-        "confirmDelete": "Archive and disable this employee?",
-        "confirmTransfer": "Transfer ownership to this employee? You will become an admin.",
-        "delete": "Архивировать",
+        "confirmDelete": "Удалить сотрудника и его доступ навсегда? Это действие нельзя отменить.",
+        "confirmTransfer": "Передать владение этому сотруднику? Вы станете администратором.",
+        "delete": "Удалить сотрудника",
         "transferOwnership": "Передать владение",
-        "emptyAssignments": "Nothing assigned yet.",
-        "emptyActivity": "No recent activity.",
-        "unassign": "Unassign",
-        "assignCreator": "Assign creator",
-        "assignApplication": "Assign application",
-        "expandPayload": "Show payload",
-        "collapsePayload": "Hide payload",
+        "emptyAssignments": "Пока ничего не назначено.",
+        "emptyActivity": "Нет недавней активности.",
+        "unassign": "Снять",
+        "assignCreator": "Назначить креатора",
+        "assignApplication": "Назначить заявку",
+        "expandPayload": "Показать данные",
+        "collapsePayload": "Скрыть данные",
         "sections": {
-          "profile": "Profile",
-          "assignments": "Assignments",
-          "activity": "Recent activity",
-          "danger": "Danger zone"
+          "profile": "Профиль",
+          "assignments": "Назначения",
+          "activity": "Недавняя активность",
+          "danger": "Опасная зона"
         }
       },
       "permissions": {
         "title": "Матрица прав",
-        "description": "Центральная карта прав через hasPermission().",
-        "module": "Module",
-        "role": "Role",
+        "description": "Центральная карта возможностей платформы.",
+        "module": "Модуль",
+        "role": "Роль",
         "modules": {
-          "applications": "Applications",
-          "creators": "Creator CRM",
-          "finance": "Finance",
-          "tasks": "Tasks",
-          "calendar": "Calendar",
-          "blog": "Blog",
-          "analytics": "Analytics",
-          "settings": "Settings",
-          "staff": "Staff",
-          "notifications": "Notifications",
-          "activity": "Activity"
+          "applications": "Заявки",
+          "creators": "CRM креаторов",
+          "finance": "Финансы",
+          "tasks": "Задачи",
+          "calendar": "Календарь",
+          "blog": "Блог",
+          "analytics": "Аналитика",
+          "settings": "Настройки",
+          "staff": "Сотрудники",
+          "notifications": "Уведомления",
+          "activity": "Активность"
         },
         "actions": {
-          "create": "Create",
-          "read": "Read",
-          "update": "Update",
-          "delete": "Delete",
-          "manage": "Manage",
-          "approve": "Одобрить",
+          "create": "Создание",
+          "read": "Чтение",
+          "update": "Изменение",
+          "delete": "Удаление",
+          "manage": "Управление",
+          "approve": "Подтверждение",
           "export": "Экспорт"
         }
       },
-      "emptyTitle": "No staff found",
-      "emptyDescription": "Try clearing filters or invite a new employee.",
-      "emptyAction": "Add employee"
+      "emptyTitle": "Сотрудники не найдены",
+      "emptyDescription": "Сбросьте фильтры или пригласите нового сотрудника.",
+      "emptyAction": "Добавить сотрудника",
+      "never": "Никогда"
     }
   },
   "creator": {
@@ -1338,10 +1519,11 @@
       "platforms": {
         "onlyfans": "OnlyFans",
         "fansly": "Fansly",
+        "manyvids": "ManyVids",
+        "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X",
-        "chaturbate": "Chaturbate"
+        "twitter": "X (Twitter)"
       },
       "actions": {
         "save": "Сохранить",
@@ -1687,7 +1869,28 @@
       "financePayoutPaidDescription": "Выплата отмечена как оплаченная",
       "financePayoutCancelledTitle": "Выплата отменена",
       "financePayoutCancelledMessage": "Выплата отменена",
-      "financePayoutCancelledDescription": "Выплата отменена"
+      "financePayoutCancelledDescription": "Выплата отменена",
+      "employeeCreatedTitle": "Сотрудник создан",
+      "employeeCreatedMessage": "{name} приглашён в команду",
+      "employeeCreatedDescription": "Сотрудник приглашён",
+      "employeeUpdatedTitle": "Сотрудник обновлён",
+      "employeeUpdatedMessage": "{name} обновлён",
+      "employeeUpdatedDescription": "Сотрудник обновлён",
+      "employeeDeletedTitle": "Сотрудник удалён",
+      "employeeDeletedMessage": "{name} удалён",
+      "employeeDeletedDescription": "Сотрудник удалён",
+      "employeeSuspendedTitle": "Сотрудник приостановлен",
+      "employeeSuspendedMessage": "{name} приостановлен",
+      "employeeSuspendedDescription": "Сотрудник приостановлен",
+      "employeeActivatedTitle": "Сотрудник активирован",
+      "employeeActivatedMessage": "{name} активирован",
+      "employeeActivatedDescription": "Сотрудник активирован",
+      "creatorArchivedTitle": "Креатор архивирован",
+      "creatorArchivedMessage": "{name} архивирован",
+      "creatorArchivedDescription": "Креатор архивирован: {name}",
+      "creatorDeletedTitle": "Креатор удалён",
+      "creatorDeletedMessage": "{name} удалён",
+      "creatorDeletedDescription": "Креатор удалён: {name}"
     }
   }
 }
