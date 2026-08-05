@@ -108,6 +108,11 @@ export default async function AdminActivityPage({
               owner: tRoles("owner"),
               admin: tRoles("admin"),
               manager: tRoles("manager"),
+              support: tRoles("support"),
+              moderator: tRoles("moderator"),
+              content_manager: tRoles("content_manager"),
+              finance: tRoles("finance"),
+              viewer: tRoles("viewer"),
               creator: tRoles("creator"),
               guest: tRoles("guest"),
             }}

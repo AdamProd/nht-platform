@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "db:types": "supabase gen types typescript --project-id \"$SUPABASE_PROJECT_ID\" --schema public > types/database.types.ts"
+    "db:types": "supabase gen types typescript --project-id \"$SUPABASE_PROJECT_ID\" --schema public > types/database.types.ts && node scripts/append-db-type-aliases.mjs",
+    "db:push": "supabase db push --include-all"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.7.1",

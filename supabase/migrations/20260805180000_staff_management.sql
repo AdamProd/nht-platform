@@ -53,7 +53,7 @@ SECURITY DEFINER
 SET search_path = public
 AS $$
   SELECT COALESCE(
-    public.get_user_role() IN (
+    public.get_user_role()::text IN (
       'owner',
       'admin',
       'manager',
@@ -67,10 +67,11 @@ AS $$
   );
 $$;
 
--- Backfill staff status for existing employee profiles
+-- Backfill staff status for existing employee profiles.
+-- Compare via ::text so newly-added enum labels are safe in the same migration txn.
 UPDATE public.profiles
 SET status = 'active'
-WHERE role IN (
+WHERE role::text IN (
   'owner',
   'admin',
   'manager',

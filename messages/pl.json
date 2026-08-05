@@ -474,7 +474,8 @@
         "status": "Status",
         "actions": "Akcje",
         "revenue": "Przychód",
-        "lastActivity": "Ostatnia aktywność"
+        "lastActivity": "Ostatnia aktywność",
+        "created": "Created"
       },
       "pagination": {
         "previous": "Poprzednia",
@@ -496,7 +497,11 @@
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X"
+        "twitter": "Twitter/X",
+        "manyvids": "ManyVids",
+        "multiple": "Multiple",
+        "emerging": "Emerging",
+        "other": "Other"
       },
       "fields": {
         "email": "Email",
@@ -524,7 +529,8 @@
         "revenueLifetime": "Łącznie",
         "payouts": "Wypłaty",
         "biography": "Biografia",
-        "agency": "Agencja"
+        "agency": "Agencja",
+        "fullName": "Full name"
       },
       "form": {
         "title": "Nowy twórca",

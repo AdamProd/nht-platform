@@ -35,7 +35,7 @@ export default function AdminSidebar({
                 : "text-[var(--nht-text-secondary)] hover:bg-white/[0.04] hover:text-white"
             }`}
           >
-            {t(item.labelKey)}
+            {t.has(item.labelKey) ? t(item.labelKey) : item.labelKey}
           </Link>
         );
       })}

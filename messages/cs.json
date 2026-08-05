@@ -474,7 +474,8 @@
         "status": "Stav",
         "actions": "Akce",
         "revenue": "Tržby",
-        "lastActivity": "Poslední aktivita"
+        "lastActivity": "Poslední aktivita",
+        "created": "Created"
       },
       "pagination": {
         "previous": "Předchozí",
@@ -496,7 +497,11 @@
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X"
+        "twitter": "Twitter/X",
+        "manyvids": "ManyVids",
+        "multiple": "Multiple",
+        "emerging": "Emerging",
+        "other": "Other"
       },
       "fields": {
         "email": "Email",
@@ -524,7 +529,8 @@
         "revenueLifetime": "Celkem",
         "payouts": "Výplaty",
         "biography": "Biografie",
-        "agency": "Agentura"
+        "agency": "Agentura",
+        "fullName": "Full name"
       },
       "form": {
         "title": "Nový tvůrce",

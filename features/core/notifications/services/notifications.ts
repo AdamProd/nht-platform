@@ -2,6 +2,7 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { requireStaffSession } from "@/lib/auth";
 import type { NotificationRow } from "@/features/core/events/types";
+import { isSchemaDriftError } from "@/shared/utils";
 
 export const NOTIFICATIONS_PAGE_SIZE = 20;
 
@@ -15,24 +16,37 @@ export type NotificationsFilterParams = z.infer<
   typeof notificationsFiltersSchema
 >;
 
+const EMPTY_LIST = {
+  items: [] as NotificationRow[],
+  total: 0,
+  page: 1,
+  pageSize: NOTIFICATIONS_PAGE_SIZE,
+  totalPages: 1,
+};
+
 export async function getUnreadNotificationCount(): Promise<number> {
   const session = await requireStaffSession();
   if (!session) return 0;
 
-  const supabase = await createClient();
-  const { count, error } = await supabase
-    .from("notifications")
-    .select("id", { count: "exact", head: true })
-    .eq("recipient_id", session.profile.id)
-    .is("read_at", null)
-    .is("archived_at", null);
+  try {
+    const supabase = await createClient();
+    const { count, error } = await supabase
+      .from("notifications")
+      .select("id", { count: "exact", head: true })
+      .eq("recipient_id", session.profile.id)
+      .is("read_at", null)
+      .is("archived_at", null);
 
-  if (error) {
-    console.error("[getUnreadNotificationCount]", error.message);
+    if (error) {
+      console.error("[getUnreadNotificationCount]", error.message);
+      return 0;
+    }
+
+    return count ?? 0;
+  } catch (error) {
+    console.error("[getUnreadNotificationCount]", error);
     return 0;
   }
-
-  return count ?? 0;
 }
 
 export async function listRecentNotifications(
@@ -41,11 +55,12 @@ export async function listRecentNotifications(
   const session = await requireStaffSession();
   if (!session) return [];
 
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("notifications")
-    .select(
-      `
+  try {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("notifications")
+      .select(
+        `
       *,
       actor:profiles!notifications_actor_id_fkey (
         id,
@@ -53,18 +68,22 @@ export async function listRecentNotifications(
         role
       )
     `,
-    )
-    .eq("recipient_id", session.profile.id)
-    .is("archived_at", null)
-    .order("created_at", { ascending: false })
-    .limit(limit);
+      )
+      .eq("recipient_id", session.profile.id)
+      .is("archived_at", null)
+      .order("created_at", { ascending: false })
+      .limit(limit);
 
-  if (error) {
-    console.error("[listRecentNotifications]", error.message);
+    if (error) {
+      console.error("[listRecentNotifications]", error.message);
+      return [];
+    }
+
+    return (data ?? []) as NotificationRow[];
+  } catch (error) {
+    console.error("[listRecentNotifications]", error);
     return [];
   }
-
-  return (data ?? []) as NotificationRow[];
 }
 
 export async function listNotifications(
@@ -85,14 +104,15 @@ export async function listNotifications(
     page: raw.page ?? 1,
   });
 
-  const from = (filters.page - 1) * NOTIFICATIONS_PAGE_SIZE;
-  const to = from + NOTIFICATIONS_PAGE_SIZE - 1;
+  try {
+    const from = (filters.page - 1) * NOTIFICATIONS_PAGE_SIZE;
+    const to = from + NOTIFICATIONS_PAGE_SIZE - 1;
 
-  const supabase = await createClient();
-  let query = supabase
-    .from("notifications")
-    .select(
-      `
+    const supabase = await createClient();
+    let query = supabase
+      .from("notifications")
+      .select(
+        `
       *,
       actor:profiles!notifications_actor_id_fkey (
         id,
@@ -100,41 +120,49 @@ export async function listNotifications(
         role
       )
     `,
-      { count: "exact" },
-    )
-    .eq("recipient_id", session.profile.id)
-    .order("created_at", { ascending: false })
-    .range(from, to);
+        { count: "exact" },
+      )
+      .eq("recipient_id", session.profile.id)
+      .order("created_at", { ascending: false })
+      .range(from, to);
 
-  if (filters.status === "unread") {
-    query = query.is("read_at", null).is("archived_at", null);
-  } else if (filters.status === "read") {
-    query = query.not("read_at", "is", null).is("archived_at", null);
-  } else if (filters.status === "archived") {
-    query = query.not("archived_at", "is", null);
-  } else {
-    query = query.is("archived_at", null);
+    if (filters.status === "unread") {
+      query = query.is("read_at", null).is("archived_at", null);
+    } else if (filters.status === "read") {
+      query = query.not("read_at", "is", null).is("archived_at", null);
+    } else if (filters.status === "archived") {
+      query = query.not("archived_at", "is", null);
+    } else {
+      query = query.is("archived_at", null);
+    }
+
+    if (filters.q) {
+      const term = filters.q.replaceAll("%", "").replaceAll("_", "");
+      query = query.or(
+        `title.ilike.%${term}%,message.ilike.%${term}%,module.ilike.%${term}%`,
+      );
+    }
+
+    const { data, error, count } = await query;
+    if (error) {
+      console.error("[listNotifications]", error.message);
+      if (isSchemaDriftError(error.message)) {
+        return { ...EMPTY_LIST, page: filters.page };
+      }
+      throw new Error("Failed to load notifications.");
+    }
+
+    const total = count ?? 0;
+    return {
+      items: (data ?? []) as NotificationRow[],
+      total,
+      page: filters.page,
+      pageSize: NOTIFICATIONS_PAGE_SIZE,
+      totalPages: Math.max(1, Math.ceil(total / NOTIFICATIONS_PAGE_SIZE)),
+    };
+  } catch (error) {
+    if (error instanceof Error && error.message === "Unauthorized") throw error;
+    console.error("[listNotifications]", error);
+    return { ...EMPTY_LIST, page: filters.page };
   }
-
-  if (filters.q) {
-    const term = filters.q.replaceAll("%", "").replaceAll("_", "");
-    query = query.or(
-      `title.ilike.%${term}%,message.ilike.%${term}%,module.ilike.%${term}%`,
-    );
-  }
-
-  const { data, error, count } = await query;
-  if (error) {
-    console.error("[listNotifications]", error.message);
-    throw new Error("Failed to load notifications.");
-  }
-
-  const total = count ?? 0;
-  return {
-    items: (data ?? []) as NotificationRow[],
-    total,
-    page: filters.page,
-    pageSize: NOTIFICATIONS_PAGE_SIZE,
-    totalPages: Math.max(1, Math.ceil(total / NOTIFICATIONS_PAGE_SIZE)),
-  };
 }

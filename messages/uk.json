@@ -474,7 +474,8 @@
         "status": "Статус",
         "actions": "Дії",
         "revenue": "Виручка",
-        "lastActivity": "Активність"
+        "lastActivity": "Активність",
+        "created": "Created"
       },
       "pagination": {
         "previous": "Назад",
@@ -496,7 +497,11 @@
         "chaturbate": "Chaturbate",
         "instagram": "Instagram",
         "tiktok": "TikTok",
-        "twitter": "Twitter/X"
+        "twitter": "Twitter/X",
+        "manyvids": "ManyVids",
+        "multiple": "Multiple",
+        "emerging": "Emerging",
+        "other": "Other"
       },
       "fields": {
         "email": "Email",
@@ -524,7 +529,8 @@
         "revenueLifetime": "За весь час",
         "payouts": "Виплати",
         "biography": "Біографія",
-        "agency": "Агентство"
+        "agency": "Агентство",
+        "fullName": "Full name"
       },
       "form": {
         "title": "Новий креатор",
