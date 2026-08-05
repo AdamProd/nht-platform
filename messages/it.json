@@ -498,7 +498,9 @@
         "revenueCurrent": "Mese corrente",
         "revenuePrevious": "Mese precedente",
         "revenueLifetime": "Totale",
-        "payouts": "Pagamenti"
+        "payouts": "Pagamenti",
+        "biography": "Biografia",
+        "agency": "Agenzia"
       },
       "form": {
         "title": "Nuovo creator",
@@ -516,7 +518,7 @@
         "saving": "Salvataggio…",
         "saved": "Modifiche salvate.",
         "saveError": "Impossibile salvare le modifiche.",
-        "uploadAvatar": "Salva avatar"
+        "uploadAvatar": "Carica foto"
       },
       "toast": {
         "created": "Creator creato.",
@@ -544,7 +546,10 @@
         "invalidManager": "Manager non valido.",
         "invalidNotes": "Note non valide.",
         "avatarNotReady": "Upload avatar non ancora disponibile. Incolla un URL.",
-        "invite": "Impossibile creare l’utente o inviare l’invito."
+        "invite": "Impossibile creare l’utente o inviare l’invito.",
+        "avatarInvalidType": "Usa un’immagine JPG, PNG o WebP.",
+        "avatarTooLarge": "L’immagine deve essere da 5 MB o meno.",
+        "avatarUpload": "Impossibile caricare la foto."
       },
       "stats": {
         "total": "Creator totali",
@@ -564,9 +569,52 @@
         "manager": "Manager",
         "notes": "Note interne",
         "timeline": "Timeline",
-        "status": "Stato"
+        "status": "Stato",
+        "quickStats": "Statistiche rapide"
       },
-      "impersonate": "Apri area creator"
+      "impersonate": "Apri area creator",
+      "tabs": {
+        "overview": "Panoramica",
+        "platforms": "Piattaforme",
+        "notes": "Note",
+        "documents": "Documenti",
+        "finance": "Finanze",
+        "tasks": "Attività"
+      },
+      "sidebar": {
+        "platformsCount": "{count} piattaforme",
+        "edit": "Modifica",
+        "back": "Indietro"
+      },
+      "agencyValue": "NHT",
+      "avatar": {
+        "upload": "Carica foto",
+        "replace": "Sostituisci",
+        "delete": "Rimuovi",
+        "hint": "JPG, PNG o WebP fino a 5 MB.",
+        "preview": "Foto profilo",
+        "uploading": "Caricamento…",
+        "deleted": "Foto rimossa."
+      },
+      "quickStats": {
+        "applications": "Candidature",
+        "revenue": "Entrate",
+        "tasks": "Attività"
+      },
+      "placeholders": {
+        "documents": {
+          "title": "Documenti",
+          "description": "I documenti del creator appariranno qui a breve."
+        },
+        "finance": {
+          "title": "Finanze",
+          "description": "I pagamenti dettagliati arriveranno presto. Entrate attuali sotto."
+        },
+        "tasks": {
+          "title": "Attività",
+          "description": "Le attività del creator appariranno qui a breve."
+        }
+      }
     },
     "dashboard": {
       "label": "Panoramica",

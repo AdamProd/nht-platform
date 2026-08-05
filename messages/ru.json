@@ -503,7 +503,9 @@
         "revenuePrevious": "Прошлый месяц",
         "revenueLifetime": "За всё время",
         "lastLogin": "Последний вход",
-        "lastActivity": "Последняя активность"
+        "lastActivity": "Последняя активность",
+        "biography": "Биография",
+        "agency": "Агентство"
       },
       "form": {
         "title": "Новый креатор",
@@ -521,7 +523,7 @@
         "saving": "Сохранение…",
         "saved": "Изменения сохранены.",
         "saveError": "Не удалось сохранить изменения.",
-        "uploadAvatar": "Сохранить аватар"
+        "uploadAvatar": "Загрузить фото"
       },
       "toast": {
         "created": "Креатор создан.",
@@ -549,7 +551,10 @@
         "invalidManager": "Некорректный менеджер.",
         "invalidNotes": "Некорректные заметки.",
         "avatarNotReady": "Загрузка аватара пока недоступна. Вставьте URL.",
-        "invite": "Не удалось создать пользователя или отправить приглашение."
+        "invite": "Не удалось создать пользователя или отправить приглашение.",
+        "avatarInvalidType": "Используйте JPG, PNG или WebP.",
+        "avatarTooLarge": "Размер изображения не более 5 МБ.",
+        "avatarUpload": "Не удалось загрузить фото."
       },
       "stats": {
         "total": "Всего креаторов",
@@ -567,9 +572,52 @@
         "manager": "Менеджер",
         "status": "Статус",
         "notes": "Внутренние заметки",
-        "timeline": "Таймлайн"
+        "timeline": "Таймлайн",
+        "quickStats": "Быстрая статистика"
       },
-      "impersonate": "Открыть кабинет креатора"
+      "impersonate": "Открыть кабинет креатора",
+      "tabs": {
+        "overview": "Обзор",
+        "platforms": "Платформы",
+        "notes": "Заметки",
+        "documents": "Документы",
+        "finance": "Финансы",
+        "tasks": "Задачи"
+      },
+      "sidebar": {
+        "platformsCount": "{count} платформ",
+        "edit": "Редактировать",
+        "back": "Назад"
+      },
+      "agencyValue": "NHT",
+      "avatar": {
+        "upload": "Загрузить фото",
+        "replace": "Заменить",
+        "delete": "Удалить",
+        "hint": "JPG, PNG или WebP до 5 МБ.",
+        "preview": "Фото профиля",
+        "uploading": "Загрузка…",
+        "deleted": "Фото удалено."
+      },
+      "quickStats": {
+        "applications": "Заявки",
+        "revenue": "Доход",
+        "tasks": "Задачи"
+      },
+      "placeholders": {
+        "documents": {
+          "title": "Документы",
+          "description": "Документы креатора появятся здесь позже."
+        },
+        "finance": {
+          "title": "Финансы",
+          "description": "Подробные выплаты скоро. Текущий доход ниже."
+        },
+        "tasks": {
+          "title": "Задачи",
+          "description": "Задачи креатора появятся здесь позже."
+        }
+      }
     },
     "dashboard": {
       "label": "Обзор",

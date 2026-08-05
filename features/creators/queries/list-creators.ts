@@ -101,8 +101,19 @@ export async function listCreators(
   const total = count ?? 0;
   const totalPages = Math.max(1, Math.ceil(total / CREATORS_PAGE_SIZE));
 
+  const { resolveCreatorAvatarUrl } = await import(
+    "@/features/creators/lib/resolve-avatar"
+  );
+
+  const items = await Promise.all(
+    ((data ?? []) as CreatorListItem[]).map(async (item) => ({
+      ...item,
+      avatar_url: await resolveCreatorAvatarUrl(item.avatar_url),
+    })),
+  );
+
   return {
-    items: (data ?? []) as CreatorListItem[],
+    items,
     total,
     page,
     pageSize: CREATORS_PAGE_SIZE,

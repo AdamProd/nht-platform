@@ -498,7 +498,9 @@
         "revenueCurrent": "Aktuální měsíc",
         "revenuePrevious": "Předchozí měsíc",
         "revenueLifetime": "Celkem",
-        "payouts": "Výplaty"
+        "payouts": "Výplaty",
+        "biography": "Biografie",
+        "agency": "Agentura"
       },
       "form": {
         "title": "Nový tvůrce",
@@ -516,7 +518,7 @@
         "saving": "Ukládání…",
         "saved": "Změny uloženy.",
         "saveError": "Nepodařilo se uložit změny.",
-        "uploadAvatar": "Uložit avatar"
+        "uploadAvatar": "Nahrát foto"
       },
       "toast": {
         "created": "Tvůrce vytvořen.",
@@ -544,7 +546,10 @@
         "invalidManager": "Neplatný manažer.",
         "invalidNotes": "Neplatné poznámky.",
         "avatarNotReady": "Nahrávání avataru ještě není dostupné. Vložte URL.",
-        "invite": "Nepodařilo se vytvořit uživatele nebo odeslat pozvánku."
+        "invite": "Nepodařilo se vytvořit uživatele nebo odeslat pozvánku.",
+        "avatarInvalidType": "Použijte obrázek JPG, PNG nebo WebP.",
+        "avatarTooLarge": "Obrázek může mít maximálně 5 MB.",
+        "avatarUpload": "Fotku se nepodařilo nahrát."
       },
       "stats": {
         "total": "Celkem creatorů",
@@ -564,9 +569,52 @@
         "manager": "Manažer",
         "notes": "Interní poznámky",
         "timeline": "Časová osa",
-        "status": "Stav"
+        "status": "Stav",
+        "quickStats": "Rychlé statistiky"
       },
-      "impersonate": "Otevřít kabinet tvůrce"
+      "impersonate": "Otevřít kabinet tvůrce",
+      "tabs": {
+        "overview": "Přehled",
+        "platforms": "Platformy",
+        "notes": "Poznámky",
+        "documents": "Dokumenty",
+        "finance": "Finance",
+        "tasks": "Úkoly"
+      },
+      "sidebar": {
+        "platformsCount": "{count} platforem",
+        "edit": "Upravit",
+        "back": "Zpět"
+      },
+      "agencyValue": "NHT",
+      "avatar": {
+        "upload": "Nahrát foto",
+        "replace": "Nahradit",
+        "delete": "Odstranit",
+        "hint": "JPG, PNG nebo WebP do 5 MB.",
+        "preview": "Profilová fotka",
+        "uploading": "Nahrávání…",
+        "deleted": "Foto odstraněno."
+      },
+      "quickStats": {
+        "applications": "Přihlášky",
+        "revenue": "Příjem",
+        "tasks": "Úkoly"
+      },
+      "placeholders": {
+        "documents": {
+          "title": "Dokumenty",
+          "description": "Dokumenty creatorky se zde brzy zobrazí."
+        },
+        "finance": {
+          "title": "Finance",
+          "description": "Detailní výplaty brzy. Aktuální příjem níže."
+        },
+        "tasks": {
+          "title": "Úkoly",
+          "description": "Úkoly creatorky se zde brzy zobrazí."
+        }
+      }
     },
     "dashboard": {
       "label": "Přehled",

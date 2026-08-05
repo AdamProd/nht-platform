@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { requireStaffSession } from "@/lib/auth";
 import type { CreatorDetail } from "@/features/creators/types";
+import { resolveCreatorAvatarUrl } from "@/features/creators/lib/resolve-avatar";
 
 const DETAIL_SELECT = `
   *,
@@ -31,5 +32,11 @@ export async function getCreator(id: string): Promise<CreatorDetail | null> {
     throw new Error("Failed to load creator.");
   }
 
-  return (data as CreatorDetail | null) ?? null;
+  if (!data) return null;
+
+  const creator = data as CreatorDetail;
+  return {
+    ...creator,
+    avatar_url: await resolveCreatorAvatarUrl(creator.avatar_url),
+  };
 }

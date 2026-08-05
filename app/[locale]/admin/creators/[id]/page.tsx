@@ -78,6 +78,19 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
         canAssignManager={canAssignManager}
         locale={locale}
         labels={{
+          tabs: {
+            overview: t("tabs.overview"),
+            platforms: t("tabs.platforms"),
+            notes: t("tabs.notes"),
+            documents: t("tabs.documents"),
+            finance: t("tabs.finance"),
+            tasks: t("tabs.tasks"),
+          },
+          sidebar: {
+            platformsCount: t("sidebar.platformsCount"),
+            edit: t("sidebar.edit"),
+            back: t("sidebar.back"),
+          },
           sections: {
             profile: t("sections.profile"),
             contacts: t("sections.contacts"),
@@ -87,10 +100,12 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
             status: t("sections.status"),
             notes: t("sections.notes"),
             timeline: t("sections.timeline"),
+            quickStats: t("sections.quickStats"),
           },
           fields: {
             displayName: t("fields.displayName"),
             legalName: t("fields.legalName"),
+            fullName: t("fields.fullName"),
             birthday: t("fields.birthday"),
             country: t("fields.country"),
             languages: t("fields.languages"),
@@ -99,7 +114,9 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
             email: t("fields.email"),
             telegram: t("fields.telegram"),
             phone: t("fields.phone"),
-            avatarUrl: t("fields.avatarUrl"),
+            biography: t("fields.biography"),
+            agency: t("fields.agency"),
+            platforms: t("fields.platforms"),
             onlyfans: t("platforms.onlyfans"),
             fansly: t("platforms.fansly"),
             chaturbate: t("platforms.chaturbate"),
@@ -118,6 +135,35 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
             lastActivity: t("fields.lastActivity"),
             application: t("fields.application"),
           },
+          quickStats: {
+            applications: t("quickStats.applications"),
+            revenue: t("quickStats.revenue"),
+            tasks: t("quickStats.tasks"),
+          },
+          placeholders: {
+            documents: {
+              title: t("placeholders.documents.title"),
+              description: t("placeholders.documents.description"),
+            },
+            finance: {
+              title: t("placeholders.finance.title"),
+              description: t("placeholders.finance.description"),
+            },
+            tasks: {
+              title: t("placeholders.tasks.title"),
+              description: t("placeholders.tasks.description"),
+            },
+          },
+          avatar: {
+            upload: t("avatar.upload"),
+            replace: t("avatar.replace"),
+            delete: t("avatar.delete"),
+            hint: t("avatar.hint"),
+            preview: t("avatar.preview"),
+            uploading: t("avatar.uploading"),
+            deleted: t("avatar.deleted"),
+          },
+          agencyValue: t("agencyValue"),
           unassigned: t("unassigned"),
           noApplication: t("noApplication"),
           viewApplication: t("viewApplication"),

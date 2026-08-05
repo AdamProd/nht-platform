@@ -27,6 +27,7 @@ export {
   updateNotes,
   assignManager,
   uploadAvatar,
+  deleteAvatar,
 } from "@/features/creators/actions/update-creator";
 export {
   creatorStatuses,

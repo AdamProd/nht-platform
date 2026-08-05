@@ -114,6 +114,7 @@ export const updateProfileSchema = z.object({
   email: z.string().trim().email().max(255),
   telegram: optionalText(120),
   phone: optionalText(40),
+  biography: optionalText(4000),
   avatar_url: optionalUrl,
 });
 

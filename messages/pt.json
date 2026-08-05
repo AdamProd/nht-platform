@@ -498,7 +498,9 @@
         "revenueCurrent": "Mês atual",
         "revenuePrevious": "Mês anterior",
         "revenueLifetime": "Total",
-        "payouts": "Pagamentos"
+        "payouts": "Pagamentos",
+        "biography": "Biografia",
+        "agency": "Agência"
       },
       "form": {
         "title": "Novo criador",
@@ -516,7 +518,7 @@
         "saving": "A guardar…",
         "saved": "Alterações guardadas.",
         "saveError": "Não foi possível guardar as alterações.",
-        "uploadAvatar": "Guardar avatar"
+        "uploadAvatar": "Enviar foto"
       },
       "toast": {
         "created": "Criador criado.",
@@ -544,7 +546,10 @@
         "invalidManager": "Gestor inválido.",
         "invalidNotes": "Notas inválidas.",
         "avatarNotReady": "Upload de avatar ainda não disponível. Cole um URL.",
-        "invite": "Não foi possível criar o utilizador ou enviar o convite."
+        "invite": "Não foi possível criar o utilizador ou enviar o convite.",
+        "avatarInvalidType": "Use uma imagem JPG, PNG ou WebP.",
+        "avatarTooLarge": "A imagem deve ter 5 MB ou menos.",
+        "avatarUpload": "Não foi possível enviar a foto."
       },
       "stats": {
         "total": "Total de criadores",
@@ -564,9 +569,52 @@
         "manager": "Manager",
         "notes": "Notas internas",
         "timeline": "Linha do tempo",
-        "status": "Estado"
+        "status": "Estado",
+        "quickStats": "Estatísticas rápidas"
       },
-      "impersonate": "Abrir painel do criador"
+      "impersonate": "Abrir painel do criador",
+      "tabs": {
+        "overview": "Visão geral",
+        "platforms": "Plataformas",
+        "notes": "Notas",
+        "documents": "Documentos",
+        "finance": "Finanças",
+        "tasks": "Tarefas"
+      },
+      "sidebar": {
+        "platformsCount": "{count} plataformas",
+        "edit": "Editar",
+        "back": "Voltar"
+      },
+      "agencyValue": "NHT",
+      "avatar": {
+        "upload": "Enviar foto",
+        "replace": "Substituir",
+        "delete": "Remover",
+        "hint": "JPG, PNG ou WebP até 5 MB.",
+        "preview": "Foto de perfil",
+        "uploading": "A enviar…",
+        "deleted": "Foto removida."
+      },
+      "quickStats": {
+        "applications": "Candidaturas",
+        "revenue": "Receita",
+        "tasks": "Tarefas"
+      },
+      "placeholders": {
+        "documents": {
+          "title": "Documentos",
+          "description": "Os documentos do creator aparecerão aqui em breve."
+        },
+        "finance": {
+          "title": "Finanças",
+          "description": "Pagamentos detalhados em breve. Receita atual abaixo."
+        },
+        "tasks": {
+          "title": "Tarefas",
+          "description": "As tarefas do creator aparecerão aqui em breve."
+        }
+      }
     },
     "dashboard": {
       "label": "Visão geral",

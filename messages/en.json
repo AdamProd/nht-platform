@@ -501,7 +501,9 @@
         "revenuePrevious": "Previous month",
         "revenueLifetime": "Lifetime",
         "lastLogin": "Last login",
-        "lastActivity": "Last activity"
+        "lastActivity": "Last activity",
+        "biography": "Biography",
+        "agency": "Agency"
       },
       "form": {
         "title": "Create creator",
@@ -519,7 +521,7 @@
         "saving": "Saving…",
         "saved": "Changes saved.",
         "saveError": "Unable to save changes.",
-        "uploadAvatar": "Save avatar"
+        "uploadAvatar": "Upload photo"
       },
       "toast": {
         "created": "Creator created.",
@@ -547,7 +549,10 @@
         "invalidManager": "Invalid manager.",
         "invalidNotes": "Invalid notes.",
         "avatarNotReady": "Avatar upload is not available yet. Paste a URL instead.",
-        "invite": "Unable to create auth user or send invitation."
+        "invite": "Unable to create auth user or send invitation.",
+        "avatarInvalidType": "Use a JPG, PNG, or WebP image.",
+        "avatarTooLarge": "Image must be 5 MB or smaller.",
+        "avatarUpload": "Unable to upload photo."
       },
       "stats": {
         "total": "Total creators",
@@ -565,9 +570,52 @@
         "manager": "Manager",
         "status": "Status",
         "notes": "Internal notes",
-        "timeline": "Timeline"
+        "timeline": "Timeline",
+        "quickStats": "Quick stats"
       },
-      "impersonate": "Open creator cabinet"
+      "impersonate": "Open creator cabinet",
+      "tabs": {
+        "overview": "Overview",
+        "platforms": "Platforms",
+        "notes": "Notes",
+        "documents": "Documents",
+        "finance": "Finance",
+        "tasks": "Tasks"
+      },
+      "sidebar": {
+        "platformsCount": "{count} platforms",
+        "edit": "Edit",
+        "back": "Back"
+      },
+      "agencyValue": "NHT",
+      "avatar": {
+        "upload": "Upload photo",
+        "replace": "Replace",
+        "delete": "Remove",
+        "hint": "JPG, PNG, or WebP up to 5 MB.",
+        "preview": "Profile photo",
+        "uploading": "Uploading…",
+        "deleted": "Photo removed."
+      },
+      "quickStats": {
+        "applications": "Applications",
+        "revenue": "Revenue",
+        "tasks": "Tasks"
+      },
+      "placeholders": {
+        "documents": {
+          "title": "Documents",
+          "description": "Creator documents will appear here soon."
+        },
+        "finance": {
+          "title": "Finance",
+          "description": "Detailed payouts and finance tools are coming soon. Current revenue is shown below."
+        },
+        "tasks": {
+          "title": "Tasks",
+          "description": "Creator tasks will appear here soon."
+        }
+      }
     },
     "dashboard": {
       "label": "Overview",

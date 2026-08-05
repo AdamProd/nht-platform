@@ -8,7 +8,6 @@ import { requireStaffSession } from "@/lib/auth";
 import { isOwner, isStaff } from "@/lib/auth/roles";
 import {
   createCreatorSchema,
-  platformsFromUrls,
   updateManagerSchema,
   updateNotesSchema,
   updatePlatformsSchema,
@@ -23,6 +22,16 @@ import type {
   UserRole,
 } from "@/types/database.types";
 import { getClientEnv } from "@/lib/env/client-env";
+import {
+  CREATOR_AVATAR_BUCKET,
+  CREATOR_AVATAR_MAX_BYTES,
+  creatorAvatarPath,
+  getCreatorBiography,
+  isCreatorAvatarMime,
+  isStoredCreatorAvatarPath,
+  visiblePlatformAccounts,
+  withCreatorBiography,
+} from "@/features/creators/lib/avatar";
 
 async function revalidateCreator(id?: string) {
   const locale = await getLocale();
@@ -89,16 +98,18 @@ async function updateCreatorField(
   }
 }
 
-function platformUrlPatch(platforms: CreatorPlatform[]) {
+function platformAccountsPatch(platforms: CreatorPlatform[]) {
   const set = new Set(platforms);
+  const accounts: Record<string, string> = {};
+  if (set.has("onlyfans")) accounts.onlyfans = "https://onlyfans.com/";
+  if (set.has("fansly")) accounts.fansly = "https://fansly.com/";
+  if (set.has("chaturbate")) accounts.chaturbate = "https://chaturbate.com/";
+  if (set.has("instagram")) accounts.instagram = "https://instagram.com/";
+  if (set.has("tiktok")) accounts.tiktok = "https://tiktok.com/";
+  if (set.has("twitter")) accounts.twitter = "https://x.com/";
   return {
-    onlyfans_url: set.has("onlyfans") ? "https://onlyfans.com/" : null,
-    fansly_url: set.has("fansly") ? "https://fansly.com/" : null,
-    chaturbate_url: set.has("chaturbate") ? "https://chaturbate.com/" : null,
-    instagram_url: set.has("instagram") ? "https://instagram.com/" : null,
-    tiktok_url: set.has("tiktok") ? "https://tiktok.com/" : null,
-    twitter_url: set.has("twitter") ? "https://x.com/" : null,
-    platforms,
+    platform_accounts: accounts,
+    platforms: [...set],
   };
 }
 
@@ -174,7 +185,7 @@ export async function createCreator(
       return { success: false, error: t("invite") };
     }
 
-    const urls = platformUrlPatch(parsed.data.platforms);
+    const platforms = platformAccountsPatch(parsed.data.platforms);
     const now = new Date().toISOString();
 
     const row: TablesInsert<"creators"> = {
@@ -189,13 +200,9 @@ export async function createCreator(
       timezone: parsed.data.timezone,
       manager_id: managerId,
       notes: parsed.data.notes,
-      status: "invited",
-      user_id: userId,
-      invited_at: now,
-      invited_by: session.profile.id,
+      status: "new",
       last_activity_at: now,
-      ...urls,
-      platforms: platformsFromUrls(urls),
+      ...platforms,
     };
 
     const { data: creator, error: creatorError } = await admin
@@ -209,6 +216,7 @@ export async function createCreator(
       return { success: false, error: t("create") };
     }
 
+    // Audit table is optional (not present on all environments).
     await admin.from("creator_audit_logs").insert({
       actor_id: session.profile.id,
       creator_id: creator.id,
@@ -218,6 +226,8 @@ export async function createCreator(
         manager_id: managerId,
         platforms: parsed.data.platforms,
       },
+    }).then(({ error }) => {
+      if (error) console.warn("[createCreator.audit]", error.message);
     });
 
     await revalidateCreator(creator.id);
@@ -239,10 +249,28 @@ export async function updateProfile(
       return { success: false, error: t("invalid") };
     }
 
-    const { id, ...fields } = parsed.data;
+    const { id, biography, avatar_url: _ignoredAvatar, ...fields } = parsed.data;
+    void _ignoredAvatar;
+
+    const denied = await assertCreatorAccess(id);
+    if (denied) return denied;
+
+    const supabase = await createClient();
+    const { data: current } = await supabase
+      .from("creators")
+      .select("platform_accounts")
+      .eq("id", id)
+      .maybeSingle();
+
+    const platform_accounts = withCreatorBiography(
+      current?.platform_accounts,
+      biography,
+    );
+
     return updateCreatorField(id, {
       ...fields,
       full_name: fields.display_name,
+      platform_accounts,
       last_activity_at: new Date().toISOString(),
     });
   } catch (error) {
@@ -263,9 +291,38 @@ export async function updatePlatforms(
     }
 
     const { id, ...urls } = parsed.data;
+
+    const denied = await assertCreatorAccess(id);
+    if (denied) return denied;
+
+    const supabase = await createClient();
+    const { data: current } = await supabase
+      .from("creators")
+      .select("platform_accounts")
+      .eq("id", id)
+      .maybeSingle();
+
+    const biography = getCreatorBiography(current?.platform_accounts);
+    const accounts = visiblePlatformAccounts({});
+    const map = {
+      onlyfans_url: "onlyfans",
+      fansly_url: "fansly",
+      chaturbate_url: "chaturbate",
+      instagram_url: "instagram",
+      tiktok_url: "tiktok",
+      twitter_url: "twitter",
+    } as const;
+
+    for (const [field, platform] of Object.entries(map)) {
+      const value = urls[field as keyof typeof urls];
+      if (value) accounts[platform] = value;
+    }
+
+    const platform_accounts = withCreatorBiography(accounts, biography);
+
     return updateCreatorField(id, {
-      ...urls,
-      platforms: platformsFromUrls(urls),
+      platform_accounts,
+      platforms: Object.keys(visiblePlatformAccounts(platform_accounts)),
       last_activity_at: new Date().toISOString(),
     });
   } catch (error) {
@@ -367,7 +424,6 @@ export async function assignManager(
   return updateManager(formData);
 }
 
-/** Optional avatar URL update (storage upload arrives later). */
 export async function uploadAvatar(
   formData: FormData,
 ): Promise<CreatorActionResult> {
@@ -375,22 +431,94 @@ export async function uploadAvatar(
 
   try {
     const id = String(formData.get("id") ?? "");
-    const avatar_url = String(formData.get("avatar_url") ?? "").trim() || null;
+    const file = formData.get("avatar");
 
-    if (!id) {
+    if (!id || !(file instanceof File) || file.size === 0) {
       return { success: false, error: t("invalid") };
     }
 
-    if (!avatar_url) {
-      return { success: false, error: t("avatarNotReady") };
+    const denied = await assertCreatorAccess(id);
+    if (denied) return denied;
+
+    if (!isCreatorAvatarMime(file.type)) {
+      return { success: false, error: t("avatarInvalidType") };
+    }
+
+    if (file.size > CREATOR_AVATAR_MAX_BYTES) {
+      return { success: false, error: t("avatarTooLarge") };
+    }
+
+    const supabase = await createClient();
+    const { data: current } = await supabase
+      .from("creators")
+      .select("avatar_url")
+      .eq("id", id)
+      .maybeSingle();
+
+    const path = creatorAvatarPath(id, file.type);
+    const admin = createAdminClient();
+    const buffer = Buffer.from(await file.arrayBuffer());
+
+    const { error: uploadError } = await admin.storage
+      .from(CREATOR_AVATAR_BUCKET)
+      .upload(path, buffer, {
+        contentType: file.type,
+        upsert: true,
+      });
+
+    if (uploadError) {
+      console.error("[uploadAvatar.upload]", uploadError.message);
+      return { success: false, error: t("avatarUpload") };
+    }
+
+    const previous = current?.avatar_url;
+    if (previous && isStoredCreatorAvatarPath(previous) && previous !== path) {
+      await admin.storage.from(CREATOR_AVATAR_BUCKET).remove([previous]);
     }
 
     return updateCreatorField(id, {
-      avatar_url,
+      avatar_url: path,
       last_activity_at: new Date().toISOString(),
     });
   } catch (error) {
     console.error("[uploadAvatar]", error);
-    return { success: false, error: t("avatarNotReady") };
+    return { success: false, error: t("avatarUpload") };
+  }
+}
+
+export async function deleteAvatar(
+  formData: FormData,
+): Promise<CreatorActionResult> {
+  const t = await getTranslations("admin.creators.actionErrors");
+
+  try {
+    const id = String(formData.get("id") ?? "");
+    if (!id) {
+      return { success: false, error: t("invalid") };
+    }
+
+    const denied = await assertCreatorAccess(id);
+    if (denied) return denied;
+
+    const supabase = await createClient();
+    const { data: current } = await supabase
+      .from("creators")
+      .select("avatar_url")
+      .eq("id", id)
+      .maybeSingle();
+
+    const previous = current?.avatar_url;
+    if (previous && isStoredCreatorAvatarPath(previous)) {
+      const admin = createAdminClient();
+      await admin.storage.from(CREATOR_AVATAR_BUCKET).remove([previous]);
+    }
+
+    return updateCreatorField(id, {
+      avatar_url: null,
+      last_activity_at: new Date().toISOString(),
+    });
+  } catch (error) {
+    console.error("[deleteAvatar]", error);
+    return { success: false, error: t("save") };
   }
 }

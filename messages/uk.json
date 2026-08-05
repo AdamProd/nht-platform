@@ -498,7 +498,9 @@
         "revenueCurrent": "Поточний місяць",
         "revenuePrevious": "Минулий місяць",
         "revenueLifetime": "За весь час",
-        "payouts": "Виплати"
+        "payouts": "Виплати",
+        "biography": "Біографія",
+        "agency": "Агентство"
       },
       "form": {
         "title": "Новий креатор",
@@ -516,7 +518,7 @@
         "saving": "Збереження…",
         "saved": "Зміни збережено.",
         "saveError": "Не вдалося зберегти зміни.",
-        "uploadAvatar": "Зберегти аватар"
+        "uploadAvatar": "Завантажити фото"
       },
       "toast": {
         "created": "Креатора створено.",
@@ -544,7 +546,10 @@
         "invalidManager": "Некоректний менеджер.",
         "invalidNotes": "Некоректні нотатки.",
         "avatarNotReady": "Завантаження аватара поки недоступне. Вставте URL.",
-        "invite": "Не вдалося створити користувача або надіслати запрошення."
+        "invite": "Не вдалося створити користувача або надіслати запрошення.",
+        "avatarInvalidType": "Використовуйте JPG, PNG або WebP.",
+        "avatarTooLarge": "Розмір зображення не більше 5 МБ.",
+        "avatarUpload": "Не вдалося завантажити фото."
       },
       "stats": {
         "total": "Усього креаторів",
@@ -564,9 +569,52 @@
         "manager": "Менеджер",
         "notes": "Внутрішні нотатки",
         "timeline": "Таймлайн",
-        "status": "Статус"
+        "status": "Статус",
+        "quickStats": "Швидка статистика"
       },
-      "impersonate": "Відкрити кабінет креатора"
+      "impersonate": "Відкрити кабінет креатора",
+      "tabs": {
+        "overview": "Огляд",
+        "platforms": "Платформи",
+        "notes": "Нотатки",
+        "documents": "Документи",
+        "finance": "Фінанси",
+        "tasks": "Завдання"
+      },
+      "sidebar": {
+        "platformsCount": "{count} платформ",
+        "edit": "Редагувати",
+        "back": "Назад"
+      },
+      "agencyValue": "NHT",
+      "avatar": {
+        "upload": "Завантажити фото",
+        "replace": "Замінити",
+        "delete": "Видалити",
+        "hint": "JPG, PNG або WebP до 5 МБ.",
+        "preview": "Фото профілю",
+        "uploading": "Завантаження…",
+        "deleted": "Фото видалено."
+      },
+      "quickStats": {
+        "applications": "Заявки",
+        "revenue": "Дохід",
+        "tasks": "Завдання"
+      },
+      "placeholders": {
+        "documents": {
+          "title": "Документи",
+          "description": "Документи креатора з’являться тут пізніше."
+        },
+        "finance": {
+          "title": "Фінанси",
+          "description": "Детальні виплати скоро. Поточний дохід нижче."
+        },
+        "tasks": {
+          "title": "Завдання",
+          "description": "Завдання креатора з’являться тут пізніше."
+        }
+      }
     },
     "dashboard": {
       "label": "Огляд",
