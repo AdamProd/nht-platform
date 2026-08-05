@@ -12,6 +12,7 @@ export const creatorNavItems = [
     match: "prefix" as const,
   },
   { href: "/creator/tasks", labelKey: "tasks", match: "prefix" as const },
+  { href: "/creator/finance", labelKey: "finance", match: "prefix" as const },
   { href: "/creator/payouts", labelKey: "payouts", match: "prefix" as const },
   {
     href: "/creator/documents",

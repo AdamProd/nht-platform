@@ -90,17 +90,21 @@ export async function getFinanceDashboardKpis(): Promise<FinanceDashboardKpis> {
     .select("id", { count: "exact", head: true })
     .eq("status", "active");
   if (creatorIds) creatorsQuery = creatorsQuery.in("id", creatorIds);
-  const { count: activeCreators } = await creatorsQuery;
+  const { count: activeCreatorsCount } = await creatorsQuery;
+  const activeCreators = activeCreatorsCount ?? 0;
+
+  const totalRevenue = sumField(rows, "gross_revenue");
+  const outstandingBalance = rows
+    .filter((row) => row.status === "pending" || row.status === "approved")
+    .reduce((sum, row) => sum + Number(row.creator_amount ?? 0), 0);
 
   return {
-    totalRevenue: sumField(rows, "gross_revenue"),
+    totalRevenue,
     agencyRevenue: sumField(rows, "agency_amount"),
     creatorRevenue: sumField(rows, "creator_amount"),
-    pendingPayouts: rows
-      .filter((row) => row.status === "pending" || row.status === "approved")
-      .reduce((sum, row) => sum + Number(row.creator_amount ?? 0), 0),
+    pendingPayouts: outstandingBalance,
     paidThisMonth,
-    activeCreators: activeCreators ?? 0,
+    activeCreators,
     revenueToday: rows
       .filter((row) => row.transaction_date === today)
       .reduce((sum, row) => sum + Number(row.gross_revenue ?? 0), 0),
@@ -119,6 +123,8 @@ export async function getFinanceDashboardKpis(): Promise<FinanceDashboardKpis> {
       (row) => row.status === "cancelled" || row.status === "disputed",
     ).length,
     countPaid: rows.filter((row) => row.status === "paid").length,
+    outstandingBalance,
+    averageRevenuePerCreator: totalRevenue / Math.max(activeCreators, 1),
   };
 }
 
@@ -138,6 +144,8 @@ function emptyKpis(): FinanceDashboardKpis {
     countApproved: 0,
     countRejected: 0,
     countPaid: 0,
+    outstandingBalance: 0,
+    averageRevenuePerCreator: 0,
   };
 }
 

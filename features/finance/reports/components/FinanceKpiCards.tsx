@@ -1,24 +1,25 @@
+import {
+  Banknote,
+  CircleDollarSign,
+  Clock3,
+  Scale,
+  TrendingUp,
+  Users,
+} from "lucide-react";
+import KpiCard from "@/shared/ui/KpiCard";
+import { formatFinanceMoney } from "@/features/finance/lib/format";
 import type { FinanceDashboardKpis } from "@/features/finance/types";
-import MoneyCell from "@/features/finance/transactions/components/MoneyCell";
 
 type Labels = {
   totalRevenue: string;
   agencyRevenue: string;
-  creatorRevenue: string;
   pendingPayouts: string;
   paidThisMonth: string;
-  activeCreators: string;
-  revenueToday: string;
-  revenueThisWeek: string;
-  revenueThisMonth: string;
-  revenueThisYear: string;
-  countPending: string;
-  countApproved: string;
-  countRejected: string;
-  countPaid: string;
+  outstandingBalance: string;
+  averageRevenuePerCreator: string;
 };
 
-/** Revenue / status summary cards (RevenueCard pattern). */
+/** Phase 14 primary KPI row — uses shared KpiCard. */
 export default function FinanceKpiCards({
   kpis,
   locale,
@@ -28,51 +29,55 @@ export default function FinanceKpiCards({
   locale: string;
   labels: Labels;
 }) {
-  const moneyCards: Array<{ key: keyof Labels; value: number }> = [
-    { key: "totalRevenue", value: kpis.totalRevenue },
-    { key: "agencyRevenue", value: kpis.agencyRevenue },
-    { key: "creatorRevenue", value: kpis.creatorRevenue },
-    { key: "pendingPayouts", value: kpis.pendingPayouts },
-    { key: "paidThisMonth", value: kpis.paidThisMonth },
-    { key: "revenueToday", value: kpis.revenueToday },
-    { key: "revenueThisWeek", value: kpis.revenueThisWeek },
-    { key: "revenueThisMonth", value: kpis.revenueThisMonth },
-    { key: "revenueThisYear", value: kpis.revenueThisYear },
-  ];
-
-  const countCards: Array<{ key: keyof Labels; value: number }> = [
-    { key: "activeCreators", value: kpis.activeCreators },
-    { key: "countPending", value: kpis.countPending },
-    { key: "countApproved", value: kpis.countApproved },
-    { key: "countRejected", value: kpis.countRejected },
-    { key: "countPaid", value: kpis.countPaid },
+  const cards = [
+    {
+      key: "totalRevenue" as const,
+      value: kpis.totalRevenue,
+      icon: CircleDollarSign,
+      tone: "accent" as const,
+    },
+    {
+      key: "agencyRevenue" as const,
+      value: kpis.agencyRevenue,
+      icon: TrendingUp,
+      tone: "default" as const,
+    },
+    {
+      key: "pendingPayouts" as const,
+      value: kpis.pendingPayouts,
+      icon: Clock3,
+      tone: "default" as const,
+    },
+    {
+      key: "paidThisMonth" as const,
+      value: kpis.paidThisMonth,
+      icon: Banknote,
+      tone: "default" as const,
+    },
+    {
+      key: "outstandingBalance" as const,
+      value: kpis.outstandingBalance,
+      icon: Scale,
+      tone: "muted" as const,
+    },
+    {
+      key: "averageRevenuePerCreator" as const,
+      value: kpis.averageRevenuePerCreator,
+      icon: Users,
+      tone: "default" as const,
+    },
   ];
 
   return (
     <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-      {moneyCards.map((card) => (
-        <div
+      {cards.map((card) => (
+        <KpiCard
           key={card.key}
-          className="rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02] px-4 py-3"
-        >
-          <p className="text-overline text-[var(--nht-text-tertiary)]">
-            {labels[card.key]}
-          </p>
-          <p className="mt-2 text-xl font-semibold text-white">
-            <MoneyCell value={card.value} locale={locale} />
-          </p>
-        </div>
-      ))}
-      {countCards.map((card) => (
-        <div
-          key={card.key}
-          className="rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02] px-4 py-3"
-        >
-          <p className="text-overline text-[var(--nht-text-tertiary)]">
-            {labels[card.key]}
-          </p>
-          <p className="mt-2 text-xl font-semibold text-white">{card.value}</p>
-        </div>
+          label={labels[card.key]}
+          value={formatFinanceMoney(card.value, locale)}
+          icon={card.icon}
+          tone={card.tone}
+        />
       ))}
     </div>
   );

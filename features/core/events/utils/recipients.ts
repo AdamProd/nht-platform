@@ -101,7 +101,11 @@ export async function resolveNotificationRecipients(
     case "finance.payout.created":
     case "finance.payout.updated":
     case "finance.payout.paid":
-    case "finance.payout.cancelled": {
+    case "finance.payout.cancelled":
+    case "finance.payout.requested":
+    case "finance.payout.approved":
+    case "finance.payout.rejected":
+    case "finance.balance.updated": {
       const managerId =
         (payload.managerId as string | undefined) ||
         (payload.manager_id as string | undefined);
@@ -129,6 +133,38 @@ export async function resolveNotificationRecipients(
       break;
     }
     case "finance.transaction.deleted": {
+      const { data: owners } = await admin
+        .from("profiles")
+        .select("id")
+        .in("role", ["owner", "admin"]);
+      for (const row of owners ?? []) recipients.add(row.id);
+      break;
+    }
+    case "task.assigned": {
+      const assigneeId =
+        (payload.assigned_to as string | undefined) ||
+        (payload.managerId as string | undefined) ||
+        (payload.manager_id as string | undefined);
+      if (assigneeId) recipients.add(assigneeId);
+      break;
+    }
+    case "task.created":
+    case "task.updated":
+    case "task.completed":
+    case "task.status_changed":
+    case "task.comment.created":
+    case "task.comment.updated":
+    case "task.attachment.uploaded":
+    case "task.duplicated":
+    case "task.deadline_approaching": {
+      const assigneeId =
+        (payload.assigned_to as string | undefined) ||
+        (payload.managerId as string | undefined) ||
+        (payload.manager_id as string | undefined);
+      if (assigneeId) recipients.add(assigneeId);
+      break;
+    }
+    case "task.deleted": {
       const { data: owners } = await admin
         .from("profiles")
         .select("id")

@@ -7,6 +7,8 @@ export {
   getCreatorFinanceSummary,
   listCreatorFinanceTransactions,
 } from "@/features/finance/reports/queries/get-creator-finance";
+export { getFinanceCharts } from "@/features/finance/reports/queries/get-finance-charts";
+export { getMonthlyReport } from "@/features/finance/reports/queries/get-monthly-report";
 export { default as FinanceKpiCards } from "@/features/finance/reports/components/FinanceKpiCards";
 export { default as FinanceSummaries } from "@/features/finance/reports/components/FinanceSummaries";
 export { default as FinanceIntegrations } from "@/features/finance/reports/components/FinanceIntegrations";

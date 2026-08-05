@@ -63,6 +63,7 @@ export default async function AdminFinanceDetailPage({ params }: Props) {
   const platformLabels = {
     onlyfans: t("platforms.onlyfans"),
     fansly: t("platforms.fansly"),
+    manyvids: t("platforms.manyvids"),
     chaturbate: t("platforms.chaturbate"),
     instagram: t("platforms.instagram"),
     tiktok: t("platforms.tiktok"),

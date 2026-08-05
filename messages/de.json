@@ -289,7 +289,8 @@
       "finance": "Finanzen",
       "notifications": "Benachrichtigungen",
       "activity": "Aktivität",
-      "staff": "Personal"
+      "staff": "Personal",
+      "tasks": "Aufgaben"
     },
     "pages": {
       "dashboard": {
@@ -341,6 +342,11 @@
         "label": "Team",
         "title": "Personal",
         "description": "Mitarbeiter, Rollen, Abteilungen und Berechtigungen verwalten."
+      },
+      "tasks": {
+        "label": "Aufgaben",
+        "title": "Aufgaben",
+        "description": "Team task board and assignments."
       }
     },
     "applications": {
@@ -754,7 +760,8 @@
           "documents": "Documents",
           "notes": "Notes",
           "activity": "Activity",
-          "statistics": "Statistics"
+          "statistics": "Statistics",
+          "timeline": "Timeline"
         },
         "platformStatus": {
           "linked": "Linked",
@@ -775,7 +782,18 @@
             "priority": "Priority",
             "status": "Status",
             "dueDate": "Due Date",
-            "assignedBy": "Assigned By"
+            "assignedBy": "Assigned By",
+            "in_progress": "In Arbeit",
+            "review": "In Prüfung",
+            "completed": "Erledigt",
+            "medium": "Mittel",
+            "low": "Niedrig",
+            "high": "Hoch",
+            "urgent": "Dringend",
+            "new": "Neu",
+            "waiting": "Wartend",
+            "blocked": "Blockiert",
+            "archived": "Archiv"
           },
           "documents": {
             "document": "Document",
@@ -821,7 +839,87 @@
           "archived": "Creator archived.",
           "deleted": "Creator deleted."
         },
-        "notConnected": "Not connected"
+        "notConnected": "Not connected",
+        "timeline": {
+          "emptyTitle": "Noch keine Aktivität",
+          "emptyDescription": "Ereignisse zu diesem Creator erscheinen hier automatisch.",
+          "loadMore": "Mehr laden",
+          "loading": "Wird geladen…",
+          "today": "Heute",
+          "yesterday": "Gestern",
+          "by": "von",
+          "unknownActor": "System",
+          "events": {
+            "creatorCreated": "Creator created",
+            "creatorCreatedDesc": "Creator profile was created",
+            "creatorUpdated": "Profile updated",
+            "creatorUpdatedDesc": "Creator profile was updated",
+            "avatarChangedDesc": "Avatar was updated",
+            "creatorArchived": "Creator archived",
+            "creatorArchivedDesc": "Creator was archived",
+            "creatorRestored": "Creator restored",
+            "creatorRestoredDesc": "Creator was restored",
+            "creatorDeleted": "Creator deleted",
+            "creatorDeletedDesc": "Creator was deleted",
+            "statusChanged": "Status changed",
+            "statusChangedDesc": "Status set to {status}",
+            "managerAssigned": "Manager assigned",
+            "managerAssignedDesc": "{manager} assigned",
+            "managerChanged": "Manager changed",
+            "managerChangedDesc": "{manager} assigned",
+            "managerRemoved": "Manager removed",
+            "managerRemovedDesc": "Manager assignment removed",
+            "transactionCreated": "Revenue imported",
+            "transactionCreatedDesc": "{amount} recorded",
+            "transactionUpdated": "Transaction updated",
+            "transactionUpdatedDesc": "Finance transaction updated",
+            "payoutCreated": "New payout requested",
+            "payoutCreatedDesc": "{amount} requested",
+            "payoutUpdated": "Payout updated",
+            "payoutUpdatedDesc": "Payout details updated",
+            "payoutApproved": "Payout approved",
+            "payoutApprovedDesc": "{amount} approved",
+            "payoutRejected": "Payout rejected",
+            "payoutRejectedDesc": "{amount} rejected",
+            "platformConnected": "Platform connected",
+            "platformConnectedDesc": "{platform} connected",
+            "platformDisconnectedDesc": "{platform} disconnected",
+            "onlyfansConnected": "OnlyFans connected",
+            "onlyfansDisconnected": "OnlyFans disconnected",
+            "fanslyConnected": "Fansly connected",
+            "fanslyDisconnected": "Fansly disconnected",
+            "manyvidsConnected": "ManyVids connected",
+            "manyvidsDisconnected": "ManyVids disconnected",
+            "documentUploaded": "Document uploaded",
+            "documentUploadedDesc": "A document was uploaded",
+            "documentDeleted": "Document deleted",
+            "documentDeletedDesc": "A document was deleted",
+            "ticketCreated": "Support ticket created",
+            "ticketCreatedDesc": "A support ticket was opened",
+            "ticketClosed": "Support ticket closed",
+            "ticketClosedDesc": "A support ticket was closed",
+            "notificationSent": "Notification sent",
+            "notificationSentDesc": "A notification was sent",
+            "invitationSent": "Invitation sent",
+            "invitationSentDesc": "Creator invitation was sent",
+            "genericEvent": "Activity",
+            "genericEventDesc": "Event related to this creator",
+            "taskCreated": "Task created",
+            "taskCreatedDesc": "{name}",
+            "taskUpdated": "Task updated",
+            "taskUpdatedDesc": "{name}",
+            "taskAssigned": "Task assigned",
+            "taskAssignedDesc": "{manager} assigned",
+            "taskCompleted": "Task completed",
+            "taskCompletedDesc": "{name}",
+            "taskDeleted": "Task deleted",
+            "taskDeletedDesc": "{name}",
+            "payoutRequested": "Auszahlung angefragt",
+            "payoutRequestedDesc": "Eine Auszahlung wurde angefragt",
+            "balanceUpdated": "Saldo aktualisiert",
+            "balanceUpdatedDesc": "Creator-Saldo wurde aktualisiert"
+          }
+        }
       }
     },
     "dashboard": {
@@ -890,7 +988,15 @@
         "registered": "Registriert"
       },
       "trendStable": "Live snapshot",
-      "trendUp": "Pipeline active"
+      "trendUp": "Pipeline active",
+      "tasks": {
+        "title": "Aufgaben",
+        "openTasks": "Open Tasks",
+        "myTasks": "My Tasks",
+        "overdue": "Overdue",
+        "completedToday": "Completed Today",
+        "viewAll": "View all"
+      }
     },
     "navLabel": "Admin-Navigation",
     "closeMenu": "Menü schließen",
@@ -1035,7 +1141,9 @@
         "countPending": "Pending",
         "countApproved": "Approved",
         "countRejected": "Rejected",
-        "countPaid": "Paid"
+        "countPaid": "Paid",
+        "outstandingBalance": "Offener Saldo",
+        "averageRevenuePerCreator": "Durchschnitt / Creator"
       },
       "summaries": {
         "creatorTitle": "Creator summary",
@@ -1065,7 +1173,8 @@
         "to": "To",
         "all": "All",
         "apply": "Apply",
-        "clear": "Clear"
+        "clear": "Clear",
+        "sort": "Sortierung"
       },
       "table": {
         "date": "Date",
@@ -1176,12 +1285,106 @@
         "save": "Unable to save changes.",
         "delete": "Unable to delete transaction.",
         "ownerOnly": "Only the owner can delete transactions.",
-        "invalidManager": "Only active staff members can be assigned."
+        "invalidManager": "Only active staff members can be assigned.",
+        "export": "Export fehlgeschlagen.",
+        "notFound": "Not found."
       },
       "emptyTitle": "No transactions yet",
       "emptyDescription": "Create a transaction or adjust your filters.",
       "emptyAction": "New transaction",
-      "retry": "Try again"
+      "retry": "Try again",
+      "tabs": {
+        "overview": "Übersicht",
+        "transactions": "Transaktionen",
+        "payouts": "Auszahlungen",
+        "reports": "Berichte",
+        "commissions": "Provisionen"
+      },
+      "payoutsTitle": "Auszahlungen",
+      "reportsTitle": "Monatsberichte",
+      "payoutsEmpty": "Noch keine Auszahlungen.",
+      "payoutStatus": {
+        "pending": "Angefragt",
+        "processing": "Genehmigt",
+        "completed": "Bezahlt",
+        "failed": "Abgelehnt"
+      },
+      "payoutMethods": {
+        "bank": "Bank",
+        "paypal": "PayPal",
+        "crypto": "Krypto",
+        "other": "Sonstiges"
+      },
+      "payoutsTable": {
+        "creator": "Creator",
+        "amount": "Betrag",
+        "currency": "Währung",
+        "method": "Methode",
+        "requested": "Angefragt",
+        "approved": "Genehmigt",
+        "paid": "Bezahlt",
+        "status": "Status",
+        "actions": "Aktionen"
+      },
+      "payoutActions": {
+        "approve": "Genehmigen",
+        "reject": "Ablehnen",
+        "pay": "Auszahlen",
+        "view": "Ansehen",
+        "rejectReason": "Ablehnungsgrund",
+        "confirmReject": "Ablehnung bestätigen"
+      },
+      "commissions": {
+        "title": "Provisionen",
+        "description": "Agentur-, Manager-, Referral- und Bonus-Provisionen konfigurieren.",
+        "agency": "Agentur %",
+        "manager": "Manager %",
+        "referral": "Referral %",
+        "bonus": "Bonus %",
+        "note": "Änderungsnotiz",
+        "save": "Provisionen speichern",
+        "saving": "Speichern…",
+        "history": "Änderungshistorie",
+        "emptyHistory": "Noch keine Provisionsänderungen.",
+        "by": "Von"
+      },
+      "charts": {
+        "revenueByMonth": "Umsatz nach Monat",
+        "revenueByPlatform": "Umsatz nach Plattform",
+        "revenueByCreator": "Umsatz nach Creator",
+        "agencyProfit": "Agenturgewinn",
+        "payouts": "Auszahlungen",
+        "empty": "Noch keine Diagrammdaten."
+      },
+      "reports": {
+        "month": "Monat",
+        "year": "Jahr",
+        "revenue": "Umsatz",
+        "commission": "Provision",
+        "expenses": "Ausgaben",
+        "netProfit": "Nettogewinn"
+      },
+      "export": {
+        "label": "Export",
+        "csv": "CSV",
+        "excel": "Excel",
+        "pdf": "PDF",
+        "error": "Export fehlgeschlagen."
+      },
+      "balances": {
+        "title": "Creator-Salden",
+        "empty": "Noch keine Creator-Salden.",
+        "currentBalance": "Aktueller Saldo",
+        "pending": "Ausstehend",
+        "paid": "Ausgezahlt",
+        "lifetimeRevenue": "Gesamteinnahmen"
+      },
+      "sort": {
+        "date_desc": "Datum (neueste)",
+        "date_asc": "Datum (älteste)",
+        "gross_desc": "Brutto (absteigend)",
+        "gross_asc": "Brutto (aufsteigend)"
+      }
     },
     "notifications": {
       "label": "Posteingang",
@@ -1434,6 +1637,199 @@
       "emptyDescription": "Filter zurücksetzen oder einen neuen Mitarbeiter einladen.",
       "emptyAction": "Mitarbeiter hinzufügen",
       "never": "Nie"
+    },
+    "tasks": {
+      "label": "Betrieb",
+      "title": "Aufgaben",
+      "description": "Aufgaben für Creator, Finanzen und Support zuweisen und verfolgen.",
+      "kpis": {
+        "myTasks": "Meine Aufgaben",
+        "overdue": "Überfällig",
+        "today": "Heute",
+        "completed": "Erledigt",
+        "highPriority": "Hohe Priorität"
+      },
+      "filters": {
+        "search": "Aufgaben suchen",
+        "searchPlaceholder": "Aufgaben suchen",
+        "status": "Status",
+        "priority": "Priorität",
+        "type": "Typ",
+        "assignee": "Zuständig",
+        "creator": "Creator",
+        "sort": "Sortierung",
+        "all": "Alle",
+        "unassigned": "Nicht zugewiesen",
+        "clear": "Filter zurücksetzen"
+      },
+      "sort": {
+        "newest": "Neueste",
+        "oldest": "Älteste",
+        "dueAsc": "Fällig ↑",
+        "dueDesc": "Fällig ↓",
+        "priority": "Priorität"
+      },
+      "empty": {
+        "title": "Noch keine Aufgaben",
+        "description": "Erstellen Sie die erste Aufgabe für Ihr Team."
+      },
+      "table": {
+        "title": "Titel",
+        "creator": "Creator",
+        "assigned": "Zuständig",
+        "priority": "Priorität",
+        "status": "Status",
+        "due": "Fällig",
+        "actions": "Aktionen",
+        "view": "Öffnen",
+        "empty": "Keine Aufgaben gefunden",
+        "emptyTitle": "Noch keine Aufgaben",
+        "emptyDescription": "Erstellen Sie die erste Aufgabe für Ihr Team."
+      },
+      "pagination": {
+        "previous": "Zurück",
+        "next": "Weiter",
+        "of": "von"
+      },
+      "fields": {
+        "title": "Titel",
+        "description": "Beschreibung",
+        "type": "Typ",
+        "priority": "Priorität",
+        "status": "Status",
+        "creator": "Creator",
+        "assignTo": "Zuweisen",
+        "dueDate": "Fälligkeit",
+        "none": "Keine",
+        "department": "Abteilung",
+        "createdAt": "Erstellt",
+        "updatedAt": "Aktualisiert"
+      },
+      "status": {
+        "new": "Neu",
+        "in_progress": "In Arbeit",
+        "waiting": "Wartend",
+        "blocked": "Blockiert",
+        "review": "In Prüfung",
+        "completed": "Erledigt",
+        "archived": "Archiv"
+      },
+      "priority": {
+        "low": "Niedrig",
+        "medium": "Mittel",
+        "high": "Hoch",
+        "urgent": "Dringend"
+      },
+      "type": {
+        "creator": "Creator",
+        "finance": "Finanzen",
+        "support": "Support",
+        "application": "Bewerbung",
+        "staff": "Mitarbeiter",
+        "custom": "Sonstiges"
+      },
+      "deadline": {
+        "none": "Kein Termin",
+        "overdue": "Überfällig",
+        "today": "Heute",
+        "tomorrow": "Morgen",
+        "inDays": "In {days} Tagen",
+        "until": "Bis zur Frist"
+      },
+      "form": {
+        "open": "Neue Aufgabe",
+        "title": "Aufgabe erstellen",
+        "submit": "Aufgabe erstellen",
+        "submitting": "Wird erstellt…",
+        "cancel": "Abbrechen",
+        "saved": "Aufgabe erstellt",
+        "error": "Aufgabe konnte nicht erstellt werden"
+      },
+      "actions": {
+        "assign": "Zuweisen",
+        "complete": "Abschließen",
+        "review": "Zur Prüfung",
+        "archive": "Archivieren",
+        "delete": "Löschen",
+        "save": "Speichern",
+        "saving": "Speichern…",
+        "edit": "Bearbeiten",
+        "duplicate": "Duplizieren",
+        "copySuffix": " (Kopie)"
+      },
+      "detail": {
+        "back": "Zurück zu Aufgaben",
+        "history": "Verlauf",
+        "comments": "Kommentare",
+        "activity": "Aktivität",
+        "attachments": "Dateien",
+        "subtasks": "Checkliste",
+        "quickActions": "Schnellaktionen",
+        "changeStatus": "Status ändern",
+        "changeAssignee": "Mitarbeiter zuweisen",
+        "changeDue": "Frist ändern",
+        "addComment": "Kommentar hinzufügen",
+        "commentPlaceholder": "Kommentar schreiben…",
+        "emptyComments": "Noch keine Kommentare.",
+        "emptyActivity": "Noch keine Aktivität.",
+        "emptyAttachments": "Noch keine Dateien",
+        "emptyAttachmentsDesc": "PDF, DOCX, XLSX, PNG, JPG oder ZIP hochladen.",
+        "emptySubtasks": "Noch keine Checklistenpunkte.",
+        "addSubtask": "Hinzufügen",
+        "subtaskPlaceholder": "Checklistenpunkt",
+        "progress": "{done} / {total} erledigt",
+        "upload": "Hochladen",
+        "download": "Herunterladen",
+        "remove": "Entfernen",
+        "editComment": "Bearbeiten",
+        "deleteComment": "Löschen",
+        "sendHint": "Enter senden · Shift+Enter neue Zeile",
+        "error": "Etwas ist schiefgelaufen"
+      },
+      "timeline": {
+        "created": "Aufgabe erstellt",
+        "updated": "Aufgabe aktualisiert",
+        "assigned": "Zuständigkeit geändert",
+        "completed": "Aufgabe erledigt",
+        "deleted": "Aufgabe gelöscht",
+        "statusChanged": "Status geändert",
+        "commentAdded": "Kommentar hinzugefügt",
+        "commentUpdated": "Kommentar bearbeitet",
+        "commentDeleted": "Kommentar gelöscht",
+        "fileAttached": "Datei angehängt",
+        "fileRemoved": "Datei entfernt",
+        "duplicated": "Aufgabe dupliziert"
+      },
+      "confirm": {
+        "deleteTitle": "Diese Aufgabe löschen?",
+        "deleteDescription": "Die Aufgabe wird dauerhaft entfernt.",
+        "confirm": "Löschen"
+      },
+      "errors": {
+        "load": "Aufgaben konnten nicht geladen werden.",
+        "loadDetail": "Aufgabe konnte nicht geladen werden."
+      },
+      "actionErrors": {
+        "unauthorized": "Keine Berechtigung für diese Aktion.",
+        "invalid": "Ungültige Aufgabendaten.",
+        "notFound": "Aufgabe nicht gefunden.",
+        "create": "Aufgabe konnte nicht erstellt werden.",
+        "update": "Aufgabe konnte nicht aktualisiert werden.",
+        "delete": "Aufgabe konnte nicht gelöscht werden.",
+        "comment": "Kommentar konnte nicht aktualisiert werden.",
+        "upload": "Datei konnte nicht hochgeladen werden.",
+        "fileTooLarge": "Datei ist zu groß (max. 50 MB).",
+        "fileType": "Nicht unterstützter Dateityp."
+      },
+      "view": {
+        "table": "Tabelle",
+        "kanban": "Kanban"
+      },
+      "kanban": {
+        "emptyTitle": "Keine Aufgaben",
+        "emptyCreate": "Neue Aufgabe erstellen",
+        "manager": "Manager"
+      }
     }
   },
   "creator": {
@@ -1455,7 +1851,8 @@
       "payouts": "Auszahlungen",
       "documents": "Dokumente",
       "support": "Support",
-      "settings": "Einstellungen"
+      "settings": "Einstellungen",
+      "finance": "Finanzen"
     },
     "dashboard": {
       "label": "Übersicht",
@@ -1739,6 +2136,26 @@
         "invalid": "Bitte Pflichtfelder ausfüllen.",
         "save": "Profil konnte nicht gespeichert werden."
       }
+    },
+    "finance": {
+      "label": "Finanzen",
+      "title": "Finanzen",
+      "description": "Saldo, Umsatz und Auszahlungshistorie.",
+      "historyTitle": "Zahlungshistorie",
+      "viewPayouts": "Alle Auszahlungen",
+      "empty": "Noch keine Zahlungshistorie.",
+      "kpis": {
+        "balance": "Saldo",
+        "lifetime": "Lebenszeitumsatz",
+        "currentMonth": "Aktueller Monat",
+        "pending": "Ausstehende Auszahlung"
+      },
+      "table": {
+        "period": "Zeitraum",
+        "amount": "Betrag",
+        "status": "Status",
+        "paidDate": "Bezahlt"
+      }
     }
   },
   "common": {
@@ -1870,6 +2287,18 @@
       "financePayoutCancelledTitle": "Payout cancelled",
       "financePayoutCancelledMessage": "A payout was cancelled",
       "financePayoutCancelledDescription": "Payout cancelled",
+      "financePayoutRequestedTitle": "Payout requested",
+      "financePayoutRequestedMessage": "A payout request is awaiting review",
+      "financePayoutRequestedDescription": "Payout requested",
+      "financePayoutApprovedTitle": "Payout approved",
+      "financePayoutApprovedMessage": "A payout was approved for processing",
+      "financePayoutApprovedDescription": "Payout approved",
+      "financePayoutRejectedTitle": "Payout rejected",
+      "financePayoutRejectedMessage": "A payout request was rejected",
+      "financePayoutRejectedDescription": "Payout rejected",
+      "financeBalanceUpdatedTitle": "Balance updated",
+      "financeBalanceUpdatedMessage": "Creator balance was updated",
+      "financeBalanceUpdatedDescription": "Finance balance updated",
       "employeeCreatedTitle": "Mitarbeiter erstellt",
       "employeeCreatedMessage": "{name} wurde eingeladen",
       "employeeCreatedDescription": "Mitarbeiter eingeladen",
@@ -1890,7 +2319,46 @@
       "creatorArchivedDescription": "Creator archived: {name}",
       "creatorDeletedTitle": "Creator deleted",
       "creatorDeletedMessage": "{name} was deleted",
-      "creatorDeletedDescription": "Creator deleted: {name}"
+      "creatorDeletedDescription": "Creator deleted: {name}",
+      "taskCreatedTitle": "Task created",
+      "taskCreatedMessage": "Task created: {title}",
+      "taskCreatedDescription": "Task created: {title}",
+      "taskUpdatedTitle": "Task updated",
+      "taskUpdatedMessage": "Task updated: {title}",
+      "taskUpdatedDescription": "Task updated: {title}",
+      "taskAssignedTitle": "Task assigned",
+      "taskAssignedMessage": "You were assigned task: {title}",
+      "taskAssignedDescription": "Task assigned: {title}",
+      "taskCompletedTitle": "Task completed",
+      "taskCompletedMessage": "Task completed: {title}",
+      "taskCompletedDescription": "Task completed: {title}",
+      "taskDeletedTitle": "Task deleted",
+      "taskDeletedMessage": "Task deleted: {title}",
+      "taskDeletedDescription": "Task deleted: {title}",
+      "taskStatusChangedTitle": "Task status changed",
+      "taskStatusChangedMessage": "Task status updated: {title}",
+      "taskStatusChangedDescription": "Status changed for task: {title}",
+      "taskCommentCreatedTitle": "New task comment",
+      "taskCommentCreatedMessage": "New comment on task: {title}",
+      "taskCommentCreatedDescription": "Comment added on task: {title}",
+      "taskCommentUpdatedTitle": "Task comment updated",
+      "taskCommentUpdatedMessage": "Comment updated on task: {title}",
+      "taskCommentUpdatedDescription": "Comment updated on task: {title}",
+      "taskCommentDeletedTitle": "Task comment deleted",
+      "taskCommentDeletedMessage": "Comment deleted on task: {title}",
+      "taskCommentDeletedDescription": "Comment deleted on task: {title}",
+      "taskAttachmentUploadedTitle": "File attached",
+      "taskAttachmentUploadedMessage": "File attached to task: {title}",
+      "taskAttachmentUploadedDescription": "File attached to task: {title}",
+      "taskAttachmentDeletedTitle": "File removed",
+      "taskAttachmentDeletedMessage": "File removed from task: {title}",
+      "taskAttachmentDeletedDescription": "File removed from task: {title}",
+      "taskDuplicatedTitle": "Task duplicated",
+      "taskDuplicatedMessage": "Task duplicated: {title}",
+      "taskDuplicatedDescription": "Task duplicated: {title}",
+      "taskDeadlineApproachingTitle": "Frist nähert sich",
+      "taskDeadlineApproachingMessage": "Die Frist der Aufgabe rückt näher: {title}",
+      "taskDeadlineApproachingDescription": "Frist nähert sich für Aufgabe: {title}"
     }
   }
 }

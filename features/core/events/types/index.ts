@@ -55,7 +55,24 @@ export type PlatformEventType =
   | "finance.payout.created"
   | "finance.payout.updated"
   | "finance.payout.paid"
-  | "finance.payout.cancelled";
+  | "finance.payout.cancelled"
+  | "finance.payout.requested"
+  | "finance.payout.approved"
+  | "finance.payout.rejected"
+  | "finance.balance.updated"
+  | "task.created"
+  | "task.updated"
+  | "task.assigned"
+  | "task.completed"
+  | "task.deleted"
+  | "task.status_changed"
+  | "task.comment.created"
+  | "task.comment.updated"
+  | "task.comment.deleted"
+  | "task.attachment.uploaded"
+  | "task.attachment.deleted"
+  | "task.duplicated"
+  | "task.deadline_approaching";
 
 export type PublishEventInput = {
   type: PlatformEventType;

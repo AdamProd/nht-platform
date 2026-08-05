@@ -17,6 +17,7 @@ type Props = {
   manager: string;
   from: string;
   to: string;
+  sort: string;
   creators: FinanceCreatorOption[];
   managers: FinanceManagerOption[];
   canFilterManager: boolean;
@@ -29,9 +30,16 @@ type Props = {
     manager: string;
     from: string;
     to: string;
+    sort: string;
     all: string;
     apply: string;
     clear: string;
+  };
+  sortLabels: {
+    date_desc: string;
+    date_asc: string;
+    gross_desc: string;
+    gross_asc: string;
   };
   statusLabels: Record<FinanceTransactionStatus, string>;
   platformLabels: Record<FinancePlatform, string>;
@@ -45,10 +53,12 @@ export default function FinanceFilters({
   manager,
   from,
   to,
+  sort,
   creators,
   managers,
   canFilterManager,
   labels,
+  sortLabels,
   statusLabels,
   platformLabels,
 }: Props) {
@@ -57,6 +67,7 @@ export default function FinanceFilters({
       className="grid gap-3 rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02] p-4 sm:grid-cols-2 lg:grid-cols-4"
       method="get"
     >
+      <input type="hidden" name="tab" value="transactions" />
       <div className="lg:col-span-2">
         <DebouncedSearchInput
           defaultValue={q}
@@ -131,6 +142,17 @@ export default function FinanceFilters({
           </select>
         </label>
       ) : null}
+      <label className="block">
+        <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
+          {labels.sort}
+        </span>
+        <select name="sort" defaultValue={sort || "date_desc"} className="nht-input">
+          <option value="date_desc">{sortLabels.date_desc}</option>
+          <option value="date_asc">{sortLabels.date_asc}</option>
+          <option value="gross_desc">{sortLabels.gross_desc}</option>
+          <option value="gross_asc">{sortLabels.gross_asc}</option>
+        </select>
+      </label>
       <div className="flex flex-wrap items-end gap-2 sm:col-span-2 lg:col-span-4">
         <button
           type="submit"
@@ -139,7 +161,7 @@ export default function FinanceFilters({
           {labels.apply}
         </button>
         <Link
-          href="/admin/finance"
+          href="/admin/finance?tab=transactions"
           className="rounded-full border border-white/10 px-4 py-2 text-xs font-medium text-[var(--nht-text-secondary)] transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--nht-gold)]"
         >
           {labels.clear}

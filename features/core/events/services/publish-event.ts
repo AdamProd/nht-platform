@@ -8,14 +8,25 @@ import type {
 } from "@/features/core/events/types";
 import type { Json } from "@/types/database.types";
 
-function interpolate(
-  template: string,
+function toIntlValues(
   params: Record<string, unknown>,
-): string {
-  return template.replace(/\{(\w+)\}/g, (_, key: string) => {
-    const value = params[key];
-    return value == null ? "" : String(value);
-  });
+): Record<string, string | number | boolean | Date> {
+  const values: Record<string, string | number | boolean | Date> = {};
+  for (const [key, value] of Object.entries(params)) {
+    if (value == null) {
+      values[key] = "";
+    } else if (
+      typeof value === "string" ||
+      typeof value === "number" ||
+      typeof value === "boolean" ||
+      value instanceof Date
+    ) {
+      values[key] = value;
+    } else {
+      values[key] = String(value);
+    }
+  }
+  return values;
 }
 
 /**
@@ -31,17 +42,15 @@ export async function publishEvent(
     const visibility = input.visibility ?? meta.defaultVisibility;
     const entityType = input.entityType ?? meta.entityType;
     const payload = (input.payload ?? {}) as Record<string, unknown>;
+    const values = toIntlValues(payload);
 
     const t = await getTranslations("events.catalog");
     const title =
-      input.title ??
-      interpolate(t(meta.titleKey as never), payload);
+      input.title ?? t(meta.titleKey as never, values as never);
     const message =
-      input.message ??
-      interpolate(t(meta.messageKey as never), payload);
+      input.message ?? t(meta.messageKey as never, values as never);
     const description =
-      input.description ??
-      interpolate(t(meta.descriptionKey as never), payload);
+      input.description ?? t(meta.descriptionKey as never, values as never);
 
     const admin = createAdminClient();
 

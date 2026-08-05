@@ -140,6 +140,10 @@ export const financeListFiltersSchema = z.object({
     .regex(/^\d{4}-\d{2}-\d{2}$|^$/)
     .optional()
     .default(""),
+  sort: z
+    .enum(["date_desc", "date_asc", "gross_desc", "gross_asc"])
+    .optional()
+    .default("date_desc"),
   page: z.coerce.number().int().min(1).default(1),
 });
 

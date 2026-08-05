@@ -1,2 +1,1 @@
-/** Reserved for finance exports. */
-export {};
+export { exportFinanceData } from "@/features/finance/exports/export-finance";

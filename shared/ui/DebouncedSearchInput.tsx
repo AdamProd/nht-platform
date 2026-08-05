@@ -21,7 +21,7 @@ export default function DebouncedSearchInput({
   defaultValue = "",
   placeholder,
   label,
-  clearLabel = "Clear",
+  clearLabel = "",
   className = "nht-input",
   debounceMs = 350,
   autoSubmit = true,

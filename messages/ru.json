@@ -289,7 +289,8 @@
       "finance": "Финансы",
       "notifications": "Уведомления",
       "activity": "Активность",
-      "staff": "Сотрудники"
+      "staff": "Сотрудники",
+      "tasks": "Задачи"
     },
     "pages": {
       "dashboard": {
@@ -341,6 +342,11 @@
         "label": "Команда",
         "title": "Сотрудники",
         "description": "Управление сотрудниками, ролями, отделами и правами доступа."
+      },
+      "tasks": {
+        "label": "Операции",
+        "title": "Задачи",
+        "description": "Доска задач и назначения команды."
       }
     },
     "applications": {
@@ -754,7 +760,8 @@
           "documents": "Документы",
           "notes": "Заметки",
           "activity": "Активность",
-          "statistics": "Статистика"
+          "statistics": "Статистика",
+          "timeline": "Таймлайн"
         },
         "platformStatus": {
           "linked": "Подключено",
@@ -775,7 +782,18 @@
             "priority": "Приоритет",
             "status": "Статус",
             "dueDate": "Срок",
-            "assignedBy": "Назначил"
+            "assignedBy": "Назначил",
+            "in_progress": "В работе",
+            "review": "На проверке",
+            "completed": "Завершена",
+            "medium": "Средний",
+            "low": "Низкий",
+            "high": "Высокий",
+            "urgent": "Срочно",
+            "new": "Новая",
+            "waiting": "Ожидает",
+            "blocked": "Заблокирована",
+            "archived": "Архив"
           },
           "documents": {
             "document": "Документ",
@@ -821,7 +839,87 @@
           "archived": "Креатор архивирован.",
           "deleted": "Креатор удалён."
         },
-        "notConnected": "Не подключена"
+        "notConnected": "Не подключена",
+        "timeline": {
+          "emptyTitle": "Пока нет событий",
+          "emptyDescription": "События, связанные с этим креатором, появятся здесь автоматически.",
+          "loadMore": "Загрузить ещё",
+          "loading": "Загрузка…",
+          "today": "Сегодня",
+          "yesterday": "Вчера",
+          "by": "от",
+          "unknownActor": "Система",
+          "events": {
+            "creatorCreated": "Креатор создан",
+            "creatorCreatedDesc": "Профиль креатора был создан",
+            "creatorUpdated": "Профиль обновлён",
+            "creatorUpdatedDesc": "Профиль креатора был обновлён",
+            "avatarChangedDesc": "Аватар обновлён",
+            "creatorArchived": "Креатор в архиве",
+            "creatorArchivedDesc": "Креатор был архивирован",
+            "creatorRestored": "Креатор восстановлен",
+            "creatorRestoredDesc": "Креатор был восстановлен",
+            "creatorDeleted": "Креатор удалён",
+            "creatorDeletedDesc": "Креатор был удалён",
+            "statusChanged": "Статус изменён",
+            "statusChangedDesc": "Статус: {status}",
+            "managerAssigned": "Менеджер назначен",
+            "managerAssignedDesc": "Назначен {manager}",
+            "managerChanged": "Менеджер изменён",
+            "managerChangedDesc": "Назначен {manager}",
+            "managerRemoved": "Менеджер снят",
+            "managerRemovedDesc": "Назначение менеджера снято",
+            "transactionCreated": "Доход импортирован",
+            "transactionCreatedDesc": "Записано {amount}",
+            "transactionUpdated": "Транзакция обновлена",
+            "transactionUpdatedDesc": "Финансовая транзакция обновлена",
+            "payoutCreated": "Запрошена выплата",
+            "payoutCreatedDesc": "Запрошено {amount}",
+            "payoutUpdated": "Выплата обновлена",
+            "payoutUpdatedDesc": "Детали выплаты обновлены",
+            "payoutApproved": "Выплата одобрена",
+            "payoutApprovedDesc": "Одобрено {amount}",
+            "payoutRejected": "Выплата отклонена",
+            "payoutRejectedDesc": "Отклонено {amount}",
+            "platformConnected": "Платформа подключена",
+            "platformConnectedDesc": "{platform} подключена",
+            "platformDisconnectedDesc": "{platform} отключена",
+            "onlyfansConnected": "OnlyFans подключён",
+            "onlyfansDisconnected": "OnlyFans отключён",
+            "fanslyConnected": "Fansly подключён",
+            "fanslyDisconnected": "Fansly отключён",
+            "manyvidsConnected": "ManyVids подключён",
+            "manyvidsDisconnected": "ManyVids отключён",
+            "documentUploaded": "Документ загружен",
+            "documentUploadedDesc": "Документ был загружен",
+            "documentDeleted": "Документ удалён",
+            "documentDeletedDesc": "Документ был удалён",
+            "ticketCreated": "Тикет создан",
+            "ticketCreatedDesc": "Открыт тикет поддержки",
+            "ticketClosed": "Тикет закрыт",
+            "ticketClosedDesc": "Тикет поддержки закрыт",
+            "notificationSent": "Уведомление отправлено",
+            "notificationSentDesc": "Уведомление было отправлено",
+            "invitationSent": "Приглашение отправлено",
+            "invitationSentDesc": "Приглашение креатору отправлено",
+            "genericEvent": "Событие",
+            "genericEventDesc": "Событие, связанное с этим креатором",
+            "taskCreated": "Task created",
+            "taskCreatedDesc": "{name}",
+            "taskUpdated": "Task updated",
+            "taskUpdatedDesc": "{name}",
+            "taskAssigned": "Task assigned",
+            "taskAssignedDesc": "{manager} assigned",
+            "taskCompleted": "Task completed",
+            "taskCompletedDesc": "{name}",
+            "taskDeleted": "Task deleted",
+            "taskDeletedDesc": "{name}",
+            "payoutRequested": "Запрошена выплата",
+            "payoutRequestedDesc": "Была запрошена выплата",
+            "balanceUpdated": "Баланс обновлён",
+            "balanceUpdatedDesc": "Баланс креатора обновлён"
+          }
+        }
       }
     },
     "dashboard": {
@@ -890,7 +988,15 @@
         "registered": "Зарегистрирован"
       },
       "trendStable": "Live snapshot",
-      "trendUp": "Pipeline active"
+      "trendUp": "Pipeline active",
+      "tasks": {
+        "title": "Задачи",
+        "openTasks": "Открытые задачи",
+        "myTasks": "Мои задачи",
+        "overdue": "Просрочено",
+        "completedToday": "Завершено сегодня",
+        "viewAll": "Все задачи"
+      }
     },
     "navLabel": "Навигация админки",
     "closeMenu": "Закрыть меню",
@@ -1035,7 +1141,9 @@
         "countPending": "Ожидает",
         "countApproved": "Одобрено",
         "countRejected": "Отклонено",
-        "countPaid": "Выплачено"
+        "countPaid": "Выплачено",
+        "outstandingBalance": "Непогашенный баланс",
+        "averageRevenuePerCreator": "Средний доход / креатор"
       },
       "summaries": {
         "creatorTitle": "Creator summary",
@@ -1065,7 +1173,8 @@
         "to": "To",
         "all": "All",
         "apply": "Apply",
-        "clear": "Clear"
+        "clear": "Clear",
+        "sort": "Сортировка"
       },
       "table": {
         "date": "Date",
@@ -1176,12 +1285,106 @@
         "save": "Unable to save changes.",
         "delete": "Unable to delete transaction.",
         "ownerOnly": "Only the owner can delete transactions.",
-        "invalidManager": "Можно назначать только активных сотрудников."
+        "invalidManager": "Можно назначать только активных сотрудников.",
+        "export": "Не удалось экспортировать.",
+        "notFound": "Not found."
       },
       "emptyTitle": "No transactions yet",
       "emptyDescription": "Create a transaction or adjust your filters.",
       "emptyAction": "New transaction",
-      "retry": "Try again"
+      "retry": "Try again",
+      "tabs": {
+        "overview": "Обзор",
+        "transactions": "Операции",
+        "payouts": "Выплаты",
+        "reports": "Отчёты",
+        "commissions": "Комиссии"
+      },
+      "payoutsTitle": "Выплаты",
+      "reportsTitle": "Месячные отчёты",
+      "payoutsEmpty": "Выплат пока нет.",
+      "payoutStatus": {
+        "pending": "Запрошена",
+        "processing": "Одобрена",
+        "completed": "Выплачена",
+        "failed": "Отклонена"
+      },
+      "payoutMethods": {
+        "bank": "Банк",
+        "paypal": "PayPal",
+        "crypto": "Крипто",
+        "other": "Другое"
+      },
+      "payoutsTable": {
+        "creator": "Креатор",
+        "amount": "Сумма",
+        "currency": "Валюта",
+        "method": "Метод",
+        "requested": "Запрошено",
+        "approved": "Одобрено",
+        "paid": "Выплачено",
+        "status": "Статус",
+        "actions": "Действия"
+      },
+      "payoutActions": {
+        "approve": "Одобрить",
+        "reject": "Отклонить",
+        "pay": "Выплатить",
+        "view": "Открыть",
+        "rejectReason": "Причина отклонения",
+        "confirmReject": "Подтвердить отклонение"
+      },
+      "commissions": {
+        "title": "Комиссии",
+        "description": "Настройка процентов агентства, менеджера, реферала и бонуса.",
+        "agency": "Агентство %",
+        "manager": "Менеджер %",
+        "referral": "Реферал %",
+        "bonus": "Бонус %",
+        "note": "Комментарий к изменению",
+        "save": "Сохранить комиссии",
+        "saving": "Сохранение…",
+        "history": "История изменений",
+        "emptyHistory": "Изменений комиссий пока нет.",
+        "by": "Кем"
+      },
+      "charts": {
+        "revenueByMonth": "Доход по месяцам",
+        "revenueByPlatform": "Доход по платформам",
+        "revenueByCreator": "Доход по креаторам",
+        "agencyProfit": "Прибыль агентства",
+        "payouts": "Выплаты",
+        "empty": "Пока нет данных для графиков."
+      },
+      "reports": {
+        "month": "Месяц",
+        "year": "Год",
+        "revenue": "Доход",
+        "commission": "Комиссия",
+        "expenses": "Расходы",
+        "netProfit": "Чистая прибыль"
+      },
+      "export": {
+        "label": "Экспорт",
+        "csv": "CSV",
+        "excel": "Excel",
+        "pdf": "PDF",
+        "error": "Не удалось экспортировать."
+      },
+      "balances": {
+        "title": "Балансы креаторов",
+        "empty": "Балансы креаторов пока отсутствуют.",
+        "currentBalance": "Текущий баланс",
+        "pending": "В ожидании",
+        "paid": "Выплачено",
+        "lifetimeRevenue": "Доход за всё время"
+      },
+      "sort": {
+        "date_desc": "Дата (новые)",
+        "date_asc": "Дата (старые)",
+        "gross_desc": "Сумма (убыв.)",
+        "gross_asc": "Сумма (возр.)"
+      }
     },
     "notifications": {
       "label": "Входящие",
@@ -1252,7 +1455,7 @@
         "blog": "Блог",
         "analytics": "Аналитика",
         "settings": "Настройки",
-        "tasks": "Задачи",
+        "tasks": "Tasks",
         "calendar": "Календарь"
       },
       "pagination": {
@@ -1434,6 +1637,199 @@
       "emptyDescription": "Сбросьте фильтры или пригласите нового сотрудника.",
       "emptyAction": "Добавить сотрудника",
       "never": "Никогда"
+    },
+    "tasks": {
+      "label": "Операции",
+      "title": "Задачи",
+      "description": "Назначайте и отслеживайте задачи по креаторам, финансам и поддержке.",
+      "kpis": {
+        "myTasks": "Мои задачи",
+        "overdue": "Просрочено",
+        "today": "Сегодня",
+        "completed": "Завершено",
+        "highPriority": "Высокий приоритет"
+      },
+      "filters": {
+        "search": "Поиск задач",
+        "searchPlaceholder": "Поиск задач",
+        "status": "Статус",
+        "priority": "Приоритет",
+        "type": "Тип",
+        "assignee": "Исполнитель",
+        "creator": "Креатор",
+        "sort": "Сортировка",
+        "all": "Все",
+        "unassigned": "Не назначен",
+        "clear": "Сбросить фильтры"
+      },
+      "sort": {
+        "newest": "Сначала новые",
+        "oldest": "Сначала старые",
+        "dueAsc": "Срок ↑",
+        "dueDesc": "Срок ↓",
+        "priority": "По приоритету"
+      },
+      "empty": {
+        "title": "Пока нет задач",
+        "description": "Создайте первую задачу, чтобы начать работу команды."
+      },
+      "table": {
+        "title": "Название",
+        "creator": "Креатор",
+        "assigned": "Исполнитель",
+        "priority": "Приоритет",
+        "status": "Статус",
+        "due": "Срок",
+        "actions": "Действия",
+        "view": "Открыть",
+        "empty": "Задачи не найдены",
+        "emptyTitle": "Пока нет задач",
+        "emptyDescription": "Создайте первую задачу, чтобы начать работу команды."
+      },
+      "pagination": {
+        "previous": "Назад",
+        "next": "Далее",
+        "of": "из"
+      },
+      "fields": {
+        "title": "Название",
+        "description": "Описание",
+        "type": "Тип",
+        "priority": "Приоритет",
+        "status": "Статус",
+        "creator": "Креатор",
+        "assignTo": "Назначить",
+        "dueDate": "Срок",
+        "none": "Нет",
+        "department": "Отдел",
+        "createdAt": "Создано",
+        "updatedAt": "Обновлено"
+      },
+      "status": {
+        "new": "Новая",
+        "in_progress": "В работе",
+        "waiting": "Ожидает",
+        "blocked": "Заблокирована",
+        "review": "На проверке",
+        "completed": "Завершена",
+        "archived": "Архив"
+      },
+      "priority": {
+        "low": "Низкий",
+        "medium": "Средний",
+        "high": "Высокий",
+        "urgent": "Срочно"
+      },
+      "type": {
+        "creator": "Креатор",
+        "finance": "Финансы",
+        "support": "Поддержка",
+        "application": "Заявка",
+        "staff": "Сотрудник",
+        "custom": "Другое"
+      },
+      "deadline": {
+        "none": "Без срока",
+        "overdue": "Просрочено",
+        "today": "Сегодня",
+        "tomorrow": "Завтра",
+        "inDays": "Через {days} дн.",
+        "until": "До дедлайна"
+      },
+      "form": {
+        "open": "Новая задача",
+        "title": "Создать задачу",
+        "submit": "Создать задачу",
+        "submitting": "Создание…",
+        "cancel": "Отмена",
+        "saved": "Задача создана",
+        "error": "Не удалось создать задачу"
+      },
+      "actions": {
+        "assign": "Назначить",
+        "complete": "Завершить",
+        "review": "На проверку",
+        "archive": "Архивировать",
+        "delete": "Удалить",
+        "save": "Сохранить",
+        "saving": "Сохранение…",
+        "edit": "Редактировать",
+        "duplicate": "Дублировать",
+        "copySuffix": " (копия)"
+      },
+      "detail": {
+        "back": "Назад к задачам",
+        "history": "История",
+        "comments": "Комментарии",
+        "activity": "Активность",
+        "attachments": "Файлы",
+        "subtasks": "Чек-лист",
+        "quickActions": "Быстрые действия",
+        "changeStatus": "Изменить статус",
+        "changeAssignee": "Назначить сотрудника",
+        "changeDue": "Изменить дедлайн",
+        "addComment": "Добавить комментарий",
+        "commentPlaceholder": "Напишите комментарий…",
+        "emptyComments": "Комментариев пока нет.",
+        "emptyActivity": "Активности пока нет.",
+        "emptyAttachments": "Файлов пока нет",
+        "emptyAttachmentsDesc": "Загрузите PDF, DOCX, XLSX, PNG, JPG или ZIP.",
+        "emptySubtasks": "Пунктов чек-листа пока нет.",
+        "addSubtask": "Добавить",
+        "subtaskPlaceholder": "Пункт чек-листа",
+        "progress": "{done} / {total} выполнено",
+        "upload": "Загрузить",
+        "download": "Скачать",
+        "remove": "Удалить",
+        "editComment": "Редактировать",
+        "deleteComment": "Удалить",
+        "sendHint": "Enter — отправить · Shift+Enter — новая строка",
+        "error": "Что-то пошло не так"
+      },
+      "timeline": {
+        "created": "Создана задача",
+        "updated": "Задача обновлена",
+        "assigned": "Назначен менеджер",
+        "completed": "Задача завершена",
+        "deleted": "Задача удалена",
+        "statusChanged": "Изменен статус",
+        "commentAdded": "Добавлен комментарий",
+        "commentUpdated": "Комментарий изменён",
+        "commentDeleted": "Комментарий удалён",
+        "fileAttached": "Прикреплен файл",
+        "fileRemoved": "Файл удалён",
+        "duplicated": "Задача продублирована"
+      },
+      "confirm": {
+        "deleteTitle": "Удалить эту задачу?",
+        "deleteDescription": "Задача будет удалена безвозвратно.",
+        "confirm": "Удалить"
+      },
+      "errors": {
+        "load": "Не удалось загрузить задачи.",
+        "loadDetail": "Не удалось загрузить задачу."
+      },
+      "actionErrors": {
+        "unauthorized": "Недостаточно прав для этого действия.",
+        "invalid": "Некорректные данные задачи.",
+        "notFound": "Задача не найдена.",
+        "create": "Не удалось создать задачу.",
+        "update": "Не удалось обновить задачу.",
+        "delete": "Не удалось удалить задачу.",
+        "comment": "Не удалось обновить комментарий.",
+        "upload": "Не удалось загрузить файл.",
+        "fileTooLarge": "Файл слишком большой (макс. 50 МБ).",
+        "fileType": "Неподдерживаемый тип файла."
+      },
+      "view": {
+        "table": "Таблица",
+        "kanban": "Kanban"
+      },
+      "kanban": {
+        "emptyTitle": "Нет задач",
+        "emptyCreate": "Создать новую задачу",
+        "manager": "Менеджер"
+      }
     }
   },
   "creator": {
@@ -1455,7 +1851,8 @@
       "payouts": "Выплаты",
       "documents": "Документы",
       "support": "Поддержка",
-      "settings": "Настройки"
+      "settings": "Настройки",
+      "finance": "Финансы"
     },
     "dashboard": {
       "label": "Обзор",
@@ -1739,6 +2136,26 @@
         "invalid": "Заполните обязательные поля.",
         "save": "Не удалось сохранить профиль."
       }
+    },
+    "finance": {
+      "label": "Финансы",
+      "title": "Финансы",
+      "description": "Баланс, доход и история выплат.",
+      "historyTitle": "История выплат",
+      "viewPayouts": "Все выплаты",
+      "empty": "Истории выплат пока нет.",
+      "kpis": {
+        "balance": "Баланс",
+        "lifetime": "Доход за всё время",
+        "currentMonth": "Текущий месяц",
+        "pending": "Ожидает выплаты"
+      },
+      "table": {
+        "period": "Период",
+        "amount": "Сумма",
+        "status": "Статус",
+        "paidDate": "Выплачено"
+      }
     }
   },
   "common": {
@@ -1870,6 +2287,18 @@
       "financePayoutCancelledTitle": "Выплата отменена",
       "financePayoutCancelledMessage": "Выплата отменена",
       "financePayoutCancelledDescription": "Выплата отменена",
+      "financePayoutRequestedTitle": "Запрошена выплата",
+      "financePayoutRequestedMessage": "Запрос на выплату ожидает проверки",
+      "financePayoutRequestedDescription": "Выплата запрошена",
+      "financePayoutApprovedTitle": "Выплата одобрена",
+      "financePayoutApprovedMessage": "Выплата одобрена к обработке",
+      "financePayoutApprovedDescription": "Выплата одобрена",
+      "financePayoutRejectedTitle": "Выплата отклонена",
+      "financePayoutRejectedMessage": "Запрос на выплату отклонён",
+      "financePayoutRejectedDescription": "Выплата отклонена",
+      "financeBalanceUpdatedTitle": "Баланс обновлён",
+      "financeBalanceUpdatedMessage": "Баланс креатора обновлён",
+      "financeBalanceUpdatedDescription": "Финансовый баланс обновлён",
       "employeeCreatedTitle": "Сотрудник создан",
       "employeeCreatedMessage": "{name} приглашён в команду",
       "employeeCreatedDescription": "Сотрудник приглашён",
@@ -1890,7 +2319,46 @@
       "creatorArchivedDescription": "Креатор архивирован: {name}",
       "creatorDeletedTitle": "Креатор удалён",
       "creatorDeletedMessage": "{name} удалён",
-      "creatorDeletedDescription": "Креатор удалён: {name}"
+      "creatorDeletedDescription": "Креатор удалён: {name}",
+      "taskCreatedTitle": "Task created",
+      "taskCreatedMessage": "Task created: {title}",
+      "taskCreatedDescription": "Task created: {title}",
+      "taskUpdatedTitle": "Task updated",
+      "taskUpdatedMessage": "Task updated: {title}",
+      "taskUpdatedDescription": "Task updated: {title}",
+      "taskAssignedTitle": "Task assigned",
+      "taskAssignedMessage": "You were assigned task: {title}",
+      "taskAssignedDescription": "Task assigned: {title}",
+      "taskCompletedTitle": "Task completed",
+      "taskCompletedMessage": "Task completed: {title}",
+      "taskCompletedDescription": "Task completed: {title}",
+      "taskDeletedTitle": "Task deleted",
+      "taskDeletedMessage": "Task deleted: {title}",
+      "taskDeletedDescription": "Task deleted: {title}",
+      "taskStatusChangedTitle": "Task status changed",
+      "taskStatusChangedMessage": "Task status updated: {title}",
+      "taskStatusChangedDescription": "Status changed for task: {title}",
+      "taskCommentCreatedTitle": "New task comment",
+      "taskCommentCreatedMessage": "New comment on task: {title}",
+      "taskCommentCreatedDescription": "Comment added on task: {title}",
+      "taskCommentUpdatedTitle": "Task comment updated",
+      "taskCommentUpdatedMessage": "Comment updated on task: {title}",
+      "taskCommentUpdatedDescription": "Comment updated on task: {title}",
+      "taskCommentDeletedTitle": "Task comment deleted",
+      "taskCommentDeletedMessage": "Comment deleted on task: {title}",
+      "taskCommentDeletedDescription": "Comment deleted on task: {title}",
+      "taskAttachmentUploadedTitle": "File attached",
+      "taskAttachmentUploadedMessage": "File attached to task: {title}",
+      "taskAttachmentUploadedDescription": "File attached to task: {title}",
+      "taskAttachmentDeletedTitle": "File removed",
+      "taskAttachmentDeletedMessage": "File removed from task: {title}",
+      "taskAttachmentDeletedDescription": "File removed from task: {title}",
+      "taskDuplicatedTitle": "Task duplicated",
+      "taskDuplicatedMessage": "Task duplicated: {title}",
+      "taskDuplicatedDescription": "Task duplicated: {title}",
+      "taskDeadlineApproachingTitle": "Приближается дедлайн",
+      "taskDeadlineApproachingMessage": "Скоро дедлайн задачи: {title}",
+      "taskDeadlineApproachingDescription": "Приближается дедлайн задачи: {title}"
     }
   }
 }

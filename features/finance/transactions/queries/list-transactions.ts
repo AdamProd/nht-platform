@@ -47,6 +47,7 @@ export async function listFinanceTransactions(
     manager: raw.manager || undefined,
     from: raw.from ?? "",
     to: raw.to ?? "",
+    sort: raw.sort || undefined,
     page: raw.page ?? 1,
   });
 
@@ -58,9 +59,31 @@ export async function listFinanceTransactions(
   let query = supabase
     .from("finance_transactions")
     .select(LIST_SELECT, { count: "exact" })
-    .order("transaction_date", { ascending: false })
-    .order("created_at", { ascending: false })
     .range(from, to);
+
+  switch (filters.sort) {
+    case "date_asc":
+      query = query
+        .order("transaction_date", { ascending: true })
+        .order("created_at", { ascending: true });
+      break;
+    case "gross_desc":
+      query = query
+        .order("gross_revenue", { ascending: false })
+        .order("transaction_date", { ascending: false });
+      break;
+    case "gross_asc":
+      query = query
+        .order("gross_revenue", { ascending: true })
+        .order("transaction_date", { ascending: false });
+      break;
+    case "date_desc":
+    default:
+      query = query
+        .order("transaction_date", { ascending: false })
+        .order("created_at", { ascending: false });
+      break;
+  }
 
   if (!isAdminLike(session.profile.role)) {
     const { data: creators } = await supabase
