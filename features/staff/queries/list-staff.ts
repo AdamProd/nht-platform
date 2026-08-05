@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { requireStaffSession, isAdminOrAbove } from "@/lib/auth";
 import { staffListFiltersSchema } from "@/features/staff/schemas/staff.schema";
 import {
+  STAFF_DEPARTMENTS,
   STAFF_EMPLOYEE_ROLES,
   STAFF_PAGE_SIZE,
   type StaffListItem,
@@ -169,7 +170,18 @@ async function queryStaffList(
 
   if (filters.q) {
     const term = filters.q.replaceAll("%", "").replaceAll("_", "");
-    query = query.or(`full_name.ilike.%${term}%,email.ilike.%${term}%`);
+    const departmentMatch = STAFF_DEPARTMENTS.find(
+      (dept) => dept === term.toLowerCase(),
+    );
+    const clauses = [
+      `full_name.ilike.%${term}%`,
+      `email.ilike.%${term}%`,
+      `department_custom.ilike.%${term}%`,
+    ];
+    if (departmentMatch) {
+      clauses.push(`department.eq.${departmentMatch}`);
+    }
+    query = query.or(clauses.join(","));
   }
 
   if (filters.sort === "oldest") {

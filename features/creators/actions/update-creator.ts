@@ -146,6 +146,7 @@ function platformAccountsPatch(platforms: CreatorPlatform[]) {
   const accounts: Record<string, string> = {};
   if (set.has("onlyfans")) accounts.onlyfans = "https://onlyfans.com/";
   if (set.has("fansly")) accounts.fansly = "https://fansly.com/";
+  if (set.has("manyvids")) accounts.manyvids = "https://www.manyvids.com/";
   if (set.has("chaturbate")) accounts.chaturbate = "https://chaturbate.com/";
   if (set.has("instagram")) accounts.instagram = "https://instagram.com/";
   if (set.has("tiktok")) accounts.tiktok = "https://tiktok.com/";
@@ -243,6 +244,9 @@ export async function createCreator(
       timezone: parsed.data.timezone,
       manager_id: managerId,
       notes: parsed.data.notes,
+      preferred_currency: parsed.data.preferred_currency,
+      agency_percent: parsed.data.agency_percent,
+      payout_method: parsed.data.payout_method,
       status: "new",
       last_activity_at: now,
       ...platforms,
@@ -390,6 +394,7 @@ export async function updatePlatforms(
     const map = {
       onlyfans_url: "onlyfans",
       fansly_url: "fansly",
+      manyvids_url: "manyvids",
       chaturbate_url: "chaturbate",
       instagram_url: "instagram",
       tiktok_url: "tiktok",

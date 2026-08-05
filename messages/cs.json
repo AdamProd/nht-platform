@@ -1126,111 +1126,111 @@
     "finance": {
       "label": "Finance",
       "title": "Finance",
-      "description": "Příjmy creatorek, provize a výplaty.",
+      "description": "Sledujte tržby tvůrců, provize agentury a výplaty.",
       "detailLabel": "Transakce",
-      "backToList": "Zpět na finance",
+      "backToList": "Zpět k financím",
       "transactionsTitle": "Transakce",
       "empty": "Zatím žádné transakce.",
       "unassigned": "Nepřiřazeno",
       "none": "Žádné",
       "kpis": {
-        "totalRevenue": "Total revenue",
-        "agencyRevenue": "Agency revenue",
-        "creatorRevenue": "Creator revenue",
-        "pendingPayouts": "Pending payouts",
-        "paidThisMonth": "Paid this month",
-        "activeCreators": "Active creators",
-        "revenueToday": "Revenue today",
-        "revenueThisMonth": "Revenue this month",
-        "revenueThisYear": "Revenue this year",
-        "revenueThisWeek": "Revenue this week",
-        "countPending": "Pending",
-        "countApproved": "Approved",
-        "countRejected": "Rejected",
-        "countPaid": "Paid",
-        "outstandingBalance": "Outstanding balance",
-        "averageRevenuePerCreator": "Average revenue / creator"
+        "totalRevenue": "Celkové tržby",
+        "agencyRevenue": "Tržby agentury",
+        "creatorRevenue": "Tržby tvůrců",
+        "pendingPayouts": "Čekající výplaty",
+        "paidThisMonth": "Vyplaceno tento měsíc",
+        "activeCreators": "Aktivní tvůrci",
+        "revenueToday": "Tržby dnes",
+        "revenueThisMonth": "Tržby tento měsíc",
+        "revenueThisYear": "Tržby tento rok",
+        "revenueThisWeek": "Tržby tento týden",
+        "countPending": "Čeká",
+        "countApproved": "Schváleno",
+        "countRejected": "Zamítnuto",
+        "countPaid": "Vyplaceno",
+        "outstandingBalance": "Nesplacený zůstatek",
+        "averageRevenuePerCreator": "Průměrné tržby / tvůrce"
       },
       "summaries": {
-        "creatorTitle": "Creator summary",
-        "agencyTitle": "Agency summary",
-        "lifetimeRevenue": "Lifetime revenue",
-        "thisMonth": "This month",
-        "pendingPayout": "Pending payout",
-        "lastPayout": "Last payout",
-        "averageMonthly": "Average monthly revenue",
-        "monthlyRevenue": "Monthly revenue",
-        "quarterRevenue": "Quarter revenue",
-        "yearRevenue": "Year revenue"
+        "creatorTitle": "Souhrn tvůrce",
+        "agencyTitle": "Souhrn agentury",
+        "lifetimeRevenue": "Celkové tržby",
+        "thisMonth": "Tento měsíc",
+        "pendingPayout": "Čekající výplata",
+        "lastPayout": "Poslední výplata",
+        "averageMonthly": "Průměrné měsíční tržby",
+        "monthlyRevenue": "Měsíční tržby",
+        "quarterRevenue": "Čtvrtletní tržby",
+        "yearRevenue": "Roční tržby"
       },
       "integrations": {
-        "title": "Payment integrations",
-        "description": "Connect payout providers. Architecture only — no live integrations yet.",
-        "comingSoon": "Coming soon"
+        "title": "Platební integrace",
+        "description": "Připojte poskytovatele výplat. Pouze architektura — zatím bez živých integrací.",
+        "comingSoon": "Již brzy"
       },
       "filters": {
-        "search": "Search",
-        "searchPlaceholder": "Platform, reference, notes",
-        "status": "Status",
-        "platform": "Platform",
-        "creator": "Creator",
-        "manager": "Manager",
-        "from": "From",
-        "to": "To",
-        "all": "All",
-        "apply": "Apply",
-        "clear": "Clear",
-        "sort": "Sort"
+        "search": "Hledat",
+        "searchPlaceholder": "Platforma, reference, poznámky",
+        "status": "Stav",
+        "platform": "Platforma",
+        "creator": "Tvůrce",
+        "manager": "Manažer",
+        "from": "Od",
+        "to": "Do",
+        "all": "Vše",
+        "apply": "Použít",
+        "clear": "Vymazat",
+        "sort": "Řazení"
       },
       "table": {
-        "date": "Date",
-        "creator": "Creator",
-        "platform": "Platform",
-        "gross": "Gross revenue",
-        "agencyPercent": "Agency %",
-        "agencyAmount": "Agency amount",
-        "creatorPercent": "Creator %",
-        "creatorAmount": "Creator amount",
-        "status": "Status",
-        "manager": "Manager",
-        "actions": "Actions",
-        "view": "View"
+        "date": "Datum",
+        "creator": "Tvůrce",
+        "platform": "Platforma",
+        "gross": "Hrubé tržby",
+        "agencyPercent": "Agentura %",
+        "agencyAmount": "Částka agentury",
+        "creatorPercent": "Tvůrce %",
+        "creatorAmount": "Částka tvůrce",
+        "status": "Stav",
+        "manager": "Manažer",
+        "actions": "Akce",
+        "view": "Zobrazit"
       },
       "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {page} of {totalPages} · {total} total"
+        "previous": "Předchozí",
+        "next": "Další",
+        "pageOf": "Stránka {page} z {totalPages} · celkem {total}"
       },
       "fields": {
-        "creator": "Creator",
-        "manager": "Manager",
-        "platform": "Platform",
-        "date": "Date",
-        "gross": "Gross revenue",
-        "currency": "Currency",
-        "agencyPercent": "Agency %",
-        "agencyAmount": "Agency amount",
-        "creatorPercent": "Creator %",
-        "creatorAmount": "Creator amount",
-        "status": "Status",
-        "paymentMethod": "Payment method",
-        "referenceId": "Reference ID",
-        "notes": "Notes",
-        "created": "Created",
-        "updated": "Updated"
+        "creator": "Tvůrce",
+        "manager": "Manažer",
+        "platform": "Platforma",
+        "date": "Datum",
+        "gross": "Hrubé tržby",
+        "currency": "Měna",
+        "agencyPercent": "Agentura %",
+        "agencyAmount": "Částka agentury",
+        "creatorPercent": "Tvůrce %",
+        "creatorAmount": "Částka tvůrce",
+        "status": "Stav",
+        "paymentMethod": "Platební metoda",
+        "referenceId": "Referenční ID",
+        "notes": "Poznámky",
+        "created": "Vytvořeno",
+        "updated": "Aktualizováno"
       },
       "sections": {
-        "details": "Details",
-        "status": "Status",
-        "notes": "Notes",
-        "meta": "Timeline"
+        "details": "Podrobnosti",
+        "status": "Stav",
+        "notes": "Poznámky",
+        "meta": "Časová osa"
       },
       "status": {
-        "pending": "Pending",
-        "approved": "Approved",
-        "paid": "Paid",
-        "cancelled": "Cancelled",
-        "disputed": "Disputed"
+        "pending": "Čeká",
+        "approved": "Schváleno",
+        "paid": "Vyplaceno",
+        "cancelled": "Zrušeno",
+        "disputed": "Spor"
       },
       "platforms": {
         "onlyfans": "OnlyFans",
@@ -1240,19 +1240,19 @@
         "instagram": "Instagram",
         "tiktok": "TikTok",
         "twitter": "X (Twitter)",
-        "other": "Other"
+        "other": "Jiné"
       },
       "methods": {
         "stripe": "Stripe",
         "wise": "Wise",
         "paypal": "PayPal",
-        "crypto": "Crypto",
-        "bankTransfer": "Bank transfer",
-        "other": "Other"
+        "crypto": "Krypto",
+        "bankTransfer": "Bankovní převod",
+        "other": "Jiné"
       },
       "form": {
         "title": "Nová transakce",
-        "open": "Přidat",
+        "open": "Přidat transakci",
         "cancel": "Zrušit",
         "submit": "Vytvořit",
         "submitting": "Vytváření…"
@@ -1260,7 +1260,7 @@
       "actions": {
         "save": "Uložit",
         "saving": "Ukládání…",
-        "saveError": "Nepodařilo se uložit.",
+        "saveError": "Změny se nepodařilo uložit.",
         "delete": "Smazat transakci",
         "deleting": "Mazání…",
         "confirmDelete": "Smazat tuto transakci natrvalo?"
@@ -1271,125 +1271,164 @@
         "deleted": "Transakce smazána."
       },
       "errors": {
-        "load": "Unable to load finance data.",
-        "loadDetail": "Unable to load this transaction.",
-        "boundary": "Something went wrong loading finance.",
-        "retry": "Try again"
+        "load": "Nepodařilo se načíst finanční data.",
+        "loadDetail": "Nepodařilo se načíst tuto transakci.",
+        "boundary": "Při načítání financí něco selhalo.",
+        "retry": "Zkusit znovu"
       },
       "notFound": {
-        "title": "Transaction not found",
-        "description": "This transaction may have been removed or you do not have access.",
-        "back": "Back to finance"
+        "title": "Transakce nenalezena",
+        "description": "Tato transakce mohla být odstraněna nebo k ní nemáte přístup.",
+        "back": "Zpět k financím"
       },
       "actionErrors": {
-        "unauthorized": "You are not authorized to make this change.",
-        "forbidden": "You can only manage finance for your assigned creators.",
-        "invalid": "Invalid transaction data.",
-        "invalidStatus": "Invalid status.",
-        "invalidNotes": "Invalid notes.",
-        "create": "Unable to create transaction.",
-        "save": "Unable to save changes.",
-        "delete": "Unable to delete transaction.",
-        "ownerOnly": "Only the owner can delete transactions.",
-        "invalidManager": "Only active staff members can be assigned.",
-        "export": "Unable to export.",
-        "notFound": "Not found."
+        "unauthorized": "Nemáte oprávnění k této změně.",
+        "forbidden": "Můžete spravovat finance pouze svých přiřazených tvůrců.",
+        "invalid": "Neplatná data transakce.",
+        "invalidStatus": "Neplatný stav.",
+        "invalidNotes": "Neplatné poznámky.",
+        "create": "Transakci se nepodařilo vytvořit.",
+        "save": "Změny se nepodařilo uložit.",
+        "delete": "Transakci se nepodařilo smazat.",
+        "ownerOnly": "Transakce může mazat pouze vlastník.",
+        "invalidManager": "Lze přiřadit pouze aktivní zaměstnance.",
+        "export": "Export se nezdařil.",
+        "notFound": "Nenalezeno."
       },
-      "emptyTitle": "No transactions yet",
-      "emptyDescription": "Create a transaction or adjust your filters.",
-      "emptyAction": "New transaction",
-      "retry": "Try again",
+      "emptyTitle": "Zatím žádné transakce",
+      "emptyDescription": "Vytvořte transakci nebo upravte filtry.",
+      "emptyAction": "Nová transakce",
+      "retry": "Zkusit znovu",
       "tabs": {
-        "overview": "Overview",
-        "transactions": "Transactions",
-        "payouts": "Payouts",
-        "reports": "Reports",
-        "commissions": "Commissions"
+        "overview": "Přehled",
+        "transactions": "Transakce",
+        "payouts": "Výplaty",
+        "reports": "Reporty",
+        "commissions": "Provize"
       },
-      "payoutsTitle": "Payouts",
-      "reportsTitle": "Monthly reports",
-      "payoutsEmpty": "No payouts yet.",
+      "payoutsTitle": "Výplaty",
+      "reportsTitle": "Měsíční reporty",
+      "payoutsEmpty": "Zatím žádné výplaty.",
       "payoutStatus": {
-        "pending": "Requested",
-        "processing": "Approved",
-        "completed": "Paid",
-        "failed": "Rejected"
+        "pending": "Požadováno",
+        "processing": "Schváleno",
+        "completed": "Vyplaceno",
+        "failed": "Zamítnuto"
       },
       "payoutMethods": {
-        "bank": "Bank",
+        "bank": "Banka",
         "paypal": "PayPal",
-        "crypto": "Crypto",
-        "other": "Other"
+        "crypto": "Krypto",
+        "other": "Jiné"
       },
       "payoutsTable": {
-        "creator": "Creator",
-        "amount": "Amount",
-        "currency": "Currency",
-        "method": "Method",
-        "requested": "Requested",
-        "approved": "Approved",
-        "paid": "Paid",
-        "status": "Status",
-        "actions": "Actions"
+        "creator": "Tvůrce",
+        "amount": "Částka",
+        "currency": "Měna",
+        "method": "Metoda",
+        "requested": "Požadováno",
+        "approved": "Schváleno",
+        "paid": "Vyplaceno",
+        "status": "Stav",
+        "actions": "Akce"
       },
       "payoutActions": {
-        "approve": "Approve",
-        "reject": "Reject",
-        "pay": "Pay",
-        "view": "View",
-        "rejectReason": "Rejection reason",
-        "confirmReject": "Confirm reject"
+        "approve": "Schválit",
+        "reject": "Zamítnout",
+        "pay": "Vyplatit",
+        "view": "Zobrazit",
+        "rejectReason": "Důvod zamítnutí",
+        "confirmReject": "Potvrdit zamítnutí",
+        "error": "Chyba"
       },
       "commissions": {
-        "title": "Commissions",
-        "description": "Configure agency, manager, referral, and bonus commission rates.",
-        "agency": "Agency %",
-        "manager": "Manager %",
+        "title": "Provize",
+        "description": "Nastavte sazby agentury, manažera, referral a bonus.",
+        "agency": "Agentura %",
+        "manager": "Manažer %",
         "referral": "Referral %",
         "bonus": "Bonus %",
-        "note": "Change note",
-        "save": "Save commissions",
-        "saving": "Saving…",
-        "history": "Change history",
-        "emptyHistory": "No commission changes yet.",
-        "by": "By"
+        "note": "Poznámka ke změně",
+        "save": "Uložit provize",
+        "saving": "Ukládání…",
+        "history": "Historie změn",
+        "emptyHistory": "Zatím žádné změny provizí.",
+        "by": "Kým"
       },
       "charts": {
-        "revenueByMonth": "Revenue by month",
-        "revenueByPlatform": "Revenue by platform",
-        "revenueByCreator": "Revenue by creator",
-        "agencyProfit": "Agency profit",
-        "payouts": "Payouts",
-        "empty": "No chart data yet."
+        "revenueByMonth": "Tržby podle měsíců",
+        "revenueByPlatform": "Tržby podle platforem",
+        "revenueByCreator": "Tržby podle tvůrců",
+        "agencyProfit": "Zisk agentury",
+        "payouts": "Výplaty",
+        "empty": "Zatím žádná data pro grafy.",
+        "value": "Hodnota"
       },
       "reports": {
-        "month": "Month",
-        "year": "Year",
-        "revenue": "Revenue",
-        "commission": "Commission",
-        "expenses": "Expenses",
-        "netProfit": "Net profit"
+        "month": "Měsíc",
+        "year": "Rok",
+        "revenue": "Tržby",
+        "commission": "Provize",
+        "expenses": "Výdaje",
+        "netProfit": "Čistý zisk"
       },
       "export": {
         "label": "Export",
         "csv": "CSV",
         "excel": "Excel",
         "pdf": "PDF",
-        "error": "Unable to export."
+        "error": "Export se nezdařil.",
+        "pdfTitle": "Finance — {kind}",
+        "empty": "Žádná data",
+        "kinds": {
+          "transactions": "Transakce",
+          "payouts": "Výplaty",
+          "report": "Report"
+        },
+        "headers": {
+          "id": "ID",
+          "creatorId": "ID tvůrce",
+          "managerId": "ID manažera",
+          "platform": "Platforma",
+          "transactionDate": "Datum transakce",
+          "grossRevenue": "Hrubé tržby",
+          "agencyAmount": "Částka agentury",
+          "creatorAmount": "Částka tvůrce",
+          "currency": "Měna",
+          "status": "Stav",
+          "paymentMethod": "Platební metoda",
+          "referenceId": "Referenční ID",
+          "notes": "Poznámky",
+          "amount": "Částka",
+          "method": "Metoda",
+          "periodStart": "Začátek období",
+          "periodEnd": "Konec období",
+          "requestedAt": "Požadováno",
+          "approvedAt": "Schváleno",
+          "paidAt": "Vyplaceno",
+          "rejectionReason": "Důvod zamítnutí",
+          "receiptNumber": "Číslo dokladu",
+          "month": "Měsíc",
+          "year": "Rok",
+          "revenue": "Tržby",
+          "commission": "Provize",
+          "expenses": "Výdaje",
+          "netProfit": "Čistý zisk"
+        }
       },
       "balances": {
-        "title": "Creator balances",
-        "empty": "No creator balances yet.",
-        "currentBalance": "Current balance",
-        "pending": "Pending",
-        "paid": "Paid",
-        "lifetimeRevenue": "Lifetime revenue"
+        "title": "Zůstatky tvůrců",
+        "empty": "Zatím žádné zůstatky tvůrců.",
+        "currentBalance": "Aktuální zůstatek",
+        "pending": "Čeká",
+        "paid": "Vyplaceno",
+        "lifetimeRevenue": "Celkové tržby"
       },
       "sort": {
-        "date_desc": "Date (newest)",
-        "date_asc": "Date (oldest)",
-        "gross_desc": "Gross (high to low)",
-        "gross_asc": "Gross (low to high)"
+        "date_desc": "Datum (nejnovější)",
+        "date_asc": "Datum (nejstarší)",
+        "gross_desc": "Hrubé (sestupně)",
+        "gross_asc": "Hrubé (vzestupně)"
       }
     },
     "notifications": {
@@ -2146,55 +2185,55 @@
     "finance": {
       "label": "Finance",
       "title": "Finance",
-      "description": "Your balance, revenue, and payout history.",
-      "historyTitle": "Payment history",
-      "viewPayouts": "All payouts",
-      "empty": "No payment history yet.",
+      "description": "Váš zůstatek, tržby a historie výplat.",
+      "historyTitle": "Historie plateb",
+      "viewPayouts": "Všechny výplaty",
+      "empty": "Zatím žádná historie plateb.",
       "kpis": {
-        "balance": "Balance",
-        "lifetime": "Lifetime revenue",
-        "currentMonth": "Current month",
-        "pending": "Pending payout"
+        "balance": "Zůstatek",
+        "lifetime": "Celkové tržby",
+        "currentMonth": "Aktuální měsíc",
+        "pending": "Čekající výplata"
       },
       "table": {
-        "period": "Period",
-        "amount": "Amount",
-        "status": "Status",
-        "paidDate": "Paid"
+        "period": "Období",
+        "amount": "Částka",
+        "status": "Stav",
+        "paidDate": "Vyplaceno"
       }
     }
   },
   "common": {
     "language": "Jazyk",
     "ux": {
-      "retry": "Try again",
-      "cancel": "Cancel",
+      "retry": "Zkusit znovu",
+      "cancel": "Zrušit",
       "confirm": {
-        "title": "Are you sure?",
-        "delete": "This action cannot be undone.",
-        "archive": "Archive this item?",
-        "reject": "Reject this item?",
-        "deactivate": "Deactivate this account?"
+        "title": "Opravdu?",
+        "delete": "Tuto akci nelze vrátit zpět.",
+        "archive": "Archivovat tuto položku?",
+        "reject": "Zamítnout tuto položku?",
+        "deactivate": "Deaktivovat tento účet?"
       },
-      "save": "Save",
-      "saving": "Saving…",
-      "clearFilters": "Clear filters",
-      "required": "Required",
-      "loading": "Loading…",
+      "save": "Uložit",
+      "saving": "Ukládání…",
+      "clearFilters": "Vymazat filtry",
+      "required": "Povinné",
+      "loading": "Načítání…",
       "empty": {
-        "title": "Nothing here yet",
-        "description": "Try adjusting filters or create a new item.",
-        "action": "Get started"
+        "title": "Zatím tu nic není",
+        "description": "Upravte filtry nebo vytvořte novou položku.",
+        "action": "Začít"
       },
       "error": {
-        "title": "Something went wrong",
-        "description": "We couldn’t load this section. Please try again."
+        "title": "Něco se pokazilo",
+        "description": "Tuto sekci se nepodařilo načíst. Zkuste to znovu."
       },
       "toast": {
-        "success": "Saved",
-        "error": "Something went wrong",
-        "warning": "Please review",
-        "info": "Updated"
+        "success": "Uloženo",
+        "error": "Něco se pokazilo",
+        "warning": "Zkontrolujte údaje",
+        "info": "Aktualizováno"
       }
     }
   },

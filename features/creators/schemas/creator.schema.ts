@@ -4,6 +4,11 @@ import {
   CREATOR_PLATFORMS,
   type CreatorPlatform,
 } from "@/features/creators/types";
+import {
+  CREATOR_AGENCY_PERCENTS,
+  CREATOR_CURRENCIES,
+  CREATOR_PAYOUT_METHODS,
+} from "@/features/creators/lib/create-options";
 
 export const creatorStatuses = Constants.public.Enums.creator_status;
 
@@ -56,6 +61,7 @@ const optionalUrl = z
 export function platformsFromUrls(urls: {
   onlyfans_url?: string | null;
   fansly_url?: string | null;
+  manyvids_url?: string | null;
   chaturbate_url?: string | null;
   instagram_url?: string | null;
   tiktok_url?: string | null;
@@ -64,6 +70,7 @@ export function platformsFromUrls(urls: {
   const map: Array<[CreatorPlatform, string | null | undefined]> = [
     ["onlyfans", urls.onlyfans_url],
     ["fansly", urls.fansly_url],
+    ["manyvids", urls.manyvids_url],
     ["chaturbate", urls.chaturbate_url],
     ["instagram", urls.instagram_url],
     ["tiktok", urls.tiktok_url],
@@ -83,7 +90,7 @@ export const createCreatorSchema = z.object({
   timezone: optionalText(80),
   platforms: z.preprocess(
     parseStringArray,
-    z.array(z.enum(CREATOR_PLATFORMS)).max(10),
+    z.array(z.enum(CREATOR_PLATFORMS)).max(CREATOR_PLATFORMS.length),
   ).default([]),
   manager_id: z
     .string()
@@ -92,6 +99,14 @@ export const createCreatorSchema = z.object({
     .or(z.literal("").transform(() => null))
     .optional()
     .default(null),
+  preferred_currency: z.enum(CREATOR_CURRENCIES).default("USD"),
+  agency_percent: z.coerce
+    .number()
+    .refine((value) => (CREATOR_AGENCY_PERCENTS as readonly number[]).includes(value), {
+      message: "Invalid agency percent",
+    })
+    .default(40),
+  payout_method: z.enum(CREATOR_PAYOUT_METHODS).default("bank"),
   notes: optionalText(10000),
 });
 
@@ -122,6 +137,7 @@ export const updatePlatformsSchema = z.object({
   id: z.string().uuid(),
   onlyfans_url: optionalUrl,
   fansly_url: optionalUrl,
+  manyvids_url: optionalUrl,
   chaturbate_url: optionalUrl,
   instagram_url: optionalUrl,
   tiktok_url: optionalUrl,

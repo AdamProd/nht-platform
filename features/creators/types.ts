@@ -37,9 +37,11 @@ export type CreatorActionResult =
 
 export type CreatorSort = "newest" | "oldest" | "name" | "revenue";
 
+/** Canonical creator CRM platform order — keep in sync everywhere. */
 export const CREATOR_PLATFORMS = [
   "onlyfans",
   "fansly",
+  "manyvids",
   "chaturbate",
   "instagram",
   "tiktok",
@@ -51,6 +53,7 @@ export type CreatorPlatform = (typeof CREATOR_PLATFORMS)[number];
 export const PLATFORM_URL_FIELDS = [
   "onlyfans_url",
   "fansly_url",
+  "manyvids_url",
   "chaturbate_url",
   "instagram_url",
   "tiktok_url",

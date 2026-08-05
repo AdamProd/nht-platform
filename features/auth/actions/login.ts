@@ -87,7 +87,7 @@ export async function loginAction(
 
     const { data: profile, error: profileError } = await supabase
       .from("profiles")
-      .select("role, full_name")
+      .select("role, full_name, status")
       .eq("id", user.id)
       .maybeSingle();
 
@@ -98,6 +98,16 @@ export async function loginAction(
     }
 
     const role = (profile?.role ?? "guest") as UserRole;
+    const status = profile?.status ?? null;
+
+    if (
+      status === "suspended" ||
+      status === "disabled" ||
+      status === "archived"
+    ) {
+      await supabase.auth.signOut();
+      return { ok: false, error: t("suspended") };
+    }
 
     if (role === "guest") {
       const locale = await getLocale();

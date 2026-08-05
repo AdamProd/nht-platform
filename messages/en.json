@@ -1330,7 +1330,8 @@
         "pay": "Pay",
         "view": "View",
         "rejectReason": "Rejection reason",
-        "confirmReject": "Confirm reject"
+        "confirmReject": "Confirm reject",
+        "error": "Error"
       },
       "commissions": {
         "title": "Commissions",
@@ -1352,7 +1353,8 @@
         "revenueByCreator": "Revenue by creator",
         "agencyProfit": "Agency profit",
         "payouts": "Payouts",
-        "empty": "No chart data yet."
+        "empty": "No chart data yet.",
+        "value": "Value"
       },
       "reports": {
         "month": "Month",
@@ -1367,7 +1369,44 @@
         "csv": "CSV",
         "excel": "Excel",
         "pdf": "PDF",
-        "error": "Unable to export."
+        "error": "Unable to export.",
+        "pdfTitle": "Finance — {kind}",
+        "empty": "No data",
+        "kinds": {
+          "transactions": "Transactions",
+          "payouts": "Payouts",
+          "report": "Report"
+        },
+        "headers": {
+          "id": "ID",
+          "creatorId": "Creator ID",
+          "managerId": "Manager ID",
+          "platform": "Platform",
+          "transactionDate": "Transaction date",
+          "grossRevenue": "Gross revenue",
+          "agencyAmount": "Agency amount",
+          "creatorAmount": "Creator amount",
+          "currency": "Currency",
+          "status": "Status",
+          "paymentMethod": "Payment method",
+          "referenceId": "Reference ID",
+          "notes": "Notes",
+          "amount": "Amount",
+          "method": "Method",
+          "periodStart": "Period start",
+          "periodEnd": "Period end",
+          "requestedAt": "Requested at",
+          "approvedAt": "Approved at",
+          "paidAt": "Paid at",
+          "rejectionReason": "Rejection reason",
+          "receiptNumber": "Receipt number",
+          "month": "Month",
+          "year": "Year",
+          "revenue": "Revenue",
+          "commission": "Commission",
+          "expenses": "Expenses",
+          "netProfit": "Net profit"
+        }
       },
       "balances": {
         "title": "Creator balances",

@@ -5,8 +5,8 @@ import CreatorStatusBadge from "@/features/creators/components/CreatorStatusBadg
 import {
   displayName,
   formatDateTime,
-  formatList,
   formatMoney,
+  formatPlatformList,
 } from "@/features/creators/lib/format";
 import EmptyState from "@/shared/ui/EmptyState";
 import UserAvatar from "@/shared/ui/UserAvatar";
@@ -35,6 +35,7 @@ type CreatorTableProps = {
     emptyAction?: string;
   };
   statusLabels: Record<string, string>;
+  platformLabels: Record<string, string>;
   canCreate?: boolean;
 };
 
@@ -43,6 +44,7 @@ export default function CreatorTable({
   locale,
   labels,
   statusLabels,
+  platformLabels,
   canCreate = false,
 }: CreatorTableProps) {
   if (items.length === 0) {
@@ -132,7 +134,9 @@ export default function CreatorTable({
                   {item.country ?? "—"}
                 </td>
                 <td className="px-4 py-3">
-                  <Badge tone="info">{formatList(item.platforms)}</Badge>
+                  <Badge tone="info">
+                    {formatPlatformList(item.platforms, platformLabels)}
+                  </Badge>
                 </td>
                 <td className="hidden px-4 py-3 text-[var(--nht-text-secondary)] xl:table-cell">
                   {item.manager?.full_name ?? labels.unassigned}

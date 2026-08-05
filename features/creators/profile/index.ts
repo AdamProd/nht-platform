@@ -18,3 +18,9 @@ export {
   deleteCreator,
 } from "@/features/creators/profile/actions/profile-actions";
 export { default as CreatorProfileCrm } from "@/features/creators/profile/components/CreatorProfileCrm";
+export {
+  getCreatorTimeline,
+  loadCreatorTimelinePage,
+  CreatorTimeline,
+  CREATOR_TIMELINE_PAGE_SIZE,
+} from "@/features/creators/profile/timeline";

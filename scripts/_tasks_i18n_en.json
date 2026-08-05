@@ -1,0 +1,184 @@
+{
+  "label": "Operations",
+  "title": "Tasks",
+  "description": "Assign, track, and complete work across creators, finance, and support.",
+  "kpis": {
+    "myTasks": "My tasks",
+    "overdue": "Overdue",
+    "today": "Today",
+    "completed": "Completed",
+    "highPriority": "High priority"
+  },
+  "filters": {
+    "search": "Search tasks",
+    "searchPlaceholder": "Search tasks",
+    "status": "Status",
+    "priority": "Priority",
+    "type": "Type",
+    "assignee": "Assignee",
+    "creator": "Creator",
+    "sort": "Sort",
+    "all": "All",
+    "unassigned": "Unassigned",
+    "clear": "Clear filters"
+  },
+  "sort": {
+    "newest": "Newest",
+    "oldest": "Oldest",
+    "dueAsc": "Due date ↑",
+    "dueDesc": "Due date ↓",
+    "priority": "Priority"
+  },
+  "empty": {
+    "title": "No tasks yet",
+    "description": "Create your first task to start tracking your team's work."
+  },
+  "table": {
+    "title": "Title",
+    "creator": "Creator",
+    "assigned": "Assigned",
+    "priority": "Priority",
+    "status": "Status",
+    "due": "Due",
+    "actions": "Actions",
+    "view": "Open",
+    "empty": "No tasks found",
+    "emptyTitle": "No tasks yet",
+    "emptyDescription": "Create your first task to start tracking your team's work."
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "of": "of"
+  },
+  "fields": {
+    "title": "Title",
+    "description": "Description",
+    "type": "Type",
+    "priority": "Priority",
+    "status": "Status",
+    "creator": "Creator",
+    "assignTo": "Assign to",
+    "dueDate": "Due date",
+    "none": "None",
+    "department": "Department",
+    "createdAt": "Created",
+    "updatedAt": "Updated"
+  },
+  "status": {
+    "new": "New",
+    "in_progress": "In progress",
+    "waiting": "Waiting",
+    "blocked": "Blocked",
+    "review": "In review",
+    "completed": "Completed",
+    "archived": "Archived"
+  },
+  "priority": {
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "urgent": "Urgent"
+  },
+  "type": {
+    "creator": "Creator",
+    "finance": "Finance",
+    "support": "Support",
+    "application": "Application",
+    "staff": "Staff",
+    "custom": "Custom"
+  },
+  "deadline": {
+    "none": "No deadline",
+    "overdue": "Overdue",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "inDays": "In {days} days",
+    "until": "Until deadline"
+  },
+  "form": {
+    "open": "New task",
+    "title": "Create task",
+    "submit": "Create task",
+    "submitting": "Creating…",
+    "cancel": "Cancel",
+    "saved": "Task created",
+    "error": "Could not create task"
+  },
+  "actions": {
+    "assign": "Assign",
+    "complete": "Complete",
+    "review": "Move to review",
+    "archive": "Archive",
+    "delete": "Delete",
+    "save": "Save",
+    "saving": "Saving…",
+    "edit": "Edit",
+    "duplicate": "Duplicate",
+    "copySuffix": " (copy)"
+  },
+  "detail": {
+    "back": "Back to tasks",
+    "history": "History",
+    "comments": "Comments",
+    "activity": "Activity",
+    "attachments": "Files",
+    "subtasks": "Checklist",
+    "quickActions": "Quick actions",
+    "changeStatus": "Change status",
+    "changeAssignee": "Assign employee",
+    "changeDue": "Change deadline",
+    "addComment": "Add comment",
+    "commentPlaceholder": "Write a comment…",
+    "emptyComments": "No comments yet.",
+    "emptyActivity": "No activity yet.",
+    "emptyAttachments": "No files yet",
+    "emptyAttachmentsDesc": "Upload PDF, DOCX, XLSX, PNG, JPG, or ZIP files.",
+    "emptySubtasks": "No checklist items yet.",
+    "addSubtask": "Add",
+    "subtaskPlaceholder": "Checklist item",
+    "progress": "{done} / {total} done",
+    "upload": "Upload",
+    "download": "Download",
+    "remove": "Remove",
+    "editComment": "Edit",
+    "deleteComment": "Delete",
+    "sendHint": "Enter to send · Shift+Enter for a new line",
+    "error": "Something went wrong"
+  },
+  "timeline": {
+    "created": "Task created",
+    "updated": "Task updated",
+    "assigned": "Assignee changed",
+    "completed": "Task completed",
+    "deleted": "Task deleted",
+    "statusChanged": "Status changed",
+    "commentAdded": "Comment added",
+    "commentUpdated": "Comment updated",
+    "commentDeleted": "Comment deleted",
+    "fileAttached": "File attached",
+    "fileRemoved": "File removed",
+    "duplicated": "Task duplicated"
+  },
+  "confirm": {
+    "deleteTitle": "Delete this task?",
+    "deleteDescription": "This permanently removes the task and cannot be undone.",
+    "confirm": "Delete"
+  },
+  "errors": {
+    "load": "Unable to load tasks.",
+    "loadDetail": "Unable to load this task."
+  },
+  "actionErrors": {
+    "unauthorized": "You are not allowed to perform this action.",
+    "invalid": "Invalid task data.",
+    "notFound": "Task not found.",
+    "create": "Failed to create task.",
+    "update": "Failed to update task.",
+    "delete": "Failed to delete task.",
+    "comment": "Failed to update comment.",
+    "upload": "Failed to upload file.",
+    "fileTooLarge": "File is too large (max 50 MB).",
+    "fileType": "Unsupported file type."
+  }
+}

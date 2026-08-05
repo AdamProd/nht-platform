@@ -33,6 +33,7 @@ type Props = {
     rejectReason: string;
     cancel: string;
     confirmReject: string;
+    error: string;
   };
   statusLabels: Record<PayoutStatus, string>;
   methodLabels: Record<string, string>;
@@ -71,7 +72,7 @@ export default function PayoutsTable({
     startTransition(async () => {
       const result = await action();
       if (!result.success) {
-        setError(result.error ?? "Error");
+        setError(result.error ?? labels.error);
         return;
       }
       setRejectId(null);

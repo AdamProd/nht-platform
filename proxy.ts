@@ -1,11 +1,8 @@
 import createMiddleware from "next-intl/middleware";
-import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
 import { updateSession } from "@/lib/supabase/middleware";
 import { canAccessCreatorCabinet, isCreatorRole } from "@/lib/auth/creator";
-import { hasSupabaseEnv } from "@/lib/supabase/env";
-import type { Database } from "@/types/database.types";
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -122,37 +119,6 @@ export default async function proxy(request: NextRequest) {
         response,
         `/${locale}/unauthorized`,
       );
-    }
-
-    // First-login profile completion gate (skip onboarding itself)
-    const isOnboarding =
-      pathname === `/${locale}/creator/onboarding` ||
-      pathname.startsWith(`/${locale}/creator/onboarding/`);
-
-    if (!isOnboarding && role === "creator" && hasSupabaseEnv()) {
-      const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-      const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-      const supabase = createServerClient<Database>(url, anonKey, {
-        cookies: {
-          getAll() {
-            return request.cookies.getAll();
-          },
-          setAll() {},
-        },
-      });
-      const { data: creator } = await supabase
-        .from("creators")
-        .select("profile_completed_at")
-        .eq("user_id", user.id)
-        .maybeSingle();
-
-      if (creator && !creator.profile_completed_at) {
-        return redirectWithCookies(
-          request,
-          response,
-          `/${locale}/creator/onboarding`,
-        );
-      }
     }
   }
 

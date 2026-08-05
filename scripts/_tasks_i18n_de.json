@@ -1,0 +1,184 @@
+{
+  "label": "Betrieb",
+  "title": "Aufgaben",
+  "description": "Aufgaben für Creator, Finanzen und Support zuweisen und verfolgen.",
+  "kpis": {
+    "myTasks": "Meine Aufgaben",
+    "overdue": "Überfällig",
+    "today": "Heute",
+    "completed": "Erledigt",
+    "highPriority": "Hohe Priorität"
+  },
+  "filters": {
+    "search": "Aufgaben suchen",
+    "searchPlaceholder": "Aufgaben suchen",
+    "status": "Status",
+    "priority": "Priorität",
+    "type": "Typ",
+    "assignee": "Zuständig",
+    "creator": "Creator",
+    "sort": "Sortierung",
+    "all": "Alle",
+    "unassigned": "Nicht zugewiesen",
+    "clear": "Filter zurücksetzen"
+  },
+  "sort": {
+    "newest": "Neueste",
+    "oldest": "Älteste",
+    "dueAsc": "Fällig ↑",
+    "dueDesc": "Fällig ↓",
+    "priority": "Priorität"
+  },
+  "empty": {
+    "title": "Noch keine Aufgaben",
+    "description": "Erstellen Sie die erste Aufgabe für Ihr Team."
+  },
+  "table": {
+    "title": "Titel",
+    "creator": "Creator",
+    "assigned": "Zuständig",
+    "priority": "Priorität",
+    "status": "Status",
+    "due": "Fällig",
+    "actions": "Aktionen",
+    "view": "Öffnen",
+    "empty": "Keine Aufgaben gefunden",
+    "emptyTitle": "Noch keine Aufgaben",
+    "emptyDescription": "Erstellen Sie die erste Aufgabe für Ihr Team."
+  },
+  "pagination": {
+    "previous": "Zurück",
+    "next": "Weiter",
+    "of": "von"
+  },
+  "fields": {
+    "title": "Titel",
+    "description": "Beschreibung",
+    "type": "Typ",
+    "priority": "Priorität",
+    "status": "Status",
+    "creator": "Creator",
+    "assignTo": "Zuweisen",
+    "dueDate": "Fälligkeit",
+    "none": "Keine",
+    "department": "Abteilung",
+    "createdAt": "Erstellt",
+    "updatedAt": "Aktualisiert"
+  },
+  "status": {
+    "new": "Neu",
+    "in_progress": "In Arbeit",
+    "waiting": "Wartend",
+    "blocked": "Blockiert",
+    "review": "In Prüfung",
+    "completed": "Erledigt",
+    "archived": "Archiv"
+  },
+  "priority": {
+    "low": "Niedrig",
+    "medium": "Mittel",
+    "high": "Hoch",
+    "urgent": "Dringend"
+  },
+  "type": {
+    "creator": "Creator",
+    "finance": "Finanzen",
+    "support": "Support",
+    "application": "Bewerbung",
+    "staff": "Mitarbeiter",
+    "custom": "Sonstiges"
+  },
+  "deadline": {
+    "none": "Kein Termin",
+    "overdue": "Überfällig",
+    "today": "Heute",
+    "tomorrow": "Morgen",
+    "inDays": "In {days} Tagen",
+    "until": "Bis zur Frist"
+  },
+  "form": {
+    "open": "Neue Aufgabe",
+    "title": "Aufgabe erstellen",
+    "submit": "Aufgabe erstellen",
+    "submitting": "Wird erstellt…",
+    "cancel": "Abbrechen",
+    "saved": "Aufgabe erstellt",
+    "error": "Aufgabe konnte nicht erstellt werden"
+  },
+  "actions": {
+    "assign": "Zuweisen",
+    "complete": "Abschließen",
+    "review": "Zur Prüfung",
+    "archive": "Archivieren",
+    "delete": "Löschen",
+    "save": "Speichern",
+    "saving": "Speichern…",
+    "edit": "Bearbeiten",
+    "duplicate": "Duplizieren",
+    "copySuffix": " (Kopie)"
+  },
+  "detail": {
+    "back": "Zurück zu Aufgaben",
+    "history": "Verlauf",
+    "comments": "Kommentare",
+    "activity": "Aktivität",
+    "attachments": "Dateien",
+    "subtasks": "Checkliste",
+    "quickActions": "Schnellaktionen",
+    "changeStatus": "Status ändern",
+    "changeAssignee": "Mitarbeiter zuweisen",
+    "changeDue": "Frist ändern",
+    "addComment": "Kommentar hinzufügen",
+    "commentPlaceholder": "Kommentar schreiben…",
+    "emptyComments": "Noch keine Kommentare.",
+    "emptyActivity": "Noch keine Aktivität.",
+    "emptyAttachments": "Noch keine Dateien",
+    "emptyAttachmentsDesc": "PDF, DOCX, XLSX, PNG, JPG oder ZIP hochladen.",
+    "emptySubtasks": "Noch keine Checklistenpunkte.",
+    "addSubtask": "Hinzufügen",
+    "subtaskPlaceholder": "Checklistenpunkt",
+    "progress": "{done} / {total} erledigt",
+    "upload": "Hochladen",
+    "download": "Herunterladen",
+    "remove": "Entfernen",
+    "editComment": "Bearbeiten",
+    "deleteComment": "Löschen",
+    "sendHint": "Enter senden · Shift+Enter neue Zeile",
+    "error": "Etwas ist schiefgelaufen"
+  },
+  "timeline": {
+    "created": "Aufgabe erstellt",
+    "updated": "Aufgabe aktualisiert",
+    "assigned": "Zuständigkeit geändert",
+    "completed": "Aufgabe erledigt",
+    "deleted": "Aufgabe gelöscht",
+    "statusChanged": "Status geändert",
+    "commentAdded": "Kommentar hinzugefügt",
+    "commentUpdated": "Kommentar bearbeitet",
+    "commentDeleted": "Kommentar gelöscht",
+    "fileAttached": "Datei angehängt",
+    "fileRemoved": "Datei entfernt",
+    "duplicated": "Aufgabe dupliziert"
+  },
+  "confirm": {
+    "deleteTitle": "Diese Aufgabe löschen?",
+    "deleteDescription": "Die Aufgabe wird dauerhaft entfernt.",
+    "confirm": "Löschen"
+  },
+  "errors": {
+    "load": "Aufgaben konnten nicht geladen werden.",
+    "loadDetail": "Aufgabe konnte nicht geladen werden."
+  },
+  "actionErrors": {
+    "unauthorized": "Keine Berechtigung für diese Aktion.",
+    "invalid": "Ungültige Aufgabendaten.",
+    "notFound": "Aufgabe nicht gefunden.",
+    "create": "Aufgabe konnte nicht erstellt werden.",
+    "update": "Aufgabe konnte nicht aktualisiert werden.",
+    "delete": "Aufgabe konnte nicht gelöscht werden.",
+    "comment": "Kommentar konnte nicht aktualisiert werden.",
+    "upload": "Datei konnte nicht hochgeladen werden.",
+    "fileTooLarge": "Datei ist zu groß (max. 50 MB).",
+    "fileType": "Nicht unterstützter Dateityp."
+  }
+}

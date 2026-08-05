@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { requireStaffSession, isAdminOrAbove } from "@/lib/auth";
 import type { StaffDetail } from "@/features/staff/types";
 
@@ -23,6 +24,24 @@ export async function getStaff(id: string): Promise<StaffDetail | null> {
   }
   if (!profile) return null;
 
+  let lastLoginAt = profile.last_login_at;
+  let email = profile.email;
+
+  if (!lastLoginAt || !email) {
+    try {
+      const admin = createAdminClient();
+      const authUser = await admin.auth.admin.getUserById(id);
+      if (!lastLoginAt) {
+        lastLoginAt = authUser.data.user?.last_sign_in_at ?? null;
+      }
+      if (!email) {
+        email = authUser.data.user?.email ?? null;
+      }
+    } catch (authError) {
+      console.error("[getStaff.auth]", authError);
+    }
+  }
+
   const [creators, applications, tasks] = await Promise.all([
     supabase
       .from("creators")
@@ -37,15 +56,17 @@ export async function getStaff(id: string): Promise<StaffDetail | null> {
       .order("created_at", { ascending: false })
       .limit(50),
     supabase
-      .from("creator_tasks")
+      .from("tasks")
       .select("id, title, status, creator_id")
-      .eq("manager_id", id)
+      .eq("assigned_to", id)
       .order("created_at", { ascending: false })
       .limit(50),
   ]);
 
   return {
     ...profile,
+    email,
+    last_login_at: lastLoginAt,
     managedCreators: creators.data ?? [],
     assignedApplications: applications.data ?? [],
     assignedTasks: tasks.error ? [] : (tasks.data ?? []),

@@ -1,0 +1,308 @@
+{
+  "label": "Фінанси",
+  "title": "Фінанси",
+  "description": "Відстежуйте дохід креаторів, комісії агентства та виплати.",
+  "detailLabel": "Транзакція",
+  "backToList": "До фінансів",
+  "transactionsTitle": "Транзакції",
+  "empty": "Транзакцій поки немає.",
+  "unassigned": "Не призначено",
+  "none": "Немає",
+  "kpis": {
+    "totalRevenue": "Загальний дохід",
+    "agencyRevenue": "Дохід агентства",
+    "creatorRevenue": "Дохід креаторів",
+    "pendingPayouts": "Очікувані виплати",
+    "paidThisMonth": "Виплачено за місяць",
+    "activeCreators": "Активні креатори",
+    "revenueToday": "Дохід за сьогодні",
+    "revenueThisMonth": "Дохід за місяць",
+    "revenueThisYear": "Дохід за рік",
+    "revenueThisWeek": "Дохід за тиждень",
+    "countPending": "Очікує",
+    "countApproved": "Схвалено",
+    "countRejected": "Відхилено",
+    "countPaid": "Виплачено",
+    "outstandingBalance": "Непогашений баланс",
+    "averageRevenuePerCreator": "Середній дохід / креатор"
+  },
+  "summaries": {
+    "creatorTitle": "Підсумок креатора",
+    "agencyTitle": "Підсумок агентства",
+    "lifetimeRevenue": "Дохід за весь час",
+    "thisMonth": "Цього місяця",
+    "pendingPayout": "Очікувана виплата",
+    "lastPayout": "Остання виплата",
+    "averageMonthly": "Середній місячний дохід",
+    "monthlyRevenue": "Дохід за місяць",
+    "quarterRevenue": "Дохід за квартал",
+    "yearRevenue": "Дохід за рік"
+  },
+  "integrations": {
+    "title": "Платіжні інтеграції",
+    "description": "Підключення провайдерів виплат. Поки лише архітектура — без живих інтеграцій.",
+    "comingSoon": "Незабаром"
+  },
+  "filters": {
+    "search": "Пошук",
+    "searchPlaceholder": "Платформа, посилання, нотатки",
+    "status": "Статус",
+    "platform": "Платформа",
+    "creator": "Креатор",
+    "manager": "Менеджер",
+    "from": "З",
+    "to": "До",
+    "all": "Усі",
+    "apply": "Застосувати",
+    "clear": "Скинути",
+    "sort": "Сортування"
+  },
+  "table": {
+    "date": "Дата",
+    "creator": "Креатор",
+    "platform": "Платформа",
+    "gross": "Валовий дохід",
+    "agencyPercent": "Агентство %",
+    "agencyAmount": "Сума агентства",
+    "creatorPercent": "Креатор %",
+    "creatorAmount": "Сума креатора",
+    "status": "Статус",
+    "manager": "Менеджер",
+    "actions": "Дії",
+    "view": "Відкрити"
+  },
+  "pagination": {
+    "previous": "Назад",
+    "next": "Далі",
+    "pageOf": "Сторінка {page} з {totalPages} · усього {total}"
+  },
+  "fields": {
+    "creator": "Креатор",
+    "manager": "Менеджер",
+    "platform": "Платформа",
+    "date": "Дата",
+    "gross": "Валовий дохід",
+    "currency": "Валюта",
+    "agencyPercent": "Агентство %",
+    "agencyAmount": "Сума агентства",
+    "creatorPercent": "Креатор %",
+    "creatorAmount": "Сума креатора",
+    "status": "Статус",
+    "paymentMethod": "Спосіб оплати",
+    "referenceId": "Номер посилання",
+    "notes": "Нотатки",
+    "created": "Створено",
+    "updated": "Оновлено"
+  },
+  "sections": {
+    "details": "Деталі",
+    "status": "Статус",
+    "notes": "Нотатки",
+    "meta": "Хронологія"
+  },
+  "status": {
+    "pending": "Очікує",
+    "approved": "Схвалено",
+    "paid": "Виплачено",
+    "cancelled": "Скасовано",
+    "disputed": "Спір"
+  },
+  "platforms": {
+    "onlyfans": "OnlyFans",
+    "fansly": "Fansly",
+    "manyvids": "ManyVids",
+    "chaturbate": "Chaturbate",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "twitter": "X (Twitter)",
+    "other": "Інше"
+  },
+  "methods": {
+    "stripe": "Stripe",
+    "wise": "Wise",
+    "paypal": "PayPal",
+    "crypto": "Крипто",
+    "bankTransfer": "Банківський переказ",
+    "other": "Інше"
+  },
+  "form": {
+    "title": "Нова транзакція",
+    "open": "Додати транзакцію",
+    "cancel": "Скасувати",
+    "submit": "Створити",
+    "submitting": "Створення…"
+  },
+  "actions": {
+    "save": "Зберегти",
+    "saving": "Збереження…",
+    "saveError": "Не вдалося зберегти зміни.",
+    "delete": "Видалити транзакцію",
+    "deleting": "Видалення…",
+    "confirmDelete": "Видалити цю транзакцію назавжди?"
+  },
+  "toast": {
+    "created": "Транзакцію створено.",
+    "saved": "Зміни збережено.",
+    "deleted": "Транзакцію видалено."
+  },
+  "errors": {
+    "load": "Не вдалося завантажити фінансові дані.",
+    "loadDetail": "Не вдалося завантажити цю транзакцію.",
+    "boundary": "Помилка під час завантаження фінансів.",
+    "retry": "Спробувати знову"
+  },
+  "notFound": {
+    "title": "Транзакцію не знайдено",
+    "description": "Транзакцію могли видалити або у вас немає доступу.",
+    "back": "До фінансів"
+  },
+  "actionErrors": {
+    "unauthorized": "У вас немає прав на цю дію.",
+    "forbidden": "Можна керувати фінансами лише своїх креаторів.",
+    "invalid": "Некоректні дані транзакції.",
+    "invalidStatus": "Некоректний статус.",
+    "invalidNotes": "Некоректні нотатки.",
+    "create": "Не вдалося створити транзакцію.",
+    "save": "Не вдалося зберегти зміни.",
+    "delete": "Не вдалося видалити транзакцію.",
+    "ownerOnly": "Видаляти транзакції може лише власник.",
+    "invalidManager": "Можна призначати лише активних співробітників.",
+    "export": "Не вдалося експортувати.",
+    "notFound": "Не знайдено."
+  },
+  "emptyTitle": "Транзакцій поки немає",
+  "emptyDescription": "Створіть транзакцію або змініть фільтри.",
+  "emptyAction": "Нова транзакція",
+  "retry": "Спробувати знову",
+  "tabs": {
+    "overview": "Огляд",
+    "transactions": "Операції",
+    "payouts": "Виплати",
+    "reports": "Звіти",
+    "commissions": "Комісії"
+  },
+  "payoutsTitle": "Виплати",
+  "reportsTitle": "Місячні звіти",
+  "payoutsEmpty": "Виплат поки немає.",
+  "payoutStatus": {
+    "pending": "Запитано",
+    "processing": "Схвалено",
+    "completed": "Виплачено",
+    "failed": "Відхилено"
+  },
+  "payoutMethods": {
+    "bank": "Банк",
+    "paypal": "PayPal",
+    "crypto": "Крипто",
+    "other": "Інше"
+  },
+  "payoutsTable": {
+    "creator": "Креатор",
+    "amount": "Сума",
+    "currency": "Валюта",
+    "method": "Метод",
+    "requested": "Запитано",
+    "approved": "Схвалено",
+    "paid": "Виплачено",
+    "status": "Статус",
+    "actions": "Дії"
+  },
+  "payoutActions": {
+    "approve": "Схвалити",
+    "reject": "Відхилити",
+    "pay": "Виплатити",
+    "view": "Відкрити",
+    "rejectReason": "Причина відхилення",
+    "confirmReject": "Підтвердити відхилення",
+    "error": "Помилка"
+  },
+  "commissions": {
+    "title": "Комісії",
+    "description": "Налаштуйте відсотки агентства, менеджера, реферала та бонусу.",
+    "agency": "Агентство %",
+    "manager": "Менеджер %",
+    "referral": "Реферал %",
+    "bonus": "Бонус %",
+    "note": "Коментар до зміни",
+    "save": "Зберегти комісії",
+    "saving": "Збереження…",
+    "history": "Історія змін",
+    "emptyHistory": "Змін комісій ще немає.",
+    "by": "Ким"
+  },
+  "charts": {
+    "revenueByMonth": "Дохід за місяцями",
+    "revenueByPlatform": "Дохід за платформами",
+    "revenueByCreator": "Дохід за креаторами",
+    "agencyProfit": "Прибуток агентства",
+    "payouts": "Виплати",
+    "empty": "Поки немає даних для графіків.",
+    "value": "Значення"
+  },
+  "reports": {
+    "month": "Місяць",
+    "year": "Рік",
+    "revenue": "Дохід",
+    "commission": "Комісія",
+    "expenses": "Витрати",
+    "netProfit": "Чистий прибуток"
+  },
+  "export": {
+    "label": "Експорт",
+    "csv": "CSV",
+    "excel": "Excel",
+    "pdf": "PDF",
+    "error": "Не вдалося експортувати.",
+    "pdfTitle": "Фінанси — {kind}",
+    "empty": "Немає даних",
+    "kinds": {
+      "transactions": "Транзакції",
+      "payouts": "Виплати",
+      "report": "Звіт"
+    },
+    "headers": {
+      "id": "ID",
+      "creatorId": "ID креатора",
+      "managerId": "ID менеджера",
+      "platform": "Платформа",
+      "transactionDate": "Дата транзакції",
+      "grossRevenue": "Валовий дохід",
+      "agencyAmount": "Сума агентства",
+      "creatorAmount": "Сума креатора",
+      "currency": "Валюта",
+      "status": "Статус",
+      "paymentMethod": "Спосіб оплати",
+      "referenceId": "Номер посилання",
+      "notes": "Нотатки",
+      "amount": "Сума",
+      "method": "Метод",
+      "periodStart": "Початок періоду",
+      "periodEnd": "Кінець періоду",
+      "requestedAt": "Запитано",
+      "approvedAt": "Схвалено",
+      "paidAt": "Виплачено",
+      "rejectionReason": "Причина відхилення",
+      "receiptNumber": "Номер квитанції",
+      "month": "Місяць",
+      "year": "Рік",
+      "revenue": "Дохід",
+      "commission": "Комісія",
+      "expenses": "Витрати",
+      "netProfit": "Чистий прибуток"
+    }
+  },
+  "balances": {
+    "title": "Баланси креаторів",
+    "empty": "Балансів креаторів поки немає.",
+    "currentBalance": "Поточний баланс",
+    "pending": "В очікуванні",
+    "paid": "Виплачено",
+    "lifetimeRevenue": "Дохід за весь час"
+  },
+  "sort": {
+    "date_desc": "Дата (новіші)",
+    "date_asc": "Дата (старіші)",
+    "gross_desc": "Сума (спадання)",
+    "gross_asc": "Сума (зростання)"
+  }
+}

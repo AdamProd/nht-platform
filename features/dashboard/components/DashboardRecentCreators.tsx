@@ -12,6 +12,7 @@ type DashboardRecentCreatorsProps = {
     unassigned: string;
   };
   statusLabels: Record<string, string>;
+  platformLabels?: Record<string, string>;
 };
 
 export default function DashboardRecentCreators({
@@ -19,6 +20,7 @@ export default function DashboardRecentCreators({
   locale,
   labels,
   statusLabels,
+  platformLabels,
 }: DashboardRecentCreatorsProps) {
   return (
     <section className="rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02]">
@@ -45,6 +47,7 @@ export default function DashboardRecentCreators({
               statusLabel={statusLabels[creator.status] ?? creator.status}
               unassigned={labels.unassigned}
               locale={locale}
+              platformLabels={platformLabels}
             />
           ))}
         </div>

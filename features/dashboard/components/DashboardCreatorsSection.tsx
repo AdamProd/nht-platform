@@ -20,6 +20,7 @@ type DashboardCreatorsSectionProps = {
     revenue?: string;
   };
   statusLabels: Record<string, string>;
+  platformLabels?: Record<string, string>;
 };
 
 export default function DashboardCreatorsSection({
@@ -28,6 +29,7 @@ export default function DashboardCreatorsSection({
   variant = "cards",
   labels,
   statusLabels,
+  platformLabels,
 }: DashboardCreatorsSectionProps) {
   return (
     <section className="rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02]">
@@ -92,6 +94,7 @@ export default function DashboardCreatorsSection({
                 statusLabel={statusLabels[creator.status] ?? creator.status}
                 unassigned={labels.unassigned}
                 locale={locale}
+                platformLabels={platformLabels}
               />
               {labels.revenue ? (
                 <p className="px-1 text-xs text-[var(--nht-text-tertiary)]">

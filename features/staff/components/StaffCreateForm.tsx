@@ -5,7 +5,7 @@ import { useRouter } from "@/i18n/navigation";
 import { createStaff } from "@/features/staff/actions/staff";
 import {
   ASSIGNABLE_STAFF_ROLES,
-  STAFF_DEPARTMENTS,
+  CREATE_STAFF_DEPARTMENTS,
 } from "@/features/staff/types";
 import FlashToast from "@/features/creators/components/FlashToast";
 
@@ -14,14 +14,10 @@ type Props = {
     create: string;
     title: string;
     email: string;
-    fullName: string;
+    firstName: string;
+    lastName: string;
     role: string;
     department: string;
-    departmentCustom: string;
-    language: string;
-    timezone: string;
-    temporaryPassword: string;
-    phone: string;
     cancel: string;
     submit: string;
     submitting: string;
@@ -41,21 +37,16 @@ export default function StaffCreateForm({
   const [error, setError] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
   const [toastTone, setToastTone] = useState<"success" | "error">("success");
-  const [department, setDepartment] = useState("");
   const [isPending, startTransition] = useTransition();
 
   function handleSubmit(formData: FormData) {
     setError(null);
     const payload = {
       email: formData.get("email"),
-      full_name: formData.get("full_name"),
+      first_name: formData.get("first_name"),
+      last_name: formData.get("last_name"),
       role: formData.get("role"),
-      department: formData.get("department") || null,
-      department_custom: formData.get("department_custom") || null,
-      locale: formData.get("locale") || "en",
-      timezone: formData.get("timezone") || null,
-      temporary_password: formData.get("temporary_password"),
-      phone: formData.get("phone") || null,
+      department: formData.get("department"),
     };
 
     startTransition(async () => {
@@ -94,9 +85,11 @@ export default function StaffCreateForm({
           >
             <h2 className="text-lg font-medium text-white">{labels.title}</h2>
             <form action={handleSubmit} className="mt-4 space-y-3">
-              <Field label={labels.fullName} name="full_name" required />
+              <div className="grid gap-3 sm:grid-cols-2">
+                <Field label={labels.firstName} name="first_name" required />
+                <Field label={labels.lastName} name="last_name" required />
+              </div>
               <Field label={labels.email} name="email" type="email" required />
-              <Field label={labels.phone} name="phone" />
               <label className="block text-xs text-[var(--nht-text-tertiary)]">
                 {labels.role}
                 <select
@@ -115,29 +108,16 @@ export default function StaffCreateForm({
                 {labels.department}
                 <select
                   name="department"
-                  value={department}
-                  onChange={(e) => setDepartment(e.target.value)}
+                  required
                   className="mt-1.5 w-full rounded-[var(--nht-radius-lg)] border border-white/[0.08] bg-black/30 px-3 py-2 text-sm text-white"
                 >
-                  <option value="">—</option>
-                  {STAFF_DEPARTMENTS.map((dept) => (
+                  {CREATE_STAFF_DEPARTMENTS.map((dept) => (
                     <option key={dept} value={dept}>
                       {departmentLabels[dept] ?? dept}
                     </option>
                   ))}
                 </select>
               </label>
-              {department === "custom" ? (
-                <Field label={labels.departmentCustom} name="department_custom" />
-              ) : null}
-              <Field label={labels.language} name="locale" defaultValue="en" />
-              <Field label={labels.timezone} name="timezone" />
-              <Field
-                label={labels.temporaryPassword}
-                name="temporary_password"
-                type="password"
-                required
-              />
               {error ? (
                 <p className="text-sm text-red-300" role="alert">
                   {error}

@@ -39,6 +39,8 @@ type Props = {
   locale: string;
   canEdit: boolean;
   isOwnerActor: boolean;
+  canDelete: boolean;
+  neverLabel: string;
   unassignedCreators: Array<{ id: string; display_name: string | null }>;
   unassignedApplications: Array<{ id: string; full_name: string }>;
   labels: {
@@ -77,6 +79,8 @@ export default function StaffProfilePanel({
   locale,
   canEdit,
   isOwnerActor,
+  canDelete,
+  neverLabel,
   unassignedCreators,
   unassignedApplications,
   labels,
@@ -109,6 +113,7 @@ export default function StaffProfilePanel({
       locale: form.get("locale") || null,
       biography: form.get("biography") || null,
       notes: form.get("notes") || null,
+      avatar_url: form.get("avatar_url") || null,
     };
 
     startTransition(async () => {
@@ -118,6 +123,7 @@ export default function StaffProfilePanel({
         phone: payload.phone ? String(payload.phone) : null,
         biography: payload.biography ? String(payload.biography) : null,
         notes: payload.notes ? String(payload.notes) : null,
+        avatar_url: payload.avatar_url ? String(payload.avatar_url) : null,
       });
       const result = await updateStaffProfile(payload);
       if (!result.success) {
@@ -177,6 +183,12 @@ export default function StaffProfilePanel({
           label={labels.fields.fullName}
           name="full_name"
           defaultValue={optimistic.full_name ?? ""}
+          disabled={!canEdit}
+        />
+        <Field
+          label={labels.fields.avatarUrl}
+          name="avatar_url"
+          defaultValue={optimistic.avatar_url ?? ""}
           disabled={!canEdit}
         />
         <Field
@@ -240,7 +252,11 @@ export default function StaffProfilePanel({
         <Field
           label={labels.fields.lastLogin}
           name="last_login"
-          defaultValue={formatStaffDateTime(optimistic.last_login_at, locale)}
+          defaultValue={formatStaffDateTime(
+            optimistic.last_login_at,
+            locale,
+            neverLabel,
+          )}
           disabled
         />
         <label className="lg:col-span-2 block text-xs text-[var(--nht-text-tertiary)]">
@@ -435,7 +451,7 @@ export default function StaffProfilePanel({
           items={optimistic.assignedTasks.map((item) => ({
             id: item.id,
             label: `${item.title} · ${item.status}`,
-            href: `/admin/creators/${item.creator_id}`,
+            href: `/admin/tasks/${item.id}`,
           }))}
         />
       </section>
@@ -483,7 +499,7 @@ export default function StaffProfilePanel({
         )}
       </section>
 
-      {canEdit ? (
+      {canEdit && (canDelete || isOwnerActor) ? (
         <section className="space-y-3 rounded-[var(--nht-radius-xl)] border border-red-500/20 bg-red-500/5 p-5">
           <h2 className="text-sm font-medium text-red-200">
             {labels.sections.danger}
@@ -497,13 +513,15 @@ export default function StaffProfilePanel({
               {labels.transferOwnership}
             </button>
           ) : null}
-          <button
-            type="button"
-            className="rounded-full border border-red-400/40 px-4 py-2 text-xs text-red-200"
-            onClick={() => setConfirmAction("delete")}
-          >
-            {labels.delete}
-          </button>
+          {canDelete && staff.role !== "owner" ? (
+            <button
+              type="button"
+              className="rounded-full border border-red-400/40 px-4 py-2 text-xs text-red-200"
+              onClick={() => setConfirmAction("delete")}
+            >
+              {labels.delete}
+            </button>
+          ) : null}
         </section>
       ) : null}
 

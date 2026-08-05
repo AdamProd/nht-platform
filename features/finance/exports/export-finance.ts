@@ -134,6 +134,8 @@ function toPdfHtml(
 function encodeExport(
   format: FinanceExportFormat,
   kind: FinanceExportKind,
+  title: string,
+  sheetName: string,
   headers: string[],
   rows: Array<Array<unknown>>,
 ): { filename: string; mime: string; content: string } {
@@ -149,34 +151,37 @@ function encodeExport(
     return {
       filename: `finance-${kind}-${stamp}.xls`,
       mime: "application/vnd.ms-excel",
-      content: toSpreadsheetMl(`finance-${kind}`, headers, rows),
+      content: toSpreadsheetMl(sheetName.slice(0, 31), headers, rows),
     };
   }
   return {
     filename: `finance-${kind}-${stamp}.html`,
     mime: "text/html;charset=utf-8",
-    content: toPdfHtml(`Finance ${kind}`, headers, rows),
+    content: toPdfHtml(title, headers, rows),
   };
 }
 
 export async function exportFinanceData(
   raw: unknown,
 ): Promise<FinanceExportResult> {
-  const t = await getTranslations("admin.finance.actionErrors");
+  const tErrors = await getTranslations("admin.finance.actionErrors");
+  const t = await getTranslations("admin.finance");
 
   try {
     const session = await requireStaffSession();
     if (!session || !hasPermission(session.profile.role, "finance.export")) {
-      return { success: false, error: t("unauthorized") };
+      return { success: false, error: tErrors("unauthorized") };
     }
 
     const parsed = exportFinanceSchema.safeParse(raw);
     if (!parsed.success) {
-      return { success: false, error: t("invalid") };
+      return { success: false, error: tErrors("invalid") };
     }
 
     const { kind, format, filters } = parsed.data;
     const supabase = await createClient();
+    const title = t("export.pdfTitle", { kind: t(`export.kinds.${kind}`) });
+    const sheetName = t(`export.kinds.${kind}`);
 
     let scopedIds: string[] | null = null;
     if (!isAdminLike(session.profile.role)) {
@@ -186,7 +191,14 @@ export async function exportFinanceData(
         .eq("manager_id", session.profile.id);
       scopedIds = (creators ?? []).map((row) => row.id);
       if (scopedIds.length === 0) {
-        const empty = encodeExport(format, kind, ["empty"], []);
+        const empty = encodeExport(
+          format,
+          kind,
+          title,
+          sheetName,
+          [t("export.empty")],
+          [],
+        );
         return { success: true, ...empty };
       }
     }
@@ -200,14 +212,14 @@ export async function exportFinanceData(
         platform: filters.platform || null,
       });
       const headers = [
-        "month",
-        "year",
-        "creatorId",
-        "platform",
-        "revenue",
-        "commission",
-        "expenses",
-        "netProfit",
+        t("export.headers.month"),
+        t("export.headers.year"),
+        t("export.headers.creatorId"),
+        t("export.headers.platform"),
+        t("export.headers.revenue"),
+        t("export.headers.commission"),
+        t("export.headers.expenses"),
+        t("export.headers.netProfit"),
       ];
       const rows = [
         [
@@ -221,7 +233,10 @@ export async function exportFinanceData(
           report.netProfit,
         ],
       ];
-      return { success: true, ...encodeExport(format, kind, headers, rows) };
+      return {
+        success: true,
+        ...encodeExport(format, kind, title, sheetName, headers, rows),
+      };
     }
 
     if (kind === "payouts") {
@@ -242,29 +257,31 @@ export async function exportFinanceData(
       }
       if (filters.creator) query = query.eq("creator_id", filters.creator);
       if (filters.from) query = query.gte("requested_at", filters.from);
-      if (filters.to) query = query.lte("requested_at", `${filters.to}T23:59:59.999Z`);
+      if (filters.to) {
+        query = query.lte("requested_at", `${filters.to}T23:59:59.999Z`);
+      }
 
       const { data, error } = await query;
       if (error) {
         console.error("[exportFinanceData.payouts]", error.message);
-        return { success: false, error: t("save") };
+        return { success: false, error: tErrors("export") };
       }
 
       const headers = [
-        "id",
-        "creator_id",
-        "amount",
-        "currency",
-        "status",
-        "method",
-        "period_start",
-        "period_end",
-        "requested_at",
-        "approved_at",
-        "paid_at",
-        "rejection_reason",
-        "notes",
-        "receipt_number",
+        t("export.headers.id"),
+        t("export.headers.creatorId"),
+        t("export.headers.amount"),
+        t("export.headers.currency"),
+        t("export.headers.status"),
+        t("export.headers.method"),
+        t("export.headers.periodStart"),
+        t("export.headers.periodEnd"),
+        t("export.headers.requestedAt"),
+        t("export.headers.approvedAt"),
+        t("export.headers.paidAt"),
+        t("export.headers.rejectionReason"),
+        t("export.headers.notes"),
+        t("export.headers.receiptNumber"),
       ];
       const rows = (data ?? []).map((row) => [
         row.id,
@@ -282,7 +299,10 @@ export async function exportFinanceData(
         row.notes,
         row.receipt_number,
       ]);
-      return { success: true, ...encodeExport(format, kind, headers, rows) };
+      return {
+        success: true,
+        ...encodeExport(format, kind, title, sheetName, headers, rows),
+      };
     }
 
     let query = supabase
@@ -313,23 +333,23 @@ export async function exportFinanceData(
     const { data, error } = await query;
     if (error) {
       console.error("[exportFinanceData.transactions]", error.message);
-      return { success: false, error: t("save") };
+      return { success: false, error: tErrors("export") };
     }
 
     const headers = [
-      "id",
-      "creator_id",
-      "manager_id",
-      "platform",
-      "transaction_date",
-      "gross_revenue",
-      "agency_amount",
-      "creator_amount",
-      "currency",
-      "status",
-      "payment_method",
-      "reference_id",
-      "notes",
+      t("export.headers.id"),
+      t("export.headers.creatorId"),
+      t("export.headers.managerId"),
+      t("export.headers.platform"),
+      t("export.headers.transactionDate"),
+      t("export.headers.grossRevenue"),
+      t("export.headers.agencyAmount"),
+      t("export.headers.creatorAmount"),
+      t("export.headers.currency"),
+      t("export.headers.status"),
+      t("export.headers.paymentMethod"),
+      t("export.headers.referenceId"),
+      t("export.headers.notes"),
     ];
     const rows = (data ?? []).map((row) => [
       row.id,
@@ -347,9 +367,12 @@ export async function exportFinanceData(
       row.notes,
     ]);
 
-    return { success: true, ...encodeExport(format, kind, headers, rows) };
+    return {
+      success: true,
+      ...encodeExport(format, kind, title, sheetName, headers, rows),
+    };
   } catch (error) {
     console.error("[exportFinanceData] unexpected:", error);
-    return { success: false, error: t("save") };
+    return { success: false, error: tErrors("export") };
   }
 }

@@ -1,0 +1,184 @@
+{
+  "label": "Операции",
+  "title": "Задачи",
+  "description": "Назначайте и отслеживайте задачи по креаторам, финансам и поддержке.",
+  "kpis": {
+    "myTasks": "Мои задачи",
+    "overdue": "Просрочено",
+    "today": "Сегодня",
+    "completed": "Завершено",
+    "highPriority": "Высокий приоритет"
+  },
+  "filters": {
+    "search": "Поиск задач",
+    "searchPlaceholder": "Поиск задач",
+    "status": "Статус",
+    "priority": "Приоритет",
+    "type": "Тип",
+    "assignee": "Исполнитель",
+    "creator": "Креатор",
+    "sort": "Сортировка",
+    "all": "Все",
+    "unassigned": "Не назначен",
+    "clear": "Сбросить фильтры"
+  },
+  "sort": {
+    "newest": "Сначала новые",
+    "oldest": "Сначала старые",
+    "dueAsc": "Срок ↑",
+    "dueDesc": "Срок ↓",
+    "priority": "По приоритету"
+  },
+  "empty": {
+    "title": "Пока нет задач",
+    "description": "Создайте первую задачу, чтобы начать работу команды."
+  },
+  "table": {
+    "title": "Название",
+    "creator": "Креатор",
+    "assigned": "Исполнитель",
+    "priority": "Приоритет",
+    "status": "Статус",
+    "due": "Срок",
+    "actions": "Действия",
+    "view": "Открыть",
+    "empty": "Задачи не найдены",
+    "emptyTitle": "Пока нет задач",
+    "emptyDescription": "Создайте первую задачу, чтобы начать работу команды."
+  },
+  "pagination": {
+    "previous": "Назад",
+    "next": "Далее",
+    "of": "из"
+  },
+  "fields": {
+    "title": "Название",
+    "description": "Описание",
+    "type": "Тип",
+    "priority": "Приоритет",
+    "status": "Статус",
+    "creator": "Креатор",
+    "assignTo": "Назначить",
+    "dueDate": "Срок",
+    "none": "Нет",
+    "department": "Отдел",
+    "createdAt": "Создано",
+    "updatedAt": "Обновлено"
+  },
+  "status": {
+    "new": "Новая",
+    "in_progress": "В работе",
+    "waiting": "Ожидает",
+    "blocked": "Заблокирована",
+    "review": "На проверке",
+    "completed": "Завершена",
+    "archived": "Архив"
+  },
+  "priority": {
+    "low": "Низкий",
+    "medium": "Средний",
+    "high": "Высокий",
+    "urgent": "Срочно"
+  },
+  "type": {
+    "creator": "Креатор",
+    "finance": "Финансы",
+    "support": "Поддержка",
+    "application": "Заявка",
+    "staff": "Сотрудник",
+    "custom": "Другое"
+  },
+  "deadline": {
+    "none": "Без срока",
+    "overdue": "Просрочено",
+    "today": "Сегодня",
+    "tomorrow": "Завтра",
+    "inDays": "Через {days} дн.",
+    "until": "До дедлайна"
+  },
+  "form": {
+    "open": "Новая задача",
+    "title": "Создать задачу",
+    "submit": "Создать задачу",
+    "submitting": "Создание…",
+    "cancel": "Отмена",
+    "saved": "Задача создана",
+    "error": "Не удалось создать задачу"
+  },
+  "actions": {
+    "assign": "Назначить",
+    "complete": "Завершить",
+    "review": "На проверку",
+    "archive": "Архивировать",
+    "delete": "Удалить",
+    "save": "Сохранить",
+    "saving": "Сохранение…",
+    "edit": "Редактировать",
+    "duplicate": "Дублировать",
+    "copySuffix": " (копия)"
+  },
+  "detail": {
+    "back": "Назад к задачам",
+    "history": "История",
+    "comments": "Комментарии",
+    "activity": "Активность",
+    "attachments": "Файлы",
+    "subtasks": "Чек-лист",
+    "quickActions": "Быстрые действия",
+    "changeStatus": "Изменить статус",
+    "changeAssignee": "Назначить сотрудника",
+    "changeDue": "Изменить дедлайн",
+    "addComment": "Добавить комментарий",
+    "commentPlaceholder": "Напишите комментарий…",
+    "emptyComments": "Комментариев пока нет.",
+    "emptyActivity": "Активности пока нет.",
+    "emptyAttachments": "Файлов пока нет",
+    "emptyAttachmentsDesc": "Загрузите PDF, DOCX, XLSX, PNG, JPG или ZIP.",
+    "emptySubtasks": "Пунктов чек-листа пока нет.",
+    "addSubtask": "Добавить",
+    "subtaskPlaceholder": "Пункт чек-листа",
+    "progress": "{done} / {total} выполнено",
+    "upload": "Загрузить",
+    "download": "Скачать",
+    "remove": "Удалить",
+    "editComment": "Редактировать",
+    "deleteComment": "Удалить",
+    "sendHint": "Enter — отправить · Shift+Enter — новая строка",
+    "error": "Что-то пошло не так"
+  },
+  "timeline": {
+    "created": "Создана задача",
+    "updated": "Задача обновлена",
+    "assigned": "Назначен менеджер",
+    "completed": "Задача завершена",
+    "deleted": "Задача удалена",
+    "statusChanged": "Изменен статус",
+    "commentAdded": "Добавлен комментарий",
+    "commentUpdated": "Комментарий изменён",
+    "commentDeleted": "Комментарий удалён",
+    "fileAttached": "Прикреплен файл",
+    "fileRemoved": "Файл удалён",
+    "duplicated": "Задача продублирована"
+  },
+  "confirm": {
+    "deleteTitle": "Удалить эту задачу?",
+    "deleteDescription": "Задача будет удалена безвозвратно.",
+    "confirm": "Удалить"
+  },
+  "errors": {
+    "load": "Не удалось загрузить задачи.",
+    "loadDetail": "Не удалось загрузить задачу."
+  },
+  "actionErrors": {
+    "unauthorized": "Недостаточно прав для этого действия.",
+    "invalid": "Некорректные данные задачи.",
+    "notFound": "Задача не найдена.",
+    "create": "Не удалось создать задачу.",
+    "update": "Не удалось обновить задачу.",
+    "delete": "Не удалось удалить задачу.",
+    "comment": "Не удалось обновить комментарий.",
+    "upload": "Не удалось загрузить файл.",
+    "fileTooLarge": "Файл слишком большой (макс. 50 МБ).",
+    "fileType": "Неподдерживаемый тип файла."
+  }
+}

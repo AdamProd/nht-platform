@@ -9,6 +9,7 @@ import { publishEvent } from "@/features/core/events";
 import { getClientEnv } from "@/lib/env/client-env";
 import {
   canChangeRoleTo,
+  canDeleteStaff,
   canManageTargetStaff,
   forbiddenResult,
   requireStaffAdminSession,
@@ -59,50 +60,35 @@ export async function createStaff(
       return forbiddenResult(t("forbiddenRole"));
     }
 
+    const fullName = `${parsed.data.first_name} ${parsed.data.last_name}`.trim();
     const locale = await getLocale();
     const siteUrl = getClientEnv().NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
     const redirectTo = `${siteUrl}/${locale}/callback?next=${encodeURIComponent(`/${locale}/auth/set-password`)}`;
 
     const admin = createAdminClient();
-    const created = await admin.auth.admin.createUser({
-      email: parsed.data.email,
-      password: parsed.data.temporary_password,
-      email_confirm: true,
-      user_metadata: {
-        full_name: parsed.data.full_name,
+    const invited = await admin.auth.admin.inviteUserByEmail(parsed.data.email, {
+      redirectTo,
+      data: {
+        full_name: fullName,
         role: parsed.data.role,
       },
     });
 
-    if (created.error || !created.data.user) {
-      console.error("[createStaff.auth]", created.error?.message);
+    if (invited.error || !invited.data.user) {
+      console.error("[createStaff.invite]", invited.error?.message);
       return { success: false, error: t("create") };
     }
 
-    const userId = created.data.user.id;
-
-    // Invitation email placeholder — wire to provider later
-    console.info(
-      "[createStaff.invitePlaceholder]",
-      `Invitation queued for ${parsed.data.email} redirect=${redirectTo}`,
-    );
-
-    const department =
-      parsed.data.department === "custom"
-        ? "custom"
-        : parsed.data.department ?? null;
+    const userId = invited.data.user.id;
 
     const { error: profileError } = await admin.from("profiles").upsert({
       id: userId,
       email: parsed.data.email,
-      full_name: parsed.data.full_name,
+      full_name: fullName,
       role: parsed.data.role,
-      department,
-      department_custom:
-        department === "custom" ? parsed.data.department_custom : null,
-      locale: parsed.data.locale,
-      timezone: parsed.data.timezone,
-      phone: parsed.data.phone,
+      department: parsed.data.department,
+      department_custom: null,
+      locale,
       status: "invited",
     });
 
@@ -112,16 +98,16 @@ export async function createStaff(
     }
 
     await publishEvent({
-      type: "staff.created",
+      type: "employee.created",
       module: "admin",
       actorId: session.profile.id,
       actorRole: session.profile.role,
       targetId: userId,
       entityType: "profile",
       link: `/admin/staff/${userId}`,
-      recipientIds: [userId],
+      recipientIds: [userId, session.profile.id],
       payload: {
-        name: parsed.data.full_name,
+        name: fullName,
         email: parsed.data.email,
         role: parsed.data.role,
         userId,
@@ -169,6 +155,7 @@ export async function updateStaffProfile(
       locale: parsed.data.locale || null,
       biography: parsed.data.biography || null,
       notes: parsed.data.notes || null,
+      avatar_url: parsed.data.avatar_url || null,
     };
 
     const supabase = await createClient();
@@ -183,7 +170,7 @@ export async function updateStaffProfile(
     }
 
     await publishEvent({
-      type: "staff.updated",
+      type: "employee.updated",
       module: "admin",
       actorId: session.profile.id,
       actorRole: session.profile.role,
@@ -299,8 +286,36 @@ export async function updateStaffStatus(
       return { success: false, error: t("save") };
     }
 
+    const admin = createAdminClient();
+    const becameSuspended =
+      parsed.data.status === "suspended" ||
+      parsed.data.status === "disabled" ||
+      parsed.data.status === "archived";
+    const becameActive =
+      parsed.data.status === "active" || parsed.data.status === "invited";
+
+    if (becameSuspended) {
+      await admin.auth.admin.updateUserById(parsed.data.id, {
+        ban_duration: "876000h",
+      });
+    } else if (becameActive && target.status === "suspended") {
+      await admin.auth.admin.updateUserById(parsed.data.id, {
+        ban_duration: "none",
+      });
+    }
+
+    const eventType =
+      parsed.data.status === "suspended" && target.status !== "suspended"
+        ? "employee.suspended"
+        : parsed.data.status === "active" &&
+            (target.status === "suspended" ||
+              target.status === "disabled" ||
+              target.status === "archived")
+          ? "employee.activated"
+          : "employee.updated";
+
     await publishEvent({
-      type: "staff.status_changed",
+      type: eventType,
       module: "admin",
       actorId: session.profile.id,
       actorRole: session.profile.role,
@@ -395,8 +410,8 @@ export async function deleteStaff(
   try {
     const session = await requireStaffAdminSession();
     if (!session) return forbiddenResult(t("unauthorized"));
-    if (!hasPermission(session.profile.role, "staff.delete")) {
-      return forbiddenResult(t("forbidden"));
+    if (!canDeleteStaff(session.profile.role)) {
+      return forbiddenResult(t("forbiddenOwner"));
     }
 
     const id = String(formData.get("id") ?? "");
@@ -404,7 +419,7 @@ export async function deleteStaff(
 
     const { data: target } = await loadTarget(id);
     if (!target) return { success: false, error: t("notFound") };
-    if (target.role === "owner" && !hasPermission(session.profile.role, "staff.delete_owner")) {
+    if (target.role === "owner") {
       return forbiddenResult(t("forbiddenOwner"));
     }
     if (!canManageTargetStaff(session.profile.role, target.role)) {
@@ -415,20 +430,34 @@ export async function deleteStaff(
     }
 
     const admin = createAdminClient();
-    const { error } = await admin
-      .from("profiles")
-      .update({ status: "archived", role: "guest" as UserRole })
-      .eq("id", id);
 
-    if (error) {
-      console.error("[deleteStaff]", error.message);
+    // Clear assignments so profile/auth deletion is not blocked by FKs.
+    await admin
+      .from("creators")
+      .update({ manager_id: null })
+      .eq("manager_id", id);
+    await admin
+      .from("applications")
+      .update({ assigned_manager: null })
+      .eq("assigned_manager", id);
+
+    const deleted = await admin.auth.admin.deleteUser(id);
+    if (deleted.error) {
+      console.error("[deleteStaff.auth]", deleted.error.message);
+      // Fallback: archive + ban if hard delete is blocked by remote FKs.
+      await admin
+        .from("profiles")
+        .update({ status: "archived", role: "guest" as UserRole })
+        .eq("id", id);
+      await admin.auth.admin.updateUserById(id, { ban_duration: "876000h" });
       return { success: false, error: t("delete") };
     }
 
-    await admin.auth.admin.updateUserById(id, { ban_duration: "876000h" });
+    // Ensure profile row is gone when auth cascade is not configured.
+    await admin.from("profiles").delete().eq("id", id);
 
     await publishEvent({
-      type: "staff.deleted",
+      type: "employee.deleted",
       module: "admin",
       actorId: session.profile.id,
       actorRole: session.profile.role,

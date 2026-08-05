@@ -25,16 +25,11 @@ export default function StaffPagination({
   searchParams,
   labels,
 }: Props) {
-  if (totalPages <= 1) return null;
+  if (total === 0) return null;
 
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-      <p className="text-xs text-[var(--nht-text-tertiary)]">
-        {labels.pageOf
-          .replace("{page}", String(page))
-          .replace("{totalPages}", String(totalPages))
-          .replace("{total}", String(total))}
-      </p>
+      <p className="text-xs text-[var(--nht-text-tertiary)]">{labels.pageOf}</p>
       <div className="flex gap-2">
         {page > 1 ? (
           <Link

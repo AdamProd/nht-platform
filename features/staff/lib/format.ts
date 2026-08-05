@@ -32,8 +32,9 @@ export function formatStaffDate(
 export function formatStaffDateTime(
   value: string | null | undefined,
   locale: string,
+  emptyLabel = "—",
 ): string {
-  if (!value) return "—";
+  if (!value) return emptyLabel;
   try {
     return new Intl.DateTimeFormat(locale, {
       year: "numeric",

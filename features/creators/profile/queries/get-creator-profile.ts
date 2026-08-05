@@ -6,7 +6,9 @@ import { listStaffManagers } from "@/features/applications/queries/list-managers
 import { getCreator } from "@/features/creators/queries/get-creator";
 import { CREATOR_PLATFORMS } from "@/features/creators/types";
 import { visiblePlatformAccounts } from "@/features/creators/lib/avatar";
-import { listCreatorActivity } from "@/features/creators/profile/queries/list-creator-activity";
+import { loadCreatorTimelinePage } from "@/features/creators/profile/timeline/actions/load-creator-timeline";
+import { CREATOR_TIMELINE_PAGE_SIZE } from "@/features/creators/profile/timeline/types/timeline";
+import { listCreatorCrmTasks } from "@/features/tasks/queries/list-tasks";
 import type {
   CreatorPlatformCard,
   CreatorProfileBundle,
@@ -51,29 +53,13 @@ export async function getCreatorProfile(
     payouts,
     accounts,
     tickets,
-    activity,
+    timeline,
     transactions,
   ] = await Promise.all([
     safeQuery("managers", () => listStaffManagers(), []),
     safeQuery(
       "tasks",
-      async () => {
-        const { data, error } = await supabase
-          .from("creator_tasks")
-          .select(
-            `
-            *,
-            manager:profiles!creator_tasks_manager_id_fkey (
-              id,
-              full_name
-            )
-          `,
-          )
-          .eq("creator_id", creatorId)
-          .order("deadline", { ascending: true, nullsFirst: false });
-        if (error) throw new Error(error.message);
-        return (data ?? []) as CreatorProfileTask[];
-      },
+      () => listCreatorCrmTasks(creatorId),
       [] as CreatorProfileTask[],
     ),
     safeQuery(
@@ -126,7 +112,17 @@ export async function getCreatorProfile(
       },
       [] as { unread_for_creator: number | null }[],
     ),
-    safeQuery("activity", () => listCreatorActivity(creatorId), []),
+    safeQuery(
+      "timeline",
+      () => loadCreatorTimelinePage(creatorId, 1, CREATOR_TIMELINE_PAGE_SIZE),
+      {
+        items: [],
+        page: 1,
+        limit: CREATOR_TIMELINE_PAGE_SIZE,
+        hasMore: false,
+        total: 0,
+      },
+    ),
     safeQuery(
       "transactions",
       async () => {
@@ -186,7 +182,9 @@ export async function getCreatorProfile(
   );
 
   const openTasks = tasks.filter(
-    (task) => task.status !== "completed" && task.status !== "cancelled",
+    (task) =>
+      task.status !== "completed" &&
+      task.status !== "archived",
   ).length;
 
   const avgMonthly =
@@ -232,7 +230,7 @@ export async function getCreatorProfile(
     documents,
     payouts,
     transactions,
-    activity,
+    timeline,
   };
 }
 

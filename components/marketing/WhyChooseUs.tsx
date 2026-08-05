@@ -3,8 +3,8 @@
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
-import SectionHeader from "@/components/ui/SectionHeader";
-import Container from "@/components/ui/Container";
+import SectionHeader from "@/shared/ui/SectionHeader";
+import Container from "@/shared/ui/Container";
 import AnimatedGraph from "@/components/marketing/AnimatedGraph";
 import { staggerContainer, fadeUp } from "@/components/motion/variants";
 
@@ -65,7 +65,7 @@ export default function WhyChooseUs() {
 
   return (
     <section id="why-us" className="section-padding relative">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_100%,var(--nht-gold-subtle),transparent_70%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_100%,var(--nht-accent-subtle),transparent_70%)]" />
 
       <Container className="relative">
         <SectionHeader
@@ -85,8 +85,7 @@ export default function WhyChooseUs() {
             <motion.div
               key={card.key}
               variants={fadeUp}
-              whileHover={{ y: -4 }}
-              className="glass-strong premium-border overflow-hidden rounded-[var(--nht-radius-2xl)] p-7 transition-shadow duration-500 hover:shadow-[var(--nht-shadow-glow)] lg:p-9"
+              className="nht-card overflow-hidden p-7 lg:p-9"
             >
               <div className="mb-6 flex items-start justify-between">
                 <div>
@@ -107,7 +106,7 @@ export default function WhyChooseUs() {
               </div>
 
               <div className="rounded-xl border border-white/[0.05] bg-black/40 p-4">
-                <AnimatedGraph data={[...card.graph]} height={72} />
+                <AnimatedGraph data={[...card.graph]} height={72} color="#8B5CF6" />
               </div>
             </motion.div>
           ))}

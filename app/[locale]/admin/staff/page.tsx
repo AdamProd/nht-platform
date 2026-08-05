@@ -101,14 +101,10 @@ export default async function AdminStaffPage({ params, searchParams }: Props) {
                   create: t("create"),
                   title: t("form.title"),
                   email: t("fields.email"),
-                  fullName: t("fields.fullName"),
+                  firstName: t("fields.firstName"),
+                  lastName: t("fields.lastName"),
                   role: t("fields.role"),
                   department: t("fields.department"),
-                  departmentCustom: t("fields.departmentCustom"),
-                  language: t("fields.language"),
-                  timezone: t("fields.timezone"),
-                  temporaryPassword: t("fields.temporaryPassword"),
-                  phone: t("fields.phone"),
                   cancel: t("form.cancel"),
                   submit: t("form.submit"),
                   submitting: t("form.submitting"),
@@ -171,7 +167,7 @@ export default async function AdminStaffPage({ params, searchParams }: Props) {
         <ErrorState
           title={loadError}
           retryHref="/admin/staff"
-          retryLabel={t("filters.clear")}
+          retryLabel={t("errors.retry")}
         />
       ) : (
         <>
@@ -195,6 +191,7 @@ export default async function AdminStaffPage({ params, searchParams }: Props) {
               emptyTitle: t("emptyTitle"),
               emptyDescription: t("emptyDescription"),
               emptyAction: t("emptyAction"),
+              never: t("never"),
             }}
             roleLabels={roleLabels}
             departmentLabels={departmentLabels}
@@ -209,7 +206,11 @@ export default async function AdminStaffPage({ params, searchParams }: Props) {
             labels={{
               previous: t("pagination.previous"),
               next: t("pagination.next"),
-              pageOf: t("pagination.pageOf"),
+              pageOf: t("pagination.pageOf", {
+                page: result.page,
+                totalPages: result.totalPages,
+                total: result.total,
+              }),
             }}
           />
         </>

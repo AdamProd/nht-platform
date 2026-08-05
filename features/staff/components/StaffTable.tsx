@@ -30,6 +30,7 @@ type Props = {
     emptyTitle?: string;
     emptyDescription?: string;
     emptyAction?: string;
+    never: string;
   };
   roleLabels: Record<string, string>;
   departmentLabels: Record<string, string>;
@@ -156,7 +157,11 @@ export default function StaffTable({
                   {formatStaffDate(item.created_at, locale)}
                 </td>
                 <td className="hidden px-4 py-3 text-[var(--nht-text-secondary)] 2xl:table-cell">
-                  {formatStaffDateTime(item.last_login_at, locale)}
+                  {formatStaffDateTime(
+                    item.last_login_at,
+                    locale,
+                    labels.never,
+                  )}
                 </td>
                 <td className="px-4 py-3">
                   <Link

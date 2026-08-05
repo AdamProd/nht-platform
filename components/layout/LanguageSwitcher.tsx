@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useTransition } from "react";
 import { useParams } from "next/navigation";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { localeLabels, locales } from "@/i18n/locales";
 import { type Locale, routing } from "@/i18n/routing";
@@ -16,6 +16,7 @@ export default function LanguageSwitcher({
   variant = "desktop",
   onSelect,
 }: LanguageSwitcherProps) {
+  const t = useTranslations("common");
   const locale = useLocale() as Locale;
   const pathname = usePathname();
   const params = useParams();
@@ -61,7 +62,7 @@ export default function LanguageSwitcher({
     return (
       <div className="border-t border-white/[0.06] px-4 py-4">
         <p className="text-overline mb-3 text-[var(--nht-text-muted)]">
-          Language
+          {t("language")}
         </p>
         <div className="grid grid-cols-5 gap-2">
           {routing.locales.map((code) => (
@@ -72,7 +73,7 @@ export default function LanguageSwitcher({
               disabled={isPending}
               className={`rounded-lg px-2 py-2 text-xs font-semibold transition-colors disabled:opacity-50 ${
                 code === locale
-                  ? "bg-[var(--nht-gold-muted)] text-[var(--nht-gold)]"
+                  ? "bg-[var(--nht-accent-muted)] text-[var(--nht-accent)]"
                   : "text-white/50 hover:bg-white/[0.04] hover:text-white"
               }`}
             >
@@ -118,7 +119,7 @@ export default function LanguageSwitcher({
                 onClick={() => switchLocale(code)}
                 className={`block w-full px-4 py-2 text-left text-xs font-semibold transition-colors ${
                   code === locale
-                    ? "bg-[var(--nht-gold-muted)] text-[var(--nht-gold)]"
+                    ? "bg-[var(--nht-accent-muted)] text-[var(--nht-accent)]"
                     : "text-white/60 hover:bg-white/[0.04] hover:text-white"
                 }`}
               >

@@ -27,7 +27,13 @@ export function canChangeRoleTo(
     return hasPermission(actorRole, "staff.promote_owner");
   }
   if (isOwner(actorRole)) return true;
-  return actorRole === "admin";
+  if (actorRole === "admin") return true;
+  return false;
+}
+
+/** Only the platform owner may permanently delete employees. */
+export function canDeleteStaff(actorRole: UserRole): boolean {
+  return isOwner(actorRole);
 }
 
 export function forbiddenResult(message: string): StaffActionResult {

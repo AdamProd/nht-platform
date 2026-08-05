@@ -1,0 +1,147 @@
+{
+  "fr": {
+    "label": "Finances",
+    "title": "Finances",
+    "description": "Votre solde, vos revenus et l’historique des paiements.",
+    "historyTitle": "Historique des paiements",
+    "viewPayouts": "Tous les paiements",
+    "empty": "Aucun historique de paiement pour le moment.",
+    "kpis": {
+      "balance": "Solde",
+      "lifetime": "Revenu cumulé",
+      "currentMonth": "Mois en cours",
+      "pending": "Paiement en attente"
+    },
+    "table": {
+      "period": "Période",
+      "amount": "Montant",
+      "status": "Statut",
+      "paidDate": "Payé"
+    }
+  },
+  "es": {
+    "label": "Finanzas",
+    "title": "Finanzas",
+    "description": "Tu saldo, ingresos e historial de pagos.",
+    "historyTitle": "Historial de pagos",
+    "viewPayouts": "Todos los pagos",
+    "empty": "Aún no hay historial de pagos.",
+    "kpis": {
+      "balance": "Saldo",
+      "lifetime": "Ingresos totales",
+      "currentMonth": "Mes actual",
+      "pending": "Pago pendiente"
+    },
+    "table": {
+      "period": "Periodo",
+      "amount": "Importe",
+      "status": "Estado",
+      "paidDate": "Pagado"
+    }
+  },
+  "it": {
+    "label": "Finanze",
+    "title": "Finanze",
+    "description": "Il tuo saldo, i ricavi e lo storico dei pagamenti.",
+    "historyTitle": "Cronologia pagamenti",
+    "viewPayouts": "Tutti i pagamenti",
+    "empty": "Nessuna cronologia pagamenti.",
+    "kpis": {
+      "balance": "Saldo",
+      "lifetime": "Ricavi lifetime",
+      "currentMonth": "Mese corrente",
+      "pending": "Pagamento in sospeso"
+    },
+    "table": {
+      "period": "Periodo",
+      "amount": "Importo",
+      "status": "Stato",
+      "paidDate": "Pagato"
+    }
+  },
+  "pt": {
+    "label": "Finanças",
+    "title": "Finanças",
+    "description": "O seu saldo, receita e histórico de pagamentos.",
+    "historyTitle": "Histórico de pagamentos",
+    "viewPayouts": "Todos os pagamentos",
+    "empty": "Ainda sem histórico de pagamentos.",
+    "kpis": {
+      "balance": "Saldo",
+      "lifetime": "Receita vitalícia",
+      "currentMonth": "Mês atual",
+      "pending": "Pagamento pendente"
+    },
+    "table": {
+      "period": "Período",
+      "amount": "Valor",
+      "status": "Estado",
+      "paidDate": "Pago"
+    }
+  },
+  "pl": {
+    "label": "Finanse",
+    "title": "Finanse",
+    "description": "Twoje saldo, przychody i historia wypłat.",
+    "historyTitle": "Historia płatności",
+    "viewPayouts": "Wszystkie wypłaty",
+    "empty": "Brak historii płatności.",
+    "kpis": {
+      "balance": "Saldo",
+      "lifetime": "Przychód całkowity",
+      "currentMonth": "Bieżący miesiąc",
+      "pending": "Oczekująca wypłata"
+    },
+    "table": {
+      "period": "Okres",
+      "amount": "Kwota",
+      "status": "Status",
+      "paidDate": "Wypłacono"
+    }
+  },
+  "cs": {
+    "label": "Finance",
+    "title": "Finance",
+    "description": "Váš zůstatek, tržby a historie výplat.",
+    "historyTitle": "Historie plateb",
+    "viewPayouts": "Všechny výplaty",
+    "empty": "Zatím žádná historie plateb.",
+    "kpis": {
+      "balance": "Zůstatek",
+      "lifetime": "Celkové tržby",
+      "currentMonth": "Aktuální měsíc",
+      "pending": "Čekající výplata"
+    },
+    "table": {
+      "period": "Období",
+      "amount": "Částka",
+      "status": "Stav",
+      "paidDate": "Vyplaceno"
+    }
+  },
+  "uk": {
+    "label": "Фінанси",
+    "title": "Фінанси",
+    "description": "Ваш баланс, дохід та історія виплат.",
+    "historyTitle": "Історія виплат",
+    "viewPayouts": "Усі виплати",
+    "empty": "Історії виплат поки немає.",
+    "kpis": {
+      "balance": "Баланс",
+      "lifetime": "Дохід за весь час",
+      "currentMonth": "Поточний місяць",
+      "pending": "Очікує виплати"
+    },
+    "table": {
+      "period": "Період",
+      "amount": "Сума",
+      "status": "Статус",
+      "paidDate": "Виплачено"
+    }
+  },
+  "de": {
+    "table": {
+      "status": "Status"
+    }
+  }
+}

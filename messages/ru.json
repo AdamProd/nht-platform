@@ -1128,15 +1128,15 @@
       "unassigned": "Не назначен",
       "none": "Нет",
       "kpis": {
-        "totalRevenue": "Total revenue",
-        "agencyRevenue": "Agency revenue",
-        "creatorRevenue": "Creator revenue",
-        "pendingPayouts": "Pending payouts",
-        "paidThisMonth": "Paid this month",
-        "activeCreators": "Active creators",
-        "revenueToday": "Revenue today",
-        "revenueThisMonth": "Revenue this month",
-        "revenueThisYear": "Revenue this year",
+        "totalRevenue": "Общий доход",
+        "agencyRevenue": "Доход агентства",
+        "creatorRevenue": "Доход креаторов",
+        "pendingPayouts": "Ожидающие выплаты",
+        "paidThisMonth": "Выплачено за месяц",
+        "activeCreators": "Активные креаторы",
+        "revenueToday": "Доход за сегодня",
+        "revenueThisMonth": "Доход за месяц",
+        "revenueThisYear": "Доход за год",
         "revenueThisWeek": "Выручка за неделю",
         "countPending": "Ожидает",
         "countApproved": "Одобрено",
@@ -1146,85 +1146,85 @@
         "averageRevenuePerCreator": "Средний доход / креатор"
       },
       "summaries": {
-        "creatorTitle": "Creator summary",
-        "agencyTitle": "Agency summary",
-        "lifetimeRevenue": "Lifetime revenue",
-        "thisMonth": "This month",
-        "pendingPayout": "Pending payout",
-        "lastPayout": "Last payout",
-        "averageMonthly": "Average monthly revenue",
-        "monthlyRevenue": "Monthly revenue",
-        "quarterRevenue": "Quarter revenue",
-        "yearRevenue": "Year revenue"
+        "creatorTitle": "Сводка по креатору",
+        "agencyTitle": "Сводка по агентству",
+        "lifetimeRevenue": "Доход за всё время",
+        "thisMonth": "Этот месяц",
+        "pendingPayout": "Ожидающая выплата",
+        "lastPayout": "Последняя выплата",
+        "averageMonthly": "Средний месячный доход",
+        "monthlyRevenue": "Доход за месяц",
+        "quarterRevenue": "Доход за квартал",
+        "yearRevenue": "Доход за год"
       },
       "integrations": {
-        "title": "Payment integrations",
-        "description": "Connect payout providers. Architecture only — no live integrations yet.",
-        "comingSoon": "Coming soon"
+        "title": "Платёжные интеграции",
+        "description": "Подключение провайдеров выплат. Пока только архитектура — без живых интеграций.",
+        "comingSoon": "Скоро"
       },
       "filters": {
-        "search": "Search",
-        "searchPlaceholder": "Platform, reference, notes",
-        "status": "Status",
-        "platform": "Platform",
-        "creator": "Creator",
-        "manager": "Manager",
-        "from": "From",
-        "to": "To",
-        "all": "All",
-        "apply": "Apply",
-        "clear": "Clear",
+        "search": "Поиск",
+        "searchPlaceholder": "Платформа, ссылка, заметки",
+        "status": "Статус",
+        "platform": "Платформа",
+        "creator": "Креатор",
+        "manager": "Менеджер",
+        "from": "С",
+        "to": "По",
+        "all": "Все",
+        "apply": "Применить",
+        "clear": "Сбросить",
         "sort": "Сортировка"
       },
       "table": {
-        "date": "Date",
-        "creator": "Creator",
-        "platform": "Platform",
-        "gross": "Gross revenue",
-        "agencyPercent": "Agency %",
-        "agencyAmount": "Agency amount",
-        "creatorPercent": "Creator %",
-        "creatorAmount": "Creator amount",
-        "status": "Status",
-        "manager": "Manager",
-        "actions": "Actions",
-        "view": "View"
+        "date": "Дата",
+        "creator": "Креатор",
+        "platform": "Платформа",
+        "gross": "Валовый доход",
+        "agencyPercent": "Агентство %",
+        "agencyAmount": "Сумма агентства",
+        "creatorPercent": "Креатор %",
+        "creatorAmount": "Сумма креатора",
+        "status": "Статус",
+        "manager": "Менеджер",
+        "actions": "Действия",
+        "view": "Открыть"
       },
       "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {page} of {totalPages} · {total} total"
+        "previous": "Назад",
+        "next": "Далее",
+        "pageOf": "Страница {page} из {totalPages} · всего {total}"
       },
       "fields": {
-        "creator": "Creator",
-        "manager": "Manager",
-        "platform": "Platform",
-        "date": "Date",
-        "gross": "Gross revenue",
-        "currency": "Currency",
-        "agencyPercent": "Agency %",
-        "agencyAmount": "Agency amount",
-        "creatorPercent": "Creator %",
-        "creatorAmount": "Creator amount",
-        "status": "Status",
-        "paymentMethod": "Payment method",
-        "referenceId": "Reference ID",
-        "notes": "Notes",
-        "created": "Created",
-        "updated": "Updated"
+        "creator": "Креатор",
+        "manager": "Менеджер",
+        "platform": "Платформа",
+        "date": "Дата",
+        "gross": "Валовый доход",
+        "currency": "Валюта",
+        "agencyPercent": "Агентство %",
+        "agencyAmount": "Сумма агентства",
+        "creatorPercent": "Креатор %",
+        "creatorAmount": "Сумма креатора",
+        "status": "Статус",
+        "paymentMethod": "Способ оплаты",
+        "referenceId": "Номер ссылки",
+        "notes": "Заметки",
+        "created": "Создано",
+        "updated": "Обновлено"
       },
       "sections": {
-        "details": "Details",
-        "status": "Status",
-        "notes": "Notes",
-        "meta": "Timeline"
+        "details": "Детали",
+        "status": "Статус",
+        "notes": "Заметки",
+        "meta": "Хронология"
       },
       "status": {
-        "pending": "Pending",
-        "approved": "Approved",
-        "paid": "Paid",
-        "cancelled": "Cancelled",
-        "disputed": "Disputed"
+        "pending": "Ожидает",
+        "approved": "Одобрено",
+        "paid": "Выплачено",
+        "cancelled": "Отменено",
+        "disputed": "Спор"
       },
       "platforms": {
         "onlyfans": "OnlyFans",
@@ -1234,15 +1234,15 @@
         "instagram": "Instagram",
         "tiktok": "TikTok",
         "twitter": "X (Twitter)",
-        "other": "Other"
+        "other": "Другое"
       },
       "methods": {
         "stripe": "Stripe",
         "wise": "Wise",
         "paypal": "PayPal",
-        "crypto": "Crypto",
-        "bankTransfer": "Bank transfer",
-        "other": "Other"
+        "crypto": "Крипто",
+        "bankTransfer": "Банковский перевод",
+        "other": "Другое"
       },
       "form": {
         "title": "Новая транзакция",
@@ -1265,34 +1265,34 @@
         "deleted": "Транзакция удалена."
       },
       "errors": {
-        "load": "Unable to load finance data.",
-        "loadDetail": "Unable to load this transaction.",
-        "boundary": "Something went wrong loading finance.",
-        "retry": "Try again"
+        "load": "Не удалось загрузить финансы.",
+        "loadDetail": "Не удалось загрузить транзакцию.",
+        "boundary": "Ошибка при загрузке финансов.",
+        "retry": "Повторить"
       },
       "notFound": {
-        "title": "Transaction not found",
-        "description": "This transaction may have been removed or you do not have access.",
-        "back": "Back to finance"
+        "title": "Транзакция не найдена",
+        "description": "Транзакция могла быть удалена или у вас нет доступа.",
+        "back": "К финансам"
       },
       "actionErrors": {
-        "unauthorized": "You are not authorized to make this change.",
-        "forbidden": "You can only manage finance for your assigned creators.",
-        "invalid": "Invalid transaction data.",
-        "invalidStatus": "Invalid status.",
-        "invalidNotes": "Invalid notes.",
-        "create": "Unable to create transaction.",
-        "save": "Unable to save changes.",
-        "delete": "Unable to delete transaction.",
-        "ownerOnly": "Only the owner can delete transactions.",
+        "unauthorized": "У вас нет прав на это действие.",
+        "forbidden": "Можно управлять финансами только своих креаторов.",
+        "invalid": "Некорректные данные транзакции.",
+        "invalidStatus": "Некорректный статус.",
+        "invalidNotes": "Некорректные заметки.",
+        "create": "Не удалось создать транзакцию.",
+        "save": "Не удалось сохранить изменения.",
+        "delete": "Не удалось удалить транзакцию.",
+        "ownerOnly": "Удалять транзакции может только владелец.",
         "invalidManager": "Можно назначать только активных сотрудников.",
         "export": "Не удалось экспортировать.",
-        "notFound": "Not found."
+        "notFound": "Не найдено."
       },
-      "emptyTitle": "No transactions yet",
-      "emptyDescription": "Create a transaction or adjust your filters.",
-      "emptyAction": "New transaction",
-      "retry": "Try again",
+      "emptyTitle": "Транзакций пока нет",
+      "emptyDescription": "Создайте транзакцию или измените фильтры.",
+      "emptyAction": "Новая транзакция",
+      "retry": "Повторить",
       "tabs": {
         "overview": "Обзор",
         "transactions": "Операции",
@@ -1332,7 +1332,8 @@
         "pay": "Выплатить",
         "view": "Открыть",
         "rejectReason": "Причина отклонения",
-        "confirmReject": "Подтвердить отклонение"
+        "confirmReject": "Подтвердить отклонение",
+        "error": "Ошибка"
       },
       "commissions": {
         "title": "Комиссии",
@@ -1354,7 +1355,8 @@
         "revenueByCreator": "Доход по креаторам",
         "agencyProfit": "Прибыль агентства",
         "payouts": "Выплаты",
-        "empty": "Пока нет данных для графиков."
+        "empty": "Пока нет данных для графиков.",
+        "value": "Значение"
       },
       "reports": {
         "month": "Месяц",
@@ -1369,7 +1371,44 @@
         "csv": "CSV",
         "excel": "Excel",
         "pdf": "PDF",
-        "error": "Не удалось экспортировать."
+        "error": "Не удалось экспортировать.",
+        "pdfTitle": "Финансы — {kind}",
+        "empty": "Нет данных",
+        "kinds": {
+          "transactions": "Транзакции",
+          "payouts": "Выплаты",
+          "report": "Отчёт"
+        },
+        "headers": {
+          "id": "ID",
+          "creatorId": "ID креатора",
+          "managerId": "ID менеджера",
+          "platform": "Платформа",
+          "transactionDate": "Дата транзакции",
+          "grossRevenue": "Валовый доход",
+          "agencyAmount": "Сумма агентства",
+          "creatorAmount": "Сумма креатора",
+          "currency": "Валюта",
+          "status": "Статус",
+          "paymentMethod": "Способ оплаты",
+          "referenceId": "Номер ссылки",
+          "notes": "Заметки",
+          "amount": "Сумма",
+          "method": "Метод",
+          "periodStart": "Начало периода",
+          "periodEnd": "Конец периода",
+          "requestedAt": "Запрошено",
+          "approvedAt": "Одобрено",
+          "paidAt": "Выплачено",
+          "rejectionReason": "Причина отклонения",
+          "receiptNumber": "Номер квитанции",
+          "month": "Месяц",
+          "year": "Год",
+          "revenue": "Доход",
+          "commission": "Комиссия",
+          "expenses": "Расходы",
+          "netProfit": "Чистая прибыль"
+        }
       },
       "balances": {
         "title": "Балансы креаторов",
@@ -2161,34 +2200,34 @@
   "common": {
     "language": "Язык",
     "ux": {
-      "retry": "Try again",
-      "cancel": "Cancel",
+      "retry": "Повторить",
+      "cancel": "Отмена",
       "confirm": {
-        "title": "Are you sure?",
-        "delete": "This action cannot be undone.",
-        "archive": "Archive this item?",
-        "reject": "Reject this item?",
-        "deactivate": "Deactivate this account?"
+        "title": "Вы уверены?",
+        "delete": "Это действие нельзя отменить.",
+        "archive": "Архивировать этот элемент?",
+        "reject": "Отклонить этот элемент?",
+        "deactivate": "Деактивировать этот аккаунт?"
       },
-      "save": "Save",
-      "saving": "Saving…",
-      "clearFilters": "Clear filters",
-      "required": "Required",
-      "loading": "Loading…",
+      "save": "Сохранить",
+      "saving": "Сохранение…",
+      "clearFilters": "Сбросить фильтры",
+      "required": "Обязательно",
+      "loading": "Загрузка…",
       "empty": {
-        "title": "Nothing here yet",
-        "description": "Try adjusting filters or create a new item.",
-        "action": "Get started"
+        "title": "Пока ничего нет",
+        "description": "Измените фильтры или создайте новый элемент.",
+        "action": "Начать"
       },
       "error": {
-        "title": "Something went wrong",
-        "description": "We couldn’t load this section. Please try again."
+        "title": "Что-то пошло не так",
+        "description": "Не удалось загрузить этот раздел. Попробуйте снова."
       },
       "toast": {
-        "success": "Saved",
-        "error": "Something went wrong",
-        "warning": "Please review",
-        "info": "Updated"
+        "success": "Сохранено",
+        "error": "Что-то пошло не так",
+        "warning": "Проверьте данные",
+        "info": "Обновлено"
       }
     }
   },

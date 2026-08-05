@@ -9,8 +9,8 @@ function MiniChart() {
     <svg viewBox="0 0 200 60" className="h-14 w-full" preserveAspectRatio="none">
       <defs>
         <linearGradient id="nhtChartFill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgba(200,164,93,0.25)" />
-          <stop offset="100%" stopColor="rgba(200,164,93,0)" />
+          <stop offset="0%" stopColor="rgba(124,58,237,0.25)" />
+          <stop offset="100%" stopColor="rgba(124,58,237,0)" />
         </linearGradient>
       </defs>
       <motion.path
@@ -23,7 +23,7 @@ function MiniChart() {
       <motion.polyline
         points={points}
         fill="none"
-        stroke="#C8A45D"
+        stroke="#8B5CF6"
         strokeWidth="1.5"
         strokeLinecap="round"
         initial={{ pathLength: 0, opacity: 0 }}

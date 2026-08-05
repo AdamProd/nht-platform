@@ -3,7 +3,8 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
-import Container from "@/components/ui/Container";
+import { Check, Circle } from "lucide-react";
+import Container from "@/shared/ui/Container";
 import { fadeUp } from "@/components/motion/variants";
 import { submitApplication } from "@/features/applications/actions/submit-application";
 
@@ -57,7 +58,7 @@ export default function ContactForm() {
 
   return (
     <section id="contact" className="section-padding relative">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_100%,var(--nht-gold-subtle),transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_100%,var(--nht-accent-subtle),transparent_60%)]" />
 
       <Container className="relative">
         <div className="grid items-start gap-20 lg:grid-cols-2 lg:gap-24">
@@ -67,7 +68,7 @@ export default function ContactForm() {
             viewport={{ once: true }}
             variants={fadeUp}
           >
-            <span className="text-overline mb-8 text-[var(--nht-gold)]">
+            <span className="text-overline mb-8 text-[var(--nht-accent-warm)]">
               {t("label")}
             </span>
 
@@ -89,7 +90,10 @@ export default function ContactForm() {
                   transition={{ delay: 0.15 + i * 0.08 }}
                   className="flex items-start gap-3"
                 >
-                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[var(--nht-gold)]" />
+                  <Circle
+                    className="mt-1 h-3.5 w-3.5 shrink-0 fill-[var(--nht-accent)] text-[var(--nht-accent)]"
+                    aria-hidden
+                  />
                   <span className="text-sm text-[var(--nht-text-secondary)]">
                     {t(`benefits.${key}`)}
                   </span>
@@ -123,7 +127,7 @@ export default function ContactForm() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="glass-strong premium-border rounded-[var(--nht-radius-3xl)] p-8 sm:p-10 lg:p-12"
+            className="nht-card p-8 sm:p-10 lg:p-12"
           >
             {submitted ? (
               <motion.div
@@ -131,20 +135,8 @@ export default function ContactForm() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center py-20 text-center"
               >
-                <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--nht-gold-muted)]">
-                  <svg
-                    className="h-7 w-7 text-[var(--nht-gold)]"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
+                <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--nht-accent-muted)]">
+                  <Check className="h-7 w-7 text-[var(--nht-accent-warm)]" aria-hidden />
                 </div>
                 <h3 className="text-2xl font-semibold text-white">
                   {t("success.title")}
@@ -243,9 +235,9 @@ export default function ContactForm() {
                 <motion.button
                   type="submit"
                   disabled={pending}
-                  whileHover={pending ? undefined : { scale: 1.01 }}
-                  whileTap={pending ? undefined : { scale: 0.99 }}
-                  className="gold-gradient-bg mt-2 w-full rounded-full py-4 text-sm font-semibold text-[#090909] transition-shadow hover:shadow-[var(--nht-shadow-glow-strong)] disabled:cursor-not-allowed disabled:opacity-70"
+                  whileHover={pending ? undefined : { scale: 1.02 }}
+                  whileTap={pending ? undefined : { scale: 0.98 }}
+                  className="accent-gradient-bg focus-ring mt-2 w-full rounded-full py-4 text-sm font-semibold text-white shadow-[var(--nht-shadow-glow)] transition-shadow hover:shadow-[var(--nht-shadow-glow-strong)] disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {pending ? t("form.submitting") : t("form.submit")}
                 </motion.button>

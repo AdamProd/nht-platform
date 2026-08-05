@@ -28,7 +28,7 @@ export type StaffDetail = Tables<"profiles"> & {
     id: string;
     title: string;
     status: string;
-    creator_id: string;
+    creator_id: string | null;
   }>;
 };
 
@@ -59,16 +59,25 @@ export const STAFF_EMPLOYEE_ROLES = STAFF_ROLES;
 
 export type StaffEmployeeRole = (typeof STAFF_EMPLOYEE_ROLES)[number];
 
-/** Roles that can be assigned when creating staff (not creator/guest/owner). */
+/**
+ * Roles assignable when creating staff.
+ * `content_manager` is shown as Editor in the UI (DB enum value).
+ */
 export const ASSIGNABLE_STAFF_ROLES = [
   "admin",
   "manager",
-  "support",
-  "moderator",
-  "content_manager",
   "finance",
-  "viewer",
+  "support",
+  "content_manager",
 ] as const satisfies readonly UserRole[];
+
+/** Departments shown on the create-employee form. */
+export const CREATE_STAFF_DEPARTMENTS = [
+  "marketing",
+  "finance",
+  "support",
+  "management",
+] as const satisfies readonly StaffDepartment[];
 
 export const STAFF_DEPARTMENTS = [
   "management",

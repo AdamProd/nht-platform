@@ -40,7 +40,7 @@ export default function Logo({
   const content = (
     <div className={`flex flex-col ${s.gap} ${className}`}>
       <span
-        className={`${s.mark} font-semibold tracking-[-0.04em] text-white transition-colors group-hover:text-[var(--nht-gold)]`}
+        className={`${s.mark} font-semibold tracking-[-0.04em] text-white transition-colors group-hover:text-[var(--nht-accent)]`}
       >
         {t("name")}
       </span>

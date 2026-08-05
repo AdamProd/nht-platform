@@ -128,7 +128,11 @@ export default async function AdminActivityPage({
             labels={{
               previous: t("pagination.previous"),
               next: t("pagination.next"),
-              pageOf: t("pagination.pageOf"),
+              pageOf: t("pagination.pageOf", {
+                page: list.page,
+                totalPages: list.totalPages,
+                total: list.total,
+              }),
             }}
           />
         </>

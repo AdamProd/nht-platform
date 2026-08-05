@@ -7,7 +7,7 @@ export async function listStaffManagers(): Promise<StaffManagerOption[]> {
 
   const { data, error } = await supabase
     .from("profiles")
-    .select("id, full_name, role")
+    .select("id, full_name, role, avatar_url")
     .in("role", ["owner", "admin", "manager"])
     .order("full_name", { ascending: true });
 

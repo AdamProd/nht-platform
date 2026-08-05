@@ -260,6 +260,14 @@ export default async function AdminFinancePage({ params, searchParams }: Props) 
     other: t("platforms.other"),
   } satisfies Record<FinancePlatform, string>;
 
+  const chartValueLabel = t("charts.value");
+  const revenueByPlatformPoints = charts.revenueByPlatform.map((point) => ({
+    ...point,
+    label:
+      platformLabels[point.label as FinancePlatform] ??
+      point.label,
+  }));
+
   const methodLabels = {
     stripe: t("methods.stripe"),
     wise: t("methods.wise"),
@@ -395,28 +403,33 @@ export default async function AdminFinancePage({ params, searchParams }: Props) 
               title={t("charts.revenueByMonth")}
               points={charts.revenueByMonth}
               empty={t("charts.empty")}
+              valueLabel={chartValueLabel}
             />
             <FinanceChartCard
               title={t("charts.agencyProfit")}
               points={charts.agencyProfitByMonth}
               empty={t("charts.empty")}
+              valueLabel={chartValueLabel}
             />
             <FinanceChartCard
               title={t("charts.revenueByPlatform")}
-              points={charts.revenueByPlatform}
+              points={revenueByPlatformPoints}
               empty={t("charts.empty")}
+              valueLabel={chartValueLabel}
               variant="bar"
             />
             <FinanceChartCard
               title={t("charts.revenueByCreator")}
               points={charts.revenueByCreator}
               empty={t("charts.empty")}
+              valueLabel={chartValueLabel}
               variant="bar"
             />
             <FinanceChartCard
               title={t("charts.payouts")}
               points={charts.payoutsByMonth}
               empty={t("charts.empty")}
+              valueLabel={chartValueLabel}
               variant="bar"
             />
           </div>
@@ -584,6 +597,7 @@ export default async function AdminFinancePage({ params, searchParams }: Props) 
               rejectReason: t("payoutActions.rejectReason"),
               cancel: t("form.cancel"),
               confirmReject: t("payoutActions.confirmReject"),
+              error: t("payoutActions.error"),
             }}
             statusLabels={payoutStatusLabels}
             methodLabels={payoutMethodLabels}
@@ -684,23 +698,27 @@ export default async function AdminFinancePage({ params, searchParams }: Props) 
               title={t("charts.revenueByMonth")}
               points={charts.revenueByMonth}
               empty={t("charts.empty")}
+              valueLabel={chartValueLabel}
             />
             <FinanceChartCard
               title={t("charts.revenueByCreator")}
               points={charts.revenueByCreator}
               empty={t("charts.empty")}
+              valueLabel={chartValueLabel}
               variant="bar"
             />
             <FinanceChartCard
               title={t("charts.revenueByPlatform")}
-              points={charts.revenueByPlatform}
+              points={revenueByPlatformPoints}
               empty={t("charts.empty")}
+              valueLabel={chartValueLabel}
               variant="bar"
             />
             <FinanceChartCard
               title={t("charts.agencyProfit")}
               points={charts.agencyProfitByMonth}
               empty={t("charts.empty")}
+              valueLabel={chartValueLabel}
             />
           </div>
         </div>

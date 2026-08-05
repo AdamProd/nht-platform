@@ -5,10 +5,11 @@ export type CabinetActionResult =
 export const CABINET_PLATFORMS = [
   "onlyfans",
   "fansly",
+  "manyvids",
+  "chaturbate",
   "instagram",
   "tiktok",
   "twitter",
-  "chaturbate",
 ] as const;
 
 export type CabinetPlatform = (typeof CABINET_PLATFORMS)[number];

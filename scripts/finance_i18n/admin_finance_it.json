@@ -1,0 +1,308 @@
+{
+  "label": "Finanze",
+  "title": "Finanze",
+  "description": "Monitora i ricavi dei creator, le commissioni e i pagamenti.",
+  "detailLabel": "Transazione",
+  "backToList": "Torna alle finanze",
+  "transactionsTitle": "Transazioni",
+  "empty": "Nessuna transazione ancora.",
+  "unassigned": "Non assegnato",
+  "none": "Nessuno",
+  "kpis": {
+    "totalRevenue": "Ricavi totali",
+    "agencyRevenue": "Ricavi dell’agenzia",
+    "creatorRevenue": "Ricavi dei creator",
+    "pendingPayouts": "Pagamenti in sospeso",
+    "paidThisMonth": "Pagato questo mese",
+    "activeCreators": "Creator attivi",
+    "revenueToday": "Ricavi di oggi",
+    "revenueThisMonth": "Ricavi del mese",
+    "revenueThisYear": "Ricavi dell’anno",
+    "revenueThisWeek": "Ricavi della settimana",
+    "countPending": "In attesa",
+    "countApproved": "Approvato",
+    "countRejected": "Rifiutato",
+    "countPaid": "Pagato",
+    "outstandingBalance": "Saldo residuo",
+    "averageRevenuePerCreator": "Ricavo medio / creator"
+  },
+  "summaries": {
+    "creatorTitle": "Riepilogo creator",
+    "agencyTitle": "Riepilogo agenzia",
+    "lifetimeRevenue": "Ricavi lifetime",
+    "thisMonth": "Questo mese",
+    "pendingPayout": "Pagamento in sospeso",
+    "lastPayout": "Ultimo pagamento",
+    "averageMonthly": "Ricavo mensile medio",
+    "monthlyRevenue": "Ricavi mensili",
+    "quarterRevenue": "Ricavi trimestrali",
+    "yearRevenue": "Ricavi annuali"
+  },
+  "integrations": {
+    "title": "Integrazioni di pagamento",
+    "description": "Collega i provider di pagamento. Solo architettura — nessuna integrazione live ancora.",
+    "comingSoon": "Prossimamente"
+  },
+  "filters": {
+    "search": "Cerca",
+    "searchPlaceholder": "Piattaforma, riferimento, note",
+    "status": "Stato",
+    "platform": "Piattaforma",
+    "creator": "Creator",
+    "manager": "Manager",
+    "from": "Da",
+    "to": "A",
+    "all": "Tutti",
+    "apply": "Applica",
+    "clear": "Cancella",
+    "sort": "Ordina"
+  },
+  "table": {
+    "date": "Data",
+    "creator": "Creator",
+    "platform": "Piattaforma",
+    "gross": "Ricavo lordo",
+    "agencyPercent": "Agenzia %",
+    "agencyAmount": "Importo agenzia",
+    "creatorPercent": "Creator %",
+    "creatorAmount": "Importo creator",
+    "status": "Stato",
+    "manager": "Manager",
+    "actions": "Azioni",
+    "view": "Apri"
+  },
+  "pagination": {
+    "previous": "Precedente",
+    "next": "Successivo",
+    "pageOf": "Pagina {page} di {totalPages} · {total} totali"
+  },
+  "fields": {
+    "creator": "Creator",
+    "manager": "Manager",
+    "platform": "Piattaforma",
+    "date": "Data",
+    "gross": "Ricavo lordo",
+    "currency": "Valuta",
+    "agencyPercent": "Agenzia %",
+    "agencyAmount": "Importo agenzia",
+    "creatorPercent": "Creator %",
+    "creatorAmount": "Importo creator",
+    "status": "Stato",
+    "paymentMethod": "Metodo di pagamento",
+    "referenceId": "ID riferimento",
+    "notes": "Note",
+    "created": "Creato",
+    "updated": "Aggiornato"
+  },
+  "sections": {
+    "details": "Dettagli",
+    "status": "Stato",
+    "notes": "Note",
+    "meta": "Cronologia"
+  },
+  "status": {
+    "pending": "In attesa",
+    "approved": "Approvato",
+    "paid": "Pagato",
+    "cancelled": "Annullato",
+    "disputed": "Contestato"
+  },
+  "platforms": {
+    "onlyfans": "OnlyFans",
+    "fansly": "Fansly",
+    "manyvids": "ManyVids",
+    "chaturbate": "Chaturbate",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "twitter": "X (Twitter)",
+    "other": "Altro"
+  },
+  "methods": {
+    "stripe": "Stripe",
+    "wise": "Wise",
+    "paypal": "PayPal",
+    "crypto": "Crypto",
+    "bankTransfer": "Bonifico bancario",
+    "other": "Altro"
+  },
+  "form": {
+    "title": "Nuova transazione",
+    "open": "Aggiungi transazione",
+    "cancel": "Annulla",
+    "submit": "Crea",
+    "submitting": "Creazione…"
+  },
+  "actions": {
+    "save": "Salva",
+    "saving": "Salvataggio…",
+    "saveError": "Impossibile salvare le modifiche.",
+    "delete": "Elimina transazione",
+    "deleting": "Eliminazione…",
+    "confirmDelete": "Eliminare definitivamente questa transazione?"
+  },
+  "toast": {
+    "created": "Transazione creata.",
+    "saved": "Modifiche salvate.",
+    "deleted": "Transazione eliminata."
+  },
+  "errors": {
+    "load": "Impossibile caricare i dati finanziari.",
+    "loadDetail": "Impossibile caricare questa transazione.",
+    "boundary": "Si è verificato un errore nel caricamento delle finanze.",
+    "retry": "Riprova"
+  },
+  "notFound": {
+    "title": "Transazione non trovata",
+    "description": "Questa transazione potrebbe essere stata rimossa o non hai accesso.",
+    "back": "Torna alle finanze"
+  },
+  "actionErrors": {
+    "unauthorized": "Non sei autorizzato a apportare questa modifica.",
+    "forbidden": "Puoi gestire solo le finanze dei creator assegnati.",
+    "invalid": "Dati della transazione non validi.",
+    "invalidStatus": "Stato non valido.",
+    "invalidNotes": "Note non valide.",
+    "create": "Impossibile creare la transazione.",
+    "save": "Impossibile salvare le modifiche.",
+    "delete": "Impossibile eliminare la transazione.",
+    "ownerOnly": "Solo il proprietario può eliminare le transazioni.",
+    "invalidManager": "Si possono assegnare solo collaboratori attivi.",
+    "export": "Impossibile esportare.",
+    "notFound": "Non trovato."
+  },
+  "emptyTitle": "Nessuna transazione",
+  "emptyDescription": "Crea una transazione o modifica i filtri.",
+  "emptyAction": "Nuova transazione",
+  "retry": "Riprova",
+  "tabs": {
+    "overview": "Panoramica",
+    "transactions": "Transazioni",
+    "payouts": "Pagamenti",
+    "reports": "Report",
+    "commissions": "Commissioni"
+  },
+  "payoutsTitle": "Pagamenti",
+  "reportsTitle": "Report mensili",
+  "payoutsEmpty": "Nessun pagamento ancora.",
+  "payoutStatus": {
+    "pending": "Richiesto",
+    "processing": "Approvato",
+    "completed": "Pagato",
+    "failed": "Rifiutato"
+  },
+  "payoutMethods": {
+    "bank": "Banca",
+    "paypal": "PayPal",
+    "crypto": "Crypto",
+    "other": "Altro"
+  },
+  "payoutsTable": {
+    "creator": "Creator",
+    "amount": "Importo",
+    "currency": "Valuta",
+    "method": "Metodo",
+    "requested": "Richiesto",
+    "approved": "Approvato",
+    "paid": "Pagato",
+    "status": "Stato",
+    "actions": "Azioni"
+  },
+  "payoutActions": {
+    "approve": "Approva",
+    "reject": "Rifiuta",
+    "pay": "Paga",
+    "view": "Apri",
+    "rejectReason": "Motivo del rifiuto",
+    "confirmReject": "Conferma rifiuto",
+    "error": "Errore"
+  },
+  "commissions": {
+    "title": "Commissioni",
+    "description": "Configura le percentuali di agenzia, manager, referral e bonus.",
+    "agency": "Agenzia %",
+    "manager": "Manager %",
+    "referral": "Referral %",
+    "bonus": "Bonus %",
+    "note": "Nota di modifica",
+    "save": "Salva commissioni",
+    "saving": "Salvataggio…",
+    "history": "Cronologia modifiche",
+    "emptyHistory": "Nessuna modifica alle commissioni.",
+    "by": "Di"
+  },
+  "charts": {
+    "revenueByMonth": "Ricavi per mese",
+    "revenueByPlatform": "Ricavi per piattaforma",
+    "revenueByCreator": "Ricavi per creator",
+    "agencyProfit": "Profitto agenzia",
+    "payouts": "Pagamenti",
+    "empty": "Nessun dato per i grafici.",
+    "value": "Valore"
+  },
+  "reports": {
+    "month": "Mese",
+    "year": "Anno",
+    "revenue": "Ricavi",
+    "commission": "Commissione",
+    "expenses": "Spese",
+    "netProfit": "Utile netto"
+  },
+  "export": {
+    "label": "Esporta",
+    "csv": "CSV",
+    "excel": "Excel",
+    "pdf": "PDF",
+    "error": "Impossibile esportare.",
+    "pdfTitle": "Finanze — {kind}",
+    "empty": "Nessun dato",
+    "kinds": {
+      "transactions": "Transazioni",
+      "payouts": "Pagamenti",
+      "report": "Report"
+    },
+    "headers": {
+      "id": "ID",
+      "creatorId": "ID creator",
+      "managerId": "ID manager",
+      "platform": "Piattaforma",
+      "transactionDate": "Data transazione",
+      "grossRevenue": "Ricavo lordo",
+      "agencyAmount": "Importo agenzia",
+      "creatorAmount": "Importo creator",
+      "currency": "Valuta",
+      "status": "Stato",
+      "paymentMethod": "Metodo di pagamento",
+      "referenceId": "ID riferimento",
+      "notes": "Note",
+      "amount": "Importo",
+      "method": "Metodo",
+      "periodStart": "Inizio periodo",
+      "periodEnd": "Fine periodo",
+      "requestedAt": "Richiesto il",
+      "approvedAt": "Approvato il",
+      "paidAt": "Pagato il",
+      "rejectionReason": "Motivo del rifiuto",
+      "receiptNumber": "Numero ricevuta",
+      "month": "Mese",
+      "year": "Anno",
+      "revenue": "Ricavi",
+      "commission": "Commissione",
+      "expenses": "Spese",
+      "netProfit": "Utile netto"
+    }
+  },
+  "balances": {
+    "title": "Saldi dei creator",
+    "empty": "Nessun saldo creator ancora.",
+    "currentBalance": "Saldo attuale",
+    "pending": "In attesa",
+    "paid": "Pagato",
+    "lifetimeRevenue": "Ricavi lifetime"
+  },
+  "sort": {
+    "date_desc": "Data (più recenti)",
+    "date_asc": "Data (più vecchie)",
+    "gross_desc": "Lordo (alto-basso)",
+    "gross_asc": "Lordo (basso-alto)"
+  }
+}

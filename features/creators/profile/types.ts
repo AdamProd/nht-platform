@@ -1,6 +1,7 @@
-import type { ActivityLogRow } from "@/features/core/events/types";
 import type { CreatorDetail, CreatorPlatform } from "@/features/creators/types";
 import type { StaffManagerOption } from "@/features/applications/types";
+import type { CreatorTimelinePage } from "@/features/creators/profile/timeline/types/timeline";
+import type { TaskListItem } from "@/features/tasks/types";
 import type { Tables } from "@/types/database.types";
 
 export type CreatorProfileTab =
@@ -10,7 +11,7 @@ export type CreatorProfileTab =
   | "tasks"
   | "documents"
   | "finance"
-  | "activity";
+  | "timeline";
 
 export type CreatorProfileStats = {
   revenue: number;
@@ -45,9 +46,7 @@ export type CreatorPlatformCard = {
   connectedAt: string | null;
 };
 
-export type CreatorProfileTask = Tables<"creator_tasks"> & {
-  manager: { id: string; full_name: string | null } | null;
-};
+export type CreatorProfileTask = TaskListItem;
 
 export type CreatorProfileDocument = Tables<"creator_documents">;
 export type CreatorProfilePayout = Tables<"creator_payouts">;
@@ -68,5 +67,5 @@ export type CreatorProfileBundle = {
   documents: CreatorProfileDocument[];
   payouts: CreatorProfilePayout[];
   transactions: CreatorProfileTransaction[];
-  activity: ActivityLogRow[];
+  timeline: CreatorTimelinePage;
 };

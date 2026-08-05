@@ -1,0 +1,202 @@
+{
+  "kpis": {
+    "totalRevenue": "Общий доход",
+    "agencyRevenue": "Доход агентства",
+    "creatorRevenue": "Доход креаторов",
+    "pendingPayouts": "Ожидающие выплаты",
+    "paidThisMonth": "Выплачено за месяц",
+    "activeCreators": "Активные креаторы",
+    "revenueToday": "Доход за сегодня",
+    "revenueThisMonth": "Доход за месяц",
+    "revenueThisYear": "Доход за год",
+    "revenueThisWeek": "Выручка за неделю",
+    "countPending": "Ожидает",
+    "countApproved": "Одобрено",
+    "countRejected": "Отклонено",
+    "countPaid": "Выплачено",
+    "outstandingBalance": "Непогашенный баланс",
+    "averageRevenuePerCreator": "Средний доход / креатор"
+  },
+  "summaries": {
+    "creatorTitle": "Сводка по креатору",
+    "agencyTitle": "Сводка по агентству",
+    "lifetimeRevenue": "Доход за всё время",
+    "thisMonth": "Этот месяц",
+    "pendingPayout": "Ожидающая выплата",
+    "lastPayout": "Последняя выплата",
+    "averageMonthly": "Средний месячный доход",
+    "monthlyRevenue": "Доход за месяц",
+    "quarterRevenue": "Доход за квартал",
+    "yearRevenue": "Доход за год"
+  },
+  "integrations": {
+    "title": "Платёжные интеграции",
+    "description": "Подключение провайдеров выплат. Пока только архитектура — без живых интеграций.",
+    "comingSoon": "Скоро"
+  },
+  "filters": {
+    "search": "Поиск",
+    "searchPlaceholder": "Платформа, ссылка, заметки",
+    "status": "Статус",
+    "platform": "Платформа",
+    "creator": "Креатор",
+    "manager": "Менеджер",
+    "from": "С",
+    "to": "По",
+    "all": "Все",
+    "apply": "Применить",
+    "clear": "Сбросить",
+    "sort": "Сортировка"
+  },
+  "table": {
+    "date": "Дата",
+    "creator": "Креатор",
+    "platform": "Платформа",
+    "gross": "Валовый доход",
+    "agencyPercent": "Агентство %",
+    "agencyAmount": "Сумма агентства",
+    "creatorPercent": "Креатор %",
+    "creatorAmount": "Сумма креатора",
+    "status": "Статус",
+    "manager": "Менеджер",
+    "actions": "Действия",
+    "view": "Открыть"
+  },
+  "pagination": {
+    "previous": "Назад",
+    "next": "Далее",
+    "pageOf": "Страница {page} из {totalPages} · всего {total}"
+  },
+  "fields": {
+    "creator": "Креатор",
+    "manager": "Менеджер",
+    "platform": "Платформа",
+    "date": "Дата",
+    "gross": "Валовый доход",
+    "currency": "Валюта",
+    "agencyPercent": "Агентство %",
+    "agencyAmount": "Сумма агентства",
+    "creatorPercent": "Креатор %",
+    "creatorAmount": "Сумма креатора",
+    "status": "Статус",
+    "paymentMethod": "Способ оплаты",
+    "referenceId": "Номер ссылки",
+    "notes": "Заметки",
+    "created": "Создано",
+    "updated": "Обновлено"
+  },
+  "sections": {
+    "details": "Детали",
+    "status": "Статус",
+    "notes": "Заметки",
+    "meta": "Хронология"
+  },
+  "status": {
+    "pending": "Ожидает",
+    "approved": "Одобрено",
+    "paid": "Выплачено",
+    "cancelled": "Отменено",
+    "disputed": "Спор"
+  },
+  "platforms": {
+    "onlyfans": "OnlyFans",
+    "fansly": "Fansly",
+    "manyvids": "ManyVids",
+    "chaturbate": "Chaturbate",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "twitter": "X (Twitter)",
+    "other": "Другое"
+  },
+  "methods": {
+    "stripe": "Stripe",
+    "wise": "Wise",
+    "paypal": "PayPal",
+    "crypto": "Крипто",
+    "bankTransfer": "Банковский перевод",
+    "other": "Другое"
+  },
+  "errors": {
+    "load": "Не удалось загрузить финансы.",
+    "loadDetail": "Не удалось загрузить транзакцию.",
+    "boundary": "Ошибка при загрузке финансов.",
+    "retry": "Повторить"
+  },
+  "notFound": {
+    "title": "Транзакция не найдена",
+    "description": "Транзакция могла быть удалена или у вас нет доступа.",
+    "back": "К финансам"
+  },
+  "actionErrors": {
+    "unauthorized": "У вас нет прав на это действие.",
+    "forbidden": "Можно управлять финансами только своих креаторов.",
+    "invalid": "Некорректные данные транзакции.",
+    "invalidStatus": "Некорректный статус.",
+    "invalidNotes": "Некорректные заметки.",
+    "create": "Не удалось создать транзакцию.",
+    "save": "Не удалось сохранить изменения.",
+    "delete": "Не удалось удалить транзакцию.",
+    "ownerOnly": "Удалять транзакции может только владелец.",
+    "invalidManager": "Можно назначать только активных сотрудников.",
+    "export": "Не удалось экспортировать.",
+    "notFound": "Не найдено."
+  },
+  "emptyTitle": "Транзакций пока нет",
+  "emptyDescription": "Создайте транзакцию или измените фильтры.",
+  "emptyAction": "Новая транзакция",
+  "retry": "Повторить",
+  "payoutMethods": {
+    "bank": "Банк",
+    "paypal": "PayPal",
+    "crypto": "Крипто",
+    "other": "Другое"
+  },
+  "payoutActions": {
+    "error": "Ошибка"
+  },
+  "charts": {
+    "value": "Значение"
+  },
+  "export": {
+    "csv": "CSV",
+    "excel": "Excel",
+    "pdf": "PDF",
+    "pdfTitle": "Финансы — {kind}",
+    "empty": "Нет данных",
+    "kinds": {
+      "transactions": "Транзакции",
+      "payouts": "Выплаты",
+      "report": "Отчёт"
+    },
+    "headers": {
+      "id": "ID",
+      "creatorId": "ID креатора",
+      "managerId": "ID менеджера",
+      "platform": "Платформа",
+      "transactionDate": "Дата транзакции",
+      "grossRevenue": "Валовый доход",
+      "agencyAmount": "Сумма агентства",
+      "creatorAmount": "Сумма креатора",
+      "currency": "Валюта",
+      "status": "Статус",
+      "paymentMethod": "Способ оплаты",
+      "referenceId": "Номер ссылки",
+      "notes": "Заметки",
+      "amount": "Сумма",
+      "method": "Метод",
+      "periodStart": "Начало периода",
+      "periodEnd": "Конец периода",
+      "requestedAt": "Запрошено",
+      "approvedAt": "Одобрено",
+      "paidAt": "Выплачено",
+      "rejectionReason": "Причина отклонения",
+      "receiptNumber": "Номер квитанции",
+      "month": "Месяц",
+      "year": "Год",
+      "revenue": "Доход",
+      "commission": "Комиссия",
+      "expenses": "Расходы",
+      "netProfit": "Чистая прибыль"
+    }
+  }
+}

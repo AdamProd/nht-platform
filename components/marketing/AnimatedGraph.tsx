@@ -11,7 +11,7 @@ interface AnimatedGraphProps {
 
 export default function AnimatedGraph({
   data,
-  color = "#C8A45D",
+  color = "#8B5CF6",
   height = 80,
   className = "",
 }: AnimatedGraphProps) {

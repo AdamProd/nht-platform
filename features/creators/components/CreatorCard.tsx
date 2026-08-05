@@ -3,8 +3,8 @@ import type { CreatorListItem } from "@/features/creators/types";
 import CreatorStatusBadge from "@/features/creators/components/CreatorStatusBadge";
 import {
   displayName,
-  formatList,
   formatMoney,
+  formatPlatformList,
   initials,
 } from "@/features/creators/lib/format";
 
@@ -13,6 +13,7 @@ type CreatorCardProps = {
   statusLabel: string;
   unassigned: string;
   locale: string;
+  platformLabels?: Record<string, string>;
 };
 
 export default function CreatorCard({
@@ -20,6 +21,7 @@ export default function CreatorCard({
   statusLabel,
   unassigned,
   locale,
+  platformLabels = {},
 }: CreatorCardProps) {
   const name = displayName(creator);
 
@@ -50,7 +52,7 @@ export default function CreatorCard({
         </p>
         <p className="mt-1 truncate text-xs text-[var(--nht-text-tertiary)]">
           {formatMoney(creator.revenue_current_month, locale)} ·{" "}
-          {formatList(creator.platforms)} ·{" "}
+          {formatPlatformList(creator.platforms, platformLabels)} ·{" "}
           {creator.manager?.full_name ?? unassigned}
         </p>
       </div>

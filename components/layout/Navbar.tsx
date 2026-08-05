@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import Logo from "@/components/brand/Logo";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
+import Button from "@/shared/ui/Button";
 
 export default function Navbar() {
   const t = useTranslations("nav");
@@ -20,36 +21,48 @@ export default function Navbar() {
   ];
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
+
   return (
     <motion.header
-      initial={{ y: -16, opacity: 0 }}
+      initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 right-0 left-0 z-50 px-4 pt-5 sm:px-6"
+      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 right-0 left-0 z-50 px-3 pt-4 sm:px-5 sm:pt-5"
     >
       <div className="mx-auto max-w-[var(--nht-container-max)] px-[var(--nht-container-padding)]">
         <nav
-          className={`flex items-center justify-between rounded-2xl px-5 py-3.5 transition-all duration-500 lg:px-7 ${
-            scrolled
+          aria-label="Primary"
+          className={`flex items-center justify-between rounded-2xl px-4 py-3 transition-all duration-500 lg:px-7 lg:py-3.5 ${
+            scrolled || menuOpen
               ? "glass-strong premium-border shadow-[var(--nht-shadow-md)]"
-              : "bg-transparent"
+              : "border border-transparent bg-white/[0.02] backdrop-blur-md"
           }`}
         >
           <Logo size="md" />
 
-          <ul className="hidden items-center gap-10 lg:flex">
+          <ul className="hidden items-center gap-9 lg:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm text-white/50 transition-colors duration-300 hover:text-white"
+                  className="focus-ring group relative text-sm text-white/50 transition-colors duration-300 hover:text-white"
                 >
                   {link.label}
+                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-[var(--nht-accent)] transition-all duration-300 group-hover:w-full" />
                 </Link>
               </li>
             ))}
@@ -57,20 +70,17 @@ export default function Navbar() {
 
           <div className="hidden items-center gap-4 lg:flex">
             <LanguageSwitcher variant="desktop" />
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <Link
-                href="#contact"
-                className="gold-gradient-bg inline-flex rounded-full px-6 py-2.5 text-sm font-semibold text-[#090909]"
-              >
-                {t("apply")}
-              </Link>
-            </motion.div>
+            <Button href="#contact" variant="primary" size="compact">
+              {t("apply")}
+            </Button>
           </div>
 
           <button
             type="button"
-            aria-label="Toggle menu"
-            className="relative z-10 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            className="focus-ring relative z-10 flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg lg:hidden"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             <motion.span
@@ -92,17 +102,18 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-nav"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="glass-strong premium-border mx-4 mt-2 overflow-hidden rounded-2xl sm:mx-6 lg:hidden"
+            className="glass-strong premium-border mx-3 mt-2 overflow-hidden rounded-2xl sm:mx-5 lg:hidden"
           >
             <ul className="flex flex-col p-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block px-4 py-3.5 text-sm text-white/60 transition-colors hover:text-white"
+                    className="focus-ring block rounded-xl px-4 py-3.5 text-sm text-white/60 transition-colors hover:bg-white/[0.04] hover:text-white"
                     onClick={() => setMenuOpen(false)}
                   >
                     {link.label}
@@ -114,13 +125,14 @@ export default function Navbar() {
                 onSelect={() => setMenuOpen(false)}
               />
               <li className="p-3 pt-1">
-                <Link
+                <Button
                   href="#contact"
-                  className="gold-gradient-bg block rounded-full py-3.5 text-center text-sm font-semibold text-[#090909]"
+                  variant="primary"
+                  className="w-full"
                   onClick={() => setMenuOpen(false)}
                 >
                   {t("apply")}
-                </Link>
+                </Button>
               </li>
             </ul>
           </motion.div>

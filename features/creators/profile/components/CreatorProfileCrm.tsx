@@ -43,7 +43,7 @@ import {
 import CreatorStatusBadge from "@/features/creators/components/CreatorStatusBadge";
 import FlashToast from "@/features/creators/components/FlashToast";
 import ImpersonateCreatorButton from "@/features/cabinet/impersonation/components/ImpersonateCreatorButton";
-import ActivityTimeline from "@/features/core/activity/components/ActivityTimeline";
+import CreatorTimeline from "@/features/creators/profile/timeline/components/CreatorTimeline";
 import KpiCard from "@/shared/ui/KpiCard";
 import Badge from "@/shared/ui/Badge";
 import UserAvatar from "@/shared/ui/UserAvatar";
@@ -55,7 +55,7 @@ import {
   type CreatorPlatform,
   type CreatorStatus,
 } from "@/features/creators/types";
-import { Constants } from "@/types/database.types";
+import { TASK_STATUSES } from "@/features/tasks/types";
 import type {
   CreatorProfileBundle,
   CreatorProfileDocument,
@@ -64,8 +64,6 @@ import type {
   CreatorProfileTransaction,
 } from "@/features/creators/profile/types";
 
-const CABINET_TASK_STATUSES = Constants.public.Enums.cabinet_task_status;
-
 /**
  * Labels consumed by CreatorProfileCrm. Every group is a flexible string
  * dictionary so the server page can supply exactly the keys it has
@@ -73,27 +71,10 @@ const CABINET_TASK_STATUSES = Constants.public.Enums.cabinet_task_status;
  * missing.
  *
  * - tabs: one entry per `CreatorProfileTab` (overview, platforms,
- *   statistics, tasks, documents, finance, activity)
- * - fields: profile field labels (displayName, legalName, email, telegram,
- *   phone, country, timezone, languages, languagesPlaceholder, notes,
- *   manager, status, platforms, allStatuses, allAssignees, ...)
- * - platforms: platform id -> display name
- * - platformStatus: platform link status -> display name
- * - status: creator status -> display name
- * - stats: statistics tab KPI + chart labels (monthlyRevenue,
- *   lifetimeRevenue, previousMonth, subscribers, activeTasks,
- *   payoutBalance, averageMonthly)
- * - finance: finance tab KPI labels (income, commission, payouts, balance)
- * - tables: column headers (and raw-value lookups) per table — tasks,
- *   documents, payouts (unused, kept optional), transactions, platforms
- * - actions: edit, archive, delete, save, saving, cancel, createTask,
- *   upload, comingSoon, confirmArchiveTitle, confirmArchiveDesc,
- *   confirmDeleteTitle, confirmDeleteDesc, confirm, back, empty,
- *   unassigned, impersonate, registered, lastActivity, connected,
- *   notConnected (optional extras such as saved/archived/deleted/error
- *   toast copy fall back to nearby keys when absent)
- * - activity: empty, expand, collapse, unknownActor
- * - moduleLabels / roleLabels: activity feed module + role display names
+ *   statistics, tasks, documents, finance, timeline)
+ * - timeline: emptyTitle, emptyDescription, loadMore, loading, today,
+ *   yesterday, by
+ * - roleLabels: actor role display names
  * - avatar: optional { upload, replace, delete, hint } for the avatar editor
  */
 type Labels = {
@@ -112,8 +93,15 @@ type Labels = {
     platforms: Record<string, string>;
   };
   actions: Record<string, string>;
-  activity: Record<string, string>;
-  moduleLabels: Record<string, string>;
+  timeline: {
+    emptyTitle: string;
+    emptyDescription: string;
+    loadMore: string;
+    loading: string;
+    today: string;
+    yesterday: string;
+    by: string;
+  };
   roleLabels: Record<string, string>;
   avatar?: Record<string, string>;
 };
@@ -322,7 +310,7 @@ export default function CreatorProfileCrm({
     "tasks",
     "documents",
     "finance",
-    "activity",
+    "timeline",
   ];
 
   return (
@@ -431,23 +419,27 @@ export default function CreatorProfileCrm({
         ) : null}
 
         {tab === "statistics" ? <StatisticsTab bundle={bundle} labels={labels} locale={locale} /> : null}
-        {tab === "tasks" ? <TasksTab tasks={bundle.tasks} labels={labels} locale={locale} onCreate={stub} /> : null}
+        {tab === "tasks" ? (
+          <TasksTab
+            tasks={bundle.tasks}
+            creatorId={creator.id}
+            labels={labels}
+            locale={locale}
+            onCreate={() => router.push(`/admin/tasks?creator=${creator.id}`)}
+          />
+        ) : null}
         {tab === "documents" ? (
           <DocumentsTab documents={bundle.documents} labels={labels} locale={locale} onUpload={stub} />
         ) : null}
         {tab === "finance" ? (
           <FinanceTab bundle={bundle} labels={labels} locale={locale} canReadFinance={canReadFinance} />
         ) : null}
-        {tab === "activity" ? (
-          <ActivityTimeline
-            items={bundle.activity}
-            labels={{
-              empty: labels.activity.empty,
-              expand: labels.activity.expand,
-              collapse: labels.activity.collapse,
-              unknownActor: labels.activity.unknownActor,
-            }}
-            moduleLabels={labels.moduleLabels}
+        {tab === "timeline" ? (
+          <CreatorTimeline
+            creatorId={creator.id}
+            initial={bundle.timeline}
+            locale={locale}
+            labels={labels.timeline}
             roleLabels={labels.roleLabels}
           />
         ) : null}
@@ -921,20 +913,27 @@ function priorityTone(priority: string): "neutral" | "warning" | "danger" | "inf
   return "info";
 }
 
-function taskStatusTone(status: string): "neutral" | "success" | "info" | "warning" {
+function taskStatusTone(
+  status: string,
+): "neutral" | "success" | "info" | "warning" | "danger" | "accent" {
   if (status === "completed") return "success";
-  if (status === "cancelled") return "neutral";
+  if (status === "archived") return "neutral";
+  if (status === "blocked") return "danger";
+  if (status === "waiting" || status === "review") return "warning";
   if (status === "in_progress") return "warning";
+  if (status === "new") return "accent";
   return "info";
 }
 
 function TasksTab({
   tasks,
+  creatorId,
   labels,
   locale,
   onCreate,
 }: {
   tasks: CreatorProfileTask[];
+  creatorId: string;
   labels: Labels;
   locale: string;
   onCreate: () => void;
@@ -945,15 +944,23 @@ function TasksTab({
   const assignees = useMemo(() => {
     const map = new Map<string, string>();
     for (const task of tasks) {
-      if (task.manager) map.set(task.manager.id, task.manager.full_name ?? task.manager.id);
+      if (task.assignee) {
+        map.set(task.assignee.id, task.assignee.full_name ?? task.assignee.id);
+      }
     }
     return Array.from(map.entries());
   }, [tasks]);
 
   const filtered = tasks.filter((task) => {
     if (statusFilter && task.status !== statusFilter) return false;
-    if (assigneeFilter === "unassigned" && task.manager) return false;
-    if (assigneeFilter && assigneeFilter !== "unassigned" && task.manager?.id !== assigneeFilter) return false;
+    if (assigneeFilter === "unassigned" && task.assignee) return false;
+    if (
+      assigneeFilter &&
+      assigneeFilter !== "unassigned" &&
+      task.assignee?.id !== assigneeFilter
+    ) {
+      return false;
+    }
     return true;
   });
 
@@ -970,7 +977,7 @@ function TasksTab({
       <div className="mb-4 flex flex-wrap gap-3">
         <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)} className="nht-input w-auto">
           <option value="">{labels.fields.allStatuses}</option>
-          {CABINET_TASK_STATUSES.map((status) => (
+          {TASK_STATUSES.map((status) => (
             <option key={status} value={status}>{labels.tables.tasks[status] ?? status}</option>
           ))}
         </select>
@@ -981,6 +988,12 @@ function TasksTab({
             <option key={id} value={id}>{managerName}</option>
           ))}
         </select>
+        <Link
+          href={`/admin/tasks?creator=${creatorId}`}
+          className="text-xs text-[var(--nht-accent)] hover:underline"
+        >
+          {labels.tabs.tasks}
+        </Link>
       </div>
 
       {filtered.length === 0 ? (
@@ -990,7 +1003,14 @@ function TasksTab({
           rows={filtered}
           rowKey={(task) => task.id}
           columns={[
-            { header: labels.tables.tasks.title, render: (task) => <span className="text-white">{task.title}</span> },
+            {
+              header: labels.tables.tasks.title,
+              render: (task) => (
+                <Link href={`/admin/tasks/${task.id}`} className="text-white hover:text-[var(--nht-accent)]">
+                  {task.title}
+                </Link>
+              ),
+            },
             {
               header: labels.tables.tasks.priority,
               render: (task) => (
@@ -1006,13 +1026,13 @@ function TasksTab({
             {
               header: labels.tables.tasks.dueDate,
               render: (task) => (
-                <span className="text-[var(--nht-text-secondary)]">{formatDate(task.deadline, locale)}</span>
+                <span className="text-[var(--nht-text-secondary)]">{formatDate(task.due_date, locale)}</span>
               ),
             },
             {
               header: labels.tables.tasks.assignedBy,
               render: (task) => (
-                <span className="text-[var(--nht-text-secondary)]">{task.manager?.full_name ?? labels.actions.unassigned}</span>
+                <span className="text-[var(--nht-text-secondary)]">{task.assignee?.full_name ?? labels.actions.unassigned}</span>
               ),
             },
           ]}

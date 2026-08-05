@@ -5,6 +5,7 @@ import {
   CreatorProfileCrm,
   getCreatorProfile,
 } from "@/features/creators/profile";
+import { TASK_PRIORITIES, TASK_STATUSES } from "@/features/tasks/types";
 
 type Props = {
   params: Promise<{ locale: string; id: string }>;
@@ -16,7 +17,6 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
   await requireStaff();
 
   const t = await getTranslations("admin.creators");
-  const tActivity = await getTranslations("admin.activity");
   const tRoles = await getTranslations("admin.roles");
 
   let bundle;
@@ -47,7 +47,7 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
           tasks: t("profileCrm.tabs.tasks"),
           documents: t("profileCrm.tabs.documents"),
           finance: t("profileCrm.tabs.finance"),
-          activity: t("profileCrm.tabs.activity"),
+          timeline: t("profileCrm.tabs.timeline"),
         },
         fields: {
           displayName: t("fields.displayName"),
@@ -112,6 +112,18 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
             status: t("profileCrm.tables.tasks.status"),
             dueDate: t("profileCrm.tables.tasks.dueDate"),
             assignedBy: t("profileCrm.tables.tasks.assignedBy"),
+            ...Object.fromEntries(
+              TASK_STATUSES.map((status) => [
+                status,
+                t(`profileCrm.tables.tasks.${status}`),
+              ]),
+            ),
+            ...Object.fromEntries(
+              TASK_PRIORITIES.map((priority) => [
+                priority,
+                t(`profileCrm.tables.tasks.${priority}`),
+              ]),
+            ),
           },
           documents: {
             document: t("profileCrm.tables.documents.document"),
@@ -165,21 +177,14 @@ export default async function AdminCreatorDetailPage({ params }: Props) {
           deleted: t("profileCrm.toast.deleted"),
           error: t("actions.saveError"),
         },
-        activity: {
-          empty: t("profileCrm.activity.empty"),
-          expand: tActivity("expandPayload"),
-          collapse: tActivity("collapsePayload"),
-          unknownActor: tActivity("unknownActor"),
-        },
-        moduleLabels: {
-          creators: tActivity("modules.creators"),
-          applications: tActivity("modules.applications"),
-          finance: tActivity("modules.finance"),
-          cabinet: tActivity("modules.cabinet"),
-          admin: tActivity("modules.admin"),
-          auth: tActivity("modules.auth"),
-          blog: tActivity("modules.blog"),
-          tasks: tActivity("modules.tasks"),
+        timeline: {
+          emptyTitle: t("profileCrm.timeline.emptyTitle"),
+          emptyDescription: t("profileCrm.timeline.emptyDescription"),
+          loadMore: t("profileCrm.timeline.loadMore"),
+          loading: t("profileCrm.timeline.loading"),
+          today: t("profileCrm.timeline.today"),
+          yesterday: t("profileCrm.timeline.yesterday"),
+          by: t("profileCrm.timeline.by"),
         },
         roleLabels: {
           owner: tRoles("owner"),

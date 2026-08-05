@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import SectionHeader from "@/components/ui/SectionHeader";
-import Container from "@/components/ui/Container";
+import { Plus } from "lucide-react";
+import SectionHeader from "@/shared/ui/SectionHeader";
+import Container from "@/shared/ui/Container";
 
 const faqKeys = [
   "platforms",
@@ -28,7 +29,7 @@ export default function FAQ() {
           description={t("description")}
         />
 
-        <div className="divide-y divide-white/[0.06]">
+        <div className="overflow-hidden rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02]">
           {faqKeys.map((key, index) => {
             const isOpen = openIndex === index;
 
@@ -39,10 +40,11 @@ export default function FAQ() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
+                className={index > 0 ? "border-t border-white/[0.06]" : ""}
               >
                 <button
                   type="button"
-                  className="flex w-full items-start justify-between gap-8 py-7 text-left"
+                  className="focus-ring flex w-full items-start justify-between gap-8 px-6 py-7 text-left sm:px-8"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   aria-expanded={isOpen}
                 >
@@ -52,9 +54,9 @@ export default function FAQ() {
                   <motion.span
                     animate={{ rotate: isOpen ? 45 : 0 }}
                     transition={{ duration: 0.2 }}
-                    className="mt-0.5 shrink-0 text-lg text-[var(--nht-text-tertiary)]"
+                    className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 text-[var(--nht-text-tertiary)]"
                   >
-                    +
+                    <Plus className="h-4 w-4" aria-hidden />
                   </motion.span>
                 </button>
 
@@ -67,7 +69,7 @@ export default function FAQ() {
                       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-7 text-sm leading-[var(--nht-leading-body)] text-[var(--nht-text-secondary)]">
+                      <p className="px-6 pb-7 text-sm leading-[var(--nht-leading-body)] text-[var(--nht-text-secondary)] sm:px-8">
                         {t(`items.${key}.answer`)}
                       </p>
                     </motion.div>

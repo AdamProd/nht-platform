@@ -31,6 +31,7 @@ export type StaffManagerOption = {
   id: string;
   full_name: string | null;
   role: string;
+  avatar_url?: string | null;
 };
 
 export type { ApplicationStatus, ApplicationPriority };

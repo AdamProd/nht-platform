@@ -34,6 +34,14 @@ export function formatList(values: string[] | null | undefined): string {
   return values.join(", ");
 }
 
+export function formatPlatformList(
+  values: string[] | null | undefined,
+  labels: Record<string, string>,
+): string {
+  if (!values || values.length === 0) return "—";
+  return values.map((value) => labels[value] ?? value).join(", ");
+}
+
 export function initials(name: string): string {
   const parts = name.trim().split(/\s+/).filter(Boolean);
   if (parts.length === 0) return "?";

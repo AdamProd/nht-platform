@@ -1,62 +1,52 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import Button from "@/components/ui/Button";
-import Container from "@/components/ui/Container";
-import GlowingSphere from "@/components/marketing/GlowingSphere";
-import FloatingStatCards from "@/components/marketing/FloatingStatCards";
-import DashboardMockup from "@/components/marketing/DashboardMockup";
-import { fadeUp } from "@/components/motion/variants";
+import Button from "@/shared/ui/Button";
+import Container from "@/shared/ui/Container";
+import HeroComposition from "@/components/marketing/HeroComposition";
+import { fadeUp, staggerContainer } from "@/components/motion/variants";
 
 export default function Hero() {
   const t = useTranslations("hero");
-  const { scrollY } = useScroll();
-  const yParallax = useTransform(scrollY, [0, 600], [0, 60]);
-  const opacityParallax = useTransform(scrollY, [0, 400], [1, 0.4]);
 
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_70%_40%,var(--nht-gold-subtle),transparent_65%)]" />
+    <section className="bg-noise relative flex min-h-screen items-center overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_75%_35%,var(--nht-accent-subtle),transparent_65%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_10%_80%,rgba(109,40,217,0.08),transparent_60%)]" />
 
-      <Container className="relative pt-36 pb-24 lg:pt-40 lg:pb-32">
-        <div className="grid items-center gap-20 lg:grid-cols-2 lg:gap-16 xl:gap-24">
-          <motion.div style={{ y: yParallax, opacity: opacityParallax }}>
+      <Container className="relative z-[1] pt-36 pb-28 lg:pt-44 lg:pb-36">
+        <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20 xl:gap-24">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="max-w-xl"
+          >
             <motion.p
-              initial="hidden"
-              animate="visible"
               variants={fadeUp}
-              className="text-overline mb-10 text-[var(--nht-text-tertiary)]"
+              className="text-overline mb-8 text-[var(--nht-accent-warm)]"
             >
               {t("overline")}
             </motion.p>
 
             <motion.h1
-              initial="hidden"
-              animate="visible"
               variants={fadeUp}
-              transition={{ delay: 0.08 }}
-              className="text-display max-w-[14ch] font-semibold text-white"
+              className="text-display max-w-[12ch] font-semibold text-white"
             >
               {t("title")}
             </motion.h1>
 
             <motion.p
-              initial="hidden"
-              animate="visible"
               variants={fadeUp}
-              transition={{ delay: 0.16 }}
-              className="mt-10 max-w-md text-lg leading-[var(--nht-leading-body)] text-[var(--nht-text-secondary)]"
+              className="mt-8 max-w-md text-lg leading-[var(--nht-leading-body)] text-[var(--nht-text-secondary)] sm:text-xl"
             >
               {t("description")}
             </motion.p>
 
             <motion.div
-              initial="hidden"
-              animate="visible"
               variants={fadeUp}
-              transition={{ delay: 0.28 }}
-              className="mt-14 flex flex-col gap-4 sm:flex-row sm:items-center"
+              className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center"
             >
               <Button href="#contact" variant="primary">
                 {t("ctaPrimary")}
@@ -67,12 +57,8 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          <div className="relative min-h-[400px] lg:min-h-[540px]">
-            <GlowingSphere />
-            <FloatingStatCards />
-            <div className="relative z-10">
-              <DashboardMockup />
-            </div>
+          <div className="relative min-h-[420px] lg:min-h-[520px]">
+            <HeroComposition />
           </div>
         </div>
       </Container>

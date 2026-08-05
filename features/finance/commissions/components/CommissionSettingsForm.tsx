@@ -157,8 +157,9 @@ export default function CommissionSettingsForm({
                 className="rounded-[var(--nht-radius-lg)] border border-white/[0.04] px-3 py-3 text-sm"
               >
                 <p className="text-white">
-                  A {item.agency_percent}% · M {item.manager_percent}% · R{" "}
-                  {item.referral_percent}% · B {item.bonus_percent}%
+                  {labels.agency} {item.agency_percent}% · {labels.manager}{" "}
+                  {item.manager_percent}% · {labels.referral}{" "}
+                  {item.referral_percent}% · {labels.bonus} {item.bonus_percent}%
                 </p>
                 <p className="mt-1 text-[11px] text-[var(--nht-text-tertiary)]">
                   {labels.by}{" "}

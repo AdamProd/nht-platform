@@ -1,6 +1,7 @@
 import { z } from "zod";
 import {
   ASSIGNABLE_STAFF_ROLES,
+  CREATE_STAFF_DEPARTMENTS,
   STAFF_DEPARTMENTS,
   STAFF_STATUSES,
 } from "@/features/staff/types";
@@ -16,14 +17,10 @@ export const staffListFiltersSchema = z.object({
 
 export const createStaffSchema = z.object({
   email: z.string().trim().email().max(200),
-  full_name: z.string().trim().min(1).max(120),
+  first_name: z.string().trim().min(1).max(60),
+  last_name: z.string().trim().min(1).max(60),
   role: z.enum(ASSIGNABLE_STAFF_ROLES),
-  department: z.enum(STAFF_DEPARTMENTS).nullable().optional(),
-  department_custom: z.string().trim().max(120).optional().nullable(),
-  locale: z.string().trim().min(2).max(10).optional().default("en"),
-  timezone: z.string().trim().max(80).optional().nullable(),
-  temporary_password: z.string().min(8).max(72),
-  phone: z.string().trim().max(40).optional().nullable(),
+  department: z.enum(CREATE_STAFF_DEPARTMENTS),
 });
 
 export const updateStaffProfileSchema = z.object({
@@ -36,6 +33,12 @@ export const updateStaffProfileSchema = z.object({
   locale: z.string().trim().min(2).max(10).optional().nullable(),
   biography: z.string().trim().max(4000).optional().nullable(),
   notes: z.string().trim().max(8000).optional().nullable(),
+  avatar_url: z
+    .preprocess(
+      (value) => (value === "" || value === undefined ? null : value),
+      z.string().trim().url().max(500).nullable(),
+    )
+    .optional(),
 });
 
 export const updateStaffRoleSchema = z.object({

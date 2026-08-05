@@ -24,6 +24,13 @@ export type PlatformBreakdownItem = {
   count: number;
 };
 
+export type DashboardTaskStats = {
+  openTasks: number;
+  myTasks: number;
+  overdue: number;
+  completedToday: number;
+};
+
 export type DashboardData = {
   kpis: DashboardKpis;
   recent: DashboardRecentApplication[];
@@ -33,4 +40,5 @@ export type DashboardData = {
   /** @deprecated Prefer newestCreators */
   recentCreators: CreatorListItem[];
   platforms: PlatformBreakdownItem[];
+  tasks: DashboardTaskStats;
 };

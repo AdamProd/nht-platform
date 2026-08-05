@@ -1,0 +1,308 @@
+{
+  "label": "Finanse",
+  "title": "Finanse",
+  "description": "Śledź przychody twórców, prowizje agencji i wypłaty.",
+  "detailLabel": "Transakcja",
+  "backToList": "Wróć do finansów",
+  "transactionsTitle": "Transakcje",
+  "empty": "Brak transakcji.",
+  "unassigned": "Nieprzypisany",
+  "none": "Brak",
+  "kpis": {
+    "totalRevenue": "Całkowity przychód",
+    "agencyRevenue": "Przychód agencji",
+    "creatorRevenue": "Przychód twórców",
+    "pendingPayouts": "Oczekujące wypłaty",
+    "paidThisMonth": "Wypłacono w tym miesiącu",
+    "activeCreators": "Aktywni twórcy",
+    "revenueToday": "Przychód dziś",
+    "revenueThisMonth": "Przychód w tym miesiącu",
+    "revenueThisYear": "Przychód w tym roku",
+    "revenueThisWeek": "Przychód w tym tygodniu",
+    "countPending": "Oczekujące",
+    "countApproved": "Zatwierdzone",
+    "countRejected": "Odrzucone",
+    "countPaid": "Wypłacone",
+    "outstandingBalance": "Saldo zaległe",
+    "averageRevenuePerCreator": "Średni przychód / twórca"
+  },
+  "summaries": {
+    "creatorTitle": "Podsumowanie twórcy",
+    "agencyTitle": "Podsumowanie agencji",
+    "lifetimeRevenue": "Przychód całkowity",
+    "thisMonth": "Ten miesiąc",
+    "pendingPayout": "Oczekująca wypłata",
+    "lastPayout": "Ostatnia wypłata",
+    "averageMonthly": "Średni miesięczny przychód",
+    "monthlyRevenue": "Przychód miesięczny",
+    "quarterRevenue": "Przychód kwartalny",
+    "yearRevenue": "Przychód roczny"
+  },
+  "integrations": {
+    "title": "Integracje płatności",
+    "description": "Połącz dostawców wypłat. Tylko architektura — brak żywych integracji.",
+    "comingSoon": "Wkrótce"
+  },
+  "filters": {
+    "search": "Szukaj",
+    "searchPlaceholder": "Platforma, referencja, notatki",
+    "status": "Status",
+    "platform": "Platforma",
+    "creator": "Twórca",
+    "manager": "Manager",
+    "from": "Od",
+    "to": "Do",
+    "all": "Wszystkie",
+    "apply": "Zastosuj",
+    "clear": "Wyczyść",
+    "sort": "Sortuj"
+  },
+  "table": {
+    "date": "Data",
+    "creator": "Twórca",
+    "platform": "Platforma",
+    "gross": "Przychód brutto",
+    "agencyPercent": "Agencja %",
+    "agencyAmount": "Kwota agencji",
+    "creatorPercent": "Twórca %",
+    "creatorAmount": "Kwota twórcy",
+    "status": "Status",
+    "manager": "Manager",
+    "actions": "Akcje",
+    "view": "Zobacz"
+  },
+  "pagination": {
+    "previous": "Poprzednia",
+    "next": "Następna",
+    "pageOf": "Strona {page} z {totalPages} · łącznie {total}"
+  },
+  "fields": {
+    "creator": "Twórca",
+    "manager": "Manager",
+    "platform": "Platforma",
+    "date": "Data",
+    "gross": "Przychód brutto",
+    "currency": "Waluta",
+    "agencyPercent": "Agencja %",
+    "agencyAmount": "Kwota agencji",
+    "creatorPercent": "Twórca %",
+    "creatorAmount": "Kwota twórcy",
+    "status": "Status",
+    "paymentMethod": "Metoda płatności",
+    "referenceId": "ID referencji",
+    "notes": "Notatki",
+    "created": "Utworzono",
+    "updated": "Zaktualizowano"
+  },
+  "sections": {
+    "details": "Szczegóły",
+    "status": "Status",
+    "notes": "Notatki",
+    "meta": "Oś czasu"
+  },
+  "status": {
+    "pending": "Oczekuje",
+    "approved": "Zatwierdzono",
+    "paid": "Wypłacono",
+    "cancelled": "Anulowano",
+    "disputed": "Spór"
+  },
+  "platforms": {
+    "onlyfans": "OnlyFans",
+    "fansly": "Fansly",
+    "manyvids": "ManyVids",
+    "chaturbate": "Chaturbate",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "twitter": "X (Twitter)",
+    "other": "Inne"
+  },
+  "methods": {
+    "stripe": "Stripe",
+    "wise": "Wise",
+    "paypal": "PayPal",
+    "crypto": "Krypto",
+    "bankTransfer": "Przelew bankowy",
+    "other": "Inne"
+  },
+  "form": {
+    "title": "Nowa transakcja",
+    "open": "Dodaj transakcję",
+    "cancel": "Anuluj",
+    "submit": "Utwórz",
+    "submitting": "Tworzenie…"
+  },
+  "actions": {
+    "save": "Zapisz",
+    "saving": "Zapisywanie…",
+    "saveError": "Nie udało się zapisać zmian.",
+    "delete": "Usuń transakcję",
+    "deleting": "Usuwanie…",
+    "confirmDelete": "Usunąć tę transakcję na stałe?"
+  },
+  "toast": {
+    "created": "Transakcja utworzona.",
+    "saved": "Zmiany zapisane.",
+    "deleted": "Transakcja usunięta."
+  },
+  "errors": {
+    "load": "Nie udało się wczytać danych finansowych.",
+    "loadDetail": "Nie udało się wczytać tej transakcji.",
+    "boundary": "Coś poszło nie tak podczas wczytywania finansów.",
+    "retry": "Spróbuj ponownie"
+  },
+  "notFound": {
+    "title": "Nie znaleziono transakcji",
+    "description": "Ta transakcja mogła zostać usunięta albo nie masz dostępu.",
+    "back": "Wróć do finansów"
+  },
+  "actionErrors": {
+    "unauthorized": "Nie masz uprawnień do tej zmiany.",
+    "forbidden": "Możesz zarządzać finansami tylko swoich twórców.",
+    "invalid": "Nieprawidłowe dane transakcji.",
+    "invalidStatus": "Nieprawidłowy status.",
+    "invalidNotes": "Nieprawidłowe notatki.",
+    "create": "Nie udało się utworzyć transakcji.",
+    "save": "Nie udało się zapisać zmian.",
+    "delete": "Nie udało się usunąć transakcji.",
+    "ownerOnly": "Tylko właściciel może usuwać transakcje.",
+    "invalidManager": "Można przypisać tylko aktywnych pracowników.",
+    "export": "Nie udało się wyeksportować.",
+    "notFound": "Nie znaleziono."
+  },
+  "emptyTitle": "Brak transakcji",
+  "emptyDescription": "Utwórz transakcję lub zmień filtry.",
+  "emptyAction": "Nowa transakcja",
+  "retry": "Spróbuj ponownie",
+  "tabs": {
+    "overview": "Przegląd",
+    "transactions": "Transakcje",
+    "payouts": "Wypłaty",
+    "reports": "Raporty",
+    "commissions": "Prowizje"
+  },
+  "payoutsTitle": "Wypłaty",
+  "reportsTitle": "Raporty miesięczne",
+  "payoutsEmpty": "Brak wypłat.",
+  "payoutStatus": {
+    "pending": "Zażądano",
+    "processing": "Zatwierdzono",
+    "completed": "Wypłacono",
+    "failed": "Odrzucono"
+  },
+  "payoutMethods": {
+    "bank": "Bank",
+    "paypal": "PayPal",
+    "crypto": "Krypto",
+    "other": "Inne"
+  },
+  "payoutsTable": {
+    "creator": "Twórca",
+    "amount": "Kwota",
+    "currency": "Waluta",
+    "method": "Metoda",
+    "requested": "Zażądano",
+    "approved": "Zatwierdzono",
+    "paid": "Wypłacono",
+    "status": "Status",
+    "actions": "Akcje"
+  },
+  "payoutActions": {
+    "approve": "Zatwierdź",
+    "reject": "Odrzuć",
+    "pay": "Wypłać",
+    "view": "Zobacz",
+    "rejectReason": "Powód odrzucenia",
+    "confirmReject": "Potwierdź odrzucenie",
+    "error": "Błąd"
+  },
+  "commissions": {
+    "title": "Prowizje",
+    "description": "Skonfiguruj stawki agencji, managera, polecenia i bonus.",
+    "agency": "Agencja %",
+    "manager": "Manager %",
+    "referral": "Polecenie %",
+    "bonus": "Bonus %",
+    "note": "Notatka zmiany",
+    "save": "Zapisz prowizje",
+    "saving": "Zapisywanie…",
+    "history": "Historia zmian",
+    "emptyHistory": "Brak zmian prowizji.",
+    "by": "Przez"
+  },
+  "charts": {
+    "revenueByMonth": "Przychód wg miesięcy",
+    "revenueByPlatform": "Przychód wg platform",
+    "revenueByCreator": "Przychód wg twórców",
+    "agencyProfit": "Zysk agencji",
+    "payouts": "Wypłaty",
+    "empty": "Brak danych do wykresów.",
+    "value": "Wartość"
+  },
+  "reports": {
+    "month": "Miesiąc",
+    "year": "Rok",
+    "revenue": "Przychód",
+    "commission": "Prowizja",
+    "expenses": "Wydatki",
+    "netProfit": "Zysk netto"
+  },
+  "export": {
+    "label": "Eksport",
+    "csv": "CSV",
+    "excel": "Excel",
+    "pdf": "PDF",
+    "error": "Nie udało się wyeksportować.",
+    "pdfTitle": "Finanse — {kind}",
+    "empty": "Brak danych",
+    "kinds": {
+      "transactions": "Transakcje",
+      "payouts": "Wypłaty",
+      "report": "Raport"
+    },
+    "headers": {
+      "id": "ID",
+      "creatorId": "ID twórcy",
+      "managerId": "ID managera",
+      "platform": "Platforma",
+      "transactionDate": "Data transakcji",
+      "grossRevenue": "Przychód brutto",
+      "agencyAmount": "Kwota agencji",
+      "creatorAmount": "Kwota twórcy",
+      "currency": "Waluta",
+      "status": "Status",
+      "paymentMethod": "Metoda płatności",
+      "referenceId": "ID referencji",
+      "notes": "Notatki",
+      "amount": "Kwota",
+      "method": "Metoda",
+      "periodStart": "Początek okresu",
+      "periodEnd": "Koniec okresu",
+      "requestedAt": "Zażądano",
+      "approvedAt": "Zatwierdzono",
+      "paidAt": "Wypłacono",
+      "rejectionReason": "Powód odrzucenia",
+      "receiptNumber": "Numer pokwitowania",
+      "month": "Miesiąc",
+      "year": "Rok",
+      "revenue": "Przychód",
+      "commission": "Prowizja",
+      "expenses": "Wydatki",
+      "netProfit": "Zysk netto"
+    }
+  },
+  "balances": {
+    "title": "Salda twórców",
+    "empty": "Brak sald twórców.",
+    "currentBalance": "Bieżące saldo",
+    "pending": "Oczekujące",
+    "paid": "Wypłacone",
+    "lifetimeRevenue": "Przychód całkowity"
+  },
+  "sort": {
+    "date_desc": "Data (najnowsze)",
+    "date_asc": "Data (najstarsze)",
+    "gross_desc": "Brutto (malejąco)",
+    "gross_asc": "Brutto (rosnąco)"
+  }
+}

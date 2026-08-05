@@ -11,7 +11,7 @@ export default function GlowingSphere() {
         className="absolute inset-0 rounded-full opacity-40"
         style={{
           background:
-            "conic-gradient(from 0deg, transparent, rgba(200,164,93,0.3), transparent, rgba(200,164,93,0.15), transparent)",
+            "conic-gradient(from 0deg, transparent, rgba(124,58,237,0.35), transparent, rgba(139,92,246,0.18), transparent)",
         }}
       />
 
@@ -21,9 +21,9 @@ export default function GlowingSphere() {
         className="absolute inset-[8%] rounded-full"
         style={{
           background:
-            "radial-gradient(circle at 35% 30%, rgba(240,212,138,0.9) 0%, rgba(200,164,93,0.6) 25%, rgba(168,134,74,0.3) 50%, rgba(9,9,9,0.8) 75%)",
+            "radial-gradient(circle at 35% 30%, rgba(167,139,250,0.85) 0%, rgba(124,58,237,0.55) 25%, rgba(109,40,217,0.28) 50%, rgba(9,9,9,0.85) 75%)",
           boxShadow:
-            "0 0 80px rgba(200,164,93,0.5), 0 0 160px rgba(200,164,93,0.25), inset 0 0 60px rgba(255,255,255,0.08)",
+            "0 0 80px rgba(124,58,237,0.45), 0 0 160px rgba(124,58,237,0.22), inset 0 0 60px rgba(255,255,255,0.08)",
         }}
       />
 

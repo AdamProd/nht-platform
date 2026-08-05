@@ -90,6 +90,7 @@ export default async function AdminCreatorsPage({
   const platformLabels = {
     onlyfans: t("platforms.onlyfans"),
     fansly: t("platforms.fansly"),
+    manyvids: t("platforms.manyvids"),
     chaturbate: t("platforms.chaturbate"),
     instagram: t("platforms.instagram"),
     tiktok: t("platforms.tiktok"),
@@ -111,28 +112,6 @@ export default async function AdminCreatorsPage({
         <CreatorForm
           managers={managers}
           canAssignManager={canAssignManager}
-          labels={{
-            create: t("create"),
-            title: t("form.title"),
-            displayName: t("fields.displayName"),
-            legalName: t("fields.legalName"),
-            email: t("fields.email"),
-            telegram: t("fields.telegram"),
-            phone: t("fields.phone"),
-            country: t("fields.country"),
-            languages: t("fields.languages"),
-            languagesPlaceholder: t("fields.languagesPlaceholder"),
-            timezone: t("fields.timezone"),
-            platforms: t("fields.platforms"),
-            manager: t("fields.manager"),
-            notes: t("fields.notes"),
-            unassigned: t("unassigned"),
-            cancel: t("form.cancel"),
-            submit: t("form.submitInvite"),
-            submitting: t("form.submittingInvite"),
-            invited: t("toast.invited"),
-          }}
-          platformLabels={platformLabels}
         />
       </div>
 
@@ -209,6 +188,7 @@ export default async function AdminCreatorsPage({
               unassigned: t("unassigned"),
             }}
             statusLabels={statusLabels}
+            platformLabels={platformLabels}
             canCreate
           />
 

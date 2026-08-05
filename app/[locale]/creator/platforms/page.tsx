@@ -39,10 +39,11 @@ export default async function CreatorPlatformsPage({ params }: Props) {
           platforms: {
             onlyfans: t("platforms.onlyfans"),
             fansly: t("platforms.fansly"),
+            manyvids: t("platforms.manyvids"),
+            chaturbate: t("platforms.chaturbate"),
             instagram: t("platforms.instagram"),
             tiktok: t("platforms.tiktok"),
             twitter: t("platforms.twitter"),
-            chaturbate: t("platforms.chaturbate"),
           },
           actions: {
             save: t("actions.save"),

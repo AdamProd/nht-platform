@@ -10,7 +10,7 @@ import {
   STAFF_EMPLOYEE_ROLES,
   STAFF_STATUSES,
 } from "@/features/staff/types";
-import { canManageTargetStaff } from "@/features/staff/lib/access";
+import { canDeleteStaff, canManageTargetStaff } from "@/features/staff/lib/access";
 
 type Props = {
   params: Promise<{ locale: string; id: string }>;
@@ -30,6 +30,7 @@ export default async function AdminStaffDetailPage({ params }: Props) {
   const canEdit =
     isAdminOrAbove(session.profile.role) &&
     canManageTargetStaff(session.profile.role, staff.role);
+  const canDelete = canDeleteStaff(session.profile.role);
 
   const activity = await listStaffActivity(id);
   const supabase = await createClient();
@@ -71,6 +72,8 @@ export default async function AdminStaffDetailPage({ params }: Props) {
       locale={locale}
       canEdit={canEdit}
       isOwnerActor={isOwner(session.profile.role)}
+      canDelete={canDelete}
+      neverLabel={t("never")}
       unassignedCreators={creators.data ?? []}
       unassignedApplications={applications.data ?? []}
       labels={{
@@ -91,6 +94,7 @@ export default async function AdminStaffDetailPage({ params }: Props) {
         },
         fields: {
           fullName: t("fields.fullName"),
+          avatarUrl: t("fields.avatarUrl"),
           email: t("fields.email"),
           phone: t("fields.phone"),
           department: t("fields.department"),

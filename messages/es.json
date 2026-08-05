@@ -1126,7 +1126,7 @@
     "finance": {
       "label": "Finanzas",
       "title": "Finanzas",
-      "description": "Ingresos de creators, comisiones y pagos.",
+      "description": "Sigue los ingresos de creadores, comisiones de la agencia y pagos.",
       "detailLabel": "Transacción",
       "backToList": "Volver a finanzas",
       "transactionsTitle": "Transacciones",
@@ -1134,103 +1134,103 @@
       "unassigned": "Sin asignar",
       "none": "Ninguno",
       "kpis": {
-        "totalRevenue": "Total revenue",
-        "agencyRevenue": "Agency revenue",
-        "creatorRevenue": "Creator revenue",
-        "pendingPayouts": "Pending payouts",
-        "paidThisMonth": "Paid this month",
-        "activeCreators": "Active creators",
-        "revenueToday": "Revenue today",
-        "revenueThisMonth": "Revenue this month",
-        "revenueThisYear": "Revenue this year",
-        "revenueThisWeek": "Revenue this week",
-        "countPending": "Pending",
-        "countApproved": "Approved",
-        "countRejected": "Rejected",
-        "countPaid": "Paid",
-        "outstandingBalance": "Outstanding balance",
-        "averageRevenuePerCreator": "Average revenue / creator"
+        "totalRevenue": "Ingresos totales",
+        "agencyRevenue": "Ingresos de la agencia",
+        "creatorRevenue": "Ingresos de creadores",
+        "pendingPayouts": "Pagos pendientes",
+        "paidThisMonth": "Pagado este mes",
+        "activeCreators": "Creadores activos",
+        "revenueToday": "Ingresos de hoy",
+        "revenueThisMonth": "Ingresos del mes",
+        "revenueThisYear": "Ingresos del año",
+        "revenueThisWeek": "Ingresos de la semana",
+        "countPending": "Pendiente",
+        "countApproved": "Aprobado",
+        "countRejected": "Rechazado",
+        "countPaid": "Pagado",
+        "outstandingBalance": "Saldo pendiente",
+        "averageRevenuePerCreator": "Ingreso medio / creador"
       },
       "summaries": {
-        "creatorTitle": "Creator summary",
-        "agencyTitle": "Agency summary",
-        "lifetimeRevenue": "Lifetime revenue",
-        "thisMonth": "This month",
-        "pendingPayout": "Pending payout",
-        "lastPayout": "Last payout",
-        "averageMonthly": "Average monthly revenue",
-        "monthlyRevenue": "Monthly revenue",
-        "quarterRevenue": "Quarter revenue",
-        "yearRevenue": "Year revenue"
+        "creatorTitle": "Resumen del creador",
+        "agencyTitle": "Resumen de la agencia",
+        "lifetimeRevenue": "Ingresos totales",
+        "thisMonth": "Este mes",
+        "pendingPayout": "Pago pendiente",
+        "lastPayout": "Último pago",
+        "averageMonthly": "Ingreso mensual medio",
+        "monthlyRevenue": "Ingresos mensuales",
+        "quarterRevenue": "Ingresos trimestrales",
+        "yearRevenue": "Ingresos anuales"
       },
       "integrations": {
-        "title": "Payment integrations",
-        "description": "Connect payout providers. Architecture only — no live integrations yet.",
-        "comingSoon": "Coming soon"
+        "title": "Integraciones de pago",
+        "description": "Conecta proveedores de pago. Solo arquitectura: aún no hay integraciones activas.",
+        "comingSoon": "Próximamente"
       },
       "filters": {
-        "search": "Search",
-        "searchPlaceholder": "Platform, reference, notes",
-        "status": "Status",
-        "platform": "Platform",
-        "creator": "Creator",
+        "search": "Buscar",
+        "searchPlaceholder": "Plataforma, referencia, notas",
+        "status": "Estado",
+        "platform": "Plataforma",
+        "creator": "Creador",
         "manager": "Manager",
-        "from": "From",
-        "to": "To",
-        "all": "All",
-        "apply": "Apply",
-        "clear": "Clear",
-        "sort": "Sort"
+        "from": "Desde",
+        "to": "Hasta",
+        "all": "Todos",
+        "apply": "Aplicar",
+        "clear": "Limpiar",
+        "sort": "Ordenar"
       },
       "table": {
-        "date": "Date",
-        "creator": "Creator",
-        "platform": "Platform",
-        "gross": "Gross revenue",
-        "agencyPercent": "Agency %",
-        "agencyAmount": "Agency amount",
-        "creatorPercent": "Creator %",
-        "creatorAmount": "Creator amount",
-        "status": "Status",
+        "date": "Fecha",
+        "creator": "Creador",
+        "platform": "Plataforma",
+        "gross": "Ingresos brutos",
+        "agencyPercent": "Agencia %",
+        "agencyAmount": "Importe agencia",
+        "creatorPercent": "Creador %",
+        "creatorAmount": "Importe creador",
+        "status": "Estado",
         "manager": "Manager",
-        "actions": "Actions",
-        "view": "View"
+        "actions": "Acciones",
+        "view": "Ver"
       },
       "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {page} of {totalPages} · {total} total"
+        "previous": "Anterior",
+        "next": "Siguiente",
+        "pageOf": "Página {page} de {totalPages} · {total} en total"
       },
       "fields": {
-        "creator": "Creator",
+        "creator": "Creador",
         "manager": "Manager",
-        "platform": "Platform",
-        "date": "Date",
-        "gross": "Gross revenue",
-        "currency": "Currency",
-        "agencyPercent": "Agency %",
-        "agencyAmount": "Agency amount",
-        "creatorPercent": "Creator %",
-        "creatorAmount": "Creator amount",
-        "status": "Status",
-        "paymentMethod": "Payment method",
-        "referenceId": "Reference ID",
-        "notes": "Notes",
-        "created": "Created",
-        "updated": "Updated"
+        "platform": "Plataforma",
+        "date": "Fecha",
+        "gross": "Ingresos brutos",
+        "currency": "Moneda",
+        "agencyPercent": "Agencia %",
+        "agencyAmount": "Importe agencia",
+        "creatorPercent": "Creador %",
+        "creatorAmount": "Importe creador",
+        "status": "Estado",
+        "paymentMethod": "Método de pago",
+        "referenceId": "ID de referencia",
+        "notes": "Notas",
+        "created": "Creado",
+        "updated": "Actualizado"
       },
       "sections": {
-        "details": "Details",
-        "status": "Status",
-        "notes": "Notes",
-        "meta": "Timeline"
+        "details": "Detalles",
+        "status": "Estado",
+        "notes": "Notas",
+        "meta": "Cronología"
       },
       "status": {
-        "pending": "Pending",
-        "approved": "Approved",
-        "paid": "Paid",
-        "cancelled": "Cancelled",
-        "disputed": "Disputed"
+        "pending": "Pendiente",
+        "approved": "Aprobado",
+        "paid": "Pagado",
+        "cancelled": "Cancelado",
+        "disputed": "En disputa"
       },
       "platforms": {
         "onlyfans": "OnlyFans",
@@ -1240,19 +1240,19 @@
         "instagram": "Instagram",
         "tiktok": "TikTok",
         "twitter": "X (Twitter)",
-        "other": "Other"
+        "other": "Otro"
       },
       "methods": {
         "stripe": "Stripe",
         "wise": "Wise",
         "paypal": "PayPal",
-        "crypto": "Crypto",
-        "bankTransfer": "Bank transfer",
-        "other": "Other"
+        "crypto": "Cripto",
+        "bankTransfer": "Transferencia bancaria",
+        "other": "Otro"
       },
       "form": {
         "title": "Nueva transacción",
-        "open": "Añadir",
+        "open": "Añadir transacción",
         "cancel": "Cancelar",
         "submit": "Crear",
         "submitting": "Creando…"
@@ -1260,7 +1260,7 @@
       "actions": {
         "save": "Guardar",
         "saving": "Guardando…",
-        "saveError": "No se pudo guardar.",
+        "saveError": "No se pudieron guardar los cambios.",
         "delete": "Eliminar transacción",
         "deleting": "Eliminando…",
         "confirmDelete": "¿Eliminar esta transacción permanentemente?"
@@ -1271,125 +1271,164 @@
         "deleted": "Transacción eliminada."
       },
       "errors": {
-        "load": "Unable to load finance data.",
-        "loadDetail": "Unable to load this transaction.",
-        "boundary": "Something went wrong loading finance.",
-        "retry": "Try again"
+        "load": "No se pudieron cargar los datos financieros.",
+        "loadDetail": "No se pudo cargar esta transacción.",
+        "boundary": "Algo falló al cargar finanzas.",
+        "retry": "Reintentar"
       },
       "notFound": {
-        "title": "Transaction not found",
-        "description": "This transaction may have been removed or you do not have access.",
-        "back": "Back to finance"
+        "title": "Transacción no encontrada",
+        "description": "Esta transacción puede haberse eliminado o no tienes acceso.",
+        "back": "Volver a finanzas"
       },
       "actionErrors": {
-        "unauthorized": "You are not authorized to make this change.",
-        "forbidden": "You can only manage finance for your assigned creators.",
-        "invalid": "Invalid transaction data.",
-        "invalidStatus": "Invalid status.",
-        "invalidNotes": "Invalid notes.",
-        "create": "Unable to create transaction.",
-        "save": "Unable to save changes.",
-        "delete": "Unable to delete transaction.",
-        "ownerOnly": "Only the owner can delete transactions.",
-        "invalidManager": "Only active staff members can be assigned.",
-        "export": "Unable to export.",
-        "notFound": "Not found."
+        "unauthorized": "No estás autorizado para hacer este cambio.",
+        "forbidden": "Solo puedes gestionar finanzas de tus creadores asignados.",
+        "invalid": "Datos de transacción no válidos.",
+        "invalidStatus": "Estado no válido.",
+        "invalidNotes": "Notas no válidas.",
+        "create": "No se pudo crear la transacción.",
+        "save": "No se pudieron guardar los cambios.",
+        "delete": "No se pudo eliminar la transacción.",
+        "ownerOnly": "Solo el propietario puede eliminar transacciones.",
+        "invalidManager": "Solo se pueden asignar empleados activos.",
+        "export": "No se pudo exportar.",
+        "notFound": "No encontrado."
       },
-      "emptyTitle": "No transactions yet",
-      "emptyDescription": "Create a transaction or adjust your filters.",
-      "emptyAction": "New transaction",
-      "retry": "Try again",
+      "emptyTitle": "Aún no hay transacciones",
+      "emptyDescription": "Crea una transacción o ajusta los filtros.",
+      "emptyAction": "Nueva transacción",
+      "retry": "Reintentar",
       "tabs": {
-        "overview": "Overview",
-        "transactions": "Transactions",
-        "payouts": "Payouts",
-        "reports": "Reports",
-        "commissions": "Commissions"
+        "overview": "Resumen",
+        "transactions": "Transacciones",
+        "payouts": "Pagos",
+        "reports": "Informes",
+        "commissions": "Comisiones"
       },
-      "payoutsTitle": "Payouts",
-      "reportsTitle": "Monthly reports",
-      "payoutsEmpty": "No payouts yet.",
+      "payoutsTitle": "Pagos",
+      "reportsTitle": "Informes mensuales",
+      "payoutsEmpty": "Aún no hay pagos.",
       "payoutStatus": {
-        "pending": "Requested",
-        "processing": "Approved",
-        "completed": "Paid",
-        "failed": "Rejected"
+        "pending": "Solicitado",
+        "processing": "Aprobado",
+        "completed": "Pagado",
+        "failed": "Rechazado"
       },
       "payoutMethods": {
-        "bank": "Bank",
+        "bank": "Banco",
         "paypal": "PayPal",
-        "crypto": "Crypto",
-        "other": "Other"
+        "crypto": "Cripto",
+        "other": "Otro"
       },
       "payoutsTable": {
-        "creator": "Creator",
-        "amount": "Amount",
-        "currency": "Currency",
-        "method": "Method",
-        "requested": "Requested",
-        "approved": "Approved",
-        "paid": "Paid",
-        "status": "Status",
-        "actions": "Actions"
+        "creator": "Creador",
+        "amount": "Importe",
+        "currency": "Moneda",
+        "method": "Método",
+        "requested": "Solicitado",
+        "approved": "Aprobado",
+        "paid": "Pagado",
+        "status": "Estado",
+        "actions": "Acciones"
       },
       "payoutActions": {
-        "approve": "Approve",
-        "reject": "Reject",
-        "pay": "Pay",
-        "view": "View",
-        "rejectReason": "Rejection reason",
-        "confirmReject": "Confirm reject"
+        "approve": "Aprobar",
+        "reject": "Rechazar",
+        "pay": "Pagar",
+        "view": "Ver",
+        "rejectReason": "Motivo del rechazo",
+        "confirmReject": "Confirmar rechazo",
+        "error": "Error"
       },
       "commissions": {
-        "title": "Commissions",
-        "description": "Configure agency, manager, referral, and bonus commission rates.",
-        "agency": "Agency %",
+        "title": "Comisiones",
+        "description": "Configura los porcentajes de agencia, manager, referidos y bonus.",
+        "agency": "Agencia %",
         "manager": "Manager %",
-        "referral": "Referral %",
+        "referral": "Referidos %",
         "bonus": "Bonus %",
-        "note": "Change note",
-        "save": "Save commissions",
-        "saving": "Saving…",
-        "history": "Change history",
-        "emptyHistory": "No commission changes yet.",
-        "by": "By"
+        "note": "Nota del cambio",
+        "save": "Guardar comisiones",
+        "saving": "Guardando…",
+        "history": "Historial de cambios",
+        "emptyHistory": "Aún no hay cambios de comisión.",
+        "by": "Por"
       },
       "charts": {
-        "revenueByMonth": "Revenue by month",
-        "revenueByPlatform": "Revenue by platform",
-        "revenueByCreator": "Revenue by creator",
-        "agencyProfit": "Agency profit",
-        "payouts": "Payouts",
-        "empty": "No chart data yet."
+        "revenueByMonth": "Ingresos por mes",
+        "revenueByPlatform": "Ingresos por plataforma",
+        "revenueByCreator": "Ingresos por creador",
+        "agencyProfit": "Beneficio de la agencia",
+        "payouts": "Pagos",
+        "empty": "Aún no hay datos para los gráficos.",
+        "value": "Valor"
       },
       "reports": {
-        "month": "Month",
-        "year": "Year",
-        "revenue": "Revenue",
-        "commission": "Commission",
-        "expenses": "Expenses",
-        "netProfit": "Net profit"
+        "month": "Mes",
+        "year": "Año",
+        "revenue": "Ingresos",
+        "commission": "Comisión",
+        "expenses": "Gastos",
+        "netProfit": "Beneficio neto"
       },
       "export": {
-        "label": "Export",
+        "label": "Exportar",
         "csv": "CSV",
         "excel": "Excel",
         "pdf": "PDF",
-        "error": "Unable to export."
+        "error": "No se pudo exportar.",
+        "pdfTitle": "Finanzas — {kind}",
+        "empty": "Sin datos",
+        "kinds": {
+          "transactions": "Transacciones",
+          "payouts": "Pagos",
+          "report": "Informe"
+        },
+        "headers": {
+          "id": "ID",
+          "creatorId": "ID del creador",
+          "managerId": "ID del manager",
+          "platform": "Plataforma",
+          "transactionDate": "Fecha de transacción",
+          "grossRevenue": "Ingresos brutos",
+          "agencyAmount": "Importe agencia",
+          "creatorAmount": "Importe creador",
+          "currency": "Moneda",
+          "status": "Estado",
+          "paymentMethod": "Método de pago",
+          "referenceId": "ID de referencia",
+          "notes": "Notas",
+          "amount": "Importe",
+          "method": "Método",
+          "periodStart": "Inicio del periodo",
+          "periodEnd": "Fin del periodo",
+          "requestedAt": "Solicitado el",
+          "approvedAt": "Aprobado el",
+          "paidAt": "Pagado el",
+          "rejectionReason": "Motivo del rechazo",
+          "receiptNumber": "Número de recibo",
+          "month": "Mes",
+          "year": "Año",
+          "revenue": "Ingresos",
+          "commission": "Comisión",
+          "expenses": "Gastos",
+          "netProfit": "Beneficio neto"
+        }
       },
       "balances": {
-        "title": "Creator balances",
-        "empty": "No creator balances yet.",
-        "currentBalance": "Current balance",
-        "pending": "Pending",
-        "paid": "Paid",
-        "lifetimeRevenue": "Lifetime revenue"
+        "title": "Saldos de creadores",
+        "empty": "Aún no hay saldos de creadores.",
+        "currentBalance": "Saldo actual",
+        "pending": "Pendiente",
+        "paid": "Pagado",
+        "lifetimeRevenue": "Ingresos totales"
       },
       "sort": {
-        "date_desc": "Date (newest)",
-        "date_asc": "Date (oldest)",
-        "gross_desc": "Gross (high to low)",
-        "gross_asc": "Gross (low to high)"
+        "date_desc": "Fecha (más recientes)",
+        "date_asc": "Fecha (más antiguas)",
+        "gross_desc": "Bruto (mayor a menor)",
+        "gross_asc": "Bruto (menor a mayor)"
       }
     },
     "notifications": {
@@ -2144,57 +2183,57 @@
       }
     },
     "finance": {
-      "label": "Finance",
-      "title": "Finance",
-      "description": "Your balance, revenue, and payout history.",
-      "historyTitle": "Payment history",
-      "viewPayouts": "All payouts",
-      "empty": "No payment history yet.",
+      "label": "Finanzas",
+      "title": "Finanzas",
+      "description": "Tu saldo, ingresos e historial de pagos.",
+      "historyTitle": "Historial de pagos",
+      "viewPayouts": "Todos los pagos",
+      "empty": "Aún no hay historial de pagos.",
       "kpis": {
-        "balance": "Balance",
-        "lifetime": "Lifetime revenue",
-        "currentMonth": "Current month",
-        "pending": "Pending payout"
+        "balance": "Saldo",
+        "lifetime": "Ingresos totales",
+        "currentMonth": "Mes actual",
+        "pending": "Pago pendiente"
       },
       "table": {
-        "period": "Period",
-        "amount": "Amount",
-        "status": "Status",
-        "paidDate": "Paid"
+        "period": "Periodo",
+        "amount": "Importe",
+        "status": "Estado",
+        "paidDate": "Pagado"
       }
     }
   },
   "common": {
     "language": "Idioma",
     "ux": {
-      "retry": "Try again",
-      "cancel": "Cancel",
+      "retry": "Reintentar",
+      "cancel": "Cancelar",
       "confirm": {
-        "title": "Are you sure?",
-        "delete": "This action cannot be undone.",
-        "archive": "Archive this item?",
-        "reject": "Reject this item?",
-        "deactivate": "Deactivate this account?"
+        "title": "¿Estás seguro?",
+        "delete": "Esta acción no se puede deshacer.",
+        "archive": "¿Archivar este elemento?",
+        "reject": "¿Rechazar este elemento?",
+        "deactivate": "¿Desactivar esta cuenta?"
       },
-      "save": "Save",
-      "saving": "Saving…",
-      "clearFilters": "Clear filters",
-      "required": "Required",
-      "loading": "Loading…",
+      "save": "Guardar",
+      "saving": "Guardando…",
+      "clearFilters": "Limpiar filtros",
+      "required": "Obligatorio",
+      "loading": "Cargando…",
       "empty": {
-        "title": "Nothing here yet",
-        "description": "Try adjusting filters or create a new item.",
-        "action": "Get started"
+        "title": "Aún no hay nada",
+        "description": "Ajusta los filtros o crea un nuevo elemento.",
+        "action": "Empezar"
       },
       "error": {
-        "title": "Something went wrong",
-        "description": "We couldn’t load this section. Please try again."
+        "title": "Algo salió mal",
+        "description": "No pudimos cargar esta sección. Inténtalo de nuevo."
       },
       "toast": {
-        "success": "Saved",
-        "error": "Something went wrong",
-        "warning": "Please review",
-        "info": "Updated"
+        "success": "Guardado",
+        "error": "Algo salió mal",
+        "warning": "Revisa los datos",
+        "info": "Actualizado"
       }
     }
   },

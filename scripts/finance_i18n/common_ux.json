@@ -1,0 +1,281 @@
+{
+  "ru": {
+    "retry": "Повторить",
+    "cancel": "Отмена",
+    "confirm": {
+      "title": "Вы уверены?",
+      "delete": "Это действие нельзя отменить.",
+      "archive": "Архивировать этот элемент?",
+      "reject": "Отклонить этот элемент?",
+      "deactivate": "Деактивировать этот аккаунт?"
+    },
+    "save": "Сохранить",
+    "saving": "Сохранение…",
+    "clearFilters": "Сбросить фильтры",
+    "required": "Обязательно",
+    "loading": "Загрузка…",
+    "empty": {
+      "title": "Пока ничего нет",
+      "description": "Измените фильтры или создайте новый элемент.",
+      "action": "Начать"
+    },
+    "error": {
+      "title": "Что-то пошло не так",
+      "description": "Не удалось загрузить этот раздел. Попробуйте снова."
+    },
+    "toast": {
+      "success": "Сохранено",
+      "error": "Что-то пошло не так",
+      "warning": "Проверьте данные",
+      "info": "Обновлено"
+    }
+  },
+  "de": {
+    "retry": "Erneut versuchen",
+    "cancel": "Abbrechen",
+    "confirm": {
+      "title": "Sind Sie sicher?",
+      "delete": "Diese Aktion kann nicht rückgängig gemacht werden.",
+      "archive": "Dieses Element archivieren?",
+      "reject": "Dieses Element ablehnen?",
+      "deactivate": "Dieses Konto deaktivieren?"
+    },
+    "save": "Speichern",
+    "saving": "Speichern…",
+    "clearFilters": "Filter zurücksetzen",
+    "required": "Erforderlich",
+    "loading": "Laden…",
+    "empty": {
+      "title": "Noch nichts hier",
+      "description": "Filter anpassen oder ein neues Element erstellen.",
+      "action": "Loslegen"
+    },
+    "error": {
+      "title": "Etwas ist schiefgelaufen",
+      "description": "Dieser Bereich konnte nicht geladen werden. Bitte erneut versuchen."
+    },
+    "toast": {
+      "success": "Gespeichert",
+      "error": "Etwas ist schiefgelaufen",
+      "warning": "Bitte prüfen",
+      "info": "Aktualisiert"
+    }
+  },
+  "fr": {
+    "retry": "Réessayer",
+    "cancel": "Annuler",
+    "confirm": {
+      "title": "Êtes-vous sûr ?",
+      "delete": "Cette action est irréversible.",
+      "archive": "Archiver cet élément ?",
+      "reject": "Rejeter cet élément ?",
+      "deactivate": "Désactiver ce compte ?"
+    },
+    "save": "Enregistrer",
+    "saving": "Enregistrement…",
+    "clearFilters": "Effacer les filtres",
+    "required": "Obligatoire",
+    "loading": "Chargement…",
+    "empty": {
+      "title": "Rien ici pour le moment",
+      "description": "Ajustez les filtres ou créez un nouvel élément.",
+      "action": "Commencer"
+    },
+    "error": {
+      "title": "Une erreur s’est produite",
+      "description": "Impossible de charger cette section. Veuillez réessayer."
+    },
+    "toast": {
+      "success": "Enregistré",
+      "error": "Une erreur s’est produite",
+      "warning": "Veuillez vérifier",
+      "info": "Mis à jour"
+    }
+  },
+  "es": {
+    "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "confirm": {
+      "title": "¿Estás seguro?",
+      "delete": "Esta acción no se puede deshacer.",
+      "archive": "¿Archivar este elemento?",
+      "reject": "¿Rechazar este elemento?",
+      "deactivate": "¿Desactivar esta cuenta?"
+    },
+    "save": "Guardar",
+    "saving": "Guardando…",
+    "clearFilters": "Limpiar filtros",
+    "required": "Obligatorio",
+    "loading": "Cargando…",
+    "empty": {
+      "title": "Aún no hay nada",
+      "description": "Ajusta los filtros o crea un nuevo elemento.",
+      "action": "Empezar"
+    },
+    "error": {
+      "title": "Algo salió mal",
+      "description": "No pudimos cargar esta sección. Inténtalo de nuevo."
+    },
+    "toast": {
+      "success": "Guardado",
+      "error": "Algo salió mal",
+      "warning": "Revisa los datos",
+      "info": "Actualizado"
+    }
+  },
+  "it": {
+    "retry": "Riprova",
+    "cancel": "Annulla",
+    "confirm": {
+      "title": "Sei sicuro?",
+      "delete": "Questa azione non può essere annullata.",
+      "archive": "Archiviare questo elemento?",
+      "reject": "Rifiutare questo elemento?",
+      "deactivate": "Disattivare questo account?"
+    },
+    "save": "Salva",
+    "saving": "Salvataggio…",
+    "clearFilters": "Cancella filtri",
+    "required": "Obbligatorio",
+    "loading": "Caricamento…",
+    "empty": {
+      "title": "Ancora niente qui",
+      "description": "Modifica i filtri o crea un nuovo elemento.",
+      "action": "Inizia"
+    },
+    "error": {
+      "title": "Qualcosa è andato storto",
+      "description": "Impossibile caricare questa sezione. Riprova."
+    },
+    "toast": {
+      "success": "Salvato",
+      "error": "Qualcosa è andato storto",
+      "warning": "Controlla i dati",
+      "info": "Aggiornato"
+    }
+  },
+  "pt": {
+    "retry": "Tentar novamente",
+    "cancel": "Cancelar",
+    "confirm": {
+      "title": "Tem a certeza?",
+      "delete": "Esta ação não pode ser anulada.",
+      "archive": "Arquivar este item?",
+      "reject": "Rejeitar este item?",
+      "deactivate": "Desativar esta conta?"
+    },
+    "save": "Guardar",
+    "saving": "A guardar…",
+    "clearFilters": "Limpar filtros",
+    "required": "Obrigatório",
+    "loading": "A carregar…",
+    "empty": {
+      "title": "Ainda não há nada",
+      "description": "Ajuste os filtros ou crie um novo item.",
+      "action": "Começar"
+    },
+    "error": {
+      "title": "Algo correu mal",
+      "description": "Não foi possível carregar esta secção. Tente novamente."
+    },
+    "toast": {
+      "success": "Guardado",
+      "error": "Algo correu mal",
+      "warning": "Reveja os dados",
+      "info": "Atualizado"
+    }
+  },
+  "pl": {
+    "retry": "Spróbuj ponownie",
+    "cancel": "Anuluj",
+    "confirm": {
+      "title": "Czy na pewno?",
+      "delete": "Tej czynności nie można cofnąć.",
+      "archive": "Zarchiwizować ten element?",
+      "reject": "Odrzucić ten element?",
+      "deactivate": "Dezaktywować to konto?"
+    },
+    "save": "Zapisz",
+    "saving": "Zapisywanie…",
+    "clearFilters": "Wyczyść filtry",
+    "required": "Wymagane",
+    "loading": "Ładowanie…",
+    "empty": {
+      "title": "Na razie nic tu nie ma",
+      "description": "Dostosuj filtry lub utwórz nowy element.",
+      "action": "Zacznij"
+    },
+    "error": {
+      "title": "Coś poszło nie tak",
+      "description": "Nie udało się wczytać tej sekcji. Spróbuj ponownie."
+    },
+    "toast": {
+      "success": "Zapisano",
+      "error": "Coś poszło nie tak",
+      "warning": "Sprawdź dane",
+      "info": "Zaktualizowano"
+    }
+  },
+  "cs": {
+    "retry": "Zkusit znovu",
+    "cancel": "Zrušit",
+    "confirm": {
+      "title": "Opravdu?",
+      "delete": "Tuto akci nelze vrátit zpět.",
+      "archive": "Archivovat tuto položku?",
+      "reject": "Zamítnout tuto položku?",
+      "deactivate": "Deaktivovat tento účet?"
+    },
+    "save": "Uložit",
+    "saving": "Ukládání…",
+    "clearFilters": "Vymazat filtry",
+    "required": "Povinné",
+    "loading": "Načítání…",
+    "empty": {
+      "title": "Zatím tu nic není",
+      "description": "Upravte filtry nebo vytvořte novou položku.",
+      "action": "Začít"
+    },
+    "error": {
+      "title": "Něco se pokazilo",
+      "description": "Tuto sekci se nepodařilo načíst. Zkuste to znovu."
+    },
+    "toast": {
+      "success": "Uloženo",
+      "error": "Něco se pokazilo",
+      "warning": "Zkontrolujte údaje",
+      "info": "Aktualizováno"
+    }
+  },
+  "uk": {
+    "retry": "Спробувати знову",
+    "cancel": "Скасувати",
+    "confirm": {
+      "title": "Ви впевнені?",
+      "delete": "Цю дію неможливо скасувати.",
+      "archive": "Архівувати цей елемент?",
+      "reject": "Відхилити цей елемент?",
+      "deactivate": "Деактивувати цей обліковий запис?"
+    },
+    "save": "Зберегти",
+    "saving": "Збереження…",
+    "clearFilters": "Скинути фільтри",
+    "required": "Обов’язково",
+    "loading": "Завантаження…",
+    "empty": {
+      "title": "Поки нічого немає",
+      "description": "Змініть фільтри або створіть новий елемент.",
+      "action": "Почати"
+    },
+    "error": {
+      "title": "Щось пішло не так",
+      "description": "Не вдалося завантажити цей розділ. Спробуйте знову."
+    },
+    "toast": {
+      "success": "Збережено",
+      "error": "Щось пішло не так",
+      "warning": "Перевірте дані",
+      "info": "Оновлено"
+    }
+  }
+}

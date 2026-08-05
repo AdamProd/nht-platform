@@ -1,6 +1,6 @@
 import { getRequestConfig } from "next-intl/server";
 import { hasLocale } from "next-intl";
-import { routing } from "./routing";
+import { routing, type Locale } from "./routing";
 import enMessages from "../messages/en.json";
 
 type MessageTree = Record<string, unknown>;
@@ -23,15 +23,25 @@ function mergeMessages(base: MessageTree, override: MessageTree): MessageTree {
   return result;
 }
 
-function readPath(tree: MessageTree, path: string): string | undefined {
-  const parts = path.split(".").filter(Boolean);
-  let cursor: unknown = tree;
-  for (const part of parts) {
-    if (!isObject(cursor) || !(part in cursor)) return undefined;
-    cursor = cursor[part];
-  }
-  return typeof cursor === "string" ? cursor : undefined;
-}
+/**
+ * Explicit loaders so Turbopack/Webpack always include every locale JSON.
+ * Template dynamic imports can miss individual locales (e.g. ru) at runtime.
+ */
+const localeLoaders: Record<
+  Locale,
+  () => Promise<{ default: MessageTree }>
+> = {
+  en: () => import("../messages/en.json"),
+  ru: () => import("../messages/ru.json"),
+  de: () => import("../messages/de.json"),
+  fr: () => import("../messages/fr.json"),
+  es: () => import("../messages/es.json"),
+  it: () => import("../messages/it.json"),
+  pt: () => import("../messages/pt.json"),
+  pl: () => import("../messages/pl.json"),
+  cs: () => import("../messages/cs.json"),
+  uk: () => import("../messages/uk.json"),
+};
 
 export default getRequestConfig(async ({ requestLocale }) => {
   const requested = await requestLocale;
@@ -39,9 +49,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ? requested
     : routing.defaultLocale;
 
-  const localeMessages = (
-    await import(`../messages/${locale}.json`)
-  ).default as MessageTree;
+  const loaded = await localeLoaders[locale]();
+  const localeMessages = loaded.default;
 
   const messages =
     locale === "en"
@@ -51,17 +60,9 @@ export default getRequestConfig(async ({ requestLocale }) => {
   return {
     locale,
     messages,
-    getMessageFallback({ namespace, key }) {
-      const path = [namespace, key].filter(Boolean).join(".");
-      return (
-        readPath(enMessages as MessageTree, path) ??
-        readPath(enMessages as MessageTree, key) ??
-        key
-      );
-    },
     onError(error) {
       if (error.code === "MISSING_MESSAGE") {
-        console.warn(error.message);
+        console.warn(`[i18n:${locale}]`, error.message);
         return;
       }
       console.error(error);

@@ -5,6 +5,7 @@ import DashboardRecentApplications from "@/features/dashboard/components/Dashboa
 import DashboardCreatorsSection from "@/features/dashboard/components/DashboardCreatorsSection";
 import DashboardPlatformBreakdown from "@/features/dashboard/components/DashboardPlatformBreakdown";
 import DashboardQuickActions from "@/features/dashboard/components/DashboardQuickActions";
+import DashboardTasksSection from "@/features/dashboard/components/DashboardTasksSection";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -33,16 +34,33 @@ export default async function AdminDashboardPage({ params }: Props) {
       latestRegistrations: [],
       recentCreators: [],
       platforms: [],
+      tasks: {
+        openTasks: 0,
+        myTasks: 0,
+        overdue: 0,
+        completedToday: 0,
+      },
     };
   }
 
   const creatorStatusLabels = {
     new: tCreators("status.new"),
+    invited: tCreators("status.invited"),
     active: tCreators("status.active"),
     paused: tCreators("status.paused"),
     vacation: tCreators("status.vacation"),
     inactive: tCreators("status.inactive"),
     banned: tCreators("status.banned"),
+  };
+
+  const creatorPlatformLabels = {
+    onlyfans: tCreators("platforms.onlyfans"),
+    fansly: tCreators("platforms.fansly"),
+    manyvids: tCreators("platforms.manyvids"),
+    chaturbate: tCreators("platforms.chaturbate"),
+    instagram: tCreators("platforms.instagram"),
+    tiktok: tCreators("platforms.tiktok"),
+    twitter: tCreators("platforms.twitter"),
   };
 
   return (
@@ -72,6 +90,18 @@ export default async function AdminDashboardPage({ params }: Props) {
           reviewing: t("kpis.reviewing"),
           active: t("kpis.active"),
           rejected: t("kpis.rejected"),
+        }}
+      />
+
+      <DashboardTasksSection
+        stats={data.tasks}
+        labels={{
+          title: t("tasks.title"),
+          openTasks: t("tasks.openTasks"),
+          myTasks: t("tasks.myTasks"),
+          overdue: t("tasks.overdue"),
+          completedToday: t("tasks.completedToday"),
+          viewAll: t("tasks.viewAll"),
         }}
       />
 
@@ -136,6 +166,7 @@ export default async function AdminDashboardPage({ params }: Props) {
           unassigned: tCreators("unassigned"),
         }}
         statusLabels={creatorStatusLabels}
+        platformLabels={creatorPlatformLabels}
       />
 
       <DashboardCreatorsSection
@@ -149,6 +180,7 @@ export default async function AdminDashboardPage({ params }: Props) {
           revenue: tCreators("table.revenue"),
         }}
         statusLabels={creatorStatusLabels}
+        platformLabels={creatorPlatformLabels}
       />
 
       <DashboardCreatorsSection

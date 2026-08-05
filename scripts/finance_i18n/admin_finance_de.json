@@ -1,0 +1,202 @@
+{
+  "kpis": {
+    "totalRevenue": "Gesamtumsatz",
+    "agencyRevenue": "Agenturumsatz",
+    "creatorRevenue": "Creator-Umsatz",
+    "pendingPayouts": "Ausstehende Auszahlungen",
+    "paidThisMonth": "Diesen Monat ausgezahlt",
+    "activeCreators": "Aktive Creator",
+    "revenueToday": "Umsatz heute",
+    "revenueThisMonth": "Umsatz diesen Monat",
+    "revenueThisYear": "Umsatz dieses Jahr",
+    "revenueThisWeek": "Umsatz diese Woche",
+    "countPending": "Ausstehend",
+    "countApproved": "Genehmigt",
+    "countRejected": "Abgelehnt",
+    "countPaid": "Bezahlt",
+    "outstandingBalance": "Offener Saldo",
+    "averageRevenuePerCreator": "Durchschnitt / Creator"
+  },
+  "summaries": {
+    "creatorTitle": "Creator-Übersicht",
+    "agencyTitle": "Agentur-Übersicht",
+    "lifetimeRevenue": "Lebenszeitumsatz",
+    "thisMonth": "Dieser Monat",
+    "pendingPayout": "Ausstehende Auszahlung",
+    "lastPayout": "Letzte Auszahlung",
+    "averageMonthly": "Durchschnittlicher Monatsumsatz",
+    "monthlyRevenue": "Monatsumsatz",
+    "quarterRevenue": "Quartalsumsatz",
+    "yearRevenue": "Jahresumsatz"
+  },
+  "integrations": {
+    "title": "Zahlungsintegrationen",
+    "description": "Auszahlungsanbieter verbinden. Nur Architektur — noch keine Live-Integrationen.",
+    "comingSoon": "Demnächst"
+  },
+  "filters": {
+    "search": "Suche",
+    "searchPlaceholder": "Plattform, Referenz, Notizen",
+    "status": "Status",
+    "platform": "Plattform",
+    "creator": "Creator",
+    "manager": "Manager",
+    "from": "Von",
+    "to": "Bis",
+    "all": "Alle",
+    "apply": "Anwenden",
+    "clear": "Zurücksetzen",
+    "sort": "Sortierung"
+  },
+  "table": {
+    "date": "Datum",
+    "creator": "Creator",
+    "platform": "Plattform",
+    "gross": "Bruttoumsatz",
+    "agencyPercent": "Agentur %",
+    "agencyAmount": "Agenturanteil",
+    "creatorPercent": "Creator %",
+    "creatorAmount": "Creator-Anteil",
+    "status": "Status",
+    "manager": "Manager",
+    "actions": "Aktionen",
+    "view": "Ansehen"
+  },
+  "pagination": {
+    "previous": "Zurück",
+    "next": "Weiter",
+    "pageOf": "Seite {page} von {totalPages} · {total} gesamt"
+  },
+  "fields": {
+    "creator": "Creator",
+    "manager": "Manager",
+    "platform": "Plattform",
+    "date": "Datum",
+    "gross": "Bruttoumsatz",
+    "currency": "Währung",
+    "agencyPercent": "Agentur %",
+    "agencyAmount": "Agenturanteil",
+    "creatorPercent": "Creator %",
+    "creatorAmount": "Creator-Anteil",
+    "status": "Status",
+    "paymentMethod": "Zahlungsart",
+    "referenceId": "Referenz-ID",
+    "notes": "Notizen",
+    "created": "Erstellt",
+    "updated": "Aktualisiert"
+  },
+  "sections": {
+    "details": "Details",
+    "status": "Status",
+    "notes": "Notizen",
+    "meta": "Zeitlinie"
+  },
+  "status": {
+    "pending": "Ausstehend",
+    "approved": "Genehmigt",
+    "paid": "Bezahlt",
+    "cancelled": "Storniert",
+    "disputed": "Angefochten"
+  },
+  "platforms": {
+    "onlyfans": "OnlyFans",
+    "fansly": "Fansly",
+    "manyvids": "ManyVids",
+    "chaturbate": "Chaturbate",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "twitter": "X (Twitter)",
+    "other": "Sonstiges"
+  },
+  "methods": {
+    "stripe": "Stripe",
+    "wise": "Wise",
+    "paypal": "PayPal",
+    "crypto": "Krypto",
+    "bankTransfer": "Banküberweisung",
+    "other": "Sonstiges"
+  },
+  "errors": {
+    "load": "Finanzdaten konnten nicht geladen werden.",
+    "loadDetail": "Diese Transaktion konnte nicht geladen werden.",
+    "boundary": "Fehler beim Laden der Finanzen.",
+    "retry": "Erneut versuchen"
+  },
+  "notFound": {
+    "title": "Transaktion nicht gefunden",
+    "description": "Diese Transaktion wurde entfernt oder Sie haben keinen Zugriff.",
+    "back": "Zurück zu Finanzen"
+  },
+  "actionErrors": {
+    "unauthorized": "Sie sind nicht berechtigt, diese Änderung vorzunehmen.",
+    "forbidden": "Sie können nur Finanzen Ihrer zugewiesenen Creator verwalten.",
+    "invalid": "Ungültige Transaktionsdaten.",
+    "invalidStatus": "Ungültiger Status.",
+    "invalidNotes": "Ungültige Notizen.",
+    "create": "Transaktion konnte nicht erstellt werden.",
+    "save": "Änderungen konnten nicht gespeichert werden.",
+    "delete": "Transaktion konnte nicht gelöscht werden.",
+    "ownerOnly": "Nur der Eigentümer kann Transaktionen löschen.",
+    "invalidManager": "Nur aktive Mitarbeitende können zugewiesen werden.",
+    "export": "Export fehlgeschlagen.",
+    "notFound": "Nicht gefunden."
+  },
+  "emptyTitle": "Noch keine Transaktionen",
+  "emptyDescription": "Erstellen Sie eine Transaktion oder passen Sie die Filter an.",
+  "emptyAction": "Neue Transaktion",
+  "retry": "Erneut versuchen",
+  "payoutMethods": {
+    "bank": "Bank",
+    "paypal": "PayPal",
+    "crypto": "Krypto",
+    "other": "Sonstiges"
+  },
+  "payoutActions": {
+    "error": "Fehler"
+  },
+  "charts": {
+    "value": "Wert"
+  },
+  "export": {
+    "csv": "CSV",
+    "excel": "Excel",
+    "pdf": "PDF",
+    "pdfTitle": "Finanzen — {kind}",
+    "empty": "Keine Daten",
+    "kinds": {
+      "transactions": "Transaktionen",
+      "payouts": "Auszahlungen",
+      "report": "Bericht"
+    },
+    "headers": {
+      "id": "ID",
+      "creatorId": "Creator-ID",
+      "managerId": "Manager-ID",
+      "platform": "Plattform",
+      "transactionDate": "Transaktionsdatum",
+      "grossRevenue": "Bruttoumsatz",
+      "agencyAmount": "Agenturanteil",
+      "creatorAmount": "Creator-Anteil",
+      "currency": "Währung",
+      "status": "Status",
+      "paymentMethod": "Zahlungsart",
+      "referenceId": "Referenz-ID",
+      "notes": "Notizen",
+      "amount": "Betrag",
+      "method": "Methode",
+      "periodStart": "Periodenbeginn",
+      "periodEnd": "Periodenende",
+      "requestedAt": "Angefordert am",
+      "approvedAt": "Genehmigt am",
+      "paidAt": "Bezahlt am",
+      "rejectionReason": "Ablehnungsgrund",
+      "receiptNumber": "Belegnummer",
+      "month": "Monat",
+      "year": "Jahr",
+      "revenue": "Umsatz",
+      "commission": "Provision",
+      "expenses": "Ausgaben",
+      "netProfit": "Nettogewinn"
+    }
+  }
+}

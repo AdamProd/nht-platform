@@ -85,6 +85,7 @@ type Labels = {
     platforms: string;
     onlyfans: string;
     fansly: string;
+    manyvids: string;
     chaturbate: string;
     instagram: string;
     tiktok: string;
@@ -669,6 +670,7 @@ export default function CreatorProfilePanel({
                         id: creator.id,
                         onlyfans_url: formData.get("onlyfans_url"),
                         fansly_url: formData.get("fansly_url"),
+                        manyvids_url: formData.get("manyvids_url"),
                         chaturbate_url: formData.get("chaturbate_url"),
                         instagram_url: formData.get("instagram_url"),
                         tiktok_url: formData.get("tiktok_url"),
@@ -681,6 +683,7 @@ export default function CreatorProfilePanel({
                     [
                       ["onlyfans_url", "onlyfans", labels.fields.onlyfans],
                       ["fansly_url", "fansly", labels.fields.fansly],
+                      ["manyvids_url", "manyvids", labels.fields.manyvids],
                       ["chaturbate_url", "chaturbate", labels.fields.chaturbate],
                       ["instagram_url", "instagram", labels.fields.instagram],
                       ["tiktok_url", "tiktok", labels.fields.tiktok],

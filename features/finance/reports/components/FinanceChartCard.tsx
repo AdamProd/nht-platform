@@ -17,6 +17,7 @@ type Props = {
   title: string;
   points: FinanceChartPoint[];
   empty: string;
+  valueLabel: string;
   variant?: "area" | "bar";
 };
 
@@ -24,6 +25,7 @@ export default function FinanceChartCard({
   title,
   points,
   empty,
+  valueLabel,
   variant = "area",
 }: Props) {
   return (
@@ -57,8 +59,14 @@ export default function FinanceChartCard({
                     border: "1px solid rgba(255,255,255,0.1)",
                     borderRadius: 12,
                   }}
+                  formatter={(value) => [value, valueLabel]}
                 />
-                <Bar dataKey="value" fill="var(--nht-accent)" radius={[6, 6, 0, 0]} />
+                <Bar
+                  dataKey="value"
+                  name={valueLabel}
+                  fill="var(--nht-accent)"
+                  radius={[6, 6, 0, 0]}
+                />
               </BarChart>
             ) : (
               <AreaChart data={points}>
@@ -87,10 +95,12 @@ export default function FinanceChartCard({
                     border: "1px solid rgba(255,255,255,0.1)",
                     borderRadius: 12,
                   }}
+                  formatter={(value) => [value, valueLabel]}
                 />
                 <Area
                   type="monotone"
                   dataKey="value"
+                  name={valueLabel}
                   stroke="var(--nht-accent)"
                   fill="url(#finance-fill)"
                   strokeWidth={2}
