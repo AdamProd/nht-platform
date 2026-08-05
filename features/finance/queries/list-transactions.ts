@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { requireStaffSession } from "@/lib/auth";
+import { hasPermission } from "@/features/staff/permissions";
 import {
   financeListFiltersSchema,
   type FinanceListFilters,
@@ -25,11 +26,18 @@ const LIST_SELECT = `
   )
 `;
 
+function isAdminLike(role: string): boolean {
+  return role === "owner" || role === "admin" || role === "finance";
+}
+
 export async function listFinanceTransactions(
   raw: Partial<FinanceListFilters> | Record<string, string | undefined>,
 ): Promise<FinanceListResult> {
   const session = await requireStaffSession();
   if (!session) throw new Error("Unauthorized");
+  if (!hasPermission(session.profile.role, "finance.read")) {
+    throw new Error("Forbidden");
+  }
 
   const filters = financeListFiltersSchema.parse({
     q: raw.q ?? "",
@@ -54,7 +62,7 @@ export async function listFinanceTransactions(
     .order("created_at", { ascending: false })
     .range(from, to);
 
-  if (session.profile.role === "manager") {
+  if (!isAdminLike(session.profile.role)) {
     const { data: creators } = await supabase
       .from("creators")
       .select("id")
@@ -77,7 +85,7 @@ export async function listFinanceTransactions(
   if (filters.status) query = query.eq("status", filters.status);
   if (filters.platform) query = query.eq("platform", filters.platform);
   if (filters.creator) query = query.eq("creator_id", filters.creator);
-  if (filters.manager && session.profile.role !== "manager") {
+  if (filters.manager && isAdminLike(session.profile.role)) {
     query = query.eq("manager_id", filters.manager);
   }
   if (filters.from) query = query.gte("transaction_date", filters.from);

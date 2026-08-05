@@ -71,6 +71,48 @@ export async function resolveNotificationRecipients(
       for (const row of owners ?? []) recipients.add(row.id);
       break;
     }
+    case "finance.transaction.created":
+    case "finance.transaction.updated":
+    case "finance.transaction.status_changed":
+    case "finance.transaction.assigned":
+    case "finance.payout.created":
+    case "finance.payout.updated":
+    case "finance.payout.paid":
+    case "finance.payout.cancelled": {
+      const managerId =
+        (payload.managerId as string | undefined) ||
+        (payload.manager_id as string | undefined);
+      if (managerId) recipients.add(managerId);
+
+      if (payload.notifyOwners || payload.largePayout) {
+        const { data: owners } = await admin
+          .from("profiles")
+          .select("id")
+          .eq("role", "owner");
+        for (const row of owners ?? []) recipients.add(row.id);
+      }
+
+      if (payload.notifyAdmins) {
+        const { data: admins } = await admin
+          .from("profiles")
+          .select("id")
+          .in("role", ["owner", "admin"]);
+        for (const row of admins ?? []) recipients.add(row.id);
+      }
+
+      // Future: creator profile user id when linked
+      const creatorUserId = payload.creatorUserId as string | undefined;
+      if (creatorUserId) recipients.add(creatorUserId);
+      break;
+    }
+    case "finance.transaction.deleted": {
+      const { data: owners } = await admin
+        .from("profiles")
+        .select("id")
+        .in("role", ["owner", "admin"]);
+      for (const row of owners ?? []) recipients.add(row.id);
+      break;
+    }
     default:
       break;
   }

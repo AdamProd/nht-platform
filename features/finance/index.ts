@@ -16,6 +16,11 @@ export {
   getFinanceSummaries,
   listFinanceCreators,
 } from "@/features/finance/queries/get-finance-dashboard";
+export { listActiveFinanceManagers } from "@/features/finance/queries/list-finance-managers";
+export {
+  getCreatorFinanceSummary,
+  listCreatorFinanceTransactions,
+} from "@/features/finance/queries/get-creator-finance";
 export {
   createTransaction,
   updateTransaction,

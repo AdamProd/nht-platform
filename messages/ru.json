@@ -844,7 +844,12 @@
         "activeCreators": "Active creators",
         "revenueToday": "Revenue today",
         "revenueThisMonth": "Revenue this month",
-        "revenueThisYear": "Revenue this year"
+        "revenueThisYear": "Revenue this year",
+        "revenueThisWeek": "Выручка за неделю",
+        "countPending": "Ожидает",
+        "countApproved": "Одобрено",
+        "countRejected": "Отклонено",
+        "countPaid": "Выплачено"
       },
       "summaries": {
         "creatorTitle": "Creator summary",
@@ -983,7 +988,8 @@
         "create": "Unable to create transaction.",
         "save": "Unable to save changes.",
         "delete": "Unable to delete transaction.",
-        "ownerOnly": "Only the owner can delete transactions."
+        "ownerOnly": "Only the owner can delete transactions.",
+        "invalidManager": "Можно назначать только активных сотрудников."
       }
     },
     "notifications": {
@@ -1218,7 +1224,9 @@
           "read": "Read",
           "update": "Update",
           "delete": "Delete",
-          "manage": "Manage"
+          "manage": "Manage",
+          "approve": "Одобрить",
+          "export": "Экспорт"
         }
       }
     }
@@ -1597,7 +1605,34 @@
       "staffAssignedCreatorDescription": "Креатор назначен {name}",
       "staffUnassignedCreatorTitle": "Креатор снят",
       "staffUnassignedCreatorMessage": "Креатор снят с {name}",
-      "staffUnassignedCreatorDescription": "Креатор снят с {name}"
+      "staffUnassignedCreatorDescription": "Креатор снят с {name}",
+      "financeTxCreatedTitle": "Транзакция создана",
+      "financeTxCreatedMessage": "Новая финансовая транзакция на {amount} {currency}",
+      "financeTxCreatedDescription": "Финансовая транзакция создана",
+      "financeTxUpdatedTitle": "Транзакция обновлена",
+      "financeTxUpdatedMessage": "Финансовая транзакция обновлена",
+      "financeTxUpdatedDescription": "Финансовая транзакция обновлена",
+      "financeTxDeletedTitle": "Транзакция удалена",
+      "financeTxDeletedMessage": "Финансовая транзакция удалена",
+      "financeTxDeletedDescription": "Финансовая транзакция удалена",
+      "financeTxStatusTitle": "Статус транзакции изменён",
+      "financeTxStatusMessage": "Транзакция теперь {status}",
+      "financeTxStatusDescription": "Статус изменён на {status}",
+      "financeTxAssignedTitle": "Транзакция назначена",
+      "financeTxAssignedMessage": "Вам назначена финансовая транзакция",
+      "financeTxAssignedDescription": "Финансовая транзакция назначена",
+      "financePayoutCreatedTitle": "Выплата создана",
+      "financePayoutCreatedMessage": "Новая выплата требует одобрения",
+      "financePayoutCreatedDescription": "Выплата создана",
+      "financePayoutUpdatedTitle": "Выплата обновлена",
+      "financePayoutUpdatedMessage": "Выплата обновлена",
+      "financePayoutUpdatedDescription": "Выплата обновлена",
+      "financePayoutPaidTitle": "Выплата оплачена",
+      "financePayoutPaidMessage": "Выплата одобрена и оплачена",
+      "financePayoutPaidDescription": "Выплата отмечена как оплаченная",
+      "financePayoutCancelledTitle": "Выплата отменена",
+      "financePayoutCancelledMessage": "Выплата отменена",
+      "financePayoutCancelledDescription": "Выплата отменена"
     }
   }
 }

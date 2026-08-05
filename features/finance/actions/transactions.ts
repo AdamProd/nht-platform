@@ -4,7 +4,10 @@ import { revalidatePath } from "next/cache";
 import { getLocale, getTranslations } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import { requireStaffSession } from "@/lib/auth";
-import { isOwner } from "@/lib/auth/roles";
+import { isAdminOrAbove } from "@/lib/auth/roles";
+import { publishEvent } from "@/features/events";
+import { hasPermission } from "@/features/staff/permissions";
+import { assertActiveStaffAssignee } from "@/features/finance/queries/list-finance-managers";
 import {
   createTransactionSchema,
   deleteTransactionSchema,
@@ -15,6 +18,8 @@ import {
 import type { FinanceActionResult } from "@/features/finance/types";
 import type { TablesInsert, TablesUpdate } from "@/types/database.types";
 
+const LARGE_PAYOUT_THRESHOLD = 5000;
+
 async function revalidateFinance(id?: string) {
   const locale = await getLocale();
   revalidatePath(`/${locale}/admin/finance`);
@@ -22,12 +27,14 @@ async function revalidateFinance(id?: string) {
   if (id) revalidatePath(`/${locale}/admin/finance/${id}`);
 }
 
-async function assertCreatorAccess(creatorId: string): Promise<FinanceActionResult | null> {
+async function assertCreatorAccess(
+  creatorId: string,
+): Promise<FinanceActionResult | null> {
   const session = await requireStaffSession();
   const t = await getTranslations("admin.finance.actionErrors");
   if (!session) return { success: false, error: t("unauthorized") };
 
-  if (session.profile.role === "owner" || session.profile.role === "admin") {
+  if (isAdminOrAbove(session.profile.role)) {
     return null;
   }
 
@@ -45,6 +52,10 @@ async function assertCreatorAccess(creatorId: string): Promise<FinanceActionResu
   return null;
 }
 
+function isLargePayout(amount: number | null | undefined): boolean {
+  return Number(amount ?? 0) >= LARGE_PAYOUT_THRESHOLD;
+}
+
 export async function createTransaction(
   raw: unknown,
 ): Promise<FinanceActionResult> {
@@ -52,7 +63,7 @@ export async function createTransaction(
 
   try {
     const session = await requireStaffSession();
-    if (!session || !["owner", "admin", "manager"].includes(session.profile.role)) {
+    if (!session || !hasPermission(session.profile.role, "finance.create")) {
       return { success: false, error: t("unauthorized") };
     }
 
@@ -62,10 +73,14 @@ export async function createTransaction(
     }
 
     let managerId = parsed.data.manager_id;
-    if (session.profile.role === "manager") {
+    if (!isAdminOrAbove(session.profile.role)) {
       managerId = session.profile.id;
       const denied = await assertCreatorAccess(parsed.data.creator_id);
       if (denied) return denied;
+    }
+
+    if (!(await assertActiveStaffAssignee(managerId))) {
+      return { success: false, error: t("invalidManager") };
     }
 
     const row: TablesInsert<"finance_transactions"> = {
@@ -98,6 +113,60 @@ export async function createTransaction(
       return { success: false, error: t("create") };
     }
 
+    const large = isLargePayout(parsed.data.creator_amount);
+    const payload = {
+      amount: parsed.data.creator_amount,
+      gross: parsed.data.gross_revenue,
+      currency: parsed.data.currency,
+      status: parsed.data.status,
+      managerId,
+      manager_id: managerId,
+      creatorId: parsed.data.creator_id,
+      largePayout: large,
+      notifyOwners: large,
+      notifyAdmins: parsed.data.status === "pending",
+    };
+
+    await publishEvent({
+      type: "finance.transaction.created",
+      module: "finance",
+      actorId: session.profile.id,
+      actorRole: session.profile.role,
+      targetId: data.id,
+      relatedCreatorId: parsed.data.creator_id,
+      link: `/admin/finance/${data.id}`,
+      payload,
+    });
+
+    if (parsed.data.status === "pending" || parsed.data.status === "approved") {
+      await publishEvent({
+        type: "finance.payout.created",
+        module: "finance",
+        actorId: session.profile.id,
+        actorRole: session.profile.role,
+        targetId: data.id,
+        relatedCreatorId: parsed.data.creator_id,
+        link: `/admin/finance/${data.id}`,
+        payload: {
+          ...payload,
+          notifyAdmins: parsed.data.status === "pending",
+        },
+      });
+    }
+
+    if (managerId) {
+      await publishEvent({
+        type: "finance.transaction.assigned",
+        module: "finance",
+        actorId: session.profile.id,
+        actorRole: session.profile.role,
+        targetId: data.id,
+        relatedCreatorId: parsed.data.creator_id,
+        link: `/admin/finance/${data.id}`,
+        payload,
+      });
+    }
+
     await revalidateFinance(data.id);
     return { success: true, id: data.id };
   } catch (error) {
@@ -113,7 +182,9 @@ export async function updateTransaction(
 
   try {
     const session = await requireStaffSession();
-    if (!session) return { success: false, error: t("unauthorized") };
+    if (!session || !hasPermission(session.profile.role, "finance.update")) {
+      return { success: false, error: t("unauthorized") };
+    }
 
     const parsed = updateTransactionSchema.safeParse(raw);
     if (!parsed.success) {
@@ -123,12 +194,28 @@ export async function updateTransaction(
     const denied = await assertCreatorAccess(parsed.data.creator_id);
     if (denied) return denied;
 
+    const canAssign = isAdminOrAbove(session.profile.role);
+
+    const managerId = canAssign
+      ? parsed.data.manager_id
+      : session.profile.id;
+
+    if (!(await assertActiveStaffAssignee(managerId))) {
+      return { success: false, error: t("invalidManager") };
+    }
+
+    const supabase = await createClient();
+    const { data: before } = await supabase
+      .from("finance_transactions")
+      .select("*")
+      .eq("id", parsed.data.id)
+      .maybeSingle();
+
+    if (!before) return { success: false, error: t("invalid") };
+
     const patch: TablesUpdate<"finance_transactions"> = {
       creator_id: parsed.data.creator_id,
-      manager_id:
-        session.profile.role === "manager"
-          ? session.profile.id
-          : parsed.data.manager_id,
+      manager_id: managerId,
       platform: parsed.data.platform,
       transaction_date: parsed.data.transaction_date,
       gross_revenue: parsed.data.gross_revenue,
@@ -142,7 +229,6 @@ export async function updateTransaction(
       notes: parsed.data.notes,
     };
 
-    const supabase = await createClient();
     const { error } = await supabase
       .from("finance_transactions")
       .update(patch)
@@ -152,6 +238,61 @@ export async function updateTransaction(
       console.error("[updateTransaction]", error.message);
       return { success: false, error: t("save") };
     }
+
+    const payload = {
+      before: {
+        amount: before.creator_amount,
+        gross: before.gross_revenue,
+        agency_percent: before.agency_percent,
+        manager_id: before.manager_id,
+      },
+      after: {
+        amount: parsed.data.creator_amount,
+        gross: parsed.data.gross_revenue,
+        agency_percent: parsed.data.agency_percent,
+        manager_id: managerId,
+      },
+      managerId,
+      manager_id: managerId,
+      creatorId: parsed.data.creator_id,
+      largePayout: isLargePayout(parsed.data.creator_amount),
+      notifyOwners: isLargePayout(parsed.data.creator_amount),
+    };
+
+    await publishEvent({
+      type: "finance.transaction.updated",
+      module: "finance",
+      actorId: session.profile.id,
+      actorRole: session.profile.role,
+      targetId: parsed.data.id,
+      relatedCreatorId: parsed.data.creator_id,
+      link: `/admin/finance/${parsed.data.id}`,
+      payload,
+    });
+
+    if (before.manager_id !== managerId) {
+      await publishEvent({
+        type: "finance.transaction.assigned",
+        module: "finance",
+        actorId: session.profile.id,
+        actorRole: session.profile.role,
+        targetId: parsed.data.id,
+        relatedCreatorId: parsed.data.creator_id,
+        link: `/admin/finance/${parsed.data.id}`,
+        payload,
+      });
+    }
+
+    await publishEvent({
+      type: "finance.payout.updated",
+      module: "finance",
+      actorId: session.profile.id,
+      actorRole: session.profile.role,
+      targetId: parsed.data.id,
+      relatedCreatorId: parsed.data.creator_id,
+      link: `/admin/finance/${parsed.data.id}`,
+      payload,
+    });
 
     await revalidateFinance(parsed.data.id);
     return { success: true, id: parsed.data.id };
@@ -176,12 +317,21 @@ export async function updateFinanceStatus(
     }
 
     const session = await requireStaffSession();
-    if (!session) return { success: false, error: t("unauthorized") };
+    if (!session || !hasPermission(session.profile.role, "finance.update")) {
+      return { success: false, error: t("unauthorized") };
+    }
+
+    if (
+      parsed.data.status === "paid" &&
+      !hasPermission(session.profile.role, "finance.approve")
+    ) {
+      return { success: false, error: t("forbidden") };
+    }
 
     const supabase = await createClient();
     const { data: existing } = await supabase
       .from("finance_transactions")
-      .select("id, creator_id")
+      .select("*")
       .eq("id", parsed.data.id)
       .maybeSingle();
 
@@ -197,6 +347,67 @@ export async function updateFinanceStatus(
     if (error) {
       console.error("[updateFinanceStatus]", error.message);
       return { success: false, error: t("save") };
+    }
+
+    const payload = {
+      status: parsed.data.status,
+      previousStatus: existing.status,
+      amount: existing.creator_amount,
+      managerId: existing.manager_id,
+      manager_id: existing.manager_id,
+      creatorId: existing.creator_id,
+      before: { status: existing.status },
+      after: { status: parsed.data.status },
+      notifyAdmins: parsed.data.status === "pending",
+    };
+
+    await publishEvent({
+      type: "finance.transaction.status_changed",
+      module: "finance",
+      actorId: session.profile.id,
+      actorRole: session.profile.role,
+      targetId: parsed.data.id,
+      relatedCreatorId: existing.creator_id,
+      link: `/admin/finance/${parsed.data.id}`,
+      payload,
+    });
+
+    if (parsed.data.status === "paid") {
+      await publishEvent({
+        type: "finance.payout.paid",
+        module: "finance",
+        actorId: session.profile.id,
+        actorRole: session.profile.role,
+        targetId: parsed.data.id,
+        relatedCreatorId: existing.creator_id,
+        link: `/admin/finance/${parsed.data.id}`,
+        payload,
+      });
+    } else if (parsed.data.status === "cancelled") {
+      await publishEvent({
+        type: "finance.payout.cancelled",
+        module: "finance",
+        actorId: session.profile.id,
+        actorRole: session.profile.role,
+        targetId: parsed.data.id,
+        relatedCreatorId: existing.creator_id,
+        link: `/admin/finance/${parsed.data.id}`,
+        payload,
+      });
+    } else if (parsed.data.status === "approved" || parsed.data.status === "pending") {
+      await publishEvent({
+        type: "finance.payout.updated",
+        module: "finance",
+        actorId: session.profile.id,
+        actorRole: session.profile.role,
+        targetId: parsed.data.id,
+        relatedCreatorId: existing.creator_id,
+        link: `/admin/finance/${parsed.data.id}`,
+        payload: {
+          ...payload,
+          notifyAdmins: parsed.data.status === "pending",
+        },
+      });
     }
 
     await revalidateFinance(parsed.data.id);
@@ -222,12 +433,14 @@ export async function updateFinanceNotes(
     }
 
     const session = await requireStaffSession();
-    if (!session) return { success: false, error: t("unauthorized") };
+    if (!session || !hasPermission(session.profile.role, "finance.update")) {
+      return { success: false, error: t("unauthorized") };
+    }
 
     const supabase = await createClient();
     const { data: existing } = await supabase
       .from("finance_transactions")
-      .select("id, creator_id")
+      .select("id, creator_id, notes, manager_id")
       .eq("id", parsed.data.id)
       .maybeSingle();
 
@@ -245,6 +458,23 @@ export async function updateFinanceNotes(
       return { success: false, error: t("save") };
     }
 
+    await publishEvent({
+      type: "finance.transaction.updated",
+      module: "finance",
+      actorId: session.profile.id,
+      actorRole: session.profile.role,
+      targetId: parsed.data.id,
+      relatedCreatorId: existing.creator_id,
+      link: `/admin/finance/${parsed.data.id}`,
+      payload: {
+        before: { notes: existing.notes },
+        after: { notes: parsed.data.notes },
+        managerId: existing.manager_id,
+        manager_id: existing.manager_id,
+        creatorId: existing.creator_id,
+      },
+    });
+
     await revalidateFinance(parsed.data.id);
     return { success: true, id: parsed.data.id };
   } catch (error) {
@@ -260,8 +490,7 @@ export async function deleteTransaction(
 
   try {
     const session = await requireStaffSession();
-    if (!session) return { success: false, error: t("unauthorized") };
-    if (!isOwner(session.profile.role)) {
+    if (!session || !hasPermission(session.profile.role, "finance.delete")) {
       return { success: false, error: t("ownerOnly") };
     }
 
@@ -273,6 +502,12 @@ export async function deleteTransaction(
     }
 
     const supabase = await createClient();
+    const { data: existing } = await supabase
+      .from("finance_transactions")
+      .select("id, creator_id, creator_amount, manager_id, status")
+      .eq("id", parsed.data.id)
+      .maybeSingle();
+
     const { error } = await supabase
       .from("finance_transactions")
       .delete()
@@ -282,6 +517,23 @@ export async function deleteTransaction(
       console.error("[deleteTransaction]", error.message);
       return { success: false, error: t("delete") };
     }
+
+    await publishEvent({
+      type: "finance.transaction.deleted",
+      module: "finance",
+      actorId: session.profile.id,
+      actorRole: session.profile.role,
+      targetId: parsed.data.id,
+      relatedCreatorId: existing?.creator_id,
+      visibility: "staff",
+      payload: {
+        before: existing,
+        amount: existing?.creator_amount,
+        status: existing?.status,
+        managerId: existing?.manager_id,
+        creatorId: existing?.creator_id,
+      },
+    });
 
     await revalidateFinance();
     return { success: true };

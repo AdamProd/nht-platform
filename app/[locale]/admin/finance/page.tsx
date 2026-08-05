@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { requireStaff } from "@/lib/auth";
-import { listStaffManagers } from "@/features/applications/queries/list-managers";
+import { requireStaff, isAdminOrAbove } from "@/lib/auth";
+import { hasPermission } from "@/features/staff/permissions";
+import { listActiveFinanceManagers } from "@/features/finance/queries/list-finance-managers";
 import {
   getFinanceDashboardKpis,
   getFinanceSummaries,
@@ -19,6 +20,7 @@ import type {
   FinancePlatform,
   FinanceTransactionStatus,
 } from "@/features/finance/types";
+import { redirect } from "@/i18n/navigation";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -37,6 +39,10 @@ export default async function AdminFinancePage({ params, searchParams }: Props) 
   const t = await getTranslations("admin.finance");
   const sp = await searchParams;
 
+  if (!hasPermission(session.profile.role, "finance.read")) {
+    redirect({ href: "/admin", locale });
+  }
+
   const q = first(sp.q);
   const status = first(sp.status);
   const platform = first(sp.platform);
@@ -46,15 +52,15 @@ export default async function AdminFinancePage({ params, searchParams }: Props) 
   const to = first(sp.to);
   const page = first(sp.page) || "1";
 
-  const canAssignManager =
-    session.profile.role === "owner" || session.profile.role === "admin";
+  const canAssignManager = isAdminOrAbove(session.profile.role);
+  const canCreate = hasPermission(session.profile.role, "finance.create");
 
   let loadError: string | null = null;
   let kpis: Awaited<ReturnType<typeof getFinanceDashboardKpis>>;
   let summaries: Awaited<ReturnType<typeof getFinanceSummaries>>;
   let list: Awaited<ReturnType<typeof listFinanceTransactions>>;
   let creators: Awaited<ReturnType<typeof listFinanceCreators>>;
-  let managers: Awaited<ReturnType<typeof listStaffManagers>>;
+  let managers: Awaited<ReturnType<typeof listActiveFinanceManagers>>;
 
   try {
     [kpis, summaries, list, creators, managers] = await Promise.all([
@@ -71,7 +77,7 @@ export default async function AdminFinancePage({ params, searchParams }: Props) 
         page,
       }),
       listFinanceCreators(),
-      listStaffManagers(),
+      listActiveFinanceManagers(),
     ]);
   } catch (error) {
     console.error(error);
@@ -84,8 +90,13 @@ export default async function AdminFinancePage({ params, searchParams }: Props) 
       paidThisMonth: 0,
       activeCreators: 0,
       revenueToday: 0,
+      revenueThisWeek: 0,
       revenueThisMonth: 0,
       revenueThisYear: 0,
+      countPending: 0,
+      countApproved: 0,
+      countRejected: 0,
+      countPaid: 0,
     };
     summaries = {
       creator: {
@@ -141,38 +152,40 @@ export default async function AdminFinancePage({ params, searchParams }: Props) 
             {t("description")}
           </p>
         </div>
-        <CreateTransactionForm
-          creators={creators}
-          managers={managers}
-          canAssignManager={canAssignManager}
-          labels={{
-            title: t("form.title"),
-            open: t("form.open"),
-            cancel: t("form.cancel"),
-            submit: t("form.submit"),
-            submitting: t("form.submitting"),
-            saved: t("toast.created"),
-            saveError: t("actions.saveError"),
-            fields: {
-              creator: t("fields.creator"),
-              manager: t("fields.manager"),
-              platform: t("fields.platform"),
-              date: t("fields.date"),
-              gross: t("fields.gross"),
-              currency: t("fields.currency"),
-              agencyPercent: t("fields.agencyPercent"),
-              status: t("fields.status"),
-              paymentMethod: t("fields.paymentMethod"),
-              referenceId: t("fields.referenceId"),
-              notes: t("fields.notes"),
-              unassigned: t("unassigned"),
-              none: t("none"),
-            },
-          }}
-          statusLabels={statusLabels}
-          platformLabels={platformLabels}
-          methodLabels={methodLabels}
-        />
+        {canCreate ? (
+          <CreateTransactionForm
+            creators={creators}
+            managers={managers}
+            canAssignManager={canAssignManager}
+            labels={{
+              title: t("form.title"),
+              open: t("form.open"),
+              cancel: t("form.cancel"),
+              submit: t("form.submit"),
+              submitting: t("form.submitting"),
+              saved: t("toast.created"),
+              saveError: t("actions.saveError"),
+              fields: {
+                creator: t("fields.creator"),
+                manager: t("fields.manager"),
+                platform: t("fields.platform"),
+                date: t("fields.date"),
+                gross: t("fields.gross"),
+                currency: t("fields.currency"),
+                agencyPercent: t("fields.agencyPercent"),
+                status: t("fields.status"),
+                paymentMethod: t("fields.paymentMethod"),
+                referenceId: t("fields.referenceId"),
+                notes: t("fields.notes"),
+                unassigned: t("unassigned"),
+                none: t("none"),
+              },
+            }}
+            statusLabels={statusLabels}
+            platformLabels={platformLabels}
+            methodLabels={methodLabels}
+          />
+        ) : null}
       </div>
 
       {loadError ? (
@@ -192,8 +205,13 @@ export default async function AdminFinancePage({ params, searchParams }: Props) 
               paidThisMonth: t("kpis.paidThisMonth"),
               activeCreators: t("kpis.activeCreators"),
               revenueToday: t("kpis.revenueToday"),
+              revenueThisWeek: t("kpis.revenueThisWeek"),
               revenueThisMonth: t("kpis.revenueThisMonth"),
               revenueThisYear: t("kpis.revenueThisYear"),
+              countPending: t("kpis.countPending"),
+              countApproved: t("kpis.countApproved"),
+              countRejected: t("kpis.countRejected"),
+              countPaid: t("kpis.countPaid"),
             }}
           />
 

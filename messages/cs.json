@@ -844,7 +844,12 @@
         "activeCreators": "Active creators",
         "revenueToday": "Revenue today",
         "revenueThisMonth": "Revenue this month",
-        "revenueThisYear": "Revenue this year"
+        "revenueThisYear": "Revenue this year",
+        "revenueThisWeek": "Revenue this week",
+        "countPending": "Pending",
+        "countApproved": "Approved",
+        "countRejected": "Rejected",
+        "countPaid": "Paid"
       },
       "summaries": {
         "creatorTitle": "Creator summary",
@@ -983,7 +988,8 @@
         "create": "Unable to create transaction.",
         "save": "Unable to save changes.",
         "delete": "Unable to delete transaction.",
-        "ownerOnly": "Only the owner can delete transactions."
+        "ownerOnly": "Only the owner can delete transactions.",
+        "invalidManager": "Only active staff members can be assigned."
       }
     },
     "notifications": {
@@ -1218,7 +1224,9 @@
           "read": "Read",
           "update": "Update",
           "delete": "Delete",
-          "manage": "Manage"
+          "manage": "Manage",
+          "approve": "Approve",
+          "export": "Export"
         }
       }
     }
@@ -1597,7 +1605,34 @@
       "staffAssignedCreatorDescription": "Creator assigned to {name}",
       "staffUnassignedCreatorTitle": "Creator unassigned",
       "staffUnassignedCreatorMessage": "A creator was unassigned from {name}",
-      "staffUnassignedCreatorDescription": "Creator unassigned from {name}"
+      "staffUnassignedCreatorDescription": "Creator unassigned from {name}",
+      "financeTxCreatedTitle": "Transaction created",
+      "financeTxCreatedMessage": "New finance transaction for {amount} {currency}",
+      "financeTxCreatedDescription": "Finance transaction created",
+      "financeTxUpdatedTitle": "Transaction updated",
+      "financeTxUpdatedMessage": "Finance transaction was updated",
+      "financeTxUpdatedDescription": "Finance transaction updated",
+      "financeTxDeletedTitle": "Transaction deleted",
+      "financeTxDeletedMessage": "A finance transaction was deleted",
+      "financeTxDeletedDescription": "Finance transaction deleted",
+      "financeTxStatusTitle": "Transaction status changed",
+      "financeTxStatusMessage": "Transaction is now {status}",
+      "financeTxStatusDescription": "Status changed to {status}",
+      "financeTxAssignedTitle": "Transaction assigned",
+      "financeTxAssignedMessage": "You were assigned a finance transaction",
+      "financeTxAssignedDescription": "Finance transaction assigned",
+      "financePayoutCreatedTitle": "Payout created",
+      "financePayoutCreatedMessage": "New payout requires approval",
+      "financePayoutCreatedDescription": "Payout created",
+      "financePayoutUpdatedTitle": "Payout updated",
+      "financePayoutUpdatedMessage": "A payout was updated",
+      "financePayoutUpdatedDescription": "Payout updated",
+      "financePayoutPaidTitle": "Payout paid",
+      "financePayoutPaidMessage": "Payout has been approved and paid",
+      "financePayoutPaidDescription": "Payout marked paid",
+      "financePayoutCancelledTitle": "Payout cancelled",
+      "financePayoutCancelledMessage": "A payout was cancelled",
+      "financePayoutCancelledDescription": "Payout cancelled"
     }
   }
 }

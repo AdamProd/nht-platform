@@ -44,8 +44,13 @@ export type FinanceDashboardKpis = {
   paidThisMonth: number;
   activeCreators: number;
   revenueToday: number;
+  revenueThisWeek: number;
   revenueThisMonth: number;
   revenueThisYear: number;
+  countPending: number;
+  countApproved: number;
+  countRejected: number;
+  countPaid: number;
 };
 
 export type FinanceCreatorSummary = {

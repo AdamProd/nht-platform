@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { requireStaffSession } from "@/lib/auth";
+import { hasPermission } from "@/features/staff/permissions";
 import type {
   FinanceAgencySummary,
   FinanceCreatorOption,
@@ -9,6 +10,7 @@ import type {
 import {
   startOfMonth,
   startOfQuarter,
+  startOfWeek,
   startOfYear,
   todayIso,
 } from "@/features/finance/lib/format";
@@ -20,10 +22,17 @@ function sumField(
   return (rows ?? []).reduce((sum, row) => sum + Number(row[key] ?? 0), 0);
 }
 
+function isAdminLike(role: string): boolean {
+  return role === "owner" || role === "admin" || role === "finance";
+}
+
 async function scopedCreatorIds(): Promise<string[] | null> {
   const session = await requireStaffSession();
   if (!session) throw new Error("Unauthorized");
-  if (session.profile.role !== "manager") return null;
+  if (!hasPermission(session.profile.role, "finance.read")) {
+    throw new Error("Forbidden");
+  }
+  if (isAdminLike(session.profile.role)) return null;
 
   const supabase = await createClient();
   const { data } = await supabase
@@ -36,10 +45,14 @@ async function scopedCreatorIds(): Promise<string[] | null> {
 export async function getFinanceDashboardKpis(): Promise<FinanceDashboardKpis> {
   const session = await requireStaffSession();
   if (!session) throw new Error("Unauthorized");
+  if (!hasPermission(session.profile.role, "finance.read")) {
+    throw new Error("Forbidden");
+  }
 
   const supabase = await createClient();
   const creatorIds = await scopedCreatorIds();
   const today = todayIso();
+  const weekStart = startOfWeek();
   const monthStart = startOfMonth();
   const yearStart = startOfYear();
 
@@ -91,12 +104,21 @@ export async function getFinanceDashboardKpis(): Promise<FinanceDashboardKpis> {
     revenueToday: rows
       .filter((row) => row.transaction_date === today)
       .reduce((sum, row) => sum + Number(row.gross_revenue ?? 0), 0),
+    revenueThisWeek: rows
+      .filter((row) => row.transaction_date >= weekStart)
+      .reduce((sum, row) => sum + Number(row.gross_revenue ?? 0), 0),
     revenueThisMonth: rows
       .filter((row) => row.transaction_date >= monthStart)
       .reduce((sum, row) => sum + Number(row.gross_revenue ?? 0), 0),
     revenueThisYear: rows
       .filter((row) => row.transaction_date >= yearStart)
       .reduce((sum, row) => sum + Number(row.gross_revenue ?? 0), 0),
+    countPending: rows.filter((row) => row.status === "pending").length,
+    countApproved: rows.filter((row) => row.status === "approved").length,
+    countRejected: rows.filter(
+      (row) => row.status === "cancelled" || row.status === "disputed",
+    ).length,
+    countPaid: rows.filter((row) => row.status === "paid").length,
   };
 }
 
@@ -109,8 +131,13 @@ function emptyKpis(): FinanceDashboardKpis {
     paidThisMonth: 0,
     activeCreators: 0,
     revenueToday: 0,
+    revenueThisWeek: 0,
     revenueThisMonth: 0,
     revenueThisYear: 0,
+    countPending: 0,
+    countApproved: 0,
+    countRejected: 0,
+    countPaid: 0,
   };
 }
 
@@ -120,6 +147,9 @@ export async function getFinanceSummaries(): Promise<{
 }> {
   const session = await requireStaffSession();
   if (!session) throw new Error("Unauthorized");
+  if (!hasPermission(session.profile.role, "finance.read")) {
+    throw new Error("Forbidden");
+  }
 
   const supabase = await createClient();
   const creatorIds = await scopedCreatorIds();
@@ -129,7 +159,9 @@ export async function getFinanceSummaries(): Promise<{
 
   let query = supabase
     .from("finance_transactions")
-    .select("gross_revenue, agency_amount, creator_amount, status, transaction_date");
+    .select(
+      "gross_revenue, agency_amount, creator_amount, status, transaction_date",
+    );
 
   if (creatorIds) {
     if (creatorIds.length === 0) {
@@ -175,8 +207,7 @@ export async function getFinanceSummaries(): Promise<{
         .filter((row) => row.status === "pending" || row.status === "approved")
         .reduce((sum, row) => sum + Number(row.creator_amount ?? 0), 0),
       lastPayout: paid[0] ? Number(paid[0].creator_amount) : null,
-      averageMonthlyRevenue:
-        months.size > 0 ? lifetime / months.size : 0,
+      averageMonthlyRevenue: months.size > 0 ? lifetime / months.size : 0,
     },
     agency: {
       monthlyRevenue: rows
@@ -195,6 +226,9 @@ export async function getFinanceSummaries(): Promise<{
 export async function listFinanceCreators(): Promise<FinanceCreatorOption[]> {
   const session = await requireStaffSession();
   if (!session) throw new Error("Unauthorized");
+  if (!hasPermission(session.profile.role, "finance.read")) {
+    throw new Error("Forbidden");
+  }
 
   const supabase = await createClient();
   let query = supabase
@@ -202,7 +236,7 @@ export async function listFinanceCreators(): Promise<FinanceCreatorOption[]> {
     .select("id, display_name, full_name, manager_id")
     .order("display_name", { ascending: true });
 
-  if (session.profile.role === "manager") {
+  if (!isAdminLike(session.profile.role)) {
     query = query.eq("manager_id", session.profile.id);
   }
 

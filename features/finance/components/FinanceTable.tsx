@@ -4,10 +4,9 @@ import type {
   FinanceTransactionListItem,
   FinanceTransactionStatus,
 } from "@/features/finance/types";
-import {
-  formatFinanceDate,
-  formatFinanceMoney,
-} from "@/features/finance/lib/format";
+import { formatFinanceDate } from "@/features/finance/lib/format";
+import FinanceStatusBadge from "@/features/finance/components/FinanceStatusBadge";
+import MoneyCell from "@/features/finance/components/MoneyCell";
 
 type Props = {
   items: FinanceTransactionListItem[];
@@ -80,37 +79,38 @@ export default function FinanceTable({
                 {platformLabels[item.platform as FinancePlatform] ??
                   item.platform}
               </td>
-              <td className="px-4 py-3 text-white">
-                {formatFinanceMoney(
-                  item.gross_revenue,
-                  locale,
-                  item.currency,
-                )}
+              <td className="px-4 py-3">
+                <MoneyCell
+                  value={item.gross_revenue}
+                  locale={locale}
+                  currency={item.currency}
+                />
               </td>
               <td className="px-4 py-3 text-[var(--nht-text-secondary)]">
                 {Number(item.agency_percent).toFixed(0)}%
               </td>
-              <td className="px-4 py-3 text-white">
-                {formatFinanceMoney(
-                  item.agency_amount,
-                  locale,
-                  item.currency,
-                )}
+              <td className="px-4 py-3">
+                <MoneyCell
+                  value={item.agency_amount}
+                  locale={locale}
+                  currency={item.currency}
+                />
               </td>
               <td className="px-4 py-3 text-[var(--nht-text-secondary)]">
                 {Number(item.creator_percent).toFixed(0)}%
               </td>
-              <td className="px-4 py-3 text-white">
-                {formatFinanceMoney(
-                  item.creator_amount,
-                  locale,
-                  item.currency,
-                )}
+              <td className="px-4 py-3">
+                <MoneyCell
+                  value={item.creator_amount}
+                  locale={locale}
+                  currency={item.currency}
+                />
               </td>
               <td className="px-4 py-3">
-                <span className="rounded-full border border-white/10 px-2 py-0.5 text-xs text-white">
-                  {statusLabels[item.status] ?? item.status}
-                </span>
+                <FinanceStatusBadge
+                  status={item.status}
+                  label={statusLabels[item.status] ?? item.status}
+                />
               </td>
               <td className="px-4 py-3 text-[var(--nht-text-secondary)]">
                 {item.manager?.full_name ?? labels.unassigned}

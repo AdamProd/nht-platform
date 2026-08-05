@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
-import { requireStaff } from "@/lib/auth";
-import { isOwner } from "@/lib/auth/roles";
-import { listStaffManagers } from "@/features/applications/queries/list-managers";
+import { Link, redirect } from "@/i18n/navigation";
+import { requireStaff, isAdminOrAbove } from "@/lib/auth";
+import { hasPermission } from "@/features/staff/permissions";
+import { listActiveFinanceManagers } from "@/features/finance/queries/list-finance-managers";
 import { getFinanceTransaction } from "@/features/finance/queries/get-transaction";
 import { listFinanceCreators } from "@/features/finance/queries/get-finance-dashboard";
 import TransactionDetailPanel from "@/features/finance/components/TransactionDetailPanel";
@@ -23,9 +23,12 @@ export default async function AdminFinanceDetailPage({ params }: Props) {
   const session = await requireStaff();
   const t = await getTranslations("admin.finance");
 
-  const canAssignManager =
-    session.profile.role === "owner" || session.profile.role === "admin";
-  const canDelete = isOwner(session.profile.role);
+  if (!hasPermission(session.profile.role, "finance.read")) {
+    redirect({ href: "/admin", locale });
+  }
+
+  const canAssignManager = isAdminOrAbove(session.profile.role);
+  const canDelete = hasPermission(session.profile.role, "finance.delete");
 
   let transaction;
   let creators;
@@ -35,7 +38,7 @@ export default async function AdminFinanceDetailPage({ params }: Props) {
     [transaction, creators, managers] = await Promise.all([
       getFinanceTransaction(id),
       listFinanceCreators(),
-      listStaffManagers(),
+      listActiveFinanceManagers(),
     ]);
   } catch (error) {
     console.error(error);

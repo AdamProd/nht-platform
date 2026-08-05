@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { requireStaffSession } from "@/lib/auth";
+import { hasPermission } from "@/features/staff/permissions";
 import type { FinanceTransactionDetail } from "@/features/finance/types";
 
 const DETAIL_SELECT = `
@@ -16,11 +17,18 @@ const DETAIL_SELECT = `
   )
 `;
 
+function isAdminLike(role: string): boolean {
+  return role === "owner" || role === "admin" || role === "finance";
+}
+
 export async function getFinanceTransaction(
   id: string,
 ): Promise<FinanceTransactionDetail | null> {
   const session = await requireStaffSession();
   if (!session) throw new Error("Unauthorized");
+  if (!hasPermission(session.profile.role, "finance.read")) {
+    throw new Error("Forbidden");
+  }
 
   const supabase = await createClient();
   let query = supabase
@@ -28,7 +36,7 @@ export async function getFinanceTransaction(
     .select(DETAIL_SELECT)
     .eq("id", id);
 
-  if (session.profile.role === "manager") {
+  if (!isAdminLike(session.profile.role)) {
     const { data: creators } = await supabase
       .from("creators")
       .select("id")

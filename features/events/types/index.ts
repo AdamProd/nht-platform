@@ -37,7 +37,16 @@ export type PlatformEventType =
   | "staff.department_changed"
   | "staff.status_changed"
   | "staff.assigned_creator"
-  | "staff.unassigned_creator";
+  | "staff.unassigned_creator"
+  | "finance.transaction.created"
+  | "finance.transaction.updated"
+  | "finance.transaction.deleted"
+  | "finance.transaction.status_changed"
+  | "finance.transaction.assigned"
+  | "finance.payout.created"
+  | "finance.payout.updated"
+  | "finance.payout.paid"
+  | "finance.payout.cancelled";
 
 export type PublishEventInput = {
   type: PlatformEventType;

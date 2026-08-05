@@ -14,13 +14,22 @@ export type PermissionModule =
   | "notifications"
   | "activity";
 
-export type PermissionAction = "create" | "read" | "update" | "delete" | "manage";
+export type PermissionAction =
+  | "create"
+  | "read"
+  | "update"
+  | "delete"
+  | "manage"
+  | "approve"
+  | "export";
 
 export type Permission =
   | `${PermissionModule}.${PermissionAction}`
   | "staff.promote_owner"
   | "staff.transfer_ownership"
-  | "staff.delete_owner";
+  | "staff.delete_owner"
+  | "finance.approve"
+  | "finance.export";
 
 const ALL_CRUD = (
   module: PermissionModule,
@@ -38,6 +47,8 @@ export const ROLE_PERMISSIONS: Record<UserRole, readonly Permission[] | "*"> = {
     ...ALL_CRUD("applications"),
     ...ALL_CRUD("creators"),
     ...ALL_CRUD("finance"),
+    "finance.approve",
+    "finance.export",
     ...ALL_CRUD("tasks"),
     ...ALL_CRUD("calendar"),
     ...ALL_CRUD("blog"),
@@ -61,6 +72,8 @@ export const ROLE_PERMISSIONS: Record<UserRole, readonly Permission[] | "*"> = {
     "creators.read",
     "creators.update",
     "finance.read",
+    "finance.create",
+    "finance.update",
     "tasks.read",
     "tasks.update",
     "calendar.read",
@@ -102,6 +115,8 @@ export const ROLE_PERMISSIONS: Record<UserRole, readonly Permission[] | "*"> = {
     "finance.read",
     "finance.update",
     "finance.delete",
+    "finance.approve",
+    "finance.export",
     "creators.read",
     "analytics.read",
     "notifications.read",
@@ -171,4 +186,6 @@ export const PERMISSION_ACTIONS: PermissionAction[] = [
   "update",
   "delete",
   "manage",
+  "approve",
+  "export",
 ];

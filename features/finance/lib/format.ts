@@ -45,6 +45,14 @@ export function formatFinanceDateTime(
   }).format(date);
 }
 
+export function startOfWeek(date = new Date()): string {
+  const copy = new Date(date);
+  const day = copy.getDay();
+  const diff = day === 0 ? 6 : day - 1; // Monday start
+  copy.setDate(copy.getDate() - diff);
+  return copy.toISOString().slice(0, 10);
+}
+
 export function startOfMonth(date = new Date()): string {
   return new Date(date.getFullYear(), date.getMonth(), 1)
     .toISOString()
