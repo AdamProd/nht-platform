@@ -1,9 +1,11 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { requireStaff } from "@/lib/auth";
-import { listNotifications } from "@/features/events/services/notifications";
-import NotificationsFilters from "@/features/events/components/NotificationsFilters";
-import NotificationsList from "@/features/events/components/NotificationsList";
-import EventsPagination from "@/features/events/components/EventsPagination";
+import { listNotifications } from "@/features/core/notifications";
+import {
+  NotificationsFilters,
+  NotificationsList,
+  EventsPagination,
+} from "@/features/core/notifications/ui";
 
 type Props = {
   params: Promise<{ locale: string }>;

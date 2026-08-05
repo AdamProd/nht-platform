@@ -2,11 +2,11 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link, redirect } from "@/i18n/navigation";
 import { requireStaff, isAdminOrAbove } from "@/lib/auth";
-import { hasPermission } from "@/features/staff/permissions";
-import { listActiveFinanceManagers } from "@/features/finance/queries/list-finance-managers";
-import { getFinanceTransaction } from "@/features/finance/queries/get-transaction";
-import { listFinanceCreators } from "@/features/finance/queries/get-finance-dashboard";
-import TransactionDetailPanel from "@/features/finance/components/TransactionDetailPanel";
+import { hasPermission } from "@/features/core/permissions";
+import { listActiveFinanceManagers } from "@/features/finance/transactions/queries/list-finance-managers";
+import { getFinanceTransaction } from "@/features/finance/transactions/queries/get-transaction";
+import { listFinanceCreators } from "@/features/finance/reports/queries/get-finance-dashboard";
+import TransactionDetailPanel from "@/features/finance/transactions/components/TransactionDetailPanel";
 import type {
   FinancePaymentMethod,
   FinancePlatform,

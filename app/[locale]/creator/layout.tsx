@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { requireCreatorCabinet } from "@/lib/auth";
 import CreatorShell from "@/components/creator/CreatorShell";
-import { stopImpersonation } from "@/features/cabinet/actions/impersonation";
+import { stopImpersonation } from "@/features/cabinet/impersonation/actions/impersonation";
 
 type Props = {
   children: React.ReactNode;

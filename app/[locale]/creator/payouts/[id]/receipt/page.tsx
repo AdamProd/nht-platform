@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getPayout } from "@/features/cabinet/queries/cabinet";
 import { formatMoney } from "@/features/creators/lib/format";
-import PrintReceiptButton from "@/features/cabinet/components/PrintReceiptButton";
+import PrintReceiptButton from "@/features/cabinet/payouts/components/PrintReceiptButton";
 
 type Props = {
   params: Promise<{ locale: string; id: string }>;

@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { listPlatformAccounts } from "@/features/cabinet/queries/cabinet";
-import PlatformsForm from "@/features/cabinet/components/PlatformsForm";
+import PlatformsForm from "@/features/cabinet/platforms/components/PlatformsForm";
 
 type Props = { params: Promise<{ locale: string }> };
 

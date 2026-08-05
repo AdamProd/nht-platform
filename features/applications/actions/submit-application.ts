@@ -5,8 +5,8 @@ import {
   applicationFormSchema,
   type ApplicationFormInput,
 } from "@/features/applications/schemas/application.schema";
-import { notifyNewApplication } from "@/services";
-import { publishEvent } from "@/features/events";
+import { notifyNewApplication } from "@/features/integrations";
+import { publishEvent } from "@/features/core/events";
 
 export type SubmitApplicationResult =
   | { success: true; id: string }

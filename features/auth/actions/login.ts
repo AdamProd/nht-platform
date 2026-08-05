@@ -6,7 +6,7 @@ import { redirect } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { isCreatorRole, isStaff } from "@/lib/auth";
-import { publishEvent } from "@/features/events";
+import { publishEvent } from "@/features/core/events";
 import type { UserRole } from "@/types/database.types";
 
 const loginSchema = z.object({

@@ -15,6 +15,12 @@ export {
 } from "./creator";
 
 export {
+  findCreatorByAuthEmail,
+  resolveCreatorForAuthUser,
+  findCreatorById,
+} from "./resolve-creator";
+
+export {
   getAuthSession,
   requireAuth,
   requireRole,

@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { listTasks } from "@/features/cabinet/queries/cabinet";
-import TasksTable from "@/features/cabinet/components/TasksTable";
+import TasksTable from "@/features/cabinet/tasks/components/TasksTable";
 
 type Props = { params: Promise<{ locale: string }> };
 

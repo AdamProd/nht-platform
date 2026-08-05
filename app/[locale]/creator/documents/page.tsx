@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { listDocuments } from "@/features/cabinet/queries/cabinet";
-import { DocumentsPanel } from "@/features/cabinet/components/CabinetForms";
+import { DocumentsPanel } from "@/features/cabinet/dashboard/CabinetForms";
 
 type Props = { params: Promise<{ locale: string }> };
 

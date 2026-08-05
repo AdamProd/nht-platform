@@ -24,7 +24,7 @@ export {
   ROLE_PERMISSIONS,
   PERMISSION_MODULES,
   PERMISSION_ACTIONS,
-} from "@/features/staff/permissions";
+} from "@/features/core/permissions";
 
 export { listStaff } from "@/features/staff/queries/list-staff";
 export { getStaff } from "@/features/staff/queries/get-staff";

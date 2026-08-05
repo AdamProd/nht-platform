@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { requireCreatorCabinet } from "@/lib/auth";
-import OnboardingForm from "@/features/cabinet/components/OnboardingForm";
+import OnboardingForm from "@/features/cabinet/onboarding/components/OnboardingForm";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -24,7 +24,7 @@ export default async function CreatorOnboardingPage({ params }: Props) {
       <OnboardingForm
         defaults={{
           avatar_url: session.creator.avatar_url ?? "",
-          biography: session.creator.biography ?? "",
+          biography: "",
           timezone: session.creator.timezone ?? "",
           languages: (session.creator.languages ?? []).join(", "),
           phone: session.creator.phone ?? "",

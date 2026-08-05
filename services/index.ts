@@ -1,5 +1,6 @@
+/** Compatibility — prefer `@/features/integrations`. */
 export {
   notifyNewApplication,
-} from "./telegram/telegram.service";
+} from "@/features/integrations/telegram";
 
-export type { NewApplicationNotification } from "./telegram/types";
+export type { NewApplicationNotification } from "@/features/integrations/telegram";

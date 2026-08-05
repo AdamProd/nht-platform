@@ -5,7 +5,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { isOwner } from "@/lib/auth";
-import { publishEvent } from "@/features/events";
+import { publishEvent } from "@/features/core/events";
 import { getClientEnv } from "@/lib/env/client-env";
 import {
   canChangeRoleTo,
@@ -13,7 +13,7 @@ import {
   forbiddenResult,
   requireStaffAdminSession,
 } from "@/features/staff/lib/access";
-import { hasPermission } from "@/features/staff/permissions";
+import { hasPermission } from "@/features/core/permissions";
 import {
   assignApplicationSchema,
   assignCreatorSchema,

@@ -3,8 +3,8 @@
 import { useTranslations } from "next-intl";
 import { logoutAction } from "@/features/auth";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
-import NotificationBell from "@/features/events/components/NotificationBell";
-import type { NotificationRow } from "@/features/events/types";
+import NotificationBell from "@/features/core/notifications/components/NotificationBell";
+import type { NotificationRow } from "@/features/core/events";
 
 type AdminHeaderProps = {
   userName: string;

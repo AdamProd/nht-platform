@@ -19,7 +19,37 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/features/core": ["./features/core/index.ts"],
+      "@/features/core/*": ["./features/core/*"],
+      "@/features/applications": ["./features/applications/index.ts"],
+      "@/features/applications/*": ["./features/applications/*"],
+      "@/features/creators": ["./features/creators/index.ts"],
+      "@/features/creators/*": ["./features/creators/*"],
+      "@/features/finance": ["./features/finance/index.ts"],
+      "@/features/finance/*": ["./features/finance/*"],
+      "@/features/cabinet": ["./features/cabinet/index.ts"],
+      "@/features/cabinet/*": ["./features/cabinet/*"],
+      "@/features/staff": ["./features/staff/index.ts"],
+      "@/features/staff/*": ["./features/staff/*"],
+      "@/features/blog": ["./features/blog/index.ts"],
+      "@/features/blog/*": ["./features/blog/*"],
+      "@/features/integrations": ["./features/integrations/index.ts"],
+      "@/features/integrations/*": ["./features/integrations/*"],
+      "@/shared/ui": ["./shared/ui/index.ts"],
+      "@/shared/ui/*": ["./shared/ui/*"],
+      "@/shared/utils": ["./shared/utils/index.ts"],
+      "@/shared/utils/*": ["./shared/utils/*"],
+      "@/shared/hooks": ["./shared/hooks/index.ts"],
+      "@/shared/hooks/*": ["./shared/hooks/*"],
+      "@/shared/validators": ["./shared/validators/index.ts"],
+      "@/shared/validators/*": ["./shared/validators/*"],
+      "@/shared/constants": ["./shared/constants/index.ts"],
+      "@/shared/constants/*": ["./shared/constants/*"],
+      "@/shared/types": ["./shared/types/index.ts"],
+      "@/shared/types/*": ["./shared/types/*"],
+      "@/lib": ["./lib/index.ts"],
+      "@/lib/*": ["./lib/*"]
     }
   },
   "include": [

@@ -1,20 +1,20 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { requireStaff, isAdminOrAbove } from "@/lib/auth";
-import { hasPermission } from "@/features/staff/permissions";
-import { listActiveFinanceManagers } from "@/features/finance/queries/list-finance-managers";
+import { hasPermission } from "@/features/core/permissions";
+import { listActiveFinanceManagers } from "@/features/finance/transactions/queries/list-finance-managers";
 import {
   getFinanceDashboardKpis,
   getFinanceSummaries,
   listFinanceCreators,
-} from "@/features/finance/queries/get-finance-dashboard";
-import { listFinanceTransactions } from "@/features/finance/queries/list-transactions";
-import FinanceKpiCards from "@/features/finance/components/FinanceKpiCards";
-import FinanceSummaries from "@/features/finance/components/FinanceSummaries";
-import FinanceIntegrations from "@/features/finance/components/FinanceIntegrations";
-import FinanceFilters from "@/features/finance/components/FinanceFilters";
-import FinanceTable from "@/features/finance/components/FinanceTable";
-import FinancePagination from "@/features/finance/components/FinancePagination";
-import CreateTransactionForm from "@/features/finance/components/CreateTransactionForm";
+} from "@/features/finance/reports/queries/get-finance-dashboard";
+import { listFinanceTransactions } from "@/features/finance/transactions/queries/list-transactions";
+import FinanceKpiCards from "@/features/finance/reports/components/FinanceKpiCards";
+import FinanceSummaries from "@/features/finance/reports/components/FinanceSummaries";
+import FinanceIntegrations from "@/features/finance/reports/components/FinanceIntegrations";
+import FinanceFilters from "@/features/finance/transactions/components/FinanceFilters";
+import FinanceTable from "@/features/finance/transactions/components/FinanceTable";
+import FinancePagination from "@/features/finance/transactions/components/FinancePagination";
+import CreateTransactionForm from "@/features/finance/transactions/components/CreateTransactionForm";
 import type {
   FinancePaymentMethod,
   FinancePlatform,

@@ -9,17 +9,7 @@ export default async function CreatorDashboardPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations("creator.dashboard");
 
-  let data;
-  try {
-    data = await getDashboardData();
-  } catch (error) {
-    console.error(error);
-    return (
-      <div className="rounded-[var(--nht-radius-xl)] border border-white/[0.08] bg-white/[0.03] px-5 py-4 text-sm text-[var(--nht-text-secondary)]">
-        {t("empty")}
-      </div>
-    );
-  }
+  const data = await getDashboardData();
 
   const cards = [
     ["currentRevenue", formatMoney(data.cards.currentRevenue, locale)],

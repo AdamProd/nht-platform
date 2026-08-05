@@ -1,9 +1,9 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
 import { requireStaff, isAdminOrAbove } from "@/lib/auth";
-import PermissionsMatrix from "@/features/staff/components/PermissionsMatrix";
+import { PermissionsMatrix } from "@/features/staff/permissions";
 import { STAFF_EMPLOYEE_ROLES } from "@/features/staff/types";
-import { PERMISSION_ACTIONS, PERMISSION_MODULES } from "@/features/staff/permissions";
+import { PERMISSION_ACTIONS, PERMISSION_MODULES } from "@/features/core/permissions";
 import { Link } from "@/i18n/navigation";
 
 type Props = {

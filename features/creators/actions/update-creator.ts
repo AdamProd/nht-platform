@@ -32,8 +32,8 @@ import {
   visiblePlatformAccounts,
   withCreatorBiography,
 } from "@/features/creators/lib/avatar";
-import { publishEvent } from "@/features/events";
-import type { PlatformEventType } from "@/features/events/types";
+import { publishEvent } from "@/features/core/events";
+import type { PlatformEventType } from "@/features/core/events/types";
 
 async function revalidateCreator(id?: string) {
   const locale = await getLocale();

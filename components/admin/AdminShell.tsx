@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import AdminHeader from "@/components/admin/AdminHeader";
-import type { NotificationRow } from "@/features/events/types";
+import type { NotificationRow } from "@/features/core/events/types";
 
 type AdminShellProps = {
   userName: string;

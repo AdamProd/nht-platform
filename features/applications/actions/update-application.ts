@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { getLocale, getTranslations } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import { requireStaffSession } from "@/lib/auth";
-import { publishEvent } from "@/features/events";
+import { publishEvent } from "@/features/core/events";
 import {
   assignManagerSchema,
   updateNotesSchema,

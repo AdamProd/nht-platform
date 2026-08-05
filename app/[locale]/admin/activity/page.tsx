@@ -1,9 +1,11 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { requireStaff } from "@/lib/auth";
-import { listActivityLogs } from "@/features/events/services/activity";
-import ActivityFilters from "@/features/events/components/ActivityFilters";
-import ActivityTimeline from "@/features/events/components/ActivityTimeline";
-import EventsPagination from "@/features/events/components/EventsPagination";
+import { listActivityLogs } from "@/features/core/activity";
+import {
+  ActivityFilters,
+  ActivityTimeline,
+} from "@/features/core/activity/ui";
+import { EventsPagination } from "@/features/core/notifications/ui";
 
 type Props = {
   params: Promise<{ locale: string }>;

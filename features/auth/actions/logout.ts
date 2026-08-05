@@ -4,7 +4,7 @@ import { getLocale } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { isStaff } from "@/lib/auth";
-import { publishEvent } from "@/features/events";
+import { publishEvent } from "@/features/core/events";
 import type { UserRole } from "@/types/database.types";
 
 export async function logoutAction(): Promise<void> {

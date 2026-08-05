@@ -6,6 +6,10 @@ import {
   canAccessCreatorCabinet,
   canImpersonateCreator,
 } from "@/lib/auth/creator";
+import {
+  findCreatorById,
+  resolveCreatorForAuthUser,
+} from "@/lib/auth/resolve-creator";
 import type { Tables, UserRole } from "@/types/database.types";
 import type { User } from "@supabase/supabase-js";
 
@@ -87,16 +91,15 @@ export async function requireStaffSession(): Promise<AuthSession | null> {
 }
 
 /**
- * Creator cabinet gate. Creators access their linked row.
- * Owner/admin may access while impersonating a creator from CRM.
- * Staff without impersonation are blocked.
+ * Creator cabinet gate.
+ * Live link: auth user email ↔ creators.email (no creators.user_id).
+ * Impersonation only when profiles.impersonating_creator_id is present.
  */
 export async function requireCreatorCabinet(
   nextPath = "/creator",
 ): Promise<CreatorCabinetSession> {
   const session = await requireAuth(nextPath);
   const locale = await getLocale();
-  const supabase = await createClient();
 
   const impersonatingId =
     (session.profile as Tables<"profiles"> & {
@@ -104,7 +107,6 @@ export async function requireCreatorCabinet(
     }).impersonating_creator_id ?? null;
 
   if (!canAccessCreatorCabinet(session.profile.role, impersonatingId)) {
-    // Staff without impersonation belong in admin, not unauthorized.
     if (isStaff(session.profile.role)) {
       redirect({ href: "/admin", locale });
       throw new Error("Forbidden");
@@ -113,21 +115,21 @@ export async function requireCreatorCabinet(
     throw new Error("Forbidden");
   }
 
-  let creatorQuery = supabase.from("creators").select("*");
+  let creator: Tables<"creators"> | null = null;
 
   if (session.profile.role === "creator") {
-    creatorQuery = creatorQuery.eq("user_id", session.profile.id);
+    creator = await resolveCreatorForAuthUser(
+      session.user,
+      session.profile.full_name,
+    );
   } else if (canImpersonateCreator(session.profile.role) && impersonatingId) {
-    creatorQuery = creatorQuery.eq("id", impersonatingId);
+    creator = await findCreatorById(impersonatingId);
   } else {
     redirect({ href: "/unauthorized", locale });
     throw new Error("Forbidden");
   }
 
-  const { data: creator, error } = await creatorQuery.maybeSingle();
-
-  if (error || !creator) {
-    console.error("[requireCreatorCabinet]", error?.message);
+  if (!creator) {
     redirect({ href: "/unauthorized", locale });
     throw new Error("Creator not found");
   }
@@ -153,19 +155,20 @@ export async function requireCreatorCabinetSession(): Promise<CreatorCabinetSess
     return null;
   }
 
-  const supabase = await createClient();
-  let creatorQuery = supabase.from("creators").select("*");
+  let creator: Tables<"creators"> | null = null;
 
   if (session.profile.role === "creator") {
-    creatorQuery = creatorQuery.eq("user_id", session.profile.id);
+    creator = await resolveCreatorForAuthUser(
+      session.user,
+      session.profile.full_name,
+    );
   } else if (canImpersonateCreator(session.profile.role) && impersonatingId) {
-    creatorQuery = creatorQuery.eq("id", impersonatingId);
+    creator = await findCreatorById(impersonatingId);
   } else {
     return null;
   }
 
-  const { data: creator, error } = await creatorQuery.maybeSingle();
-  if (error || !creator) return null;
+  if (!creator) return null;
 
   return {
     ...session,

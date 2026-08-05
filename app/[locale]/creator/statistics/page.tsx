@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { getStats } from "@/features/cabinet/queries/cabinet";
-import CabinetChart from "@/features/cabinet/components/CabinetChart";
+import CabinetChart from "@/features/cabinet/statistics/CabinetChart";
 import { STAT_RANGES, type StatRange } from "@/features/cabinet/types";
 
 type Props = {

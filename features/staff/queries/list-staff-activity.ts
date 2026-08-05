@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import type { ActivityLogRow } from "@/features/events/types";
+import type { ActivityLogRow } from "@/features/core/events/types";
 
 export async function listStaffActivity(
   staffId: string,

@@ -30,7 +30,7 @@ import {
   staffInitials,
 } from "@/features/staff/lib/format";
 import FlashToast from "@/features/creators/components/FlashToast";
-import type { ActivityLogRow } from "@/features/events/types";
+import type { ActivityLogRow } from "@/features/core/events/types";
 
 type Props = {
   staff: StaffDetail;

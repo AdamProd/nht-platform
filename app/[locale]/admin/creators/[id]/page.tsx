@@ -5,7 +5,7 @@ import { canImpersonateCreator, requireStaff } from "@/lib/auth";
 import { getCreator } from "@/features/creators/queries/get-creator";
 import { listStaffManagers } from "@/features/applications/queries/list-managers";
 import CreatorProfilePanel from "@/features/creators/components/CreatorProfilePanel";
-import ImpersonateCreatorButton from "@/features/cabinet/components/ImpersonateCreatorButton";
+import ImpersonateCreatorButton from "@/features/cabinet/impersonation/components/ImpersonateCreatorButton";
 
 type Props = {
   params: Promise<{ locale: string; id: string }>;

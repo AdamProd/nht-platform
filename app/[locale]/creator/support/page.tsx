@@ -3,7 +3,7 @@ import { listTickets } from "@/features/cabinet/queries/cabinet";
 import {
   SupportCreateForm,
   TicketListLink,
-} from "@/features/cabinet/components/CabinetForms";
+} from "@/features/cabinet/dashboard/CabinetForms";
 
 type Props = { params: Promise<{ locale: string }> };
 

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { getTicket } from "@/features/cabinet/queries/cabinet";
-import { SupportThread } from "@/features/cabinet/components/CabinetForms";
+import { SupportThread } from "@/features/cabinet/dashboard/CabinetForms";
 
 type Props = {
   params: Promise<{ locale: string; id: string }>;

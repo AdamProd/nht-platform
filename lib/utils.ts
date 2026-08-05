@@ -1,3 +1,2 @@
-export function cn(...classes: (string | boolean | undefined)[]) {
-  return classes.filter(Boolean).join(" ");
-}
+/** Compatibility — prefer `@/shared/utils`. */
+export { cn } from "@/shared/utils";

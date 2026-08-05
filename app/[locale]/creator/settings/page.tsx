@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getSettings } from "@/features/cabinet/queries/cabinet";
-import { SettingsForm } from "@/features/cabinet/components/CabinetForms";
+import { SettingsForm } from "@/features/cabinet/dashboard/CabinetForms";
 
 type Props = { params: Promise<{ locale: string }> };
 

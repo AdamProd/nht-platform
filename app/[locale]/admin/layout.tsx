@@ -4,7 +4,7 @@ import AdminShell from "@/components/admin/AdminShell";
 import {
   getUnreadNotificationCount,
   listRecentNotifications,
-} from "@/features/events";
+} from "@/features/core/notifications";
 
 type Props = {
   children: React.ReactNode;

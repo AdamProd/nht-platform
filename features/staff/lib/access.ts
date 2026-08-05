@@ -1,5 +1,5 @@
 import { requireStaffSession, isAdminOrAbove, isOwner } from "@/lib/auth";
-import { hasPermission } from "@/features/staff/permissions";
+import { hasPermission } from "@/features/core/permissions";
 import type { UserRole } from "@/types/database.types";
 import type { StaffActionResult } from "@/features/staff/types";
 
