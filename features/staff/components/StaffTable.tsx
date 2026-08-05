@@ -1,11 +1,14 @@
 import { Link } from "@/i18n/navigation";
+import { Users } from "lucide-react";
 import type { StaffListItem } from "@/features/staff/types";
 import {
   formatStaffDate,
   formatStaffDateTime,
   staffDisplayName,
-  staffInitials,
 } from "@/features/staff/lib/format";
+import EmptyState from "@/shared/ui/EmptyState";
+import UserAvatar, { roleTone } from "@/shared/ui/UserAvatar";
+import Badge from "@/shared/ui/Badge";
 
 type Props = {
   items: StaffListItem[];
@@ -24,11 +27,32 @@ type Props = {
     view: string;
     empty: string;
     emptyHint: string;
+    emptyTitle?: string;
+    emptyDescription?: string;
+    emptyAction?: string;
   };
   roleLabels: Record<string, string>;
   departmentLabels: Record<string, string>;
   statusLabels: Record<string, string>;
+  canCreate?: boolean;
 };
+
+function statusTone(status: string | null | undefined) {
+  switch (status) {
+    case "active":
+      return "success" as const;
+    case "invited":
+      return "info" as const;
+    case "vacation":
+      return "warning" as const;
+    case "suspended":
+    case "disabled":
+    case "archived":
+      return "danger" as const;
+    default:
+      return "neutral" as const;
+  }
+}
 
 export default function StaffTable({
   items,
@@ -37,32 +61,44 @@ export default function StaffTable({
   roleLabels,
   departmentLabels,
   statusLabels,
+  canCreate = false,
 }: Props) {
   if (items.length === 0) {
     return (
-      <div className="rounded-[var(--nht-radius-xl)] border border-dashed border-white/[0.1] px-6 py-16 text-center">
-        <p className="text-sm text-[var(--nht-text-secondary)]">{labels.empty}</p>
-        <p className="mt-2 text-xs text-[var(--nht-text-tertiary)]">
-          {labels.emptyHint}
-        </p>
-      </div>
+      <EmptyState
+        icon={Users}
+        title={labels.emptyTitle ?? labels.empty}
+        description={labels.emptyDescription ?? labels.emptyHint}
+        actionHref={canCreate ? "/admin/staff" : undefined}
+        actionLabel={canCreate ? labels.emptyAction : undefined}
+      />
     );
   }
 
   return (
     <div className="overflow-x-auto rounded-[var(--nht-radius-xl)] border border-white/[0.06]">
       <table className="min-w-full text-left text-sm" aria-label={labels.name}>
-        <thead className="border-b border-white/[0.06] bg-white/[0.02]">
+        <thead className="sticky top-0 z-10 border-b border-white/[0.06] bg-[var(--nht-black-elevated)]/95 backdrop-blur">
           <tr className="text-overline text-[var(--nht-text-tertiary)]">
             <th className="px-4 py-3 font-medium">{labels.avatar}</th>
             <th className="px-4 py-3 font-medium">{labels.name}</th>
-            <th className="px-4 py-3 font-medium">{labels.email}</th>
+            <th className="hidden px-4 py-3 font-medium md:table-cell">
+              {labels.email}
+            </th>
             <th className="px-4 py-3 font-medium">{labels.role}</th>
-            <th className="px-4 py-3 font-medium">{labels.department}</th>
+            <th className="hidden px-4 py-3 font-medium lg:table-cell">
+              {labels.department}
+            </th>
             <th className="px-4 py-3 font-medium">{labels.status}</th>
-            <th className="px-4 py-3 font-medium">{labels.managedCreators}</th>
-            <th className="px-4 py-3 font-medium">{labels.created}</th>
-            <th className="px-4 py-3 font-medium">{labels.lastLogin}</th>
+            <th className="hidden px-4 py-3 text-right font-medium xl:table-cell">
+              {labels.managedCreators}
+            </th>
+            <th className="hidden px-4 py-3 font-medium xl:table-cell">
+              {labels.created}
+            </th>
+            <th className="hidden px-4 py-3 font-medium 2xl:table-cell">
+              {labels.lastLogin}
+            </th>
             <th className="px-4 py-3 font-medium">{labels.actions}</th>
           </tr>
         </thead>
@@ -73,59 +109,59 @@ export default function StaffTable({
               item.department === "custom"
                 ? item.department_custom || departmentLabels.custom
                 : item.department
-                  ? departmentLabels[item.department] ?? item.department
+                  ? (departmentLabels[item.department] ?? item.department)
                   : "—";
             return (
               <tr
                 key={item.id}
-                className="border-b border-white/[0.04] hover:bg-white/[0.02]"
+                className="group border-b border-white/[0.04] transition-colors hover:bg-white/[0.03]"
               >
                 <td className="px-4 py-3">
-                  <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-white/[0.08] bg-white/[0.04] text-[10px] font-medium text-[var(--nht-gold)]">
-                    {item.avatar_url ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={item.avatar_url}
-                        alt=""
-                        className="h-full w-full object-cover"
-                      />
-                    ) : (
-                      staffInitials(name)
-                    )}
-                  </div>
+                  <UserAvatar
+                    name={name}
+                    src={item.avatar_url}
+                    tone={roleTone(item.role)}
+                  />
                 </td>
-                <td className="px-4 py-3 text-white">{name}</td>
-                <td className="px-4 py-3 text-[var(--nht-text-secondary)]">
+                <td className="px-4 py-3">
+                  <Link
+                    href={`/admin/staff/${item.id}`}
+                    className="font-medium text-white group-hover:text-[var(--nht-accent)]"
+                  >
+                    {name}
+                  </Link>
+                </td>
+                <td className="hidden px-4 py-3 text-[var(--nht-text-secondary)] md:table-cell">
                   {item.email || "—"}
                 </td>
                 <td className="px-4 py-3">
-                  <span className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] text-[var(--nht-gold)]">
+                  <Badge tone="accent">
                     {roleLabels[item.role] ?? item.role}
-                  </span>
+                  </Badge>
                 </td>
-                <td className="px-4 py-3 text-[var(--nht-text-secondary)]">
+                <td className="hidden px-4 py-3 text-[var(--nht-text-secondary)] lg:table-cell">
                   {dept}
                 </td>
                 <td className="px-4 py-3">
-                  <span className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] text-[var(--nht-text-secondary)]">
+                  <Badge tone={statusTone(item.status)}>
                     {item.status
                       ? (statusLabels[item.status] ?? item.status)
                       : "—"}
-                  </span>
+                  </Badge>
                 </td>
-                <td className="px-4 py-3 text-[var(--nht-text-secondary)]">
+                <td className="hidden px-4 py-3 text-right text-[var(--nht-text-secondary)] xl:table-cell">
                   {item.managed_creators_count}
                 </td>
-                <td className="px-4 py-3 text-[var(--nht-text-secondary)]">
+                <td className="hidden px-4 py-3 text-[var(--nht-text-secondary)] xl:table-cell">
                   {formatStaffDate(item.created_at, locale)}
                 </td>
-                <td className="px-4 py-3 text-[var(--nht-text-secondary)]">
+                <td className="hidden px-4 py-3 text-[var(--nht-text-secondary)] 2xl:table-cell">
                   {formatStaffDateTime(item.last_login_at, locale)}
                 </td>
                 <td className="px-4 py-3">
                   <Link
                     href={`/admin/staff/${item.id}`}
-                    className="text-xs text-[var(--nht-gold)] hover:text-white"
+                    className="text-xs font-medium text-[var(--nht-accent)] hover:text-white"
                   >
                     {labels.view}
                   </Link>

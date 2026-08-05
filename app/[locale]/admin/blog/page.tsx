@@ -105,6 +105,9 @@ export default async function AdminBlogPage({ params, searchParams }: Props) {
           actions: t("table.actions"),
           edit: t("table.edit"),
           empty: t("empty"),
+          emptyTitle: t("emptyTitle"),
+          emptyDescription: t("emptyDescription"),
+          emptyAction: t("emptyAction"),
           untitled: t("untitled"),
         }}
       />

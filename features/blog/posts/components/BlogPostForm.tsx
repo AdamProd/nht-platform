@@ -9,6 +9,7 @@ import { createPost } from "@/features/blog/posts/actions/create-post";
 import { updatePost } from "@/features/blog/posts/actions/update-post";
 import { deletePost } from "@/features/blog/posts/actions/delete-post";
 import { ensureSlug, slugify } from "@/features/blog/posts/lib/slug";
+import ConfirmDialog from "@/shared/ui/ConfirmDialog";
 import {
   blogStatuses,
   EMPTY_DOC,
@@ -54,6 +55,7 @@ type BlogPostFormProps = {
     deleted: string;
     needTranslation: string;
     confirmDelete: string;
+    cancel: string;
     editor: {
       bold: string;
       italic: string;
@@ -133,6 +135,7 @@ export default function BlogPostForm({
   const [flash, setFlash] = useState<{ message: string; tone: "success" | "error" } | null>(
     null,
   );
+  const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
 
   const activeDraft = drafts[activeLocale];
 
@@ -212,8 +215,12 @@ export default function BlogPostForm({
 
   function handleDelete() {
     if (!post || !canDelete) return;
-    if (!window.confirm(labels.confirmDelete)) return;
+    setConfirmDeleteOpen(true);
+  }
 
+  function confirmDelete() {
+    if (!post || !canDelete) return;
+    setConfirmDeleteOpen(false);
     startTransition(async () => {
       const formData = new FormData();
       formData.set("id", post.id);
@@ -408,6 +415,17 @@ export default function BlogPostForm({
           </button>
         </div>
       </div>
+
+      <ConfirmDialog
+        open={confirmDeleteOpen}
+        title={labels.delete}
+        description={labels.confirmDelete}
+        confirmLabel={labels.delete}
+        cancelLabel={labels.cancel}
+        tone="danger"
+        onCancel={() => setConfirmDeleteOpen(false)}
+        onConfirm={confirmDelete}
+      />
     </div>
   );
 }

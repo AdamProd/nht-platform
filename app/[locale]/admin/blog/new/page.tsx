@@ -11,6 +11,7 @@ export default async function AdminBlogNewPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("admin.blog");
+  const tUx = await getTranslations("common.ux");
 
   return (
     <div className="space-y-6">
@@ -63,6 +64,7 @@ export default async function AdminBlogNewPage({ params }: Props) {
           deleted: t("toast.deleted"),
           needTranslation: t("errors.needTranslation"),
           confirmDelete: t("form.confirmDelete"),
+          cancel: tUx("cancel"),
           editor: {
             bold: t("editor.bold"),
             italic: t("editor.italic"),

@@ -203,9 +203,13 @@ export default async function AdminCreatorsPage({
               view: t("actions.view"),
               empty: t("empty.title"),
               emptyHint: t("empty.description"),
+              emptyTitle: t("emptyTitle"),
+              emptyDescription: t("emptyDescription"),
+              emptyAction: t("emptyAction"),
               unassigned: t("unassigned"),
             }}
             statusLabels={statusLabels}
+            canCreate
           />
 
           <CreatorPagination

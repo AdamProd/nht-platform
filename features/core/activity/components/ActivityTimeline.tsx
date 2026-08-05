@@ -2,10 +2,16 @@
 
 import { useState } from "react";
 import { Link } from "@/i18n/navigation";
+import { Activity } from "lucide-react";
 import type { ActivityLogRow } from "@/features/core/events/types";
+import EmptyState from "@/shared/ui/EmptyState";
+import UserAvatar, { roleTone } from "@/shared/ui/UserAvatar";
+import Badge from "@/shared/ui/Badge";
 
 type Labels = {
   empty: string;
+  emptyTitle?: string;
+  emptyDescription?: string;
   expand: string;
   collapse: string;
   unknownActor: string;
@@ -35,9 +41,11 @@ export default function ActivityTimeline({
 }) {
   if (items.length === 0) {
     return (
-      <div className="rounded-[var(--nht-radius-xl)] border border-dashed border-white/[0.08] bg-white/[0.02] px-5 py-12 text-center text-sm text-[var(--nht-text-secondary)]">
-        {labels.empty}
-      </div>
+      <EmptyState
+        icon={Activity}
+        title={labels.emptyTitle ?? labels.empty}
+        description={labels.emptyDescription}
+      />
     );
   }
 
@@ -71,39 +79,25 @@ function ActivityItem({
   const href = entityHref(item);
   const name = item.actor?.full_name?.trim() || labels.unknownActor;
   const role = item.actor_role || item.actor?.role;
-  const initials = name
-    .split(/\s+/)
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
 
   return (
-    <li className="rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02] p-4">
+    <li className="rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02] p-4 transition hover:border-white/[0.1]">
       <div className="flex gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/[0.08] bg-white/[0.04] text-xs font-medium text-[var(--nht-gold)]">
-          {item.actor?.avatar_url ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={item.actor.avatar_url}
-              alt=""
-              className="h-full w-full object-cover"
-            />
-          ) : (
-            initials
-          )}
-        </div>
+        <UserAvatar
+          name={name}
+          src={item.actor?.avatar_url}
+          size="md"
+          tone={roleTone(role)}
+        />
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <p className="text-sm font-medium text-white">{name}</p>
             {role ? (
-              <span className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] text-[var(--nht-text-tertiary)]">
-                {roleLabels[role] ?? role}
-              </span>
+              <Badge tone="accent">{roleLabels[role] ?? role}</Badge>
             ) : null}
-            <span className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] text-[var(--nht-gold)]">
+            <Badge tone="info">
               {moduleLabels[item.module] ?? item.module}
-            </span>
+            </Badge>
           </div>
           <p className="mt-2 text-sm text-[var(--nht-text-secondary)]">
             {item.description}
@@ -111,7 +105,7 @@ function ActivityItem({
           {href ? (
             <Link
               href={href}
-              className="mt-2 inline-block text-xs text-[var(--nht-gold)] hover:text-white"
+              className="mt-2 inline-block text-xs text-[var(--nht-accent)] hover:text-white"
             >
               {href}
             </Link>
@@ -119,7 +113,7 @@ function ActivityItem({
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
-            className="mt-3 text-xs text-[var(--nht-text-tertiary)] hover:text-white"
+            className="focus-ring mt-3 text-xs text-[var(--nht-text-tertiary)] hover:text-white"
             aria-expanded={open}
           >
             {open ? labels.collapse : labels.expand}

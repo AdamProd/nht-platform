@@ -1,3 +1,12 @@
+import {
+  Users,
+  UserCog,
+  Sparkles,
+  Building2,
+  Activity,
+} from "lucide-react";
+import KpiCard from "@/shared/ui/KpiCard";
+
 type Props = {
   stats: {
     employees: number;
@@ -17,23 +26,48 @@ type Props = {
 
 export default function StaffStatsCards({ stats, labels }: Props) {
   const cards = [
-    { label: labels.employees, value: stats.employees },
-    { label: labels.managers, value: stats.managers },
-    { label: labels.creators, value: stats.creators },
-    { label: labels.departments, value: stats.departments },
-    { label: labels.activeToday, value: stats.activeToday },
+    {
+      label: labels.employees,
+      value: stats.employees,
+      icon: Users,
+      tone: "accent" as const,
+    },
+    {
+      label: labels.managers,
+      value: stats.managers,
+      icon: UserCog,
+      tone: "default" as const,
+    },
+    {
+      label: labels.creators,
+      value: stats.creators,
+      icon: Sparkles,
+      tone: "default" as const,
+    },
+    {
+      label: labels.departments,
+      value: stats.departments,
+      icon: Building2,
+      tone: "muted" as const,
+    },
+    {
+      label: labels.activeToday,
+      value: stats.activeToday,
+      icon: Activity,
+      tone: "accent" as const,
+    },
   ];
 
   return (
     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
       {cards.map((card) => (
-        <div
+        <KpiCard
           key={card.label}
-          className="rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02] px-4 py-4"
-        >
-          <p className="text-xs text-[var(--nht-text-tertiary)]">{card.label}</p>
-          <p className="mt-2 text-2xl font-medium text-white">{card.value}</p>
-        </div>
+          label={card.label}
+          value={card.value}
+          icon={card.icon}
+          tone={card.tone}
+        />
       ))}
     </div>
   );

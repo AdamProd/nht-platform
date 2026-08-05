@@ -99,6 +99,8 @@ export default async function AdminActivityPage({
             items={list.items}
             labels={{
               empty: t("empty"),
+              emptyTitle: t("emptyTitle"),
+              emptyDescription: t("emptyDescription"),
               expand: t("expandPayload"),
               collapse: t("collapsePayload"),
               unknownActor: t("unknownActor"),

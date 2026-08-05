@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/navigation";
+import DebouncedSearchInput from "@/shared/ui/DebouncedSearchInput";
 
 type Props = {
   q: string;
@@ -41,17 +42,13 @@ export default function StaffFilters({
       method="get"
       className="grid gap-3 rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02] p-4 lg:grid-cols-[1.4fr_repeat(4,minmax(0,1fr))_auto]"
     >
-      <label className="block min-w-0">
-        <span className="mb-1.5 block text-xs text-[var(--nht-text-tertiary)]">
-          {labels.search}
-        </span>
-        <input
-          name="q"
-          defaultValue={q}
-          placeholder={labels.searchPlaceholder}
-          className="w-full rounded-[var(--nht-radius-lg)] border border-white/[0.08] bg-black/30 px-3 py-2 text-sm text-white placeholder:text-[var(--nht-text-tertiary)]"
-        />
-      </label>
+      <DebouncedSearchInput
+        defaultValue={q}
+        label={labels.search}
+        placeholder={labels.searchPlaceholder}
+        clearLabel={labels.clear}
+        className="w-full rounded-[var(--nht-radius-lg)] border border-white/[0.08] bg-black/30 px-3 py-2 text-sm text-white placeholder:text-[var(--nht-text-tertiary)]"
+      />
       <Select
         name="role"
         label={labels.role}
@@ -90,13 +87,13 @@ export default function StaffFilters({
       <div className="flex items-end gap-2">
         <button
           type="submit"
-          className="rounded-full border border-[var(--nht-gold)]/40 bg-[var(--nht-gold-muted)] px-4 py-2 text-xs font-medium text-[var(--nht-gold)]"
+          className="focus-ring rounded-full border border-[var(--nht-gold)]/40 bg-[var(--nht-gold-muted)] px-4 py-2 text-xs font-medium text-[var(--nht-gold)]"
         >
           {labels.apply}
         </button>
         <Link
           href="/admin/staff"
-          className="rounded-full border border-white/10 px-4 py-2 text-xs text-[var(--nht-text-secondary)] hover:text-white"
+          className="focus-ring rounded-full border border-white/10 px-4 py-2 text-xs text-[var(--nht-text-secondary)] hover:text-white"
         >
           {labels.clear}
         </Link>

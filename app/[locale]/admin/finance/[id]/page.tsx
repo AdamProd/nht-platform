@@ -22,6 +22,7 @@ export default async function AdminFinanceDetailPage({ params }: Props) {
   setRequestLocale(locale);
   const session = await requireStaff();
   const t = await getTranslations("admin.finance");
+  const tUx = await getTranslations("common.ux");
 
   if (!hasPermission(session.profile.role, "finance.read")) {
     redirect({ href: "/admin", locale });
@@ -141,6 +142,7 @@ export default async function AdminFinanceDetailPage({ params }: Props) {
           deleting: t("actions.deleting"),
           deleted: t("toast.deleted"),
           confirmDelete: t("actions.confirmDelete"),
+          cancel: tUx("cancel"),
         }}
         statusLabels={statusLabels}
         platformLabels={platformLabels}

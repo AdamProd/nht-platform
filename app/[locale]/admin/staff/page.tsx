@@ -8,6 +8,7 @@ import StaffTable from "@/features/staff/components/StaffTable";
 import StaffPagination from "@/features/staff/components/StaffPagination";
 import StaffStatsCards from "@/features/staff/components/StaffStatsCards";
 import StaffCreateForm from "@/features/staff/components/StaffCreateForm";
+import ErrorState from "@/shared/ui/ErrorState";
 import {
   STAFF_DEPARTMENTS,
   STAFF_EMPLOYEE_ROLES,
@@ -167,12 +168,11 @@ export default async function AdminStaffPage({ params, searchParams }: Props) {
       />
 
       {loadError ? (
-        <div
-          role="alert"
-          className="rounded-[var(--nht-radius-xl)] border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200"
-        >
-          {loadError}
-        </div>
+        <ErrorState
+          title={loadError}
+          retryHref="/admin/staff"
+          retryLabel={t("filters.clear")}
+        />
       ) : (
         <>
           <StaffTable
@@ -192,10 +192,14 @@ export default async function AdminStaffPage({ params, searchParams }: Props) {
               view: t("table.view"),
               empty: t("empty"),
               emptyHint: t("emptyHint"),
+              emptyTitle: t("emptyTitle"),
+              emptyDescription: t("emptyDescription"),
+              emptyAction: t("emptyAction"),
             }}
             roleLabels={roleLabels}
             departmentLabels={departmentLabels}
             statusLabels={statusLabels}
+            canCreate={canManage}
           />
           <StaffPagination
             page={result.page}

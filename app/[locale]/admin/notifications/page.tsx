@@ -25,6 +25,7 @@ export default async function AdminNotificationsPage({
   setRequestLocale(locale);
   await requireStaff();
   const t = await getTranslations("admin.notifications");
+  const tUx = await getTranslations("common.ux");
   const sp = await searchParams;
 
   const q = first(sp.q);
@@ -83,11 +84,16 @@ export default async function AdminNotificationsPage({
             items={list.items}
             labels={{
               empty: t("empty"),
+              emptyTitle: t("emptyTitle"),
+              emptyDescription: t("emptyDescription"),
               markRead: t("actions.markRead"),
               archive: t("actions.archive"),
               delete: t("actions.delete"),
               markAll: t("actions.markAll"),
               unreadBadge: t("unreadBadge"),
+              cancel: tUx("cancel"),
+              confirmArchive: t("actions.confirmArchive"),
+              confirmDelete: t("actions.confirmDelete"),
             }}
           />
           <EventsPagination

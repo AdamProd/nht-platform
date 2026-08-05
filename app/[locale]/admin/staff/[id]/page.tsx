@@ -22,6 +22,7 @@ export default async function AdminStaffDetailPage({ params }: Props) {
   const session = await requireStaff();
   const t = await getTranslations("admin.staff");
   const tRoles = await getTranslations("admin.roles");
+  const tUx = await getTranslations("common.ux");
 
   const staff = await getStaff(id);
   if (!staff) notFound();
@@ -79,6 +80,7 @@ export default async function AdminStaffDetailPage({ params }: Props) {
         saved: t("detail.saved"),
         confirmDelete: t("detail.confirmDelete"),
         confirmTransfer: t("detail.confirmTransfer"),
+        cancel: tUx("cancel"),
         delete: t("detail.delete"),
         transferOwnership: t("detail.transferOwnership"),
         sections: {

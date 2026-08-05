@@ -6,34 +6,43 @@
   --nht-black-elevated: #0f0f0f;
   --nht-black-surface: #141414;
   --nht-white: #ffffff;
-  --nht-gold: #c8a45d;
-  --nht-gold-warm: #d4af6a;
-  --nht-gold-deep: #a8864a;
-  --nht-gold-muted: rgba(200, 164, 93, 0.12);
-  --nht-gold-subtle: rgba(200, 164, 93, 0.06);
+
+  /* Accent — violet */
+  --nht-accent: #7c3aed;
+  --nht-accent-warm: #8b5cf6;
+  --nht-accent-deep: #6d28d9;
+  --nht-accent-muted: rgba(124, 58, 237, 0.14);
+  --nht-accent-subtle: rgba(124, 58, 237, 0.07);
+
+  /* Back-compat aliases (admin / legacy class names) */
+  --nht-gold: var(--nht-accent);
+  --nht-gold-warm: var(--nht-accent-warm);
+  --nht-gold-deep: var(--nht-accent-deep);
+  --nht-gold-muted: var(--nht-accent-muted);
+  --nht-gold-subtle: var(--nht-accent-subtle);
 
   --nht-text-primary: #ffffff;
-  --nht-text-secondary: rgba(255, 255, 255, 0.55);
-  --nht-text-tertiary: rgba(255, 255, 255, 0.35);
-  --nht-text-muted: rgba(255, 255, 255, 0.2);
+  --nht-text-secondary: rgba(255, 255, 255, 0.58);
+  --nht-text-tertiary: rgba(255, 255, 255, 0.38);
+  --nht-text-muted: rgba(255, 255, 255, 0.22);
 
   --nht-border: rgba(255, 255, 255, 0.08);
-  --nht-border-hover: rgba(200, 164, 93, 0.25);
-  --nht-glass: rgba(255, 255, 255, 0.03);
+  --nht-border-hover: rgba(124, 58, 237, 0.35);
+  --nht-glass: rgba(255, 255, 255, 0.035);
   --nht-glass-strong: rgba(255, 255, 255, 0.06);
 
   /* Typography */
-  --nht-text-display: clamp(3.25rem, 7vw, 5.75rem);
-  --nht-text-h1: clamp(2.5rem, 5vw, 4rem);
-  --nht-text-h2: clamp(2rem, 3.5vw, 3rem);
+  --nht-text-display: clamp(3.5rem, 8vw, 6.25rem);
+  --nht-text-h1: clamp(2.75rem, 5.5vw, 4.25rem);
+  --nht-text-h2: clamp(2.25rem, 4vw, 3.25rem);
   --nht-text-h3: 1.5rem;
-  --nht-text-body-lg: 1.125rem;
+  --nht-text-body-lg: 1.1875rem;
   --nht-text-body: 1rem;
   --nht-text-body-sm: 0.875rem;
   --nht-text-caption: 0.75rem;
   --nht-text-overline: 0.6875rem;
 
-  --nht-tracking-tight: -0.03em;
+  --nht-tracking-tight: -0.035em;
   --nht-tracking-normal: -0.01em;
   --nht-tracking-wide: 0.12em;
   --nht-tracking-wider: 0.22em;
@@ -42,9 +51,9 @@
   --nht-leading-heading: 1.08;
   --nht-leading-body: 1.65;
 
-  /* Spacing */
-  --nht-section-y: clamp(7rem, 14vw, 11rem);
-  --nht-section-y-sm: clamp(5rem, 10vw, 8rem);
+  /* Spacing — section Y always ≥ 120px */
+  --nht-section-y: clamp(7.5rem, 14vw, 11rem);
+  --nht-section-y-sm: clamp(7.5rem, 10vw, 8rem);
   --nht-container-max: 1280px;
   --nht-container-padding: clamp(1.5rem, 4vw, 3rem);
   --nht-grid-gap: 1.5rem;
@@ -63,13 +72,14 @@
   --nht-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --nht-shadow-md: 0 8px 32px rgba(0, 0, 0, 0.45);
   --nht-shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.5);
-  --nht-shadow-glow: 0 0 60px rgba(200, 164, 93, 0.15);
-  --nht-shadow-glow-strong: 0 0 80px rgba(200, 164, 93, 0.25);
+  --nht-shadow-glow: 0 0 60px rgba(124, 58, 237, 0.22);
+  --nht-shadow-glow-strong: 0 0 80px rgba(124, 58, 237, 0.35);
   --nht-shadow-inner: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --nht-shadow-card: 0 12px 40px rgba(0, 0, 0, 0.35);
 
   /* Blur */
   --nht-blur-glass: 24px;
-  --nht-blur-glass-strong: 32px;
+  --nht-blur-glass-strong: 40px;
 
   /* Animation */
   --nht-duration-fast: 150ms;

@@ -22,6 +22,7 @@ import type {
   FinanceTransactionStatus,
 } from "@/features/finance/types";
 import FlashToast from "@/features/finance/transactions/components/FlashToast";
+import ConfirmDialog from "@/shared/ui/ConfirmDialog";
 import {
   formatFinanceDateTime,
   formatFinanceMoney,
@@ -69,6 +70,7 @@ type Props = {
     deleting: string;
     deleted: string;
     confirmDelete: string;
+    cancel: string;
   };
   statusLabels: Record<FinanceTransactionStatus, string>;
   platformLabels: Record<FinancePlatform, string>;
@@ -96,6 +98,7 @@ export default function TransactionDetailPanel({
     transaction.status,
     (_c: FinanceTransactionStatus, next: FinanceTransactionStatus) => next,
   );
+  const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
 
   function run(
     field: string,
@@ -393,35 +396,45 @@ export default function TransactionDetailPanel({
       </section>
 
       {canDelete ? (
-        <form
-          action={(formData) => {
-            if (!window.confirm(labels.confirmDelete)) return;
-            setPendingField("delete");
-            startTransition(async () => {
-              const result = await deleteTransaction(formData);
-              setPendingField(null);
-              if (!result.success) {
-                setTone("error");
-                setToast(result.error ?? labels.saveError);
-                return;
-              }
-              setTone("success");
-              setToast(labels.deleted);
-              router.push("/admin/finance");
-            });
-          }}
-        >
-          <input type="hidden" name="id" value={transaction.id} />
+        <>
           <button
-            type="submit"
+            type="button"
             disabled={isPending && pendingField === "delete"}
-            className="rounded-full border border-white/10 px-4 py-2 text-xs font-medium text-[var(--nht-text-secondary)] hover:text-white disabled:opacity-60"
+            onClick={() => setConfirmDeleteOpen(true)}
+            className="focus-ring rounded-full border border-white/10 px-4 py-2 text-xs font-medium text-[var(--nht-text-secondary)] hover:text-white disabled:opacity-60"
           >
             {isPending && pendingField === "delete"
               ? labels.deleting
               : labels.delete}
           </button>
-        </form>
+          <ConfirmDialog
+            open={confirmDeleteOpen}
+            title={labels.delete}
+            description={labels.confirmDelete}
+            confirmLabel={labels.delete}
+            cancelLabel={labels.cancel}
+            tone="danger"
+            onCancel={() => setConfirmDeleteOpen(false)}
+            onConfirm={() => {
+              setConfirmDeleteOpen(false);
+              const formData = new FormData();
+              formData.set("id", transaction.id);
+              setPendingField("delete");
+              startTransition(async () => {
+                const result = await deleteTransaction(formData);
+                setPendingField(null);
+                if (!result.success) {
+                  setTone("error");
+                  setToast(result.error ?? labels.saveError);
+                  return;
+                }
+                setTone("success");
+                setToast(labels.deleted);
+                router.push("/admin/finance");
+              });
+            }}
+          />
+        </>
       ) : null}
     </div>
   );

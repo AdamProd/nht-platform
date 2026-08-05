@@ -15,6 +15,7 @@ import FinanceFilters from "@/features/finance/transactions/components/FinanceFi
 import FinanceTable from "@/features/finance/transactions/components/FinanceTable";
 import FinancePagination from "@/features/finance/transactions/components/FinancePagination";
 import CreateTransactionForm from "@/features/finance/transactions/components/CreateTransactionForm";
+import ErrorState from "@/shared/ui/ErrorState";
 import type {
   FinancePaymentMethod,
   FinancePlatform,
@@ -189,9 +190,11 @@ export default async function AdminFinancePage({ params, searchParams }: Props) 
       </div>
 
       {loadError ? (
-        <div className="rounded-[var(--nht-radius-xl)] border border-white/[0.08] bg-white/[0.03] px-5 py-4 text-sm text-[var(--nht-text-secondary)]">
-          {loadError}
-        </div>
+        <ErrorState
+          title={loadError}
+          retryHref="/admin/finance"
+          retryLabel={t("retry")}
+        />
       ) : (
         <>
           <FinanceKpiCards
@@ -298,9 +301,13 @@ export default async function AdminFinancePage({ params, searchParams }: Props) 
                 view: t("table.view"),
                 empty: t("empty"),
                 unassigned: t("unassigned"),
+                emptyTitle: t("emptyTitle"),
+                emptyDescription: t("emptyDescription"),
+                emptyAction: t("emptyAction"),
               }}
               statusLabels={statusLabels}
               platformLabels={platformLabels}
+              canCreate={canCreate}
             />
             <FinancePagination
               page={list.page}

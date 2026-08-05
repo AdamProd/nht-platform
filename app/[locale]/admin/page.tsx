@@ -65,6 +65,7 @@ export default async function AdminDashboardPage({ params }: Props) {
 
       <DashboardKpiCards
         kpis={data.kpis}
+        trendLabel={t("trendStable")}
         labels={{
           total: t("kpis.total"),
           new: t("kpis.new"),

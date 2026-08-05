@@ -30,6 +30,7 @@ import {
   staffInitials,
 } from "@/features/staff/lib/format";
 import FlashToast from "@/features/creators/components/FlashToast";
+import ConfirmDialog from "@/shared/ui/ConfirmDialog";
 import type { ActivityLogRow } from "@/features/core/events/types";
 
 type Props = {
@@ -47,6 +48,7 @@ type Props = {
     saved: string;
     confirmDelete: string;
     confirmTransfer: string;
+    cancel: string;
     delete: string;
     transferOwnership: string;
     sections: {
@@ -87,6 +89,9 @@ export default function StaffProfilePanel({
   const [isPending, startTransition] = useTransition();
   const [optimistic, setOptimistic] = useOptimistic(staff);
   const [payloadOpen, setPayloadOpen] = useState<string | null>(null);
+  const [confirmAction, setConfirmAction] = useState<
+    null | "delete" | "transfer"
+  >(null);
 
   const name = staffDisplayName(optimistic);
 
@@ -487,16 +492,7 @@ export default function StaffProfilePanel({
             <button
               type="button"
               className="rounded-full border border-white/10 px-4 py-2 text-xs text-white"
-              onClick={() => {
-                if (!window.confirm(labels.confirmTransfer)) return;
-                const body = new FormData();
-                body.set("id", staff.id);
-                startTransition(async () => {
-                  const result = await transferOwnership(body);
-                  setToastTone(result.success ? "success" : "error");
-                  setToast(result.success ? labels.saved : result.error);
-                });
-              }}
+              onClick={() => setConfirmAction("transfer")}
             >
               {labels.transferOwnership}
             </button>
@@ -504,21 +500,49 @@ export default function StaffProfilePanel({
           <button
             type="button"
             className="rounded-full border border-red-400/40 px-4 py-2 text-xs text-red-200"
-            onClick={() => {
-              if (!window.confirm(labels.confirmDelete)) return;
-              const body = new FormData();
-              body.set("id", staff.id);
-              startTransition(async () => {
-                const result = await deleteStaff(body);
-                setToastTone(result.success ? "success" : "error");
-                setToast(result.success ? labels.saved : result.error);
-              });
-            }}
+            onClick={() => setConfirmAction("delete")}
           >
             {labels.delete}
           </button>
         </section>
       ) : null}
+
+      <ConfirmDialog
+        open={confirmAction !== null}
+        title={
+          confirmAction === "transfer"
+            ? labels.transferOwnership
+            : labels.delete
+        }
+        description={
+          confirmAction === "transfer"
+            ? labels.confirmTransfer
+            : labels.confirmDelete
+        }
+        confirmLabel={
+          confirmAction === "transfer"
+            ? labels.transferOwnership
+            : labels.delete
+        }
+        cancelLabel={labels.cancel}
+        tone={confirmAction === "delete" ? "danger" : "default"}
+        onCancel={() => setConfirmAction(null)}
+        onConfirm={() => {
+          const action = confirmAction;
+          setConfirmAction(null);
+          if (!action) return;
+          const body = new FormData();
+          body.set("id", staff.id);
+          startTransition(async () => {
+            const result =
+              action === "transfer"
+                ? await transferOwnership(body)
+                : await deleteStaff(body);
+            setToastTone(result.success ? "success" : "error");
+            setToast(result.success ? labels.saved : result.error);
+          });
+        }}
+      />
 
       <FlashToast message={toast} tone={toastTone} />
     </div>

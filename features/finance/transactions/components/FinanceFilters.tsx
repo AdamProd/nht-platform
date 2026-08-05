@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/navigation";
+import DebouncedSearchInput from "@/shared/ui/DebouncedSearchInput";
 import type {
   FinanceCreatorOption,
   FinanceManagerOption,
@@ -56,17 +57,14 @@ export default function FinanceFilters({
       className="grid gap-3 rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02] p-4 sm:grid-cols-2 lg:grid-cols-4"
       method="get"
     >
-      <label className="block lg:col-span-2">
-        <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
-          {labels.search}
-        </span>
-        <input
-          name="q"
+      <div className="lg:col-span-2">
+        <DebouncedSearchInput
           defaultValue={q}
+          label={labels.search}
           placeholder={labels.searchPlaceholder}
-          className="nht-input"
+          clearLabel={labels.clear}
         />
-      </label>
+      </div>
       <label className="block">
         <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
           {labels.from}

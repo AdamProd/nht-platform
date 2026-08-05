@@ -428,7 +428,10 @@
         "invalidPriority": "Invalid priority.",
         "invalidManager": "Invalid manager.",
         "invalidNotes": "Invalid notes."
-      }
+      },
+      "emptyTitle": "No applications found",
+      "emptyDescription": "New applications will appear here as they arrive.",
+      "retry": "Try again"
     },
     "creators": {
       "label": "Roster",
@@ -639,7 +642,10 @@
           "title": "Tasks",
           "description": "Creator tasks will appear here soon."
         }
-      }
+      },
+      "emptyTitle": "No creators yet.",
+      "emptyDescription": "Create your first creator.",
+      "emptyAction": "Create Creator"
     },
     "dashboard": {
       "label": "Overview",
@@ -705,7 +711,9 @@
         "empty": "No registrations yet.",
         "viewAll": "View all",
         "registered": "Registered"
-      }
+      },
+      "trendStable": "Live snapshot",
+      "trendUp": "Pipeline active"
     },
     "navLabel": "Admin navigation",
     "closeMenu": "Close menu",
@@ -807,7 +815,10 @@
         "updateTranslations": "Unable to update translations.",
         "adminOnly": "Only admins can delete posts.",
         "invalidId": "Invalid post id."
-      }
+      },
+      "emptyTitle": "No posts found",
+      "emptyDescription": "Create a draft to start publishing.",
+      "emptyAction": "New post"
     },
     "staffFallback": "Staff",
     "closeOverlay": "Close menu overlay",
@@ -988,7 +999,11 @@
         "delete": "Unable to delete transaction.",
         "ownerOnly": "Only the owner can delete transactions.",
         "invalidManager": "Only active staff members can be assigned."
-      }
+      },
+      "emptyTitle": "No transactions yet",
+      "emptyDescription": "Create a transaction or adjust your filters.",
+      "emptyAction": "New transaction",
+      "retry": "Try again"
     },
     "notifications": {
       "label": "Inbox",
@@ -1013,7 +1028,9 @@
         "markRead": "Mark as read",
         "markAll": "Mark all as read",
         "archive": "Archive",
-        "delete": "Delete"
+        "delete": "Delete",
+        "confirmArchive": "Archive this notification?",
+        "confirmDelete": "Delete this notification permanently?"
       },
       "pagination": {
         "previous": "Previous",
@@ -1027,7 +1044,9 @@
         "unauthorized": "You are not authorized to perform this action.",
         "invalid": "Invalid notification.",
         "save": "Unable to update notification."
-      }
+      },
+      "emptyTitle": "No notifications",
+      "emptyDescription": "You’re all caught up. New alerts will show here."
     },
     "activity": {
       "label": "Audit",
@@ -1065,7 +1084,9 @@
       },
       "errors": {
         "load": "Unable to load activity."
-      }
+      },
+      "emptyTitle": "No activity yet",
+      "emptyDescription": "Platform events will appear in this timeline."
     },
     "staff": {
       "label": "Team",
@@ -1226,7 +1247,10 @@
           "approve": "Approve",
           "export": "Export"
         }
-      }
+      },
+      "emptyTitle": "No staff found",
+      "emptyDescription": "Try clearing filters or invite a new employee.",
+      "emptyAction": "Add employee"
     }
   },
   "creator": {
@@ -1534,7 +1558,38 @@
     }
   },
   "common": {
-    "language": "Language"
+    "language": "Language",
+    "ux": {
+      "retry": "Try again",
+      "cancel": "Cancel",
+      "confirm": {
+        "title": "Are you sure?",
+        "delete": "This action cannot be undone.",
+        "archive": "Archive this item?",
+        "reject": "Reject this item?",
+        "deactivate": "Deactivate this account?"
+      },
+      "save": "Save",
+      "saving": "Saving…",
+      "clearFilters": "Clear filters",
+      "required": "Required",
+      "loading": "Loading…",
+      "empty": {
+        "title": "Nothing here yet",
+        "description": "Try adjusting filters or create a new item.",
+        "action": "Get started"
+      },
+      "error": {
+        "title": "Something went wrong",
+        "description": "We couldn’t load this section. Please try again."
+      },
+      "toast": {
+        "success": "Saved",
+        "error": "Something went wrong",
+        "warning": "Please review",
+        "info": "Updated"
+      }
+    }
   },
   "events": {
     "catalog": {

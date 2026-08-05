@@ -4,6 +4,7 @@ import { listApplications } from "@/features/applications/queries/list-applicati
 import ApplicationsFilters from "@/features/applications/components/ApplicationsFilters";
 import ApplicationsTable from "@/features/applications/components/ApplicationsTable";
 import ApplicationsPagination from "@/features/applications/components/ApplicationsPagination";
+import ErrorState from "@/shared/ui/ErrorState";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -74,9 +75,11 @@ export default async function AdminApplicationsPage({
       />
 
       {loadError ? (
-        <div className="rounded-[var(--nht-radius-xl)] border border-white/[0.08] bg-white/[0.03] px-5 py-4 text-sm text-[var(--nht-text-secondary)]">
-          {loadError}
-        </div>
+        <ErrorState
+          title={loadError}
+          retryHref="/admin/applications"
+          retryLabel={t("filters.clear")}
+        />
       ) : (
         <>
           <ApplicationsTable
@@ -94,6 +97,23 @@ export default async function AdminApplicationsPage({
               view: t("table.view"),
               empty: t("empty"),
               unassigned: t("unassigned"),
+              emptyTitle: t("emptyTitle"),
+              emptyDescription: t("emptyDescription"),
+            }}
+            statusLabels={{
+              new: t("statusValues.new"),
+              reviewing: t("statusValues.reviewing"),
+              contacted: t("statusValues.contacted"),
+              meeting: t("statusValues.meeting"),
+              active: t("statusValues.active"),
+              rejected: t("statusValues.rejected"),
+              archived: t("statusValues.archived"),
+            }}
+            priorityLabels={{
+              low: t("priorityValues.low"),
+              normal: t("priorityValues.normal"),
+              high: t("priorityValues.high"),
+              urgent: t("priorityValues.urgent"),
             }}
           />
 

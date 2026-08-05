@@ -430,7 +430,10 @@
         "invalidPriority": "Некорректный приоритет.",
         "invalidManager": "Некорректный менеджер.",
         "invalidNotes": "Некорректные заметки."
-      }
+      },
+      "emptyTitle": "No applications found",
+      "emptyDescription": "New applications will appear here as they arrive.",
+      "retry": "Try again"
     },
     "creators": {
       "label": "Ростер",
@@ -641,7 +644,10 @@
           "title": "Задачи",
           "description": "Задачи креатора появятся здесь позже."
         }
-      }
+      },
+      "emptyTitle": "No creators yet.",
+      "emptyDescription": "Create your first creator.",
+      "emptyAction": "Create Creator"
     },
     "dashboard": {
       "label": "Обзор",
@@ -707,7 +713,9 @@
         "empty": "Регистраций пока нет.",
         "viewAll": "Все",
         "registered": "Зарегистрирован"
-      }
+      },
+      "trendStable": "Live snapshot",
+      "trendUp": "Pipeline active"
     },
     "navLabel": "Навигация админки",
     "closeMenu": "Закрыть меню",
@@ -809,7 +817,10 @@
         "updateTranslations": "Не удалось обновить переводы.",
         "adminOnly": "Удалять посты могут только админы.",
         "invalidId": "Некорректный id поста."
-      }
+      },
+      "emptyTitle": "No posts found",
+      "emptyDescription": "Create a draft to start publishing.",
+      "emptyAction": "New post"
     },
     "staffFallback": "Сотрудник",
     "closeOverlay": "Закрыть меню",
@@ -990,7 +1001,11 @@
         "delete": "Unable to delete transaction.",
         "ownerOnly": "Only the owner can delete transactions.",
         "invalidManager": "Можно назначать только активных сотрудников."
-      }
+      },
+      "emptyTitle": "No transactions yet",
+      "emptyDescription": "Create a transaction or adjust your filters.",
+      "emptyAction": "New transaction",
+      "retry": "Try again"
     },
     "notifications": {
       "label": "Входящие",
@@ -1015,7 +1030,9 @@
         "markRead": "Прочитано",
         "markAll": "Прочитать все",
         "archive": "В архив",
-        "delete": "Удалить"
+        "delete": "Удалить",
+        "confirmArchive": "Архивировать это уведомление?",
+        "confirmDelete": "Удалить это уведомление навсегда?"
       },
       "pagination": {
         "previous": "Назад",
@@ -1029,7 +1046,9 @@
         "unauthorized": "Нет доступа.",
         "invalid": "Некорректное уведомление.",
         "save": "Не удалось обновить уведомление."
-      }
+      },
+      "emptyTitle": "No notifications",
+      "emptyDescription": "You’re all caught up. New alerts will show here."
     },
     "activity": {
       "label": "Аудит",
@@ -1067,7 +1086,9 @@
       },
       "errors": {
         "load": "Не удалось загрузить активность."
-      }
+      },
+      "emptyTitle": "No activity yet",
+      "emptyDescription": "Platform events will appear in this timeline."
     },
     "staff": {
       "label": "Команда",
@@ -1228,7 +1249,10 @@
           "approve": "Одобрить",
           "export": "Экспорт"
         }
-      }
+      },
+      "emptyTitle": "No staff found",
+      "emptyDescription": "Try clearing filters or invite a new employee.",
+      "emptyAction": "Add employee"
     }
   },
   "creator": {
@@ -1536,7 +1560,38 @@
     }
   },
   "common": {
-    "language": "Язык"
+    "language": "Язык",
+    "ux": {
+      "retry": "Try again",
+      "cancel": "Cancel",
+      "confirm": {
+        "title": "Are you sure?",
+        "delete": "This action cannot be undone.",
+        "archive": "Archive this item?",
+        "reject": "Reject this item?",
+        "deactivate": "Deactivate this account?"
+      },
+      "save": "Save",
+      "saving": "Saving…",
+      "clearFilters": "Clear filters",
+      "required": "Required",
+      "loading": "Loading…",
+      "empty": {
+        "title": "Nothing here yet",
+        "description": "Try adjusting filters or create a new item.",
+        "action": "Get started"
+      },
+      "error": {
+        "title": "Something went wrong",
+        "description": "We couldn’t load this section. Please try again."
+      },
+      "toast": {
+        "success": "Saved",
+        "error": "Something went wrong",
+        "warning": "Please review",
+        "info": "Updated"
+      }
+    }
   },
   "events": {
     "catalog": {

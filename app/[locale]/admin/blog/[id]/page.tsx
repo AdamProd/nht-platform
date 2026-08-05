@@ -15,6 +15,7 @@ export default async function AdminBlogEditPage({ params }: Props) {
   const { locale, id } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("admin.blog");
+  const tUx = await getTranslations("common.ux");
 
   const post = await getPost(id);
   if (!post) notFound();
@@ -82,6 +83,7 @@ export default async function AdminBlogEditPage({ params }: Props) {
           deleted: t("toast.deleted"),
           needTranslation: t("errors.needTranslation"),
           confirmDelete: t("form.confirmDelete"),
+          cancel: tUx("cancel"),
           editor: {
             bold: t("editor.bold"),
             italic: t("editor.italic"),

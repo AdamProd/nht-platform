@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/navigation";
+import DebouncedSearchInput from "@/shared/ui/DebouncedSearchInput";
 import {
   creatorSortValues,
   creatorStatuses,
@@ -53,17 +54,14 @@ export default function CreatorFilters({
       method="get"
       className="grid gap-3 rounded-[var(--nht-radius-xl)] border border-white/[0.06] bg-white/[0.02] p-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6"
     >
-      <label className="block sm:col-span-2 xl:col-span-2">
-        <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
-          {labels.search}
-        </span>
-        <input
-          name="q"
+      <div className="sm:col-span-2 xl:col-span-2">
+        <DebouncedSearchInput
           defaultValue={q}
+          label={labels.search}
           placeholder={labels.searchPlaceholder}
-          className="nht-input"
+          clearLabel={labels.clear}
         />
-      </label>
+      </div>
 
       <label className="block">
         <span className="text-overline mb-2 block text-[var(--nht-text-tertiary)]">
