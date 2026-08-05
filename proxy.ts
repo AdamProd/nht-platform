@@ -113,6 +113,10 @@ export default async function proxy(request: NextRequest) {
       );
     }
     if (!canAccessCreatorCabinet(role, impersonatingCreatorId)) {
+      // Staff without active impersonation belong in admin, not on a 403 page.
+      if (staff) {
+        return redirectWithCookies(request, response, `/${locale}/admin`);
+      }
       return redirectWithCookies(
         request,
         response,

@@ -104,6 +104,11 @@ export async function requireCreatorCabinet(
     }).impersonating_creator_id ?? null;
 
   if (!canAccessCreatorCabinet(session.profile.role, impersonatingId)) {
+    // Staff without impersonation belong in admin, not unauthorized.
+    if (isStaff(session.profile.role)) {
+      redirect({ href: "/admin", locale });
+      throw new Error("Forbidden");
+    }
     redirect({ href: "/unauthorized", locale });
     throw new Error("Forbidden");
   }

@@ -15,6 +15,10 @@ export type SessionSnapshot = {
 
 /**
  * Refreshes the Supabase auth session and resolves staff role for route guards.
+ *
+ * Uses select("*") so optional columns (e.g. impersonating_creator_id) never
+ * break role resolution. A prior select("role, impersonating_creator_id")
+ * nulled the whole profile when that column was unavailable → owners got 403.
  */
 export async function updateSession(
   request: NextRequest,
@@ -63,19 +67,27 @@ export async function updateSession(
     };
   }
 
-  const { data: profile } = await supabase
+  const { data: profile, error } = await supabase
     .from("profiles")
-    .select("role, impersonating_creator_id")
+    .select("*")
     .eq("id", user.id)
     .maybeSingle();
 
-  const role = profile?.role ?? null;
+  if (error) {
+    console.error("[auth.middleware.profile]", error.message);
+  }
+
+  const role = (profile?.role as UserRole | null | undefined) ?? null;
+  const impersonatingCreatorId =
+    (
+      profile as { impersonating_creator_id?: string | null } | null
+    )?.impersonating_creator_id ?? null;
 
   return {
     response,
     user,
     role,
     isStaff: isStaff(role),
-    impersonatingCreatorId: profile?.impersonating_creator_id ?? null,
+    impersonatingCreatorId,
   };
 }
