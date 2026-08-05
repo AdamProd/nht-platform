@@ -10,6 +10,11 @@ export const adminNavItems = [
     labelKey: "creators",
     match: "prefix" as const,
   },
+  {
+    href: "/admin/finance",
+    labelKey: "finance",
+    match: "prefix" as const,
+  },
   { href: "/admin/blog", labelKey: "blog", match: "prefix" as const },
   {
     href: "/admin/analytics",

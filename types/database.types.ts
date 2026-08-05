@@ -620,23 +620,18 @@ export type Database = {
           },
         ];
       };
+      // Live remote schema (no user_id — auth link is creators.email ↔ auth.users.email)
       creators: {
         Row: {
           application_id: string | null;
           avatar_url: string | null;
-          biography: string | null;
           birthday: string | null;
-          chaturbate_url: string | null;
           country: string | null;
           created_at: string;
           display_name: string;
           email: string;
-          fansly_url: string | null;
           full_name: string;
           id: string;
-          instagram_url: string | null;
-          invited_at: string | null;
-          invited_by: string | null;
           is_active: boolean;
           languages: string[];
           last_activity_at: string | null;
@@ -644,37 +639,28 @@ export type Database = {
           legal_name: string | null;
           manager_id: string | null;
           notes: string | null;
-          onlyfans_url: string | null;
+          payouts_total: number;
           phone: string | null;
+          platform_accounts: Json;
           platforms: string[];
-          profile_completed_at: string | null;
           revenue_current_month: number;
           revenue_lifetime: number;
           revenue_previous_month: number;
           status: Database["public"]["Enums"]["creator_status"];
           telegram: string | null;
           timezone: string | null;
-          tiktok_url: string | null;
-          twitter_url: string | null;
           updated_at: string;
-          user_id: string | null;
         };
         Insert: {
           application_id?: string | null;
           avatar_url?: string | null;
-          biography?: string | null;
           birthday?: string | null;
-          chaturbate_url?: string | null;
           country?: string | null;
           created_at?: string;
           display_name: string;
           email: string;
-          fansly_url?: string | null;
           full_name: string;
           id?: string;
-          instagram_url?: string | null;
-          invited_at?: string | null;
-          invited_by?: string | null;
           is_active?: boolean;
           languages?: string[];
           last_activity_at?: string | null;
@@ -682,37 +668,28 @@ export type Database = {
           legal_name?: string | null;
           manager_id?: string | null;
           notes?: string | null;
-          onlyfans_url?: string | null;
+          payouts_total?: number;
           phone?: string | null;
+          platform_accounts?: Json;
           platforms?: string[];
-          profile_completed_at?: string | null;
           revenue_current_month?: number;
           revenue_lifetime?: number;
           revenue_previous_month?: number;
           status?: Database["public"]["Enums"]["creator_status"];
           telegram?: string | null;
           timezone?: string | null;
-          tiktok_url?: string | null;
-          twitter_url?: string | null;
           updated_at?: string;
-          user_id?: string | null;
         };
         Update: {
           application_id?: string | null;
           avatar_url?: string | null;
-          biography?: string | null;
           birthday?: string | null;
-          chaturbate_url?: string | null;
           country?: string | null;
           created_at?: string;
           display_name?: string;
           email?: string;
-          fansly_url?: string | null;
           full_name?: string;
           id?: string;
-          instagram_url?: string | null;
-          invited_at?: string | null;
-          invited_by?: string | null;
           is_active?: boolean;
           languages?: string[];
           last_activity_at?: string | null;
@@ -720,20 +697,17 @@ export type Database = {
           legal_name?: string | null;
           manager_id?: string | null;
           notes?: string | null;
-          onlyfans_url?: string | null;
+          payouts_total?: number;
           phone?: string | null;
+          platform_accounts?: Json;
           platforms?: string[];
-          profile_completed_at?: string | null;
           revenue_current_month?: number;
           revenue_lifetime?: number;
           revenue_previous_month?: number;
           status?: Database["public"]["Enums"]["creator_status"];
           telegram?: string | null;
           timezone?: string | null;
-          tiktok_url?: string | null;
-          twitter_url?: string | null;
           updated_at?: string;
-          user_id?: string | null;
         };
         Relationships: [
           {
@@ -746,20 +720,6 @@ export type Database = {
           {
             foreignKeyName: "creators_manager_id_fkey";
             columns: ["manager_id"];
-            isOneToOne: false;
-            referencedRelation: "profiles";
-            referencedColumns: ["id"];
-          },
-          {
-            foreignKeyName: "creators_user_id_fkey";
-            columns: ["user_id"];
-            isOneToOne: true;
-            referencedRelation: "profiles";
-            referencedColumns: ["id"];
-          },
-          {
-            foreignKeyName: "creators_invited_by_fkey";
-            columns: ["invited_by"];
             isOneToOne: false;
             referencedRelation: "profiles";
             referencedColumns: ["id"];
@@ -814,7 +774,6 @@ export type Database = {
           created_at: string;
           full_name: string | null;
           id: string;
-          impersonating_creator_id: string | null;
           role: Database["public"]["Enums"]["user_role"];
           updated_at: string;
         };
@@ -823,7 +782,6 @@ export type Database = {
           created_at?: string;
           full_name?: string | null;
           id: string;
-          impersonating_creator_id?: string | null;
           role?: Database["public"]["Enums"]["user_role"];
           updated_at?: string;
         };
@@ -832,19 +790,10 @@ export type Database = {
           created_at?: string;
           full_name?: string | null;
           id?: string;
-          impersonating_creator_id?: string | null;
           role?: Database["public"]["Enums"]["user_role"];
           updated_at?: string;
         };
-        Relationships: [
-          {
-            foreignKeyName: "profiles_impersonating_creator_id_fkey";
-            columns: ["impersonating_creator_id"];
-            isOneToOne: false;
-            referencedRelation: "creators";
-            referencedColumns: ["id"];
-          },
-        ];
+        Relationships: [];
       };
       settings: {
         Row: {
@@ -869,6 +818,91 @@ export type Database = {
           {
             foreignKeyName: "settings_updated_by_fkey";
             columns: ["updated_by"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      finance_transactions: {
+        Row: {
+          agency_amount: number;
+          agency_percent: number;
+          created_at: string;
+          created_by: string | null;
+          creator_amount: number;
+          creator_id: string;
+          creator_percent: number;
+          currency: string;
+          gross_revenue: number;
+          id: string;
+          manager_id: string | null;
+          notes: string | null;
+          payment_method: Database["public"]["Enums"]["finance_payment_method"] | null;
+          platform: string;
+          reference_id: string | null;
+          status: Database["public"]["Enums"]["finance_transaction_status"];
+          transaction_date: string;
+          updated_at: string;
+        };
+        Insert: {
+          agency_amount?: number;
+          agency_percent?: number;
+          created_at?: string;
+          created_by?: string | null;
+          creator_amount?: number;
+          creator_id: string;
+          creator_percent?: number;
+          currency?: string;
+          gross_revenue: number;
+          id?: string;
+          manager_id?: string | null;
+          notes?: string | null;
+          payment_method?: Database["public"]["Enums"]["finance_payment_method"] | null;
+          platform: string;
+          reference_id?: string | null;
+          status?: Database["public"]["Enums"]["finance_transaction_status"];
+          transaction_date?: string;
+          updated_at?: string;
+        };
+        Update: {
+          agency_amount?: number;
+          agency_percent?: number;
+          created_at?: string;
+          created_by?: string | null;
+          creator_amount?: number;
+          creator_id?: string;
+          creator_percent?: number;
+          currency?: string;
+          gross_revenue?: number;
+          id?: string;
+          manager_id?: string | null;
+          notes?: string | null;
+          payment_method?: Database["public"]["Enums"]["finance_payment_method"] | null;
+          platform?: string;
+          reference_id?: string | null;
+          status?: Database["public"]["Enums"]["finance_transaction_status"];
+          transaction_date?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "finance_transactions_creator_id_fkey";
+            columns: ["creator_id"];
+            isOneToOne: false;
+            referencedRelation: "creators";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "finance_transactions_manager_id_fkey";
+            columns: ["manager_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "finance_transactions_created_by_fkey";
+            columns: ["created_by"];
             isOneToOne: false;
             referencedRelation: "profiles";
             referencedColumns: ["id"];
@@ -935,6 +969,19 @@ export type Database = {
         | "vacation"
         | "inactive"
         | "banned";
+      finance_payment_method:
+        | "stripe"
+        | "wise"
+        | "paypal"
+        | "crypto"
+        | "bank_transfer"
+        | "other";
+      finance_transaction_status:
+        | "pending"
+        | "approved"
+        | "paid"
+        | "cancelled"
+        | "disputed";
       payout_method: "bank" | "paypal" | "crypto" | "other";
       payout_status: "pending" | "processing" | "completed" | "failed";
       platform_link_status: "linked" | "pending" | "disconnected" | "issue";
@@ -964,6 +1011,8 @@ export type ApplicationType = Enums<"application_type">;
 export type ApplicationStatus = Enums<"application_status">;
 export type ApplicationPriority = Enums<"application_priority">;
 export type CreatorStatus = Enums<"creator_status">;
+export type FinanceTransactionStatus = Enums<"finance_transaction_status">;
+export type FinancePaymentMethod = Enums<"finance_payment_method">;
 export type PlatformLinkStatus = Enums<"platform_link_status">;
 export type CabinetTaskStatus = Enums<"cabinet_task_status">;
 export type CabinetTaskPriority = Enums<"cabinet_task_priority">;
@@ -1007,6 +1056,21 @@ export const Constants = {
         "vacation",
         "inactive",
         "banned",
+      ] as const,
+      finance_payment_method: [
+        "stripe",
+        "wise",
+        "paypal",
+        "crypto",
+        "bank_transfer",
+        "other",
+      ] as const,
+      finance_transaction_status: [
+        "pending",
+        "approved",
+        "paid",
+        "cancelled",
+        "disputed",
       ] as const,
       payout_method: ["bank", "paypal", "crypto", "other"] as const,
       payout_status: [

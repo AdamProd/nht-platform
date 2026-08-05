@@ -284,7 +284,8 @@
       "creators": "Creator",
       "blog": "Blog",
       "analytics": "Analysen",
-      "settings": "Einstellungen"
+      "settings": "Einstellungen",
+      "finance": "Finanzen"
     },
     "pages": {
       "dashboard": {
@@ -316,6 +317,11 @@
         "label": "System",
         "title": "Einstellungen",
         "description": "Website-Einstellungen kommen bald."
+      },
+      "finance": {
+        "label": "Finanzen",
+        "title": "Finanzen",
+        "description": "Umsatz und Auszahlungen verwalten."
       }
     },
     "applications": {
@@ -795,6 +801,167 @@
       "manager": "Manager",
       "creator": "Creator",
       "guest": "Gast"
+    },
+    "finance": {
+      "label": "Finanzen",
+      "title": "Finanzen",
+      "description": "Creator-Umsatz, Agenturprovisionen und Auszahlungen.",
+      "detailLabel": "Transaktion",
+      "backToList": "Zurück zu Finanzen",
+      "transactionsTitle": "Transaktionen",
+      "empty": "Noch keine Transaktionen.",
+      "unassigned": "Nicht zugewiesen",
+      "none": "Keine",
+      "kpis": {
+        "totalRevenue": "Total revenue",
+        "agencyRevenue": "Agency revenue",
+        "creatorRevenue": "Creator revenue",
+        "pendingPayouts": "Pending payouts",
+        "paidThisMonth": "Paid this month",
+        "activeCreators": "Active creators",
+        "revenueToday": "Revenue today",
+        "revenueThisMonth": "Revenue this month",
+        "revenueThisYear": "Revenue this year"
+      },
+      "summaries": {
+        "creatorTitle": "Creator summary",
+        "agencyTitle": "Agency summary",
+        "lifetimeRevenue": "Lifetime revenue",
+        "thisMonth": "This month",
+        "pendingPayout": "Pending payout",
+        "lastPayout": "Last payout",
+        "averageMonthly": "Average monthly revenue",
+        "monthlyRevenue": "Monthly revenue",
+        "quarterRevenue": "Quarter revenue",
+        "yearRevenue": "Year revenue"
+      },
+      "integrations": {
+        "title": "Payment integrations",
+        "description": "Connect payout providers. Architecture only — no live integrations yet.",
+        "comingSoon": "Coming soon"
+      },
+      "filters": {
+        "search": "Search",
+        "searchPlaceholder": "Platform, reference, notes",
+        "status": "Status",
+        "platform": "Platform",
+        "creator": "Creator",
+        "manager": "Manager",
+        "from": "From",
+        "to": "To",
+        "all": "All",
+        "apply": "Apply",
+        "clear": "Clear"
+      },
+      "table": {
+        "date": "Date",
+        "creator": "Creator",
+        "platform": "Platform",
+        "gross": "Gross revenue",
+        "agencyPercent": "Agency %",
+        "agencyAmount": "Agency amount",
+        "creatorPercent": "Creator %",
+        "creatorAmount": "Creator amount",
+        "status": "Status",
+        "manager": "Manager",
+        "actions": "Actions",
+        "view": "View"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "pageOf": "Page {page} of {totalPages} · {total} total"
+      },
+      "fields": {
+        "creator": "Creator",
+        "manager": "Manager",
+        "platform": "Platform",
+        "date": "Date",
+        "gross": "Gross revenue",
+        "currency": "Currency",
+        "agencyPercent": "Agency %",
+        "agencyAmount": "Agency amount",
+        "creatorPercent": "Creator %",
+        "creatorAmount": "Creator amount",
+        "status": "Status",
+        "paymentMethod": "Payment method",
+        "referenceId": "Reference ID",
+        "notes": "Notes",
+        "created": "Created",
+        "updated": "Updated"
+      },
+      "sections": {
+        "details": "Details",
+        "status": "Status",
+        "notes": "Notes",
+        "meta": "Timeline"
+      },
+      "status": {
+        "pending": "Pending",
+        "approved": "Approved",
+        "paid": "Paid",
+        "cancelled": "Cancelled",
+        "disputed": "Disputed"
+      },
+      "platforms": {
+        "onlyfans": "OnlyFans",
+        "fansly": "Fansly",
+        "chaturbate": "Chaturbate",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "twitter": "Twitter/X",
+        "other": "Other"
+      },
+      "methods": {
+        "stripe": "Stripe",
+        "wise": "Wise",
+        "paypal": "PayPal",
+        "crypto": "Crypto",
+        "bankTransfer": "Bank transfer",
+        "other": "Other"
+      },
+      "form": {
+        "title": "Neue Transaktion",
+        "open": "Transaktion hinzufügen",
+        "cancel": "Abbrechen",
+        "submit": "Erstellen",
+        "submitting": "Wird erstellt…"
+      },
+      "actions": {
+        "save": "Speichern",
+        "saving": "Speichern…",
+        "saveError": "Speichern fehlgeschlagen.",
+        "delete": "Transaktion löschen",
+        "deleting": "Wird gelöscht…",
+        "confirmDelete": "Transaktion dauerhaft löschen?"
+      },
+      "toast": {
+        "created": "Transaktion erstellt.",
+        "saved": "Änderungen gespeichert.",
+        "deleted": "Transaktion gelöscht."
+      },
+      "errors": {
+        "load": "Unable to load finance data.",
+        "loadDetail": "Unable to load this transaction.",
+        "boundary": "Something went wrong loading finance.",
+        "retry": "Try again"
+      },
+      "notFound": {
+        "title": "Transaction not found",
+        "description": "This transaction may have been removed or you do not have access.",
+        "back": "Back to finance"
+      },
+      "actionErrors": {
+        "unauthorized": "You are not authorized to make this change.",
+        "forbidden": "You can only manage finance for your assigned creators.",
+        "invalid": "Invalid transaction data.",
+        "invalidStatus": "Invalid status.",
+        "invalidNotes": "Invalid notes.",
+        "create": "Unable to create transaction.",
+        "save": "Unable to save changes.",
+        "delete": "Unable to delete transaction.",
+        "ownerOnly": "Only the owner can delete transactions."
+      }
     }
   },
   "creator": {
